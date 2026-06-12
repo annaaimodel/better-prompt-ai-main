@@ -1,6 +1,36 @@
 title,company,comp,location,link,source,notes
-# ^ Drop jobs from the gated groups (Facebook / Skool / Discord / LinkedIn) here.
-# One row per job. Only "title" or "link" is strictly required; fill what you have.
+# Drop jobs from the gated groups (Facebook / Skool / Discord / LinkedIn) here.
+# One row per job. Only "title" or "link" is required; fill what you have.
 # "source" is free text e.g. "FB: High Ticket Closers and Setters". Lines starting with # are ignored.
 # You can also point the pipeline at a published Google Sheet instead - see README (INBOX_CSV_URL).
-# Example High Ticket Closer,Acme Coaching,$5-8k/mo OTE,Remote,https://example.com/apply,FB: High Ticket Closers and Setters,warm inbound leads only
+#
+# --- Seeded 2026-06-12 from the first live sweep (27 direct-apply postings, fully remote) ---
+Remote High-Ticket Sales Closer (Automotive),That 1 Detailer,"$125K+ OTE, $200K max",Remote,https://jobs.ashbyhq.com/that1detailer/8c38effe-2878-4fd2-8c77-e6919f35b602,Ashby,
+High Ticket Closer,ClientUp,"$7,500/unit + bonuses",Remote,https://wellfound.com/jobs/3075816-high-ticket-closer,Wellfound,AUS/US/UK
+Inside Sales Dev Rep / Closer (SDR-Closer hybrid),Wealth Without Wallstreet,$98K OTE,Remote,https://apply.workable.com/wealth-without-wallstreet/j/619BDA8185,Workable,
+Remote High Ticket Sales Closer,The WFS Group,,Remote,https://jobs.ashbyhq.com/thewfsgroup/fc2639bf-5954-458f-af11-882127d409c3,Ashby,
+High Ticket Sales Closer - Remote,The WFS Group,,Remote,https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b,Ashby,
+International Remote High Ticket Sales Closer,The WFS Group,,Remote,https://jobs.ashbyhq.com/thewfsgroup/42a20895-eb4b-4ad7-8885-1b58e36bc84e,Ashby,
+Sales Representative (High Ticket Closer),"Love Strategies, Inc.",,Remote,https://apply.workable.com/love-strategies-inc/j/33F3CF2E7D/,Workable,
+High-Ticket Closer / Senior Sales Director,Scale Virtually,,Remote,https://apply.workable.com/scale-virtually/j/2BDBB75C1C,Workable,US-based
+High-Ticket Sales Closer (Commission + Performance),Scale Virtually,,Remote,https://apply.workable.com/scale-virtually/j/1D85E7F8EF,Workable,
+Remote High Ticket Closer (Inside Sales Representative),6 Figure Creative,,Remote,https://apply.workable.com/6figurecreative/j/A18C2D0C60/,Workable,
+Full-Time High Ticket Closer,Impact Clients,,Remote,https://apply.workable.com/impact-clients/j/3F6F07E3F2/,Workable,
+Remote High-Ticket Closer (Warm Leads),Outsourced Doers,uncapped commission,Remote,https://www.linkedin.com/jobs/view/remote-high-ticket-closer-warm-leads-virtual-sales-uncapped-commission-at-outsourced-doers-4329725529,LinkedIn,
+Remote High Ticket Sales Closer (Commission Only),Copy Sharks,,Remote,https://allremote.jobs/remote-job/copy-sharks-remote-high-ticket-sales-closer-commission-only-f59ce618-8278-42a2-a156-bbf3437bacee,AllRemote,
+Remote Sales Closer (Web Design Services),Sales Agents UK,,Remote,https://salesagents.uk/opportunities/remote-sales-closer-web-design-services/,SalesAgents.uk,
+Appointment Setter (ISA Real Estate),Select Home Buyers,$55-100K,Remote,https://bebee.com/us/jobs/appointment-setter-isa-real-estate-i-100-remote-i-55-100k-select-home-buyers-florida--theirstack-661750080,BeBee,
+Sales Appointment Setter,WALTER,$900/mo base + commission,Remote,https://weworkremotely.com/remote-jobs/walter-sales-appointment-setter,WeWorkRemotely,
+Appointment Setter (high-value leads),The Professional Builder,,Remote,https://weworkremotely.com/remote-jobs/the-professional-builder-appointment-setter,WeWorkRemotely,
+Experienced Solar Appointment Setter,Solar (via remote.io),100% commission,Remote,https://www.remote.io/remote-sales-and-partnerships-jobs/experienced-solar-appointment-setter-100-commission-work-from-home-5184,remote.io,
+Appointment Setter (bilingual),Remote Latinos,,Remote,https://www.remotelatinos.com/careers/appointment-setter-job,RemoteLatinos,
+Client Success Manager (Marketing Agency),SMB Team,"$90-100K + $10K bonus",Remote,https://apply.workable.com/smb-team/j/B0632A1018,Workable,300% YoY growth
+Customer Success Manager (SaaS),Passion.io,Global Remote,Remote,https://apply.workable.com/passionio/j/B89DB32A0F,Workable,
+Associate Client Success Manager (B2B SaaS),Prompt,,Remote,https://jobs.ashbyhq.com/prompt/f4f32175-475c-4065-93df-4e8c86b59a4d,Ashby,
+Customer Success,Motion,,Remote,https://jobs.ashbyhq.com/motion/15d91f57-d7d3-4756-beca-cf395332d6f7,Ashby,
+Client Success Manager (Marketing Agency),Huzzle,"$1,200-2,000/mo",Remote,https://apply.workable.com/huzzle/j/94A161446E,Workable,US Central time
+Client Success Manager,Trivium,,Remote,https://apply.workable.com/trivium/j/24310BF151,Workable,
+Senior Client Success Manager,Online Education Services (OES),,Remote,https://apply.workable.com/oes/j/2827677DD7,Workable,UK
+Client Success Agent,The Credit Pros,,Remote,https://apply.workable.com/the-credit-pros/j/F132B89F29/,Workable,
+Student Success Coach,Campus,,Remote,https://jobs.ashbyhq.com/campus/b11d1360-48d8-4dd8-a1e2-ea72d53a4d8f,Ashby,
+Student Success Coach,American College of Education,,Remote,https://apply.workable.com/american-college-of-education/j/F71C5BB683/,Workable,

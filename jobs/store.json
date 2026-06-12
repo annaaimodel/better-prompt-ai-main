@@ -33,7 +33,8 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "04b7128d79cfe630": {
   "title": "Remote High Ticket Sales Closer",
@@ -93,7 +94,8 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "133c599a149231bc": {
   "title": "High-Ticket Sales Closer (Commission + Performance)",
@@ -105,7 +107,8 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "2cd8b810bb75b7a8": {
   "title": "Remote High Ticket Closer (Inside Sales Representative)",
@@ -117,7 +120,8 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "dc0d15fde0b3836c": {
   "title": "Full-Time High Ticket Closer",
@@ -153,7 +157,8 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "dead"
  },
  "ff4d9ad6a3dfcb59": {
   "title": "Remote Sales Closer (Web Design Services)",
@@ -189,7 +194,8 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "deffce2c6a979992": {
   "title": "Appointment Setter (high-value leads)",
@@ -201,7 +207,8 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "82a85a37d7e014ec": {
   "title": "Experienced Solar Appointment Setter",
@@ -213,7 +220,8 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "dead"
  },
  "7bb474b11feb3030": {
   "title": "Appointment Setter (bilingual)",
@@ -285,7 +293,8 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "afd5b16008807bad": {
   "title": "Client Success Manager",
@@ -321,7 +330,8 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "335f37678239a330": {
   "title": "Student Success Coach",
@@ -345,7 +355,8 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "613267bf2a0d64a1": {
   "title": "High-Ticket Closer",
@@ -381,7 +392,8 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false,
+  "delisted": "generic"
  },
  "b77237295f978afe": {
   "title": "Remote High Ticket Closer",
@@ -801,7 +813,7 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false
  },
  "f210d23d5cd1f52b": {
   "title": "Customer Success Manager",
@@ -813,7 +825,7 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false
  },
  "89532289199da9ac": {
   "title": "Senior Manager, Customer Success",
@@ -825,7 +837,7 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false
  },
  "92d765065bdc3a65": {
   "title": "Customer Success Manager-Asset Manager",
@@ -837,7 +849,7 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false
  },
  "35f23a47d347b46e": {
   "title": "Strategic Customer Success Manager, SEA",
@@ -849,7 +861,7 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false
  },
  "c3f1319f117bee4f": {
   "title": "Manager, Customer Success, APAC",
@@ -861,7 +873,7 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false
  },
  "4c3af64e50b2552b": {
   "title": "Senior Customer Success Manager",
@@ -873,7 +885,7 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-12",
-  "active": true
+  "active": false
  },
  "3a42bfaa599b3b48": {
   "title": "Customer Success Manager-Asset Manager",
@@ -881,6 +893,114 @@
   "location": "USA",
   "comp": "",
   "link": "https://jobicy.com/jobs/144987-customer-success-manager-asset-manager",
+  "source": "Jobicy",
+  "category": "Success (client / customer / student)",
+  "first_seen": "2026-06-12",
+  "last_seen": "2026-06-12",
+  "active": false
+ },
+ "70cbc55aeff9530a": {
+  "title": "Junior Customer Success Manager (API)",
+  "company": "Vonage",
+  "location": "Japan",
+  "comp": "",
+  "link": "https://jobicy.com/jobs/146334-junior-customer-success-manager-api",
+  "source": "Jobicy",
+  "category": "Success (client / customer / student)",
+  "first_seen": "2026-06-12",
+  "last_seen": "2026-06-12",
+  "active": true
+ },
+ "d351f2976fa7928d": {
+  "title": "Customer Success Manager, Japan",
+  "company": "GitLab",
+  "location": "Japan",
+  "comp": "",
+  "link": "https://jobicy.com/jobs/146329-customer-success-manager-japan",
+  "source": "Jobicy",
+  "category": "Success (client / customer / student)",
+  "first_seen": "2026-06-12",
+  "last_seen": "2026-06-12",
+  "active": true
+ },
+ "983c4f854f1e33bd": {
+  "title": "Senior Enterprise Customer Success Manager",
+  "company": "Signifyd",
+  "location": "USA",
+  "comp": "",
+  "link": "https://jobicy.com/jobs/146327-senior-enterprise-customer-success-manager",
+  "source": "Jobicy",
+  "category": "Success (client / customer / student)",
+  "first_seen": "2026-06-12",
+  "last_seen": "2026-06-12",
+  "active": true
+ },
+ "b62bd16a739db469": {
+  "title": "Customer Success Architect",
+  "company": "Sigma Computing",
+  "location": "USA",
+  "comp": "",
+  "link": "https://jobicy.com/jobs/146326-customer-success-architect-2",
+  "source": "Jobicy",
+  "category": "Success (client / customer / student)",
+  "first_seen": "2026-06-12",
+  "last_seen": "2026-06-12",
+  "active": true
+ },
+ "cec15b2ad58068e2": {
+  "title": "Customer Success Manager",
+  "company": "Sonatype",
+  "location": "UK",
+  "comp": "",
+  "link": "https://jobicy.com/jobs/146325-customer-success-manager-35",
+  "source": "Jobicy",
+  "category": "Success (client / customer / student)",
+  "first_seen": "2026-06-12",
+  "last_seen": "2026-06-12",
+  "active": true
+ },
+ "6506934298a642b9": {
+  "title": "Sr. Customer Success Manager – Central",
+  "company": "Axon",
+  "location": "USA",
+  "comp": "",
+  "link": "https://jobicy.com/jobs/146320-sr-customer-success-manager-central",
+  "source": "Jobicy",
+  "category": "Success (client / customer / student)",
+  "first_seen": "2026-06-12",
+  "last_seen": "2026-06-12",
+  "active": true
+ },
+ "8f54017a777633ae": {
+  "title": "Customer Success Manager",
+  "company": "RingCentral",
+  "location": "Philippines",
+  "comp": "",
+  "link": "https://jobicy.com/jobs/146319-customer-success-manager-34",
+  "source": "Jobicy",
+  "category": "Success (client / customer / student)",
+  "first_seen": "2026-06-12",
+  "last_seen": "2026-06-12",
+  "active": true
+ },
+ "9cd7832067ab06b2": {
+  "title": "Senior Customer Success Mgr",
+  "company": "Kinetic by Windstream",
+  "location": "USA",
+  "comp": "",
+  "link": "https://jobicy.com/jobs/146317-senior-customer-success-mgr",
+  "source": "Jobicy",
+  "category": "Success (client / customer / student)",
+  "first_seen": "2026-06-12",
+  "last_seen": "2026-06-12",
+  "active": true
+ },
+ "3e1a8bee8c38f82e": {
+  "title": "Strategic Customer Success Manager",
+  "company": "Retool",
+  "location": "USA",
+  "comp": "",
+  "link": "https://jobicy.com/jobs/146309-strategic-customer-success-manager-5",
   "source": "Jobicy",
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",

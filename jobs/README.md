@@ -8,6 +8,7 @@ what's new since yesterday.
 ## 🔗 Live site
 
 - **Jobs board:** https://better-prompt-ai-ashy.vercel.app/jobs
+- **Where to find jobs (specialist boards):** https://better-prompt-ai-ashy.vercel.app/jobs/boards
 - **Communities directory:** https://better-prompt-ai-ashy.vercel.app/directory
 
 Runs daily at **06:00 UTC (7am UK)** and auto-redeploys to Vercel on each run.

@@ -288,7 +288,7 @@ footer{{text-align:center;color:var(--mut);font-size:12px;padding:24px}}
 </style></head><body>
 <header><h1>New High-Ticket Opportunities</h1>
 <p class="sub">{TODAY} &middot; {len(jobs)} new role(s) &middot; scanned {scanned} relevant listings</p>
-<div class="bar"><a href="/directory">&larr; Communities directory</a></div></header>
+<div class="bar"><a href="/jobs/boards">&starf; Where to find jobs (boards)</a> &middot; <a href="/directory">Communities directory</a></div></header>
 <div class="wrap">{cards}</div>
 <footer>Auto-generated daily from public job-board APIs + your inbox. Deduped against all-time history. Verify before applying.</footer>
 </body></html>"""

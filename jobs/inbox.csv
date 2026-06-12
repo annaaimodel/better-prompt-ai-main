@@ -1,0 +1,6 @@
+title,company,comp,location,link,source,notes
+# ^ Drop jobs from the gated groups (Facebook / Skool / Discord / LinkedIn) here.
+# One row per job. Only "title" or "link" is strictly required; fill what you have.
+# "source" is free text e.g. "FB: High Ticket Closers and Setters". Lines starting with # are ignored.
+# You can also point the pipeline at a published Google Sheet instead - see README (INBOX_CSV_URL).
+# Example High Ticket Closer,Acme Coaching,$5-8k/mo OTE,Remote,https://example.com/apply,FB: High Ticket Closers and Setters,warm inbound leads only

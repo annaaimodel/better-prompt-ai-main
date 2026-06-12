@@ -5,7 +5,9 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45}
 header{padding:30px 20px 12px;text-align:center;background:radial-gradient(900px 320px at 50% -40%,#22304d,transparent)}
 h1{margin:0 0 6px;font-size:24px}.sub{color:var(--mut);font-size:14px;margin:2px auto;max-width:780px}
-.bar{text-align:center;margin:8px 0 0}.bar a{color:var(--accent);font-size:13px;text-decoration:none;margin:0 8px}
+.nav{text-align:center;margin:12px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.nav a{color:var(--mut);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:5px 11px;border-radius:8px}
+.nav a:hover{border-color:var(--accent);color:var(--txt)}.nav a.on{color:#fff;background:var(--accent);border-color:var(--accent)}
 .wrap{max-width:1080px;margin:0 auto;padding:10px 16px 70px}
 h2{margin:30px 0 4px;font-size:18px}.note{color:var(--mut);font-size:13px;margin:2px 0 12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:11px}
@@ -23,7 +25,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
 <header>
 <h1>Where to Find High-Ticket Jobs</h1>
 <p class="sub">Curated boards, recruiters & communities for remote <b>closer · setter/BD · success</b> roles. The daily pipeline auto-pulls from the open boards; the specialist ones below are scrape-protected, so check them directly or drop finds into your inbox.</p>
-<div class="bar"><a href="/jobs">← Daily opportunities</a> · <a href="/directory">Communities directory</a></div>
+<div class="nav"><a href="/jobs">New today</a><a href="/jobs/all">All active</a><a class="on" href="/jobs/boards">&starf; Boards</a><a href="/directory">Communities</a></div>
 </header>
 <div class="wrap">
 

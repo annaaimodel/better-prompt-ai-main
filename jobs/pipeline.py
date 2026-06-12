@@ -15,10 +15,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DAILY_DIR = ROOT / "daily"
-SEEN_FILE = ROOT / "seen.json"
+STORE_FILE = ROOT / "store.json"      # persistent active-listings store
 HISTORY = ROOT / "history.csv"
 INBOX = ROOT / "inbox.csv"
-LATEST_HTML = ROOT / "latest.html"
+LATEST_HTML = ROOT / "latest.html"    # /jobs    -> new today
+ALL_HTML = ROOT / "all.html"          # /jobs/all -> all active, date order
 TODAY = datetime.date.today().isoformat()
 UA = "high-ticket-jobs-bot/1.0 (+personal daily digest; contact: annajtelfer@gmail.com)"
 
@@ -78,23 +79,27 @@ def mk(source, title, company, location, comp, link, desc=""):
             "link": (link or "").strip(), "desc": clean(desc)}
 
 # --- Sources (free, public, ToS-friendly APIs) ---------------------------
+# Each returns (jobs, ok). ok=True if the source was actually reachable this run
+# (even with 0 results) — so a transient outage never silently delists its jobs.
 def src_remotive():
-    out = []
+    out, ok = [], False
     for cat in ("sales", "customer-service"):
         try:
             data = get_json(f"https://remotive.com/api/remote-jobs?category={cat}&limit=200")
+            ok = True
             for j in data.get("jobs", []):
                 out.append(mk("Remotive", j.get("title"), j.get("company_name"),
                               j.get("candidate_required_location"), j.get("salary"),
                               j.get("url"), j.get("description")))
         except Exception as e:
             log(f"Remotive/{cat} failed: {e}")
-    return out
+    return out, ok
 
 def src_remoteok():
-    out = []
+    out, ok = [], False
     try:
         data = get_json("https://remoteok.com/api")
+        ok = True
         for j in data:
             if not isinstance(j, dict) or "position" not in j:
                 continue
@@ -107,25 +112,27 @@ def src_remoteok():
                           " ".join(j.get("tags", [])) + " " + clean(j.get("description"))))
     except Exception as e:
         log(f"RemoteOK failed: {e}")
-    return out
+    return out, ok
 
 def src_arbeitnow():
-    out = []
+    out, ok = [], False
     try:
         data = get_json("https://www.arbeitnow.com/api/job-board-api")
+        ok = True
         for j in data.get("data", []):
             out.append(mk("Arbeitnow", j.get("title"), j.get("company_name"),
                           ", ".join(j.get("location", []) if isinstance(j.get("location"), list) else [j.get("location","")]),
                           "", j.get("url"), j.get("description")))
     except Exception as e:
         log(f"Arbeitnow failed: {e}")
-    return out
+    return out, ok
 
 def src_jobicy():
-    out = []
+    out, ok = [], False
     for ind in ("sales", "supporting"):
         try:
             data = get_json(f"https://jobicy.com/api/v2/remote-jobs?count=100&industry={ind}")
+            ok = True
             for j in data.get("jobs", []):
                 out.append(mk("Jobicy", j.get("jobTitle"), j.get("companyName"),
                               j.get("jobGeo"), j.get("annualSalaryMax") and
@@ -133,14 +140,17 @@ def src_jobicy():
                               j.get("url"), j.get("jobExcerpt")))
         except Exception as e:
             log(f"Jobicy/{ind} failed: {e}")
-    return out
+    return out, ok
 
-SOURCES = [src_remotive, src_remoteok, src_arbeitnow, src_jobicy]
+# name -> fetcher. The name is also the `source` stamped on each job.
+SOURCES = [("Remotive", src_remotive), ("RemoteOK", src_remoteok),
+           ("Arbeitnow", src_arbeitnow), ("Jobicy", src_jobicy)]
+API_SOURCES = {name for name, _ in SOURCES}
 
 # --- Inbox (gated-group posts: manual or Zapier-fed) ---------------------
 def read_inbox():
     """Read inbox.csv (committed) and/or a published Google-Sheet CSV via INBOX_CSV_URL."""
-    rows = []
+    rows, ok = [], False
     def parse_csv_text(text, origin):
         for d in csv.DictReader(text.splitlines()):
             d = {k.strip().lower(): (v or "").strip() for k, v in d.items() if k}
@@ -149,14 +159,19 @@ def read_inbox():
                 continue
             if not title and not d.get("link"):
                 continue
-            rows.append(mk(d.get("source") or origin, d.get("title"), d.get("company"),
-                           d.get("location"), d.get("comp") or d.get("salary"),
-                           d.get("link"), d.get("notes") or d.get("description")))
+            row = mk(d.get("source") or origin, d.get("title"), d.get("company"),
+                     d.get("location"), d.get("comp") or d.get("salary"),
+                     d.get("link"), d.get("notes") or d.get("description"))
+            row["inbox"] = True            # manual entries persist until removed from the inbox
+            rows.append(row)
     if INBOX.exists():
         try:
             parse_csv_text(INBOX.read_text(encoding="utf-8"), "Inbox")
+            ok = True
         except Exception as e:
             log(f"inbox.csv failed: {e}")
+    else:
+        ok = True                      # no local inbox is a valid (empty) state
     url = os.environ.get("INBOX_CSV_URL", "").strip()
     if url:
         try:
@@ -164,8 +179,9 @@ def read_inbox():
             with urllib.request.urlopen(req, timeout=25) as r:
                 parse_csv_text(r.read().decode("utf-8", "replace"), "Inbox (Sheet)")
         except Exception as e:
+            ok = False                 # a configured sheet failed -> don't delist manual jobs
             log(f"INBOX_CSV_URL failed: {e}")
-    return rows
+    return rows, ok
 
 LOG: list[str] = []
 def log(m): LOG.append(m); print(m, file=sys.stderr)
@@ -173,126 +189,181 @@ def log(m): LOG.append(m); print(m, file=sys.stderr)
 # --- Main ---------------------------------------------------------------
 def main():
     DAILY_DIR.mkdir(exist_ok=True)
-    seen = json.loads(SEEN_FILE.read_text()) if SEEN_FILE.exists() else {}
+    store = json.loads(STORE_FILE.read_text()) if STORE_FILE.exists() else {}
 
-    raw = []
-    for fn in SOURCES:
-        got = fn()
-        log(f"{fn.__name__}: {len(got)} raw")
+    raw, healthy = [], set()
+    for name, fn in SOURCES:
+        got, ok = fn()
+        if ok:
+            healthy.add(name)
+        log(f"{name}: {len(got)} raw{'' if ok else ' (UNREACHABLE)'}")
         raw.extend(got)
-    inbox_rows = read_inbox()
-    log(f"inbox: {len(inbox_rows)} rows")
+    inbox_rows, inbox_ok = read_inbox()
+    log(f"inbox: {len(inbox_rows)} rows{'' if inbox_ok else ' (read failed)'}")
     raw.extend(inbox_rows)
 
-    # filter to relevant + tag category; inbox rows are always kept
-    candidates = []
+    # filter to relevant + tag category; inbox rows are always kept.
+    # `current` = everything live across all sources this run (deduped).
+    current = {}
     for j in raw:
-        from_inbox = j["source"].startswith("Inbox")
-        cat = categorise(j["title"] + " " + j["desc"])
-        if from_inbox and not cat:
-            cat = "From group (uncategorised)"
+        cat = categorise(j["title"] + " " + j.get("desc", ""))
         if not cat:
-            continue
+            if j.get("inbox"):
+                cat = "From inbox (uncategorised)"
+            else:
+                continue
         j["category"] = cat
-        candidates.append(j)
-
-    # dedupe within today + against all-time seen
-    new_today, batch_keys = [], set()
-    for j in candidates:
         k = job_key(j)
-        if k in batch_keys:
-            continue
-        batch_keys.add(k)
-        if k in seen:
-            continue
-        seen[k] = {"first_seen": TODAY, "title": j["title"], "company": j["company"],
-                   "source": j["source"], "link": j["link"]}
-        new_today.append(j)
+        if k not in current:
+            current[k] = j
 
+    # Upsert into the persistent store. A listing stays active as long as it keeps
+    # appearing in its source; once it drops out, it's marked inactive (delisted).
+    new_today = []
+    for k, j in current.items():
+        fields = {"title": j["title"], "company": j["company"], "location": j["location"],
+                  "comp": j["comp"], "link": j["link"], "source": j["source"],
+                  "category": j["category"]}
+        if k in store:
+            store[k].update(fields); store[k]["last_seen"] = TODAY; store[k]["active"] = True
+        else:
+            store[k] = {**fields, "first_seen": TODAY, "last_seen": TODAY, "active": True}
+            new_today.append(store[k])
+    # Mark a stored job inactive only when the channel that supplies it ran
+    # successfully this time but no longer returned it (a genuine delisting).
+    # If its source was unreachable, leave it untouched so an outage never
+    # wipes still-live roles.
+    for k, rec in store.items():
+        if k in current:
+            continue
+        src = rec.get("source", "")
+        reachable = (src in healthy) if src in API_SOURCES else inbox_ok
+        if reachable:
+            rec["active"] = False
+
+    active = [rec for rec in store.values() if rec.get("active")]
     new_today.sort(key=lambda x: (x["category"], x["company"].lower()))
-    write_outputs(new_today, len(candidates))
-    SEEN_FILE.write_text(json.dumps(seen, indent=1, ensure_ascii=False))
-    log(f"NEW today: {len(new_today)} (from {len(candidates)} relevant, {len(seen)} all-time)")
+    write_outputs(active, new_today, len(current))
+    STORE_FILE.write_text(json.dumps(store, indent=1, ensure_ascii=False))
+    log(f"active: {len(active)} | new today: {len(new_today)} | store total: {len(store)}")
 
 FIELDS = ["date_found", "category", "source", "title", "company", "location", "comp", "link"]
 
-def write_outputs(jobs, scanned):
-    # daily CSV
+def write_outputs(active, new_today, scanned):
+    # daily CSV (just today's new roles)
     with (DAILY_DIR / f"{TODAY}.csv").open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader()
-        for j in jobs:
+        for j in new_today:
             w.writerow({"date_found": TODAY, "category": j["category"], "source": j["source"],
                         "title": j["title"], "company": j["company"], "location": j["location"],
                         "comp": j["comp"], "link": j["link"]})
-    # all-time history (append)
+    # all-time history (append today's new roles)
     new_hist = not HISTORY.exists()
     with HISTORY.open("a", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         if new_hist:
             w.writeheader()
-        for j in jobs:
+        for j in new_today:
             w.writerow({"date_found": TODAY, "category": j["category"], "source": j["source"],
                         "title": j["title"], "company": j["company"], "location": j["location"],
                         "comp": j["comp"], "link": j["link"]})
-    # daily markdown digest
+    # daily markdown digest (today's new roles)
     md = [f"# New high-ticket opportunities - {TODAY}", "",
-          f"_{len(jobs)} new role(s); scanned {scanned} relevant listings across job boards + inbox._", ""]
+          f"_{len(new_today)} new role(s); {len(active)} active total; scanned {scanned} live listings._", ""]
     cur = None
-    for j in jobs:
+    for j in new_today:
         if j["category"] != cur:
             cur = j["category"]; md += ["", f"## {cur}", ""]
         link = f"[apply]({j['link']})" if j["link"] else ""
         md.append(f"- **{j['title']}** - {j['company']} ({j['location']}) "
                   f"{('- ' + j['comp']) if j['comp'] else ''} {link}  _via {j['source']}_")
-    if not jobs:
+    if not new_today:
         md.append("_No new roles today._")
     (DAILY_DIR / f"{TODAY}.md").write_text("\n".join(md), encoding="utf-8")
-    write_latest_html(jobs, scanned)
+    write_latest_html(new_today, len(active), scanned)
+    write_all_html(active, len(new_today))
 
-def write_latest_html(jobs, scanned):
+PAGE_CSS = """
+:root{--bg:#0f1420;--card:#171e2e;--line:#2a3348;--txt:#e8edf6;--mut:#9aa7bd;--accent:#5b8cff;--new:#2ecc71}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45}
+header{padding:28px 20px 8px;text-align:center;background:radial-gradient(900px 300px at 50% -40%,#22304d,transparent)}
+h1{margin:0 0 4px;font-size:24px}.sub{color:var(--mut);font-size:14px;margin:0}
+.nav{text-align:center;margin:10px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.nav a{color:var(--mut);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:5px 11px;border-radius:8px}
+.nav a:hover{border-color:var(--accent);color:var(--txt)}.nav a.on{color:#fff;background:var(--accent);border-color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:10px 16px 60px}
+h2{margin:24px 0 10px;font-size:17px}.n{font-size:12px;color:var(--mut)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;display:flex;flex-direction:column;gap:6px}
+.card:hover{border-color:var(--accent)}.t{font-weight:700;font-size:15px}.c{color:var(--mut);font-size:13px;flex:1}
+.f{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.pill{font-size:12px;background:#15303a;color:#7fd7ff;padding:2px 9px;border-radius:999px}
+.tag{font-size:11px;background:#222a3d;color:#9fb4dd;padding:2px 8px;border-radius:999px}
+.new{font-size:10px;font-weight:800;background:var(--new);color:#06210f;padding:1px 6px;border-radius:5px;margin-right:6px;vertical-align:middle}
+.src{font-size:11px;color:var(--mut);flex:1}
+a.visit{font-size:13px;font-weight:700;color:#fff;background:var(--accent);padding:6px 11px;border-radius:8px;text-decoration:none}
+.nl{font-size:12px;color:var(--mut)}.empty{text-align:center;color:var(--mut);padding:50px 0}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
+"""
+
+def _nav(active):
+    def a(href, label, key):
+        return f'<a class="{"on" if key==active else ""}" href="{href}">{label}</a>'
+    return ('<div class="nav">' + a("/jobs", "New today", "new") + a("/jobs/all", "All active", "all")
+            + a("/jobs/boards", "&starf; Boards", "boards") + a("/directory", "Communities", "dir") + '</div>')
+
+def _card(j, tag=False, badge=False):
+    link = (f'<a class="visit" href="{html.escape(j["link"])}" target="_blank" rel="noopener">Apply &rarr;</a>'
+            if j.get("link") else '<span class="nl">no link</span>')
+    comp = f'<span class="pill">{html.escape(j["comp"])}</span>' if j.get("comp") else ""
+    tagh = f'<span class="tag">{html.escape(j["category"])}</span>' if tag else ""
+    badgeh = '<span class="new">NEW</span>' if badge and j.get("first_seen") == TODAY else ""
+    return (f'<div class="card"><div class="t">{badgeh}{html.escape(j["title"])}</div>'
+            f'<div class="c">{html.escape(j["company"])} &middot; {html.escape(j["location"])}</div>'
+            f'<div class="f">{tagh}{comp}<span class="src">via {html.escape(j["source"])}</span>{link}</div></div>')
+
+def _doc(title, sub, nav_key, body):
+    return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
+            f'<meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title>'
+            f'<style>{PAGE_CSS}</style></head><body>'
+            f'<header><h1>{title}</h1><p class="sub">{sub}</p>{_nav(nav_key)}</header>'
+            f'<div class="wrap">{body}</div>'
+            f'<footer>Auto-generated from public job-board APIs + your inbox. '
+            f'Listings stay live until they drop off their source. Verify before applying.</footer>'
+            f'</body></html>')
+
+def write_latest_html(jobs, active_count, scanned):
     groups = {}
     for j in jobs:
         groups.setdefault(j["category"], []).append(j)
-    cards = ""
+    body = ""
     for cat, items in groups.items():
-        cards += f'<h2>{html.escape(cat)} <span class="n">{len(items)}</span></h2><div class="grid">'
-        for j in items:
-            link = (f'<a class="visit" href="{html.escape(j["link"])}" target="_blank" rel="noopener">Apply &rarr;</a>'
-                    if j["link"] else '<span class="nl">no link</span>')
-            comp = f'<span class="pill">{html.escape(j["comp"])}</span>' if j["comp"] else ""
-            cards += (f'<div class="card"><div class="t">{html.escape(j["title"])}</div>'
-                      f'<div class="c">{html.escape(j["company"])} &middot; {html.escape(j["location"])}</div>'
-                      f'<div class="f">{comp}<span class="src">via {html.escape(j["source"])}</span>{link}</div></div>')
-        cards += "</div>"
+        body += f'<h2>{html.escape(cat)} <span class="n">{len(items)}</span></h2><div class="grid">'
+        body += "".join(_card(j) for j in items) + "</div>"
     if not jobs:
-        cards = '<p class="empty">No new roles found today. Check back tomorrow.</p>'
-    doc = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>New High-Ticket Opportunities - {TODAY}</title><style>
-:root{{--bg:#0f1420;--card:#171e2e;--line:#2a3348;--txt:#e8edf6;--mut:#9aa7bd;--accent:#5b8cff}}
-*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45}}
-header{{padding:30px 20px 10px;text-align:center;background:radial-gradient(900px 300px at 50% -40%,#22304d,transparent)}}
-h1{{margin:0 0 4px;font-size:24px}}.sub{{color:var(--mut);font-size:14px;margin:0}}
-.wrap{{max-width:1040px;margin:0 auto;padding:10px 16px 60px}}
-h2{{margin:26px 0 10px;font-size:17px}}.n{{font-size:12px;color:var(--mut)}}
-.grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}}
-.card{{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;display:flex;flex-direction:column;gap:6px}}
-.card:hover{{border-color:var(--accent)}}.t{{font-weight:700;font-size:15px}}.c{{color:var(--mut);font-size:13px;flex:1}}
-.f{{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}}
-.pill{{font-size:12px;background:#15303a;color:#7fd7ff;padding:2px 9px;border-radius:999px}}
-.src{{font-size:11px;color:var(--mut);flex:1}}
-a.visit{{font-size:13px;font-weight:700;color:#fff;background:var(--accent);padding:6px 11px;border-radius:8px;text-decoration:none}}
-.nl{{font-size:12px;color:var(--mut)}}.empty{{text-align:center;color:var(--mut);padding:50px 0}}
-.bar{{text-align:center;margin:6px 0 0}}.bar a{{color:var(--accent);font-size:13px;text-decoration:none}}
-footer{{text-align:center;color:var(--mut);font-size:12px;padding:24px}}
-</style></head><body>
-<header><h1>New High-Ticket Opportunities</h1>
-<p class="sub">{TODAY} &middot; {len(jobs)} new role(s) &middot; scanned {scanned} relevant listings</p>
-<div class="bar"><a href="/jobs/boards">&starf; Where to find jobs (boards)</a> &middot; <a href="/directory">Communities directory</a></div></header>
-<div class="wrap">{cards}</div>
-<footer>Auto-generated daily from public job-board APIs + your inbox. Deduped against all-time history. Verify before applying.</footer>
-</body></html>"""
-    LATEST_HTML.write_text(doc, encoding="utf-8")
+        body = ('<p class="empty">No new roles pulled today.<br>'
+                'See every live listing on the <a href="/jobs/all">All active</a> page.</p>')
+    sub = f"{TODAY} &middot; {len(jobs)} new today &middot; {active_count} active in total"
+    LATEST_HTML.write_text(_doc("New High-Ticket Opportunities", sub, "new", body), encoding="utf-8")
+
+def write_all_html(active, new_count):
+    # group by date added (first_seen), newest day first
+    by_date = {}
+    for j in active:
+        by_date.setdefault(j.get("first_seen", "—"), []).append(j)
+    body = ""
+    for d in sorted(by_date, reverse=True):
+        items = sorted(by_date[d], key=lambda x: (x["category"], x["company"].lower()))
+        try:
+            label = datetime.date.fromisoformat(d).strftime("%d %b %Y")
+        except ValueError:
+            label = d
+        body += f'<h2>{label} <span class="n">{len(items)} added</span></h2><div class="grid">'
+        body += "".join(_card(j, tag=True, badge=True) for j in items) + "</div>"
+    if not active:
+        body = '<p class="empty">No active listings yet. The next run will populate this page.</p>'
+    sub = f"{len(active)} active roles &middot; {new_count} new today &middot; updated {TODAY}"
+    ALL_HTML.write_text(_doc("All Active High-Ticket Opportunities", sub, "all", body), encoding="utf-8")
 
 if __name__ == "__main__":
     main()

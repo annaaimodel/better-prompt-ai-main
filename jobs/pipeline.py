@@ -10,7 +10,8 @@ Stdlib only (urllib) so it runs fast in GitHub Actions with no extra installs.
 Every network source is wrapped in try/except: a flaky source never breaks the run.
 """
 from __future__ import annotations
-import csv, json, hashlib, datetime, os, re, sys, urllib.request, urllib.parse, html
+import csv, json, hashlib, datetime, os, re, sys, urllib.request, urllib.parse, urllib.error, html
+import concurrent.futures as cf
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -77,6 +78,96 @@ def mk(source, title, company, location, comp, link, desc=""):
     return {"source": source, "title": clean(title), "company": clean(company),
             "location": clean(location) or "Remote", "comp": clean(comp),
             "link": (link or "").strip(), "desc": clean(desc)}
+
+# --- Link health: only ever list specific, working job URLs ---------------
+# Goal: drop links that (a) point at a generic listing/search page rather than
+# a specific posting, or (b) are dead (404 / "no longer available"). The static
+# check runs everywhere (no network); the live check runs only where there is
+# real outbound connectivity (e.g. GitHub Actions) and is deliberately
+# conservative — anything inconclusive stays live so a flaky check never wipes
+# still-good roles.
+GENERIC_PATHS = {"", "/jobs", "/remote-jobs", "/remote", "/search", "/careers",
+                 "/opportunities", "/sales", "/job", "/listings", "/positions"}
+CHECK_LINKS = os.environ.get("CHECK_LINKS", "1") != "0"
+LINK_TIMEOUT = int(os.environ.get("LINK_TIMEOUT", "15"))
+BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
+DEAD_TEXT = ("no longer available", "no longer accepting", "this job has expired",
+             "position has been filled", "job not found", "posting is closed",
+             "this position is closed", "page not found", "job has been filled")
+
+def is_generic_link(url: str) -> bool:
+    """Pure-string check: True if the URL is a bare domain or a generic
+    listing/search page rather than a specific posting."""
+    try:
+        p = urllib.parse.urlparse((url or "").strip())
+        if not p.netloc:
+            return True
+        return p.path.rstrip("/").lower() in GENERIC_PATHS
+    except Exception:
+        return True
+
+def _segs(url):
+    return [s for s in urllib.parse.urlparse(url).path.split("/") if s]
+
+def validate_link(url: str) -> str:
+    """'ok' | 'dead' | 'generic' | 'unknown'. Only 'dead'/'generic' delist;
+    'unknown' (timeout, 403/429, network error) is always kept."""
+    if not url:
+        return "dead"
+    if is_generic_link(url):
+        return "generic"
+    req = urllib.request.Request(url, headers={"User-Agent": BROWSER_UA,
+            "Accept": "text/html,application/xhtml+xml"})
+    try:
+        with urllib.request.urlopen(req, timeout=LINK_TIMEOUT) as r:
+            final = r.geturl()
+            body = r.read(6000).decode("utf-8", "replace").lower()
+    except urllib.error.HTTPError as e:
+        return "dead" if e.code in (404, 410) else "unknown"
+    except Exception:
+        return "unknown"
+    if any(s in body for s in DEAD_TEXT):
+        return "dead"
+    if is_generic_link(final):
+        return "generic"
+    # redirected UP to a shallower listing (expired posting -> company board)
+    if final.rstrip("/") != url.rstrip("/") and len(_segs(final)) <= 1 and len(_segs(url)) >= 2:
+        return "generic"
+    return "ok"
+
+def _connectivity_ok() -> bool:
+    """Skip live link-checking entirely when there's no outbound network
+    (local runs, or a fully-blocked sandbox) so we never mass-delist."""
+    for u in ("https://www.google.com", "https://example.com"):
+        try:
+            with urllib.request.urlopen(
+                    urllib.request.Request(u, headers={"User-Agent": BROWSER_UA}), timeout=10):
+                return True
+        except Exception:
+            continue
+    return False
+
+def prune_dead_links(store: dict):
+    """Validate every active link and deactivate the confidently bad ones."""
+    if not CHECK_LINKS:
+        log("link check: skipped (CHECK_LINKS=0)"); return
+    if not _connectivity_ok():
+        log("link check: skipped (no outbound connectivity)"); return
+    actives = [(k, rec) for k, rec in store.items() if rec.get("active")]
+    results = {}
+    with cf.ThreadPoolExecutor(max_workers=12) as ex:
+        fut = {ex.submit(validate_link, rec.get("link", "")): k for k, rec in actives}
+        for f in cf.as_completed(fut):
+            results[fut[f]] = f.result()
+    dead = sum(1 for t in results.values() if t == "dead")
+    generic = sum(1 for t in results.values() if t == "generic")
+    for k, tag in results.items():
+        if tag in ("dead", "generic"):
+            store[k]["active"] = False
+            store[k]["delisted"] = tag
+    log(f"link check: {len(actives)} checked -> {dead+generic} delisted "
+        f"({dead} dead, {generic} generic)")
 
 # --- Sources (free, public, ToS-friendly APIs) ---------------------------
 # Each returns (jobs, ok). ok=True if the source was actually reachable this run
@@ -206,6 +297,8 @@ def main():
     # `current` = everything live across all sources this run (deduped).
     current = {}
     for j in raw:
+        if is_generic_link(j.get("link", "")):
+            continue   # only ever list a specific posting, never a search/listing page
         cat = categorise(j["title"] + " " + j.get("desc", ""))
         if not cat:
             if j.get("inbox"):
@@ -240,6 +333,10 @@ def main():
         reachable = (src in healthy) if src in API_SOURCES else inbox_ok
         if reachable:
             rec["active"] = False
+
+    # Validate the surviving links and drop dead / generic ones (network-gated;
+    # conservative — inconclusive checks are kept).
+    prune_dead_links(store)
 
     active = [rec for rec in store.values() if rec.get("active")]
     new_today.sort(key=lambda x: (x["category"], x["company"].lower()))

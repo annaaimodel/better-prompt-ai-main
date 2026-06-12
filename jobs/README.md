@@ -27,6 +27,14 @@ inbox (gated groups) ┘                                         ├─ jobs/dai
 - **Sources** are free, public, ToS-friendly job APIs — no keys, no scraping.
 - **Dedupe** uses `seen.json` (an all-time record keyed by company+title), so a
   role is only ever reported on the first day it appears.
+- **Link health** — only *useful* links are listed. Links that point at a
+  generic search/listing page are dropped (static check, always on). During the
+  Actions run, each live link is also checked and delisted if it's genuinely
+  dead (404 / "no longer available") or redirects to a listing. The live check
+  is conservative: timeouts and bot-blocks (403/429) count as "unknown" and are
+  kept, so a flaky check never wipes still-live roles. It runs only where real
+  network exists (auto-skips on local/offline runs); set `CHECK_LINKS=0` to turn
+  it off.
 - Runs daily via GitHub Actions (`.github/workflows/daily-jobs.yml`) and commits
   the results back to the repo.
 

@@ -4,6 +4,7 @@
     { "source": "/jobs", "destination": "/jobs/latest.html" },
     { "source": "/jobs/all", "destination": "/jobs/all.html" },
     { "source": "/jobs/boards", "destination": "/jobs/boards.html" },
-    { "source": "/jobs/capture", "destination": "/jobs/capture.html" }
+    { "source": "/jobs/capture", "destination": "/jobs/capture.html" },
+    { "source": "/cv", "destination": "/cv.html" }
   ]
 }

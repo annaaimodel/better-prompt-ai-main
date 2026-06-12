@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CV → Job Match · High-Ticket Opportunities</title>
+<meta name="description" content="Paste or upload your CV and instantly see which live high-ticket sales roles you fit best. Runs entirely in your browser — your CV is never uploaded or stored.">
+<style>
+:root{--bg:#0f1420;--card:#171e2e;--line:#2a3348;--txt:#e8edf6;--mut:#9aa7bd;--accent:#5b8cff;--new:#2ecc71;--warn:#ffb020}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45}
+header{padding:28px 20px 8px;text-align:center;background:radial-gradient(900px 300px at 50% -40%,#22304d,transparent)}
+h1{margin:0 0 4px;font-size:24px}.sub{color:var(--mut);font-size:14px;margin:0}
+.nav{text-align:center;margin:10px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.nav a{color:var(--mut);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:5px 11px;border-radius:8px}
+.nav a:hover{border-color:var(--accent);color:var(--txt)}.nav a.on{color:#fff;background:var(--accent);border-color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:10px 16px 60px}
+h2{margin:24px 0 10px;font-size:17px}.n{font-size:12px;color:var(--mut)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.privacy{display:flex;gap:10px;align-items:flex-start;background:#11261c;border:1px solid #1d4733;color:#bdebcf;border-radius:10px;padding:11px 13px;font-size:13px;margin:14px 0 0}
+.privacy b{color:#eafff2}
+textarea{width:100%;min-height:200px;resize:vertical;padding:13px;border-radius:10px;border:1px solid var(--line);background:#0f1626;color:var(--txt);font-size:14px;font-family:inherit;outline:none}
+textarea:focus{border-color:var(--accent)}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.btn{font-size:14px;font-weight:700;color:#fff;background:var(--accent);border:none;padding:11px 18px;border-radius:10px;cursor:pointer}
+.btn:hover{filter:brightness(1.08)}.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{background:transparent;color:var(--mut);border:1px solid var(--line)}
+.file{font-size:13px;color:var(--mut)}
+.file input{display:none}
+.fbtn{display:inline-block;font-size:13px;color:var(--txt);border:1px dashed var(--line);padding:9px 14px;border-radius:10px;cursor:pointer}
+.fbtn:hover{border-color:var(--accent)}
+.slider{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mut)}
+.slider input{accent-color:var(--accent)}
+.note{color:var(--mut);font-size:12px;margin:6px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;display:flex;flex-direction:column;gap:7px}
+.card:hover{border-color:var(--accent)}
+.chead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.t{font-weight:700;font-size:15px}.c{color:var(--mut);font-size:13px}
+.score{flex:none;font-weight:800;font-size:13px;padding:3px 9px;border-radius:999px;border:1px solid}
+.s-hi{color:#06210f;background:var(--new);border-color:var(--new)}
+.s-mid{color:#1c1300;background:var(--warn);border-color:var(--warn)}
+.s-lo{color:#9fb4dd;background:#222a3d;border-color:var(--line)}
+.f{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px}
+.pill{font-size:12px;background:#15303a;color:#7fd7ff;padding:2px 9px;border-radius:999px}
+.tag{font-size:11px;background:#222a3d;color:#9fb4dd;padding:2px 8px;border-radius:999px}
+.src{font-size:11px;color:var(--mut);flex:1}
+.why{font-size:12px;color:var(--mut)}.why b{color:var(--txt);font-weight:600}
+.terms{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.term{font-size:11px;background:#1a2236;color:#aebfe0;padding:1px 7px;border-radius:6px}
+a.visit{font-size:13px;font-weight:700;color:#fff;background:var(--accent);padding:6px 11px;border-radius:8px;text-decoration:none}
+.empty{text-align:center;color:var(--mut);padding:40px 0}
+.status{color:var(--mut);font-size:13px;margin-top:10px;min-height:18px}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
+footer a{color:var(--mut)}
+</style></head>
+<body>
+<header>
+  <h1>CV → Job Match</h1>
+  <p class="sub">Paste or upload your CV and see which live high-ticket roles fit you best.</p>
+  <div class="nav">
+    <a href="/jobs">New today</a><a href="/jobs/all">All active</a>
+    <a href="/jobs/boards">&starf; Boards</a><a class="on" href="/cv">CV match</a>
+    <a href="/directory">Communities</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="panel">
+    <label for="cv" style="font-weight:600;font-size:14px">Your CV</label>
+    <p class="note">Paste the text below, or upload a PDF / Word / text file. Nothing leaves your browser.</p>
+    <textarea id="cv" placeholder="Paste your CV here…&#10;&#10;(or use the upload button below)"></textarea>
+    <div class="row">
+      <button class="btn" id="go">Find my matches</button>
+      <label class="fbtn">Upload PDF / DOCX / TXT
+        <span class="file"><input id="file" type="file" accept=".pdf,.docx,.txt,.md,text/plain"></span>
+      </label>
+      <button class="btn ghost" id="clear">Clear</button>
+      <span class="slider">Min match
+        <input id="thresh" type="range" min="0" max="95" step="5" value="80">
+        <b id="threshv" style="color:var(--txt)">80%</b>
+      </span>
+    </div>
+    <div class="status" id="status"></div>
+    <div class="privacy">
+      <span>🔒</span>
+      <span><b>Private by design.</b> Your CV is read and matched entirely on your own device. It is never uploaded, logged or stored anywhere.</span>
+    </div>
+  </div>
+
+  <div id="results"></div>
+</div>
+
+<footer>
+  Matching is a guide, not a guarantee — always read the role and apply on the company's own page.
+  Live roles from <a href="/jobs/all">the jobs board</a>, refreshed daily.
+</footer>
+
+<!-- In-browser document parsers (CDN, client-side only) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script>
+if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc =
+  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+// ---- Role keyword buckets (mirrors jobs/pipeline.py) ----------------------
+const CLOSER_KW = ["high ticket closer","high-ticket closer","sales closer","inbound closer",
+  "remote closer","remote closing","closing sales","account executive","inside sales",
+  "sales representative","sales rep","closer"];
+const SETTER_KW = ["appointment setter","appointment setting","setter",
+  "business development representative","business development manager",
+  "sales development representative","sales development manager"];
+const SETTER_ACR = ["bdr","bdm","sdr","sdm"];
+const SUCCESS_KW = ["customer success","client success","student success",
+  "customer success manager","client success manager","account manager",
+  "onboarding specialist","implementation specialist"];
+const SUCCESS_ACR = ["csm"];
+
+const BUCKETS = {
+  closer:  {label:"Closer",  kw:CLOSER_KW,  acr:[]},
+  setter:  {label:"Setter / BD", kw:SETTER_KW, acr:SETTER_ACR},
+  success: {label:"Success", kw:SUCCESS_KW, acr:SUCCESS_ACR},
+};
+
+function bucketOfCategory(cat){
+  const c = (cat||"").toLowerCase();
+  if (c.includes("success")) return "success";
+  if (c.includes("setter")||c.includes("bd")) return "setter";
+  if (c.includes("closer")) return "closer";
+  return null;
+}
+
+// ---- Tokenising -----------------------------------------------------------
+const STOP = new Set(("a an the and or of to in for with on at by from as is are be been being this that " +
+  "i you we they he she it my our your their me us will would can could should have has had do does did " +
+  "not no so but if then than into over under out up down all any each more most other some such only own " +
+  "same very s t re ve ll m d o re years year experience work working role roles team teams company companies " +
+  "skills skill responsibilities responsible looking strong excellent good great ability able help us based " +
+  "remote new job jobs etc via per across also within without using used use month months week weeks day daily")
+  .split(" "));
+
+function tokens(text){
+  return (text.toLowerCase().match(/[a-z][a-z0-9+#.\-]{1,}/g) || [])
+    .map(w => w.replace(/^[.\-]+|[.\-]+$/g,""))
+    .filter(w => w.length>1 && !STOP.has(w));
+}
+function hasAny(t, words){ return words.some(w => t.includes(w)); }
+function hasWord(t, acrs){ return acrs.some(a => new RegExp("\\b"+a+"\\b").test(t)); }
+
+// Detect which sales role(s) the CV signals, with strength.
+function detectRoles(cvText){
+  const t = cvText.toLowerCase();
+  const score = {};
+  for (const [k,b] of Object.entries(BUCKETS)){
+    let n = 0;
+    for (const w of b.kw) if (t.includes(w)) n += (w.split(" ").length>1?2:1);
+    for (const a of b.acr) if (new RegExp("\\b"+a+"\\b").test(t)) n += 1;
+    if (n>0) score[k]=n;
+  }
+  const ranked = Object.keys(score).sort((a,b)=>score[b]-score[a]);
+  return {score, primary: ranked[0]||null, set:new Set(ranked)};
+}
+
+// ---- Matching -------------------------------------------------------------
+let JOBS = [];          // active jobs from store.json
+let IDF = {};           // token -> inverse doc frequency across job corpus
+
+function jobText(j){
+  return [j.title,j.company,j.comp,j.category,j.location,j.source].filter(Boolean).join(" ");
+}
+
+function buildIdf(jobs){
+  const N = jobs.length || 1, df = {};
+  jobs.forEach(j=>{
+    new Set(tokens(jobText(j))).forEach(tok => df[tok]=(df[tok]||0)+1);
+  });
+  const idf = {};
+  for (const tok in df) idf[tok] = Math.log(N/df[tok]) + 0.1;  // 0..~4.4
+  return idf;
+}
+
+function scoreJob(j, cvSet, roles){
+  const jToks = tokens(jobText(j));
+  const jSet = new Set(jToks);
+  const jBucket = bucketOfCategory(j.category);
+
+  // 1) Role alignment (max 60)
+  let role = 0, roleReason = "";
+  if (jBucket && roles.primary === jBucket){ role = 60; roleReason = "Matches your primary role ("+BUCKETS[jBucket].label+")"; }
+  else if (jBucket && roles.set.has(jBucket)){ role = 46; roleReason = "Matches a role on your CV ("+BUCKETS[jBucket].label+")"; }
+  else if (jBucket && roles.set.size){ role = 20; roleReason = "Adjacent sales role ("+BUCKETS[jBucket].label+")"; }
+  else if (jBucket){ role = 14; roleReason = BUCKETS[jBucket].label+" role"; }
+  else { role = 4; roleReason = "General role"; }
+
+  // 2) Weighted term overlap (max 40)
+  const shared = [...jSet].filter(t => cvSet.has(t));
+  let w = 0;
+  shared.forEach(t => { w += Math.min(IDF[t]||0.1, 3.2); });
+  const term = Math.min(40, Math.round(w * 3.2));
+
+  // 3) Title keyword bonus (max 8): a CV term shows up right in the job title
+  const titleToks = new Set(tokens(j.title||""));
+  const titleHit = [...titleToks].filter(t => cvSet.has(t) && (IDF[t]||0) > 1.2);
+  const titleBonus = Math.min(8, titleHit.length * 4);
+
+  let total = role + term + titleBonus;
+  total = Math.max(2, Math.min(99, Math.round(total)));
+
+  // Top distinctive shared terms for display
+  const terms = shared
+    .filter(t => (IDF[t]||0) > 0.8)
+    .sort((a,b)=>(IDF[b]||0)-(IDF[a]||0))
+    .slice(0,6);
+
+  return {score: total, roleReason, terms, bucket: jBucket};
+}
+
+// ---- Rendering ------------------------------------------------------------
+const $ = id => document.getElementById(id);
+function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
+function scoreClass(s){ return s>=80?"s-hi":s>=60?"s-mid":"s-lo"; }
+
+function render(matches, threshold, roles){
+  const box = $("results");
+  if (!matches.length){ box.innerHTML = ""; return; }
+  const pass = matches.filter(m => m.score >= threshold);
+  const show = pass.length ? pass : matches.slice(0, 5);
+
+  let head = "";
+  const roleLabel = roles.primary ? BUCKETS[roles.primary].label : null;
+  if (pass.length){
+    head = `<h2>Your matches <span class="n">${pass.length} role${pass.length>1?"s":""} at ${threshold}%+${roleLabel?` · reads as a ${esc(roleLabel)} CV`:""}</span></h2>`;
+  } else {
+    head = `<h2>No roles reached ${threshold}% <span class="n">— here are your closest ${show.length}. Lower the slider to see more.</span></h2>`;
+  }
+
+  const cards = show.map(m => {
+    const j = m.job;
+    const comp = j.comp ? `<span class="pill">${esc(j.comp)}</span>` : "";
+    const tag = m.bucket ? `<span class="tag">${esc(BUCKETS[m.bucket].label)}</span>` : "";
+    const terms = m.terms.length ? `<div class="terms">${m.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>` : "";
+    return `<div class="card">
+      <div class="chead">
+        <div><div class="t">${esc(j.title)}</div><div class="c">${esc(j.company)}${j.location?` &middot; ${esc(j.location)}`:""}</div></div>
+        <span class="score ${scoreClass(m.score)}">${m.score}%</span>
+      </div>
+      <div class="why"><b>Why:</b> ${esc(m.roleReason)}</div>
+      ${terms}
+      <div class="f">${comp}${tag}<span class="src">via ${esc(j.source||"")}</span>
+        <a class="visit" href="${esc(j.link)}" target="_blank" rel="noopener">Apply &rarr;</a></div>
+    </div>`;
+  }).join("");
+
+  box.innerHTML = head + `<div class="grid">${cards}</div>`;
+}
+
+// ---- Run ------------------------------------------------------------------
+let lastMatches = null, lastRoles = null;
+
+async function loadJobs(){
+  if (JOBS.length) return;
+  const r = await fetch("/jobs/store.json", {cache:"no-store"});
+  const store = await r.json();
+  JOBS = Object.values(store).filter(j => j && j.active);
+  IDF = buildIdf(JOBS);
+}
+
+async function run(){
+  const cv = $("cv").value.trim();
+  if (cv.length < 40){ $("status").textContent = "Paste a bit more of your CV (or upload a file) to get a good match."; return; }
+  $("go").disabled = true; $("status").textContent = "Scoring against live roles…";
+  try{
+    await loadJobs();
+    const roles = detectRoles(cv);
+    const cvSet = new Set(tokens(cv));
+    const matches = JOBS.map(j => { const r = scoreJob(j, cvSet, roles); return {...r, job:j}; })
+                        .sort((a,b)=>b.score-a.score);
+    lastMatches = matches; lastRoles = roles;
+    render(matches, +$("thresh").value, roles);
+    const top = matches.filter(m=>m.score>=+$("thresh").value).length;
+    $("status").textContent = `Scored ${JOBS.length} live roles · ${top} at or above ${$("thresh").value}%.`;
+  }catch(e){
+    $("status").textContent = "Couldn't load the live job list — please try again in a moment.";
+    console.error(e);
+  }finally{ $("go").disabled = false; }
+}
+
+// File upload -> text, all in-browser
+$("file").addEventListener("change", async e => {
+  const f = e.target.files[0]; if (!f) return;
+  $("status").textContent = `Reading ${f.name}…`;
+  try{
+    let text = "";
+    if (/\.pdf$/i.test(f.name)){
+      const buf = await f.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({data:buf}).promise;
+      for (let p=1; p<=pdf.numPages; p++){
+        const page = await pdf.getPage(p);
+        const c = await page.getTextContent();
+        text += c.items.map(i=>i.str).join(" ") + "\n";
+      }
+    } else if (/\.docx$/i.test(f.name)){
+      const buf = await f.arrayBuffer();
+      const res = await mammoth.extractRawText({arrayBuffer:buf});
+      text = res.value;
+    } else {
+      text = await f.text();
+    }
+    $("cv").value = text.trim();
+    $("status").textContent = `Loaded ${f.name} (${$("cv").value.length.toLocaleString()} chars). Click “Find my matches”.`;
+  }catch(err){
+    $("status").textContent = "Couldn't read that file — try pasting the text instead.";
+    console.error(err);
+  }
+});
+
+$("go").addEventListener("click", run);
+$("clear").addEventListener("click", () => { $("cv").value=""; $("results").innerHTML=""; $("status").textContent=""; $("file").value=""; });
+$("thresh").addEventListener("input", () => {
+  $("threshv").textContent = $("thresh").value + "%";
+  if (lastMatches) render(lastMatches, +$("thresh").value, lastRoles);
+});
+</script>
+</body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Capture a Job → Inbox</title><style>
+:root{--bg:#0f1420;--card:#171e2e;--line:#2a3348;--txt:#e8edf6;--mut:#9aa7bd;--accent:#5b8cff;--good:#2ecc71}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45}
+header{padding:28px 20px 8px;text-align:center;background:radial-gradient(900px 300px at 50% -40%,#22304d,transparent)}
+h1{margin:0 0 4px;font-size:24px}.sub{color:var(--mut);font-size:14px;margin:0}
+.nav{text-align:center;margin:12px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.nav a{color:var(--mut);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:5px 11px;border-radius:8px}
+.nav a:hover{border-color:var(--accent);color:var(--txt)}.nav a.on{color:#fff;background:var(--accent);border-color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:14px 16px 70px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:18px 18px;margin:16px 0}
+h2{margin:0 0 8px;font-size:17px}.note{color:var(--mut);font-size:13px;margin:6px 0}
+.grab{display:inline-block;background:var(--accent);color:#fff;font-weight:800;font-size:16px;padding:11px 18px;border-radius:10px;text-decoration:none;margin:6px 0}
+label{display:block;font-size:12px;color:var(--mut);margin:9px 0 3px}
+input,textarea{width:100%;padding:9px 11px;border-radius:9px;border:1px solid var(--line);background:#0f1726;color:var(--txt);font-size:14px;outline:none}
+input:focus,textarea:focus{border-color:var(--accent)}textarea{min-height:52px;resize:vertical}
+.btn{display:inline-block;border:1px solid var(--line);background:#0f1726;color:var(--txt);font-size:14px;font-weight:700;padding:9px 14px;border-radius:9px;cursor:pointer;text-decoration:none;margin:6px 6px 0 0}
+.btn:hover{border-color:var(--accent)}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.good{background:#143625;border-color:#1f6b43;color:#74e6a5}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:600}
+.x{color:#ff8a8a;cursor:pointer;font-weight:800}
+code{background:#0f1726;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:12px}
+.codebox{width:100%;min-height:70px;font-family:ui-monospace,Menlo,monospace;font-size:11px}
+.empty{color:var(--mut);font-size:13px;padding:8px 0}
+.flash{color:var(--good);font-size:13px;margin-left:8px}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
+ol{padding-left:20px}ol li{margin:5px 0;font-size:13px;color:var(--mut)}
+</style></head><body>
+<header><h1>Capture a Job → Inbox</h1>
+<p class="sub">One tap from any job post (Facebook, LinkedIn, Upwork, IG, X…) into your daily pipeline.</p>
+<div class="nav"><a href="/jobs">New today</a><a href="/jobs/all">All active</a><a href="/jobs/boards">&starf; Boards</a><a class="on" href="/jobs/capture">&plus; Capture</a><a href="/directory">Communities</a></div>
+</header>
+<div class="wrap">
+
+<div class="box" id="setup">
+<h2>① Add the “Grab Job” button (once)</h2>
+<p class="note"><b>Desktop:</b> drag this button up to your bookmarks bar.</p>
+<a class="grab" id="bm" href="#">📥 Grab Job</a>
+<p class="note"><b>Phone:</b> bookmark this page, edit the bookmark, and replace its address with the code below.
+<button class="btn" id="copyBm">Copy bookmarklet code</button><span class="flash" id="bmFlash"></span></p>
+<textarea class="codebox" id="bmCode" readonly onclick="this.select()"></textarea>
+</div>
+
+<div class="box" id="review" style="display:none">
+<h2>② Review & add this job</h2>
+<label>Title</label><input id="f_title">
+<div class="row2"><div><label>Company</label><input id="f_company"></div><div><label>Comp / OTE</label><input id="f_comp"></div></div>
+<div class="row2"><div><label>Location</label><input id="f_location" placeholder="Remote"></div><div><label>Source</label><input id="f_source"></div></div>
+<label>Link</label><input id="f_link">
+<label>Notes</label><textarea id="f_notes"></textarea>
+<div><button class="btn primary" id="add">➕ Add to list</button><span class="flash" id="addFlash"></span></div>
+</div>
+
+<div class="box">
+<h2>③ Your captured jobs <span class="note" id="qcount"></span></h2>
+<p class="note">These live in this browser until you save them. When ready, copy them all and paste into <code>inbox.csv</code>.</p>
+<div id="qempty" class="empty">Nothing captured yet — use the Grab Job button on a job post.</div>
+<table id="qtable" style="display:none"><thead><tr><th>Title</th><th>Company</th><th>Source</th><th></th></tr></thead><tbody id="qbody"></tbody></table>
+<div style="margin-top:12px">
+<button class="btn good" id="copyAll">📋 Copy all rows</button>
+<a class="btn" id="ghEdit" href="https://github.com/annaaimodel/better-prompt-ai-main/edit/master/jobs/inbox.csv" target="_blank" rel="noopener">✏️ Open inbox.csv on GitHub</a>
+<button class="btn" id="clear">🗑 Clear list</button>
+<span class="flash" id="copyFlash"></span>
+</div>
+<details style="margin-top:12px"><summary class="note" style="cursor:pointer">How to save (paste into inbox.csv)</summary>
+<ol><li>Click <b>Copy all rows</b>.</li><li>Click <b>Open inbox.csv on GitHub</b> (sign in if asked).</li><li>Scroll to the bottom of the file, paste on a new line.</li><li>Click <b>Commit changes</b>. They’ll appear in the next daily run.</li></ol></details>
+</div>
+
+</div>
+<footer>Captured rows stay on this device only. Compliant: it just files a page you’re already viewing — no scraping or background monitoring.</footer>
+
+<script>
+(function(){
+ var BASE = location.origin + "/jobs/capture";
+ var BM = 'javascript:(function(){var t=document.title.replace(/\\s+/g," ").trim();var u=location.href;var s=(window.getSelection?String(window.getSelection()):"").replace(/\\s+/g," ").trim();var h=location.hostname,c="Web";if(/facebook/.test(h))c="Facebook group";else if(/linkedin/.test(h))c="LinkedIn";else if(/upwork/.test(h))c="Upwork";else if(/instagram/.test(h))c="Instagram";else if(/twitter|x\\.com/.test(h))c="X";window.open("' + BASE + '?title="+encodeURIComponent(s||t)+"&link="+encodeURIComponent(u)+"&source="+encodeURIComponent(c)+"&notes="+encodeURIComponent(s),"_blank");})();';
+ document.getElementById("bm").href = BM;
+ document.getElementById("bmCode").value = BM;
+
+ function $(id){return document.getElementById(id);}
+ function flash(el,msg){el.textContent=msg;setTimeout(function(){el.textContent="";},1800);}
+ function copy(text,el){ (navigator.clipboard?navigator.clipboard.writeText(text):Promise.reject()).then(function(){flash(el,"Copied ✓");},function(){var t=$("bmCode");t.value=text;t.select();document.execCommand("copy");flash(el,"Copied ✓");}); }
+ $("copyBm").onclick=function(){copy(BM,$("bmFlash"));};
+
+ // prefill review form from query params
+ var p=new URLSearchParams(location.search);
+ if(p.has("title")||p.has("link")){
+   $("review").style.display="";
+   $("f_title").value=p.get("title")||"";
+   $("f_link").value=p.get("link")||"";
+   $("f_source").value=p.get("source")||"Web";
+   $("f_notes").value=p.get("notes")||"";
+   $("f_location").value="Remote";
+ }
+
+ var KEY="inboxQueue";
+ function load(){try{return JSON.parse(localStorage.getItem(KEY))||[];}catch(e){return [];}}
+ function save(q){localStorage.setItem(KEY,JSON.stringify(q));}
+ function cell(v){v=(v||"").replace(/\r?\n/g," ");return /[",]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+ function toRow(j){return [j.title,j.company,j.comp,j.location,j.link,j.source,j.notes].map(cell).join(",");}
+
+ function render(){
+   var q=load();$("qcount").textContent=q.length?("· "+q.length+" saved"):"";
+   $("qempty").style.display=q.length?"none":"";
+   $("qtable").style.display=q.length?"":"none";
+   var b=$("qbody");b.innerHTML="";
+   q.forEach(function(j,i){
+     var tr=document.createElement("tr");
+     tr.innerHTML="<td>"+esc(j.title)+"</td><td>"+esc(j.company)+"</td><td>"+esc(j.source)+"</td><td><span class='x' data-i='"+i+"'>✕</span></td>";
+     b.appendChild(tr);
+   });
+   [].forEach.call(b.querySelectorAll(".x"),function(x){x.onclick=function(){var q=load();q.splice(+x.getAttribute("data-i"),1);save(q);render();};});
+ }
+ function esc(s){return (s||"").replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+
+ $("add").onclick=function(){
+   var j={title:$("f_title").value.trim(),company:$("f_company").value.trim(),comp:$("f_comp").value.trim(),
+          location:$("f_location").value.trim()||"Remote",link:$("f_link").value.trim(),
+          source:$("f_source").value.trim()||"Web",notes:$("f_notes").value.trim()};
+   if(!j.title&&!j.link){flash($("addFlash"),"Need a title or link");return;}
+   var q=load();q.push(j);save(q);render();flash($("addFlash"),"Added ✓");
+   ["f_title","f_company","f_comp","f_link","f_notes"].forEach(function(id){$(id).value="";});
+ };
+ $("copyAll").onclick=function(){var q=load();if(!q.length){flash($("copyFlash"),"List is empty");return;}copy(q.map(toRow).join("\n"),$("copyFlash"));};
+ $("clear").onclick=function(){if(confirm("Clear all captured jobs?")){save([]);render();}};
+ render();
+})();
+</script>
+</body></html>

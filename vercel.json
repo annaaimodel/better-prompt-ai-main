@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/directory", "destination": "/high_ticket_directory.html" }
+  ]
+}

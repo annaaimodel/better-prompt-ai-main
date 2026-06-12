@@ -11,6 +11,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10        # fail fast (and email) instead of hanging if a source stalls
     steps:
       - uses: actions/checkout@v4
 

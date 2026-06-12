@@ -23,23 +23,34 @@ TODAY = datetime.date.today().isoformat()
 UA = "high-ticket-jobs-bot/1.0 (+personal daily digest; contact: annajtelfer@gmail.com)"
 
 # --- What counts as a relevant opportunity -------------------------------
-SALES_KW = ["high ticket", "high-ticket", "remote closer", "remote closing",
-            "sales closer", "appointment setter", "high ticket closer",
-            "high-ticket closer", "inbound closer", "sales representative",
-            "account executive", "sdr", "business development representative",
-            "inside sales"]
-CSM_KW = ["customer success manager", "client success manager",
-          "customer success", "client success", "csm", "account manager",
-          "onboarding specialist", "implementation specialist"]
-# Strong signals that keep precision high (at least one must appear)
-CORE_KW = SALES_KW + CSM_KW
+# Three buckets, niche-agnostic (industry is never filtered — only the role).
+CLOSER_KW = ["high ticket closer", "high-ticket closer", "sales closer",
+             "inbound closer", "remote closer", "remote closing", "closing sales",
+             "account executive", "inside sales", "sales representative",
+             "sales rep", "closer"]
+SETTER_KW = ["appointment setter", "appointment setting", "setter",
+             "business development representative", "business development manager",
+             "sales development representative", "sales development manager"]
+SETTER_ACR = ["bdr", "bdm", "sdr", "sdm"]               # match as whole words only
+SUCCESS_KW = ["customer success", "client success", "student success",
+              "customer success manager", "client success manager",
+              "account manager", "onboarding specialist", "implementation specialist"]
+SUCCESS_ACR = ["csm"]
+
+def _has(t, words):
+    return any(w in t for w in words)
+
+def _has_word(t, acrs):
+    return any(re.search(r"\b" + re.escape(a) + r"\b", t) for a in acrs)
 
 def categorise(text: str) -> str | None:
     t = text.lower()
-    if any(k in t for k in CSM_KW):
-        return "Customer Success (CSM)"
-    if any(k in t for k in SALES_KW):
-        return "Sales (closer / setter)"
+    if _has(t, SUCCESS_KW) or _has_word(t, SUCCESS_ACR):
+        return "Success (client / customer / student)"
+    if _has(t, CLOSER_KW):
+        return "Closer"
+    if _has(t, SETTER_KW) or _has_word(t, SETTER_ACR):
+        return "Setter / BDM / BDR / SDM / SDR"
     return None
 
 # --- Helpers -------------------------------------------------------------

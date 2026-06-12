@@ -301,6 +301,13 @@ h2{margin:24px 0 10px;font-size:17px}.n{font-size:12px;color:var(--mut)}
 .tag{font-size:11px;background:#222a3d;color:#9fb4dd;padding:2px 8px;border-radius:999px}
 .new{font-size:10px;font-weight:800;background:var(--new);color:#06210f;padding:1px 6px;border-radius:5px;margin-right:6px;vertical-align:middle}
 .src{font-size:11px;color:var(--mut);flex:1}
+.controls{position:sticky;top:0;z-index:5;background:rgba(15,20,32,.94);backdrop-filter:blur(8px);padding:12px 0;margin-bottom:4px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px;align-items:center}
+.controls input{width:100%;max-width:460px;padding:10px 13px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:15px;outline:none}
+.controls input:focus{border-color:var(--accent)}
+.fchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.fchip{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mut);cursor:pointer;font-size:13px;font-weight:600}
+.fchip:hover{color:var(--txt)}.fchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.fcount{color:var(--mut);font-size:12px}
 a.visit{font-size:13px;font-weight:700;color:#fff;background:var(--accent);padding:6px 11px;border-radius:8px;text-decoration:none}
 .nl{font-size:12px;color:var(--mut)}.empty{text-align:center;color:var(--mut);padding:50px 0}
 footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
@@ -312,13 +319,27 @@ def _nav(active):
     return ('<div class="nav">' + a("/jobs", "New today", "new") + a("/jobs/all", "All active", "all")
             + a("/jobs/boards", "&starf; Boards", "boards") + a("/directory", "Communities", "dir") + '</div>')
 
-def _card(j, tag=False, badge=False):
+def _bucket_code(cat):
+    c = cat.lower()
+    if "success" in c:
+        return "success"
+    if "setter" in c or "bdr" in c or "sdr" in c or "bd" in c:
+        return "setter"
+    if "closer" in c:
+        return "closer"
+    return "other"
+
+def _card(j, tag=False, badge=False, code=None):
     link = (f'<a class="visit" href="{html.escape(j["link"])}" target="_blank" rel="noopener">Apply &rarr;</a>'
             if j.get("link") else '<span class="nl">no link</span>')
     comp = f'<span class="pill">{html.escape(j["comp"])}</span>' if j.get("comp") else ""
     tagh = f'<span class="tag">{html.escape(j["category"])}</span>' if tag else ""
     badgeh = '<span class="new">NEW</span>' if badge and j.get("first_seen") == TODAY else ""
-    return (f'<div class="card"><div class="t">{badgeh}{html.escape(j["title"])}</div>'
+    attrs = ""
+    if code:
+        s = f'{j["title"]} {j["company"]} {j["location"]} {j["source"]} {j["category"]}'.lower()
+        attrs = f' data-b="{code}" data-s="{html.escape(s, quote=True)}"'
+    return (f'<div class="card"{attrs}><div class="t">{badgeh}{html.escape(j["title"])}</div>'
             f'<div class="c">{html.escape(j["company"])} &middot; {html.escape(j["location"])}</div>'
             f'<div class="f">{tagh}{comp}<span class="src">via {html.escape(j["source"])}</span>{link}</div></div>')
 
@@ -346,22 +367,57 @@ def write_latest_html(jobs, active_count, scanned):
     sub = f"{TODAY} &middot; {len(jobs)} new today &middot; {active_count} active in total"
     LATEST_HTML.write_text(_doc("New High-Ticket Opportunities", sub, "new", body), encoding="utf-8")
 
+FILTER_JS = """<script>
+(function(){
+ var q=document.getElementById('q'),fcount=document.getElementById('fcount'),
+     chips=[].slice.call(document.querySelectorAll('.fchip')),f='all';
+ function apply(){
+  var t=(q.value||'').trim().toLowerCase(),n=0;
+  [].forEach.call(document.querySelectorAll('section.dgroup'),function(sec){
+   var vis=0;
+   [].forEach.call(sec.querySelectorAll('.card'),function(c){
+    var okB=(f==='all')||c.getAttribute('data-b')===f,
+        okT=!t||(c.getAttribute('data-s')||'').indexOf(t)>-1,
+        show=okB&&okT;
+    c.style.display=show?'':'none'; if(show){vis++;n++;}
+   });
+   sec.style.display=vis?'':'none';
+  });
+  fcount.textContent=n+' shown';
+ }
+ chips.forEach(function(ch){ch.onclick=function(){chips.forEach(function(x){x.classList.remove('on');});ch.classList.add('on');f=ch.getAttribute('data-f');apply();};});
+ q.addEventListener('input',apply); apply();
+})();
+</script>"""
+
 def write_all_html(active, new_count):
+    controls = ('<div class="controls">'
+                '<input id="q" type="search" placeholder="Search title, company, source…">'
+                '<div class="fchips">'
+                '<button class="fchip on" data-f="all">All</button>'
+                '<button class="fchip" data-f="closer">Closer</button>'
+                '<button class="fchip" data-f="setter">Setter / BD</button>'
+                '<button class="fchip" data-f="success">Success</button>'
+                '</div><div class="fcount" id="fcount"></div></div>')
     # group by date added (first_seen), newest day first
     by_date = {}
     for j in active:
         by_date.setdefault(j.get("first_seen", "—"), []).append(j)
-    body = ""
+    groups = ""
     for d in sorted(by_date, reverse=True):
         items = sorted(by_date[d], key=lambda x: (x["category"], x["company"].lower()))
         try:
             label = datetime.date.fromisoformat(d).strftime("%d %b %Y")
         except ValueError:
             label = d
-        body += f'<h2>{label} <span class="n">{len(items)} added</span></h2><div class="grid">'
-        body += "".join(_card(j, tag=True, badge=True) for j in items) + "</div>"
+        groups += (f'<section class="dgroup"><h2>{label} <span class="n">{len(items)} added</span></h2>'
+                   f'<div class="grid">'
+                   + "".join(_card(j, tag=True, badge=True, code=_bucket_code(j["category"])) for j in items)
+                   + "</div></section>")
     if not active:
         body = '<p class="empty">No active listings yet. The next run will populate this page.</p>'
+    else:
+        body = controls + groups + FILTER_JS
     sub = f"{len(active)} active roles &middot; {new_count} new today &middot; updated {TODAY}"
     ALL_HTML.write_text(_doc("All Active High-Ticket Opportunities", sub, "all", body), encoding="utf-8")
 

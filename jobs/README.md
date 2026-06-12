@@ -1,8 +1,16 @@
 # Daily High-Ticket Opportunities
 
-Automated daily digest of **new** high-ticket sales (closer / setter) and
-Customer/Client Success Manager (CSM) roles, deduped so you only ever see
+Automated daily digest of **new** fully-remote opportunities across every niche,
+sorted into three buckets — **Closer**, **Setter / BDM / BDR / SDM / SDR**, and
+**Success (client / customer / student)** — and deduped so you only ever see
 what's new since yesterday.
+
+## 🔗 Live site
+
+- **Jobs board:** https://better-prompt-ai-ashy.vercel.app/jobs
+- **Communities directory:** https://better-prompt-ai-ashy.vercel.app/directory
+
+Runs daily at **06:00 UTC (7am UK)** and auto-redeploys to Vercel on each run.
 
 ## How it works
 
@@ -21,10 +29,10 @@ inbox (gated groups) ┘                                         ├─ jobs/dai
 - Runs daily via GitHub Actions (`.github/workflows/daily-jobs.yml`) and commits
   the results back to the repo.
 
-## The inbox (capturing the gated groups)
+## The inbox (capturing the gated groups & socials)
 
-Public APIs won't see jobs posted *inside* private Facebook/Skool/Discord groups.
-To fold those in, drop them into **`jobs/inbox.csv`** — one row per job:
+Public APIs won't see jobs posted *inside* private Facebook/Skool/Discord groups
+or on IG/X. To fold those in, drop them into **`jobs/inbox.csv`** — one row per job:
 
 | title | company | comp | location | link | source | notes |
 |-------|---------|------|----------|------|--------|-------|
@@ -35,23 +43,22 @@ Only `title` *or* `link` is required. Lines starting with `#` are ignored.
 Sheet, `File → Share → Publish to web → CSV`, and set the published URL as a
 repo **Variable** named `INBOX_CSV_URL`
 (Settings → Secrets and variables → Actions → Variables). A Zapier/Make automation
-on *your own* logged-in account can append rows to that sheet automatically.
+(e.g. email job-alerts → sheet) or a one-click capture bookmarklet can append
+rows automatically.
 
 ## Running it
 
-- **Daily, automatically:** merge this to your default branch — GitHub only runs
-  scheduled workflows from the default branch. The timer then fires every day.
+- **Daily, automatically:** active on the `master` branch at 06:00 UTC.
 - **On demand:** Actions tab → "Daily high-ticket opportunities" → *Run workflow*.
 - **Locally:** `python jobs/pipeline.py` (Python 3.9+, standard library only).
 
 ## Tuning
 
-Edit the keyword lists (`SALES_KW`, `CSM_KW`) at the top of `pipeline.py` to widen
-or narrow what counts as relevant. Change the `cron:` line in the workflow to move
-the run time.
+Edit the keyword lists (`CLOSER_KW`, `SETTER_KW` / `SETTER_ACR`, `SUCCESS_KW` /
+`SUCCESS_ACR`) at the top of `pipeline.py` to widen or narrow what counts as
+relevant. Change the `cron:` line in the workflow to move the run time.
 
 ## Publishing the daily page
 
-`jobs/latest.html` is a standalone page of today's new roles. It's served at
-`/jobs` (see `vercel.json`) once the site is deployed, with a link back to the
-communities directory at `/directory`.
+`jobs/latest.html` is a standalone page of today's new roles, served at `/jobs`
+(see `vercel.json`), with a link back to the communities directory at `/directory`.

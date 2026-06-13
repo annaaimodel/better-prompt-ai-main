@@ -77,6 +77,23 @@ def categorise(j) -> str | None:
         return "VA / Admin / Assistant"
     return None
 
+# English-only: drop titles carrying clear non-English (ES/PT/FR/DE/IT/NL) job
+# words or accented letters. Checked on the title only (companies/locations may
+# legitimately be foreign).
+NON_EN_MARKERS = ["remoto", "remota", "administrativo", "administrativa", "auxiliar",
+    "asistente", "assistente", "ventas", "vendas", "vendedor", "vendedora", "vendeur",
+    "representante", "atencion", "atendimento", "gerente", "trabajo", "teletrabajo",
+    "teletravail", "emploi", "empleo", "comercial", "negociateur", "teleconseiller",
+    "vertrieb", "mitarbeiter", "kundenberater", "vertriebsmitarbeiter", "aussendienst",
+    "innendienst", "medewerker", "verkoop", "klantenservice", "addetto", "vendite"]
+NON_EN_CHARS = set("àáâãäåçèéêëìíîïñòóôõöùúûüýÿœæ")
+
+def is_english(title: str) -> bool:
+    t = (title or "").lower()
+    if any(ch in NON_EN_CHARS for ch in t):
+        return False
+    return not any(m in t for m in NON_EN_MARKERS)
+
 # --- Helpers -------------------------------------------------------------
 def get_json(url: str, timeout: int = 25):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
@@ -416,6 +433,8 @@ def main():
     for j in raw:
         if is_generic_link(j.get("link", "")):
             continue   # only ever list a specific posting, never a search/listing page
+        if not is_english(j.get("title", "")):
+            continue   # English-language listings only
         cat = categorise(j)
         if not cat:
             if j.get("inbox"):
@@ -570,17 +589,32 @@ def _doc(title, sub, nav_key, body):
             f'Listings stay live until they drop off their source. Verify before applying.</footer>'
             f'</body></html>')
 
+def _controls():
+    return ('<div class="controls">'
+            '<input id="q" type="search" placeholder="Search title, company, source…">'
+            '<div class="fchips">'
+            '<button class="fchip on" data-f="all">All</button>'
+            '<button class="fchip" data-f="closer">Closer</button>'
+            '<button class="fchip" data-f="setter">Setter / SDR</button>'
+            '<button class="fchip" data-f="success">Success</button>'
+            '<button class="fchip" data-f="va">VA / Admin</button>'
+            '</div><div class="fcount" id="fcount"></div></div>')
+
 def write_latest_html(jobs, active_count, scanned):
-    groups = {}
-    for j in jobs:
-        groups.setdefault(j["category"], []).append(j)
-    body = ""
-    for cat, items in groups.items():
-        body += f'<h2>{html.escape(cat)} <span class="n">{len(items)}</span></h2><div class="grid">'
-        body += "".join(_card(j) for j in items) + "</div>"
     if not jobs:
         body = ('<p class="empty">No new roles pulled today.<br>'
                 'See every live listing on the <a href="/jobs/all">All active</a> page.</p>')
+    else:
+        groups = {}
+        for j in jobs:
+            groups.setdefault(j["category"], []).append(j)
+        sections = ""
+        for cat, items in groups.items():
+            sections += (f'<section class="dgroup"><h2>{html.escape(cat)} <span class="n">{len(items)}</span></h2>'
+                         f'<div class="grid">'
+                         + "".join(_card(j, code=_bucket_code(cat)) for j in items)
+                         + "</div></section>")
+        body = _controls() + sections + FILTER_JS
     sub = f"{TODAY} &middot; {len(jobs)} new today &middot; {active_count} active in total"
     LATEST_HTML.write_text(_doc("New High-Ticket Opportunities", sub, "new", body), encoding="utf-8")
 
@@ -608,15 +642,7 @@ FILTER_JS = """<script>
 </script>"""
 
 def write_all_html(active, new_count):
-    controls = ('<div class="controls">'
-                '<input id="q" type="search" placeholder="Search title, company, source…">'
-                '<div class="fchips">'
-                '<button class="fchip on" data-f="all">All</button>'
-                '<button class="fchip" data-f="closer">Closer</button>'
-                '<button class="fchip" data-f="setter">Setter / SDR</button>'
-                '<button class="fchip" data-f="success">Success</button>'
-                '<button class="fchip" data-f="va">VA / Admin</button>'
-                '</div><div class="fcount" id="fcount"></div></div>')
+    controls = _controls()
     # group by date added (first_seen), newest day first
     by_date = {}
     for j in active:

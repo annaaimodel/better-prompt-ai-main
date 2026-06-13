@@ -28,6 +28,8 @@ jobs:
           # Any unset key simply disables that source — nothing breaks.
           ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
           ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          ADZUNA_API_ID: ${{ secrets.ADZUNA_API_ID }}
+          ADZUNA_API_KEY: ${{ secrets.ADZUNA_API_KEY }}
           THEMUSE_API_KEY: ${{ secrets.THEMUSE_API_KEY }}
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           # Optional: comma-separated Adzuna country codes (default: us,gb,ca,au).

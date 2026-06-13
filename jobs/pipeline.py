@@ -233,6 +233,14 @@ def src_jobicy():
             log(f"Jobicy/{ind} failed: {e}")
     return out, ok
 
+def _first_env(*names):
+    """Return the first non-empty environment variable among `names` (trimmed)."""
+    for n in names:
+        v = os.environ.get(n, "").strip()
+        if v:
+            return v
+    return ""
+
 # Search terms used by the keyword-search sources (Adzuna, JSearch). The
 # categoriser still filters everything down to closer/setter/success roles.
 SEARCH_TERMS = ["high ticket closer", "appointment setter", "sales closer",
@@ -261,11 +269,13 @@ def src_themuse():
 
 def src_adzuna():
     # Needs free ADZUNA_APP_ID + ADZUNA_APP_KEY (developer.adzuna.com).
+    # Accepts common name variants (APP/API) to be forgiving of secret naming.
     # Unconfigured -> returns ok=False so it never delists / never errors.
-    app_id = os.environ.get("ADZUNA_APP_ID", "").strip()
-    app_key = os.environ.get("ADZUNA_APP_KEY", "").strip()
+    app_id = _first_env("ADZUNA_APP_ID", "ADZUNA_API_ID", "ADZUNA_ID", "ADZUNA_APPLICATION_ID")
+    app_key = _first_env("ADZUNA_APP_KEY", "ADZUNA_API_KEY", "ADZUNA_KEY", "ADZUNA_APPLICATION_KEY")
     out, ok = [], False
     if not (app_id and app_key):
+        log(f"Adzuna: not configured (app_id set: {bool(app_id)}, app_key set: {bool(app_key)})")
         return out, False
     countries = [c.strip() for c in (os.environ.get("ADZUNA_COUNTRIES") or "us,gb,ca,au").split(",") if c.strip()]
     for c in countries:

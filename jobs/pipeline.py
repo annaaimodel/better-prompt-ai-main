@@ -94,6 +94,38 @@ def is_english(title: str) -> bool:
         return False
     return not any(m in t for m in NON_EN_MARKERS)
 
+# Country derivation. Adzuna results are stamped authoritatively (we query per
+# country); everything else is best-effort from the location text.
+ADZUNA_COUNTRY = {"us": "United States", "gb": "United Kingdom", "ca": "Canada",
+                  "au": "Australia", "de": "Europe", "fr": "Europe", "nl": "Europe"}
+US_STATES = {"al","ak","az","ar","ca","co","ct","de","fl","ga","hi","id","il","in","ia",
+             "ks","ky","la","me","md","ma","mi","mn","ms","mo","mt","ne","nv","nh","nj",
+             "nm","ny","nc","nd","oh","ok","or","pa","ri","sc","sd","tn","tx","ut","vt",
+             "va","wa","wv","wi","wy"}
+COUNTRY_ORDER = ["Worldwide / Anywhere", "United States", "United Kingdom",
+                 "Canada", "Australia", "Europe", "Latin America", "Other"]
+
+def country_of(loc) -> str:
+    t = " " + str(loc or "").lower().replace(",", " ") + " "
+    def has(*ws): return any(w in t for w in ws)
+    if has(" uk ", "united kingdom", " england", " scotland", " wales", " london", " britain"):
+        return "United Kingdom"
+    if has(" canada", " ontario", " toronto", " vancouver", " quebec", " montreal"):
+        return "Canada"
+    if has(" australia", " sydney", " melbourne", " brisbane", " perth"):
+        return "Australia"
+    if has(" latam", "latin america", " mexico", " brazil", " argentina", " colombia"):
+        return "Latin America"
+    if has(" europe", " emea", " germany", " france", " spain", " netherlands", " poland",
+           " portugal", " ireland", " italy", " sweden", " berlin", " amsterdam", " madrid", " paris"):
+        return "Europe"
+    toks = t.split()
+    if has(" united states", " usa ", " us ", " u.s", " american") or (toks and toks[-1] in US_STATES):
+        return "United States"
+    if has(" worldwide", " anywhere", " global", " remote"):
+        return "Worldwide / Anywhere"
+    return "Other"
+
 # --- Helpers -------------------------------------------------------------
 def get_json(url: str, timeout: int = 25):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
@@ -330,9 +362,11 @@ def src_adzuna():
                     sal = ""
                     if j.get("salary_min"):
                         sal = f"${int(j['salary_min'])}" + (f"-${int(j['salary_max'])}" if j.get("salary_max") else "")
-                    out.append(mk("Adzuna", j.get("title"), (j.get("company") or {}).get("display_name"),
-                                  (j.get("location") or {}).get("display_name"), sal,
-                                  j.get("redirect_url"), j.get("description")))
+                    rec = mk("Adzuna", j.get("title"), (j.get("company") or {}).get("display_name"),
+                             (j.get("location") or {}).get("display_name"), sal,
+                             j.get("redirect_url"), j.get("description"))
+                    rec["country"] = ADZUNA_COUNTRY.get(c, c.upper())   # authoritative per query
+                    out.append(rec)
             except Exception as e:
                 log(f"Adzuna/{c}/{what} failed: {e}")
     return out, ok
@@ -435,6 +469,7 @@ def main():
             continue   # only ever list a specific posting, never a search/listing page
         if not is_english(j.get("title", "")):
             continue   # English-language listings only
+        j.setdefault("country", country_of(j.get("location", "")))  # Adzuna pre-stamps; others derive
         cat = categorise(j)
         if not cat:
             if j.get("inbox"):
@@ -452,7 +487,7 @@ def main():
     for k, j in current.items():
         fields = {"title": j["title"], "company": j["company"], "location": j["location"],
                   "comp": j["comp"], "link": j["link"], "source": j["source"],
-                  "category": j["category"]}
+                  "category": j["category"], "country": j.get("country") or country_of(j.get("location", ""))}
         if k in store:
             store[k].update(fields); store[k]["last_seen"] = TODAY; store[k]["active"] = True
         else:
@@ -540,6 +575,8 @@ h2{margin:24px 0 10px;font-size:17px}.n{font-size:12px;color:var(--mut)}
 .fchips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .fchip{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mut);cursor:pointer;font-size:13px;font-weight:600}
 .fchip:hover{color:var(--txt)}.fchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.csel{padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:13px;font-weight:600;outline:none;cursor:pointer}
+.csel:focus{border-color:var(--accent)}
 .fcount{color:var(--mut);font-size:12px}
 a.visit{font-size:13px;font-weight:700;color:#fff;background:var(--accent);padding:6px 11px;border-radius:8px;text-decoration:none}
 .nl{font-size:12px;color:var(--mut)}.empty{text-align:center;color:var(--mut);padding:50px 0}
@@ -573,8 +610,10 @@ def _card(j, tag=False, badge=False, code=None):
     badgeh = '<span class="new">NEW</span>' if badge and j.get("first_seen") == TODAY else ""
     attrs = ""
     if code:
-        s = f'{j["title"]} {j["company"]} {j["location"]} {j["source"]} {j["category"]}'.lower()
-        attrs = f' data-b="{code}" data-s="{html.escape(s, quote=True)}"'
+        ctry = j.get("country") or "Other"
+        s = f'{j["title"]} {j["company"]} {j["location"]} {j["source"]} {j["category"]} {ctry}'.lower()
+        attrs = (f' data-b="{code}" data-c="{html.escape(ctry, quote=True)}"'
+                 f' data-s="{html.escape(s, quote=True)}"')
     return (f'<div class="card"{attrs}><div class="t">{badgeh}{html.escape(j["title"])}</div>'
             f'<div class="c">{html.escape(j["company"])} &middot; {html.escape(j["location"])}</div>'
             f'<div class="f">{tagh}{comp}<span class="src">via {html.escape(j["source"])}</span>{link}</div></div>')
@@ -589,7 +628,11 @@ def _doc(title, sub, nav_key, body):
             f'Listings stay live until they drop off their source. Verify before applying.</footer>'
             f'</body></html>')
 
-def _controls():
+def _controls(jobs):
+    present = {j.get("country") or "Other" for j in jobs}
+    ordered = [c for c in COUNTRY_ORDER if c in present] + sorted(present - set(COUNTRY_ORDER))
+    opts = '<option value="all">All countries</option>' + "".join(
+        f'<option value="{html.escape(c, quote=True)}">{html.escape(c)}</option>' for c in ordered)
     return ('<div class="controls">'
             '<input id="q" type="search" placeholder="Search title, company, source…">'
             '<div class="fchips">'
@@ -598,7 +641,9 @@ def _controls():
             '<button class="fchip" data-f="setter">Setter / SDR</button>'
             '<button class="fchip" data-f="success">Success</button>'
             '<button class="fchip" data-f="va">VA / Admin</button>'
-            '</div><div class="fcount" id="fcount"></div></div>')
+            '</div>'
+            f'<select id="country" class="csel" aria-label="Country">{opts}</select>'
+            '<div class="fcount" id="fcount"></div></div>')
 
 def write_latest_html(jobs, active_count, scanned):
     if not jobs:
@@ -614,22 +659,24 @@ def write_latest_html(jobs, active_count, scanned):
                          f'<div class="grid">'
                          + "".join(_card(j, code=_bucket_code(cat)) for j in items)
                          + "</div></section>")
-        body = _controls() + sections + FILTER_JS
+        body = _controls(jobs) + sections + FILTER_JS
     sub = f"{TODAY} &middot; {len(jobs)} new today &middot; {active_count} active in total"
     LATEST_HTML.write_text(_doc("New High-Ticket Opportunities", sub, "new", body), encoding="utf-8")
 
 FILTER_JS = """<script>
 (function(){
  var q=document.getElementById('q'),fcount=document.getElementById('fcount'),
+     country=document.getElementById('country'),
      chips=[].slice.call(document.querySelectorAll('.fchip')),f='all';
  function apply(){
-  var t=(q.value||'').trim().toLowerCase(),n=0;
+  var t=(q.value||'').trim().toLowerCase(),cc=country?country.value:'all',n=0;
   [].forEach.call(document.querySelectorAll('section.dgroup'),function(sec){
    var vis=0;
    [].forEach.call(sec.querySelectorAll('.card'),function(c){
     var okB=(f==='all')||c.getAttribute('data-b')===f,
+        okC=(cc==='all')||c.getAttribute('data-c')===cc,
         okT=!t||(c.getAttribute('data-s')||'').indexOf(t)>-1,
-        show=okB&&okT;
+        show=okB&&okC&&okT;
     c.style.display=show?'':'none'; if(show){vis++;n++;}
    });
    sec.style.display=vis?'':'none';
@@ -637,12 +684,12 @@ FILTER_JS = """<script>
   fcount.textContent=n+' shown';
  }
  chips.forEach(function(ch){ch.onclick=function(){chips.forEach(function(x){x.classList.remove('on');});ch.classList.add('on');f=ch.getAttribute('data-f');apply();};});
- q.addEventListener('input',apply); apply();
+ q.addEventListener('input',apply); if(country){country.addEventListener('change',apply);} apply();
 })();
 </script>"""
 
 def write_all_html(active, new_count):
-    controls = _controls()
+    controls = _controls(active)
     # group by date added (first_seen), newest day first
     by_date = {}
     for j in active:

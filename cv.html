@@ -107,19 +107,23 @@ const SETTER_KW = ["appointment setter","appointment setting","setter",
   "sales development representative","sales development manager"];
 const SETTER_ACR = ["bdr","bdm","sdr","sdm"];
 const SUCCESS_KW = ["customer success","client success","student success",
-  "customer success manager","client success manager","account manager",
-  "onboarding specialist","implementation specialist"];
+  "customer success manager","client success manager","onboarding"];
 const SUCCESS_ACR = ["csm"];
+const VA_KW = ["virtual assistant","executive assistant","administrative assistant",
+  "personal assistant","admin assistant","administration","administrative","admin","assistant"];
+const VA_ACR = ["va"];
 
 const BUCKETS = {
   closer:  {label:"Closer",  kw:CLOSER_KW,  acr:[]},
   setter:  {label:"Setter / BD", kw:SETTER_KW, acr:SETTER_ACR},
   success: {label:"Success", kw:SUCCESS_KW, acr:SUCCESS_ACR},
+  va:      {label:"VA / Admin", kw:VA_KW, acr:VA_ACR},
 };
 
 function bucketOfCategory(cat){
   const c = (cat||"").toLowerCase();
   if (c.includes("success")) return "success";
+  if (c.includes("assistant")||c.includes("admin")||c.startsWith("va ")) return "va";
   if (c.includes("setter")||c.includes("bd")) return "setter";
   if (c.includes("closer")) return "closer";
   return null;

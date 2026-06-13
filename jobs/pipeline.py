@@ -25,7 +25,7 @@ TODAY = datetime.date.today().isoformat()
 UA = "high-ticket-jobs-bot/1.0 (+personal daily digest; contact: annajtelfer@gmail.com)"
 
 # --- What counts as a relevant opportunity -------------------------------
-# Three buckets, niche-agnostic (industry is never filtered — only the role).
+# Buckets, niche-agnostic (industry is never filtered — only the role).
 CLOSER_KW = ["high ticket closer", "high-ticket closer", "sales closer",
              "inbound closer", "remote closer", "remote closing", "closing sales",
              "account executive", "inside sales", "sales representative",
@@ -34,10 +34,17 @@ SETTER_KW = ["appointment setter", "appointment setting", "setter",
              "business development representative", "business development manager",
              "sales development representative", "sales development manager"]
 SETTER_ACR = ["bdr", "bdm", "sdr", "sdm"]               # match as whole words only
-SUCCESS_KW = ["customer success", "client success", "student success",
-              "customer success manager", "client success manager",
-              "account manager", "onboarding specialist", "implementation specialist"]
+# Success — matched on the JOB TITLE ONLY, and only these CSM-based terms.
+SUCCESS_TITLE = ["customer success", "client success", "student success", "onboarding"]
 SUCCESS_ACR = ["csm"]
+# VA / Admin / Assistant — matched on the JOB TITLE ONLY, and REMOTE ONLY.
+VA_TITLE = ["virtual assistant", "assistant", "admin"]
+VA_ACR = ["va"]
+
+# Remote detection: remote if the title/location says so, or it's a remote board.
+REMOTE_KW = ["remote", "anywhere", "work from home", "work-from-home", "wfh",
+             "worldwide", "telecommute", "distributed", "home based", "home-based"]
+REMOTE_SOURCES = {"Remotive", "RemoteOK", "Jobicy"}
 
 def _has(t, words):
     return any(w in t for w in words)
@@ -45,14 +52,26 @@ def _has(t, words):
 def _has_word(t, acrs):
     return any(re.search(r"\b" + re.escape(a) + r"\b", t) for a in acrs)
 
-def categorise(text: str) -> str | None:
-    t = text.lower()
-    if _has(t, SUCCESS_KW) or _has_word(t, SUCCESS_ACR):
-        return "Success (client / customer / student)"
-    if _has(t, CLOSER_KW):
+def is_remote(j) -> bool:
+    if j.get("source") in REMOTE_SOURCES:
+        return True
+    hay = (str(j.get("title", "")) + " " + str(j.get("location", ""))).lower()
+    return _has(hay, REMOTE_KW)
+
+def categorise(j) -> str | None:
+    title = str(j.get("title", "")).lower()
+    text = title + " " + str(j.get("desc", "")).lower()
+    # Success — TITLE only, CSM-based terms only
+    if _has(title, SUCCESS_TITLE) or _has_word(title, SUCCESS_ACR):
+        return "Success (CSM / customer / client / student)"
+    # Closer / Setter — title + description
+    if _has(text, CLOSER_KW):
         return "Closer"
-    if _has(t, SETTER_KW) or _has_word(t, SETTER_ACR):
+    if _has(text, SETTER_KW) or _has_word(text, SETTER_ACR):
         return "Setter / BDM / BDR / SDM / SDR"
+    # VA / Admin / Assistant — TITLE only, REMOTE only
+    if (_has(title, VA_TITLE) or _has_word(title, VA_ACR)) and is_remote(j):
+        return "VA / Admin / Assistant"
     return None
 
 # --- Helpers -------------------------------------------------------------
@@ -242,10 +261,12 @@ def _first_env(*names):
     return ""
 
 # Search terms used by the keyword-search sources (Adzuna, JSearch). The
-# categoriser still filters everything down to closer/setter/success roles.
+# categoriser still filters everything down to the role buckets (incl. VA).
 SEARCH_TERMS = ["high ticket closer", "appointment setter", "sales closer",
                 "remote closer", "sales development representative",
-                "customer success manager"]
+                "customer success manager", "onboarding specialist",
+                "remote virtual assistant", "remote executive assistant",
+                "remote administrative assistant"]
 
 def src_themuse():
     # The Muse works WITHOUT a key (rate-limited); THEMUSE_API_KEY raises limits.
@@ -392,7 +413,7 @@ def main():
     for j in raw:
         if is_generic_link(j.get("link", "")):
             continue   # only ever list a specific posting, never a search/listing page
-        cat = categorise(j["title"] + " " + j.get("desc", ""))
+        cat = categorise(j)
         if not cat:
             if j.get("inbox"):
                 cat = "From inbox (uncategorised)"
@@ -514,6 +535,8 @@ def _bucket_code(cat):
     c = cat.lower()
     if "success" in c:
         return "success"
+    if "assistant" in c or "admin" in c or c.startswith("va "):
+        return "va"
     if "setter" in c or "bdr" in c or "sdr" in c or "bd" in c:
         return "setter"
     if "closer" in c:
@@ -589,6 +612,7 @@ def write_all_html(active, new_count):
                 '<button class="fchip" data-f="closer">Closer</button>'
                 '<button class="fchip" data-f="setter">Setter / BD</button>'
                 '<button class="fchip" data-f="success">Success</button>'
+                '<button class="fchip" data-f="va">VA / Admin</button>'
                 '</div><div class="fcount" id="fcount"></div></div>')
     # group by date added (first_seen), newest day first
     by_date = {}

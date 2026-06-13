@@ -126,10 +126,10 @@
  "dc0d15fde0b3836c": {
   "title": "Full-Time High Ticket Closer",
   "company": "Impact Clients",
-  "location": "US",
-  "comp": "$150000-$300000",
-  "link": "https://www.adzuna.com/details/5655082907?utm_medium=api&utm_source=3e941a8f",
-  "source": "Adzuna",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://apply.workable.com/impact-clients/j/3F6F07E3F2/",
+  "source": "Workable",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-13",
@@ -179,7 +179,7 @@
   "comp": "$55-100K",
   "link": "https://bebee.com/us/jobs/appointment-setter-isa-real-estate-i-100-remote-i-55-100k-select-home-buyers-florida--theirstack-661750080",
   "source": "BeBee",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-13",
   "active": true
@@ -191,7 +191,7 @@
   "comp": "$900/mo base + commission",
   "link": "https://weworkremotely.com/remote-jobs/walter-sales-appointment-setter",
   "source": "WeWorkRemotely",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-13",
   "active": false,
@@ -204,7 +204,7 @@
   "comp": "",
   "link": "https://weworkremotely.com/remote-jobs/the-professional-builder-appointment-setter",
   "source": "WeWorkRemotely",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-13",
   "active": false,
@@ -217,7 +217,7 @@
   "comp": "100% commission",
   "link": "https://www.remote.io/remote-sales-and-partnerships-jobs/experienced-solar-appointment-setter-100-commission-work-from-home-5184",
   "source": "remote.io",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-13",
   "active": false,
@@ -230,7 +230,7 @@
   "comp": "",
   "link": "https://www.remotelatinos.com/careers/appointment-setter-job",
   "source": "RemoteLatinos",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-13",
   "active": true
@@ -377,7 +377,7 @@
   "comp": "",
   "link": "https://bebee.com/us/jobs/high-ticket-inbound-setter-y-nomadic-closer--theirstack-672305527",
   "source": "Nomadic Closer",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-13",
   "active": true
@@ -1053,7 +1053,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5c2c4ebd9059d393": {
   "title": "Senior Director, Client Success",
@@ -1090,7 +1090,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "cd369f2aaee83581": {
   "title": "Account Executive - State & Local CA/NV/ID",
@@ -1114,7 +1114,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8da521d3704d6767": {
   "title": "Commercial Sales Lead (Starlink Mobile)",
@@ -1189,7 +1189,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "07810697aca0d119": {
   "title": "Senior Business Development Manager, Omnichannel",
@@ -1201,7 +1201,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "13c98f27d6fa9671": {
   "title": "Senior Sales Executive",
@@ -1213,7 +1213,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2dc7c9472cc9cda1": {
   "title": "Business Development Representative - Eastern Europe, Uber for Business",
@@ -1274,7 +1274,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0c369e914880ba6f": {
   "title": "Intern Sales Development Program (Nordic Market)",
@@ -1370,7 +1370,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "db706df2c8c31177": {
   "title": "Sales Development Representative - Mandarin Speaking DR",
@@ -1379,7 +1379,7 @@
   "comp": "",
   "link": "https://www.themuse.com/jobs/doordash/sales-development-representative-mandarin-speaking-dr",
   "source": "The Muse",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -1394,7 +1394,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2d5046a0e87f1e25": {
   "title": "High-ticket Closer",
@@ -1418,7 +1418,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "da3fc41d03990438": {
   "title": "High Ticket Closer",
@@ -1430,7 +1430,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "35cd2565d07279d7": {
   "title": "Sales High-Ticket Closer",
@@ -1442,7 +1442,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9a114e3c1ff88d4b": {
   "title": "Love Strategies Sales Representative (High Ticket Closer)",
@@ -1454,7 +1454,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "25fd0a7e0f93a97b": {
   "title": "High-Ticket Closer | Work Anywhere. Win Everywhere.",
@@ -1514,7 +1514,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6dbb1f484d3a43ba": {
   "title": "High Ticket Sales Closer",
@@ -1526,7 +1526,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ce3421e3a6c5d7da": {
   "title": "High Ticket Sales Closer",
@@ -1538,7 +1538,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5fe7bd5e40bc0079": {
   "title": "High-Ticket Sales Closer",
@@ -1550,7 +1550,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "808b9e12837c645f": {
   "title": "High-Ticket Roofing Closer",
@@ -1562,7 +1562,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "97e6ef237a5fe513": {
   "title": "High Ticket Sales Closer",
@@ -1574,7 +1574,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8eb45cd42e073b09": {
   "title": "High Ticket Sales Closer",
@@ -1598,7 +1598,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "fc62d5ba1e886261": {
   "title": "High Ticket Sales Closer",
@@ -1610,7 +1610,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "02114d314841e2a0": {
   "title": "High-Ticket B2C Closer – Remote & Results-Focused",
@@ -1634,7 +1634,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a56d12d9bb48e937": {
   "title": "High-Ticket Sales Closer | Remote | Results-Driven Only",
@@ -1658,7 +1658,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e9430e55eafec969": {
   "title": "High-Ticket Sales Closer (TV/Media) | ~$200k OTE | Inbound | Remote",
@@ -1694,7 +1694,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "25832a78fd0f20d3": {
   "title": "Appointment Setter (Field-Based) - Hourly Bonuses",
@@ -1706,7 +1706,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a8a9af6d70b5db8a": {
   "title": "Appointment Setter",
@@ -1718,7 +1718,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a43088e099ca6847": {
   "title": "Appointment Setter",
@@ -1730,7 +1730,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3e8628f76f2b9026": {
   "title": "BDC Agent Appointment Setter",
@@ -1742,7 +1742,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "34f53427be19dfdf": {
   "title": "Solar Appointment Setter",
@@ -1754,7 +1754,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e9326a1dd5db296e": {
   "title": "Marketing Appointment Setter",
@@ -1766,7 +1766,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1ad8b8b46bcf218d": {
   "title": "Receptionist & Appointment Setter",
@@ -1778,7 +1778,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "84c3021d8ce08527": {
   "title": "Sales Closer",
@@ -1790,7 +1790,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e6b3f62ae8e63fde": {
   "title": "Yorktown - Sales Closer - Sales Closer",
@@ -1802,7 +1802,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1836d1214eb869a2": {
   "title": "Sales Closer",
@@ -1814,7 +1814,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "565edaedbe0d3e9f": {
   "title": "Sales Closer",
@@ -1826,14 +1826,14 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "829cfcaf087acdc8": {
   "title": "Direct Sales Closer - Remote",
   "company": "ReminderMedia",
   "location": "US",
   "comp": "$55406-$55406",
-  "link": "https://www.adzuna.com/land/ad/5759425733?se=0BfI9jpn8RGfB72z_DrYeQ&utm_medium=api&utm_source=3e941a8f&v=8BFC28383E9C04D0D9ED894C0847E7014EDE3835",
+  "link": "https://www.adzuna.com/land/ad/5759425733?se=AjDH3Txn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=8BFC28383E9C04D0D9ED894C0847E7014EDE3835",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -1850,7 +1850,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "21d2a8f812d84ba6": {
   "title": "Yorktown - Sales Closer - Sales Closer",
@@ -1862,7 +1862,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5001672da68efc29": {
   "title": "Sales Closer",
@@ -1874,14 +1874,14 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1ee813aaa70fc55e": {
   "title": "REMOTE CLOSER PerformanceBased Pay No Experience Required",
   "company": "SCHREIBER FINANCIAL SERVICE LLC",
   "location": "Charlotte, Mecklenburg County",
   "comp": "$79108-$79108",
-  "link": "https://www.adzuna.com/land/ad/5757209492?se=-hdr9zpn8RGfB72z_DrYeQ&utm_medium=api&utm_source=3e941a8f&v=C8F9C8B0B60F781420DF9EF84E49066EB6168480",
+  "link": "https://www.adzuna.com/land/ad/5757209492?se=djJk3jxn8RGfB72z_DrYeQ&utm_medium=api&utm_source=3e941a8f&v=C8F9C8B0B60F781420DF9EF84E49066EB6168480",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -2354,7 +2354,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d07134f2bd22fa40": {
   "title": "Sales Development Representative",
@@ -2366,7 +2366,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b2d74c2c0903274e": {
   "title": "Sales Development Representative",
@@ -2378,7 +2378,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f42a7f6824dfae26": {
   "title": "Sales Development Representative",
@@ -2390,7 +2390,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2b9dd710fe15d11a": {
   "title": "Sales Development Representative",
@@ -2402,7 +2402,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "839ab54c6ffb228a": {
   "title": "Sales Development Representative",
@@ -2414,7 +2414,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "90786f7297ef90f1": {
   "title": "Sales Development Representative",
@@ -2426,7 +2426,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a086876aea08d0fe": {
   "title": "Sales Development Representative",
@@ -2438,7 +2438,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ec92e21f57242c96": {
   "title": "Sales Development Representative",
@@ -2450,7 +2450,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f32d202f14c90a69": {
   "title": "Sales Development Representative",
@@ -2462,7 +2462,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "67826d3515c20c0d": {
   "title": "Sales Development Representative",
@@ -2474,7 +2474,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "00dad9a63113ad9f": {
   "title": "Sales Development Representative",
@@ -2486,7 +2486,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b4cfff149a177a0c": {
   "title": "Sales Development Representative",
@@ -2498,7 +2498,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "363adcfce7e78b33": {
   "title": "Sales Development Representative",
@@ -2510,7 +2510,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9fdac0abfda9762f": {
   "title": "Sales Development Representative",
@@ -2522,7 +2522,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ffc218f8e1f0da17": {
   "title": "Customer Success Manager",
@@ -2534,7 +2534,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "20b4735c826078b1": {
   "title": "Customer Success Manager",
@@ -2546,7 +2546,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "4ebbd4946b2d2719": {
   "title": "Customer Success Manager",
@@ -2558,7 +2558,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e90c29b10f319a17": {
   "title": "Customer Success Manager",
@@ -2570,7 +2570,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "7c7725897278dde4": {
   "title": "Customer Success Manager",
@@ -2582,7 +2582,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "211bce48c685669b": {
   "title": "Customer Success Manager",
@@ -2594,7 +2594,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ac835ba2620e6639": {
   "title": "Customer Success Manager",
@@ -2606,7 +2606,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e672baf744289ed1": {
   "title": "Customer Success Manager",
@@ -2618,7 +2618,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c373b8498f77dbee": {
   "title": "Customer Success Manager",
@@ -2630,7 +2630,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "7f4fa83dede5956a": {
   "title": "Customer Success Manager",
@@ -2642,7 +2642,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "80a0d1619b385abc": {
   "title": "Customer Success Manager",
@@ -2654,7 +2654,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2305d106963652e1": {
   "title": "Customer Success Manager",
@@ -2666,7 +2666,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0c5d13c9a2070500": {
   "title": "Customer Success Manager",
@@ -2678,14 +2678,14 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "cc464bbec7e159a4": {
   "title": "Customer Success Manager",
   "company": "Airwave",
   "location": "Denver, Colorado",
   "comp": "$81432-$81432",
-  "link": "https://www.adzuna.com/land/ad/5758242951?se=oHDt-Dpn8RGPL9oNLTnS9Q&utm_medium=api&utm_source=3e941a8f&v=E1E31B74F9482D7661FB4EE7020D88939476497C",
+  "link": "https://www.adzuna.com/land/ad/5758242951?se=9L2y4Dxn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=E1E31B74F9482D7661FB4EE7020D88939476497C",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
@@ -2702,7 +2702,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "41d497741f0c0dc8": {
   "title": "Customer Success Manager",
@@ -2714,7 +2714,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d09328284e107344": {
   "title": "Customer Success Manager",
@@ -2726,7 +2726,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "92e855d759238642": {
   "title": "Customer Success Manager",
@@ -2738,7 +2738,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "95170e89b4003a8b": {
   "title": "Customer Success Manager",
@@ -2750,7 +2750,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9cfa85909971a7aa": {
   "title": "Enterprise Customer Success Manager",
@@ -2762,7 +2762,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6e5f75e64bc8abf7": {
   "title": "Customer Success Manager",
@@ -2774,7 +2774,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "4f6e23b55f648594": {
   "title": "Customer Success Manager, Workbench",
@@ -2786,7 +2786,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e88d6f79cc5ca458": {
   "title": "(Senior) Customer Success Manager",
@@ -2798,7 +2798,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3238452bb42ff157": {
   "title": "Customer Success Manager, Enterprise",
@@ -2810,7 +2810,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b4545d4166946641": {
   "title": "Senior Customer Success Manager",
@@ -2822,7 +2822,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "69a5c37426db8433": {
   "title": "Senior Customer Success Manager",
@@ -2834,14 +2834,14 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f30f4f935d44260f": {
   "title": "Customer Success Manager (French)",
   "company": "Odoo",
   "location": "Fremont, Alameda County",
   "comp": "$65960-$65960",
-  "link": "https://www.adzuna.com/land/ad/5758247713?se=oHDt-Dpn8RGPL9oNLTnS9Q&utm_medium=api&utm_source=3e941a8f&v=7CDA565A527BE71F8B8E349EF8EE1040390E401F",
+  "link": "https://www.adzuna.com/land/ad/5758247713?se=9L2y4Dxn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=7CDA565A527BE71F8B8E349EF8EE1040390E401F",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
@@ -2870,7 +2870,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1c848bcdd39d929c": {
   "title": "Appointment Setter",
@@ -2882,7 +2882,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "317e36aa3b14f3d2": {
   "title": "Appointment Setter",
@@ -2894,7 +2894,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "bd0317ee2c9bd0d6": {
   "title": "Appointment Setter",
@@ -2906,7 +2906,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d37e7c952c0d210a": {
   "title": "Appointment Setter",
@@ -2918,7 +2918,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5b5ec20e2523bc60": {
   "title": "Remote-Appointment Setter",
@@ -2927,7 +2927,7 @@
   "comp": "$25000-$26500",
   "link": "https://www.adzuna.co.uk/jobs/details/5119753847?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -2942,7 +2942,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "37d60ca440442bd3": {
   "title": "Appointment Setter - immediately available",
@@ -2954,7 +2954,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "86a2bfcdfc03881f": {
   "title": "Appointment setter - High commission",
@@ -2966,7 +2966,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d4ab71139b9122b5": {
   "title": "Appointment Setter/Lead Generator",
@@ -2978,7 +2978,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "031c0c4c7e4b1a1c": {
   "title": "German Speaking, Outbound B2B Appointment Setter",
@@ -2990,7 +2990,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2ab5258cf3230a77": {
   "title": "Full Time High Ticket DM Appointment Setter",
@@ -3002,7 +3002,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0acb74ff649d30df": {
   "title": "Appointment Setter Needed for Web Design Studio in Essex",
@@ -3014,7 +3014,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0d840165814f260e": {
   "title": "Telemarketer",
@@ -3026,7 +3026,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "08dd668bb3a47929": {
   "title": "Sales Executive",
@@ -3038,7 +3038,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "259edf5459653efd": {
   "title": "Telesales Executive",
@@ -3050,7 +3050,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b331e74c2a7e68bf": {
   "title": "Telemarketer",
@@ -3062,16 +3062,16 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e8f2ce15f043ef40": {
   "title": "German Speaking Sales Advisor",
   "company": "CCA Recruitment Group",
   "location": "UK",
   "comp": "$31200-$33280",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5741330416?se=bL4G_Tpn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=0976504328BCD993F867B4C1E19DB7E081E08961",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5741330416?se=Xg_95Dxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=0976504328BCD993F867B4C1E19DB7E081E08961",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -3086,7 +3086,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "21b1412e947989d1": {
   "title": "Client Acquisition Specialist",
@@ -3098,7 +3098,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1c54870bc949e854": {
   "title": "Sales Development Representative",
@@ -3110,7 +3110,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "acd9d8ee1d7cc630": {
   "title": "Sales Executive (B2B Closer)",
@@ -3122,7 +3122,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5161452b7212564b": {
   "title": "Press Tool Setter",
@@ -3134,7 +3134,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "062e543b2fa6d562": {
   "title": "Business Development Manager",
@@ -3146,7 +3146,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "47de4ed1a00f4043": {
   "title": "Business Development Manager",
@@ -3158,7 +3158,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b3fe797c8f9745eb": {
   "title": "Press Brake Setter/Operator",
@@ -3170,7 +3170,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f84472a296f48712": {
   "title": "Design Coordinator / CAD Draughtsman",
@@ -3182,7 +3182,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "49096237a2abc0f8": {
   "title": "Business Sales Closer - M&A Client Acquisition",
@@ -3194,7 +3194,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "07e54cafe138b32d": {
   "title": "Sales Agent – High-Volume Premium Locations (Uncapped Commission)",
@@ -3206,7 +3206,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6b28a453473ed86d": {
   "title": "Sales Development Representative",
@@ -3218,7 +3218,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a0b361f7b99f057c": {
   "title": "Solar Sales Representative",
@@ -3230,7 +3230,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5a22e058197da6e5": {
   "title": "Account Executive",
@@ -3242,7 +3242,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ccc942117e996344": {
   "title": "Sales Executive",
@@ -3254,14 +3254,14 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a6a0ef510c584537": {
   "title": "Sales Account Manager (AI SaaS)",
   "company": "EIMS",
-  "location": "Southampton, Hampshire",
-  "comp": "$54699-$54699",
-  "link": "https://www.adzuna.co.uk/jobs/details/5674190292?utm_medium=api&utm_source=3e941a8f",
+  "location": "Bournemouth, Dorset",
+  "comp": "$57777-$57777",
+  "link": "https://www.adzuna.co.uk/jobs/details/5674190122?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -3290,7 +3290,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6a452e6bd3a83579": {
   "title": "(Sales) Senior Account Executive",
@@ -3302,7 +3302,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "80be6d3b4756520b": {
   "title": "Recruitment Consultant - Care Sector",
@@ -3314,7 +3314,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "7b42c2fa83f397ce": {
   "title": "Account Manager, Sales",
@@ -3338,7 +3338,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "21702657fbc64143": {
   "title": "Mid-Market Account Executive",
@@ -3350,7 +3350,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "72b417f0ab589912": {
   "title": "Sales Development Representative, EMEA (PerfectScale & SELECT)",
@@ -3359,7 +3359,7 @@
   "comp": "$59721-$59721",
   "link": "https://www.adzuna.co.uk/jobs/details/5665202478?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -3393,7 +3393,7 @@
   "company": "The People Pod",
   "location": "North West England, UK",
   "comp": "$80000-$150000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5756401109?se=GKH0_Tpn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=57D02C882BFBE362441D951205207AE49AD3894C",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5756401109?se=2oIH5jxn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=57D02C882BFBE362441D951205207AE49AD3894C",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -3410,7 +3410,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1280b7ec8dfb5faa": {
   "title": "Sales Development Representative",
@@ -3422,7 +3422,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "72a480fccece6648": {
   "title": "Sales Development Representative",
@@ -3434,7 +3434,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "32815849734c4d5d": {
   "title": "Sales Development Representative",
@@ -3446,7 +3446,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ed22c982e24d5ec9": {
   "title": "Sales Development Representative",
@@ -3458,7 +3458,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3783447d053c8aa0": {
   "title": "Sales Development Representative",
@@ -3470,16 +3470,16 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c5a84f2b10bf1365": {
   "title": "Sales Development Representative",
   "company": "ILG",
   "location": "Warrington, Cheshire",
   "comp": "$30000-$30000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5751308460?se=rOsk_jpn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=7FBB08951C1A86147AB62539FFBD9A7E1ADCC8FC",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5751308460?se=TsM-5jxn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=7FBB08951C1A86147AB62539FFBD9A7E1ADCC8FC",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -3494,7 +3494,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "303380fdb7d77abd": {
   "title": "Sales Development Representative",
@@ -3506,7 +3506,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "69ce1b2b81b3f42a": {
   "title": "Graduate Sales Development Representative",
@@ -3518,7 +3518,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9c938aede4cb2bbd": {
   "title": "Sales Development Representative",
@@ -3530,7 +3530,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "83acdcea98a2dcad": {
   "title": "Sales Development Representative",
@@ -3542,7 +3542,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ae1a3499ad4b9764": {
   "title": "Sales Development Representative",
@@ -3554,7 +3554,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5dce66d72afe162b": {
   "title": "Sales Development Representative",
@@ -3566,7 +3566,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "525f0bd05be67adb": {
   "title": "Sales Development Representative",
@@ -3578,7 +3578,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c0c968021dac5be8": {
   "title": "Sales Development Representative",
@@ -3590,16 +3590,16 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a6b830418be9ba84": {
   "title": "Sales Development Representative",
   "company": "Get Recruited Ltd",
   "location": "Manchester, Greater Manchester",
   "comp": "$35000-$35000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5757060323?se=rOsk_jpn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=D086509CCED5C3F09266FD7DBBE7F57067C73C30",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5757060323?se=TsM-5jxn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=D086509CCED5C3F09266FD7DBBE7F57067C73C30",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -3614,7 +3614,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "542d01758b35b64d": {
   "title": "Graduate Sales Development Representative",
@@ -3626,7 +3626,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "354425bca7a39a23": {
   "title": "Sales Development Representative German Speaking",
@@ -3638,7 +3638,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "13b13dd505d931c6": {
   "title": "Sales Development Representative (SDR/BDR)",
@@ -3650,7 +3650,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "41c7237da8d25002": {
   "title": "Sales Development Representative - Financial Services",
@@ -3662,7 +3662,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d08044581472f7e6": {
   "title": "Graduate Sales Development Representative",
@@ -3674,7 +3674,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c6e8e6187c42d1c9": {
   "title": "Sales Development Representative (SDR)",
@@ -3686,7 +3686,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "598c80609a53418a": {
   "title": "Sales Development Representative - IT Sector",
@@ -3698,7 +3698,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ae60a167bbf0fb45": {
   "title": "Sales Development Representative",
@@ -3710,7 +3710,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "64a6f963bccf3aa9": {
   "title": "Graduate Sales Development Representative",
@@ -3722,7 +3722,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a12dc22255d96e88": {
   "title": "Sales Development Representative (SDR)",
@@ -3734,7 +3734,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2d6de8ad54e0ca58": {
   "title": "Sales Development Representative (SDR)",
@@ -3746,7 +3746,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ee552e900f3dc569": {
   "title": "Sales / Business Development Representatives",
@@ -3758,7 +3758,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2518fd63ac9f33e0": {
   "title": "Sales Development Representative",
@@ -3770,7 +3770,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2d19852c32e3d99f": {
   "title": "Sales Development Representative",
@@ -3782,7 +3782,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "da5634b0dbffdc50": {
   "title": "Sales Development Representative",
@@ -3794,7 +3794,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "98f1514c77c2344e": {
   "title": "Sales Development Representative",
@@ -3806,7 +3806,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b011a1cf5ccbee2b": {
   "title": "Sales Development Representative",
@@ -3818,7 +3818,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "02a25bcbda7229fc": {
   "title": "Sales Development Representative",
@@ -3830,7 +3830,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ad977510dbf5e39b": {
   "title": "Sales Development Representative",
@@ -3842,7 +3842,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "59166a2fc0ac7e99": {
   "title": "Sales Development Representative",
@@ -3851,7 +3851,7 @@
   "comp": "",
   "link": "https://www.adzuna.co.uk/jobs/details/5741305800?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -3866,7 +3866,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e5b5090155467629": {
   "title": "Sales Development Representative",
@@ -3878,7 +3878,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8c3f76ff8cbf30b8": {
   "title": "Customer Success Manager",
@@ -3890,7 +3890,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e30f886e5f8a25dc": {
   "title": "Customer Success Manager",
@@ -3902,7 +3902,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f9e8c2698104b760": {
   "title": "Customer Success Manager - German Speaking, AI SaaS, London (Hybrid)",
@@ -3914,7 +3914,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "4f96fa94da25a9fe": {
   "title": "Customer Success Manager",
@@ -3926,7 +3926,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a6b36a7e1781c38b": {
   "title": "Customer Success Manager",
@@ -3938,7 +3938,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b02488f6a9118453": {
   "title": "Customer Success Manager",
@@ -3962,7 +3962,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "501dc2fa688030f9": {
   "title": "Customer Success Manager",
@@ -3974,7 +3974,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "804c5a245700026b": {
   "title": "Customer Success Manager",
@@ -3986,7 +3986,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d00a8898a55f2af8": {
   "title": "Customer Success Manager",
@@ -3998,7 +3998,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c11635d8af9d83c0": {
   "title": "Customer Success Manager",
@@ -4010,7 +4010,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3b85a51ae22d7814": {
   "title": "Customer Success Manager",
@@ -4022,7 +4022,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "7476b543ca51ef8c": {
   "title": "Customer Success Manager",
@@ -4034,7 +4034,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e043b37b7821622e": {
   "title": "Customer Success Manager",
@@ -4058,7 +4058,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "03a927fe4fe6afd9": {
   "title": "Customer Success Manager",
@@ -4070,7 +4070,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e9a3cc39df57a766": {
   "title": "Customer Success Manager",
@@ -4082,7 +4082,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ce1714d525436e02": {
   "title": "Customer Success Manager",
@@ -4094,7 +4094,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "7dee0031818df6a8": {
   "title": "Customer Success Manager",
@@ -4106,7 +4106,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1c7cc8d8c2c83586": {
   "title": "Customer Success Manager",
@@ -4118,7 +4118,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "4e57368346a4aba9": {
   "title": "Customer Success Manager",
@@ -4130,7 +4130,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "eb55b64c5b57b659": {
   "title": "Customer Success Manager",
@@ -4142,14 +4142,14 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f1271c38abaddfc0": {
   "title": "Customer Success Manager",
   "company": "IC24",
   "location": "Sevington, Ashford",
   "comp": "$32931-$32931",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5752148665?se=pOWv_jpn8RGfB72z_DrYeQ&utm_medium=api&utm_source=3e941a8f&v=EBB313C037C13E21D13902B6148E9747D4310E86",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5752148665?se=Mnfx5jxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=EBB313C037C13E21D13902B6148E9747D4310E86",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
@@ -4166,7 +4166,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "83ab8652b1c70f3a": {
   "title": "Customer Success Manager",
@@ -4178,7 +4178,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3d01161a46f49105": {
   "title": "Customer Success Manager",
@@ -4190,7 +4190,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c8ee5753e319723b": {
   "title": "Customer Success Manager",
@@ -4202,7 +4202,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "94b4661757d6a5fa": {
   "title": "Customer Success Manager",
@@ -4214,14 +4214,14 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "4113f9585af2a50f": {
   "title": "Customer Success Manager",
   "company": "ALFA TECHNOLOGY RECRUITMENT LTD",
   "location": "The City, Central London",
   "comp": "$65000-$65000",
-  "link": "https://www.adzuna.co.uk/jobs/details/5752711821?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.co.uk/jobs/details/5752711806?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
@@ -4238,7 +4238,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e09d6e87e6f02f5e": {
   "title": "Customer Success Manager",
@@ -4250,7 +4250,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "4555a83fa9bb2fc5": {
   "title": "Customer Success Manager",
@@ -4262,7 +4262,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "86fda72b9de07758": {
   "title": "Customer Success Manager",
@@ -4274,7 +4274,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "57ae010e3fdf9d75": {
   "title": "Customer Success Manager",
@@ -4298,7 +4298,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2a641cf4e49c003c": {
   "title": "Customer Success Manager",
@@ -4322,7 +4322,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8058c101471d4a20": {
   "title": "Customer Success Manager",
@@ -4334,7 +4334,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b4e6b08d723a3339": {
   "title": "Customer Success Manager",
@@ -4346,7 +4346,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1ce0eec96e67fa24": {
   "title": "Customer Success Manager",
@@ -4358,7 +4358,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "df03489061c06227": {
   "title": "Customer Success Manager",
@@ -4370,7 +4370,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5655926376d6187b": {
   "title": "Customer Success Manager",
@@ -4382,7 +4382,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "825306f7f5de4e11": {
   "title": "Customer Success Manager",
@@ -4394,7 +4394,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "538cf2536b043030": {
   "title": "Customer Success Manager",
@@ -4406,7 +4406,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "758dc4046434a0e5": {
   "title": "Customer Success Manager",
@@ -4418,7 +4418,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "10f43fe92ab98d63": {
   "title": "Customer Success Manager",
@@ -4430,7 +4430,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0ceb4e9735fff3fb": {
   "title": "Customer Success Manager",
@@ -4442,7 +4442,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f07eb5a75051e3cc": {
   "title": "Remote Sales Representative (High Ticket Sales Closer)",
@@ -4466,7 +4466,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b91f9338d46dcac4": {
   "title": "Solar Appointment Setter",
@@ -4478,7 +4478,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5030b81196033df0": {
   "title": "Sales Appointment Setter",
@@ -4490,7 +4490,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "99f088cdd6f9596a": {
   "title": "WFH Appointment Setter",
@@ -4499,7 +4499,7 @@
   "comp": "",
   "link": "https://www.adzuna.ca/details/5658750676?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -4514,7 +4514,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "307fe9e1a64166da": {
   "title": "B2B | B2C APPOINTMENT SETTER",
@@ -4526,7 +4526,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "09b71878ecd767d8": {
   "title": "Appointment Setter (Sales Admin)",
@@ -4538,7 +4538,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3a0ed49557eebd7b": {
   "title": "Appointment Setter (Work From Home)",
@@ -4547,7 +4547,7 @@
   "comp": "",
   "link": "https://www.adzuna.ca/details/5689475938?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -4559,7 +4559,7 @@
   "comp": "$36000-$72000",
   "link": "https://www.adzuna.ca/details/5741108396?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -4571,7 +4571,7 @@
   "comp": "$40000-$55000",
   "link": "https://www.adzuna.ca/details/5759833297?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -4586,7 +4586,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d1e5132980a0de22": {
   "title": "Structured Finance Sales Closer",
@@ -4610,7 +4610,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "777eb0de3728a70f": {
   "title": "Sales Representative (Closer) - Building Sales - ON",
@@ -4622,7 +4622,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a0105159368899c2": {
   "title": "Outside Sales Representative",
@@ -4634,7 +4634,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a5daefdd0e87530e": {
   "title": "Roof Rejuvenation & Roofing Sales Representative",
@@ -4646,7 +4646,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f841d47224cd6601": {
   "title": "Sales Designer",
@@ -4658,7 +4658,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6529c69fbe72fbaf": {
   "title": "Senior Care Advisor",
@@ -4670,7 +4670,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "992f226f8d5fbc75": {
   "title": "Account Executive",
@@ -4682,7 +4682,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "dd4db4dd61254220": {
   "title": "Sales Development Representative (SDR)",
@@ -4694,7 +4694,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c1243194f0d8bb35": {
   "title": "Marketing/Sales Rep",
@@ -4706,7 +4706,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "dab3a3991246b9fe": {
   "title": "Showroom Sales Representative-Interior Glass Doors/Walls& Partitions",
@@ -4718,7 +4718,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0bd1a1c5a29059e5": {
   "title": "Sales Executive",
@@ -4730,7 +4730,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "19cf782e9e00f8e9": {
   "title": "B2B Sales Executive",
@@ -4742,7 +4742,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0ceb75aedf854bc7": {
   "title": "Business Developer",
@@ -4754,7 +4754,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "488fb9593804847c": {
   "title": "Professional Sales Prospector (Sales Executive)",
@@ -4766,7 +4766,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "54fc57e38f3f4ffa": {
   "title": "Senior Account Executive",
@@ -4790,7 +4790,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "cd88219a79889b49": {
   "title": "Account Executive",
@@ -4814,7 +4814,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0c04e524bf53feb5": {
   "title": "Sales Development Representative",
@@ -4826,7 +4826,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d84682d6c14052f1": {
   "title": "Sales Development Representative",
@@ -4838,7 +4838,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "98ba5f18a515aa22": {
   "title": "Sales Development Representative",
@@ -4850,7 +4850,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b59ba9e87a3fb6f0": {
   "title": "Sales Development Representative",
@@ -4862,7 +4862,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "bfbc3c36bfd4576b": {
   "title": "Sales Development Representative",
@@ -4874,7 +4874,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "30264f845ce53ab5": {
   "title": "Sales Development Representative",
@@ -4883,7 +4883,7 @@
   "comp": "",
   "link": "https://www.adzuna.ca/details/4801466215?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -4898,7 +4898,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3e3cec25f44bdbda": {
   "title": "Sales Development Representative",
@@ -4910,7 +4910,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "fa8093f059257677": {
   "title": "Sales Development Representative",
@@ -4922,7 +4922,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "26cc7a0a1b1a432b": {
   "title": "Sales Development Representative",
@@ -4934,7 +4934,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0cf98e5543283eec": {
   "title": "Sales Development Representative",
@@ -4946,7 +4946,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0a16d48fe401e38a": {
   "title": "Sales Development Representative",
@@ -4958,7 +4958,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3e2170c5c4ff3af0": {
   "title": "Sales Development Representative",
@@ -4970,7 +4970,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3aa30b326bd34f69": {
   "title": "Sales Development Representative",
@@ -4982,7 +4982,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c8d3e9c4e47808f3": {
   "title": "Sales Development Representative",
@@ -4994,7 +4994,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9507dee1ef9266e4": {
   "title": "Sales Development Representative",
@@ -5006,7 +5006,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "199743a44ac71897": {
   "title": "Sales Development Representative",
@@ -5018,7 +5018,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1e37deef351a6e86": {
   "title": "Sales Development Representative",
@@ -5030,7 +5030,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5bbe16dadab956dd": {
   "title": "Sales Development Representative",
@@ -5054,7 +5054,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e0e7ab22a4c65e7e": {
   "title": "Sales Development Representative",
@@ -5066,7 +5066,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "66713d87cd4e3c6d": {
   "title": "Sales Development Representative",
@@ -5078,7 +5078,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "36efae5c250f03b0": {
   "title": "Sales Development Representative",
@@ -5090,7 +5090,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "87eadee47d74d3ca": {
   "title": "Sales Development Representative",
@@ -5099,7 +5099,7 @@
   "comp": "",
   "link": "https://www.adzuna.ca/details/5490319866?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -5114,7 +5114,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "76da4352565a9d81": {
   "title": "Sales Development Representative",
@@ -5126,7 +5126,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "638ad6edf931ed3e": {
   "title": "Sales Development Representative",
@@ -5138,7 +5138,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e05c90314045d2a0": {
   "title": "Sales Development Representative",
@@ -5150,7 +5150,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a83cf39beabe43dc": {
   "title": "Sales Development Representative",
@@ -5162,7 +5162,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e118bc8d40b58ec2": {
   "title": "Sales Development Representative",
@@ -5174,7 +5174,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a2fc7fa11e9800ca": {
   "title": "Sales Development Representative",
@@ -5186,7 +5186,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "544f3c4a60bfab3d": {
   "title": "Sales Development Representative",
@@ -5198,7 +5198,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6ce94b5d3bbe4f0f": {
   "title": "Sales Development Representative",
@@ -5210,7 +5210,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "74528f8baa1de1d5": {
   "title": "Sales Development Representative",
@@ -5219,7 +5219,7 @@
   "comp": "$78000-$95000",
   "link": "https://www.adzuna.ca/details/5612104506?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -5234,7 +5234,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "aa6b407bb30b2d36": {
   "title": "Customer Success Manager",
@@ -5246,7 +5246,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b8a5fdef49b571db": {
   "title": "Customer Success Manager",
@@ -5270,7 +5270,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1ff95c8db317f28c": {
   "title": "Customer Success Manager",
@@ -5282,7 +5282,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a74100b92591d585": {
   "title": "Customer Success Manager",
@@ -5306,7 +5306,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "103857b31fa741d6": {
   "title": "Customer Success Manager",
@@ -5330,7 +5330,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5f1fa3de610d9157": {
   "title": "Customer Success Manager",
@@ -5354,7 +5354,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "bc35e94d0751c86e": {
   "title": "Customer Success Manager",
@@ -5366,7 +5366,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b8cc6cdfb45d9aab": {
   "title": "Customer Success Manager",
@@ -5378,7 +5378,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f56aff6c819fde13": {
   "title": "Customer Success Manager",
@@ -5390,7 +5390,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8f19a8aca6a43213": {
   "title": "Customer Success Manager",
@@ -5402,7 +5402,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9d553db84a65d6de": {
   "title": "Customer Success Manager",
@@ -5426,7 +5426,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6efed0ec78ff3737": {
   "title": "Customer Success Manager",
@@ -5438,7 +5438,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f0263b9cd5f7739a": {
   "title": "Customer Success Manager",
@@ -5450,7 +5450,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "eadb6d889662ed10": {
   "title": "Customer Success Manager",
@@ -5462,7 +5462,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "df17334046832418": {
   "title": "Customer Success Manager",
@@ -5474,7 +5474,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "4b87eb13913e5aac": {
   "title": "Customer Success Manager",
@@ -5486,7 +5486,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f65fc07ade9c4cd4": {
   "title": "Customer Success Manager",
@@ -5522,7 +5522,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1451c1fe9d0e681b": {
   "title": "Customer Success Manager",
@@ -5534,7 +5534,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8f85c311ff3ca2c4": {
   "title": "Customer Success Manager",
@@ -5546,7 +5546,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9beeeb8d22ae3034": {
   "title": "Customer Success Manager",
@@ -5558,7 +5558,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0ea345a53e34c097": {
   "title": "Customer Success Manager",
@@ -5570,7 +5570,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "92cf6cea8b89140b": {
   "title": "Customer Success Manager",
@@ -5582,7 +5582,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f453cfb79bf2b23f": {
   "title": "Customer Success Manager",
@@ -5594,7 +5594,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8a840ca47a8d82b9": {
   "title": "Customer Success Manager",
@@ -5606,7 +5606,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6b1716dbeb0f9798": {
   "title": "Customer Success Manager",
@@ -5618,7 +5618,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a021d748d52d92ee": {
   "title": "Customer Success Manager",
@@ -5630,7 +5630,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1c88949f7879105c": {
   "title": "Customer Success Manager",
@@ -5642,7 +5642,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2ba8769353c7a546": {
   "title": "Customer Success Manager",
@@ -5654,7 +5654,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "7b1a65ffbcc422d6": {
   "title": "Customer Success Manager",
@@ -5666,7 +5666,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3380dd5747e7aa2c": {
   "title": "Customer Success Manager",
@@ -5678,7 +5678,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "7f6eb316beee3b26": {
   "title": "Customer Success Manager",
@@ -5690,7 +5690,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b3e231de63b2cd3c": {
   "title": "Appointment Setter",
@@ -5699,7 +5699,7 @@
   "comp": "",
   "link": "https://www.adzuna.com.au/details/5744955254?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -5714,7 +5714,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6935362be55607bb": {
   "title": "Appointment Setter",
@@ -5726,7 +5726,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6c19d6af71938016": {
   "title": "Appointment Setters - Property",
@@ -5738,7 +5738,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "aeadc55a03173a04": {
   "title": "Appointment Setter/ B2B",
@@ -5750,7 +5750,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2868c18a839cf6d9": {
   "title": "OUTBOUND APPOINTMENT SETTER",
@@ -5759,7 +5759,7 @@
   "comp": "",
   "link": "https://www.adzuna.com.au/details/5735610127?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -5774,7 +5774,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c4ed39a69617f215": {
   "title": "Lead Generation & Appointment Setter",
@@ -5786,7 +5786,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "fc745cb58e50522d": {
   "title": "Appointment Setter / Sales Consultant",
@@ -5798,7 +5798,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c866482c0b996769": {
   "title": "Appointment Setter & Customer Service",
@@ -5810,7 +5810,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "cba4053416f50898": {
   "title": "Appointment Setter (For Active Pooling)",
@@ -5822,7 +5822,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "801248a81625235c": {
   "title": "Sales Consultant (Appointment Setter)",
@@ -5834,7 +5834,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "45e29265db3b8db7": {
   "title": "Outbound Sales Consultant / Appointment Setter",
@@ -5846,7 +5846,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3a45b70a2b1e2a69": {
   "title": "Sales/Appointment Setter – Geelong, Victoria",
@@ -5858,7 +5858,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9cc5de4ecf303955": {
   "title": "Appointment Setter | B2B Sales! High Commissions!",
@@ -5870,7 +5870,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5e9908c1eb418525": {
   "title": "Appointment Setter | Business Development Representatives | High Commissions!",
@@ -5882,7 +5882,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c46f3558de22833e": {
   "title": "Call Centre Appointment Setter – No Cold Calling | Base Commission Bonuses",
@@ -5891,7 +5891,7 @@
   "comp": "",
   "link": "https://www.adzuna.com.au/details/5761862616?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -5906,7 +5906,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "12c14258ab1dc1c3": {
   "title": "Multiple Sales Roles Available - Digital - Training Provided - $150k OTE",
@@ -5918,7 +5918,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a212e31e17c6160d": {
   "title": "Sales Associate | High Ticket Setter",
@@ -5927,7 +5927,7 @@
   "comp": "",
   "link": "https://www.adzuna.com.au/details/5664750953?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -5942,7 +5942,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f9eac5da5248c39b": {
   "title": "New Business Manager",
@@ -5954,7 +5954,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "51e0682f2d67a886": {
   "title": "BDM",
@@ -5966,7 +5966,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d211e338fd82517d": {
   "title": "Sales Manager",
@@ -5978,7 +5978,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "dd00be6728be1a4a": {
   "title": "New Business Sales",
@@ -5990,7 +5990,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "27f59fdf2aa6de54": {
   "title": "Business Development Manager – Sydney",
@@ -6002,7 +6002,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d7b737455e2637de": {
   "title": "Sales Agents",
@@ -6014,7 +6014,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d739cdc584321977": {
   "title": "Scheduling Officer",
@@ -6026,7 +6026,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d1c3c3dbacf54745": {
   "title": "In Home Solar Sales Representative - Attention Closers",
@@ -6038,7 +6038,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c3781ac93ca045df": {
   "title": "Account Executive / Business Development Manager",
@@ -6062,7 +6062,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3bc46cfc9b6157d1": {
   "title": "Business Development Manager (BDM)",
@@ -6074,7 +6074,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "06d5b5250be41278": {
   "title": "Sales Development Representative, Sydney",
@@ -6086,7 +6086,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d33a726b2936d80b": {
   "title": "Sales Development Representative",
@@ -6098,7 +6098,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "12164f2427742941": {
   "title": "Sales Development Representative",
@@ -6110,7 +6110,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "86a7170648d2396d": {
   "title": "Senior Associate Sales Development Representative",
@@ -6122,7 +6122,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5a2cae3ffa4630f9": {
   "title": "Sales Development Representative (Inbound)",
@@ -6134,7 +6134,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c22a21c0c43d0197": {
   "title": "Sales Development Representative",
@@ -6146,7 +6146,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "da869b9c9aab6cd5": {
   "title": "Sales Development Representative",
@@ -6158,7 +6158,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "47f415b98de8172c": {
   "title": "Sales Development Representative",
@@ -6170,16 +6170,16 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "707efe7b289d05ca": {
   "title": "Sales Development Representative",
   "company": "OFX",
-  "location": "The Rocks, Sydney",
+  "location": "Sydney, Sydney Region",
   "comp": "",
-  "link": "https://www.adzuna.com.au/details/5709115760?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.com.au/details/5759841389?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -6194,7 +6194,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "759141ff1bb487b1": {
   "title": "Sales Development Representative, Sydney",
@@ -6206,7 +6206,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2352b0cbc88eaf62": {
   "title": "Sales Development Representative",
@@ -6218,7 +6218,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1427122eeaf1c503": {
   "title": "Sales Development Representative",
@@ -6230,7 +6230,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c5d2f237b5b5d740": {
   "title": "Sales Development Representative",
@@ -6242,7 +6242,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "429bdf8c4f748619": {
   "title": "Sales Development Representative",
@@ -6254,7 +6254,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "44d90b5088ed4575": {
   "title": "Sales Development Representative",
@@ -6266,7 +6266,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2427e54806f308c8": {
   "title": "Sales Development Representative",
@@ -6278,7 +6278,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "037140c791b9967a": {
   "title": "Sales Development Representative",
@@ -6290,7 +6290,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8ccc9c0fa3a0ae83": {
   "title": "Sales Development Representative",
@@ -6302,7 +6302,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "348acd4ad1032c45": {
   "title": "Sales Development Representative",
@@ -6314,7 +6314,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "62013e8be27c18dc": {
   "title": "Sales Development Representative",
@@ -6326,7 +6326,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "85c3010dc434c7e1": {
   "title": "Sales Development Representative",
@@ -6338,7 +6338,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "054b41997a3e7942": {
   "title": "Sales Development Representative",
@@ -6350,7 +6350,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ef9d2fd159f47370": {
   "title": "Sales Development Representative",
@@ -6362,7 +6362,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b0be1fb8ccd5eda5": {
   "title": "Sales Development Representative",
@@ -6374,7 +6374,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9985f5d647396f76": {
   "title": "Sales Development Representative",
@@ -6386,7 +6386,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b324158c756b422c": {
   "title": "Sales Development Representative",
@@ -6398,7 +6398,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "562c0a8e617bd008": {
   "title": "Sales Development Representative",
@@ -6410,7 +6410,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "90ee8047a9c79c49": {
   "title": "Sales Development Representative",
@@ -6422,7 +6422,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "357f1f32363702bf": {
   "title": "Sales Development Representative",
@@ -6434,7 +6434,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1f273f6be1017933": {
   "title": "Sales Development Representative",
@@ -6446,7 +6446,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a0a5d38cbff89065": {
   "title": "Sales Development Representative",
@@ -6458,7 +6458,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ebc67cbd6867cf47": {
   "title": "Sales Development Representative",
@@ -6470,7 +6470,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2d44269b25d1854e": {
   "title": "Sales Development Representative",
@@ -6482,7 +6482,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "fa011fb18c54b276": {
   "title": "Sales Development Representative",
@@ -6494,7 +6494,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "133def342effbb24": {
   "title": "Sales Development Representative",
@@ -6506,7 +6506,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "346c4655c56531a8": {
   "title": "Sales Development Representative",
@@ -6518,7 +6518,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ed880f3f80d47931": {
   "title": "Sales Development Representative",
@@ -6530,7 +6530,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "23fab2460ed3c570": {
   "title": "Sales Development Representative",
@@ -6542,7 +6542,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5fa09aee8e5e7eae": {
   "title": "Sales Development Representative",
@@ -6554,7 +6554,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "604a76868c98fb74": {
   "title": "Customer Success Manager",
@@ -6566,7 +6566,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ab59d590234a0aa2": {
   "title": "Customer Success Manager, Strategic",
@@ -6578,7 +6578,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "60da424ea0d6488d": {
   "title": "Customer Success Manager",
@@ -6590,7 +6590,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "468c69dc29d559d9": {
   "title": "Customer Success Manager",
@@ -6602,7 +6602,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3afcecc4f31b693a": {
   "title": "Senior Customer Success Manager",
@@ -6626,7 +6626,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "da993d4c49973692": {
   "title": "Customer Success Manager, Dynalite",
@@ -6638,7 +6638,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "be1f3af5b06a266e": {
   "title": "Technical Customer Success Manager",
@@ -6650,7 +6650,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "dab7b09b4b68880e": {
   "title": "Customer Success Manager (Key Accounts)",
@@ -6662,7 +6662,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "cbc716bdf9cc2950": {
   "title": "Customer Success Manager - Marketing Cloud",
@@ -6674,7 +6674,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "26de72542ca3294a": {
   "title": "Customer Success Manager - Public Sector",
@@ -6686,7 +6686,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1a30ba481a804aaf": {
   "title": "Customer Success Manager, Commercial, Central Region",
@@ -6698,7 +6698,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ae6a17f53a893718": {
   "title": "Customer Success Manager",
@@ -6710,7 +6710,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1c03c3dc75550b1a": {
   "title": "Customer Success Manager",
@@ -6722,7 +6722,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b2bf92d6178fa5be": {
   "title": "Customer Success Manager",
@@ -6734,7 +6734,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "7d627333a69eb854": {
   "title": "Customer Success Manager",
@@ -6746,7 +6746,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6c99262fed2b5dc7": {
   "title": "Customer Success Manager",
@@ -6758,7 +6758,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "aeff302953602fc3": {
   "title": "Customer Success Manager",
@@ -6770,7 +6770,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b6d4a5f92fdcdbb7": {
   "title": "Customer Success Manager",
@@ -6782,7 +6782,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a669caf1eb61adc8": {
   "title": "Customer Success Manager",
@@ -6794,7 +6794,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c1d3bb4518cf4e8c": {
   "title": "Customer Success Manager",
@@ -6806,7 +6806,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f88929f230a187f7": {
   "title": "Customer Success Manager",
@@ -6830,7 +6830,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "364f850326cf2368": {
   "title": "Customer Success Manager",
@@ -6842,7 +6842,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c270d73bdc66aba5": {
   "title": "Customer Success Manager",
@@ -6854,7 +6854,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6ef00da7b5db687e": {
   "title": "Customer Success Manager",
@@ -6866,7 +6866,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6b5b842afc7681a9": {
   "title": "Customer Success Manager",
@@ -6878,7 +6878,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "76e0cebc7dce3178": {
   "title": "Customer Success Manager",
@@ -6890,7 +6890,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "80f61ca2c6354da7": {
   "title": "Customer Success Manager",
@@ -6902,7 +6902,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ce60221e61d32b3e": {
   "title": "Customer Success Manager",
@@ -6926,7 +6926,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5cc8f0ae4afdf388": {
   "title": "Customer Success Manager",
@@ -6938,7 +6938,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6ad208b37c35ea01": {
   "title": "Customer Success Manager - SaaS",
@@ -6950,7 +6950,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "4dcc43e96d7b4225": {
   "title": "Customer Success Manager, Government",
@@ -6962,7 +6962,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f27bb2a4f73188e2": {
   "title": "Senior Customer Success Manager",
@@ -6974,7 +6974,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "cb1f21b814cf5b97": {
   "title": "Customer Success Manager, Enterprise",
@@ -6986,7 +6986,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d40ac2be015ccf40": {
   "title": "Customer Success Manager - Dedicated",
@@ -6998,7 +6998,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b703438e4573b6ad": {
   "title": "Customer Success Manager - ANZ",
@@ -7010,7 +7010,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "599bfabc906f0b99": {
   "title": "Customer Success Manager (Enterprise)",
@@ -7022,7 +7022,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "143b84126cdcfb63": {
   "title": "Senior Customer Success Manager",
@@ -7034,7 +7034,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "99641de0a24d00de": {
   "title": "Customer Success Manager - Australia",
@@ -7046,7 +7046,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "0051b7feaeb1b337": {
   "title": "Office Assistant",
@@ -7226,7 +7226,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "56020badfc5123be": {
   "title": "Onboarding Specialist",
@@ -7238,7 +7238,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b664c4ceecef8fea": {
   "title": "Onboarding Specialist",
@@ -7250,7 +7250,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "924ec19f7effc4ce": {
   "title": "Onboarding Specialist",
@@ -7262,7 +7262,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c5ecf8c563e1aab0": {
   "title": "Onboarding Specialist",
@@ -7274,7 +7274,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3fa5c15145fd71ed": {
   "title": "Onboarding Specialist",
@@ -7286,7 +7286,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1ff4ccdc9a4785ce": {
   "title": "Onboarding Specialist",
@@ -7298,14 +7298,14 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ed1933b8be1b7010": {
   "title": "Onboarding Specialist",
   "company": "Motion Recruitment Partners, LLC",
   "location": "Textile Finance, Los Angeles County",
   "comp": "$85542-$85542",
-  "link": "https://www.adzuna.com/land/ad/5762052183?se=qDrA-Tpn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=1C091986EB9D475EBD476A4D0562046E405E24C3",
+  "link": "https://www.adzuna.com/land/ad/5762052183?se=MP1e4Txn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=1C091986EB9D475EBD476A4D0562046E405E24C3",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
@@ -7322,7 +7322,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c22d98ceb05774b5": {
   "title": "Wealth Client Onboarding Specialist",
@@ -7334,7 +7334,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c54f65b5481c8f35": {
   "title": "Provider Onboarding Specialist",
@@ -7346,7 +7346,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c79d4116786b6c8b": {
   "title": "Talent Onboarding Specialist",
@@ -7358,7 +7358,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "aee548cdc0dc3910": {
   "title": "Hotel Onboarding Specialist",
@@ -7370,7 +7370,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3c54e35d0c0670cc": {
   "title": "Onboarding Specialist",
@@ -7382,7 +7382,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8890aa2db0adc8c3": {
   "title": "Onboarding Specialist",
@@ -7394,7 +7394,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1ca2357fd5b72b78": {
   "title": "Onboarding Specialist",
@@ -7406,7 +7406,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9812a38049b5f7b9": {
   "title": "Onboarding Specialist",
@@ -7418,7 +7418,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f2644b5b39a22d84": {
   "title": "Onboarding Specialist",
@@ -7430,7 +7430,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "394f3ce9429ae014": {
   "title": "Onboarding Specialist I",
@@ -7442,7 +7442,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8dc102be2b341a05": {
   "title": "Recruitment and Onboarding Specialist",
@@ -7454,7 +7454,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "19737bd0d90e0a3a": {
   "title": "Vendor Onboarding Specialist",
@@ -7466,7 +7466,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3d16370adfcccd26": {
   "title": "Customer Onboarding Specialist",
@@ -7478,7 +7478,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b4a9f1ec8f4423d4": {
   "title": "HR/Onboarding Specialist",
@@ -7490,7 +7490,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1f42409d1e5919d3": {
   "title": "Human Resources Onboarding Specialist",
@@ -7502,7 +7502,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6c5a4925b723ee10": {
   "title": "Kubernetes Application Onboarding Specialist",
@@ -7514,7 +7514,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "dfb26562761ef023": {
   "title": "INTL- Data Onboarding Specialist - LATAM",
@@ -7526,7 +7526,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "fda11a83851dafbc": {
   "title": "Onboarding Specialist",
@@ -7538,7 +7538,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "20ee39ff3e0284f0": {
   "title": "Onboarding Specialist",
@@ -7550,7 +7550,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "28f4b7d3ffdf19b7": {
   "title": "Onboarding Specialist",
@@ -7562,7 +7562,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3f44e16e6b3ca7ed": {
   "title": "Onboarding Client Specialist",
@@ -7574,7 +7574,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "09b7dbc298b50e66": {
   "title": "Onboarding Specialist",
@@ -7586,7 +7586,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "36bbdfe0d1301049": {
   "title": "Onboarding Specialist",
@@ -7598,7 +7598,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "69f39faeadd7f702": {
   "title": "Onboarding Specialist",
@@ -7610,7 +7610,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8f6351fc397a797c": {
   "title": "Onboarding Specialist",
@@ -7622,7 +7622,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "196f2ba0fc203bfc": {
   "title": "Onboarding Specialist",
@@ -7634,7 +7634,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f0be16aa2c38db4f": {
   "title": "Onboarding Specialist",
@@ -7646,7 +7646,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "eb41cdb7eddcf782": {
   "title": "Remote Work From Home Virtual Assistant (remote)",
@@ -8003,7 +8003,7 @@
   "comp": "$42310-$42310",
   "link": "https://www.adzuna.com/details/5762082668?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
-  "category": "Setter / BDM / BDR / SDM / SDR",
+  "category": "Setter / SDR / SDM",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
   "active": true
@@ -8145,7 +8145,7 @@
   "company": "BCL Search",
   "location": "New York City, New York",
   "comp": "$67348-$67348",
-  "link": "https://www.adzuna.com/land/ad/5702255339?se=Jg-F-zpn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=1C7363689490D0A2132DF609C9E859AEED20C1E9",
+  "link": "https://www.adzuna.com/land/ad/5702255339?se=hiNA4zxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=1C7363689490D0A2132DF609C9E859AEED20C1E9",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
@@ -8277,7 +8277,7 @@
   "company": "Insight Global",
   "location": "Bethesda, Montgomery County",
   "comp": "$65905-$65905",
-  "link": "https://www.adzuna.com/land/ad/5701910284?se=Jg-F-zpn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=76F6436BAEF90C50ED907F21362520A5D20BE15E",
+  "link": "https://www.adzuna.com/land/ad/5701910284?se=hiNA4zxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=76F6436BAEF90C50ED907F21362520A5D20BE15E",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
@@ -8373,7 +8373,7 @@
   "company": "Msccn",
   "location": "US",
   "comp": "$119941-$119941",
-  "link": "https://www.adzuna.com/land/ad/4870737246?se=Jg-F-zpn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=D9BD45DFE8DD7B32C19E5FDBC6A56C6DF9C6A42C",
+  "link": "https://www.adzuna.com/land/ad/4870737246?se=hiNA4zxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=D9BD45DFE8DD7B32C19E5FDBC6A56C6DF9C6A42C",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
@@ -8385,7 +8385,7 @@
   "company": "Hawkeye Search Group",
   "location": "Jersey City, Hudson County",
   "comp": "$37113-$37113",
-  "link": "https://www.adzuna.com/land/ad/5650568610?se=Jg-F-zpn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=EDD1E558A027FFC0EDF5996DBA75C2866A16A66B",
+  "link": "https://www.adzuna.com/land/ad/5650568610?se=hiNA4zxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=EDD1E558A027FFC0EDF5996DBA75C2866A16A66B",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -8781,7 +8781,7 @@
   "company": "Labcorp",
   "location": "Graham, Alamance County",
   "comp": "$35828-$35828",
-  "link": "https://www.adzuna.com/land/ad/5755006075?se=emNK_Dpn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=C11384A6F35836F92D098BAFD741C31153F2742E",
+  "link": "https://www.adzuna.com/land/ad/5755006075?se=ivMp5Dxn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=C11384A6F35836F92D098BAFD741C31153F2742E",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
@@ -8822,14 +8822,14 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "8896558f21c0c5af": {
   "title": "Customer Onboarding Specialist (Software)",
   "company": "Commercial",
   "location": "Kettering, Northamptonshire",
   "comp": "$45000-$45000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5743720275?se=oCJO_zpn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=E3351D034C23FB8CEEB1A1F3A752FEABFAD8B6D2",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5743720275?se=XCiY5zxn8RG0btGxqHH3qw&utm_medium=api&utm_source=3e941a8f&v=E3351D034C23FB8CEEB1A1F3A752FEABFAD8B6D2",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
@@ -8846,7 +8846,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "66be4557259dd650": {
   "title": "KYC Onboarding Specialist",
@@ -8858,7 +8858,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d24c4e6315464b7c": {
   "title": "Graduate Onboarding Specialist",
@@ -8882,7 +8882,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "1f0a01a5022b658c": {
   "title": "Data Onboarding Specialist",
@@ -8894,7 +8894,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "64b3f371e73d1d89": {
   "title": "Onboarding Specialist - Fully Remote",
@@ -8918,7 +8918,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "bdf691f2ef964f9f": {
   "title": "Customer Onboarding Specialist (Software)",
@@ -8942,7 +8942,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "dee66ba02f3e1ab7": {
   "title": "Sales and Onboarding Specialist (Property)",
@@ -8966,7 +8966,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "92698537b7cee45c": {
   "title": "Data Onboarding Specialist, STR - London",
@@ -8978,7 +8978,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5e7e22b1d013cd3f": {
   "title": "Data Onboarding Specialist, STR - London",
@@ -8990,7 +8990,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c77c6d18179957c2": {
   "title": "Onboarding Specialist (Part-Time FTC)",
@@ -9002,7 +9002,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "9745979b0c21cbda": {
   "title": "Onboarding Specialist (6 month contract)",
@@ -9014,7 +9014,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "104ebe7a730ebe81": {
   "title": "Client Onboarding Specialist , Private Banking , Contract",
@@ -9026,7 +9026,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "fdb20882d3cb5188": {
   "title": "Customer Success Onboarding Specialist (12 Month Contract)",
@@ -9038,7 +9038,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "05ecaa6ceef52fa7": {
   "title": "Bilingual Customer Success Onboarding Specialist (12 Month Contract)",
@@ -9050,7 +9050,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "6d81934a5fc65208": {
   "title": "EU Onboarding Specialist (Pre-Sales & Implementation | Bilingual French)",
@@ -9062,7 +9062,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "90ec9828b4cf93a9": {
   "title": "Senior FIX Onboarding Specialist - Java / Python Lead Software Engineer",
@@ -9074,7 +9074,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b5e68abf2b27a1b9": {
   "title": "Customer Onboarding & Transition Specialist",
@@ -9086,7 +9086,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "acb373fb0993dc86": {
   "title": "Digital Onboarding & Implementation Specialist",
@@ -9098,7 +9098,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "5de0fad17b379e6f": {
   "title": "Senior Specialist, Client Onboarding",
@@ -9122,7 +9122,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "810ff761c6f82629": {
   "title": "Accounts Payable Onboarding Executive",
@@ -9134,7 +9134,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "b49a5a6090c8c529": {
   "title": "Associate Manager, Merchant Onboarding (PG)",
@@ -9146,7 +9146,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "05106c87b0f56a99": {
   "title": "Customer Success / Client Service Executive",
@@ -9158,7 +9158,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d19c856328658585": {
   "title": "Enterprise Account Executive",
@@ -9170,7 +9170,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "ec48f41d291dc89d": {
   "title": "Internal Business Development Manager",
@@ -9182,7 +9182,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e3a3556e028b8f9c": {
   "title": "Customer Success Manager - Mid Market",
@@ -9194,7 +9194,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "3d65b36e03f40371": {
   "title": "Enterprise Customer Success Manager",
@@ -9206,7 +9206,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "afb288c9dc2b4184": {
   "title": "EMEA Customer onboarding Lead",
@@ -9218,7 +9218,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c40325e19b4f56f3": {
   "title": "Part-Time Remote Administrative / Payroll Assistant",
@@ -9290,7 +9290,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "cf6f41478ebb1a34": {
   "title": "Customer Onboarding Specialist",
@@ -9302,7 +9302,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "a609a44ce6a2da1c": {
   "title": "Junior Onboarding Specialist",
@@ -9326,7 +9326,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "bf7d4b9d8c7702cb": {
   "title": "Automotive Accounting Software Onboarding Specialist",
@@ -9338,7 +9338,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f3b3c02749590e98": {
   "title": "Automotive Software Onboarding Specialist (Fixed Ops)",
@@ -9350,7 +9350,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f4543aad420349cf": {
   "title": "Bilingual Automotive Accounting Software Onboarding Specialist",
@@ -9362,7 +9362,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "cada104f08600f31": {
   "title": "(Montreal Remote) Automotive Accounting Software Onboarding Specialist",
@@ -9386,7 +9386,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "fb74e9dc319d63a6": {
   "title": "Onboarding Specialist - Fully Remote | Upto $120/hr",
@@ -9410,7 +9410,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "78520ce165a3c8e4": {
   "title": "(Montreal Remote) Bilingual Automotive Software Onboarding Specialist - Fixed Ops",
@@ -9434,7 +9434,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "75e8ce98b73a57c3": {
   "title": "Customer Success Specialist",
@@ -9446,7 +9446,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "832cfc49562d3d17": {
   "title": "Business Development Representative",
@@ -9458,7 +9458,7 @@
   "category": "Setter / BDM / BDR / SDM / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "fff707e84b0db80b": {
   "title": "Senior Product Manager, Onboarding and Activation",
@@ -9482,7 +9482,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2c9ba3f0264163d7": {
   "title": "Onboarding Project Manager, AVP",
@@ -9494,7 +9494,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "26d6cfb832ee2242": {
   "title": "Remote Virtual Assistant",
@@ -9602,7 +9602,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "22519bfd185723cd": {
   "title": "Onboarding Specialist, ANZ",
@@ -9614,7 +9614,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "d2633d8c4d422b46": {
   "title": "Onboarding Specialist",
@@ -9626,7 +9626,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "cd7a628628ce6f16": {
   "title": "Client Onboarding Specialist",
@@ -9638,7 +9638,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "abb9895639136a11": {
   "title": "Operator Onboarding Specialist - Hybrid",
@@ -9650,7 +9650,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "db5c149caeb39d6c": {
   "title": "Onboarding Operations Specialist 1",
@@ -9674,7 +9674,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2c379f9d31dc9877": {
   "title": "Operator Onboarding Specialist - Hybrid WFH",
@@ -9698,7 +9698,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "e1d323a092ae8545": {
   "title": "Talent Acquisition & Onboarding Specialist - Sydney, Australia",
@@ -9710,7 +9710,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "03152044ea2b7e61": {
   "title": "Customer Onboarding & Support Specialist",
@@ -9722,7 +9722,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "2599cb61cd2aaa54": {
   "title": "Onboarding Operations Specialist - APAC",
@@ -9746,7 +9746,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "c49beabbfde9111a": {
   "title": "Analyst/Associate, Customer Onboarding Operations Specialist, DBS Australia (Sydney)",
@@ -9758,7 +9758,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "539c56b52f38befa": {
   "title": "Operator Onboarding SpecialistHybrid",
@@ -9770,7 +9770,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "29f0dac9c33da775": {
   "title": "Customer Success/Account Manager",
@@ -9782,7 +9782,7 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "bc5d76854ffd1844": {
   "title": "Remote Virtual Assistant — Operations & Accounting",
@@ -9874,6 +9874,222 @@
   "location": "North Lismore, Lismore Area",
   "comp": "",
   "link": "https://www.adzuna.com.au/details/5743716220?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "ca4ade6620cbba3b": {
+  "title": "Senior Systemadministrator (m/w/d) IT-Infrastruktur",
+  "company": "MY Humancapital GmbH",
+  "location": "Hamburg",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/senior-systemadministrator-it-infrastruktur-hamburg-48222",
+  "source": "Arbeitnow",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "8fb194b67e492daa": {
+  "title": "IT Support Specialist / IT Systemadministrator (m/w/d)",
+  "company": "MY Humancapital GmbH",
+  "location": "Munich",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/it-support-specialist-it-systemadministrator-munich-139490",
+  "source": "Arbeitnow",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "83c6e910717ce915": {
+  "title": "Executive Assistant",
+  "company": "Kelly Services",
+  "location": "San Mateo, San Mateo County",
+  "comp": "$75076-$75076",
+  "link": "https://www.adzuna.com/land/ad/5735648321?se=hiNA4zxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=579BF5665E1B08994A2FC6D68588518CE8F1BD42",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "a7bab25af8c19731": {
+  "title": "Executive Assistant",
+  "company": "Insight Global",
+  "location": "Tustin, Orange County",
+  "comp": "$70622-$70622",
+  "link": "https://www.adzuna.com/land/ad/5722201176?se=hiNA4zxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=4105584FDADF8BD51BE50E31360B049503E3BC33",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "324484401a0f9fea": {
+  "title": "Executive Assistant",
+  "company": "Paydex Technologies",
+  "location": "New York City, New York",
+  "comp": "$83543-$83543",
+  "link": "https://www.adzuna.com/details/5754090797?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "b278812a5c647389": {
+  "title": "BELAY - Executive Assistant",
+  "company": "Belay",
+  "location": "US",
+  "comp": "$41600-$47840",
+  "link": "https://www.adzuna.com/details/5330727899?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "3ca8db5785a683f3": {
+  "title": "Assistant Project Manager/Executive Assistant",
+  "company": "Check Off Your List",
+  "location": "Columbus, Franklin County",
+  "comp": "$28510-$28510",
+  "link": "https://www.adzuna.com/land/ad/5664335044?se=hiNA4zxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=196841ABD36E5F9727F18712E4B41F1B81E58873",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "25f9278653585b0c": {
+  "title": "PT to FT Executive Assistant with Real Estate Assistant Experience",
+  "company": "Check Off Your List",
+  "location": "Columbus, Franklin County",
+  "comp": "$50957-$50957",
+  "link": "https://www.adzuna.com/land/ad/5699762160?se=hiNA4zxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=939A2A9D0B04523BB6D12C4E2B8CDF874609A12E",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "e6fa42757d8c58d5": {
+  "title": "Part-Time to Full-Time Executive Assistant",
+  "company": "Check Off Your List",
+  "location": "Columbus, Franklin County",
+  "comp": "$34897-$34897",
+  "link": "https://www.adzuna.com/land/ad/5682631586?se=hiNA4zxn8RG5GpwkRXC5CA&utm_medium=api&utm_source=3e941a8f&v=7835173B81C4CFA8FE29550C0ECF4150B396FCDA",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "f2b9ddde6903694e": {
+  "title": "BELAY - Senior Executive Assistant",
+  "company": "Belay",
+  "location": "US",
+  "comp": "$107424-$107424",
+  "link": "https://www.adzuna.com/details/5330064264?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "048b57d591c2a333": {
+  "title": "Executive Administrative Assistant",
+  "company": "our",
+  "location": "US",
+  "comp": "$60344-$60344",
+  "link": "https://www.adzuna.com/details/5648706061?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "20160ccc118d8d54": {
+  "title": "Executive Assistant (2026)",
+  "company": "Five Elms Capital",
+  "location": "Mission Woods, Johnson County",
+  "comp": "$49917-$49917",
+  "link": "https://www.adzuna.com/details/5697346372?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "901c0121c772ee4a": {
+  "title": "Executive Assistant (PA)",
+  "company": "People Solutions",
+  "location": "Birmingham, West Midlands",
+  "comp": "$39998-$39998",
+  "link": "https://www.adzuna.co.uk/jobs/details/5722329230?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "179f6cfc6fcb43f8": {
+  "title": "Executive Assistant",
+  "company": "Office Angels",
+  "location": "Heeley, Sheffield",
+  "comp": "$40000-$45000",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5757459641?se=6BV46Dxn8RGPL9oNLTnS9Q&utm_medium=api&utm_source=3e941a8f&v=66918463FFDDE579FED3FE5C4C65D67E62DC98AA",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "73de2768b354e926": {
+  "title": "Personal Assistant Intern",
+  "company": "DEZIGNOVATE LTD",
+  "location": "London, UK",
+  "comp": "$25044-$25044",
+  "link": "https://www.adzuna.co.uk/jobs/details/4753824128?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "422368badc56faee": {
+  "title": "Virtual Assistant",
+  "company": "Naplesjetcenter",
+  "location": "Ontario, Canada",
+  "comp": "",
+  "link": "https://www.adzuna.ca/details/5710864187?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "47f9c36c1fab7a88": {
+  "title": "Administrative Assistant",
+  "company": "Blue Beacon Consulting, Inc.",
+  "location": "Toronto, Ontario",
+  "comp": "",
+  "link": "https://www.adzuna.ca/details/5717330302?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Admin / Assistant",
+  "first_seen": "2026-06-13",
+  "last_seen": "2026-06-13",
+  "active": true
+ },
+ "0582277c67e96c84": {
+  "title": "Office Administration Work – Support Assistant",
+  "company": "HRS Talent Solutions",
+  "location": "Erakala, Mackay",
+  "comp": "",
+  "link": "https://www.adzuna.com.au/details/5758731703?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",

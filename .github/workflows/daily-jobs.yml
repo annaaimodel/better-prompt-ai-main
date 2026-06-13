@@ -24,6 +24,14 @@ jobs:
           # Optional: point at a published Google-Sheet CSV of inbox jobs.
           # Set this in repo Settings -> Secrets and variables -> Actions -> Variables.
           INBOX_CSV_URL: ${{ vars.INBOX_CSV_URL }}
+          # Job-source API keys (Settings -> Secrets and variables -> Actions -> Secrets).
+          # Any unset key simply disables that source — nothing breaks.
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          THEMUSE_API_KEY: ${{ secrets.THEMUSE_API_KEY }}
+          JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
+          # Optional: comma-separated Adzuna country codes (default: us,gb,ca,au).
+          ADZUNA_COUNTRIES: ${{ vars.ADZUNA_COUNTRIES }}
         run: python jobs/pipeline.py
 
       - name: Commit results

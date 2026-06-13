@@ -24,7 +24,9 @@ inbox (gated groups) ┘                                         ├─ jobs/dai
                                                                └─ jobs/history.csv  (all-time)
 ```
 
-- **Sources** are free, public, ToS-friendly job APIs — no keys, no scraping.
+- **Sources** are free/affordable, ToS-friendly job APIs (no scraping). Some
+  need a free key — see **Job sources & API keys** below. Any source whose key
+  is unset is simply skipped; nothing breaks.
 - **Dedupe** uses `seen.json` (an all-time record keyed by company+title), so a
   role is only ever reported on the first day it appears.
 - **Link health** — only *useful* links are listed. Links that point at a
@@ -37,6 +39,24 @@ inbox (gated groups) ┘                                         ├─ jobs/dai
   it off.
 - Runs daily via GitHub Actions (`.github/workflows/daily-jobs.yml`) and commits
   the results back to the repo.
+
+## Job sources & API keys
+
+Add keys under **Settings → Secrets and variables → Actions → Secrets** (the
+country list goes under **Variables**). All are optional — an unset key just
+disables that source.
+
+| Source | Coverage | Key needed | Where to get it |
+|--------|----------|-----------|-----------------|
+| Remotive, RemoteOK, Arbeitnow, Jobicy | Remote (US-heavy) | none | built-in |
+| **The Muse** | US-heavy sales/CS | none (optional `THEMUSE_API_KEY` for higher limits) | themuse.com/developers |
+| **Adzuna** | US + UK + CA + AU; aggregates many boards | `ADZUNA_APP_ID` + `ADZUNA_APP_KEY` (free) | developer.adzuna.com |
+| **JSearch** *(optional)* | Indeed / LinkedIn / Glassdoor / ZipRecruiter via Google for Jobs | `JSEARCH_API_KEY` (RapidAPI, freemium) | rapidapi.com → JSearch |
+
+- `ADZUNA_COUNTRIES` (repo **Variable**) — comma-separated country codes; default
+  `us,gb,ca,au`.
+- The categoriser still filters every source down to Closer / Setter / Success
+  roles, so adding a broad source won't flood the board with irrelevant jobs.
 
 ## The inbox (capturing the gated groups & socials)
 

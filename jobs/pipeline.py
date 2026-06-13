@@ -233,9 +233,92 @@ def src_jobicy():
             log(f"Jobicy/{ind} failed: {e}")
     return out, ok
 
+# Search terms used by the keyword-search sources (Adzuna, JSearch). The
+# categoriser still filters everything down to closer/setter/success roles.
+SEARCH_TERMS = ["high ticket closer", "appointment setter", "sales closer",
+                "remote closer", "sales development representative",
+                "customer success manager"]
+
+def src_themuse():
+    # The Muse works WITHOUT a key (rate-limited); THEMUSE_API_KEY raises limits.
+    out, ok = [], False
+    key = os.environ.get("THEMUSE_API_KEY", "").strip()
+    for page in range(1, 4):
+        try:
+            params = {"category": "Sales", "page": page}
+            if key:
+                params["api_key"] = key
+            data = get_json("https://www.themuse.com/api/public/jobs?" + urllib.parse.urlencode(params))
+            ok = True
+            for j in data.get("results", []):
+                locs = ", ".join(l.get("name", "") for l in j.get("locations", []))
+                refs = j.get("refs") or {}
+                out.append(mk("The Muse", j.get("name"), (j.get("company") or {}).get("name"),
+                              locs, "", refs.get("landing_page"), j.get("contents")))
+        except Exception as e:
+            log(f"The Muse/p{page} failed: {e}")
+    return out, ok
+
+def src_adzuna():
+    # Needs free ADZUNA_APP_ID + ADZUNA_APP_KEY (developer.adzuna.com).
+    # Unconfigured -> returns ok=False so it never delists / never errors.
+    app_id = os.environ.get("ADZUNA_APP_ID", "").strip()
+    app_key = os.environ.get("ADZUNA_APP_KEY", "").strip()
+    out, ok = [], False
+    if not (app_id and app_key):
+        return out, False
+    countries = [c.strip() for c in (os.environ.get("ADZUNA_COUNTRIES") or "us,gb,ca,au").split(",") if c.strip()]
+    for c in countries:
+        for what in SEARCH_TERMS:
+            try:
+                q = urllib.parse.urlencode({"app_id": app_id, "app_key": app_key,
+                                            "results_per_page": 50, "what": what})
+                data = get_json(f"https://api.adzuna.com/v1/api/jobs/{c}/search/1?{q}")
+                ok = True
+                for j in data.get("results", []):
+                    sal = ""
+                    if j.get("salary_min"):
+                        sal = f"${int(j['salary_min'])}" + (f"-${int(j['salary_max'])}" if j.get("salary_max") else "")
+                    out.append(mk("Adzuna", j.get("title"), (j.get("company") or {}).get("display_name"),
+                                  (j.get("location") or {}).get("display_name"), sal,
+                                  j.get("redirect_url"), j.get("description")))
+            except Exception as e:
+                log(f"Adzuna/{c}/{what} failed: {e}")
+    return out, ok
+
+def src_jsearch():
+    # Optional, feature-flagged: set JSEARCH_API_KEY (RapidAPI) to pull Google-for-
+    # Jobs results (Indeed / LinkedIn / Glassdoor / ZipRecruiter). Off if unset.
+    key = os.environ.get("JSEARCH_API_KEY", "").strip()
+    out, ok = [], False
+    if not key:
+        return out, False
+    queries = [t + " remote" for t in SEARCH_TERMS]
+    for query in queries:
+        try:
+            url = "https://jsearch.p.rapidapi.com/search?" + urllib.parse.urlencode(
+                {"query": query, "page": "1", "num_pages": "1"})
+            req = urllib.request.Request(url, headers={
+                "X-RapidAPI-Key": key, "X-RapidAPI-Host": "jsearch.p.rapidapi.com", "User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=25) as r:
+                data = json.loads(r.read().decode("utf-8", "replace"))
+            ok = True
+            for j in data.get("data", []):
+                loc = ", ".join(filter(None, [j.get("job_city"), j.get("job_state"), j.get("job_country")]))
+                sal = ""
+                if j.get("job_min_salary"):
+                    sal = f"${int(j['job_min_salary'])}" + (f"-${int(j['job_max_salary'])}" if j.get("job_max_salary") else "")
+                out.append(mk("JSearch", j.get("job_title"), j.get("employer_name"),
+                              loc or ("Remote" if j.get("job_is_remote") else ""), sal,
+                              j.get("job_apply_link"), j.get("job_description")))
+        except Exception as e:
+            log(f"JSearch/{query} failed: {e}")
+    return out, ok
+
 # name -> fetcher. The name is also the `source` stamped on each job.
 SOURCES = [("Remotive", src_remotive), ("RemoteOK", src_remoteok),
-           ("Arbeitnow", src_arbeitnow), ("Jobicy", src_jobicy)]
+           ("Arbeitnow", src_arbeitnow), ("Jobicy", src_jobicy),
+           ("The Muse", src_themuse), ("Adzuna", src_adzuna), ("JSearch", src_jsearch)]
 API_SOURCES = {name for name, _ in SOURCES}
 
 # --- Inbox (gated-group posts: manual or Zapier-fed) ---------------------

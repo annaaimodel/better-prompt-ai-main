@@ -813,7 +813,7 @@
   "category": "Success (client / customer / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-13",
-  "active": true
+  "active": false
  },
  "f210d23d5cd1f52b": {
   "title": "Customer Success Manager",

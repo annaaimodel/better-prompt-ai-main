@@ -31,9 +31,8 @@ CLOSER_KW = ["high ticket closer", "high-ticket closer", "sales closer",
              "account executive", "inside sales", "sales representative",
              "sales rep", "closer"]
 SETTER_KW = ["appointment setter", "appointment setting", "setter",
-             "business development representative", "business development manager",
              "sales development representative", "sales development manager"]
-SETTER_ACR = ["bdr", "bdm", "sdr", "sdm"]               # match as whole words only
+SETTER_ACR = ["sdr", "sdm"]                             # match as whole words only
 # Success — matched on the JOB TITLE ONLY, and only these CSM-based terms.
 SUCCESS_TITLE = ["customer success", "client success", "student success", "onboarding"]
 SUCCESS_ACR = ["csm"]
@@ -55,22 +54,26 @@ def _has_word(t, acrs):
 def is_remote(j) -> bool:
     if j.get("source") in REMOTE_SOURCES:
         return True
-    hay = (str(j.get("title", "")) + " " + str(j.get("location", ""))).lower()
+    hay = (str(j.get("title", "")) + " " + str(j.get("location", "")) + " "
+           + str(j.get("desc", ""))).lower()
     return _has(hay, REMOTE_KW)
 
 def categorise(j) -> str | None:
+    if not is_remote(j):
+        return None                       # remote-only across every bucket
     title = str(j.get("title", "")).lower()
     text = title + " " + str(j.get("desc", "")).lower()
     # Success — TITLE only, CSM-based terms only
     if _has(title, SUCCESS_TITLE) or _has_word(title, SUCCESS_ACR):
         return "Success (CSM / customer / client / student)"
-    # Closer / Setter — title + description
+    # Closer — title + description
     if _has(text, CLOSER_KW):
         return "Closer"
+    # Setter / SDR / SDM — title + description (Business Development excluded)
     if _has(text, SETTER_KW) or _has_word(text, SETTER_ACR):
-        return "Setter / BDM / BDR / SDM / SDR"
-    # VA / Admin / Assistant — TITLE only, REMOTE only
-    if (_has(title, VA_TITLE) or _has_word(title, VA_ACR)) and is_remote(j):
+        return "Setter / SDR / SDM"
+    # VA / Admin / Assistant — TITLE only
+    if _has(title, VA_TITLE) or _has_word(title, VA_ACR):
         return "VA / Admin / Assistant"
     return None
 
@@ -537,7 +540,7 @@ def _bucket_code(cat):
         return "success"
     if "assistant" in c or "admin" in c or c.startswith("va "):
         return "va"
-    if "setter" in c or "bdr" in c or "sdr" in c or "bd" in c:
+    if "setter" in c or "sdr" in c or "sdm" in c:
         return "setter"
     if "closer" in c:
         return "closer"
@@ -610,7 +613,7 @@ def write_all_html(active, new_count):
                 '<div class="fchips">'
                 '<button class="fchip on" data-f="all">All</button>'
                 '<button class="fchip" data-f="closer">Closer</button>'
-                '<button class="fchip" data-f="setter">Setter / BD</button>'
+                '<button class="fchip" data-f="setter">Setter / SDR</button>'
                 '<button class="fchip" data-f="success">Success</button>'
                 '<button class="fchip" data-f="va">VA / Admin</button>'
                 '</div><div class="fcount" id="fcount"></div></div>')

@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "High-Ticket Job Saver",
+  "version": "1.0.0",
+  "description": "Save a job from any page straight to your high-ticket jobs board.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": [
+    "https://script.google.com/*",
+    "https://script.googleusercontent.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Save this job to my board"
+  },
+  "options_page": "options.html"
+}

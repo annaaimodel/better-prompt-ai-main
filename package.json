@@ -1,0 +1,8 @@
+{
+  "name": "high-ticket-tools",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest"
+  }
+}

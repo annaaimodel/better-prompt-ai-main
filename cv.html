@@ -44,6 +44,12 @@ textarea:focus{border-color:var(--accent)}
 .terms{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
 .term{font-size:11px;background:#1a2236;color:#aebfe0;padding:1px 7px;border-radius:6px}
 a.visit{font-size:13px;font-weight:700;color:#fff;background:var(--accent);padding:6px 11px;border-radius:8px;text-decoration:none}
+.mfilters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:4px 0 14px}
+.mchips{display:flex;gap:6px;flex-wrap:wrap}
+.mchip{padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mut);cursor:pointer;font-size:12px;font-weight:600}
+.mchip:hover{color:var(--txt)}.mchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.msel{padding:7px 11px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:12px;font-weight:600;outline:none;cursor:pointer}
+.msel:focus{border-color:var(--accent)}
 .empty{text-align:center;color:var(--mut);padding:40px 0}
 .status{color:var(--mut);font-size:13px;margin-top:10px;min-height:18px}
 footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
@@ -119,7 +125,7 @@ const BUCKETS = {
   va:      {label:"VA / Admin", kw:VA_KW, acr:VA_ACR},
 };
 
-function bucketOfCategory(cat){
+function bucketOfCategory(cat){   // coarse — used for role-match scoring
   const c = (cat||"").toLowerCase();
   if (c.includes("success")) return "success";
   if (c.includes("assistant")||c.includes("admin")||c.startsWith("va ")) return "va";
@@ -127,6 +133,23 @@ function bucketOfCategory(cat){
   if (c.includes("closer")) return "closer";
   return null;
 }
+function fineBucket(cat){         // fine — used for the filter chips
+  const c = (cat||"").toLowerCase();
+  if (c.includes("success")) return "success";
+  if (c.includes("assistant")||c.includes("admin")||c.startsWith("va ")) return "va";
+  if (c.includes("setter")||c.includes("sdr")||c.includes("sdm")){
+    if (c.includes("dm setting")) return "setdm";
+    if (c.includes("phone setting")) return "setphone";
+    return "setter";
+  }
+  if (c.includes("closer")) return "closer";
+  return "other";
+}
+const ROLE_CHIPS = [["all","All"],["closer","Closer"],["setdm","DM Setting"],
+  ["setphone","Phone Setting"],["setter","Setter / SDR"],["success","Success"],["va","VA / Admin"]];
+const COUNTRY_ORDER = ["Worldwide / Anywhere","United States","United Kingdom","Canada",
+  "Australia","Europe","Latin America","Other"];
+let fRole="all", fCountry="all", fLead="all";   // active matcher filters
 
 // ---- Tokenising -----------------------------------------------------------
 const STOP = new Set(("a an the and or of to in for with on at by from as is are be been being this that " +
@@ -218,38 +241,79 @@ const $ = id => document.getElementById(id);
 function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
 function scoreClass(s){ return s>=80?"s-hi":s>=60?"s-mid":"s-lo"; }
 
+function cardHtml(m){
+  const j = m.job;
+  const comp = j.comp ? `<span class="pill">${esc(j.comp)}</span>` : "";
+  const tag = j.category ? `<span class="tag">${esc(j.category)}</span>` : "";
+  const ctry = j.country ? `<span class="tag">${esc(j.country)}</span>` : "";
+  const lead = j.lead_type ? `<span class="tag">${esc(j.lead_type)} leads</span>` : "";
+  const terms = m.terms.length ? `<div class="terms">${m.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>` : "";
+  return `<div class="card">
+    <div class="chead">
+      <div><div class="t">${esc(j.title)}</div><div class="c">${esc(j.company)}${j.location?` &middot; ${esc(j.location)}`:""}</div></div>
+      <span class="score ${scoreClass(m.score)}">${m.score}%</span>
+    </div>
+    <div class="why"><b>Why:</b> ${esc(m.roleReason)}</div>
+    ${terms}
+    <div class="f">${comp}${tag}${ctry}${lead}<span class="src">via ${esc(j.source||"")}</span>
+      <a class="visit" href="${esc(j.link)}" target="_blank" rel="noopener">Apply &rarr;</a></div>
+  </div>`;
+}
+
+function matchControls(pool){
+  const chips = ROLE_CHIPS.map(([k,l]) =>
+    `<button class="mchip${k===fRole?" on":""}" data-r="${k}">${l}</button>`).join("");
+  const present = new Set(pool.map(m => m.job.country || "Other"));
+  const ordered = COUNTRY_ORDER.filter(c=>present.has(c)).concat([...present].filter(c=>!COUNTRY_ORDER.includes(c)).sort());
+  const copts = `<option value="all">All countries</option>` +
+    ordered.map(c=>`<option value="${esc(c)}"${c===fCountry?" selected":""}>${esc(c)}</option>`).join("");
+  const lopts = [["all","Any lead type"],["Inbound","Inbound leads"],["Cold","Cold leads"]]
+    .map(([v,l])=>`<option value="${v}"${v===fLead?" selected":""}>${l}</option>`).join("");
+  return `<div class="mfilters">
+    <div class="mchips">${chips}</div>
+    <select id="mcountry" class="msel">${copts}</select>
+    <select id="mlead" class="msel">${lopts}</select>
+  </div>`;
+}
+
+function applyFilters(list){
+  return list.filter(m => {
+    const j = m.job;
+    if (fRole!=="all" && fineBucket(j.category)!==fRole) return false;
+    if (fCountry!=="all" && (j.country||"Other")!==fCountry) return false;
+    if (fLead!=="all" && (j.lead_type||"")!==fLead) return false;
+    return true;
+  });
+}
+
 function render(matches, threshold, roles){
   const box = $("results");
-  if (!matches.length){ box.innerHTML = ""; return; }
+  if (!matches || !matches.length){ box.innerHTML = ""; return; }
   const pass = matches.filter(m => m.score >= threshold);
-  const show = pass.length ? pass : matches.slice(0, 5);
-
-  let head = "";
   const roleLabel = roles.primary ? BUCKETS[roles.primary].label : null;
-  if (pass.length){
-    head = `<h2>Your matches <span class="n">${pass.length} role${pass.length>1?"s":""} at ${threshold}%+${roleLabel?` · reads as a ${esc(roleLabel)} CV`:""}</span></h2>`;
+  const controls = matchControls(pass.length ? pass : matches);
+
+  let head, body;
+  if (!pass.length){
+    const closest = matches.slice(0, 5);
+    head = `<h2>No roles reached ${threshold}% <span class="n">— here are your closest ${closest.length}. Lower the slider to see more.</span></h2>`;
+    body = `<div class="grid">${closest.map(cardHtml).join("")}</div>`;
   } else {
-    head = `<h2>No roles reached ${threshold}% <span class="n">— here are your closest ${show.length}. Lower the slider to see more.</span></h2>`;
+    const filtered = applyFilters(pass);
+    head = `<h2>Your matches <span class="n">${filtered.length} of ${pass.length} at ${threshold}%+${roleLabel?` · reads as a ${esc(roleLabel)} CV`:""}</span></h2>`;
+    body = filtered.length
+      ? `<div class="grid">${filtered.map(cardHtml).join("")}</div>`
+      : `<p class="empty">No matches for these filters — try widening them above.</p>`;
   }
+  box.innerHTML = controls + head + body;
 
-  const cards = show.map(m => {
-    const j = m.job;
-    const comp = j.comp ? `<span class="pill">${esc(j.comp)}</span>` : "";
-    const tag = m.bucket ? `<span class="tag">${esc(BUCKETS[m.bucket].label)}</span>` : "";
-    const terms = m.terms.length ? `<div class="terms">${m.terms.map(t=>`<span class="term">${esc(t)}</span>`).join("")}</div>` : "";
-    return `<div class="card">
-      <div class="chead">
-        <div><div class="t">${esc(j.title)}</div><div class="c">${esc(j.company)}${j.location?` &middot; ${esc(j.location)}`:""}</div></div>
-        <span class="score ${scoreClass(m.score)}">${m.score}%</span>
-      </div>
-      <div class="why"><b>Why:</b> ${esc(m.roleReason)}</div>
-      ${terms}
-      <div class="f">${comp}${tag}<span class="src">via ${esc(j.source||"")}</span>
-        <a class="visit" href="${esc(j.link)}" target="_blank" rel="noopener">Apply &rarr;</a></div>
-    </div>`;
-  }).join("");
-
-  box.innerHTML = head + `<div class="grid">${cards}</div>`;
+  // wire filter controls (state persists in module vars across re-renders)
+  [].forEach.call(box.querySelectorAll(".mchip"), ch => ch.onclick = () => {
+    fRole = ch.getAttribute("data-r"); render(lastMatches, +$("thresh").value, lastRoles);
+  });
+  const mc = $("mcountry"), ml = $("mlead");
+  if (mc) mc.onchange = () => { fCountry = mc.value; render(lastMatches, +$("thresh").value, lastRoles); };
+  if (ml) ml.onchange = () => { fLead = ml.value; render(lastMatches, +$("thresh").value, lastRoles); };
 }
 
 // ---- Run ------------------------------------------------------------------

@@ -33,6 +33,19 @@ CLOSER_KW = ["high ticket closer", "high-ticket closer", "sales closer",
 SETTER_KW = ["appointment setter", "appointment setting", "setter",
              "sales development representative", "sales development manager"]
 SETTER_ACR = ["sdr", "sdm"]                             # match as whole words only
+# Setter channel split (checked once a role is already a setter).
+SETTER_DM_KW = ["dm setter", "dm setting", "instagram", "social media", "social selling",
+                "social dm", "online chat", "chat setter", "direct message", "social media setter"]
+SETTER_DM_ACR = ["dm", "dms", "ig"]
+SETTER_PHONE_KW = ["phone setter", "phone setting", "cold call", "cold caller", "cold calling",
+                   "dialer", "dialler", "telemarket", "telesales", "outbound call",
+                   "phone sales", "calling leads", "over the phone", "outbound dialing"]
+# Lead temperature — a cross-cutting dimension (applies to setters and closers alike).
+LEAD_INBOUND_KW = ["inbound", "warm lead", "warm leads", "inbound lead", "booked appointment",
+                   "scheduled call", "responding to", "inbound closer", "inbound setter",
+                   "pre-qualified", "prequalified", "warm market"]
+LEAD_COLD_KW = ["cold call", "cold calling", "cold caller", "cold outreach", "cold dm",
+                "cold lead", "cold email", "outbound", "prospecting", "cold market", "lead generation"]
 # Success — matched on the JOB TITLE ONLY, and only these CSM-based terms.
 SUCCESS_TITLE = ["customer success", "client success", "student success", "onboarding"]
 SUCCESS_ACR = ["csm"]
@@ -69,13 +82,26 @@ def categorise(j) -> str | None:
     # Closer — title + description
     if _has(text, CLOSER_KW):
         return "Closer"
-    # Setter / SDR / SDM — title + description (Business Development excluded)
+    # Setter — split into DM / Phone / generic (Business Development excluded)
     if _has(text, SETTER_KW) or _has_word(text, SETTER_ACR):
-        return "Setter / SDR / SDM"
+        if _has(text, SETTER_DM_KW) or _has_word(text, SETTER_DM_ACR):
+            return "Setter — DM Setting"
+        if _has(text, SETTER_PHONE_KW):
+            return "Setter — Phone Setting"
+        return "Setter / SDR"
     # VA / Admin / Assistant — TITLE only
     if _has(title, VA_TITLE) or _has_word(title, VA_ACR):
         return "VA / Admin / Assistant"
     return None
+
+def lead_type(j) -> str:
+    """Inbound vs Cold — a cross-cutting tag, '' when the listing doesn't say."""
+    text = (str(j.get("title", "")) + " " + str(j.get("desc", ""))).lower()
+    if _has(text, LEAD_INBOUND_KW):
+        return "Inbound"
+    if _has(text, LEAD_COLD_KW):
+        return "Cold"
+    return ""
 
 # English-only: drop titles carrying clear non-English (ES/PT/FR/DE/IT/NL) job
 # words or accented letters. Checked on the title only (companies/locations may
@@ -318,7 +344,9 @@ SEARCH_TERMS = ["high ticket closer", "appointment setter", "sales closer",
                 "remote closer", "sales development representative",
                 "customer success manager", "onboarding specialist",
                 "remote virtual assistant", "remote executive assistant",
-                "remote administrative assistant"]
+                "remote administrative assistant",
+                "dm setter", "instagram appointment setter", "cold caller",
+                "phone setter", "inbound sales representative"]
 
 def src_themuse():
     # The Muse works WITHOUT a key (rate-limited); THEMUSE_API_KEY raises limits.
@@ -470,6 +498,7 @@ def main():
         if not is_english(j.get("title", "")):
             continue   # English-language listings only
         j.setdefault("country", country_of(j.get("location", "")))  # Adzuna pre-stamps; others derive
+        j["lead_type"] = lead_type(j)
         cat = categorise(j)
         if not cat:
             if j.get("inbox"):
@@ -487,7 +516,8 @@ def main():
     for k, j in current.items():
         fields = {"title": j["title"], "company": j["company"], "location": j["location"],
                   "comp": j["comp"], "link": j["link"], "source": j["source"],
-                  "category": j["category"], "country": j.get("country") or country_of(j.get("location", ""))}
+                  "category": j["category"], "country": j.get("country") or country_of(j.get("location", "")),
+                  "lead_type": j.get("lead_type", "")}
         if k in store:
             store[k].update(fields); store[k]["last_seen"] = TODAY; store[k]["active"] = True
         else:
@@ -597,6 +627,10 @@ def _bucket_code(cat):
     if "assistant" in c or "admin" in c or c.startswith("va "):
         return "va"
     if "setter" in c or "sdr" in c or "sdm" in c:
+        if "dm setting" in c:
+            return "setdm"
+        if "phone setting" in c:
+            return "setphone"
         return "setter"
     if "closer" in c:
         return "closer"
@@ -611,8 +645,10 @@ def _card(j, tag=False, badge=False, code=None):
     attrs = ""
     if code:
         ctry = j.get("country") or "Other"
-        s = f'{j["title"]} {j["company"]} {j["location"]} {j["source"]} {j["category"]} {ctry}'.lower()
+        lead = j.get("lead_type") or ""
+        s = f'{j["title"]} {j["company"]} {j["location"]} {j["source"]} {j["category"]} {ctry} {lead}'.lower()
         attrs = (f' data-b="{code}" data-c="{html.escape(ctry, quote=True)}"'
+                 f' data-l="{html.escape(lead, quote=True)}"'
                  f' data-s="{html.escape(s, quote=True)}"')
     return (f'<div class="card"{attrs}><div class="t">{badgeh}{html.escape(j["title"])}</div>'
             f'<div class="c">{html.escape(j["company"])} &middot; {html.escape(j["location"])}</div>'
@@ -631,18 +667,24 @@ def _doc(title, sub, nav_key, body):
 def _controls(jobs):
     present = {j.get("country") or "Other" for j in jobs}
     ordered = [c for c in COUNTRY_ORDER if c in present] + sorted(present - set(COUNTRY_ORDER))
-    opts = '<option value="all">All countries</option>' + "".join(
+    copts = '<option value="all">All countries</option>' + "".join(
         f'<option value="{html.escape(c, quote=True)}">{html.escape(c)}</option>' for c in ordered)
+    lopts = ('<option value="all">Any lead type</option>'
+             '<option value="Inbound">Inbound leads</option>'
+             '<option value="Cold">Cold leads</option>')
     return ('<div class="controls">'
             '<input id="q" type="search" placeholder="Search title, company, source…">'
             '<div class="fchips">'
             '<button class="fchip on" data-f="all">All</button>'
             '<button class="fchip" data-f="closer">Closer</button>'
+            '<button class="fchip" data-f="setdm">DM Setting</button>'
+            '<button class="fchip" data-f="setphone">Phone Setting</button>'
             '<button class="fchip" data-f="setter">Setter / SDR</button>'
             '<button class="fchip" data-f="success">Success</button>'
             '<button class="fchip" data-f="va">VA / Admin</button>'
             '</div>'
-            f'<select id="country" class="csel" aria-label="Country">{opts}</select>'
+            f'<select id="country" class="csel" aria-label="Country">{copts}</select>'
+            f'<select id="lead" class="csel" aria-label="Lead type">{lopts}</select>'
             '<div class="fcount" id="fcount"></div></div>')
 
 def write_latest_html(jobs, active_count, scanned):
@@ -666,17 +708,19 @@ def write_latest_html(jobs, active_count, scanned):
 FILTER_JS = """<script>
 (function(){
  var q=document.getElementById('q'),fcount=document.getElementById('fcount'),
-     country=document.getElementById('country'),
+     country=document.getElementById('country'),lead=document.getElementById('lead'),
      chips=[].slice.call(document.querySelectorAll('.fchip')),f='all';
  function apply(){
-  var t=(q.value||'').trim().toLowerCase(),cc=country?country.value:'all',n=0;
+  var t=(q.value||'').trim().toLowerCase(),cc=country?country.value:'all',
+      ll=lead?lead.value:'all',n=0;
   [].forEach.call(document.querySelectorAll('section.dgroup'),function(sec){
    var vis=0;
    [].forEach.call(sec.querySelectorAll('.card'),function(c){
     var okB=(f==='all')||c.getAttribute('data-b')===f,
         okC=(cc==='all')||c.getAttribute('data-c')===cc,
+        okL=(ll==='all')||c.getAttribute('data-l')===ll,
         okT=!t||(c.getAttribute('data-s')||'').indexOf(t)>-1,
-        show=okB&&okC&&okT;
+        show=okB&&okC&&okL&&okT;
     c.style.display=show?'':'none'; if(show){vis++;n++;}
    });
    sec.style.display=vis?'':'none';
@@ -684,7 +728,10 @@ FILTER_JS = """<script>
   fcount.textContent=n+' shown';
  }
  chips.forEach(function(ch){ch.onclick=function(){chips.forEach(function(x){x.classList.remove('on');});ch.classList.add('on');f=ch.getAttribute('data-f');apply();};});
- q.addEventListener('input',apply); if(country){country.addEventListener('change',apply);} apply();
+ q.addEventListener('input',apply);
+ if(country){country.addEventListener('change',apply);}
+ if(lead){lead.addEventListener('change',apply);}
+ apply();
 })();
 </script>"""
 

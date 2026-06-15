@@ -128,14 +128,15 @@ def is_english(title: str) -> bool:
         return False
     return not any(m in t for m in NON_EN_MARKERS)
 
-# Blocked companies — junk/spam posters we never want listed. Matched against the
+# Blocked terms — spam companies/keywords we never list. Matched against the
 # company and title with spaces removed, so "Apex Focus Group" / "ApexFocusGroup"
-# all match. Add more lowercase, de-spaced substrings here to block others.
-BLOCKED_COMPANIES = ["apexfocusgroup"]
+# both match, and "survey" catches paid-survey / market-research-panel spam.
+# Add more lowercase, de-spaced substrings here to block others.
+BLOCKED_TERMS = ["apexfocusgroup", "survey"]
 
 def is_blocked(j) -> bool:
     hay = (str(j.get("company", "")) + " " + str(j.get("title", ""))).lower().replace(" ", "")
-    return any(b in hay for b in BLOCKED_COMPANIES)
+    return any(b in hay for b in BLOCKED_TERMS)
 
 # Country derivation. Adzuna results are stamped authoritatively (we query per
 # country); everything else is best-effort from the location text.

@@ -193,7 +193,8 @@ def build_html(path):
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>High-Ticket Sales & CSM Communities Directory</title>
 <style>
-:root{--bg:#0f1420;--card:#171e2e;--card2:#1d2638;--line:#2a3348;--txt:#e8edf6;--mut:#9aa7bd;--accent:#5b8cff;}
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
+:root{--bg:#0a0a0b;--card:#141312;--card2:#1a1714;--line:rgba(232,195,107,.14);--line2:#262320;--txt:#f3efe6;--mut:#9a948a;--accent:#e8c36b;--gold:#e8c36b;--gold2:#f5d98b;}
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.45}
 header{padding:32px 20px 18px;text-align:center;background:radial-gradient(900px 300px at 50% -40%,#22304d,transparent)}
@@ -201,7 +202,7 @@ h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
 .sub{color:var(--mut);font-size:14px;margin:0}
 .nav{text-align:center;margin:12px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .nav a{color:var(--mut);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:5px 11px;border-radius:8px}
-.nav a:hover{border-color:var(--accent);color:var(--txt)}.nav a.on{color:#fff;background:var(--accent);border-color:var(--accent)}
+.nav a:hover{border-color:var(--accent);color:var(--txt)}.nav a.on{color:#0a0a0b;background:linear-gradient(180deg,var(--gold2),var(--gold));border-color:var(--accent)}
 .wrap{max-width:1100px;margin:0 auto;padding:0 16px 60px}
 .controls{position:sticky;top:0;z-index:5;background:rgba(15,20,32,.92);backdrop-filter:blur(8px);padding:14px 0;margin-bottom:6px;border-bottom:1px solid var(--line)}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
@@ -224,7 +225,7 @@ section.platform{margin-top:26px}
 .cdesc{color:var(--mut);font-size:13px;flex:1}
 .cfoot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
 .mem{font-size:12px;color:#cbd6ea;background:var(--card2);padding:3px 9px;border-radius:999px;white-space:nowrap}
-a.visit{font-size:13px;font-weight:700;color:#fff;background:var(--accent);padding:7px 12px;border-radius:8px;text-decoration:none;white-space:nowrap}
+a.visit{font-size:13px;font-weight:700;color:#0a0a0b;background:linear-gradient(180deg,var(--gold2),var(--gold));padding:7px 12px;border-radius:8px;text-decoration:none;white-space:nowrap}
 a.visit:hover{filter:brightness(1.12)}
 .nolink{font-size:12px;color:var(--mut)}
 .note{margin-top:30px;font-size:12px;color:var(--mut);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}

@@ -663,7 +663,7 @@ a.visit:hover{filter:brightness(1.06);box-shadow:0 8px 20px -8px rgba(201,156,56
 footer{text-align:center;color:var(--mut);font-size:12px;padding:30px 20px;border-top:1px solid var(--line2);margin-top:24px}footer a{color:var(--goldd)}
 """
 
-TAGLINE = 'The <span class="au">Gold Standard</span> in High-Ticket Job Search'
+TAGLINE = 'The <span class="au">Gold Standard</span> for Your High-Ticket Job Search'
 
 def _nav(active):
     def a(href, label, key):

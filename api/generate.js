@@ -29,7 +29,10 @@ export default async function handler(req, res) {
   if (req.method !== "POST") { res.status(405).json({ error: "POST only" }); return; }
 
   const body = req.body || {};
-  if (!process.env.ACCESS_CODE) { res.status(503).json({ error: "Not configured: ACCESS_CODE is not set in Vercel." }); return; }
+  if (!process.env.ACCESS_CODE) {
+    res.status(503).json({ error: `ACCESS_CODE not visible to the function. [diag] code:${!!process.env.ACCESS_CODE} key:${!!process.env.ANTHROPIC_API_KEY} sync:${!!process.env.INBOX_SYNC_URL}` });
+    return;
+  }
   const code = req.headers["x-access-code"] || body.access_code || "";
   if (code !== process.env.ACCESS_CODE) { res.status(401).json({ error: "Invalid access code." }); return; }
 

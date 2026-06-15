@@ -271,7 +271,9 @@ def prune_dead_links(store: dict):
         log("link check: skipped (CHECK_LINKS=0)"); return
     if not _connectivity_ok():
         log("link check: skipped (no outbound connectivity)"); return
-    actives = [(k, rec) for k, rec in store.items() if rec.get("active")]
+    # Don't link-validate inbox / Quick Add jobs — they're manually curated and
+    # may legitimately have no apply link.
+    actives = [(k, rec) for k, rec in store.items() if rec.get("active") and not rec.get("inbox")]
     results = {}
     with cf.ThreadPoolExecutor(max_workers=12) as ex:
         fut = {ex.submit(validate_link, rec.get("link", "")): k for k, rec in actives}
@@ -524,11 +526,15 @@ def main():
     current = {}
     for j in raw:
         if is_blocked(j):
-            continue   # blocked company (spam) — never list
-        if is_generic_link(j.get("link", "")):
-            continue   # only ever list a specific posting, never a search/listing page
-        if not is_english(j.get("title", "")):
-            continue   # English-language listings only
+            continue   # spam (survey / Apex etc.) — never list, even from the inbox
+        if not j.get("inbox"):
+            # Auto-sourced jobs must be a specific, English posting. Inbox / Quick
+            # Add jobs are manually curated, so we trust them — kept even with no
+            # link or an odd one (group posts often have no clean apply URL).
+            if is_generic_link(j.get("link", "")):
+                continue
+            if not is_english(j.get("title", "")):
+                continue
         j.setdefault("country", country_of(j.get("location", "")))  # Adzuna pre-stamps; others derive
         j["lead_type"] = lead_type(j)
         cat = categorise(j)
@@ -549,7 +555,7 @@ def main():
         fields = {"title": j["title"], "company": j["company"], "location": j["location"],
                   "comp": j["comp"], "link": j["link"], "source": j["source"],
                   "category": j["category"], "country": j.get("country") or country_of(j.get("location", "")),
-                  "lead_type": j.get("lead_type", "")}
+                  "lead_type": j.get("lead_type", ""), "inbox": bool(j.get("inbox"))}
         if k in store:
             store[k].update(fields); store[k]["last_seen"] = TODAY; store[k]["active"] = True
         else:

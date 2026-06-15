@@ -669,8 +669,8 @@ def _nav(active):
     def a(href, label, key):
         return f'<a class="{"on" if key==active else ""}" href="{href}">{label}</a>'
     return ('<div class="nav">' + a("/jobs", "Fresh today", "new") + a("/jobs/all", "The Vault", "all")
-            + a("/jobs/boards", "&starf; Boards", "boards") + a("/cv", "CV match", "cv")
-            + a("/directory", "Communities", "dir") + '</div>')
+            + a("/jobs/boards", "&starf; Boards", "boards") + a("/directory", "Communities", "dir")
+            + a("/cv", "CV match", "cv") + '</div>')
 
 def _bucket_code(cat):
     c = cat.lower()

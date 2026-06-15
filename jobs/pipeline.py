@@ -541,17 +541,22 @@ def main():
 
     active = [rec for rec in store.values() if rec.get("active")]
     new_today.sort(key=lambda x: (x["category"], x["company"].lower()))
-    write_outputs(active, new_today, len(current))
+    # "New today" = every active role first seen today (UTC), so it survives every
+    # run of the day rather than only the roles that were brand-new in the latest run.
+    today_jobs = sorted((rec for rec in active if rec.get("first_seen") == TODAY),
+                        key=lambda x: (x["category"], x["company"].lower()))
+    write_outputs(active, new_today, today_jobs, len(current))
     STORE_FILE.write_text(json.dumps(store, indent=1, ensure_ascii=False))
-    log(f"active: {len(active)} | new today: {len(new_today)} | store total: {len(store)}")
+    log(f"active: {len(active)} | new today: {len(today_jobs)} | first-this-run: {len(new_today)} | store total: {len(store)}")
 
 FIELDS = ["date_found", "category", "source", "title", "company", "location", "comp", "link"]
 
-def write_outputs(active, new_today, scanned):
-    # daily CSV (just today's new roles)
+def write_outputs(active, new_today, today_jobs, scanned):
+    # daily CSV — every role first seen today (rewritten each run, so it reflects
+    # the whole day no matter how many runs happen)
     with (DAILY_DIR / f"{TODAY}.csv").open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader()
-        for j in new_today:
+        for j in today_jobs:
             w.writerow({"date_found": TODAY, "category": j["category"], "source": j["source"],
                         "title": j["title"], "company": j["company"], "location": j["location"],
                         "comp": j["comp"], "link": j["link"]})
@@ -565,21 +570,21 @@ def write_outputs(active, new_today, scanned):
             w.writerow({"date_found": TODAY, "category": j["category"], "source": j["source"],
                         "title": j["title"], "company": j["company"], "location": j["location"],
                         "comp": j["comp"], "link": j["link"]})
-    # daily markdown digest (today's new roles)
+    # daily markdown digest (everything first seen today)
     md = [f"# New high-ticket opportunities - {TODAY}", "",
-          f"_{len(new_today)} new role(s); {len(active)} active total; scanned {scanned} live listings._", ""]
+          f"_{len(today_jobs)} new role(s) today; {len(active)} active total; scanned {scanned} live listings._", ""]
     cur = None
-    for j in new_today:
+    for j in today_jobs:
         if j["category"] != cur:
             cur = j["category"]; md += ["", f"## {cur}", ""]
         link = f"[apply]({j['link']})" if j["link"] else ""
         md.append(f"- **{j['title']}** - {j['company']} ({j['location']}) "
                   f"{('- ' + j['comp']) if j['comp'] else ''} {link}  _via {j['source']}_")
-    if not new_today:
+    if not today_jobs:
         md.append("_No new roles today._")
     (DAILY_DIR / f"{TODAY}.md").write_text("\n".join(md), encoding="utf-8")
-    write_latest_html(new_today, len(active), scanned)
-    write_all_html(active, len(new_today))
+    write_latest_html(today_jobs, len(active), scanned)
+    write_all_html(active, len(today_jobs))
 
 PAGE_CSS = """
 :root{--bg:#0f1420;--card:#171e2e;--line:#2a3348;--txt:#e8edf6;--mut:#9aa7bd;--accent:#5b8cff;--new:#2ecc71}

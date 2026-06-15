@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Quick Add (private)</title>
+<style>
+:root{--bg:#0f1420;--card:#171e2e;--line:#2a3348;--txt:#e8edf6;--mut:#9aa7bd;--accent:#5b8cff;--new:#2ecc71;--warn:#ffb020}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45}
+header{padding:24px 18px 6px;text-align:center;background:radial-gradient(800px 280px at 50% -40%,#22304d,transparent)}
+h1{margin:0 0 4px;font-size:21px}.sub{color:var(--mut);font-size:13px;margin:0}
+.wrap{max-width:560px;margin:0 auto;padding:14px 16px 60px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+label{display:block;font-size:12px;color:var(--mut);margin:10px 0 4px}
+input,textarea{width:100%;padding:12px 13px;border-radius:10px;border:1px solid var(--line);background:#0f1626;color:var(--txt);font-size:16px;font-family:inherit;outline:none}
+input:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:150px;resize:vertical}
+.btn{width:100%;font-size:16px;font-weight:700;color:#fff;background:var(--accent);border:none;padding:13px;border-radius:10px;cursor:pointer;margin-top:12px}
+.btn:hover{filter:brightness(1.08)}.btn:disabled{opacity:.5}
+.btn.ghost{background:transparent;color:var(--mut);border:1px solid var(--line)}
+.row{display:flex;gap:10px}.row>div{flex:1}
+.status{color:var(--mut);font-size:13px;margin-top:10px;min-height:18px;text-align:center}
+.hide{display:none}
+.privacy{display:flex;gap:9px;align-items:flex-start;background:#11261c;border:1px solid #1d4733;color:#bdebcf;border-radius:10px;padding:10px 12px;font-size:12px;margin-top:12px}
+.muted{color:var(--mut);font-size:12px;text-align:center;margin-top:10px}
+a{color:var(--accent)}
+</style></head>
+<body>
+<header><h1>Quick Add <span style="font-size:12px;color:var(--warn)">· private</span></h1>
+<p class="sub">Paste a job from WhatsApp, Discord, email — anywhere — and add it to your board.</p></header>
+<div class="wrap">
+  <div class="panel" id="step1">
+    <label>Paste the job message</label>
+    <textarea id="raw" placeholder="Paste the whole message — title, pay, link, whatever's there…"></textarea>
+    <label>Access code</label>
+    <input id="code" type="password" placeholder="Your access code" autocomplete="off">
+    <button class="btn" id="extract">Extract job ✨</button>
+    <div class="status" id="status1"></div>
+  </div>
+
+  <div class="panel hide" id="step2" style="margin-top:14px">
+    <label>Title</label><input id="title" placeholder="Job title">
+    <div class="row">
+      <div><label>Company</label><input id="company" placeholder="Company"></div>
+      <div><label>Comp</label><input id="comp" placeholder="e.g. $5k/mo"></div>
+    </div>
+    <div class="row">
+      <div><label>Location</label><input id="location" placeholder="Remote"></div>
+      <div><label>Source</label><input id="source" placeholder="e.g. WhatsApp"></div>
+    </div>
+    <label>Link</label><input id="link" placeholder="https://… (optional)">
+    <label>Notes (optional)</label><input id="notes" placeholder="anything worth remembering">
+    <button class="btn" id="save">Add to board</button>
+    <button class="btn ghost" id="again">Add another</button>
+    <div class="status" id="status2"></div>
+    <div class="privacy"><span>🛡️</span><span><b>Nothing stored here.</b> The text is parsed in memory and the job goes straight to your own inbox.</span></div>
+  </div>
+  <p class="muted">Saved jobs flow into your board on the next refresh, deduped &amp; categorised.</p>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+$("code").value = localStorage.getItem("acc") || "";
+$("code").addEventListener("change", () => localStorage.setItem("acc", $("code").value));
+
+async function post(payload){
+  const code = $("code").value.trim();
+  const r = await fetch("/api/generate", {
+    method:"POST", headers:{"Content-Type":"application/json","x-access-code":code},
+    body: JSON.stringify(payload)
+  });
+  const data = await r.json().catch(()=>({error:"Bad response"}));
+  return { ok:r.ok, status:r.status, data };
+}
+
+async function extract(){
+  const raw = $("raw").value.trim();
+  if (raw.length < 15){ $("status1").textContent = "Paste a bit more text first."; return; }
+  if (!$("code").value.trim()){ $("status1").textContent = "Enter your access code."; return; }
+  $("extract").disabled = true; $("status1").textContent = "Reading the job…";
+  const { ok, status, data } = await post({ kind:"parse_job", text:raw });
+  $("extract").disabled = false;
+  if (!ok){ $("status1").textContent = "⚠️ " + (data.error || ("Error " + status)); return; }
+  const j = data.job || {};
+  $("title").value=j.title||""; $("company").value=j.company||""; $("comp").value=j.comp||"";
+  $("location").value=j.location||"Remote"; $("link").value=j.link||""; $("source").value="Quick Add";
+  $("status1").textContent=""; $("step2").classList.remove("hide");
+  $("step2").scrollIntoView({behavior:"smooth"});
+}
+
+async function save(){
+  const job={title:$("title").value.trim(),company:$("company").value.trim(),comp:$("comp").value.trim(),
+    location:$("location").value.trim(),link:$("link").value.trim(),source:$("source").value.trim()||"Quick Add",
+    notes:$("notes").value.trim()};
+  if(!job.title && !job.link){ $("status2").textContent="Add a title or link first."; return; }
+  $("save").disabled=true; $("status2").textContent="Adding to your board…";
+  const { ok, status, data } = await post({ kind:"save_job", job });
+  $("save").disabled=false;
+  if(!ok){ $("status2").textContent="⚠️ " + (data.error || ("Error " + status)); return; }
+  $("status2").textContent="Added ✓ — it'll appear on the board shortly.";
+}
+
+function reset(){
+  ["raw","title","company","comp","location","link","notes"].forEach(id=>$(id).value="");
+  $("step2").classList.add("hide"); $("status1").textContent=""; $("status2").textContent="";
+  $("raw").focus();
+}
+
+$("extract").onclick = extract;
+$("save").onclick = save;
+$("again").onclick = reset;
+</script>
+</body></html>

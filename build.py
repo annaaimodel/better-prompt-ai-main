@@ -200,7 +200,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Hel
 header{padding:40px 20px 16px;text-align:center;background:radial-gradient(1000px 380px at 50% -140px,rgba(201,156,56,.17),transparent 70%);border-bottom:1px solid var(--line2)}
 .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;margin:0 0 16px}.brand img{display:block}
 .wm{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:23px;letter-spacing:.18em;padding-left:.18em;background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
-h1{margin:0 0 6px;font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#f4eedd}
+h1{margin:0 0 6px;font-family:"Playfair Display",Georgia,serif;font-weight:500;font-style:italic;font-size:20px;letter-spacing:.005em;color:#e9e0cc}
 .sub{color:var(--mut);font-size:14px;margin:0}
 .nav{text-align:center;margin:12px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .nav a{color:var(--mut);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:5px 11px;border-radius:8px}

@@ -80,8 +80,8 @@ def is_remote(j) -> bool:
     return _has(hay, REMOTE_KW)
 
 def categorise(j) -> str | None:
-    if not is_remote(j):
-        return None                       # remote-only across every bucket
+    if not j.get("inbox") and not is_remote(j):
+        return None                       # auto sources are remote-only; inbox is trusted
     title = str(j.get("title", "")).lower()
     text = title + " " + str(j.get("desc", "")).lower()
     # Success — TITLE only, CSM-based terms only

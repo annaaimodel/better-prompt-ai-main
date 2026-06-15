@@ -609,7 +609,7 @@ def write_outputs(active, new_today, today_jobs, scanned):
                         "title": j["title"], "company": j["company"], "location": j["location"],
                         "comp": j["comp"], "link": j["link"]})
     # daily markdown digest (everything first seen today)
-    md = [f"# New high-ticket opportunities - {TODAY}", "",
+    md = [f"# Fresh in the Vault - {TODAY}", "",
           f"_{len(today_jobs)} new role(s) today; {len(active)} active total; scanned {scanned} live listings._", ""]
     cur = None
     for j in today_jobs:
@@ -665,7 +665,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:30px 20px;borde
 def _nav(active):
     def a(href, label, key):
         return f'<a class="{"on" if key==active else ""}" href="{href}">{label}</a>'
-    return ('<div class="nav">' + a("/jobs", "New today", "new") + a("/jobs/all", "All active", "all")
+    return ('<div class="nav">' + a("/jobs", "Fresh today", "new") + a("/jobs/all", "The Vault", "all")
             + a("/jobs/boards", "&starf; Boards", "boards") + a("/cv", "CV match", "cv")
             + a("/directory", "Communities", "dir") + '</div>')
 
@@ -742,7 +742,7 @@ def _controls(jobs):
 def write_latest_html(jobs, active_count, scanned):
     if not jobs:
         body = ('<p class="empty">No new roles pulled today.<br>'
-                'See every live listing on the <a href="/jobs/all">All active</a> page.</p>')
+                'See every live listing in <a href="/jobs/all">The Vault</a>.</p>')
     else:
         groups = {}
         for j in jobs:
@@ -755,7 +755,7 @@ def write_latest_html(jobs, active_count, scanned):
                          + "</div></section>")
         body = _controls(jobs) + sections + FILTER_JS
     sub = f"{TODAY} &middot; {len(jobs)} new today &middot; {active_count} active in total"
-    LATEST_HTML.write_text(_doc("New High-Ticket Opportunities", sub, "new", body), encoding="utf-8")
+    LATEST_HTML.write_text(_doc("Fresh in the Vault", sub, "new", body), encoding="utf-8")
 
 FILTER_JS = """<script>
 (function(){
@@ -809,7 +809,7 @@ def write_all_html(active, new_count):
     else:
         body = controls + groups + FILTER_JS
     sub = f"{len(active)} active roles &middot; {new_count} new today &middot; updated {TODAY}"
-    ALL_HTML.write_text(_doc("All Active High-Ticket Opportunities", sub, "all", body), encoding="utf-8")
+    ALL_HTML.write_text(_doc("The Vault", sub, "all", body), encoding="utf-8")
 
 if __name__ == "__main__":
     main()

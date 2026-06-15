@@ -11,7 +11,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "39558aefe9b7628d": {
   "title": "High Ticket Closer",
@@ -25,7 +26,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "2fdab011ec028369": {
   "title": "Inside Sales Dev Rep / Closer (SDR-Closer hybrid)",
@@ -37,10 +39,11 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "04b7128d79cfe630": {
   "title": "Remote High Ticket Sales Closer",
@@ -54,7 +57,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
@@ -68,7 +72,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "7728d4489367d4e7": {
   "title": "International Remote High Ticket Sales Closer",
@@ -82,7 +87,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "7a84bf6113e59fe2": {
   "title": "Sales Representative (High Ticket Closer)",
@@ -96,7 +102,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "1b87b1fc444f2f43": {
   "title": "High-Ticket Closer / Senior Sales Director",
@@ -108,10 +115,11 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "133c599a149231bc": {
   "title": "High-Ticket Sales Closer (Commission + Performance)",
@@ -123,10 +131,11 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "2cd8b810bb75b7a8": {
   "title": "Remote High Ticket Closer (Inside Sales Representative)",
@@ -138,10 +147,11 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "dc0d15fde0b3836c": {
   "title": "Full-Time High Ticket Closer",
@@ -155,7 +165,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "7de95f14e888da20": {
   "title": "Remote High-Ticket Closer (Warm Leads)",
@@ -169,7 +180,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": true
  },
  "f36a58f834cb121b": {
   "title": "Remote High Ticket Sales Closer (Commission Only)",
@@ -181,10 +193,11 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "ff4d9ad6a3dfcb59": {
   "title": "Remote Sales Closer (Web Design Services)",
@@ -198,7 +211,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "dde5fd12dd3291bf": {
   "title": "Appointment Setter (ISA Real Estate)",
@@ -212,7 +226,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "46bf92ca1b99c472": {
   "title": "Sales Appointment Setter",
@@ -224,10 +239,11 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "deffce2c6a979992": {
   "title": "Appointment Setter (high-value leads)",
@@ -239,10 +255,11 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "82a85a37d7e014ec": {
   "title": "Experienced Solar Appointment Setter",
@@ -254,10 +271,11 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "7bb474b11feb3030": {
   "title": "Appointment Setter (bilingual)",
@@ -271,7 +289,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "f3c77d0705d9e0e1": {
   "title": "Client Success Manager (Marketing Agency)",
@@ -285,7 +304,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "3b980fcaca7ecfda": {
   "title": "Customer Success Manager (SaaS)",
@@ -299,7 +319,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "618aaa3fcf990685": {
   "title": "Associate Client Success Manager (B2B SaaS)",
@@ -313,7 +334,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "d7055c5551e7809d": {
   "title": "Customer Success",
@@ -327,7 +349,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "ea1ec990b1bbb720": {
   "title": "Client Success Manager (Marketing Agency)",
@@ -339,10 +362,11 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "afd5b16008807bad": {
   "title": "Client Success Manager",
@@ -356,7 +380,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "ced56b5ca8d3185c": {
   "title": "Senior Client Success Manager",
@@ -370,7 +395,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "00eb41c59ef235db": {
   "title": "Client Success Agent",
@@ -382,10 +408,11 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "335f37678239a330": {
   "title": "Student Success Coach",
@@ -399,7 +426,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "54596290fe0f2e50": {
   "title": "Student Success Coach",
@@ -411,10 +439,11 @@
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "613267bf2a0d64a1": {
   "title": "High-Ticket Closer",
@@ -428,7 +457,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "3f0df6a72c4260d2": {
   "title": "High-Ticket Inbound Setter",
@@ -442,7 +472,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": true
  },
  "c0b190f67f8d71ad": {
   "title": "Remote High-Ticket B2B Sales Closer",
@@ -454,10 +485,11 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-15",
-  "active": false,
+  "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "b77237295f978afe": {
   "title": "Remote High Ticket Closer",
@@ -471,7 +503,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "cd40459cf367ab93": {
   "title": "High-Ticket Closer & Appointment Setter",
@@ -485,7 +518,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": true
  },
  "eb71274bb371b882": {
   "title": "High-Ticket Financial Sales Specialist & Team Lead Track",
@@ -499,7 +533,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "f63f474960f5dd19": {
   "title": "Inside Sales Contractor",
@@ -513,7 +548,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": false
  },
  "6e55a41f60651188": {
   "title": "Head of Sales",
@@ -527,7 +563,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e3fa477c6c9a9ef7": {
   "title": "Customer Experience Manager in",
@@ -553,7 +590,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "0a10d728db7d9a55": {
   "title": "Director Operations Logistics",
@@ -616,7 +654,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "323a4a7d102c3eb5": {
   "title": "Junior Onboarding & Implementation Specialist | Vodori (Europe)",
@@ -630,7 +669,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Europe",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "58b18c4d0be7f89a": {
   "title": "Customer Care Representative",
@@ -656,7 +696,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Europe",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2f8af94821b690a2": {
   "title": "Strategic Customer Success Manager",
@@ -670,7 +711,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "ff1165d05785bc75": {
   "title": "Senior Customer Success Manager",
@@ -684,7 +726,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f9289b12568c5c8e": {
   "title": "1103-Customer Success Manager (PPC Advertising)",
@@ -698,7 +741,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Latin America",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e313c479f2794b7d": {
   "title": "Customer Experience Program Owner",
@@ -724,7 +768,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Europe",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "85529243b7cddf5f": {
   "title": "Enterprise Customer Success Director",
@@ -738,7 +783,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8330f3dc54a4d58a": {
   "title": "Senior Director, Customer Success",
@@ -752,7 +798,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "bfb776640c2c0215": {
   "title": "Customer Success Engineer, UK",
@@ -766,7 +813,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "97a5059cf1c78266": {
   "title": "Technical Customer Success Manager, UK",
@@ -780,7 +828,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "400cd0f4ed91fab0": {
   "title": "Senior Customer Success Manager",
@@ -794,7 +843,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a9624f6df08d8516": {
   "title": "Customer Success Manager",
@@ -808,7 +858,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9a91f1df397c2397": {
   "title": "Manager, Customer Success – Secondary Education East Coast (USA Remote)",
@@ -822,7 +873,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a5cdc1ea44dc948a": {
   "title": "Strategic Customer Success Manager",
@@ -836,7 +888,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Latin America",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "4ed1e03f617b4c40": {
   "title": "Customer Success -Travel Operations Specialist",
@@ -850,7 +903,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3e914c7cf577f0ab": {
   "title": "Principal Customer Success Manager – Enterprise (West/Central)",
@@ -877,7 +931,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "5cabaa83c27ab0fe": {
   "title": "Sr. Customer Success Manager",
@@ -904,7 +959,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Europe",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e80f4de8072bc256": {
   "title": "Manager, Customer Success Manager",
@@ -918,7 +974,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "cecd1c6983a4cda2": {
   "title": "Customer Success Manager",
@@ -1032,7 +1089,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d351f2976fa7928d": {
   "title": "Customer Success Manager, Japan",
@@ -1046,7 +1104,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "983c4f854f1e33bd": {
   "title": "Senior Enterprise Customer Success Manager",
@@ -1060,7 +1119,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b62bd16a739db469": {
   "title": "Customer Success Architect",
@@ -1074,7 +1134,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "cec15b2ad58068e2": {
   "title": "Customer Success Manager",
@@ -1088,7 +1149,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "6506934298a642b9": {
   "title": "Sr. Customer Success Manager – Central",
@@ -1102,7 +1164,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8f54017a777633ae": {
   "title": "Customer Success Manager",
@@ -1116,7 +1179,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9cd7832067ab06b2": {
   "title": "Senior Customer Success Mgr",
@@ -1130,7 +1194,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3e1a8bee8c38f82e": {
   "title": "Strategic Customer Success Manager",
@@ -1144,7 +1209,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "24c2d42c86678b27": {
   "title": "Head of Customer Experience",
@@ -1170,7 +1236,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f48ee15da4dc169a": {
   "title": "Implementation Project Manager",
@@ -1208,7 +1275,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "bc374b222499f691": {
   "title": "Account Executive, Uber Advertising",
@@ -1223,7 +1291,8 @@
   "active": false,
   "delisted": "dead",
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "952dcb9e2854e849": {
   "title": "Business Development Manager LATAM Infrastructure",
@@ -1249,7 +1318,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "6fa94153b51eaddf": {
   "title": "Inbound Sales Development Representative - New Grad",
@@ -1275,7 +1345,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "088b22d7bfd8b857": {
   "title": "Account Executive, Uber Eats, UK",
@@ -1289,7 +1360,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "92d79bd88392c5d6": {
   "title": "Territory Sales Representative",
@@ -1378,7 +1450,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Europe",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "6500adc12389bafa": {
   "title": "Strategic Account Executive / Client Partner - Manufacturing",
@@ -1392,7 +1465,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Europe",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "678648c592158fe6": {
   "title": "Enterprise Sales Manager | New Business",
@@ -1406,7 +1480,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Latin America",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "3015ff7f06fdf3ce": {
   "title": "Senior Manager, Direct Sales New Business (RapidScale) - Central Market",
@@ -1445,7 +1520,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Europe",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "2bdbe99ae1ea38e3": {
   "title": "Account Executive (m/f/d), Uber Eats, South",
@@ -1459,7 +1535,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Europe",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "8fd0cd48d70ed265": {
   "title": "Manager, Driver Operations",
@@ -1473,7 +1550,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "443de0220c884062": {
   "title": "Enterprise, New Business Account Executive, Uber for Business",
@@ -1487,7 +1565,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": false
  },
  "d0adf77f795839bb": {
   "title": "Senior SMB Account Executive, Uber for Business Brazil",
@@ -1501,7 +1580,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Latin America",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "abc1a28fbb6a93a7": {
   "title": "Director of Sales Enablement, Training & Go-to-Market",
@@ -1527,7 +1607,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Latin America",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2d18a413e9f43255": {
   "title": "Sales Development Representative",
@@ -1579,7 +1660,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": false
  },
  "470d9ed89c72cbc4": {
   "title": "High Ticket Closer",
@@ -1641,7 +1723,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "0e2c2d82cf3fdc6d": {
   "title": "High-Ticket Closer – Remote Role for Top Performers",
@@ -1655,7 +1738,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1048b07bcf25e527": {
   "title": "High-Ticket Closer – Remote (Top Performers Only)",
@@ -1669,7 +1753,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "4f07caeb1a105724": {
   "title": "Remote Sales Opportunity – High-Ticket Closers & Appointment Setters",
@@ -1683,7 +1768,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "91838f1eb201528c": {
   "title": "High-Ticket Closer (NEEDS TO BE IN/NEAR LOS ANGELES ONLY)",
@@ -1769,7 +1855,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": false
  },
  "19a63b69496bf91c": {
   "title": "High Ticket Sales Closer",
@@ -1807,7 +1894,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "5f01c43ab37a5a4e": {
   "title": "ReSkillify Group - High Ticket Sales Closer Commission Only",
@@ -1833,7 +1921,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9a70667fba3406b5": {
   "title": "High Ticket Sales Phone Closer",
@@ -1859,7 +1948,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": false
  },
  "00b36bf89af0f59f": {
   "title": "High Ticket Remote Sales Closer | Australia",
@@ -1873,7 +1963,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": false
  },
  "cda7715f36463a83": {
   "title": "Appointment Setter",
@@ -2024,14 +2115,15 @@
   "company": "ReminderMedia",
   "location": "US",
   "comp": "$55406-$55406",
-  "link": "https://www.adzuna.com/land/ad/5759425733?se=JOCH2gpp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=8BFC28383E9C04D0D9ED894C0847E7014EDE3835",
+  "link": "https://www.adzuna.com/land/ad/5759425733?se=mLPFaAtp8RGmpfo0sbJdLA&utm_medium=api&utm_source=3e941a8f&v=8BFC28383E9C04D0D9ED894C0847E7014EDE3835",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d5a5ec41080a0b1f": {
   "title": "VP Level Sales Closer | Preset Appts |Timeshare Exit| $259k",
@@ -2095,7 +2187,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "5d940cb80157660b": {
   "title": "Remote Closer – Love Sales? Let’s Talk",
@@ -2109,7 +2202,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3093dbee889f8d55": {
   "title": "Remote Sales Closer",
@@ -2123,7 +2217,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "c8905957ab29d865": {
   "title": "Remote Notary Closer",
@@ -2137,7 +2232,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "0edcfbc85d7f5613": {
   "title": "Remote Sales Closer",
@@ -2151,7 +2247,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2e637b677a629056": {
   "title": "Remote Notary Closer (FT)",
@@ -2165,7 +2262,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2d39152daee02b31": {
   "title": "Remote Notary Closer (buyers)",
@@ -2179,7 +2277,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2a3bd6439f93c073": {
   "title": "Remote Notary Closer (travel)",
@@ -2193,7 +2292,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e40ce8f456048fac": {
   "title": "Remote Notary Closer Indianapolis, IN",
@@ -2207,7 +2307,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "edc41e49103972ae": {
   "title": "Elite Remote Sales Closer",
@@ -2221,7 +2322,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "15de6c5503183192": {
   "title": "Remote Sales Closers & Appointment Setters",
@@ -2235,7 +2337,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": false
  },
  "d754402d72a6adee": {
   "title": "Remote Notary Closer Columbus, OH",
@@ -2249,7 +2352,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "76691b8a9e5d2412": {
   "title": "Remote Notary Closer Portland, OR",
@@ -2263,7 +2367,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "4371b3fcffd5e7de": {
   "title": "Remote Notary Closer Memphis, TN",
@@ -2277,7 +2382,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "c3f2492f2aad1e6e": {
   "title": "Remote Notary Closer Wichita, KS",
@@ -2291,7 +2397,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2344144e7097b69e": {
   "title": "Remote Notary Closer Austin, TX",
@@ -2305,7 +2412,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8747e5f2659ef3be": {
   "title": "Remote Notary Closer Baltimore, MD",
@@ -2319,7 +2427,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "c1920d605149b183": {
   "title": "Remote Notary Closer Tucson, AZ",
@@ -2333,7 +2442,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1bf4628cbc51f7f5": {
   "title": "Remote Notary Closer Aldie, VA",
@@ -2347,7 +2457,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8780940cafb8af5a": {
   "title": "Remote Notary Closer Denver, CO",
@@ -2361,7 +2472,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8ab3325ce09630c5": {
   "title": "Remote Notary Closer Cleveland, OH",
@@ -2375,7 +2487,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f08955ab669c978d": {
   "title": "Remote Notary Closer Charlotte, NC",
@@ -2389,7 +2502,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "6b0c29146ea78d2b": {
   "title": "Remote Notary Closer Miami, FL",
@@ -2403,7 +2517,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "eff959890e402699": {
   "title": "Remote Notary Closer Nashville, TN",
@@ -2417,7 +2532,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "0539abe9ecc74ea7": {
   "title": "Remote Notary Closer Tulsa, OK",
@@ -2431,7 +2547,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "ef55166a93e9716b": {
   "title": "Remote Notary Closer Jacksonville, FL",
@@ -2445,7 +2562,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "4dd8674c952939bf": {
   "title": "Remote Notary Closer Raleigh, NC",
@@ -2459,7 +2577,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "0a7d4dc75d41f0e8": {
   "title": "Remote Notary Closer Minneapolis, MN",
@@ -2473,7 +2592,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "ea00d16be1602380": {
   "title": "Remote Notary Closer Mobile, Alabama",
@@ -2487,7 +2607,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "968866683f817e66": {
   "title": "Remote Notary Closer Seattle, WA",
@@ -2501,7 +2622,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9a817871c3dbf718": {
   "title": "Remote Notary Closer Louisville, KY",
@@ -2515,7 +2637,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "51184064e4cb377b": {
   "title": "Remote Notary Closer Detroit, MI",
@@ -2529,7 +2652,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1b30569a4da2d2db": {
   "title": "Remote Notary Closer Washington, DC",
@@ -2543,7 +2667,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9064fee587a6821f": {
   "title": "Remote Notary Closer Atlanta, GA",
@@ -2557,7 +2682,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e286e688bb1fab6a": {
   "title": "Remote Notary Closer Omaha, NE",
@@ -2571,7 +2697,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "195bc9fb4d88c158": {
   "title": "Remote Notary Closer Oakland, CA",
@@ -2585,7 +2712,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "29f9a1f648c7e5ce": {
   "title": "B2B Closer - Remote",
@@ -2599,7 +2727,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "86c6b78a0770babb": {
   "title": "Remote Sales Closer (Pre-Booked Meetings)",
@@ -2613,7 +2742,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "00152f760242f03e": {
   "title": "Sales Development Representative",
@@ -2956,14 +3086,15 @@
   "company": "Airwave",
   "location": "Denver, Colorado",
   "comp": "$81432-$81432",
-  "link": "https://www.adzuna.com/land/ad/5758242951?se=zsFQ2wpp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=E1E31B74F9482D7661FB4EE7020D88939476497C",
+  "link": "https://www.adzuna.com/land/ad/5758242951?se=5HYUagtp8RGjKJIWHOfiKg&utm_medium=api&utm_source=3e941a8f&v=E1E31B74F9482D7661FB4EE7020D88939476497C",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "363043556b0d7384": {
   "title": "Customer Success Manager",
@@ -3135,7 +3266,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3d64b81198ed8f39": {
   "title": "Appointment Setter",
@@ -3209,7 +3341,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "c87e670fa0bff153": {
   "title": "Appointment setter / Telecoms",
@@ -3355,7 +3488,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "e64bcb6b40287b67": {
   "title": "Lead Generation Executive",
@@ -3549,7 +3683,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": "Inbound"
+  "lead_type": "Inbound",
+  "inbox": false
  },
  "0cbeac0edd625f5e": {
   "title": "Senior Account Executive",
@@ -3563,7 +3698,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "cee01cc16cbde51e": {
   "title": "Senior Sales Consultant",
@@ -3649,7 +3785,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9c6524cb98dcb282": {
   "title": "Sales Manager",
@@ -3663,7 +3800,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "6da33279ae4fcad1": {
   "title": "Head of Sales",
@@ -3682,14 +3820,15 @@
   "company": "The People Pod",
   "location": "Manchester, Greater Manchester",
   "comp": "$100000-$100000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=9M3u3Qpp8RGYRcJ23Lmaxg&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=2kNXbgtp8RGYRcJ23Lmaxg&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "aa2f8423d9e848e3": {
   "title": "Sales Development Representative",
@@ -3756,28 +3895,30 @@
   "company": "3 Peaks Recruitment Limited",
   "location": "Belfast, Northern Ireland",
   "comp": "$24000-$24000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5733317072?se=QpId3gpp8RGdcKmg89akZw&utm_medium=api&utm_source=3e941a8f&v=255D9D1B54AB7885BBA40020855AA761C29D0ECC",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5733317072?se=aLZ0bgtp8RGmpfo0sbJdLA&utm_medium=api&utm_source=3e941a8f&v=255D9D1B54AB7885BBA40020855AA761C29D0ECC",
   "source": "Adzuna",
   "category": "Setter — Phone Setting",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "c5a84f2b10bf1365": {
   "title": "Sales Development Representative",
   "company": "ILG",
   "location": "Warrington, Cheshire",
   "comp": "$30000-$30000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5751308460?se=QpId3gpp8RGdcKmg89akZw&utm_medium=api&utm_source=3e941a8f&v=7FBB08951C1A86147AB62539FFBD9A7E1ADCC8FC",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5751308460?se=aLZ0bgtp8RGmpfo0sbJdLA&utm_medium=api&utm_source=3e941a8f&v=7FBB08951C1A86147AB62539FFBD9A7E1ADCC8FC",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a9570b9108254a0e": {
   "title": "Sales Development Representative",
@@ -4153,7 +4294,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "dc1815546646339f": {
   "title": "Sales Development Representative",
@@ -4251,7 +4393,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "46677fe290cdc50c": {
   "title": "Customer Success Manager",
@@ -4349,7 +4492,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "27ad20abf9a4750d": {
   "title": "Customer Success Manager",
@@ -4459,7 +4603,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "6a5ce5d164bab004": {
   "title": "Customer Success Manager",
@@ -4533,7 +4678,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1937ee9127877c69": {
   "title": "Customer Success Manager",
@@ -4595,7 +4741,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b9c356a775324245": {
   "title": "Customer success Manager",
@@ -4621,7 +4768,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8b819fea2b93fb6b": {
   "title": "Customer Success Manager",
@@ -4767,7 +4915,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e1a2818a61b36736": {
   "title": "Appointment Setter",
@@ -4817,7 +4966,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9e2fd0a506abe2dc": {
   "title": "Appointment Setter / Telephone Representative",
@@ -4867,7 +5017,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "09e3b2df83e70b5c": {
   "title": "Mid-Ticket Appointment Setter (Remote)",
@@ -4881,7 +5032,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d8134384172271b6": {
   "title": "Full Time Experienced Appointment Setters Wanted!",
@@ -4895,7 +5047,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d0c743c8a2d22e8d": {
   "title": "Entry-Level Water Sales Representative (Fast Advancement)",
@@ -4921,7 +5074,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "33d080cbdf0a730e": {
   "title": "Solar Conversion Specialist / Sales Closer",
@@ -5103,7 +5257,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "244a7c9d900ebbcf": {
   "title": "Sales Account Executive",
@@ -5129,7 +5284,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b55083c996ec97cb": {
   "title": "Sales Development Representative",
@@ -5215,7 +5371,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "62cf6cf9970113aa": {
   "title": "Sales Development Representative",
@@ -5373,7 +5530,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "eb4260785ac13410": {
   "title": "Sales Development Representative",
@@ -5435,7 +5593,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "0620a4d1d648f90e": {
   "title": "Sales Development Representative",
@@ -5557,7 +5716,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "73e0c7d30512b599": {
   "title": "Sales Development Representative",
@@ -5595,7 +5755,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1b64208bb185b1db": {
   "title": "Customer Success Manager",
@@ -5633,7 +5794,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "add8ab4b9a1dbb6a": {
   "title": "Customer Success Manager",
@@ -5659,7 +5821,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f28a669d41ee4ea0": {
   "title": "Customer Success Manager",
@@ -5685,7 +5848,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9e7b4df52924c2ba": {
   "title": "Customer Success Manager",
@@ -5759,7 +5923,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "07d2ce4fcbf8fa65": {
   "title": "Customer Success Manager",
@@ -5858,7 +6023,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "71e901956afb9e6b": {
   "title": "Customer Success Manager",
@@ -6004,7 +6170,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "7b1a65ffbcc422d6": {
   "title": "Customer Success Manager",
@@ -6054,7 +6221,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "e4b0835a2ec9efe9": {
   "title": "Appointment Setter",
@@ -6116,7 +6284,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "11e56248a2204ba8": {
   "title": "Appointment Setter - In Office Role",
@@ -6250,7 +6419,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": "Cold"
+  "lead_type": "Cold",
+  "inbox": false
  },
  "4d49026df17dab8f": {
   "title": "Call Centre",
@@ -6288,7 +6458,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "736058b452157a5b": {
   "title": "Sales Rep | Digital Marketing | (No Exp. OR Exp.)",
@@ -6410,7 +6581,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "84626d9449428add": {
   "title": "Solar and battery sales person",
@@ -6544,7 +6716,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e55b2dba9e37aafa": {
   "title": "Sales Development Representative",
@@ -7184,7 +7357,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "c8b13c5e6e77b092": {
   "title": "Customer Success Manager",
@@ -7282,7 +7456,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2d27c86c281f42a6": {
   "title": "Customer Success Management",
@@ -7428,7 +7603,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "771f5786e5db4ec5": {
   "title": "Administrative Assistant",
@@ -7442,7 +7618,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a7b8c06137a436d5": {
   "title": "Healthcare Admin Assistant AI Projects",
@@ -7456,7 +7633,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "42f240fa8294a899": {
   "title": "Project Assistant",
@@ -7470,7 +7648,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Worldwide / Anywhere",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f21a48e7f96122d4": {
   "title": "Medical Administrative Assistant",
@@ -7484,7 +7663,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "63477930a035f6cc": {
   "title": "Auxiliar Administrativo Remoto",
@@ -7522,7 +7702,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Latin America",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "39dc8d25da4ee2fe": {
   "title": "Medical Virtual Assistant",
@@ -7562,7 +7743,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a19f48cb0180b038": {
   "title": "Customer Administration I",
@@ -7576,7 +7758,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "cc50e988e894a524": {
   "title": "Onboarding Operations Specialist – APAC",
@@ -7590,7 +7773,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Other",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d08823a756819db8": {
   "title": "Technical Onboarding & Engagement Manager",
@@ -7604,7 +7788,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "ff61afc2e6769285": {
   "title": "Onboarding Specialist",
@@ -7695,14 +7880,15 @@
   "company": "Motion Recruitment Partners, LLC",
   "location": "Textile Finance, Los Angeles County",
   "comp": "$85542-$85542",
-  "link": "https://www.adzuna.com/land/ad/5762052183?se=yp2R2wpp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=1C091986EB9D475EBD476A4D0562046E405E24C3",
+  "link": "https://www.adzuna.com/land/ad/5762052183?se=oMJragtp8RGYRcJ23Lmaxg&utm_medium=api&utm_source=3e941a8f&v=1C091986EB9D475EBD476A4D0562046E405E24C3",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1a1c5a4b4d508396": {
   "title": "Onboarding Specialist",
@@ -8052,7 +8238,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "73fa1c5af639bcb9": {
   "title": "Remote Virtual Assistant - Travel",
@@ -8066,7 +8253,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "39ba3736f7c5c0cd": {
   "title": "Remote Virtual Assistant-Part Time and Full Time",
@@ -8080,7 +8268,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9480cac41e15e784": {
   "title": "(Remote) - Virtual Assistant - 18.00 - 21.00/hour",
@@ -8094,7 +8283,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2b6fc2f77f2fc6bb": {
   "title": "Now Hiring - Remote Virtual Assistant – Entry Level | Flexible Schedule",
@@ -8108,7 +8298,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b047b8efcc43e90d": {
   "title": "Remote Virtual Scheduling Assistant – Entry Level | Flexible Schedule",
@@ -8122,7 +8313,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2f727392c977145a": {
   "title": "Virtual Assistant - REMOTE",
@@ -8136,7 +8328,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d36dd2c24f2a9109": {
   "title": "Virtual Assistant (remote)",
@@ -8150,7 +8343,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d80abe2bc83c677e": {
   "title": "Virtual Assistant (remote)",
@@ -8164,7 +8358,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a00d69dc55b356ba": {
   "title": "Virtual Assistant (Remote)",
@@ -8178,7 +8373,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a29d2b07913e7307": {
   "title": "Virtual Assistant (remote)",
@@ -8192,7 +8388,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b92b2c95b7054f6b": {
   "title": "Virtual Assistant (remote)",
@@ -8206,7 +8403,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "7ec9ca50dd703cdd": {
   "title": "Virtual Assistant (remote)",
@@ -8220,7 +8418,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9a5199e479c84b27": {
   "title": "Virtual Assistant (remote)",
@@ -8234,7 +8433,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "668aac135b1d84af": {
   "title": "Virtual Assistant (remote)",
@@ -8248,7 +8448,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "34a9b9a88aa22b5d": {
   "title": "Virtual Assistant (remote)",
@@ -8262,7 +8463,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "7ae53050c8ba2a68": {
   "title": "Virtual Assistant (remote)",
@@ -8276,7 +8478,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "431d0ca578f4d7dc": {
   "title": "Virtual Assistant (remote)",
@@ -8290,7 +8493,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "97abdab330c524c2": {
   "title": "Virtual Assistant (remote)",
@@ -8304,7 +8508,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "4180d0eb3d09e14e": {
   "title": "Virtual Assistant (remote)",
@@ -8318,7 +8523,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "548acc460ef230f8": {
   "title": "Virtual Assistant (remote)",
@@ -8332,7 +8538,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b97a90a079ec9c3a": {
   "title": "Virtual Assistant (remote)",
@@ -8346,7 +8553,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "fa46180d822a2d07": {
   "title": "Virtual Assistant (remote)",
@@ -8360,7 +8568,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d90c9de877f95625": {
   "title": "Virtual Assistant (remote)",
@@ -8374,7 +8583,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "0138069a3b853af4": {
   "title": "Virtual Assistant (remote)",
@@ -8388,7 +8598,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "003c02cb4440037c": {
   "title": "Virtual Assistants (remote)",
@@ -8402,7 +8613,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e59cec14c874576e": {
   "title": "Virtual Assistant (remote)",
@@ -8416,7 +8628,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "6c894504a5403fd8": {
   "title": "Virtual Assistant (remote)",
@@ -8430,7 +8643,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a35d1f0e6a196c4c": {
   "title": "Data entry virtual assistant (remote)",
@@ -8444,7 +8658,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8fd20b5cc9fbb402": {
   "title": "Appointment Setter | Healthcare Virtual Assistant (Remote)",
@@ -8458,7 +8673,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "6b8fd955d1398988": {
   "title": "Project Virtual Assistant needed (remote)",
@@ -8472,7 +8688,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "eeb395c559d7d60e": {
   "title": "Executive Virtual Assistant - PH (Remote)",
@@ -8486,7 +8703,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f33207a403a4fd98": {
   "title": "Virtual Assistant Services & Remote Personal Assistants",
@@ -8500,7 +8718,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e23f19c77d214ccf": {
   "title": "REMOTE Fractional Paralegal with Elite Virtual Assistants",
@@ -8514,7 +8733,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9784787cf44ff6d1": {
   "title": "Virtual Assistant (Remote) - Earn 18 to 21 Hourly - No Degree Required",
@@ -8528,7 +8748,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "9b95b1597cd176ea": {
   "title": "Remote Executive Assistant",
@@ -8542,7 +8763,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "50c38cafb13c09b5": {
   "title": "Remote Executive Assistant - Secret Clearance",
@@ -8569,7 +8791,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "84b082fb31ac40a1": {
   "title": "Remote Executive Assistant for a Moving and Logistics Business",
@@ -8583,7 +8806,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d859b29a5be3f6cd": {
   "title": "Remote Executive Assistant for a Leading BBQ Brand",
@@ -8597,7 +8821,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "151e461873a480a7": {
   "title": "Remote Executive Assistant - INTL Costa Rica/Colombia",
@@ -8611,21 +8836,23 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "66afe2f9bde00733": {
   "title": "Fully Remote Executive Assistant to Founder of Fintech-focused Investment Firm",
   "company": "BCL Search",
   "location": "New York City, New York",
   "comp": "$67348-$67348",
-  "link": "https://www.adzuna.com/land/ad/5702255339?se=qCQT3App8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=1C7363689490D0A2132DF609C9E859AEED20C1E9",
+  "link": "https://www.adzuna.com/land/ad/5702255339?se=bO1Gawtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=1C7363689490D0A2132DF609C9E859AEED20C1E9",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "ea09443495d06a00": {
   "title": "Remote Executive Operations Assistant (U.S. Only)",
@@ -8639,7 +8866,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "cc552fd1a023764c": {
   "title": "Executive Assistant (Remote)",
@@ -8653,7 +8881,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b39a040c27165faa": {
   "title": "Executive Assistant (remote)",
@@ -8667,7 +8896,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1a4d333513d635f8": {
   "title": "Executive Assistant - REMOTE",
@@ -8681,7 +8911,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "6a49785e50b94207": {
   "title": "Executive Assistant (Remote)",
@@ -8695,7 +8926,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "90cb6de11b5800d2": {
   "title": "Executive Assistant (remote)",
@@ -8709,7 +8941,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e8907795c575a9b3": {
   "title": "Executive Assistant (remote)",
@@ -8723,7 +8956,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b043442a6f133999": {
   "title": "executive assistant (remote)",
@@ -8737,7 +8971,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "c3f403916214b30a": {
   "title": "Executive Assistant (Remote)",
@@ -8751,7 +8986,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "86ccfd6a2b56019f": {
   "title": "Remote Executive Medical Admin Assistant",
@@ -8765,21 +9001,23 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d42b45548b206917": {
   "title": "Part-Time Executive Assistant (Remote in DMV)",
   "company": "Insight Global",
   "location": "Bethesda, Montgomery County",
   "comp": "$65905-$65905",
-  "link": "https://www.adzuna.com/land/ad/5701910284?se=qCQT3App8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=76F6436BAEF90C50ED907F21362520A5D20BE15E",
+  "link": "https://www.adzuna.com/land/ad/5701910284?se=bO1Gawtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=76F6436BAEF90C50ED907F21362520A5D20BE15E",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f32fc8b466784eb5": {
   "title": "KP808 - Full-Time Remote Executive Support Assistant - East Coast",
@@ -8793,7 +9031,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "cb3d15f424004c2c": {
   "title": "Executive Assistant (Remote, Atlanta)",
@@ -8807,7 +9046,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "fcec8285967cc241": {
   "title": "Executive Assistant (Remote) - 6",
@@ -8821,7 +9061,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e527e4fe684f9086": {
   "title": "Copy of Executive Assistant (remote)",
@@ -8835,7 +9076,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1f22183c78f58830": {
   "title": "Executive NUtrition Assistant remote",
@@ -8849,7 +9091,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "183bde3af4a05147": {
   "title": "Executive Assistant - Hybrid-Remote",
@@ -8863,7 +9106,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "40cb56d8a1bc10a4": {
   "title": "Executive Assistant to CEO (Remote US - EST)",
@@ -8877,35 +9121,38 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3e2ce7bf46adaa60": {
   "title": "Executive Assistant - Virtual Remote in CONUS - $25-30 Hr",
   "company": "Msccn",
   "location": "US",
   "comp": "$119941-$119941",
-  "link": "https://www.adzuna.com/land/ad/4870737246?se=qCQT3App8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=D9BD45DFE8DD7B32C19E5FDBC6A56C6DF9C6A42C",
+  "link": "https://www.adzuna.com/land/ad/4870737246?se=bO1Gawtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=D9BD45DFE8DD7B32C19E5FDBC6A56C6DF9C6A42C",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8fa3214c3cec04f4": {
   "title": "Sales Assistant",
   "company": "Hawkeye Search Group",
   "location": "Jersey City, Hudson County",
   "comp": "$37113-$37113",
-  "link": "https://www.adzuna.com/land/ad/5650568610?se=qCQT3App8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=EDD1E558A027FFC0EDF5996DBA75C2866A16A66B",
+  "link": "https://www.adzuna.com/land/ad/5650568610?se=bO1Gawtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=EDD1E558A027FFC0EDF5996DBA75C2866A16A66B",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d9827bff468c4976": {
   "title": "Work-from-Home Administrative Assistant (U.S. Only)",
@@ -8919,7 +9166,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "20a311cb6ac45f0d": {
   "title": "Remote Administrative Assistant",
@@ -8933,7 +9181,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1aeb10b86c595d58": {
   "title": "Remote Administrative Assistant",
@@ -8947,7 +9196,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "cbfed9c62542ebc5": {
   "title": "Remote Administrative Assistant",
@@ -8961,7 +9211,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "407abb0b99a844de": {
   "title": "Remote Administrative Assistant",
@@ -8975,7 +9226,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b076f942d4e7507b": {
   "title": "Remote Administrative Assistant",
@@ -8989,7 +9241,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "405a3ea8f6a15b9f": {
   "title": "Remote Administrative Assistant - National Accounts",
@@ -9003,7 +9256,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d425732577012b2e": {
   "title": "Remote Administrative Assistant Coordinator (U.S. Only)",
@@ -9017,7 +9271,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a15ed64d8f0cba59": {
   "title": "Work At Home Data Entry - Remote - Administrative Assistant",
@@ -9031,7 +9286,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "7eae31cfa492eee2": {
   "title": "Work At Home Data Entry - Remote - Administrative Assistant",
@@ -9045,7 +9301,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b6cd5a809268c3dd": {
   "title": "Work At Home Work At Home Data Entry - Remote - Administrative AssistantEntry - Remote - Administrative Assistant",
@@ -9059,7 +9316,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "570c889393821c5e": {
   "title": "Remote Healthcare Administrative Assistant",
@@ -9073,7 +9331,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1a0a6013fbf7505e": {
   "title": "Remote Bookkeeper/Administrative Assistant Part Time",
@@ -9087,7 +9346,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3b4bd8c4d4589d07": {
   "title": "Administrative Assistant (remote)",
@@ -9101,7 +9361,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "ceecf35b365145c7": {
   "title": "Administrative Assistant (remote)",
@@ -9115,7 +9376,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "bf7ee9032bc8d02c": {
   "title": "Administrative Assistant (remote)",
@@ -9129,7 +9391,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a643003f4224a0f7": {
   "title": "Administrative Assistant (remote)",
@@ -9143,7 +9406,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b26782d332f97fab": {
   "title": "Administrative Assistant (remote)",
@@ -9157,7 +9421,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "822fc659ac811db7": {
   "title": "Administrative Assistant (remote)",
@@ -9171,7 +9436,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "29bc11e360008fa1": {
   "title": "Administrative Assistant (remote)",
@@ -9185,7 +9451,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "be630615821f4a00": {
   "title": "Administrative Assistant (remote)",
@@ -9199,7 +9466,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d6eed1bdc9f60aa6": {
   "title": "Administrative Assistant (remote)",
@@ -9213,7 +9481,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3b8bd75cee247d64": {
   "title": "Administrative Assistant (remote)",
@@ -9227,7 +9496,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e8272b9e6a52ea7b": {
   "title": "Administrative Assistant (remote)",
@@ -9241,7 +9511,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "827577bee4ac6c9d": {
   "title": "Administrative Assistant (remote)",
@@ -9255,7 +9526,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1eb4db00c8ecfffe": {
   "title": "Administrative Assistant (remote)",
@@ -9269,7 +9541,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "235e420f62514c11": {
   "title": "Administrative Assistant (remote)",
@@ -9283,7 +9556,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a02dd26407921947": {
   "title": "Administrative Assistant (remote)",
@@ -9297,7 +9571,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e9b53b7f7b8b65fd": {
   "title": "Work At Home Data Entry - Remote Position- Administrative Assistant",
@@ -9311,7 +9586,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a857e41623e78e71": {
   "title": "Work At Home Data Entry - Remote Position- Administrative Assistant",
@@ -9325,7 +9601,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "ec28ccc7da9652e4": {
   "title": "Part time Administrative Assistant - Remote",
@@ -9405,7 +9682,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8228adb51b42e1e6": {
   "title": "Onboarding Specialist",
@@ -9481,7 +9759,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "14565d97bd63b877": {
   "title": "Supplier Onboarding Specialist Internship",
@@ -9507,7 +9786,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "4238573e8159df69": {
   "title": "Senior Client Onboarding Specialist",
@@ -9533,7 +9813,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "21c052f1bb45e62d": {
   "title": "Talent Acquisition and Onboarding Specialist",
@@ -9691,7 +9972,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "008d6ed7364faa42": {
   "title": "Specialist, Client Onboarding/Transitions/Conversions/KYC II",
@@ -9813,7 +10095,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d37811eccb00c200": {
   "title": "Personal Assistant (REMOTE)",
@@ -9827,7 +10110,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "7fe5bba2d523f261": {
   "title": "Executive Assistant - Remote UK Based",
@@ -9841,7 +10125,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "43cf69b98e807bb6": {
   "title": "X2 Jobs - Legal Assistant & Employment Law Solicitor - REMOTE",
@@ -9855,7 +10140,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3ba5f625083ae2b2": {
   "title": "Onboarding Specialist",
@@ -9869,7 +10155,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "0520177024019657": {
   "title": "Onboarding Specialist",
@@ -9907,7 +10194,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b1a5f18f25a29624": {
   "title": "Customer Onboarding Specialist - Ontario",
@@ -9969,7 +10257,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "2c9210948c1f394d": {
   "title": "Intermediate Customer Onboarding Specialist (12 month Contract)",
@@ -9995,7 +10284,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8d9ab001f55fed6d": {
   "title": "Spécialiste bilingue de l’intégration / Onboarding Specialist Bilingual",
@@ -10021,7 +10311,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "8e2b5ed5e8fe0ea5": {
   "title": "Customer Success Specialist/Manager (Onboarding & Retention)",
@@ -10071,7 +10362,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3e2512a449107ca7": {
   "title": "Customer Success Associate",
@@ -10109,7 +10401,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "c944b155c428f434": {
   "title": "Remote Virtual Assistant",
@@ -10123,7 +10416,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "052ff9e788641e57": {
   "title": "Virtual Assistant (Remote)",
@@ -10137,7 +10431,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "4cf7d41c418845a5": {
   "title": "Virtual Administrative Assistant (Remote â Part-Time & Full-Time)",
@@ -10177,7 +10472,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "c08e2614599f18b1": {
   "title": "Administrative Assistant (Remote – Canada)",
@@ -10191,7 +10487,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "d13d1a2e2bc67568": {
   "title": "Administrative Assistant (Entry-Level, Remote)",
@@ -10305,7 +10602,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "24691ad40aa136fc": {
   "title": "Client Onboarding Specialist - Financial Planning",
@@ -10355,7 +10653,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "c25d2f8f572db18e": {
   "title": "Onboarding and Enablement Specialist",
@@ -10417,7 +10716,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "ad30f65ffa486041": {
   "title": "Remote Virtual Assistant - Radio Content and Admin Support",
@@ -10431,7 +10731,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "5b476749b948333c": {
   "title": "Remote Operations & Admin Virtual Assistant for Growth",
@@ -10445,7 +10746,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "b2ce3ce685d28757": {
   "title": "Virtual Assistant (Operations & Admin) - Remote | Day Shift",
@@ -10459,7 +10761,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f9ca53d5563e0ed7": {
   "title": "Remote Executive Assistant & Business Operations",
@@ -10473,7 +10776,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3c4ad5953c343d79": {
   "title": "Remote Administrative Support Assistant (Entry-Level)",
@@ -10487,7 +10791,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a25128405b850fb0": {
   "title": "Administration Assistant – Remote",
@@ -10501,7 +10806,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "1fb82e3cbcacef14": {
   "title": "Administrative/Logistics Assistant (Partly Remote)",
@@ -10550,28 +10856,30 @@
   "company": "Kelly Services",
   "location": "San Mateo, San Mateo County",
   "comp": "$75076-$75076",
-  "link": "https://www.adzuna.com/land/ad/5735648321?se=qCQT3App8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=579BF5665E1B08994A2FC6D68588518CE8F1BD42",
+  "link": "https://www.adzuna.com/land/ad/5735648321?se=bO1Gawtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=579BF5665E1B08994A2FC6D68588518CE8F1BD42",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "a7bab25af8c19731": {
   "title": "Executive Assistant",
   "company": "Insight Global",
   "location": "Tustin, Orange County",
   "comp": "$70622-$70622",
-  "link": "https://www.adzuna.com/land/ad/5722201176?se=qCQT3App8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=4105584FDADF8BD51BE50E31360B049503E3BC33",
+  "link": "https://www.adzuna.com/land/ad/5722201176?se=bO1Gawtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=4105584FDADF8BD51BE50E31360B049503E3BC33",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "324484401a0f9fea": {
   "title": "Executive Assistant",
@@ -10599,49 +10907,53 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "3ca8db5785a683f3": {
   "title": "Assistant Project Manager/Executive Assistant",
   "company": "Check Off Your List",
   "location": "Columbus, Franklin County",
   "comp": "$28510-$28510",
-  "link": "https://www.adzuna.com/land/ad/5664335044?se=qCQT3App8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=196841ABD36E5F9727F18712E4B41F1B81E58873",
+  "link": "https://www.adzuna.com/land/ad/5664335044?se=bO1Gawtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=196841ABD36E5F9727F18712E4B41F1B81E58873",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "25f9278653585b0c": {
   "title": "PT to FT Executive Assistant with Real Estate Assistant Experience",
   "company": "Check Off Your List",
   "location": "Columbus, Franklin County",
   "comp": "$50957-$50957",
-  "link": "https://www.adzuna.com/land/ad/5699762160?se=qCQT3App8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=939A2A9D0B04523BB6D12C4E2B8CDF874609A12E",
+  "link": "https://www.adzuna.com/land/ad/5699762160?se=bO1Gawtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=939A2A9D0B04523BB6D12C4E2B8CDF874609A12E",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "e6fa42757d8c58d5": {
   "title": "Part-Time to Full-Time Executive Assistant",
   "company": "Check Off Your List",
   "location": "Columbus, Franklin County",
   "comp": "$34897-$34897",
-  "link": "https://www.adzuna.com/land/ad/5682631586?se=qCQT3App8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=7835173B81C4CFA8FE29550C0ECF4150B396FCDA",
+  "link": "https://www.adzuna.com/land/ad/5682631586?se=bO1Gawtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=7835173B81C4CFA8FE29550C0ECF4150B396FCDA",
   "source": "Adzuna",
   "category": "VA / Admin / Assistant",
   "first_seen": "2026-06-13",
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f2b9ddde6903694e": {
   "title": "BELAY - Senior Executive Assistant",
@@ -10655,7 +10967,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "048b57d591c2a333": {
   "title": "Executive Administrative Assistant",
@@ -10669,7 +10982,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "20160ccc118d8d54": {
   "title": "Executive Assistant (2026)",
@@ -10683,7 +10997,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United States",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "901c0121c772ee4a": {
   "title": "Executive Assistant (PA)",
@@ -10697,7 +11012,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "179f6cfc6fcb43f8": {
   "title": "Executive Assistant",
@@ -10711,7 +11027,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "73de2768b354e926": {
   "title": "Personal Assistant Intern",
@@ -10725,7 +11042,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "United Kingdom",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "422368badc56faee": {
   "title": "Virtual Assistant",
@@ -10739,7 +11057,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "47f9c36c1fab7a88": {
   "title": "Administrative Assistant",
@@ -10753,7 +11072,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Canada",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "0582277c67e96c84": {
   "title": "Office Administration Work – Support Assistant",
@@ -10767,7 +11087,8 @@
   "last_seen": "2026-06-15",
   "active": true,
   "country": "Australia",
-  "lead_type": ""
+  "lead_type": "",
+  "inbox": false
  },
  "f7457975a66b1b77": {
   "title": "Administrative - Executive Assistant II",
@@ -10796,7 +11117,8 @@
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
   "active": true,
-  "delisted": "dead"
+  "delisted": "dead",
+  "inbox": false
  },
  "0fa9021c66d4a1b5": {
   "title": "Logistics & Operations Assistant",
@@ -10810,7 +11132,8 @@
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "2ac0bc96deaf0c58": {
   "title": "Junior Human Resources Assistant",
@@ -10824,7 +11147,8 @@
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "cb580db4ae02bf9c": {
   "title": "Fachinformatiker Systemintegration / Systemadministrator (m/w/d)",
@@ -10873,14 +11197,15 @@
   "company": "Rushing Roofing & Contracting LLC",
   "location": "Richardson, Dallas",
   "comp": "$112759-$112759",
-  "link": "https://www.adzuna.com/land/ad/5763277220?se=PGE12gpp8RGmpfo0sbJdLA&utm_medium=api&utm_source=3e941a8f&v=54784B19A35ABF8653BE428AE51815128BC7DECC",
+  "link": "https://www.adzuna.com/land/ad/5763277220?se=ahpqaAtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=54784B19A35ABF8653BE428AE51815128BC7DECC",
   "source": "Adzuna",
   "category": "Setter — Phone Setting",
   "country": "United States",
   "lead_type": "Cold",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "66d1c58d42494cf1": {
   "title": "Senior Customer Success Manager",
@@ -10922,7 +11247,8 @@
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "52cd136cb1cea72e": {
   "title": "Remote Work At Home Position For Administrative Assistant Job Seekers",
@@ -10950,7 +11276,8 @@
   "lead_type": "Cold",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "3341ae47446decd2": {
   "title": "Appointment setter/ lead generator/ cold caller",
@@ -10964,7 +11291,8 @@
   "lead_type": "Cold",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "6adf81b616ef0972": {
   "title": "Cold Caller & Appointment Setter - Work from Home with Superhuman Prospecting, Inc.",
@@ -10978,7 +11306,8 @@
   "lead_type": "Cold",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "50ab38757d6fadb5": {
   "title": "Senior Sales Development Representative (SDR) at FrontEgg",
@@ -10992,7 +11321,8 @@
   "lead_type": "Cold",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "9d2c0dcff8b256cb": {
   "title": "Senior Sales Development Rep (Sr. SDR) at ClearPath Partners",
@@ -11006,7 +11336,8 @@
   "lead_type": "Cold",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "e5570b047fe45d7d": {
   "title": "High Ticket Appointment Setter (Warm Leads)",
@@ -11020,7 +11351,8 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "51df7eb851ed212c": {
   "title": "Inbound Sales Representative",
@@ -11034,7 +11366,8 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "f8b9ea50606be3f1": {
   "title": "Remote Inbound Sales Representative",
@@ -11048,21 +11381,23 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "6d9892c4303dfaf0": {
   "title": "Customer Success Manager",
   "company": "Drams Software Limited",
   "location": "UK",
   "comp": "$40000-$50000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5762595463?se=oniV3gpp8RGjKJIWHOfiKg&utm_medium=api&utm_source=3e941a8f&v=37AE4AB02B2534FD47B6FA5388096C636387B1C6",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5762595463?se=XqDfbgtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=37AE4AB02B2534FD47B6FA5388096C636387B1C6",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "country": "United Kingdom",
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "2b7eb01f1f257564": {
   "title": "Sales Development Representative / Inbound SDR, UKI market",
@@ -11076,7 +11411,8 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "0d89ac9ff718cf2a": {
   "title": "Virtual Assistant (Work from Home)",
@@ -11104,7 +11440,8 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "b62ca23dcc72709d": {
   "title": "Remote Inbound Sales Representative (Saskatchewan)",
@@ -11118,7 +11455,8 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "783669aefc2adf2e": {
   "title": "Remote Inbound Sales Representative (Nova Scotia)",
@@ -11132,7 +11470,8 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "eb16addeaf8a7e8c": {
   "title": "Remote Administration Assistant",
@@ -11160,7 +11499,8 @@
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "2e9c90b53eabf636": {
   "title": "Assistant Account Payable",
@@ -11174,7 +11514,8 @@
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "0b04fd281b749533": {
   "title": "Executive Assistant - LeaseHappy®",
@@ -11244,7 +11585,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "5b40ca9cdb78bd1b": {
   "title": "Admin Virtual Assistant",
@@ -11258,7 +11600,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "d069fdc61d2cdd66": {
   "title": "Student Success Advisor Evenings",
@@ -11272,7 +11615,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "7952681e0ce6a450": {
   "title": "(Senior) Product Manager (w/m/d)",
@@ -11300,7 +11644,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "e597dfd7873358ed": {
   "title": "Customer Success Manager",
@@ -11314,7 +11659,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "59f19ff5579de56a": {
   "title": "Client Success Manager – Payer",
@@ -11328,7 +11674,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "0a9a26c6624c9ea3": {
   "title": "High Ticket Sales Closer",
@@ -11356,21 +11703,23 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "083f0e6a9b287f8c": {
   "title": "Appointment Setter - Call Center Representative",
   "company": "Calm Water and Bath",
   "location": "Cherry Hill, Camden County",
   "comp": "$46145-$46145",
-  "link": "https://www.adzuna.com/land/ad/5764443413?se=PGE12gpp8RGmpfo0sbJdLA&utm_medium=api&utm_source=3e941a8f&v=3F57E73EDA36070F69D76BE17E6A28899BDF05DB",
+  "link": "https://www.adzuna.com/land/ad/5764443413?se=ahpqaAtp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=3F57E73EDA36070F69D76BE17E6A28899BDF05DB",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "eb280460f80bc697": {
   "title": "Remote Notary Closer New Orleans, LA",
@@ -11384,35 +11733,38 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "239f2daa223bf0d5": {
   "title": "Customer Success Manager",
   "company": "HiddenLayer",
   "location": "Washington, Washington, D.C.",
   "comp": "$97927-$97927",
-  "link": "https://www.adzuna.com/land/ad/5764467027?se=zsFQ2wpp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=E460128BC71FA0B035874A86997E6F3EB211AA89",
+  "link": "https://www.adzuna.com/land/ad/5764467027?se=5HYUagtp8RGjKJIWHOfiKg&utm_medium=api&utm_source=3e941a8f&v=E460128BC71FA0B035874A86997E6F3EB211AA89",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "country": "United States",
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "ad0cdad48027ef7b": {
   "title": "Onboarding Specialist",
   "company": "ServiceWorks",
   "location": "Saint Louis, Saint Louis County",
   "comp": "$53128-$53128",
-  "link": "https://www.adzuna.com/land/ad/5764433655?se=yp2R2wpp8RGY09niaMLJtg&utm_medium=api&utm_source=3e941a8f&v=8C85E18112C954CF85B0EBB7DD43A4BC6996433E",
+  "link": "https://www.adzuna.com/land/ad/5764433655?se=oMJragtp8RGYRcJ23Lmaxg&utm_medium=api&utm_source=3e941a8f&v=8C85E18112C954CF85B0EBB7DD43A4BC6996433E",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / student)",
   "country": "United States",
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "8f86a5bca565b793": {
   "title": "Retirement Plan Onboarding Specialist",
@@ -11440,7 +11792,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "ca703ddf21bdda11": {
   "title": "Remote Administrative Assistant Part-Time | Flexible Hours",
@@ -11454,7 +11807,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "e1683c0a1dbd45b1": {
   "title": "Onboarding Specialist",
@@ -11468,7 +11822,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "6e54038d7dd76d01": {
   "title": "Appointment Setter",
@@ -11482,7 +11837,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "443b70636fbe7f9e": {
   "title": "Customer Success Manager",
@@ -11510,7 +11866,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "4c43aa09b34d126c": {
   "title": "Administrative Assistant (Remote / Work From Home – Part Time)",
@@ -11524,7 +11881,8 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "fadcfa8c2a2b9c03": {
   "title": "Remote Sales Closer",
@@ -11538,7 +11896,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": true
  },
  "8d182200f1c2d0fe": {
   "title": "(Senior) Product Manager (w/m/d) (remote)",
@@ -11552,7 +11911,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "69963d745185bb98": {
   "title": "Remote Administrative Assistant",
@@ -11566,7 +11926,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "bef61e72c6ce2397": {
   "title": "Sales Development Representative",
@@ -11580,7 +11941,8 @@
   "lead_type": "",
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
-  "active": true
+  "active": true,
+  "inbox": false
  },
  "6ac567f3f1d4656a": {
   "title": "High-Ticket Closer",
@@ -11592,6 +11954,232 @@
   "category": "Closer",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true,
+  "inbox": true
+ },
+ "ca06ef3f03dd96b6": {
+  "title": "High Ticket Closer",
+  "company": "remote coaching company",
+  "location": "Remote",
+  "comp": "$8k–12k/month commission",
+  "link": "example.com/job",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "159631a84f4a4766": {
+  "title": "Inbound Remote Closer",
+  "company": "Optimal Recruitment & Automation",
+  "location": "Remote",
+  "comp": "10% on cash collected plus 3% residuals and bonuses, $10,000–$20,000 OTE monthly",
+  "link": "https://optimalrecruitmentautomation.com/opportunities?ref=ced-",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "451f0c2e898a7bf0": {
+  "title": "Commission-Only Closer",
+  "company": "HY Systems Co.",
+  "location": "Remote",
+  "comp": "$875/close (25% commission)",
+  "link": "hysystems.com.au",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "145d242c6aea0b28": {
+  "title": "Closer - Mental Health",
+  "company": "Nomadic",
+  "location": "Remote",
+  "comp": "$10k–$15k/mo OTE, 10% commission (12% at 12+ sales/month)",
+  "link": "",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "da9dfc18ebfe1f8b": {
+  "title": "Hybrid Closer",
+  "company": "Nomadic Closer (Music Education – Bowed String Instruments)",
+  "location": "Remote",
+  "comp": "$7k–$12k/mo OTE, 10% commission, $200 PIF bonus",
+  "link": "https://job.nomadiccloser.com/#hybrid-closer-orchestral-string-musicians-music-education",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "67a12de1b0d9ee29": {
+  "title": "Closer - Internal (Nomadic Closer)",
+  "company": "Nomadic Closer",
+  "location": "US Central Time",
+  "comp": "20% for $497, 10% of $5,000, 10% of $10,000",
+  "link": "https://job.nomadiccloser.com/#hybrid-closer-orchestral-string-musicians-music-education",
+  "source": "Quick Add",
+  "category": "From inbox (uncategorised)",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "1f63d90610c34c63": {
+  "title": "Closer - Business Coaching",
+  "company": "Nomadic Closer",
+  "location": "Remote",
+  "comp": "OTE $15k-$20k USD; 10% upon $100k upfront cash collected, otherwise 8%",
+  "link": "https://job.nomadiccloser.com/#closer-help-people-go-viral-social-media",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "2a623309b1361e7e": {
+  "title": "Closer/Player-Coach",
+  "company": "Nomadic Closer",
+  "location": "US/Canada Only",
+  "comp": "OTE $12K-$20K/month, 10% commission, $4K/month base draw",
+  "link": "https://job.nomadiccloser.com/#closer-procurement-ap-automation-software",
+  "source": "Quick Add",
+  "category": "From inbox (uncategorised)",
+  "country": "Other",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "27b88dc091fd7d6d": {
+  "title": "Closer - The Fall in Love with Your Voice Experience",
+  "company": "Nomadic Closer",
+  "location": "Remote",
+  "comp": "OTE $6K–$10K/mo; 10% commission + $200 PIF bonus",
+  "link": "https://job.nomadiccloser.com/#closer-fall-n-love-with-your-voice-experience",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "0d7b92f6574de93f": {
+  "title": "Closer — Financial Education",
+  "company": "Nomadic Closer",
+  "location": "Remote",
+  "comp": "10% commission; OTE $9K–$10K/mo; top closers $13K–$15K+",
+  "link": "https://job.nomadiccloser.com/#trading-closer-job-high-ticket-inbound",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "fa375d9b12dec631": {
+  "title": "Closer - Fast-Track to VP/Csuite",
+  "company": "",
+  "location": "Remote",
+  "comp": "10%-15% commission; $8K–$12K/month after ramp-up, top closers $20K+",
+  "link": "https://job.nomadiccloser.com/#closer-career-coaching-executive-leadership",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "f036aa329d45723b": {
+  "title": "Closer - Bilingual Real Estate Marketing Agency",
+  "company": "Nomadic",
+  "location": "Remote",
+  "comp": "10% commission, OTE $4K-$9K/month",
+  "link": "https://job.nomadiccloser.com/#closer-silva-media-bilingual-real-estate-marketing",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "b7a384b8774cf217": {
+  "title": "Closer - Public Speaking Coaching Company",
+  "company": "Nomadic Closer",
+  "location": "Remote",
+  "comp": "$15K–$25K/mo OTE; 7.5%–17.5% commission; top closers $40K+/mo",
+  "link": "https://job.nomadiccloser.com/#remote-high-ticket-closer-public-speaking-coaching-job-us-timezone",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "003ac74a5f8147e2": {
+  "title": "Male Closer — E-commerce, Coaching & Mentorships",
+  "company": "Nomadic Closer",
+  "location": "Remote",
+  "comp": "10–12.5% commission; AUD $12K–25K/month OTE",
+  "link": "https://job.nomadiccloser.com/#Male-Closer-E-Commerce-Business-Coaching",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "first_seen": "2026-06-15",
+  "last_seen": "2026-06-15",
+  "active": true
+ },
+ "ab161fb5e5e0c938": {
+  "title": "Phone Setter - Mastermind",
+  "company": "Nomadic",
+  "location": "Phoenix, Arizona",
+  "comp": "$2,400 Base Pay + 5-7% Commission, OTE $6,000-$8,000/month",
+  "link": "https://job.nomadiccloser.com/#phone-setter-business-coaching-opportunity",
+  "source": "Quick Add",
+  "category": "From inbox (uncategorised)",
+  "country": "Other",
+  "lead_type": "",
+  "inbox": true,
   "first_seen": "2026-06-15",
   "last_seen": "2026-06-15",
   "active": true

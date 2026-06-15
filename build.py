@@ -191,50 +191,53 @@ def build_html(path):
     doc = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>High-Ticket Sales & CSM Communities Directory</title>
+<title>Communities · Aurum</title><link rel="icon" href="/favicon.svg">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&display=swap');
 :root{--bg:#0a0a0b;--card:#141312;--card2:#1a1714;--line:rgba(201,156,56,.14);--line2:#262320;--txt:#f3efe6;--mut:#9a948a;--accent:#c99c38;--gold:#c99c38;--gold2:#f2dd88;}
 *{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.45}
-header{padding:32px 20px 18px;text-align:center;background:radial-gradient(900px 300px at 50% -40%,#22304d,transparent)}
-h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
+header{padding:40px 20px 16px;text-align:center;background:radial-gradient(1000px 380px at 50% -140px,rgba(201,156,56,.17),transparent 70%);border-bottom:1px solid var(--line2)}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;margin:0 0 16px}.brand img{display:block}
+.wm{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:23px;letter-spacing:.18em;padding-left:.18em;background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1{margin:0 0 6px;font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:24px;letter-spacing:-.01em;color:#f4eedd}
 .sub{color:var(--mut);font-size:14px;margin:0}
 .nav{text-align:center;margin:12px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .nav a{color:var(--mut);font-size:13px;text-decoration:none;border:1px solid var(--line);padding:5px 11px;border-radius:8px}
 .nav a:hover{border-color:var(--accent);color:var(--txt)}.nav a.on{color:#0a0a0b;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%);border-color:var(--accent)}
 .wrap{max-width:1100px;margin:0 auto;padding:0 16px 60px}
-.controls{position:sticky;top:0;z-index:5;background:rgba(15,20,32,.92);backdrop-filter:blur(8px);padding:14px 0;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.controls{position:sticky;top:0;z-index:5;background:rgba(10,10,11,.85);backdrop-filter:blur(10px);padding:14px 0;margin-bottom:6px;border-bottom:1px solid var(--line)}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
 input[type=search]{flex:1;min-width:240px;max-width:460px;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--txt);font-size:15px;outline:none}
 input[type=search]:focus{border-color:var(--accent)}
 .chip{padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--mut);cursor:pointer;font-size:13px;font-weight:600;transition:.15s}
 .chip:hover{color:var(--txt)}
-.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip.on{background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%);border-color:var(--gold);color:#0a0a0b}
 .count{color:var(--mut);font-size:13px;text-align:center;margin:8px 0 2px}
 section.platform{margin-top:26px}
-.phead{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;padding:9px 14px;border-radius:10px;color:#fff}
+.phead{display:flex;align-items:center;gap:10px;font-family:"Playfair Display",Georgia,serif;font-size:19px;font-weight:600;padding:11px 16px;border-radius:10px;color:#f4eedd;background:linear-gradient(180deg,#171513,#121110);border:1px solid var(--line);border-left:4px solid var(--gold)}
 .subhead{margin:16px 0 8px;font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:8px}
 .tag{font-size:10px;padding:2px 8px;border-radius:999px;font-weight:700;letter-spacing:.3px}
 .tag.job{background:#3a2a14;color:#ffce85}
-.tag.general{background:#15303a;color:#7fd7ff}
+.tag.general{background:#1b1916;color:#cdbf9c}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 15px;display:flex;flex-direction:column;gap:7px;transition:.15s}
 .card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .cname{font-weight:700;font-size:15px;line-height:1.3}
 .cdesc{color:var(--mut);font-size:13px;flex:1}
 .cfoot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
-.mem{font-size:12px;color:#cbd6ea;background:var(--card2);padding:3px 9px;border-radius:999px;white-space:nowrap}
+.mem{font-size:12px;color:#cdbf9c;background:var(--card2);padding:3px 9px;border-radius:999px;white-space:nowrap}
 a.visit{font-size:13px;font-weight:700;color:#0a0a0b;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%);padding:7px 12px;border-radius:8px;text-decoration:none;white-space:nowrap}
 a.visit:hover{filter:brightness(1.12)}
 .nolink{font-size:12px;color:var(--mut)}
 .note{margin-top:30px;font-size:12px;color:var(--mut);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
 .empty{text-align:center;color:var(--mut);padding:50px 0;display:none}
-mark{background:#5b8cff44;color:inherit;border-radius:3px}
+mark{background:rgba(201,156,56,.32);color:inherit;border-radius:3px}
 footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
 </style></head>
 <body>
 <header>
+<a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum"><span class="wm">AURUM</span></a>
 <h1>High-Ticket Sales &amp; CSM Communities</h1>
 <p class="sub">A directory across Facebook, Skool, Discord &amp; LinkedIn &middot; __TOTAL__ communities &middot; researched 12 Jun 2026</p>
 <div class="nav"><a href="/jobs">Fresh today</a><a href="/jobs/all">The Vault</a><a href="/jobs/boards">&starf; Boards</a><a href="/cv">CV match</a><a class="on" href="/directory">Communities</a></div>
@@ -293,7 +296,7 @@ function render(){
     }
     if(secHtml){
       const sec=document.createElement('section');sec.className='platform';
-      sec.innerHTML=`<div class="phead" style="background:${s.accent}">${esc(s.title)}</div>`+secHtml;
+      sec.innerHTML=`<div class="phead" style="border-left-color:${s.accent}">${esc(s.title)}</div>`+secHtml;
       res.appendChild(sec);
     }
   }

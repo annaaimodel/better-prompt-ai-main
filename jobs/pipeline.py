@@ -631,7 +631,8 @@ PAGE_CSS = """
 header{padding:40px 20px 16px;text-align:center;background:radial-gradient(1000px 380px at 50% -140px,rgba(201,156,56,.17),transparent 70%);border-bottom:1px solid var(--line2)}
 .brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;margin:0 0 16px}.brand img{display:block}
 .wm{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:23px;letter-spacing:.18em;padding-left:.18em;background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
-h1{margin:0 0 6px;font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:25px;letter-spacing:-.01em;color:#f4eedd}
+h1{margin:0 0 6px;font-family:"Playfair Display",Georgia,serif;font-weight:500;font-style:italic;font-size:20px;letter-spacing:.005em;color:#e9e0cc}
+h1 .au{background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sub{color:var(--mut);font-size:13.5px;margin:0;letter-spacing:.01em}
 .nav{margin:16px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .nav a{color:var(--mut);font-size:12px;letter-spacing:.03em;text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:999px;transition:border-color .18s,color .18s,background .18s}
@@ -661,6 +662,8 @@ a.visit:hover{filter:brightness(1.06);box-shadow:0 8px 20px -8px rgba(201,156,56
 .nl{font-size:12px;color:var(--mut)}.empty{text-align:center;color:var(--mut);padding:56px 0}
 footer{text-align:center;color:var(--mut);font-size:12px;padding:30px 20px;border-top:1px solid var(--line2);margin-top:24px}footer a{color:var(--goldd)}
 """
+
+TAGLINE = 'The <span class="au">Gold Standard</span> in High-Ticket Job Search'
 
 def _nav(active):
     def a(href, label, key):
@@ -703,14 +706,14 @@ def _card(j, tag=False, badge=False, code=None):
             f'<div class="c">{html.escape(j["company"])} &middot; {html.escape(j["location"])}</div>'
             f'<div class="f">{tagh}{comp}<span class="src">via {html.escape(j["source"])}</span>{link}</div></div>')
 
-def _doc(title, sub, nav_key, body):
+def _doc(heading, sub, nav_key, body, tab=None):
     return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width,initial-scale=1">'
-            f'<title>{title} · Aurum</title><link rel="icon" href="/favicon.svg">'
+            f'<title>{tab or heading} · Aurum</title><link rel="icon" href="/favicon.svg">'
             f'<style>{PAGE_CSS}</style></head><body>'
             f'<header><a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum">'
             f'<span class="wm">AURUM</span></a>'
-            f'<h1>{title}</h1><p class="sub">{sub}</p>{_nav(nav_key)}</header>'
+            f'<h1>{heading}</h1><p class="sub">{sub}</p>{_nav(nav_key)}</header>'
             f'<div class="wrap">{body}</div>'
             f'<footer>Auto-generated from public job-board APIs + your inbox. '
             f'Listings stay live until they drop off their source. Verify before applying.</footer>'
@@ -755,7 +758,7 @@ def write_latest_html(jobs, active_count, scanned):
                          + "</div></section>")
         body = _controls(jobs) + sections + FILTER_JS
     sub = f"{TODAY} &middot; {len(jobs)} new today &middot; {active_count} active in total"
-    LATEST_HTML.write_text(_doc("Fresh in the Vault", sub, "new", body), encoding="utf-8")
+    LATEST_HTML.write_text(_doc(TAGLINE, sub, "new", body, tab="Fresh in the Vault"), encoding="utf-8")
 
 FILTER_JS = """<script>
 (function(){
@@ -809,7 +812,7 @@ def write_all_html(active, new_count):
     else:
         body = controls + groups + FILTER_JS
     sub = f"{len(active)} active roles &middot; {new_count} new today &middot; updated {TODAY}"
-    ALL_HTML.write_text(_doc("The Vault", sub, "all", body), encoding="utf-8")
+    ALL_HTML.write_text(_doc(TAGLINE, sub, "all", body, tab="The Vault"), encoding="utf-8")
 
 if __name__ == "__main__":
     main()

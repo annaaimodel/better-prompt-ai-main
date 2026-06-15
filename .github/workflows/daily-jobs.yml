@@ -1,9 +1,12 @@
-name: Daily high-ticket opportunities
+name: High-ticket opportunities
 
 on:
   schedule:
-    - cron: "0 6 * * *"       # 06:00 UTC daily = 7am UK (BST) / 6am UK (GMT in winter).
-  workflow_dispatch:           # lets you run it on-demand from the Actions tab
+    # Hourly LIGHT refresh (inbox/Quick Add + free APIs). At 06:00 UTC the code
+    # runs in HEAVY mode (also Adzuna/JSearch + link validation) — see HEAVY_HOUR
+    # in jobs/pipeline.py. 06:00 UTC = 7am UK (BST) / 6am UK (GMT in winter).
+    - cron: "0 * * * *"
+  workflow_dispatch:           # manual runs are always HEAVY (full pull) for testing
 
 permissions:
   contents: write              # allows the job to commit the daily results back
@@ -34,6 +37,8 @@ jobs:
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           # Optional: comma-separated Adzuna country codes (default: us,gb,ca,au).
           ADZUNA_COUNTRIES: ${{ vars.ADZUNA_COUNTRIES }}
+          # Manual runs do a full HEAVY pull; scheduled runs are light except at HEAVY_HOUR.
+          FORCE_HEAVY: ${{ github.event_name == 'workflow_dispatch' && 'true' || '' }}
         run: python jobs/pipeline.py
 
       - name: Commit results
@@ -44,6 +49,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Daily opportunities: $(date -u +%Y-%m-%d)"
+            git commit -m "Opportunities refresh: $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
           fi

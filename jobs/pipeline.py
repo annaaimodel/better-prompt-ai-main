@@ -24,6 +24,14 @@ ALL_HTML = ROOT / "all.html"          # /jobs/all -> all active, date order
 TODAY = datetime.date.today().isoformat()
 UA = "high-ticket-jobs-bot/1.0 (+personal daily digest; contact: annajtelfer@gmail.com)"
 
+# Run mode. Light runs (every hour) refresh the inbox + free APIs only, so Quick
+# Add jobs appear fast. The HEAVY run (once a day, or any manual run) also pulls
+# Adzuna/JSearch and validates links — keeping within Adzuna's free quota and not
+# hammering external sites hourly. Heavy when it's HEAVY_HOUR (UTC) or FORCE_HEAVY.
+HEAVY_HOUR = int(os.environ.get("HEAVY_HOUR", "6"))
+IS_HEAVY = (os.environ.get("FORCE_HEAVY", "").strip().lower() in ("1", "true", "yes")
+            or datetime.datetime.utcnow().hour == HEAVY_HOUR)
+
 # --- What counts as a relevant opportunity -------------------------------
 # Buckets, niche-agnostic (industry is never filtered — only the role).
 CLOSER_KW = ["high ticket closer", "high-ticket closer", "sales closer",
@@ -247,6 +255,8 @@ def _connectivity_ok() -> bool:
 
 def prune_dead_links(store: dict):
     """Validate every active link and deactivate the confidently bad ones."""
+    if not IS_HEAVY:
+        log("link check: skipped (light run)"); return
     if not CHECK_LINKS:
         log("link check: skipped (CHECK_LINKS=0)"); return
     if not _connectivity_ok():
@@ -372,6 +382,8 @@ def src_adzuna():
     # Needs free ADZUNA_APP_ID + ADZUNA_APP_KEY (developer.adzuna.com).
     # Accepts common name variants (APP/API) to be forgiving of secret naming.
     # Unconfigured -> returns ok=False so it never delists / never errors.
+    if not IS_HEAVY:
+        return [], False   # heavy source — only on the daily run (preserve Adzuna quota)
     app_id = _first_env("ADZUNA_APP_ID", "ADZUNA_API_ID", "ADZUNA_ID", "ADZUNA_APPLICATION_ID")
     app_key = _first_env("ADZUNA_APP_KEY", "ADZUNA_API_KEY", "ADZUNA_KEY", "ADZUNA_APPLICATION_KEY")
     out, ok = [], False
@@ -404,6 +416,8 @@ def src_jsearch():
     # Jobs results (Indeed / LinkedIn / Glassdoor / ZipRecruiter). Off if unset.
     key = os.environ.get("JSEARCH_API_KEY", "").strip()
     out, ok = [], False
+    if not IS_HEAVY:
+        return out, False   # heavy source — only on the daily run
     if not key:
         return out, False
     queries = [t + " remote" for t in SEARCH_TERMS]
@@ -478,6 +492,7 @@ def main():
     DAILY_DIR.mkdir(exist_ok=True)
     store = json.loads(STORE_FILE.read_text()) if STORE_FILE.exists() else {}
 
+    log(f"run mode: {'HEAVY — all sources + link check' if IS_HEAVY else 'light — inbox + free APIs (hourly Quick Add refresh)'}")
     raw, healthy = [], set()
     for name, fn in SOURCES:
         got, ok = fn()

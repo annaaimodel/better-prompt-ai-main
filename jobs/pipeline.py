@@ -128,6 +128,15 @@ def is_english(title: str) -> bool:
         return False
     return not any(m in t for m in NON_EN_MARKERS)
 
+# Blocked companies — junk/spam posters we never want listed. Matched against the
+# company and title with spaces removed, so "Apex Focus Group" / "ApexFocusGroup"
+# all match. Add more lowercase, de-spaced substrings here to block others.
+BLOCKED_COMPANIES = ["apexfocusgroup"]
+
+def is_blocked(j) -> bool:
+    hay = (str(j.get("company", "")) + " " + str(j.get("title", ""))).lower().replace(" ", "")
+    return any(b in hay for b in BLOCKED_COMPANIES)
+
 # Country derivation. Adzuna results are stamped authoritatively (we query per
 # country); everything else is best-effort from the location text.
 ADZUNA_COUNTRY = {"us": "United States", "gb": "United Kingdom", "ca": "Canada",
@@ -491,6 +500,11 @@ def log(m): LOG.append(m); print(m, file=sys.stderr)
 def main():
     DAILY_DIR.mkdir(exist_ok=True)
     store = json.loads(STORE_FILE.read_text()) if STORE_FILE.exists() else {}
+    blocked = [k for k, v in store.items() if is_blocked(v)]
+    for k in blocked:
+        del store[k]
+    if blocked:
+        log(f"blocklist: purged {len(blocked)} existing entr{'y' if len(blocked)==1 else 'ies'}")
 
     log(f"run mode: {'HEAVY — all sources + link check' if IS_HEAVY else 'light — inbox + free APIs (hourly Quick Add refresh)'}")
     raw, healthy = [], set()
@@ -508,6 +522,8 @@ def main():
     # `current` = everything live across all sources this run (deduped).
     current = {}
     for j in raw:
+        if is_blocked(j):
+            continue   # blocked company (spam) — never list
         if is_generic_link(j.get("link", "")):
             continue   # only ever list a specific posting, never a search/listing page
         if not is_english(j.get("title", "")):

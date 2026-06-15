@@ -628,8 +628,10 @@ PAGE_CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&display=swap');
 :root{--bg:#0a0a0b;--card:#141312;--line:rgba(201,156,56,.14);--line2:#262320;--txt:#f3efe6;--mut:#9a948a;--gold:#c99c38;--gold2:#f2dd88;--goldd:#a47a26;--accent:#c99c38;--new:#c99c38}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
-header{padding:46px 20px 16px;text-align:center;background:radial-gradient(1000px 380px at 50% -140px,rgba(201,156,56,.17),transparent 70%);border-bottom:1px solid var(--line2)}
-h1{margin:0 0 6px;font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:34px;letter-spacing:-.015em;background:linear-gradient(180deg,#fff 0%,#f2dd88 55%,#c99c38 120%);-webkit-background-clip:text;background-clip:text;color:transparent}
+header{padding:40px 20px 16px;text-align:center;background:radial-gradient(1000px 380px at 50% -140px,rgba(201,156,56,.17),transparent 70%);border-bottom:1px solid var(--line2)}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;margin:0 0 16px}.brand img{display:block}
+.wm{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:23px;letter-spacing:.18em;padding-left:.18em;background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1{margin:0 0 6px;font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:25px;letter-spacing:-.01em;color:#f4eedd}
 .sub{color:var(--mut);font-size:13.5px;margin:0;letter-spacing:.01em}
 .nav{margin:16px 0 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .nav a{color:var(--mut);font-size:12px;letter-spacing:.03em;text-decoration:none;border:1px solid var(--line);padding:7px 14px;border-radius:999px;transition:border-color .18s,color .18s,background .18s}
@@ -703,9 +705,12 @@ def _card(j, tag=False, badge=False, code=None):
 
 def _doc(title, sub, nav_key, body):
     return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
-            f'<meta name="viewport" content="width=device-width,initial-scale=1"><title>{title}</title>'
+            f'<meta name="viewport" content="width=device-width,initial-scale=1">'
+            f'<title>{title} · Aurum</title><link rel="icon" href="/favicon.svg">'
             f'<style>{PAGE_CSS}</style></head><body>'
-            f'<header><h1>{title}</h1><p class="sub">{sub}</p>{_nav(nav_key)}</header>'
+            f'<header><a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum">'
+            f'<span class="wm">AURUM</span></a>'
+            f'<h1>{title}</h1><p class="sub">{sub}</p>{_nav(nav_key)}</header>'
             f'<div class="wrap">{body}</div>'
             f'<footer>Auto-generated from public job-board APIs + your inbox. '
             f'Listings stay live until they drop off their source. Verify before applying.</footer>'

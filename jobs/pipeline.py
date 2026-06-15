@@ -709,7 +709,12 @@ def _card(j, tag=False, badge=False, code=None):
 def _doc(heading, sub, nav_key, body, tab=None):
     return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width,initial-scale=1">'
-            f'<title>{tab or heading} · Aurum</title><link rel="icon" href="/favicon.svg">'
+            f'<title>{tab or heading} · Aurum</title>'
+            f'<link rel="icon" type="image/svg+xml" href="/favicon.svg">'
+            f'<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">'
+            f'<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">'
+            f'<link rel="shortcut icon" href="/favicon.ico">'
+            f'<link rel="apple-touch-icon" href="/apple-touch-icon.png">'
             f'<style>{PAGE_CSS}</style></head><body>'
             f'<header><a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum">'
             f'<span class="wm">AURUM</span></a>'

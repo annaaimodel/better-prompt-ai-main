@@ -191,7 +191,7 @@ def build_html(path):
     doc = """<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Communities · Aurum</title><link rel="icon" href="/favicon.svg">
+<title>Communities · Aurum</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&display=swap');
 :root{--bg:#0a0a0b;--card:#141312;--card2:#1a1714;--line:rgba(201,156,56,.14);--line2:#262320;--txt:#f3efe6;--mut:#9a948a;--accent:#c99c38;--gold:#c99c38;--gold2:#f2dd88;}

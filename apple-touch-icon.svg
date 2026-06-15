@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180" role="img" aria-label="Aurum">
+  <defs>
+    <linearGradient id="aurg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6e29a"/>
+      <stop offset=".5" stop-color="#d9b24c"/>
+      <stop offset="1" stop-color="#b8862f"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" fill="#0a0a0b"/>
+  <rect x="26" y="26" width="128" height="128" rx="30" fill="none" stroke="url(#aurg)" stroke-width="4.5"/>
+  <text x="90" y="120" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="86" fill="url(#aurg)">Au</text>
+  <text x="135" y="58" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="24" fill="#cda23c">79</text>
+</svg>

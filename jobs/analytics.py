@@ -33,21 +33,23 @@ UA = "aurum-analytics/1.0 (+daily digest)"
 def log(m): print(m, file=sys.stderr)
 
 def api(path: str, params: dict | None = None):
-    """GET an API path. Returns (data, error_string)."""
+    """GET an API path, with one retry. Returns (data, error_string)."""
     url = BASE + path
     if params:
         url += "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={
-        "Authorization": f"Bearer {TOKEN}", "Accept": "application/json",
-        "Content-Type": "application/json", "User-Agent": UA})
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            return json.loads(r.read().decode("utf-8", "replace")), None
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", "replace")[:300]
-        return None, f"HTTP {e.code}: {body}"
-    except Exception as e:
-        return None, str(e)
+    last = None
+    for attempt in range(2):
+        req = urllib.request.Request(url, headers={
+            "Authorization": f"Bearer {TOKEN}", "Accept": "application/json",
+            "Content-Type": "application/json", "User-Agent": UA})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.loads(r.read().decode("utf-8", "replace")), None
+        except urllib.error.HTTPError as e:
+            last = f"HTTP {e.code}: {e.read().decode('utf-8', 'replace')[:300]}"
+        except Exception as e:
+            last = str(e)
+    return None, last
 
 # Date ranges to report. GoatCounter's /stats/total takes start/end as ISO dates.
 RANGES = [
@@ -68,13 +70,11 @@ def _num(d: dict, *names):
     return None
 
 def fetch_total(start, end):
+    """GoatCounter /stats/total -> {"total": pageviews, ...}. No visitor field here."""
     d, err = api("/stats/total", {"start": start.isoformat(), "end": end.isoformat()})
     if err:
-        return None, None, err, d
-    # Be tolerant of field naming across GoatCounter versions.
-    pv = _num(d, "total", "count", "pageviews")
-    uv = _num(d, "total_unique", "unique", "visitors", "total_visitors")
-    return pv, uv, None, d
+        return None, err, d
+    return _num(d, "total", "count", "pageviews"), None, d
 
 def fetch_top_pages(start, end, limit=10):
     # Try the known candidate endpoints; record whichever responds.
@@ -109,20 +109,19 @@ def main():
         log("analytics: not configured — wrote placeholder digest")
         return
 
-    # Totals per range.
-    lines += ["| Period | Pageviews | Visitors |", "|--------|-----------|----------|"]
+    # Totals per range. GoatCounter's /stats/total returns pageviews only.
+    lines += ["| Period | Pageviews |", "|--------|-----------|"]
     for label, start, end in RANGES:
-        pv, uv, err, raw = fetch_total(start, end)
+        pv, err, raw = fetch_total(start, end)
         snapshot["ranges"][label] = {"start": start.isoformat(), "end": end.isoformat(),
-                                     "pageviews": pv, "visitors": uv, "error": err}
+                                     "pageviews": pv, "error": err}
         snapshot["raw"][f"total::{label}"] = raw
         if err:
-            lines.append(f"| {label} | — | — |  _error: {err}_")
+            lines.append(f"| {label} | — _(error: {err})_ |")
             log(f"total {label}: {err}")
         else:
-            lines.append(f"| {label} | {pv if pv is not None else '—'} "
-                         f"| {uv if uv is not None else '—'} |")
-            log(f"total {label}: pageviews={pv} visitors={uv}")
+            lines.append(f"| {label} | {pv if pv is not None else '—'} |")
+            log(f"total {label}: pageviews={pv}")
 
     # Top pages over last 30 days.
     start30 = TODAY - datetime.timedelta(days=29)

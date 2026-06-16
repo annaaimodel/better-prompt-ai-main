@@ -110,3 +110,35 @@ aurum-hts.vercel.app
 Built a free board for remote high-ticket sales roles (closer/setter/CSM/VA) — pulls
 genuine openings from the best boards & communities, refreshed hourly, with a free
 CV-match tool. No signup to browse: aurum-hts.vercel.app
+
+---
+
+# Employer / Recruiter Outreach (drive roles to /hiring)
+
+Goal: get recruiters and founders to **post their roles** on AURUM. Lead with the
+free listing; the paid Featured/Urgent tiers sell themselves once they're in.
+
+## DM — to a recruiter who posts roles in the communities
+Hey [name] — I run AURUM, a board for remote high-ticket sales roles (closers,
+setters, CSMs). I saw you place a lot of these. You can list your roles with us free
+and get them in front of candidates who only do high-ticket — and if you ever need a
+role filled fast, Featured/Urgent listings put it top of the board + in our candidate
+email. Want me to send the link to post one?
+
+## DM — to a founder/company hiring
+Hey [name] — saw you're hiring a [closer/setter]. I run AURUM, a board for remote
+high-ticket sales talent. You can post the role for free here → aurum-hts.vercel.app/hiring
+— takes 2 mins and it goes in front of candidates who live in this world. If it's
+urgent, there's a paid option that pins it to the top + features it to our list.
+
+## Comment reply — when someone posts "hiring a closer/setter"
+You can also list this free on AURUM (a board just for remote high-ticket sales roles)
+so it reaches candidates outside this group → aurum-hts.vercel.app/hiring
+
+## Follow-up — once they've posted (upsell to paid)
+Nice — your role's live 🎉 If you want it filled quicker, Featured (£49) pins it to the
+top of the board and drops it into our weekly candidate email; Urgent (£99) adds a
+social post + same-day priority. Want me to upgrade it?
+
+## One-liner for your socials / bio
+Hiring remote high-ticket sales talent? Post your role free → aurum-hts.vercel.app/hiring

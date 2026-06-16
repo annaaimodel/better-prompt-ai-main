@@ -271,21 +271,27 @@ def prune_dead_links(store: dict):
         log("link check: skipped (CHECK_LINKS=0)"); return
     if not _connectivity_ok():
         log("link check: skipped (no outbound connectivity)"); return
-    # Don't link-validate inbox / Quick Add jobs — they're manually curated and
-    # may legitimately have no apply link.
-    actives = [(k, rec) for k, rec in store.items() if rec.get("active") and not rec.get("inbox")]
+    # Non-inbox jobs: validate every link, delist both 'dead' and 'generic'.
+    # Inbox / Quick Add jobs are manually curated, so we're gentler: we still
+    # drop ones whose link is *confidently* dead (404/410/"no longer available"),
+    # but we never delist them for being 'generic' or for having no link at all.
+    nonin = [(k, rec) for k, rec in store.items() if rec.get("active") and not rec.get("inbox")]
+    inbox = [(k, rec) for k, rec in store.items()
+             if rec.get("active") and rec.get("inbox") and rec.get("link")]
+    inbox_keys = {k for k, _ in inbox}
     results = {}
     with cf.ThreadPoolExecutor(max_workers=12) as ex:
-        fut = {ex.submit(validate_link, rec.get("link", "")): k for k, rec in actives}
+        fut = {ex.submit(validate_link, rec.get("link", "")): k for k, rec in (nonin + inbox)}
         for f in cf.as_completed(fut):
             results[fut[f]] = f.result()
-    dead = sum(1 for t in results.values() if t == "dead")
-    generic = sum(1 for t in results.values() if t == "generic")
+    dead = generic = 0
     for k, tag in results.items():
-        if tag in ("dead", "generic"):
-            store[k]["active"] = False
-            store[k]["delisted"] = tag
-    log(f"link check: {len(actives)} checked -> {dead+generic} delisted "
+        if tag == "dead":
+            store[k]["active"] = False; store[k]["delisted"] = "dead"; dead += 1
+        elif tag == "generic" and k not in inbox_keys:
+            store[k]["active"] = False; store[k]["delisted"] = "generic"; generic += 1
+    log(f"link check: {len(nonin)+len(inbox)} checked "
+        f"({len(inbox)} inbox) -> {dead+generic} delisted "
         f"({dead} dead, {generic} generic)")
 
 # --- Sources (free, public, ToS-friendly APIs) ---------------------------

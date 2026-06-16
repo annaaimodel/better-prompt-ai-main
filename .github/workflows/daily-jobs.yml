@@ -11,6 +11,12 @@ on:
 permissions:
   contents: write              # allows the job to commit the daily results back
 
+# Never let two refresh runs overlap (a manual run + the hourly cron, etc.) —
+# they'd race on the same push and one would "fail". Queue them instead.
+concurrency:
+  group: daily-jobs
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -50,5 +56,11 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Opportunities refresh: $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
+            # Resilient push: if another commit landed first, rebase and retry
+            # rather than failing the whole run (avoids false-alarm failures).
+            for i in 1 2 3; do
+              if git push; then break; fi
+              echo "Push rejected; rebasing on latest master and retrying ($i)…"
+              git pull --rebase --autostash origin master || true
+            done
           fi

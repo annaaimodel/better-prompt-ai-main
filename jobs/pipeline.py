@@ -57,8 +57,9 @@ LEAD_COLD_KW = ["cold call", "cold calling", "cold caller", "cold outreach", "co
 # Success — matched on the JOB TITLE ONLY, and only these CSM-based terms.
 SUCCESS_TITLE = ["customer success", "client success", "onboarding"]
 SUCCESS_ACR = ["csm"]
-# VA / Admin / Assistant — matched on the JOB TITLE ONLY, and REMOTE ONLY.
-VA_TITLE = ["virtual assistant", "assistant", "admin"]
+# VA / Social / Chat — matched on the JOB TITLE ONLY, and REMOTE ONLY. This bucket
+# is EXEMPT from the high-ticket requirement (these roles rarely say "high ticket").
+VA_TITLE = ["virtual assistant", "assistant", "chatter", "social media manager"]
 VA_ACR = ["va"]
 
 # Remote detection: remote if the title/location says so, or it's a remote board.
@@ -98,10 +99,13 @@ def categorise(j) -> str | None:
         if _has(text, SETTER_PHONE_KW):
             return "Setter — Phone Setting"
         return "Setter / SDR"
-    # VA / Admin / Assistant — TITLE only
+    # VA / Social / Chat — TITLE only
     if _has(title, VA_TITLE) or _has_word(title, VA_ACR):
-        return "VA / Admin / Assistant"
+        return "VA / Social / Chat"
     return None
+
+def is_va_category(cat: str) -> bool:
+    return bool(cat) and cat.startswith("VA ")
 
 def lead_type(j) -> str:
     """Inbound vs Cold — a cross-cutting tag, '' when the listing doesn't say."""
@@ -422,7 +426,7 @@ SEARCH_TERMS = ["high ticket closer", "appointment setter", "sales closer",
                 "remote closer", "sales development representative",
                 "customer success manager", "onboarding specialist",
                 "remote virtual assistant", "remote executive assistant",
-                "remote administrative assistant",
+                "remote chatter", "social media manager remote", "online chat agent",
                 "dm setter", "instagram appointment setter", "cold caller",
                 "phone setter", "inbound sales representative"]
 
@@ -715,8 +719,6 @@ def main():
                 continue
             if not is_english(j.get("title", "")):
                 continue
-            if not mentions_high_ticket(j):
-                continue   # keep the board specifically high-ticket (inbox jobs are exempt)
         j.setdefault("country", country_of(j.get("location", "")))  # Adzuna pre-stamps; others derive
         j["lead_type"] = lead_type(j)
         cat = categorise(j)
@@ -725,6 +727,11 @@ def main():
                 cat = "From inbox (uncategorised)"
             else:
                 continue
+        # High-ticket gate: auto-sourced roles must say "high ticket" / show
+        # high-ticket comp — EXCEPT the VA / Social / Chat bucket (remote-only,
+        # exempt) and inbox/manual adds.
+        if not j.get("inbox") and not is_va_category(cat) and not mentions_high_ticket(j):
+            continue
         j["category"] = cat
         k = job_key(j)
         if k not in current:
@@ -864,7 +871,7 @@ def _bucket_code(cat):
     c = cat.lower()
     if "success" in c:
         return "success"
-    if "assistant" in c or "admin" in c or c.startswith("va "):
+    if c.startswith("va ") or "assistant" in c or "chatter" in c or "social" in c:
         return "va"
     if "setter" in c or "sdr" in c or "sdm" in c:
         if "dm setting" in c:
@@ -942,7 +949,7 @@ def _controls(jobs):
             '<button class="fchip" data-f="setphone">Phone Setting</button>'
             '<button class="fchip" data-f="setter">Setter / SDR</button>'
             '<button class="fchip" data-f="success">Success</button>'
-            '<button class="fchip" data-f="va">VA / Admin</button>'
+            '<button class="fchip" data-f="va">VA / Social</button>'
             '</div>'
             f'<select id="country" class="csel" aria-label="Country">{copts}</select>'
             f'<select id="lead" class="csel" aria-label="Lead type">{lopts}</select>'

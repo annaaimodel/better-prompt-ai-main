@@ -208,13 +208,40 @@ def tier_norm(v: str) -> str:
 def is_tiered(rec) -> bool:
     return rec.get("tier") in ("urgent", "featured")
 
+# High-ticket language: the literal phrase, or "six-figure".
+_HT_LANG = re.compile(r"high[\s\-]?ticket|highticket|\b6[\s\-]?figure|\bsix[\s\-]?figure", re.I)
+# A dollar amount with optional k/m suffix, plus a short trailing window so we can
+# tell a *monthly* figure (e.g. "$5k/mo") from an annual/total one.
+_HT_MONEY = re.compile(r"\$\s?(\d{1,3}(?:,\d{3})*|\d+(?:\.\d+)?)\s*(k|m)?\b([^\n]{0,12})", re.I)
+
+def _comp_is_high_ticket(text: str) -> bool:
+    """True if the text shows genuine high-ticket comp: a monthly figure of
+    $5k+, or a total/OTE of $100k+."""
+    for num, suf, after in _HT_MONEY.findall(text):
+        n = float(num.replace(",", ""))
+        s = suf.lower()
+        if s == "k":
+            n *= 1000
+        elif s == "m":
+            n *= 1_000_000
+        monthly = re.search(r"/?\s*(mo\b|month)", after, re.I) is not None
+        if monthly and n >= 5000:
+            return True
+        if not monthly and n >= 100000:
+            return True
+    return False
+
 def mentions_high_ticket(j) -> bool:
-    """True if the role's text actually says 'high ticket' / 'high-ticket'.
-    Used to keep the board specifically high-ticket — auto-sourced roles that
-    don't mention it are dropped (manual/inbox adds are exempt)."""
-    text = " ".join(str(j.get(k, "")) for k in ("title", "desc", "comp", "company")).lower()
-    norm = text.replace("-", " ")
-    return "high ticket" in norm or "highticket" in text
+    """Keep the board specifically high-ticket. True if the role either says
+    'high ticket' / 'six-figure', or shows clear high-ticket comp ($5k+/mo or
+    $100k+ OTE). Auto-sourced roles that match none of this are dropped;
+    manual/inbox adds are exempt (handled by the caller)."""
+    text = " ".join(str(j.get(k, "")) for k in ("title", "desc", "comp", "company"))
+    if "high ticket" in text.lower().replace("-", " "):
+        return True
+    if _HT_LANG.search(text):
+        return True
+    return _comp_is_high_ticket(text)
 
 # --- Link health: only ever list specific, working job URLs ---------------
 # Goal: drop links that (a) point at a generic listing/search page rather than

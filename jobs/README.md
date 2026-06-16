@@ -53,6 +53,8 @@ disables that source.
 | **The Muse** | US-heavy sales/CS | none (optional `THEMUSE_API_KEY` for higher limits) | themuse.com/developers |
 | **Adzuna** | US + UK + CA + AU; aggregates many boards | `ADZUNA_APP_ID` + `ADZUNA_APP_KEY` (free) | developer.adzuna.com |
 | **JSearch** *(optional)* | Indeed / LinkedIn / Glassdoor / ZipRecruiter via Google for Jobs | `JSEARCH_API_KEY` (RapidAPI, freemium) | rapidapi.com → JSearch |
+| **Jooble** *(optional)* | Aggregates thousands of boards (high volume) | `JOOBLE_API_KEY` (free) | jooble.org/api/about |
+| **Careerjet** *(optional)* | Aggregator across many boards | `CAREERJET_AFFID` (free affiliate id) | www.careerjet.com/partners/signup.html |
 
 - `ADZUNA_COUNTRIES` (repo **Variable**) — comma-separated country codes; default
   `us,gb,ca,au`.

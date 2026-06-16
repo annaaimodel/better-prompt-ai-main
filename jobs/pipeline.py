@@ -571,8 +571,8 @@ def src_jooble():
     return out, ok
 
 def src_careerjet():
-    # Free affiliate id from partners.careerjet.com -> CAREERJET_AFFID. Keyword
-    # aggregator. Heavy-only.
+    # Free affiliate id from www.careerjet.com/partners/signup.html -> CAREERJET_AFFID.
+    # Keyword aggregator. Heavy-only.
     if not IS_HEAVY:
         return [], False
     affid = os.environ.get("CAREERJET_AFFID", "").strip()

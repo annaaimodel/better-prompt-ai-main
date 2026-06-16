@@ -191,6 +191,7 @@ function defaultPlaybook() {
 
 let db = load();
 if (!db.playbook) db.playbook = defaultPlaybook();
+if (!db.assets) db.assets = [];
 
 function load() {
   try {
@@ -201,8 +202,43 @@ function load() {
     version: 1,
     settings: { access: "", coachName: "", offer: "", idealClient: "", results: [], resources: [], tone: "" },
     playbook: defaultPlaybook(),
+    assets: [],
     leads: [],
   };
+}
+
+// Assets ⇄ touches mapping: which asset types satisfy which value angle.
+const ASSET_TYPES = ["testimonial", "case-study", "story", "stat", "resource"];
+const ANGLE_ASSET_TYPES = {
+  proof: ["testimonial", "case-study", "story", "stat"],
+  resource: ["resource"],
+  insight: [], intro: [],
+};
+// Pick the freshest on-message asset for this touch that the contact hasn't seen.
+// Prefers assets tagged for the lead's objection/signal/segment; falls back to any.
+function pickAsset(lead, valueAngle) {
+  const types = ANGLE_ASSET_TYPES[valueAngle] || [];
+  if (!types.length) return null;
+  const used = lead.usedAssets || [];
+  let pool = (db.assets || []).filter((a) => types.includes(a.type) && !used.includes(a.id));
+  if (!pool.length) return null;
+  const tags = [lead.objection, lead.signal, lead.segment, lead.track].filter(Boolean).map((x) => String(x).toLowerCase());
+  const matches = (a) => (a.bestFor || []).some((t) => tags.includes(String(t).toLowerCase()));
+  const preferred = pool.filter(matches);
+  if (preferred.length) pool = preferred;
+  // Global freshness: least-used first, then longest since last use.
+  pool.sort((a, b) => (a.timesUsed || 0) - (b.timesUsed || 0)
+    || (new Date(a.lastUsedAt || 0)) - (new Date(b.lastUsedAt || 0)));
+  return pool[0];
+}
+function markAssetUsed(lead, assetId) {
+  if (!assetId) return;
+  const a = (db.assets || []).find((x) => x.id === assetId);
+  if (!a) return;
+  lead.usedAssets = lead.usedAssets || [];
+  if (!lead.usedAssets.includes(assetId)) lead.usedAssets.push(assetId);
+  a.timesUsed = (a.timesUsed || 0) + 1;
+  a.lastUsedAt = new Date().toISOString();
 }
 function save() { localStorage.setItem(KEY, JSON.stringify(db)); }
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
@@ -239,8 +275,11 @@ function advanceCadence(lead, summary) {
     at: new Date().toISOString(),
     channel: step.channel, direction: "out",
     valueAngle: step.valueAngle, intent: step.intent,
+    assetId: lead._pendingAsset || null,
     summary: (summary || "").slice(0, 280),
   });
+  // No-repeat: lock in whichever asset the just-sent draft used.
+  if (lead._pendingAsset) { markAssetUsed(lead, lead._pendingAsset); delete lead._pendingAsset; }
   // Light auto-stage progression (setting track only).
   if ((!lead.track || lead.track === "setting") && lead.stage === "new") lead.stage = "contacted";
   lead.cadenceStep += 1;
@@ -530,9 +569,11 @@ function openDraft(id) {
   const l = db.leads.find((x) => x.id === id);
   if (!l) return;
   const step = currentStep(l);
-  draftCtx = { leadId: id, channel: step.channel, valueAngle: step.valueAngle, intent: step.intent, variants: 1 };
+  const asset = pickAsset(l, step.valueAngle);
+  draftCtx = { leadId: id, channel: step.channel, valueAngle: step.valueAngle, intent: step.intent, variants: 1, asset };
   $("modalTitle").textContent = `Draft — ${l.name || "lead"}`;
-  $("modalMeta").innerHTML = `<span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span> ${trackChip(l)} ${esc(step.intent)}`;
+  const assetChip = asset ? `<span class="chip proof">✶ ${esc(asset.title || asset.person || asset.type)}</span>` : "";
+  $("modalMeta").innerHTML = `<span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span> ${trackChip(l)} ${assetChip} ${esc(step.intent)}`;
   $("modalOut").textContent = "…";
   $("modal").classList.add("open");
   runDraft();
@@ -560,11 +601,14 @@ async function runDraft() {
         history,
         profile: db.settings,
         playbook: db.playbook,
+        asset: draftCtx.asset || null,
       }),
     });
     const j = await r.json();
     if (!r.ok) { $("modalOut").textContent = "⚠ " + (j.error || "Drafting failed."); return; }
     $("modalOut").textContent = j.text || "(empty)";
+    // Remember which asset this draft used so it's locked in when you advance.
+    l._pendingAsset = draftCtx.asset ? draftCtx.asset.id : null; save();
   } catch (e) {
     $("modalOut").textContent = "⚠ Network error — try again.";
   }
@@ -574,11 +618,12 @@ async function runDraft() {
 // Wiring
 // ---------------------------------------------------------------------------
 function setView(name) {
-  ["today", "pipeline", "add", "playbook", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
+  ["today", "pipeline", "add", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === name));
   if (name === "today") renderToday();
   if (name === "pipeline") renderPipeline($("search").value);
   if (name === "playbook") loadPlaybookForm();
+  if (name === "assets") renderAssets();
   if (name === "settings") loadSettingsForm();
 }
 function rerender() {
@@ -602,6 +647,8 @@ document.body.addEventListener("click", (e) => {
   else if (t.dataset.done) { const l = db.leads.find((x) => x.id === t.dataset.done); if (l) { advanceCadence(l, "(marked sent)"); rerender(); toast("Sent & advanced ▸"); } }
   else if (t.dataset.snooze) { const l = db.leads.find((x) => x.id === t.dataset.snooze); if (l) { l.nextActionAt = new Date(now() + 24 * HOUR).toISOString(); save(); rerender(); toast("Snoozed 1 day"); } }
   else if (t.dataset.reopen) { const l = db.leads.find((x) => x.id === t.dataset.reopen); if (l) { l.status = "active"; if (l.stage === "won" || l.stage === "lost") l.stage = "engaged"; save(); rerender(); toast("Reopened"); } }
+  else if (t.dataset.aedit) { openAssetEdit(t.dataset.aedit); }
+  else if (t.dataset.adel) { if (confirm("Delete this asset?")) { db.assets = (db.assets || []).filter((x) => x.id !== t.dataset.adel); save(); renderAssets(); toast("Deleted"); } }
 });
 document.body.addEventListener("change", (e) => {
   if (e.target.dataset.stage) {
@@ -747,6 +794,145 @@ $("pb_save").onclick = () => {
   save(); updatePlaybookStatus(); toast("Playbook saved");
   $("pb_status").textContent = "Saved ✓ — every draft now builds from your offer, method & voice";
 };
+
+// Assets library ------------------------------------------------------------
+const ASSET_TYPE_LABEL = { testimonial: "Testimonial", "case-study": "Case study", story: "Story", stat: "Stat", resource: "Resource" };
+function renderAssets() {
+  const v = $("assetsView");
+  v.innerHTML = `
+    <div class="card">
+      <h2>Proof &amp; asset library</h2>
+      <p class="small muted">Testimonials, case studies, stats and resources on tap. When a touch calls for proof or a resource, the drafter auto-pulls the freshest one that fits — never the same one twice for a person (per-contact), rotated globally so nothing goes stale.</p>
+      <div class="kbar">
+        <button class="btn sm" id="as_import">Import starter pack (JSON)</button>
+        <input id="as_importFile" type="file" accept="application/json" class="hidden" />
+        <button class="btn sm" id="as_export">Export assets</button>
+        <span class="small muted">${(db.assets || []).length} assets</span>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Add an asset</h2>
+      <div class="row">
+        <div class="field"><label>Type</label><select id="as_type">${ASSET_TYPES.map((t) => `<option value="${t}">${ASSET_TYPE_LABEL[t]}</option>`).join("")}</select></div>
+        <div class="field"><label>Title (short label)</label><input id="as_title" placeholder="e.g. Hector — 4 models in 6 weeks" /></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Person</label><input id="as_person" /></div>
+        <div class="field"><label>Location</label><input id="as_location" placeholder="e.g. US" /></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Their starting point</label><input id="as_start" /></div>
+        <div class="field"><label>Result</label><input id="as_result" /></div>
+      </div>
+      <div class="field"><label>Body / quote (or what the resource is)</label><textarea id="as_body" rows="3"></textarea></div>
+      <div class="row">
+        <div class="field"><label>Link (for resources)</label><input id="as_link" /></div>
+        <div class="field"><label>Best for (comma tags: objection / segment)</label><input id="as_bestfor" placeholder="e.g. fear_us, research, hto" /></div>
+      </div>
+      <button class="btn primary" id="as_add">Add asset</button>
+    </div>
+    <div id="as_list"></div>`;
+  $("as_add").onclick = addAssetFromForm;
+  $("as_import").onclick = () => $("as_importFile").click();
+  $("as_importFile").onchange = (e) => { if (e.target.files[0]) importStarter(e.target.files[0]); };
+  $("as_export").onclick = () => {
+    const blob = new Blob([JSON.stringify({ assets: db.assets || [] }, null, 2)], { type: "application/json" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+    a.download = `cadence-assets-${new Date().toISOString().slice(0, 10)}.json`; a.click(); URL.revokeObjectURL(a.href); toast("Exported");
+  };
+  renderAssetList();
+}
+function renderAssetList() {
+  const el = $("as_list"); if (!el) return;
+  const list = db.assets || [];
+  if (!list.length) { el.innerHTML = `<div class="empty">No assets yet. Add your testimonials and case studies above, or import a starter pack.</div>`; return; }
+  el.innerHTML = list.map((a) => `
+    <div class="lead">
+      <div>
+        <div class="name">${esc(a.title || a.person || ASSET_TYPE_LABEL[a.type] || "Asset")} <span class="chip">${ASSET_TYPE_LABEL[a.type] || esc(a.type)}</span></div>
+        <div class="meta">${esc(a.person || "")}${a.location ? ` · ${esc(a.location)}` : ""}${a.result ? ` · ${esc(a.result)}` : ""}</div>
+        ${(a.bestFor && a.bestFor.length) ? `<div class="action small">${a.bestFor.map((t) => `<span class="chip">${esc(t)}</span>`).join(" ")}</div>` : ""}
+        <div class="action tiny muted">Used ${a.timesUsed || 0}×${a.lastUsedAt ? ` · last ${fmtDate(a.lastUsedAt)}` : ""}</div>
+      </div>
+      <div class="btns">
+        <button class="btn sm" data-aedit="${a.id}">Edit</button>
+        <button class="btn sm danger" data-adel="${a.id}">Delete</button>
+      </div>
+    </div>`).join("");
+}
+function addAssetFromForm() {
+  const a = {
+    id: uid(), type: $("as_type").value,
+    title: $("as_title").value.trim(), person: $("as_person").value.trim(), location: $("as_location").value.trim(),
+    startingPoint: $("as_start").value.trim(), result: $("as_result").value.trim(),
+    body: $("as_body").value.trim(), link: $("as_link").value.trim(),
+    bestFor: $("as_bestfor").value.split(",").map((s) => s.trim()).filter(Boolean),
+    timesUsed: 0, lastUsedAt: null,
+  };
+  if (!a.title && !a.body && !a.person) { toast("Add at least a title, person or body"); return; }
+  db.assets.push(a); save(); renderAssets(); toast("Asset added");
+}
+function openAssetEdit(id) {
+  const a = (db.assets || []).find((x) => x.id === id);
+  if (!a) return;
+  const bg = document.createElement("div"); bg.className = "modal-bg open";
+  bg.innerHTML = `
+    <div class="modal">
+      <button class="close-x">&times;</button>
+      <h3>Edit asset</h3>
+      <div class="row">
+        <div class="field"><label>Type</label><select id="ae_type">${ASSET_TYPES.map((t) => `<option value="${t}" ${t === a.type ? "selected" : ""}>${ASSET_TYPE_LABEL[t]}</option>`).join("")}</select></div>
+        <div class="field"><label>Title</label><input id="ae_title" value="${esc(a.title)}" /></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Person</label><input id="ae_person" value="${esc(a.person)}" /></div>
+        <div class="field"><label>Location</label><input id="ae_location" value="${esc(a.location)}" /></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Starting point</label><input id="ae_start" value="${esc(a.startingPoint)}" /></div>
+        <div class="field"><label>Result</label><input id="ae_result" value="${esc(a.result)}" /></div>
+      </div>
+      <div class="field"><label>Body / quote</label><textarea id="ae_body" rows="4">${esc(a.body)}</textarea></div>
+      <div class="row">
+        <div class="field"><label>Link</label><input id="ae_link" value="${esc(a.link)}" /></div>
+        <div class="field"><label>Best for (comma tags)</label><input id="ae_bestfor" value="${esc((a.bestFor || []).join(", "))}" /></div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn primary sm" id="ae_save">Save</button>
+        <button class="btn sm" id="ae_reset">Reset usage</button>
+      </div>
+      <p class="small muted" style="margin-top:8px">Used ${a.timesUsed || 0}×${a.lastUsedAt ? ` · last ${fmtDate(a.lastUsedAt)}` : ""}</p>
+    </div>`;
+  document.body.appendChild(bg);
+  const close = () => bg.remove();
+  bg.querySelector(".close-x").onclick = close;
+  bg.onclick = (e) => { if (e.target === bg) close(); };
+  bg.querySelector("#ae_save").onclick = () => {
+    a.type = bg.querySelector("#ae_type").value; a.title = bg.querySelector("#ae_title").value.trim();
+    a.person = bg.querySelector("#ae_person").value.trim(); a.location = bg.querySelector("#ae_location").value.trim();
+    a.startingPoint = bg.querySelector("#ae_start").value.trim(); a.result = bg.querySelector("#ae_result").value.trim();
+    a.body = bg.querySelector("#ae_body").value.trim(); a.link = bg.querySelector("#ae_link").value.trim();
+    a.bestFor = bg.querySelector("#ae_bestfor").value.split(",").map((s) => s.trim()).filter(Boolean);
+    save(); close(); renderAssets(); toast("Saved");
+  };
+  bg.querySelector("#ae_reset").onclick = () => { a.timesUsed = 0; a.lastUsedAt = null; save(); close(); renderAssets(); toast("Usage reset"); };
+}
+function importStarter(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const data = JSON.parse(reader.result);
+      let n = 0;
+      if (data.playbook) db.playbook = Object.assign(defaultPlaybook(), db.playbook, data.playbook);
+      if (Array.isArray(data.assets)) {
+        const ids = new Set((db.assets || []).map((x) => x.id));
+        data.assets.forEach((a) => { if (!a.id) a.id = uid(); if (!ids.has(a.id)) { db.assets.push(Object.assign({ timesUsed: 0, lastUsedAt: null, bestFor: [] }, a)); n++; } });
+      }
+      save(); renderAssets(); toast(`Imported${data.playbook ? " playbook +" : ""} ${n} assets`);
+    } catch (e) { toast("Invalid file"); }
+  };
+  reader.readAsText(file);
+}
 
 // Export / import / wipe
 function doExport() {

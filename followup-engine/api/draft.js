@@ -263,10 +263,26 @@ export default async function handler(req, res) {
       ? `Write TWO distinct options for this follow-up, labelled "Option 1" and "Option 2", separated by a line of "---". Make them genuinely different in angle or opening.`
       : `Write the follow-up.`;
 
+  const asset = body.asset && typeof body.asset === "object" ? body.asset : null;
+  let assetBlock = "";
+  if (asset && (asset.title || asset.body || asset.result || asset.link)) {
+    const bits = [
+      asset.type ? `Type: ${clip(asset.type, 40)}` : "",
+      asset.person ? `From: ${clip(asset.person, 80)}${asset.location ? `, ${clip(asset.location, 60)}` : ""}` : "",
+      asset.startingPoint ? `Their starting point: ${clip(asset.startingPoint, 400)}` : "",
+      asset.result ? `Result: ${clip(asset.result, 400)}` : "",
+      asset.body ? `Detail / quote: ${clip(asset.body, 1400)}` : "",
+      asset.link ? `Link: ${clip(asset.link, 300)}` : "",
+    ].filter(Boolean);
+    assetBlock =
+      `\n\nUSE THIS SPECIFIC ASSET in the message — weave it in naturally and conversationally. Use ONLY its real details; do not embellish, round up, or invent anything. For a resource, share the link; for a testimonial/case study, reference the person and result honestly:\n` +
+      `- ${asset.title ? clip(asset.title, 160) : "(asset)"}\n  ${bits.join("\n  ")}`;
+  }
+
   const userText =
     `PURPOSE OF THIS TOUCH: ${intent}\n` +
     `CHANNEL: ${channel}\n\n` +
-    `${buildContext(body)}\n\n` +
+    `${buildContext(body)}${assetBlock}\n\n` +
     `TASK: ${instruction}`;
 
   try {

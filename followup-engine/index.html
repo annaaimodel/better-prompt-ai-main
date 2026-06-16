@@ -37,6 +37,8 @@
         <button class="btn sm" id="importBtn">Import</button>
         <input id="importFile" type="file" accept="application/json" class="hidden" />
       </div>
+      <nav class="segnav" id="segNav"></nav>
+      <div class="kbar" style="margin-bottom:10px"><label class="tiny" style="margin:0">Assignee</label><select id="assigneeFilter" style="max-width:220px"></select></div>
       <div id="pipelineList"></div>
     </section>
 
@@ -150,6 +152,15 @@
         <h2>Access</h2>
         <p class="small muted">Your <code>ACCESS_CODE</code> (set in Vercel). Stored only in this browser; sent with each AI request to unlock drafting.</p>
         <div class="field"><label>Access code</label><input id="s_access" type="password" placeholder="••••••" /></div>
+      </div>
+
+      <div class="card">
+        <h2>Team / roster</h2>
+        <p class="small muted">Names you can assign leads to. As a call gets set it links to a setter + closer; on close it hands to a CSM. (Comma-separated.)</p>
+        <div class="field"><label>Setters</label><input id="s_setters" placeholder="e.g. Anna, Jordan" /></div>
+        <div class="field"><label>Closers</label><input id="s_closers" placeholder="e.g. Tom, Priya" /></div>
+        <div class="field"><label>CSMs</label><input id="s_csms" placeholder="e.g. Devon" /></div>
+        <button class="btn primary sm" id="s_saveTeam">Save roster</button>
       </div>
 
       <div class="card">

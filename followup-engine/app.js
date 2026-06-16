@@ -175,6 +175,28 @@ const ANGLE_LABEL = { insight: "Insight", proof: "Proof", resource: "Resource", 
 const CHANNEL_LABEL = { text: "Text", email: "Email", call: "Call" };
 const TEMP_ORDER = { hot: 0, warm: 1, cold: 2 };
 
+// The six pipeline segments — each its own filtered page.
+const SEGMENTS = [
+  { key: "lead", label: "Lead", hint: "New inbound, not yet worked" },
+  { key: "set", label: "Set", hint: "Being worked to book the call" },
+  { key: "call", label: "Call", hint: "Call booked — setter + closer linked" },
+  { key: "followup", label: "Follow-up", hint: "Owed a touch (no-show, reschedule, gone quiet)" },
+  { key: "close", label: "Close", hint: "Call done, working the close" },
+  { key: "csm", label: "CSM", hint: "Won — customer success" },
+];
+const SEGMENT_KEYS = SEGMENTS.map((s) => s.key);
+const SEGMENT_LABEL = Object.fromEntries(SEGMENTS.map((s) => [s.key, s.label]));
+// Derive a segment for legacy leads that predate the field.
+function deriveSegment(l) {
+  if (["success", "save", "winback"].includes(l.track)) return "csm";
+  if (l.track === "closing") return "close";
+  if (l.stage === "booked") return "call";
+  if (l.stage === "post-call") return "close";
+  if (["contacted", "engaged"].includes(l.stage)) return "set";
+  if (["client", "at-risk", "alumni"].includes(l.stage)) return "csm";
+  return "lead";
+}
+
 // ---------------------------------------------------------------------------
 // Storage
 // ---------------------------------------------------------------------------
@@ -192,6 +214,9 @@ function defaultPlaybook() {
 let db = load();
 if (!db.playbook) db.playbook = defaultPlaybook();
 if (!db.assets) db.assets = [];
+if (!db.team) db.team = { setters: [], closers: [], csms: [] };
+// Backfill the segment field on any leads created before segments existed.
+db.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
 
 function load() {
   try {
@@ -203,6 +228,7 @@ function load() {
     settings: { access: "", coachName: "", offer: "", idealClient: "", results: [], resources: [], tone: "" },
     playbook: defaultPlaybook(),
     assets: [],
+    team: { setters: [], closers: [], csms: [] },
     leads: [],
   };
 }
@@ -298,6 +324,7 @@ function startClosing(lead, objKey) {
   lead.objection = OBJECTIONS[objKey] ? objKey : "other";
   lead.cadenceStep = 0;
   lead.stage = "post-call";
+  lead.segment = "close";
   lead.status = "active";
   lead.nextActionAt = new Date(now()).toISOString();
   lead.touches = lead.touches || [];
@@ -316,7 +343,10 @@ function switchTrack(lead, track, stage, summary, signal) {
   lead.signal = track === "save" ? (RISK_SIGNALS[signal] ? signal : "engagement") : null;
   lead.cadenceStep = 0;
   lead.stage = stage;
+  lead.segment = "csm";
   lead.status = "active";
+  // On first onboarding, auto-assign a CSM if one's on the roster and none set.
+  if (track === "success" && !lead.assignedCSM && (db.team.csms || []).length) lead.assignedCSM = db.team.csms[0];
   lead.nextActionAt = new Date(now()).toISOString();
   lead.touches = lead.touches || [];
   lead.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: summary, summary });
@@ -410,29 +440,38 @@ function renderToday() {
   }).join("");
 }
 
+let pipelineSegment = "lead";   // which segment page is open
+let pipelineAssignee = "";       // optional filter by a person (any role)
 function renderPipeline(filter) {
   const q = (filter || "").trim().toLowerCase();
   const match = (l) => !q || [l.name, l.company, l.offerInterest, l.source].some((v) => (v || "").toLowerCase().includes(q));
+  const assignedTo = (l, name) => name && [l.assignedSetter, l.assignedCloser, l.assignedCSM].includes(name);
   const el = $("pipelineList");
-  const active = db.leads.filter((l) => l.status === "active" && match(l));
-  const closed = db.leads.filter((l) => l.status !== "active" && match(l));
   if (!db.leads.length) {
+    $("segNav").innerHTML = ""; $("assigneeFilter").innerHTML = "";
     el.innerHTML = `<div class="empty"><p>No leads yet.</p><p class="small">Head to <strong>Add lead</strong> to drop in your first inbound.</p></div>`;
     return;
   }
-  let html = "";
-  const order = ["new", "contacted", "engaged", "booked", "post-call", "at-risk", "client", "alumni", "nurture"];
-  order.forEach((stage) => {
-    const group = active.filter((l) => l.stage === stage);
-    if (!group.length) return;
-    html += `<div class="section-title">${stage} · ${group.length}</div>`;
-    html += group.map(leadRow).join("");
-  });
-  if (closed.length) {
-    html += `<div class="section-title">closed · ${closed.length}</div>`;
-    html += closed.map(leadRow).join("");
-  }
-  el.innerHTML = html || `<div class="empty">No matches.</div>`;
+
+  // Segment sub-nav with live counts.
+  $("segNav").innerHTML = SEGMENTS.map((s) => {
+    const n = db.leads.filter((l) => l.segment === s.key).length;
+    return `<button class="seg ${s.key === pipelineSegment ? "active" : ""}" data-seg="${s.key}" title="${s.hint}">${s.label}<span class="count"> ${n}</span></button>`;
+  }).join("");
+
+  // Assignee filter built from the whole roster.
+  const roster = [...new Set([...(db.team.setters || []), ...(db.team.closers || []), ...(db.team.csms || [])])];
+  $("assigneeFilter").innerHTML = `<option value="">All people</option>` +
+    roster.map((n) => `<option ${n === pipelineAssignee ? "selected" : ""}>${esc(n)}</option>`).join("");
+
+  let pool = db.leads.filter((l) => l.segment === pipelineSegment && match(l));
+  if (pipelineAssignee) pool = pool.filter((l) => assignedTo(l, pipelineAssignee));
+  pool.sort((a, b) => new Date(a.nextActionAt || 0) - new Date(b.nextActionAt || 0));
+
+  const seg = SEGMENTS.find((s) => s.key === pipelineSegment);
+  el.innerHTML = pool.length
+    ? `<div class="section-title">${seg.label} · ${pool.length}<span class="muted" style="text-transform:none;letter-spacing:0"> — ${seg.hint}</span></div>` + pool.map(leadRow).join("")
+    : `<div class="empty"><p>Nothing in ${seg.label} yet.</p><p class="small">${esc(seg.hint)}.</p></div>`;
 }
 
 function leadRow(l) {
@@ -446,6 +485,7 @@ function leadRow(l) {
         ${trackChip(l)}
         ${closed ? `<span class="chip">${esc(l.status)}</span>` : ""}</div>
       <div class="meta">${esc(l.company || "")}${l.company && l.offerInterest ? " · " : ""}${esc(l.offerInterest || "")}</div>
+      ${assigneeChips(l)}
       ${closed ? "" : `<div class="action small muted">Next: <span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> ${esc(step.intent)} — <strong>${fmtDate(l.nextActionAt)}</strong></div>`}
     </div>
     <div class="btns">
@@ -453,6 +493,17 @@ function leadRow(l) {
       ${closed ? `<button class="btn sm" data-reopen="${l.id}">Reopen</button>` : `<button class="btn primary sm" data-draft="${l.id}">Draft ✦</button>`}
     </div>
   </div>`;
+}
+function assigneeChips(l) {
+  const bits = [];
+  if (l.assignedSetter) bits.push(`<span class="chip role">S: ${esc(l.assignedSetter)}</span>`);
+  if (l.assignedCloser) bits.push(`<span class="chip role">C: ${esc(l.assignedCloser)}</span>`);
+  if (l.assignedCSM) bits.push(`<span class="chip role">CSM: ${esc(l.assignedCSM)}</span>`);
+  return bits.length ? `<div class="action small">${bits.join(" ")}</div>` : "";
+}
+function teamOptions(role, selected) {
+  const names = (db.team[role] || []);
+  return `<option value="">—</option>` + names.map((n) => `<option ${n === selected ? "selected" : ""}>${esc(n)}</option>`).join("");
 }
 
 function renderCadenceView() {
@@ -503,6 +554,16 @@ function openDetail(id) {
       </div>
       <div class="field"><label>Interested in</label><input id="d_interest" value="${esc(l.offerInterest)}" /></div>
       <div class="field"><label>Notes</label><textarea id="d_notes" rows="3">${esc(l.notes)}</textarea></div>
+      <div class="section-title">Pipeline &amp; assignment</div>
+      <div class="row">
+        <div class="field"><label>Segment (page)</label><select id="d_segment">${SEGMENTS.map((s) => `<option value="${s.key}" ${l.segment === s.key ? "selected" : ""}>${s.label}</option>`).join("")}</select></div>
+        <div class="field" style="display:flex;align-items:flex-end"><button class="btn sm" id="d_setcall" style="width:100%">Set the call ▸</button></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Setter</label><select id="d_setter">${teamOptions("setters", l.assignedSetter)}</select></div>
+        <div class="field"><label>Closer</label><select id="d_closer">${teamOptions("closers", l.assignedCloser)}</select></div>
+        <div class="field"><label>CSM</label><select id="d_csm">${teamOptions("csms", l.assignedCSM)}</select></div>
+      </div>
       <div class="modal-actions">
         <button class="btn primary sm" id="d_save">Save</button>
         <button class="btn sm" id="d_draft">Draft next ✦</button>
@@ -546,10 +607,27 @@ function openDetail(id) {
     l.temperature = bg.querySelector("#d_temp").value;
     l.offerInterest = bg.querySelector("#d_interest").value.trim();
     l.notes = bg.querySelector("#d_notes").value.trim();
+    l.segment = bg.querySelector("#d_segment").value;
+    l.assignedSetter = bg.querySelector("#d_setter").value;
+    l.assignedCloser = bg.querySelector("#d_closer").value;
+    l.assignedCSM = bg.querySelector("#d_csm").value;
     save(); close(); rerender(); toast("Saved");
   };
+  bg.querySelector("#d_setcall").onclick = () => {
+    l.assignedSetter = bg.querySelector("#d_setter").value;
+    l.assignedCloser = bg.querySelector("#d_closer").value;
+    l.segment = "call"; l.stage = "booked"; l.status = "active";
+    save(); close(); rerender();
+    toast(l.assignedCloser ? `Call set — linked to ${l.assignedCloser}` : "Call set ▸ (assign a closer in the lead)");
+  };
   bg.querySelector("#d_draft").onclick = () => { close(); openDraft(l.id); };
-  bg.querySelector("#d_won").onclick = () => { l.status = "won"; l.stage = "won"; save(); close(); rerender(); toast("Marked won 🏆"); };
+  bg.querySelector("#d_won").onclick = () => {
+    l.assignedCloser = bg.querySelector("#d_closer").value || l.assignedCloser;
+    l.assignedCSM = bg.querySelector("#d_csm").value || l.assignedCSM || (db.team.csms || [])[0] || "";
+    l.status = "won"; l.stage = "won"; l.segment = "csm";
+    save(); close(); rerender();
+    toast(l.assignedCSM ? `Won 🏆 — handed to ${l.assignedCSM}` : "Won 🏆 — add a CSM to assign");
+  };
   bg.querySelector("#d_lost").onclick = () => { l.status = "lost"; l.stage = "lost"; save(); close(); rerender(); toast("Marked lost"); };
   bg.querySelector("#d_startclose").onclick = () => { startClosing(l, bg.querySelector("#d_obj").value); close(); rerender(); setView("today"); toast("Closing track started ▸"); };
   bg.querySelector("#d_onboard").onclick = () => { startClient(l); close(); rerender(); setView("today"); toast(l.track === "success" ? "Client journey restarted 🔁" : "Onboarded — client journey started ▸"); };
@@ -709,7 +787,8 @@ $("saveLeadBtn").onclick = () => {
     offerInterest: $("f_offerInterest").value.trim(), source: $("f_source").value.trim(),
     temperature: $("f_temperature").value, dealValue: $("f_dealValue").value.trim(),
     notes: $("f_notes").value.trim(),
-    stage: "new", status: "active",
+    stage: "new", status: "active", segment: "lead",
+    assignedSetter: db.team.setters[0] || "", assignedCloser: "", assignedCSM: "",
     createdAt: new Date().toISOString(), cadenceStep: 0,
     nextActionAt: new Date().toISOString(), touches: [],
   };
@@ -725,8 +804,20 @@ function loadSettingsForm() {
   $("s_results").value = (s.results || []).join("\n");
   $("s_resources").value = (s.resources || []).map((r) => (r.url ? `${r.title} — ${r.url}` : r.title)).join("\n");
   $("s_tone").value = s.tone || "";
+  $("s_setters").value = (db.team.setters || []).join(", ");
+  $("s_closers").value = (db.team.closers || []).join(", ");
+  $("s_csms").value = (db.team.csms || []).join(", ");
   renderCadenceView();
 }
+const parseNames = (v) => v.split(",").map((x) => x.trim()).filter(Boolean);
+$("s_saveTeam").onclick = () => {
+  db.team = {
+    setters: parseNames($("s_setters").value),
+    closers: parseNames($("s_closers").value),
+    csms: parseNames($("s_csms").value),
+  };
+  save(); toast("Roster saved");
+};
 $("saveSettingsBtn").onclick = () => {
   db.settings.access = $("s_access").value.trim();
   db.settings.coachName = $("s_coachName").value.trim();
@@ -959,6 +1050,8 @@ $("importBtn2").onclick = () => $("importFile").click();
 $("importFile").onchange = (e) => { if (e.target.files[0]) doImport(e.target.files[0]); };
 $("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this device? Export first if unsure.")) { localStorage.removeItem(KEY); db = load(); rerender(); loadSettingsForm(); toast("Wiped"); } };
 $("search").addEventListener("input", (e) => renderPipeline(e.target.value));
+$("segNav").addEventListener("click", (e) => { const b = e.target.closest("button[data-seg]"); if (b) { pipelineSegment = b.dataset.seg; renderPipeline($("search").value); } });
+$("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.target.value; renderPipeline($("search").value); });
 
 // Go
 renderToday();

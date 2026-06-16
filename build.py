@@ -9,9 +9,11 @@ from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 PREMIUM = {
     "name": "The Sales Dojo",
     "badge": "Featured",
-    "desc": "Premier sales-training community (SOS Dojo) — world-class training, daily "
-            "coaching, a 24/7 roleplay room and direct connections to the best high-ticket roles.",
-    "members": "~4,000+",
+    "desc": "Sensei CJ's high-ticket sales ‘dojo’ — train hard to become a "
+            "‘black belt’ closer who gets paid consistently, through daily study, "
+            "live coaching, call reviews, number tracking and identity work. Earn your "
+            "investment back inside.",
+    "members": "$172/mo",
     "link": "http://www.skool.com/sales-dojo?utm_campaign=skool_link_post&utm_content=96652a20bde64d799137b6c75716a2de",
 }
 
@@ -93,7 +95,8 @@ DATA = [
   ("High Ticket Closers", "General high-ticket closer community on Skool.", "Login required", "https://www.skool.com/high-ticket-closers-4841/about"),
   ("Sales Elites", "Community for closers, setters and ambitious salespeople mastering high-ticket sales — with opportunities posted by members actively building sales teams.", "Login required", "https://www.skool.com/saleselites/about"),
   ("6Figure Appointment Setter (Next Level Closers)", "Training community helping appointment setters level up into six-figure remote setting and closing roles.", "Login required", "https://www.skool.com/next-level-closers-4020"),
-  ("The Sales Dojo", "Premier sales-training community (SOS Dojo) with world-class training, daily coaching, a 24/7 roleplay room and connections to the best high-ticket opportunities.", "~4,000+", "http://www.skool.com/sales-dojo?utm_campaign=skool_link_post&utm_content=96652a20bde64d799137b6c75716a2de"),
+  ("The Sales Dojo (SOS Dojo)", "Sales-training community (SOS Dojo) with world-class training, daily coaching, a 24/7 roleplay room and connections to the best high-ticket opportunities.", "~4,000+", "https://www.skool.com/sosdojo/about"),
+  ("The Sales Dojo", "Sensei CJ's high-ticket sales 'dojo' — train hard to become a 'black belt' closer who gets paid consistently, through daily study, live coaching, call reviews, number tracking and identity work. Earn your investment back inside. $172/mo.", "~19", "http://www.skool.com/sales-dojo?utm_campaign=skool_link_post&utm_content=96652a20bde64d799137b6c75716a2de"),
   ("The Game of Influence", "Mentor-led high-ticket sales community focused on turning members into remote closers earning $10k+/mo, pairing training and mentorship with job opportunities.", "Login required", "https://www.skool.com/the-game-of-influence/about"),
  ]),
 ]),

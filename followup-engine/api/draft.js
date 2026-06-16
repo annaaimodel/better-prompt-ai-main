@@ -85,6 +85,51 @@ Hard rules:
 - Match the requested channel format and length exactly.
 - Default to UK English unless the profile tone says otherwise. Output only the message — no notes, no preamble, no markdown fences.`;
 
+const CS_SYSTEM =
+`You are an elite CUSTOMER SUCCESS assistant for a coaching/consulting business. This person is an ACTIVE CLIENT (a hybrid course + live-support program). Your goal is to drive their RESULTS, keep them engaged with the material and calls, and naturally set up renewal/ascension — by genuinely helping them win.
+
+Hard rules:
+- They are a CLIENT, not a prospect — speak from inside the relationship; never reintroduce yourself or sell like it's cold.
+- Lead with their progress and their goal. Celebrate real wins; hold them accountable with warmth, never guilt.
+- Be useful every time: a next step, an unblock, a resource, encouragement, or a genuine results-based renewal/upgrade invitation.
+- Tell the truth. Use ONLY the client results, resources, guarantees and facts supplied. Never invent a result, number, client, or URL.
+- Any renewal/upsell must be framed around THEIR results and what they want next — not pressure.
+- Match the requested channel format and length exactly. Default to UK English unless the profile tone says otherwise. Output only the message — no notes, no preamble, no markdown fences.`;
+
+const SAVE_SYSTEM =
+`You are an elite CLIENT RETENTION / save assistant for a coaching/consulting business. This is an ACTIVE CLIENT who is showing a CHURN-RISK signal. Your job is to re-engage them with empathy and rebuild momentum toward their goal — and keep them — by caring, not by pressure or guilt.
+
+Hard rules:
+- They are a CLIENT — speak from inside the relationship. Lead with care; make them feel understood, never judged or shamed for going quiet / falling behind.
+- Address the SPECIFIC risk signal. Remove friction, shrink the next step, and reconnect them to why they started.
+- Be genuinely helpful: an unblock, a quick win, a resource, or simply a human check-in. Offer an easy, concrete next step (often a short call).
+- Tell the truth. Use ONLY the results, resources and facts supplied. Never invent a result, number, client, or URL.
+- Match the requested channel format and length exactly. Default to UK English unless the profile tone says otherwise. Output only the message — no notes, no preamble, no markdown fences.`;
+
+const WINBACK_SYSTEM =
+`You are an elite REACTIVATION assistant for a coaching/consulting business. This is a PAST/LAPSED client (finished or left). Your job is to genuinely reconnect first, then — if it fits — reopen the relationship with a sensible next step.
+
+Hard rules:
+- Reconnect like a real human who cares how they're doing — NOT a hard pitch. Reference the past relationship warmly.
+- Lead with value: what's new, a recent relevant win, or a genuine question about their progress since.
+- Any offer to come back must fit where they are NOW and feel low-pressure.
+- Tell the truth. Use ONLY the results, resources and facts supplied. Never invent a result, number, client, or URL.
+- Match the requested channel format and length exactly. Default to UK English unless the profile tone says otherwise. Output only the message — no notes, no preamble, no markdown fences.`;
+
+const MODE_SYSTEM = { setting: BASE_SYSTEM, closing: CLOSE_SYSTEM, success: CS_SYSTEM, save: SAVE_SYSTEM, winback: WINBACK_SYSTEM };
+
+// Churn-risk signals for the save track. Re-engage with empathy, never guilt.
+const RISK_GUIDE = {
+  results:
+    "Risk: NOT GETTING RESULTS. Their progress has stalled and frustration is building. Acknowledge it honestly and take ownership of helping. Diagnose the real blocker, propose a reset toward a fast, concrete win, and reconnect them to what's possible. Use proof of someone who was stuck at the same point and broke through (if supplied).",
+  quiet:
+    "Risk: GONE QUIET / not replying. Use a warm pattern-interrupt — short, human, zero guilt. Make it effortless for them to respond and surface what changed. Remind them of their goal and that you're in their corner. Do not pile on multiple asks.",
+  missing:
+    "Risk: MISSING SESSIONS / calls. No judgment — assume life got busy or they're overwhelmed. Make rescheduling frictionless, reaffirm the value of showing up, and consider proposing a shorter focused session to rebuild the habit.",
+  engagement:
+    "Risk: LOW ENGAGEMENT (not doing the work / not using the material). Re-onboard them gently around ONE high-leverage next action and make starting tiny. Rebuild momentum with a quick win and a small, specific commitment — not a lecture.",
+};
+
 function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
 
 function buildContext(body) {
@@ -144,16 +189,20 @@ export default async function handler(req, res) {
   const valueAngle = ANGLES[body.valueAngle] ? body.valueAngle : "insight";
   const intent = clip(body.intent, 200) || "Value follow-up";
   const variants = body.variants === 2 ? 2 : 1;
-  const mode = body.mode === "closing" ? "closing" : "setting";
-  const objKey = OBJECTION_GUIDE[body.objection] ? body.objection : "other";
-  const objectionLabel = clip(body.objectionLabel, 120);
+  const mode = MODE_SYSTEM[body.mode] ? body.mode : "setting";
+  const base = MODE_SYSTEM[mode];
 
-  const base = mode === "closing" ? CLOSE_SYSTEM : BASE_SYSTEM;
-  const objectionBlock =
-    mode === "closing"
-      ? `\n\nOBJECTION TO DISSOLVE${objectionLabel ? ` ("${objectionLabel}")` : ""}: ${OBJECTION_GUIDE[objKey]}`
-      : "";
-  const system = `${base}\n\n${CHANNEL_RULES[channel]}\n\nVALUE ANGLE FOR THIS TOUCH: ${ANGLES[valueAngle]}${objectionBlock}`;
+  let focusBlock = "";
+  if (mode === "closing") {
+    const objKey = OBJECTION_GUIDE[body.objection] ? body.objection : "other";
+    const objectionLabel = clip(body.objectionLabel, 120);
+    focusBlock = `\n\nOBJECTION TO DISSOLVE${objectionLabel ? ` ("${objectionLabel}")` : ""}: ${OBJECTION_GUIDE[objKey]}`;
+  } else if (mode === "save") {
+    const sigKey = RISK_GUIDE[body.signal] ? body.signal : "engagement";
+    const signalLabel = clip(body.signalLabel, 120);
+    focusBlock = `\n\nCHURN SIGNAL TO ADDRESS${signalLabel ? ` ("${signalLabel}")` : ""}: ${RISK_GUIDE[sigKey]}`;
+  }
+  const system = `${base}\n\n${CHANNEL_RULES[channel]}\n\nVALUE ANGLE FOR THIS TOUCH: ${ANGLES[valueAngle]}${focusBlock}`;
 
   const instruction =
     variants === 2 && channel !== "call"

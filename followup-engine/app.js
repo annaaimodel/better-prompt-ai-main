@@ -109,7 +109,68 @@ const OBJECTIONS = {
   ] },
 };
 
-const STAGES = ["new", "contacted", "engaged", "booked", "post-call", "won", "lost", "nurture"];
+// ---------------------------------------------------------------------------
+// Customer success — the client lifecycle (fixed-term, hybrid course + support).
+// Runs after a deal is won and the client is onboarded. Onboarding → activation
+// through the material → results & accountability → renewal/ascension at term end.
+// ---------------------------------------------------------------------------
+const CS_LIFECYCLE = [
+  { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Onboarding kickoff — warm welcome, lay out the path, book first support call + point to Module 1" },
+  { gapHours: 48,  channel: "email", valueAngle: "resource", intent: "Activation — get them into the material + a quick-start for an early easy win" },
+  { gapHours: 72,  channel: "text",  valueAngle: "insight",  intent: "First-win check — celebrate the early win or remove the blocker" },
+  { gapHours: 48,  channel: "call",  valueAngle: "insight",  intent: "Week-1 support call — review progress, set this week's focus" },
+  { gapHours: 168, channel: "email", valueAngle: "proof",    intent: "Momentum — share a relevant client win to reinforce belief" },
+  { gapHours: 168, channel: "text",  valueAngle: "insight",  intent: "Accountability check-in — what's working, what's stuck" },
+  { gapHours: 336, channel: "call",  valueAngle: "insight",  intent: "Mid-program review — measure results vs their goal, adjust the plan" },
+  { gapHours: 336, channel: "email", valueAngle: "resource", intent: "Deepen value — a resource for the next stage of their result" },
+  { gapHours: 336, channel: "text",  valueAngle: "intro",    intent: "Celebrate progress + plant what's possible at the next level" },
+  { gapHours: 336, channel: "call",  valueAngle: "proof",    intent: "Renewal/upgrade call — review the results, present the next tier" },
+  { gapHours: 168, channel: "email", valueAngle: "proof",    intent: "Renewal offer in writing + invite a testimonial/case study + ask for a referral" },
+];
+
+// Save-plays: triggered by a churn-risk signal, not the clock. Quicker, warmer,
+// friction-removing. Each addresses the SPECIFIC signal.
+const RISK_SIGNALS = {
+  results: { label: "Not getting results", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Reach out personally — name that progress has stalled, you've got them, propose a quick reset call" },
+    { gapHours: 24,  channel: "call",  valueAngle: "insight",  intent: "Reset call — diagnose the real blocker, rebuild the plan to a fast win" },
+    { gapHours: 48,  channel: "email", valueAngle: "resource", intent: "Send a targeted shortcut/resource for their specific sticking point" },
+    { gapHours: 72,  channel: "text",  valueAngle: "proof",    intent: "Proof of a client who was stuck here and broke through + encouragement" },
+    { gapHours: 120, channel: "text",  valueAngle: "insight",  intent: "Check the quick win landed; recommit to the goal" },
+  ] },
+  quiet: { label: "Gone quiet / not replying", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Warm pattern-interrupt — 'haven't heard from you, all good?', zero guilt" },
+    { gapHours: 24,  channel: "call",  valueAngle: "insight",  intent: "Call them directly — reconnect, surface what changed" },
+    { gapHours: 48,  channel: "email", valueAngle: "insight",  intent: "Value + open door — remind them of their goal and that you're here" },
+    { gapHours: 96,  channel: "text",  valueAngle: "proof",    intent: "A quick win/result to reignite + an easy next step" },
+    { gapHours: 168, channel: "text",  valueAngle: "insight",  intent: "Final warm re-engage — make it effortless to say where they're at" },
+  ] },
+  missing: { label: "Missing sessions / calls", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "No-judgment nudge — make rescheduling easy, reaffirm the value of the call" },
+    { gapHours: 24,  channel: "email", valueAngle: "resource", intent: "Send what they'd have got on the call + a rebook link" },
+    { gapHours: 48,  channel: "call",  valueAngle: "insight",  intent: "Personal call/voicemail — find the real reason (overwhelm? priorities?)" },
+    { gapHours: 96,  channel: "text",  valueAngle: "insight",  intent: "Shrink it — propose a shorter focused session to rebuild the habit" },
+    { gapHours: 168, channel: "text",  valueAngle: "proof",    intent: "Reconnect with a relevant win + lock in a time" },
+  ] },
+  engagement: { label: "Low engagement", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Re-onboard nudge — point to ONE high-leverage next action, make starting tiny" },
+    { gapHours: 48,  channel: "email", valueAngle: "resource", intent: "A quick-win shortcut to re-spark momentum" },
+    { gapHours: 72,  channel: "call",  valueAngle: "insight",  intent: "Accountability call — co-do the next step, set a micro-commitment" },
+    { gapHours: 120, channel: "text",  valueAngle: "proof",    intent: "Celebrate any movement + proof that small steps compound" },
+    { gapHours: 168, channel: "text",  valueAngle: "insight",  intent: "Recommit to the goal + an easy next action" },
+  ] },
+};
+
+// Win-back: reactivate a past/lapsed client. Reconnect first, offer second.
+const WINBACK = [
+  { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Genuine reconnect — no pitch, ask how they're doing with their goal" },
+  { gapHours: 72,  channel: "email", valueAngle: "proof",    intent: "Share what's new + a recent client win relevant to them" },
+  { gapHours: 72,  channel: "text",  valueAngle: "intro",    intent: "Surface a timely opportunity/offer that fits where they are now" },
+  { gapHours: 120, channel: "call",  valueAngle: "insight",  intent: "Catch-up call — where are they now, where do they want to go" },
+  { gapHours: 168, channel: "email", valueAngle: "proof",    intent: "Welcome-back offer + proof + an easy next step" },
+];
+
+const STAGES = ["new", "contacted", "engaged", "booked", "post-call", "client", "at-risk", "alumni", "won", "lost", "nurture"];
 const ANGLE_LABEL = { insight: "Insight", proof: "Proof", resource: "Resource", intro: "Intro/Opp" };
 const CHANNEL_LABEL = { text: "Text", email: "Email", call: "Call" };
 const TEMP_ORDER = { hot: 0, warm: 1, cold: 2 };
@@ -143,6 +204,9 @@ function now() { return Date.now(); }
 // setting cadence. Both fall through to long-term nurture when exhausted.
 function activeCadence(lead) {
   if (lead.track === "closing" && OBJECTIONS[lead.objection]) return OBJECTIONS[lead.objection].plays;
+  if (lead.track === "save" && RISK_SIGNALS[lead.signal]) return RISK_SIGNALS[lead.signal].plays;
+  if (lead.track === "success") return CS_LIFECYCLE;
+  if (lead.track === "winback") return WINBACK;
   return CAD;
 }
 function currentStep(lead) {
@@ -167,9 +231,13 @@ function advanceCadence(lead, summary) {
     summary: (summary || "").slice(0, 280),
   });
   // Light auto-stage progression (setting track only).
-  if (lead.track !== "closing" && lead.stage === "new") lead.stage = "contacted";
+  if ((!lead.track || lead.track === "setting") && lead.stage === "new") lead.stage = "contacted";
   lead.cadenceStep += 1;
-  if (lead.cadenceStep >= seq.length && lead.stage !== "won" && lead.stage !== "lost") lead.stage = "nurture";
+  // Roll exhausted setting/closing sequences into long-term nurture.
+  if (lead.cadenceStep >= seq.length && lead.stage !== "won" && lead.stage !== "lost"
+      && (!lead.track || lead.track === "setting" || lead.track === "closing")) {
+    lead.stage = "nurture";
+  }
   lead.nextActionAt = new Date(now() + gapForStep(lead, lead.cadenceStep) * HOUR).toISOString();
   save();
 }
@@ -190,6 +258,24 @@ function startClosing(lead, objKey) {
   });
   save();
 }
+
+// Switch a lead onto a track that runs from cadence step 0, due now, logging a
+// note of the transition. Shared by all customer-success transitions.
+function switchTrack(lead, track, stage, summary, signal) {
+  lead.track = track;
+  lead.signal = track === "save" ? (RISK_SIGNALS[signal] ? signal : "engagement") : null;
+  lead.cadenceStep = 0;
+  lead.stage = stage;
+  lead.status = "active";
+  lead.nextActionAt = new Date(now()).toISOString();
+  lead.touches = lead.touches || [];
+  lead.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: summary, summary });
+  save();
+}
+function startClient(lead) { switchTrack(lead, "success", "client", "Onboarded as client — success track started"); }
+function startSave(lead, sig) { switchTrack(lead, "save", "at-risk", `Flagged at-risk: ${RISK_SIGNALS[sig] ? RISK_SIGNALS[sig].label : "low engagement"}`, sig); }
+function backOnTrack(lead) { switchTrack(lead, "success", "client", "Back on track — resumed success cadence"); }
+function startWinback(lead) { switchTrack(lead, "winback", "alumni", "Reactivation started — win-back track"); }
 
 // ---------------------------------------------------------------------------
 // Date helpers
@@ -218,9 +304,16 @@ function fmtDate(iso) {
 // ---------------------------------------------------------------------------
 const $ = (id) => document.getElementById(id);
 const esc = (s) => (s == null ? "" : String(s)).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-function objChip(l) {
-  if (l.track !== "closing" || !OBJECTIONS[l.objection]) return "";
-  return `<span class="chip" style="color:var(--red);border-color:#4a2a24">⚑ ${esc(OBJECTIONS[l.objection].label)}</span>`;
+function trackChip(l) {
+  if (l.track === "closing" && OBJECTIONS[l.objection])
+    return `<span class="chip" style="color:var(--red);border-color:#4a2a24">⚑ ${esc(OBJECTIONS[l.objection].label)}</span>`;
+  if (l.track === "save" && RISK_SIGNALS[l.signal])
+    return `<span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ At-risk: ${esc(RISK_SIGNALS[l.signal].label)}</span>`;
+  if (l.track === "success")
+    return `<span class="chip" style="color:var(--green);border-color:#224a37">★ Client</span>`;
+  if (l.track === "winback")
+    return `<span class="chip" style="color:var(--blue);border-color:#25405a">↺ Win-back</span>`;
+  return "";
 }
 
 function dueLeads() {
@@ -254,7 +347,7 @@ function renderToday() {
         <div class="action">
           <span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span>
           <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span>
-          ${objChip(l)}
+          ${trackChip(l)}
           <strong>${relTime(l.nextActionAt)}</strong> — ${esc(step.intent)}
         </div>
       </div>
@@ -278,7 +371,7 @@ function renderPipeline(filter) {
     return;
   }
   let html = "";
-  const order = ["new", "contacted", "engaged", "booked", "post-call", "nurture"];
+  const order = ["new", "contacted", "engaged", "booked", "post-call", "at-risk", "client", "alumni", "nurture"];
   order.forEach((stage) => {
     const group = active.filter((l) => l.stage === stage);
     if (!group.length) return;
@@ -300,7 +393,7 @@ function leadRow(l) {
     <div>
       <div class="name"><a href="#" data-open="${l.id}">${esc(l.name) || "Unnamed lead"}</a>
         <span class="chip ${l.temperature}">${esc(l.temperature || "warm")}</span>
-        ${objChip(l)}
+        ${trackChip(l)}
         ${closed ? `<span class="chip">${esc(l.status)}</span>` : ""}</div>
       <div class="meta">${esc(l.company || "")}${l.company && l.offerInterest ? " · " : ""}${esc(l.offerInterest || "")}</div>
       ${closed ? "" : `<div class="action small muted">Next: <span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> ${esc(step.intent)} — <strong>${fmtDate(l.nextActionAt)}</strong></div>`}
@@ -323,11 +416,21 @@ function renderCadenceView() {
     </div>`).join("");
   const closing = Object.values(OBJECTIONS).map((o) =>
     `<div class="action small" style="padding:4px 0"><span class="chip" style="color:var(--red);border-color:#4a2a24">⚑ ${esc(o.label)}</span> ${o.plays.length}-touch sequence</div>`).join("");
+  const savePlays = Object.values(RISK_SIGNALS).map((o) =>
+    `<div class="action small" style="padding:4px 0"><span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ ${esc(o.label)}</span> ${o.plays.length}-touch save-play</div>`).join("");
   el.innerHTML = rows +
     `<div class="action small muted" style="padding:8px 0">…then long-term nurture: a value drop every 14 days, rotating angle &amp; channel.</div>` +
     `<div class="section-title">Closing tracks (post-call, by objection)</div>` +
     `<p class="small muted" style="margin:0 0 6px">After a closing call with no sale, tag the objection on the lead and it switches to the matching sequence:</p>` +
-    closing;
+    closing +
+    `<div class="section-title">Customer success — client lifecycle (${CS_LIFECYCLE.length} touches)</div>` +
+    `<p class="small muted" style="margin:0 0 6px">Onboard a won deal as a client and Cadence runs the full journey, ending in a renewal/upgrade + referral + case-study push:</p>` +
+    CS_LIFECYCLE.map((s, i) => `<div class="action small" style="padding:4px 0"><strong>${i + 1}.</strong> <span class="chip ${s.channel}">${CHANNEL_LABEL[s.channel]}</span> <span class="chip ${s.valueAngle}">${ANGLE_LABEL[s.valueAngle]}</span> ${esc(s.intent)}</div>`).join("") +
+    `<div class="section-title">Save-plays (at-risk, by churn signal)</div>` +
+    `<p class="small muted" style="margin:0 0 6px">Flag a churn signal on a client and they switch to the matching re-engagement play:</p>` +
+    savePlays +
+    `<div class="section-title">Win-back (reactivation)</div>` +
+    `<div class="action small muted" style="padding:4px 0">A ${WINBACK.length}-touch reconnect-first sequence for past/lapsed clients.</div>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -366,6 +469,21 @@ function openDetail(id) {
           <button class="btn sm" id="d_startclose" style="width:100%">${l.track === "closing" ? "Update objection track" : "Didn't close → start closing track"}</button>
         </div>
       </div>
+      <div class="section-title">Customer success</div>
+      <p class="small muted" style="margin:0 0 8px">Won the deal? Onboard them and Cadence runs the client journey — onboarding → results → renewal/upsell — and catches churn risk before it costs you the client.</p>
+      <div class="modal-actions">
+        <button class="btn sm" id="d_onboard">${l.track === "success" ? "Restart client journey 🔁" : "Onboard as client ▸"}</button>
+        <button class="btn sm" id="d_winback">Reactivate (win-back) ▸</button>
+      </div>
+      ${["success", "save", "winback"].includes(l.track) ? `
+      <div class="row" style="margin-top:10px">
+        <div class="field"><label>Flag a churn-risk signal</label>
+          <select id="d_sig">${Object.entries(RISK_SIGNALS).map(([k, v]) => `<option value="${k}" ${l.signal === k ? "selected" : ""}>${esc(v.label)}</option>`).join("")}</select></div>
+        <div class="field" style="display:flex;align-items:flex-end;gap:6px">
+          <button class="btn sm danger" id="d_flag" style="flex:1">Flag at-risk ⚠</button>
+          ${l.track === "save" ? `<button class="btn sm" id="d_back" style="flex:1">Back on track ▸</button>` : ""}
+        </div>
+      </div>` : ""}
       <div class="section-title">Touch history (${(l.touches || []).length})</div>
       ${touches.length ? `<ul class="tight small">${touches.map((t) => `<li><span class="chip ${t.channel}">${CHANNEL_LABEL[t.channel] || t.channel}</span> <span class="muted">${fmtDate(t.at)}</span> — ${esc(t.summary || t.intent)}</li>`).join("")}</ul>` : `<p class="small muted">No touches logged yet.</p>`}
     </div>`;
@@ -384,6 +502,12 @@ function openDetail(id) {
   bg.querySelector("#d_won").onclick = () => { l.status = "won"; l.stage = "won"; save(); close(); rerender(); toast("Marked won 🏆"); };
   bg.querySelector("#d_lost").onclick = () => { l.status = "lost"; l.stage = "lost"; save(); close(); rerender(); toast("Marked lost"); };
   bg.querySelector("#d_startclose").onclick = () => { startClosing(l, bg.querySelector("#d_obj").value); close(); rerender(); setView("today"); toast("Closing track started ▸"); };
+  bg.querySelector("#d_onboard").onclick = () => { startClient(l); close(); rerender(); setView("today"); toast(l.track === "success" ? "Client journey restarted 🔁" : "Onboarded — client journey started ▸"); };
+  bg.querySelector("#d_winback").onclick = () => { startWinback(l); close(); rerender(); setView("today"); toast("Win-back started ▸"); };
+  const flagBtn = bg.querySelector("#d_flag");
+  if (flagBtn) flagBtn.onclick = () => { startSave(l, bg.querySelector("#d_sig").value); close(); rerender(); setView("today"); toast("Flagged at-risk — save-play started ⚠"); };
+  const backBtn = bg.querySelector("#d_back");
+  if (backBtn) backBtn.onclick = () => { backOnTrack(l); close(); rerender(); setView("today"); toast("Back on track ▸"); };
   bg.querySelector("#d_del").onclick = () => { if (confirm("Delete this lead permanently?")) { db.leads = db.leads.filter((x) => x.id !== id); save(); close(); rerender(); toast("Deleted"); } };
 }
 
@@ -397,7 +521,7 @@ function openDraft(id) {
   const step = currentStep(l);
   draftCtx = { leadId: id, channel: step.channel, valueAngle: step.valueAngle, intent: step.intent, variants: 1 };
   $("modalTitle").textContent = `Draft — ${l.name || "lead"}`;
-  $("modalMeta").innerHTML = `<span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span> ${objChip(l)} ${esc(step.intent)}`;
+  $("modalMeta").innerHTML = `<span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span> ${trackChip(l)} ${esc(step.intent)}`;
   $("modalOut").textContent = "…";
   $("modal").classList.add("open");
   runDraft();
@@ -416,9 +540,11 @@ async function runDraft() {
       body: JSON.stringify({
         channel: draftCtx.channel, valueAngle: draftCtx.valueAngle, intent: draftCtx.intent,
         variants: draftCtx.variants,
-        mode: l.track === "closing" ? "closing" : "setting",
+        mode: ["closing", "success", "save", "winback"].includes(l.track) ? l.track : "setting",
         objection: l.objection || "other",
         objectionLabel: l.track === "closing" && OBJECTIONS[l.objection] ? OBJECTIONS[l.objection].label : "",
+        signal: l.signal || "engagement",
+        signalLabel: l.track === "save" && RISK_SIGNALS[l.signal] ? RISK_SIGNALS[l.signal].label : "",
         contact: { name: l.name, offerInterest: l.offerInterest, stage: l.stage, temperature: l.temperature, notes: l.notes },
         history,
         profile: db.settings,

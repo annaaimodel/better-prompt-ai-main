@@ -47,6 +47,37 @@ lifted into its own repository at any time with no rework.
 
 Edit the sequence in `app.js` (`CAD` / `NURTURE_ROT`).
 
+## The three stages — one engine, three track families
+
+A lead flows through the whole revenue lifecycle on the same cadence engine:
+
+1. **Setting** (default) — inbound → speed-to-lead → value-rotating sequence →
+   books the call. (`CAD`)
+2. **Closing** — after a closing call with no sale, tag the **objection** and the
+   lead switches to a 6-touch sequence built to dissolve *that exact* concern:
+   price, no money, "think about it", talk to partner, more research, timing,
+   **fear in themselves** (self-doubt), **fear in you/the program**, or a
+   catch-all. The AI follow-up acknowledges the prior call and leads with
+   empathy + honest risk-reduction, never pressure. (`OBJECTIONS`)
+3. **Customer success** — onboard a won deal as a **client** and Cadence runs the
+   full lifecycle, plus two trigger-based tracks:
+   - **Client lifecycle** (`CS_LIFECYCLE`) — onboarding → activation through the
+     material → results & accountability → a renewal/upgrade + referral +
+     case-study push at term end.
+   - **Save-plays** (`RISK_SIGNALS`) — flag a churn signal (*not getting results,
+     gone quiet, missing sessions, low engagement*) and the client switches to a
+     quick, empathy-led re-engagement play for that signal. "Back on track"
+     returns them to the lifecycle.
+   - **Win-back** (`WINBACK`) — a reconnect-first reactivation sequence for
+     past/lapsed clients.
+
+   Set client state from the lead detail modal: **Onboard as client**, **Flag
+   at-risk**, **Back on track**, **Reactivate (win-back)**. All five tracks share
+   the same Draft ✦ → Copy → Done ▸ flow; the AI picks the right voice (prospect
+   vs. active client vs. past client) automatically.
+
+Every track and sequence is listed in **Settings → The cadence**.
+
 ## Setup
 
 1. **Env vars** (copy `.env.example` → `.env`, or set in Vercel):

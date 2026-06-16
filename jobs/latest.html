@@ -39,32 +39,4 @@ a.visit{font-size:13px;font-weight:700;color:#0a0a0b;background:linear-gradient(
 a.visit:hover{filter:brightness(1.06);box-shadow:0 8px 20px -8px rgba(201,156,56,.5)}
 .nl{font-size:12px;color:var(--mut)}.empty{text-align:center;color:var(--mut);padding:56px 0}
 footer{text-align:center;color:var(--mut);font-size:12px;padding:30px 20px;border-top:1px solid var(--line2);margin-top:24px}footer a{color:var(--goldd)}
-</style></head><body><header><a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum"><span class="wm">AURUM</span></a><h1>The <span class="au">Gold Standard</span> for Your High-Ticket Job Search</h1><p class="sub">2026-06-16 &middot; 2 new today &middot; 377 active in total</p><div class="nav"><a class="on" href="/jobs">Fresh today</a><a class="" href="/jobs/all">The Vault</a><a class="" href="/jobs/boards">&starf; Boards</a><a class="" href="/directory">Communities</a><a class="" href="/cv">CV match</a></div></header><div class="wrap"><div class="controls"><input id="q" type="search" placeholder="Search title, company, source…"><div class="fchips"><button class="fchip on" data-f="all">All</button><button class="fchip" data-f="closer">Closer</button><button class="fchip" data-f="setdm">DM Setting</button><button class="fchip" data-f="setphone">Phone Setting</button><button class="fchip" data-f="setter">Setter / SDR</button><button class="fchip" data-f="success">Success</button><button class="fchip" data-f="va">VA / Admin</button></div><select id="country" class="csel" aria-label="Country"><option value="all">All countries</option><option value="United States">United States</option><option value="United Kingdom">United Kingdom</option></select><select id="lead" class="csel" aria-label="Lead type"><option value="all">Any lead type</option><option value="Inbound">Inbound leads</option><option value="Cold">Cold leads</option></select><div class="fcount" id="fcount"></div></div><section class="dgroup"><h2>Closer <span class="n">1</span></h2><div class="grid"><div class="card" data-b="closer" data-c="United Kingdom" data-l="Cold" data-s="account executive celonis london, united kingdom the muse closer united kingdom cold"><div class="t">Account Executive</div><div class="c">Celonis &middot; London, United Kingdom</div><div class="f"><span class="src">via The Muse</span><a class="visit" href="https://www.themuse.com/jobs/celonis/account-executive-12b9ef" target="_blank" rel="noopener">Apply &rarr;</a></div></div></div></section><section class="dgroup"><h2>Success (CSM / customer / client / student) <span class="n">1</span></h2><div class="grid"><div class="card" data-b="success" data-c="United States" data-l="" data-s="customer success manager- federal hiddenlayer washington, washington, d.c. adzuna success (csm / customer / client / student) united states "><div class="t">Customer Success Manager- Federal</div><div class="c">HiddenLayer &middot; Washington, Washington, D.C.</div><div class="f"><span class="pill">$114533-$114533</span><span class="src">via Adzuna</span><a class="visit" href="https://www.adzuna.com/land/ad/5764470285?se=SKQj6B5p8RGB1KJVQ-rS3g&amp;utm_medium=api&amp;utm_source=3e941a8f&amp;v=6BAD433AADE5F2D6C8300CF1803B7101BA988EE4" target="_blank" rel="noopener">Apply &rarr;</a></div></div></div></section><script>
-(function(){
- var q=document.getElementById('q'),fcount=document.getElementById('fcount'),
-     country=document.getElementById('country'),lead=document.getElementById('lead'),
-     chips=[].slice.call(document.querySelectorAll('.fchip')),f='all';
- function apply(){
-  var t=(q.value||'').trim().toLowerCase(),cc=country?country.value:'all',
-      ll=lead?lead.value:'all',n=0;
-  [].forEach.call(document.querySelectorAll('section.dgroup'),function(sec){
-   var vis=0;
-   [].forEach.call(sec.querySelectorAll('.card'),function(c){
-    var okB=(f==='all')||c.getAttribute('data-b')===f,
-        okC=(cc==='all')||c.getAttribute('data-c')===cc,
-        okL=(ll==='all')||c.getAttribute('data-l')===ll,
-        okT=!t||(c.getAttribute('data-s')||'').indexOf(t)>-1,
-        show=okB&&okC&&okL&&okT;
-    c.style.display=show?'':'none'; if(show){vis++;n++;}
-   });
-   sec.style.display=vis?'':'none';
-  });
-  fcount.textContent=n+' shown';
- }
- chips.forEach(function(ch){ch.onclick=function(){chips.forEach(function(x){x.classList.remove('on');});ch.classList.add('on');f=ch.getAttribute('data-f');apply();};});
- q.addEventListener('input',apply);
- if(country){country.addEventListener('change',apply);}
- if(lead){lead.addEventListener('change',apply);}
- apply();
-})();
-</script></div><footer>Auto-generated from public job-board APIs + your inbox. Listings stay live until they drop off their source. Verify before applying.</footer></body></html>
+</style></head><body><header><a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum"><span class="wm">AURUM</span></a><h1>The <span class="au">Gold Standard</span> for Your High-Ticket Job Search</h1><p class="sub">2026-06-16 &middot; 0 new today &middot; 68 active in total</p><div class="nav"><a class="on" href="/jobs">Fresh today</a><a class="" href="/jobs/all">The Vault</a><a class="" href="/jobs/boards">&starf; Boards</a><a class="" href="/directory">Communities</a><a class="" href="/cv">CV match</a></div></header><div class="wrap"><p class="empty">No new roles pulled today.<br>See every live listing in <a href="/jobs/all">The Vault</a>.</p></div><footer>Auto-generated from public job-board APIs + your inbox. Listings stay live until they drop off their source. Verify before applying.</footer></body></html>

@@ -186,6 +186,11 @@ const SEGMENTS = [
 ];
 const SEGMENT_KEYS = SEGMENTS.map((s) => s.key);
 const SEGMENT_LABEL = Object.fromEntries(SEGMENTS.map((s) => [s.key, s.label]));
+// Which page a lead belongs on for a given stage (so changing stage moves it).
+const STAGE_SEGMENT = {
+  new: "lead", contacted: "set", engaged: "set", booked: "call",
+  "post-call": "close", client: "csm", "at-risk": "csm", alumni: "csm", won: "csm",
+};
 const MASK_LABEL = { significance: "Significance", acceptance: "Acceptance", approval: "Approval", intelligence: "Intelligence", understanding: "Understanding", power: "Power" };
 function maskChip(l) {
   if (!l.mask || !MASK_LABEL[l.mask.mask]) return "";
@@ -628,6 +633,7 @@ function openDetail(id) {
     save(); close(); rerender();
     toast(l.assignedCloser ? `Call set — linked to ${l.assignedCloser}` : "Call set ▸ (assign a closer in the lead)");
   };
+  bg.querySelector("#d_stage").onchange = (e) => { const seg = STAGE_SEGMENT[e.target.value]; if (seg) bg.querySelector("#d_segment").value = seg; };
   bg.querySelector("#d_draft").onclick = () => { close(); openDraft(l.id); };
   bg.querySelector("#d_mask").onclick = () => { close(); openMaskRead(l.id); };
   bg.querySelector("#d_won").onclick = () => {
@@ -802,7 +808,7 @@ document.body.addEventListener("click", (e) => {
 document.body.addEventListener("change", (e) => {
   if (e.target.dataset.stage) {
     const l = db.leads.find((x) => x.id === e.target.dataset.stage);
-    if (l) { l.stage = e.target.value; if (l.stage === "won") l.status = "won"; else if (l.stage === "lost") l.status = "lost"; else l.status = "active"; save(); rerender(); }
+    if (l) { l.stage = e.target.value; if (l.stage === "won") l.status = "won"; else if (l.stage === "lost") l.status = "lost"; else l.status = "active"; if (STAGE_SEGMENT[l.stage]) l.segment = STAGE_SEGMENT[l.stage]; save(); rerender(); toast(STAGE_SEGMENT[l.stage] ? `Moved to ${SEGMENT_LABEL[l.segment]}` : "Updated"); }
   }
 });
 

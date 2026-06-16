@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Cadence — Follow-Up Engine</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <h1>Cadence<span class="dot">.</span></h1>
+        <span class="tag">your value-first follow-up engine</span>
+      </div>
+      <nav class="tabs" id="tabs">
+        <button data-view="today" class="active">Today <span class="count" id="todayCount">0</span></button>
+        <button data-view="pipeline">Pipeline</button>
+        <button data-view="add">Add lead</button>
+        <button data-view="settings">Settings</button>
+      </nav>
+    </header>
+
+    <!-- TODAY -->
+    <section id="view-today">
+      <div id="todayList"></div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section id="view-pipeline" class="hidden">
+      <div class="kbar">
+        <input id="search" type="text" placeholder="Search leads by name, company, interest…" />
+        <button class="btn sm" id="exportBtn">Export</button>
+        <button class="btn sm" id="importBtn">Import</button>
+        <input id="importFile" type="file" accept="application/json" class="hidden" />
+      </div>
+      <div id="pipelineList"></div>
+    </section>
+
+    <!-- ADD LEAD -->
+    <section id="view-add" class="hidden">
+      <div class="card">
+        <h2>Paste an inbound lead</h2>
+        <p class="small muted">Drop in the raw ad lead-form notification, funnel/booking email, or DM. Cadence parses it into a clean contact.</p>
+        <div class="field">
+          <textarea id="pasteBox" rows="5" placeholder="e.g. New lead from Facebook: Jane Doe, jane@acme.co, +1 555 0199 — runs a 7-fig agency, wants help scaling past a plateau, booked a call Thursday…"></textarea>
+        </div>
+        <button class="btn primary" id="parseBtn">Parse with AI</button>
+      </div>
+
+      <div class="card">
+        <h2>Lead details</h2>
+        <div class="row">
+          <div class="field"><label>Name</label><input id="f_name" /></div>
+          <div class="field"><label>Company</label><input id="f_company" /></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Email</label><input id="f_email" /></div>
+          <div class="field"><label>Phone</label><input id="f_phone" /></div>
+        </div>
+        <div class="field"><label>Interested in</label><input id="f_offerInterest" placeholder="What they want help with" /></div>
+        <div class="row">
+          <div class="field"><label>Source</label><input id="f_source" placeholder="e.g. FB lead form" /></div>
+          <div class="field"><label>Temperature</label>
+            <select id="f_temperature"><option value="hot">Hot</option><option value="warm" selected>Warm</option><option value="cold">Cold</option></select>
+          </div>
+          <div class="field"><label>Deal value</label><input id="f_dealValue" placeholder="$" /></div>
+        </div>
+        <div class="field"><label>Notes (their situation, goals, pain)</label><textarea id="f_notes" rows="3"></textarea></div>
+        <button class="btn primary" id="saveLeadBtn">Add to pipeline</button>
+        <button class="btn ghost" id="clearLeadBtn">Clear</button>
+        <p class="help">New leads start at <strong>speed-to-lead</strong> — Cadence will surface them in Today immediately.</p>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="view-settings" class="hidden">
+      <div class="card">
+        <h2>Access</h2>
+        <p class="small muted">Your <code>ACCESS_CODE</code> (set in Vercel). Stored only in this browser; sent with each AI request to unlock drafting.</p>
+        <div class="field"><label>Access code</label><input id="s_access" type="password" placeholder="••••••" /></div>
+      </div>
+
+      <div class="card">
+        <h2>Your offer profile</h2>
+        <p class="small muted">This is what makes every follow-up land. The richer this is, the better — and more honest — the AI drafts.</p>
+        <div class="field"><label>Your name</label><input id="s_coachName" /></div>
+        <div class="field"><label>Your offer</label><textarea id="s_offer" rows="2" placeholder="What you sell, to whom, and the transformation."></textarea></div>
+        <div class="field"><label>Ideal client</label><textarea id="s_idealClient" rows="2"></textarea></div>
+        <div class="field">
+          <label>Proof — client results / case studies (one per line)</label>
+          <textarea id="s_results" rows="4" placeholder="Helped a 6-fig agency owner add $40k/mo in 90 days&#10;Took a coach from 2 to 11 high-ticket clients in one quarter"></textarea>
+          <p class="help">The AI will ONLY use these for "proof" touches — it never invents results.</p>
+        </div>
+        <div class="field">
+          <label>Resources you can share (Title — URL, one per line)</label>
+          <textarea id="s_resources" rows="3" placeholder="The 5-call close framework — https://...&#10;Objection-handling cheat sheet — https://..."></textarea>
+        </div>
+        <div class="field"><label>Tone</label><input id="s_tone" placeholder="e.g. warm, direct, no fluff" /></div>
+        <button class="btn primary" id="saveSettingsBtn">Save profile</button>
+      </div>
+
+      <div class="card">
+        <h2>The cadence</h2>
+        <p class="small muted">Your default value-rotating sequence. Speed-to-lead first, then persistent multi-channel touches — no two hollow touches in a row.</p>
+        <div id="cadenceView"></div>
+      </div>
+
+      <div class="card">
+        <h2>Data</h2>
+        <p class="small muted">Everything lives in this browser. Export regularly — it's your book of business.</p>
+        <button class="btn sm" id="exportBtn2">Export JSON</button>
+        <button class="btn sm" id="importBtn2">Import JSON</button>
+        <button class="btn sm danger" id="wipeBtn">Erase all data</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Draft modal -->
+  <div class="modal-bg" id="modal">
+    <div class="modal">
+      <button class="close-x" id="modalClose">&times;</button>
+      <h3 id="modalTitle">Draft follow-up</h3>
+      <div id="modalMeta" class="small muted" style="margin-bottom:10px"></div>
+      <div class="out" id="modalOut">…</div>
+      <div class="modal-actions">
+        <button class="btn primary sm" id="copyBtn">Copy</button>
+        <button class="btn sm" id="regenBtn">Regenerate</button>
+        <button class="btn sm" id="twoBtn">Give me 2 options</button>
+        <button class="btn sm ghost" id="logFromDraftBtn">Mark sent &amp; advance ▸</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

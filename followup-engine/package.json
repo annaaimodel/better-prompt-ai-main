@@ -1,0 +1,10 @@
+{
+  "name": "cadence-followup-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cadence — a value-first follow-up engine for high-ticket coaching/consulting (text, email, call).",
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest"
+  }
+}

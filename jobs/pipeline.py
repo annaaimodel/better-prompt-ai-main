@@ -664,6 +664,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:30px 20px;borde
 """
 
 TAGLINE = 'The <span class="au">Gold Standard</span> for Your High-Ticket Job Search'
+OG_PATHS = {"new": "/jobs", "all": "/jobs/all"}
 
 def _nav(active):
     def a(href, label, key):
@@ -715,6 +716,15 @@ def _doc(heading, sub, nav_key, body, tab=None):
             f'<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">'
             f'<link rel="shortcut icon" href="/favicon.ico">'
             f'<link rel="apple-touch-icon" href="/apple-touch-icon.png">'
+            f'<meta property="og:type" content="website">'
+            f'<meta property="og:site_name" content="AURUM">'
+            f'<meta property="og:title" content="AURUM · {tab or "High-Ticket Roles"}">'
+            f'<meta property="og:description" content="Fresh remote high-ticket sales roles — closers, setters, SDRs, customer success &amp; VAs — refreshed hourly.">'
+            f'<meta property="og:url" content="https://aurum-hts.vercel.app{OG_PATHS.get(nav_key, "")}">'
+            f'<meta property="og:image" content="https://aurum-hts.vercel.app/og-image.png">'
+            f'<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+            f'<meta name="twitter:card" content="summary_large_image">'
+            f'<meta name="twitter:image" content="https://aurum-hts.vercel.app/og-image.png">'
             f'<style>{PAGE_CSS}</style></head><body>'
             f'<header><a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum">'
             f'<span class="wm">AURUM</span></a>'

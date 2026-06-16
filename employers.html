@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Hire vetted remote high-ticket sales talent — closers, setters, SDRs, customer success & VAs. Tell AURUM the role; we source and vet candidates from our pool.">
-<title>Hire High-Ticket Sales Talent · AURUM</title>
+<meta name="description" content="Post a remote high-ticket sales role on AURUM — get your closing, setting, SDR, CS or VA role in front of vetted high-ticket sales candidates. Free, Featured & Urgent listings.">
+<title>Post a Role · AURUM — Get Your High-Ticket Role Seen</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"><link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta property="og:type" content="website"><meta property="og:site_name" content="AURUM"><meta property="og:title" content="AURUM · Hire Vetted High-Ticket Sales Talent"><meta property="og:description" content="Tell us the role; we source and vet remote closers, setters, SDRs, CS & VAs from our pool. You interview the best."><meta property="og:url" content="https://aurum-hts.vercel.app/hiring"><meta property="og:image" content="https://aurum-hts.vercel.app/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://aurum-hts.vercel.app/og-image.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AURUM"><meta property="og:title" content="AURUM · Post a High-Ticket Sales Role"><meta property="og:description" content="Get your remote closing, setting, SDR, CS or VA role in front of vetted high-ticket sales candidates. Free, Featured & Urgent listings."><meta property="og:url" content="https://aurum-hts.vercel.app/hiring"><meta property="og:image" content="https://aurum-hts.vercel.app/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://aurum-hts.vercel.app/og-image.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap');
 :root{--bg:#0a0a0b;--card:#141312;--line:rgba(201,156,56,.14);--line2:#262320;--txt:#f3efe6;--mut:#9a948a;--gold:#c99c38;--gold2:#f2dd88;--goldd:#a47a26}
@@ -17,28 +17,39 @@ a{color:inherit;text-decoration:none}
 .wm{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:30px;letter-spacing:.2em;padding-left:.2em;background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
 .kicker{font-size:11.5px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin:0 0 26px}
 .hero h1{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(28px,6vw,46px);line-height:1.14;margin:0 auto 16px;max-width:18ch;color:#f6f1e4}
-.hero p.lead{color:#cfc7b6;font-size:clamp(15px,2.4vw,18px);max-width:58ch;margin:0 auto 28px}
+.hero p.lead{color:#cfc7b6;font-size:clamp(15px,2.4vw,18px);max-width:60ch;margin:0 auto 28px}
 .btn{display:inline-block;font-size:15px;font-weight:700;padding:13px 24px;border-radius:11px;cursor:pointer;border:1px solid transparent;transition:filter .15s,box-shadow .15s,border-color .15s}
 .btn.primary{color:#0a0a0b;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%)}
 .btn.primary:hover{filter:brightness(1.07);box-shadow:0 12px 30px -12px rgba(201,156,56,.6)}
-.btn.ghost{color:var(--txt);background:transparent;border-color:var(--line)}.btn.ghost:hover{border-color:var(--gold)}
 section{padding:48px 0}
 .eyebrow{text-align:center;color:var(--gold2);font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin:0 0 10px}
-h2{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(23px,4vw,30px);text-align:center;color:#f4eedd;margin:0 0 34px}
-.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.fcard{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px}
-.fcard .ic{font-size:23px;margin-bottom:9px}.fcard h4{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:17px;margin:0 0 6px;color:#f6f1e6}.fcard p{color:var(--mut);font-size:14px;margin:0}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;counter-reset:s}
+h2{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(23px,4vw,30px);text-align:center;color:#f4eedd;margin:0 0 8px}
+.sub2{text-align:center;color:var(--mut);font-size:14.5px;max-width:56ch;margin:0 auto 34px}
+/* pricing */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;align-items:stretch}
+.tier{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column}
+.tier.feat{border-color:rgba(201,156,56,.5);box-shadow:0 14px 40px -22px rgba(201,156,56,.5)}
+.tier .tname{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:20px;color:#f6f1e6}
+.tier .badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0a0a0b;background:linear-gradient(175deg,#f6e29a,#b8862f);padding:3px 9px;border-radius:6px;margin-left:8px;vertical-align:middle}
+.tier .price{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:34px;margin:12px 0 2px;color:#f4eedd}
+.tier .price span{font-size:14px;font-weight:400;color:var(--mut);font-family:inherit}
+.tier ul{list-style:none;padding:0;margin:16px 0 20px;flex:1}
+.tier li{font-size:14px;color:#d8d0c1;padding:6px 0 6px 24px;position:relative}
+.tier li::before{content:"✓";position:absolute;left:0;color:var(--gold2);font-weight:800}
+.tier li.no{color:var(--mut)}.tier li.no::before{content:"–";color:var(--mut)}
+.tier .pick{text-align:center;font-weight:700;font-size:14px;padding:11px;border-radius:10px;cursor:pointer;border:1px solid var(--line);color:var(--txt);background:transparent;transition:.15s}
+.tier .pick:hover{border-color:var(--gold)}
+.tier.feat .pick{color:#0a0a0b;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%);border-color:var(--gold)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;counter-reset:s;margin-top:8px}
 .step{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px;position:relative}
 .step::before{counter-increment:s;content:counter(s);font-family:"Playfair Display",serif;font-weight:700;font-size:20px;color:#0a0a0b;background:linear-gradient(175deg,#f6e29a,#b8862f);width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
 .step h4{margin:0 0 6px;font-size:16px;color:#f6f1e6}.step p{margin:0;color:var(--mut);font-size:14px}
 /* form */
-.formwrap{max-width:620px;margin:0 auto;background:linear-gradient(180deg,#171513,#121110);border:1px solid var(--line);border-radius:18px;padding:26px}
-.formwrap h2{margin-bottom:6px}.formwrap .fsub{text-align:center;color:var(--mut);font-size:14px;margin:0 0 20px}
+.formwrap{max-width:640px;margin:0 auto;background:linear-gradient(180deg,#171513,#121110);border:1px solid var(--line);border-radius:18px;padding:26px}
 label{display:block;font-size:12px;color:var(--mut);margin:12px 0 5px;letter-spacing:.02em}
 input,select,textarea{width:100%;padding:12px 14px;border-radius:11px;border:1px solid var(--line2);background:#100f0d;color:var(--txt);font-size:15px;font-family:inherit;outline:none}
 input:focus,select:focus,textarea:focus{border-color:var(--gold)}
-textarea{min-height:96px;resize:vertical}
+textarea{min-height:90px;resize:vertical}
 .two{display:flex;gap:14px;flex-wrap:wrap}.two>div{flex:1;min-width:220px}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .submit{width:100%;margin-top:18px}
@@ -51,49 +62,88 @@ footer .fnav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-
 
 <header class="hero">
   <a class="brand" href="/"><img src="/favicon.svg" width="42" height="42" alt="Aurum"><span class="wm">AURUM</span></a>
-  <div class="kicker">For Employers</div>
-  <h1>Hire <span class="gold">vetted</span> remote high-ticket sales talent</h1>
-  <p class="lead">Closers, setters, SDRs, customer success &amp; VAs — sourced and vetted from a pool of remote sales professionals who live in the high-ticket world. Tell us the role; you interview the best.</p>
-  <a class="btn primary" href="#brief">Tell us who you need &rarr;</a>
+  <div class="kicker">Post a Role</div>
+  <h1>Get your role in front of <span class="gold">high-ticket sales</span> talent</h1>
+  <p class="lead">Recruiters and founders: list your remote closing, setting, SDR, customer success or VA role on AURUM — seen by candidates who live and breathe high-ticket sales. Free to list. Pay only to stand out.</p>
+  <a class="btn primary" href="#post">Post your role &rarr;</a>
 </header>
 
 <div class="wrap">
 
   <section>
-    <p class="eyebrow">Why AURUM</p>
-    <h2>The shortcut to high-ticket closers &amp; setters</h2>
-    <div class="feat">
-      <div class="fcard"><div class="ic">🛡️</div><h4>Vetted, not scraped</h4><p>Remote-only, English-fluent, genuinely high-ticket. We filter the noise so you only see real candidates.</p></div>
-      <div class="fcard"><div class="ic">⚡</div><h4>Fast</h4><p>We already have the pool. Tell us the role and we come back with matched, interested candidates — not a job post that sits empty.</p></div>
-      <div class="fcard"><div class="ic">🎯</div><h4>Niche-native</h4><p>We live in high-ticket sales — closers, setters, CSMs. We understand OTE, ramp and the difference between a DM setter and a phone setter.</p></div>
-      <div class="fcard"><div class="ic">🤝</div><h4>Pay on results</h4><p>Featured listings or done-for-you sourcing. Flexible terms — we'll find what works for how you hire.</p></div>
+    <p class="eyebrow">Listing options</p>
+    <h2>Choose how loud you want to be</h2>
+    <p class="sub2">Every approved role goes on the board free. Upgrade to be seen first by the candidates most likely to apply.</p>
+    <div class="tiers">
+
+      <div class="tier">
+        <div class="tname">Standard</div>
+        <div class="price">Free</div>
+        <ul>
+          <li>Listed in The Vault for 30 days</li>
+          <li>Searchable &amp; filterable by candidates</li>
+          <li>Reviewed before going live</li>
+          <li class="no">Top-of-board placement</li>
+          <li class="no">Featured in the candidate email</li>
+        </ul>
+        <button class="pick" data-tier="Standard (Free)">Choose Standard</button>
+      </div>
+
+      <div class="tier feat">
+        <div class="tname">Featured <span class="badge">Popular</span></div>
+        <div class="price">£49<span> / role</span></div>
+        <ul>
+          <li>Everything in Standard</li>
+          <li>Gold <b>Featured</b> badge</li>
+          <li>Pinned near the top of the board</li>
+          <li>Included in the weekly candidate email</li>
+          <li>30 days of premium placement</li>
+        </ul>
+        <button class="pick" data-tier="Featured (£49)">Choose Featured</button>
+      </div>
+
+      <div class="tier">
+        <div class="tname">Urgent <span class="badge">🔥</span></div>
+        <div class="price">£99<span> / role</span></div>
+        <ul>
+          <li>Everything in Featured</li>
+          <li>🔥 <b>Urgent</b> badge, top of the board</li>
+          <li>Dedicated post to our social channels</li>
+          <li>Priority review — live the same day</li>
+          <li>Best for roles you need filled now</li>
+        </ul>
+        <button class="pick" data-tier="Urgent (£99)">Choose Urgent</button>
+      </div>
+
     </div>
   </section>
 
   <section>
     <p class="eyebrow">How it works</p>
-    <h2>Three steps to a hire</h2>
+    <h2>Live in three steps</h2>
     <div class="steps">
-      <div class="step"><h4>Tell us the role</h4><p>Role type, comp, what "great" looks like. Two minutes in the form below.</p></div>
-      <div class="step"><h4>We source &amp; vet</h4><p>We match and pre-screen candidates from our pool and inbound applicants.</p></div>
-      <div class="step"><h4>You interview the best</h4><p>You get a shortlist of interested, qualified people — and you make the call.</p></div>
+      <div class="step"><h4>Submit your role</h4><p>Fill in the role below and pick a listing tier. Two minutes.</p></div>
+      <div class="step"><h4>We review</h4><p>A quick quality check (remote, real, high-ticket) keeps the board trusted. Paid tiers get a payment link.</p></div>
+      <div class="step"><h4>It goes live</h4><p>Your role appears in The Vault in front of high-ticket sales candidates — Featured &amp; Urgent get the spotlight.</p></div>
     </div>
   </section>
 
-  <section id="brief">
+  <section id="post">
     <div class="formwrap">
-      <h2>Tell us who you need</h2>
-      <p class="fsub">We'll reply by email with next steps and how we can help you hire.</p>
-      <form id="emp" novalidate>
+      <h2>Post your role</h2>
+      <p class="sub2">Free to submit. We'll confirm by email — and send a secure payment link for Featured / Urgent.</p>
+      <form id="listing" novalidate>
         <div class="two">
-          <div><label>Company</label><input id="company" placeholder="Your company" autocomplete="organization"></div>
+          <div><label>Company / agency</label><input id="company" placeholder="Who's hiring" autocomplete="organization"></div>
           <div><label>Your name</label><input id="name" placeholder="First name" autocomplete="name"></div>
         </div>
-        <label>Work email</label>
+        <label>Email</label>
         <input id="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+        <label>Role title</label>
+        <input id="title" placeholder="e.g. Remote High-Ticket Closer">
         <div class="two">
           <div>
-            <label>Role(s) you're hiring</label>
+            <label>Role type</label>
             <select id="role">
               <option value="">Select…</option>
               <option>Closer</option>
@@ -102,18 +152,31 @@ footer .fnav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-
               <option>SDR</option>
               <option>Customer Success</option>
               <option>VA / Admin</option>
-              <option>Multiple / Sales team</option>
+              <option>Other / Sales team</option>
             </select>
           </div>
-          <div><label>Comp / budget (optional)</label><input id="comp" placeholder="e.g. $5k base + comm / OTE $10k"></div>
+          <div><label>Comp / OTE</label><input id="comp" placeholder="e.g. $3k base + comm / OTE $10k"></div>
         </div>
-        <label>Tell us about the role (offer, niche, what great looks like)</label>
-        <textarea id="details" placeholder="What you sell, ticket price, lead flow, and what you want in a hire…"></textarea>
+        <div class="two">
+          <div><label>Location</label><input id="location" placeholder="Remote" value="Remote"></div>
+          <div>
+            <label>Listing tier</label>
+            <select id="tier">
+              <option>Standard (Free)</option>
+              <option>Featured (£49)</option>
+              <option>Urgent (£99)</option>
+            </select>
+          </div>
+        </div>
+        <label>Apply link</label>
+        <input id="link" placeholder="https://… where candidates apply">
+        <label>Role details</label>
+        <textarea id="details" placeholder="What you sell, ticket price, lead flow, and what a great hire looks like…"></textarea>
         <input type="text" class="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn primary submit" type="submit" id="sbtn">Send my brief</button>
+        <button class="btn primary submit" type="submit" id="sbtn">Submit role</button>
       </form>
       <div class="msg" id="msg"></div>
-      <div class="note">No obligation. We'll only use your details to help you hire.</div>
+      <div class="note">Submitting doesn't charge you. Paid tiers are activated after you complete the payment link we send.</div>
     </div>
   </section>
 
@@ -128,22 +191,34 @@ footer .fnav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
-const f = document.getElementById('emp'), msg = document.getElementById('msg'), btn = document.getElementById('sbtn');
+const f = document.getElementById('listing'), msg = document.getElementById('msg'), btn = document.getElementById('sbtn');
 const val = id => document.getElementById(id).value.trim();
+// Tier picker buttons scroll to form and preselect the tier
+document.querySelectorAll('.pick').forEach(b => b.addEventListener('click', () => {
+  document.getElementById('tier').value = b.dataset.tier;
+  document.getElementById('post').scrollIntoView({ behavior: 'smooth' });
+}));
 f.addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = val('email');
   msg.className = 'msg';
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Please enter a valid work email.'; msg.className = 'msg err'; return; }
-  btn.disabled = true; const old = btn.textContent; btn.textContent = 'Sending…';
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Please enter a valid email.'; msg.className = 'msg err'; return; }
+  if (!val('title')) { msg.textContent = 'Please add a role title.'; msg.className = 'msg err'; return; }
+  const tier = val('tier');
+  btn.disabled = true; const old = btn.textContent; btn.textContent = 'Submitting…';
   try {
-    const r = await fetch('/api/employer', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
-      company: val('company'), name: val('name'), email, role: val('role'), comp: val('comp'),
-      details: val('details'), hp: val('hp'), source: 'hiring'
+    const r = await fetch('/api/listing', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+      company: val('company'), name: val('name'), email, title: val('title'), role: val('role'),
+      comp: val('comp'), location: val('location'), link: val('link'), tier, details: val('details'),
+      hp: val('hp'), source: 'hiring'
     }) });
     const d = await r.json().catch(()=>({}));
-    if (r.ok && d.ok) { msg.textContent = '✓ Got it — we’ll be in touch by email shortly.'; msg.className = 'msg ok'; f.reset(); }
-    else { msg.textContent = (d && d.error) || 'Something went wrong — please try again.'; msg.className = 'msg err'; }
+    if (r.ok && d.ok) {
+      msg.textContent = tier.startsWith('Standard')
+        ? '✓ Submitted — we’ll review and add your role to the board shortly.'
+        : '✓ Submitted — we’ll email you a secure payment link to activate your ' + tier.split(' (')[0] + ' listing.';
+      msg.className = 'msg ok'; f.reset(); document.getElementById('location').value = 'Remote';
+    } else { msg.textContent = (d && d.error) || 'Something went wrong — please try again.'; msg.className = 'msg err'; }
   } catch (err) { msg.textContent = 'Network error — please try again.'; msg.className = 'msg err'; }
   finally { btn.disabled = false; btn.textContent = old; }
 });

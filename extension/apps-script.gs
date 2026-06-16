@@ -37,15 +37,16 @@ function doPost(e) {
         .setMimeType(ContentService.MimeType.JSON);
     }
 
-    // --- Employer briefs from the "Hiring" page -> "Employers" tab ---------
-    if (j.type === 'employer') {
-      var emp = ss.getSheetByName('Employers') || ss.insertSheet('Employers');
-      if (emp.getLastRow() === 0) {
-        emp.appendRow(['company', 'name', 'email', 'role', 'comp', 'details', 'source', 'savedAt']);
+    // --- Job listings from the "Post a Role" page -> "Listings" tab --------
+    if (j.type === 'listing') {
+      var lst = ss.getSheetByName('Listings') || ss.insertSheet('Listings');
+      if (lst.getLastRow() === 0) {
+        lst.appendRow(['company', 'name', 'email', 'title', 'role', 'comp', 'location', 'link', 'tier', 'details', 'source', 'savedAt']);
       }
-      emp.appendRow([
-        j.company || '', j.name || '', j.email || '', j.role || '',
-        j.comp || '', j.details || '', j.source || '', j.savedAt || new Date().toISOString()
+      lst.appendRow([
+        j.company || '', j.name || '', j.email || '', j.title || '', j.role || '',
+        j.comp || '', j.location || '', j.link || '', j.tier || '', j.details || '',
+        j.source || '', j.savedAt || new Date().toISOString()
       ]);
       return ContentService
         .createTextOutput(JSON.stringify({ ok: true }))

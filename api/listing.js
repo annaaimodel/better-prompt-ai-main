@@ -1,7 +1,8 @@
-// Public employer-lead endpoint for the AURUM "Hiring" page (/hiring).
-// Appends the brief to your Google Sheet (same Apps Script /exec URL) with
-// type:"employer", so it lands in a separate "Employers" tab. No access code —
-// this is a public lead form.
+// Public job-listing endpoint for the AURUM "Post a Role" page (/hiring).
+// Appends the submitted role to your Google Sheet (same Apps Script /exec URL)
+// with type:"listing", so it lands in a separate "Listings" tab. No access code
+// — this is a public submission form. Paid tiers (Featured/Urgent) are activated
+// manually after payment; Standard roles can be moved into the board inbox.
 //
 // Env var (already set in Vercel): INBOX_SYNC_URL
 
@@ -16,20 +17,26 @@ export default async function handler(req, res) {
   if (body.hp) { res.status(200).json({ ok: true }); return; }
 
   const email = clip(body.email, 254).trim().toLowerCase();
-  if (!EMAIL_RE.test(email)) { res.status(400).json({ error: "Please enter a valid work email." }); return; }
+  if (!EMAIL_RE.test(email)) { res.status(400).json({ error: "Please enter a valid email." }); return; }
+  const title = clip(body.title, 300);
+  if (!title) { res.status(400).json({ error: "Please add a role title." }); return; }
 
   if (!process.env.INBOX_SYNC_URL) {
-    res.status(503).json({ error: "Briefs aren't connected yet. Please try again soon." });
+    res.status(503).json({ error: "Listings aren't connected yet. Please try again soon." });
     return;
   }
 
   const payload = {
-    type: "employer",
+    type: "listing",
     company: clip(body.company, 200),
     name: clip(body.name, 120),
     email,
+    title,
     role: clip(body.role, 120),
     comp: clip(body.comp, 200),
+    location: clip(body.location, 200) || "Remote",
+    link: clip(body.link, 600),
+    tier: clip(body.tier, 60) || "Standard (Free)",
     details: clip(body.details, 4000),
     source: clip(body.source, 40) || "hiring",
     savedAt: new Date().toISOString(),

@@ -136,8 +136,8 @@ You can also list this free on AURUM (a board just for remote high-ticket sales 
 so it reaches candidates outside this group → aurum-hts.vercel.app/hiring
 
 ## Follow-up — once they've posted (upsell to paid)
-Nice — your role's live 🎉 If you want it filled quicker, Featured (£49) pins it to the
-top of the board and drops it into our weekly candidate email; Urgent (£99) adds a
+Nice — your role's live 🎉 If you want it filled quicker, Featured ($49) pins it to the
+top of the board and drops it into our weekly candidate email; Urgent ($99) adds a
 social post + same-day priority. Want me to upgrade it?
 
 ## One-liner for your socials / bio

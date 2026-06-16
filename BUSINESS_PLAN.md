@@ -45,7 +45,7 @@ Coaches, agencies, info-product businesses and SaaS companies hiring remote clos
 and setters. **This is where the real money is.**
 - Pain: finding *vetted* sales talent fast is hard and expensive.
 - Willingness to pay: high — a good closer is worth tens of thousands in revenue, so
-  a placement fee of £500–£2,000 is an easy yes.
+  a placement fee of $500–$2,000 is an easy yes.
 
 ---
 
@@ -53,14 +53,14 @@ and setters. **This is where the real money is.**
 
 | # | Stream | Type | Ticket | Effort | When |
 |---|--------|------|--------|--------|------|
-| 1 | **Employer placements / recruiting** | B2B | £500–2,000 / hire | Med | Phase 2 — biggest upside |
-| 2 | **Premium seeker membership** | B2C sub | £9–19/mo | Low (built) | Phase 1 |
-| 3 | **Pay-per-tool** (cover letter, Loom script, app pack) | B2C | £5–29 each | Low (built) | Phase 1 |
-| 4 | **Featured / sponsored listings** | B2B | £49–199 / post | Low | Phase 2 |
+| 1 | **Employer placements / recruiting** | B2B | $500–2,000 / hire | Med | Phase 2 — biggest upside |
+| 2 | **Premium seeker membership** | B2C sub | $9–19/mo | Low (built) | Phase 1 |
+| 3 | **Pay-per-tool** (cover letter, Loom script, app pack) | B2C | $5–29 each | Low (built) | Phase 1 |
+| 4 | **Featured / sponsored listings** | B2B | $49–199 / post | Low | Phase 2 |
 | 5 | **Affiliate** (communities, CRMs, dialers, courses) | Passive | 20–40% comm. | Low | Phase 1 |
-| 6 | **Newsletter sponsorships** | Passive | £50–500 / send | Low | Phase 2–3 |
-| 7 | **Own paid community** (AURUM Inner Circle) | B2C sub | £20–50/mo | High | Phase 3 |
-| 8 | **Talent-pool / database access** | B2B | £100–500/mo | Med | Phase 3 |
+| 6 | **Newsletter sponsorships** | Passive | $50–500 / send | Low | Phase 2–3 |
+| 7 | **Own paid community** (AURUM Inner Circle) | B2C sub | $20–50/mo | High | Phase 3 |
+| 8 | **Talent-pool / database access** | B2B | $100–500/mo | Med | Phase 3 |
 
 **The recommended core:** a **free board** (audience engine) + **premium seeker
 subscription bundling the AI tools** (recurring B2C) + **employer placements**
@@ -73,13 +73,13 @@ audience.
 1. **Free:** browse the board, CV match, communities directory. *(Acquisition + SEO.)*
 2. **Email list (free):** role alerts — *"3 new Closer roles in the US that match you."*
    The list is the single most valuable asset; everything monetises off it.
-3. **Premium (£12/mo or £97/yr):**
+3. **Premium ($12/mo or $97/yr):**
    - Instant + early access to new roles (before the free board)
    - Unlimited CV match
    - AI cover letters + Loom scripts (already built)
    - Application tracker
-4. **Pay-per-tool (no subscription):** £9 per cover letter / £15 per Loom script /
-   £29 "application pack" — for people who won't subscribe.
+4. **Pay-per-tool (no subscription):** $9 per cover letter / $15 per Loom script /
+   $29 "application pack" — for people who won't subscribe.
 5. **Employer side:** featured listings and **done-for-you placements** (we source &
    vet candidates from our pool; they pay on hire).
 
@@ -87,20 +87,20 @@ audience.
 
 ## 6. Pricing & unit economics (illustrative)
 
-**Costs are trivial.** Per AI generation (Sonnet): ~£0.01–0.03. Hosting: £0. Domain:
-~£1/mo. So margins are ~99% and the model lives or dies on **traffic → email → paid**.
+**Costs are trivial.** Per AI generation (Sonnet): ~$0.01–0.03. Hosting: $0. Domain:
+~$1/mo. So margins are ~99% and the model lives or dies on **traffic → email → paid**.
 
 **Worked example at modest scale** (achievable in 3–6 months with consistent posting
 in the communities + SEO):
 
 - 5,000 monthly visitors → 10% join the email list = **~500 new subscribers/mo**
-- Of engaged subscribers, 2–3% take premium → **50–150 paying** × £12 =
-  **£600–£1,800/mo recurring**
-- Pay-per-tool from non-subscribers: ~£200–£500/mo
-- **Placements:** just **2–4 hires/mo** at £500–£1,000 = **£1,000–£4,000/mo**
-- Affiliate + sponsorship: £100–£500/mo passive
+- Of engaged subscribers, 2–3% take premium → **50–150 paying** × $12 =
+  **$600–$1,800/mo recurring**
+- Pay-per-tool from non-subscribers: ~$200–$500/mo
+- **Placements:** just **2–4 hires/mo** at $500–$1,000 = **$1,000–$4,000/mo**
+- Affiliate + sponsorship: $100–$500/mo passive
 
-**Blended target: £2k/mo within ~90 days, £5–10k/mo within 6–9 months** — driven
+**Blended target: $2k/mo within ~90 days, $5–10k/mo within 6–9 months** — driven
 mostly by placements and premium. These are *targets, not promises*; the lever is
 audience growth.
 
@@ -145,21 +145,21 @@ side possible (you can't place candidates you don't have).
 - [ ] **Manual placements:** DM 10–20 companies posting in the communities — *"I have
       vetted remote closers/setters, want intros?"* Charge on hire. (Proves B2B demand
       with zero product needed.)
-- **Goal:** first £ in (a tool sale or a placement) + 250+ email subs.
+- **Goal:** first $ in (a tool sale or a placement) + 250+ email subs.
 
 **Days 31–60 — Productise what works**
 - [ ] Add a simple **employer page**: "Hiring? Post a featured role / get vetted
       candidates." Charge for featured posts.
 - [ ] Formalise premium (alerts + tools + early access) with a clear pricing page.
 - [ ] First newsletter sponsor or affiliate deal (the communities pay for referrals).
-- **Goal:** £1–2k/mo blended; 3+ employer relationships.
+- **Goal:** $1–2k/mo blended; 3+ employer relationships.
 
 **Days 61–90 — Scale the winners**
 - [ ] Double down on whichever stream is converting best (likely placements or premium).
 - [ ] Launch a lightweight **AURUM community** (Skool/Discord) if there's pull —
       recurring revenue + stronger moat.
 - [ ] Start the SEO blog for compounding free traffic.
-- **Goal:** £2–5k/mo; a repeatable placement process.
+- **Goal:** $2–5k/mo; a repeatable placement process.
 
 ---
 

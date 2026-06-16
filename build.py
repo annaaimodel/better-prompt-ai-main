@@ -83,7 +83,7 @@ DATA = [
   ("High Ticket Closers", "General high-ticket closer community on Skool.", "Login required", "https://www.skool.com/high-ticket-closers-4841/about"),
   ("Sales Elites", "Community for closers, setters and ambitious salespeople mastering high-ticket sales — with opportunities posted by members actively building sales teams.", "Login required", "https://www.skool.com/saleselites/about"),
   ("6Figure Appointment Setter (Next Level Closers)", "Training community helping appointment setters level up into six-figure remote setting and closing roles.", "Login required", "https://www.skool.com/next-level-closers-4020"),
-  ("The Sales Dojo", "Premier sales-training community (SOS Dojo) with world-class training, daily coaching, a 24/7 roleplay room and connections to the best high-ticket opportunities.", "~4,000+", "https://www.skool.com/sosdojo/about"),
+  ("The Sales Dojo", "Premier sales-training community (SOS Dojo) with world-class training, daily coaching, a 24/7 roleplay room and connections to the best high-ticket opportunities.", "~4,000+", "https://www.skool.com/sales-dojo/about"),
   ("The Game of Influence", "Mentor-led high-ticket sales community focused on turning members into remote closers earning $10k+/mo, pairing training and mentorship with job opportunities.", "Login required", "https://www.skool.com/the-game-of-influence/about"),
  ]),
 ]),

@@ -25,7 +25,7 @@ TODAY = datetime.date.today()
 # Tracking went live on this date; "all-time" starts here.
 TRACK_START = datetime.date(2026, 6, 16)
 
-SITE = os.environ.get("GOATCOUNTER_SITE", "").strip()
+SITE = os.environ.get("GOATCOUNTER_SITE", "").strip() or "aurum-hts"
 TOKEN = os.environ.get("GOATCOUNTER_API_TOKEN", "").strip()
 BASE = f"https://{SITE}.goatcounter.com/api/v0" if SITE else ""
 UA = "aurum-analytics/1.0 (+daily digest)"

@@ -761,7 +761,7 @@
   "company": "Karbon",
   "location": "Charlotte, Mecklenburg County",
   "comp": "$144326-$144326",
-  "link": "https://www.adzuna.com/land/ad/5764478574?se=iu9Tz2pp8RGdcKmg89akZw&utm_medium=api&utm_source=3e941a8f&v=55413883F21FD319D5F48DF57457A2933837C9C8",
+  "link": "https://www.adzuna.com/land/ad/5764478574?se=tsAlo4Fp8RG26bgDZ4zNTQ&utm_medium=api&utm_source=3e941a8f&v=55413883F21FD319D5F48DF57457A2933837C9C8",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-12",
@@ -3958,7 +3958,7 @@
   "company": "The People Pod",
   "location": "Manchester, Greater Manchester",
   "comp": "$100000-$100000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=wOhZ1mpp8RGdcKmg89akZw&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=Nrd9p4Fp8RGjKJIWHOfiKg&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -11712,9 +11712,9 @@
  "f8b9ea50606be3f1": {
   "title": "Remote Inbound Sales Representative",
   "company": "Stratford Davis",
-  "location": "Federal Heights, Adams County",
+  "location": "Kalamazoo, Kalamazoo County",
   "comp": "$140000-$140000",
-  "link": "https://www.adzuna.com/details/5739238965?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.com/details/5739238970?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
@@ -12034,10 +12034,10 @@
  "0a9a26c6624c9ea3": {
   "title": "High Ticket Sales Closer",
   "company": "Profitable Tradie",
-  "location": "US",
-  "comp": "$65930-$65930",
-  "link": "https://www.adzuna.com/land/ad/5757490947?se=dsC5ympp8RGmpfo0sbJdLA&utm_medium=api&utm_source=3e941a8f&v=CBB3FE3B5D1559A3E47053F89006474631126A20",
-  "source": "Adzuna",
+  "location": "Dorchester, MA",
+  "comp": "",
+  "link": "https://jooble.org/jdp/-4150435251280561279",
+  "source": "Jooble",
   "category": "Closer",
   "country": "United States",
   "lead_type": "",
@@ -12100,7 +12100,7 @@
   "company": "HiddenLayer",
   "location": "Austin, Travis County",
   "comp": "$100039-$100039",
-  "link": "https://www.adzuna.com/land/ad/5764475728?se=iu9Tz2pp8RGdcKmg89akZw&utm_medium=api&utm_source=3e941a8f&v=3A2F7F817D1FDDDFFB77BDD1AC0D42E49AE3A808",
+  "link": "https://www.adzuna.com/land/ad/5764475728?se=tsAlo4Fp8RG26bgDZ4zNTQ&utm_medium=api&utm_source=3e941a8f&v=3A2F7F817D1FDDDFFB77BDD1AC0D42E49AE3A808",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -12682,7 +12682,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "116026ad37903d8c": {
   "title": "Social Media Manager (remote)",
@@ -12698,7 +12698,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "e2ff646583243525": {
   "title": "Social media manager (remote)",
@@ -12714,7 +12714,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "ef792451df79e0d5": {
   "title": "Sr. SOCIAL MEDIA MANAGER (REMOTE- PART TIME)",
@@ -12730,7 +12730,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "f12406ab3065c06f": {
   "title": "Social Media Manager @POPUTRUST - Work from Home Opportunity",
@@ -12746,7 +12746,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "fb867604686355a2": {
   "title": "Sr. Social Media Manager, Community and Listening - Remote",
@@ -12762,7 +12762,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "4e1c6b29f391fb42": {
   "title": "Entry-Level Remote Social Media Manager at NoGigiddy (20-27 per hour)",
@@ -12778,7 +12778,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "21d482e6aefd9b8e": {
   "title": "Social Media Manager",
@@ -12794,7 +12794,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "52027de5261400a3": {
   "title": "UNPAID VOLUNTEER - Social Media Manager",
@@ -12810,7 +12810,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "b432db0d0afaafb9": {
   "title": "Social Media Manager, Entertainment (Freelance)",
@@ -12826,7 +12826,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "d2d12ac96a87e024": {
   "title": "SOCIAL MEDIA MANAGER",
@@ -12842,7 +12842,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "2fb9e0c38158cb46": {
   "title": "Social Media Manager",
@@ -12858,7 +12858,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "298101a4f78932df": {
   "title": "Social Media Manager",
@@ -12874,7 +12874,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "2b2931397c214644": {
   "title": "Social Media Manager",
@@ -12890,7 +12890,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "09b3c666f87e8d38": {
   "title": "Social Media Manager",
@@ -12906,7 +12906,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "96800a2c7570ae07": {
   "title": "Social Media Manager - Gaming (Freelance)",
@@ -12922,7 +12922,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "42063b37be4e6ec6": {
   "title": "Social Media Manager",
@@ -12938,7 +12938,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "e01af467022ebdea": {
   "title": "Senior Social Media Manager (Remote)",
@@ -12954,7 +12954,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "046b0d5b6934f39c": {
   "title": "Social Media Manager (Beauty Industry) | Remote | Canada",
@@ -12970,7 +12970,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "312c961235410796": {
   "title": "Social Media Manager",
@@ -12986,7 +12986,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "537eb7c1ef6772cc": {
   "title": "Sales Associate | High Ticket Setter",
@@ -13018,7 +13018,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "6c6b3499f257acfe": {
   "title": "Remote DM Setter/Closer for Sales Team",
@@ -13034,7 +13034,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "2ec5a6928f94a168": {
   "title": "Instagram DM Setter Needed (Warm Leads, Scripted, Low-Ticket Challenge + Group Coaching) - Contract to Hire",
@@ -13083,7 +13083,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "e7092757cee090de": {
   "title": "High Ticket Sales Closer - Remote",
@@ -13199,10 +13199,10 @@
  },
  "280076389e3ba9b9": {
   "title": "Mortgage Loan Closer",
-  "company": "ACHIEVE",
+  "company": "Achieve",
   "location": "Tempe, AZ",
   "comp": "$5,250 per month",
-  "link": "https://jooble.org/jdp/-3289981322767831588",
+  "link": "https://jooble.org/jdp/-988656589917976843",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -13360,9 +13360,9 @@
  "a3362391694edc47": {
   "title": "Virtual Assistant: $11 - $22/HR",
   "company": "Data Entry Jobs",
-  "location": "Chesterfield, MO",
+  "location": "Pearland, TX",
   "comp": "$11 - $22 per hour",
-  "link": "https://jooble.org/jdp/5191634134543449752",
+  "link": "https://jooble.org/jdp/1933127540563666450",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -13392,9 +13392,9 @@
  "47e8575435ffdca4": {
   "title": "Needed Virtual Assistant - Remote",
   "company": "Link Up Overseas",
-  "location": "Phoenix, AZ",
+  "location": "San Jose, CA",
   "comp": "",
-  "link": "https://jooble.org/jdp/8097106960641697518",
+  "link": "https://jooble.org/jdp/-5518287827570693787",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -13499,7 +13499,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "f5cabf88aee0d63a": {
   "title": "Bilingual Virtual Assistant (Fully remote)",
@@ -13531,7 +13531,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "8b69571a58d16c2b": {
   "title": "Real Estate Virtual Assistant (For Pooling - 2026)",
@@ -13675,7 +13675,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "be1d1283dbc5e22a": {
   "title": "Social Media Manager/Content Manager",
@@ -13691,7 +13691,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "46c6b9f8d73786a2": {
   "title": "Social Media Manager PAN (Remote)",
@@ -13707,7 +13707,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "b8c710a38e67d229": {
   "title": "Social Media Manager",
@@ -13723,7 +13723,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "11932c3d41bf4d27": {
   "title": "Social Media Manager",
@@ -13739,7 +13739,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "1e0f520824b0ab6e": {
   "title": "Social Media Manager",
@@ -13755,7 +13755,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "b6965b2c68a69621": {
   "title": "Senior Social Media Manager, Work From Home",
@@ -13771,7 +13771,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "8d0fabadc70e1457": {
   "title": "Social Media Manager",
@@ -13787,7 +13787,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "b7b7ad7d9bf3f2b8": {
   "title": "Social Media Manager",
@@ -13803,7 +13803,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "8f1c8ed5c93e299b": {
   "title": "Volunteer Remote Social Media Manager",
@@ -13819,7 +13819,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "37d82fa883b1dc1d": {
   "title": "Rapid Response Social Media Manager",
@@ -13835,7 +13835,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "2eae32f59a87dccf": {
   "title": "Social Media Manager",
@@ -13851,7 +13851,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "f0039a8f119c69f6": {
   "title": "Unpaid-Volunteer Position - Social Media Manager",
@@ -13867,7 +13867,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "f0dcb2021aaa51aa": {
   "title": "Social Media Manager",
@@ -13883,7 +13883,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "387cf5f91dd6aaad": {
   "title": "Social Media Manager",
@@ -13899,7 +13899,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "77eccd6c77b99199": {
   "title": "Social Media Manager (Reddit Emphasis)",
@@ -13915,7 +13915,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "f472ccfd8068702f": {
   "title": "Social Media Manager",
@@ -13931,7 +13931,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "0479e971375883bd": {
   "title": "Social Media Manager",
@@ -13947,7 +13947,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "fd27c1b312e50e0f": {
   "title": "Social Media Manager",
@@ -13963,7 +13963,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",
-  "active": true
+  "active": false
  },
  "fa140089bd7cfccd": {
   "title": "Inbound Sales Representative",
@@ -13976,6 +13976,326 @@
   "country": "United States",
   "lead_type": "Inbound",
   "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": false
+ },
+ "03eba8bc7462ebed": {
+  "title": "Account Executive- Online Division- Grand Canyon University",
+  "company": "Grand Canyon University",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/grand-canyon-university/jobs/account-executive-online-division-grand-canyon-university-7307998558",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "dda23b8beec715ee": {
+  "title": "Sales Development Representative - KC Applicants Only",
+  "company": "Abstrakt Marketing Group",
+  "location": "Kansas City, MO",
+  "comp": "$250k",
+  "link": "https://jooble.org/jdp/-7406804608886566464",
+  "source": "Jooble",
+  "category": "Setter / SDR",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "a87965890970a415": {
+  "title": "Virtual Assistant",
+  "company": "Sparks Wiz Limited",
+  "location": "New York, NY",
+  "comp": "$18 - $22 per hour",
+  "link": "https://jooble.org/jdp/-1094717705163023356",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "c2bb05700aff3bf6": {
+  "title": "CRM Admin Virtual Assistant - R212",
+  "company": "Hey Lieu",
+  "location": "United States",
+  "comp": "",
+  "link": "https://jooble.org/jdp/884579142228426915",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "d8150560b8927491": {
+  "title": "Inbound Sales Representative - Remote",
+  "company": "Connect America",
+  "location": "United States",
+  "comp": "$100k",
+  "link": "https://jooble.org/jdp/808731260297859376",
+  "source": "Jooble",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "c7aa9d9d6e62f6f0": {
+  "title": "Remote High-Ticket Closer (Inbound Appointments) 12.8k Offer",
+  "company": "Attorneyattraction.com",
+  "location": "Remote",
+  "comp": "$7000-$23000",
+  "link": "https://www.indeed.com/viewjob?jk=54de11480949a9e3",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "4b2097aea73c955e": {
+  "title": "Remote High-Ticket Closer (One-Call Close | Zoom Sales | Inbound Leads)",
+  "company": "Outsourced Doers",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.indeed.com/viewjob?jk=0a9f1d1e47dc9540",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "34079eb7828f4cef": {
+  "title": "High Ticket Sales Closer - Remote ($20K-$30K/month OTE)",
+  "company": "Schnell Global",
+  "location": "Remote",
+  "comp": "$15000-$35000",
+  "link": "https://join.com/companies/schnellglobal/16278917-high-ticket-sales-closer-remote-usd20k-usd30k-month-ote",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "ba102f88689b472b": {
+  "title": "Remote Closer [High Ticket]",
+  "company": "careersprint",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://careersprint.7f.liveblog365.com/job/2500208",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "81ec1e15dd41bee3": {
+  "title": "Sales Representative (Closer), Remote Job",
+  "company": "Acquisition.com",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://dynamitejobs.com/company/acquisitioncom/remote-job/sales-representative-closer",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "7bbfdddd17ace977": {
+  "title": "Remote Sales Development Specialist",
+  "company": "Orbit AI LLC",
+  "location": "Remote",
+  "comp": "$5000-$15000",
+  "link": "https://www.indeed.com/viewjob?jk=f42570adbba0b342",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "3c0c0659b3c12b94": {
+  "title": "Sales Development Representative (SDR) — Remote | Pipeline Generation Role",
+  "company": "careersprint",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://careersprint.7f.liveblog365.com/job/2348984",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "51773091097f7dda": {
+  "title": "Customer Success Manager - Atlantic Southeast or Southcentral USA",
+  "company": "PaceMate™",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://remotejobs.org/remote-jobs/customer-success-manager-atlantic-southeast-or-southcentral-usa-pacemate",
+  "source": "JSearch",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "f8fa014c9480b6b1": {
+  "title": "Mid-Market Customer Success Manager - America",
+  "company": "Ashby",
+  "location": "Remote",
+  "comp": "$110000-$161000",
+  "link": "https://jobs.ashbyhq.com/ashby/38281574-0880-473a-a4f1-bfbb7eedfa18",
+  "source": "JSearch",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "c5fa923fb4e4ccb8": {
+  "title": "Setter - High-End Gigs Launchpad",
+  "company": "Nomadic Closer",
+  "location": "USA/Canada only",
+  "comp": "$1500/month base + 5% commission, OTE $4k–$7k/mo",
+  "link": "https://job.nomadiccloser.com/#setter-high-end-gigs-launchpad-musician-coaching",
+  "source": "Quick Add",
+  "category": "Setter / SDR",
+  "country": "Other",
+  "lead_type": "",
+  "inbox": true,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "44fdd134f04cf4e4": {
+  "title": "Phone Setter - Transform Social Lives",
+  "company": "Nomadic Closer",
+  "location": "Remote",
+  "comp": "Base $750/week draw + 20% commission, OTE $7k–$10k/mo",
+  "link": "https://job.nomadiccloser.com/#phone-setter-dream-social-life-coaching",
+  "source": "Quick Add",
+  "category": "Setter — Phone Setting",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "2f682b572ac82537": {
+  "title": "Bilingual Setter",
+  "company": "Nomadic Closer",
+  "location": "Remote",
+  "comp": "$9K/mo OTE, 5% commission + $600 base",
+  "link": "https://job.nomadiccloser.com/#setter-silva-media-bilingual-real-estate-marketing",
+  "source": "Quick Add",
+  "category": "Setter / SDR",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "b187d049449e2cc7": {
+  "title": "Male Phone Setter – E-commerce, Coaching & Mentorships",
+  "company": "Nomadic Closer",
+  "location": "Remote",
+  "comp": "AUD 2K base + 3-5% commission; avg AUD 7K/month; top performers AUD 13K+",
+  "link": "https://job.nomadiccloser.com/#Male-Phone-Setter-Ecommerce-Coaching-mentorships-au",
+  "source": "Quick Add",
+  "category": "Setter — Phone Setting",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "a4669f899b1c181d": {
+  "title": "Lead Manager - Warm Leads Only",
+  "company": "Stacked Property Holdings",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://forms.gle/GUeMheUSzuSfntH58",
+  "source": "Quick Add",
+  "category": "From inbox (uncategorised)",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": true,
+  "tier": "",
+  "first_seen": "2026-06-16",
+  "last_seen": "2026-06-16",
+  "active": true
+ },
+ "ca259ce9bbffdc81": {
+  "title": "Closer",
+  "company": "No Accent Callers",
+  "location": "Remote",
+  "comp": "OTE $10,000–$15,000/month",
+  "link": "https://1ch7lzan854.typeform.com/to/XmHMADli",
+  "source": "Quick Add",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": true,
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-06-16",

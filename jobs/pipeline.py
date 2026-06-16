@@ -573,6 +573,12 @@ def src_jooble():
 def src_careerjet():
     # Free affiliate id from www.careerjet.com/partners/signup.html -> CAREERJET_AFFID.
     # Keyword aggregator. Heavy-only.
+    # NOTE (parked): Careerjet's API also requires declaring the *calling server's*
+    # IPs (max 8) in the partner dashboard. GitHub Actions hosted runners use a
+    # large, rotating IP pool with no fixed address, so this allowlist can't be
+    # satisfied here — calls would be rejected even with a valid affid. Only worth
+    # enabling if the pipeline runs from a static-IP host (self-hosted runner,
+    # always-on server, or a fixed-IP egress proxy). Unset affid -> source skipped.
     if not IS_HEAVY:
         return [], False
     affid = os.environ.get("CAREERJET_AFFID", "").strip()

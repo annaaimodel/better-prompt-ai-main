@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 """Single source of truth for the High-Ticket Sales / CSM directory.
 Emits both an .xlsx spreadsheet and a self-contained searchable .html page."""
-import json
+import json, html
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+
+# Premium (paid) spotlight pinned at the top of the directory. Set to None to remove.
+PREMIUM = {
+    "name": "The Sales Dojo",
+    "badge": "Featured",
+    "desc": "Premier sales-training community (SOS Dojo) — world-class training, daily "
+            "coaching, a 24/7 roleplay room and direct connections to the best high-ticket roles.",
+    "members": "~4,000+",
+    "link": "http://www.skool.com/sales-dojo?utm_campaign=skool_link_post&utm_content=96652a20bde64d799137b6c75716a2de",
+}
 
 # ---------------------------------------------------------------------------
 # DATA  (edit here once -> rebuilds both outputs)
@@ -83,7 +93,7 @@ DATA = [
   ("High Ticket Closers", "General high-ticket closer community on Skool.", "Login required", "https://www.skool.com/high-ticket-closers-4841/about"),
   ("Sales Elites", "Community for closers, setters and ambitious salespeople mastering high-ticket sales — with opportunities posted by members actively building sales teams.", "Login required", "https://www.skool.com/saleselites/about"),
   ("6Figure Appointment Setter (Next Level Closers)", "Training community helping appointment setters level up into six-figure remote setting and closing roles.", "Login required", "https://www.skool.com/next-level-closers-4020"),
-  ("The Sales Dojo", "Premier sales-training community (SOS Dojo) with world-class training, daily coaching, a 24/7 roleplay room and connections to the best high-ticket opportunities.", "~4,000+", "https://www.skool.com/sales-dojo/about"),
+  ("The Sales Dojo", "Premier sales-training community (SOS Dojo) with world-class training, daily coaching, a 24/7 roleplay room and connections to the best high-ticket opportunities.", "~4,000+", "http://www.skool.com/sales-dojo?utm_campaign=skool_link_post&utm_content=96652a20bde64d799137b6c75716a2de"),
   ("The Game of Influence", "Mentor-led high-ticket sales community focused on turning members into remote closers earning $10k+/mo, pairing training and mentorship with job opportunities.", "Login required", "https://www.skool.com/the-game-of-influence/about"),
  ]),
 ]),
@@ -239,6 +249,13 @@ a.visit:hover{filter:brightness(1.12)}
 .note{margin-top:30px;font-size:12px;color:var(--mut);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
 .empty{text-align:center;color:var(--mut);padding:50px 0;display:none}
 mark{background:rgba(201,156,56,.32);color:inherit;border-radius:3px}
+.spotlight{margin:18px 0 2px}
+.sphead{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#f2dd88;margin:0 0 9px}
+.pcard{position:relative;background:linear-gradient(180deg,#1d1813,#141110);border:1px solid rgba(201,156,56,.55);border-radius:15px;padding:18px 20px;display:flex;flex-direction:column;gap:9px;box-shadow:0 0 0 1px rgba(201,156,56,.22),0 18px 40px -20px rgba(201,156,56,.5)}
+.pcard .cname{font-family:"Playfair Display",Georgia,serif;font-size:21px;font-weight:600;color:#f6f1e6;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pbadge{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%);color:#0a0a0b;padding:3px 9px;border-radius:6px}
+.pcard .cdesc{color:#cdbf9c;font-size:14px}
+.pcfoot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:3px}
 footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -264,6 +281,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
 </div>
 <div class="count" id="count"></div>
 </div>
+__PREMIUM__
 <div id="results"></div>
 <div class="empty" id="empty">No communities match your search.</div>
 <div class="note" id="note"></div>
@@ -318,7 +336,20 @@ document.getElementById('kindChips').addEventListener('click',e=>{if(!e.target.c
 render();
 </script>
 </body></html>"""
-    doc = doc.replace("__DATA__", data_js).replace("__NOTE__", note_js).replace("__TOTAL__", str(total))
+    # Premium (paid) spotlight pinned at the top of the directory.
+    P = PREMIUM
+    premium_html = (
+        '<section class="spotlight">'
+        '<div class="sphead">&#9733; Featured community</div>'
+        '<div class="pcard">'
+        f'<div class="cname">{html.escape(P["name"])}<span class="pbadge">{html.escape(P["badge"])}</span></div>'
+        f'<div class="cdesc">{html.escape(P["desc"])}</div>'
+        '<div class="pcfoot">'
+        f'<span class="mem">{html.escape(P["members"])}</span>'
+        f'<a class="visit" href="{html.escape(P["link"])}" target="_blank" rel="noopener">Visit &rarr;</a>'
+        '</div></div></section>') if P else ""
+    doc = (doc.replace("__DATA__", data_js).replace("__NOTE__", note_js)
+              .replace("__TOTAL__", str(total)).replace("__PREMIUM__", premium_html))
     with open(path, "w", encoding="utf-8") as f:
         f.write(doc)
     print("Saved", path, "(", total, "communities )")

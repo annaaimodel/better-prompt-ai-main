@@ -84,6 +84,7 @@ DATA = [
   ("Sales Elites", "Community for closers, setters and ambitious salespeople mastering high-ticket sales — with opportunities posted by members actively building sales teams.", "Login required", "https://www.skool.com/saleselites/about"),
   ("6Figure Appointment Setter (Next Level Closers)", "Training community helping appointment setters level up into six-figure remote setting and closing roles.", "Login required", "https://www.skool.com/next-level-closers-4020"),
   ("The Sales Dojo", "Premier sales-training community (SOS Dojo) with world-class training, daily coaching, a 24/7 roleplay room and connections to the best high-ticket opportunities.", "~4,000+", "https://www.skool.com/sosdojo/about"),
+  ("The Game of Influence", "Mentor-led high-ticket sales community focused on turning members into remote closers earning $10k+/mo, pairing training and mentorship with job opportunities.", "Login required", "https://www.skool.com/the-game-of-influence/about"),
  ]),
 ]),
 ("Discord", "#5865F2", [
@@ -239,7 +240,10 @@ a.visit:hover{filter:brightness(1.12)}
 .empty{text-align:center;color:var(--mut);padding:50px 0;display:none}
 mark{background:rgba(201,156,56,.32);color:inherit;border-radius:3px}
 footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
-</style></head>
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<script data-goatcounter="https://aurum-hts.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
 <body>
 <header>
 <a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum"><span class="wm">AURUM</span></a>

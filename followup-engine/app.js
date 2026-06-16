@@ -500,6 +500,7 @@ function leadRow(l) {
     </div>
     <div class="btns">
       <select class="stage" data-stage="${l.id}">${STAGES.map((s) => `<option ${s === l.stage ? "selected" : ""}>${s}</option>`).join("")}</select>
+      <button class="btn sm" data-savestage="${l.id}">Save</button>
       ${closed ? `<button class="btn sm" data-reopen="${l.id}">Reopen</button>` : `<button class="btn primary sm" data-draft="${l.id}">Draft ✦</button>`}
     </div>
   </div>`;
@@ -802,13 +803,25 @@ document.body.addEventListener("click", (e) => {
   else if (t.dataset.done) { const l = db.leads.find((x) => x.id === t.dataset.done); if (l) { advanceCadence(l, "(marked sent)"); rerender(); toast("Sent & advanced ▸"); } }
   else if (t.dataset.snooze) { const l = db.leads.find((x) => x.id === t.dataset.snooze); if (l) { l.nextActionAt = new Date(now() + 24 * HOUR).toISOString(); save(); rerender(); toast("Snoozed 1 day"); } }
   else if (t.dataset.reopen) { const l = db.leads.find((x) => x.id === t.dataset.reopen); if (l) { l.status = "active"; if (l.stage === "won" || l.stage === "lost") l.stage = "engaged"; save(); rerender(); toast("Reopened"); } }
+  else if (t.dataset.savestage) {
+    const id = t.dataset.savestage;
+    const sel = document.querySelector(`select.stage[data-stage="${id}"]`);
+    const l = db.leads.find((x) => x.id === id);
+    if (l && sel) {
+      l.stage = sel.value;
+      if (l.stage === "won") l.status = "won"; else if (l.stage === "lost") l.status = "lost"; else l.status = "active";
+      if (STAGE_SEGMENT[l.stage]) l.segment = STAGE_SEGMENT[l.stage];
+      save(); rerender(); toast(STAGE_SEGMENT[l.stage] ? `Saved — moved to ${SEGMENT_LABEL[l.segment]}` : "Saved");
+    }
+  }
   else if (t.dataset.aedit) { openAssetEdit(t.dataset.aedit); }
   else if (t.dataset.adel) { if (confirm("Delete this asset?")) { db.assets = (db.assets || []).filter((x) => x.id !== t.dataset.adel); save(); renderAssets(); toast("Deleted"); } }
 });
+// Highlight the Save button while a stage dropdown has an unsaved change.
 document.body.addEventListener("change", (e) => {
   if (e.target.dataset.stage) {
-    const l = db.leads.find((x) => x.id === e.target.dataset.stage);
-    if (l) { l.stage = e.target.value; if (l.stage === "won") l.status = "won"; else if (l.stage === "lost") l.status = "lost"; else l.status = "active"; if (STAGE_SEGMENT[l.stage]) l.segment = STAGE_SEGMENT[l.stage]; save(); rerender(); toast(STAGE_SEGMENT[l.stage] ? `Moved to ${SEGMENT_LABEL[l.segment]}` : "Updated"); }
+    const btn = document.querySelector(`button[data-savestage="${e.target.dataset.stage}"]`);
+    if (btn) btn.classList.add("primary");
   }
 });
 

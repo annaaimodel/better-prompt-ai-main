@@ -61,6 +61,7 @@ DATA = [
   ("Elite Remote Closers Network", "Network for remote high-ticket closers with opportunities and frank industry guidance.", "Login required", "https://www.skool.com/elite-remote-closers-network-3228"),
   ("Remote Sales Job Accelerator", "Teaches how to land a remote sales role paying $4-10k/mo with no prior experience.", "Login required", "https://www.skool.com/remotesalesjobaccelerator/about"),
   ("Setter To Closer - Elite", "Community focused on progressing setters into closing roles.", "~78", "https://www.skool.com/setter-to-closer-elite-3793/about"),
+  ("Remote Sales Secrets - Job Board", "Skool community running a remote-sales job board for setters and closers breaking into high-ticket roles.", "Login required", "https://www.skool.com/remote-sales-secrets"),
  ]),
  ("General - training, mastermind & community", [
   ("High-Ticket Sales Society", "Free community (Chris Campbell) for mastering sales, marketing & mindset; learn to earn $10k-$25k+/mo as a remote closer.", "~2,200", "https://www.skool.com/high-ticket-sales/about"),
@@ -80,6 +81,8 @@ DATA = [
   ("Sales Genius University", "Training community running webinars on breaking into remote high-ticket sales.", "Login required", "https://www.skool.com/salesgeniuses"),
   ("Remote Closing Club", "Community for remote closers focused on high-ticket sales skills.", "Login required", "https://www.skool.com/remote-closing-club-4755/about"),
   ("High Ticket Closers", "General high-ticket closer community on Skool.", "Login required", "https://www.skool.com/high-ticket-closers-4841/about"),
+  ("Sales Elites", "Community for closers, setters and ambitious salespeople mastering high-ticket sales — with opportunities posted by members actively building sales teams.", "Login required", "https://www.skool.com/saleselites/about"),
+  ("6Figure Appointment Setter (Next Level Closers)", "Training community helping appointment setters level up into six-figure remote setting and closing roles.", "Login required", "https://www.skool.com/next-level-closers-4020"),
  ]),
 ]),
 ("Discord", "#5865F2", [
@@ -127,7 +130,7 @@ DATA = [
 ]),
 ]
 
-NOTE = ("Member counts shown are those publicly visible at time of research (12 Jun 2026). "
+NOTE = ("Member counts shown are those publicly visible at time of research (16 Jun 2026). "
         "'Login required' / 'Join to view' means the platform hides the count behind a login. "
         "Discord servers are reached via invite/listing pages and counts fluctuate. "
         "LinkedIn has largely retired native Groups for this niche, so its presence is company pages + the jobs feed. "
@@ -240,7 +243,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
 <header>
 <a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum"><span class="wm">AURUM</span></a>
 <h1>High-Ticket Sales &amp; CSM Communities</h1>
-<p class="sub">A directory across Facebook, Skool, Discord &amp; LinkedIn &middot; __TOTAL__ communities &middot; researched 12 Jun 2026</p>
+<p class="sub">A directory across Facebook, Skool, Discord &amp; LinkedIn &middot; __TOTAL__ communities &middot; researched 16 Jun 2026</p>
 <div class="nav"><a href="/jobs">Fresh today</a><a href="/jobs/all">The Vault</a><a href="/jobs/boards">&starf; Boards</a><a class="on" href="/directory">Communities</a><a href="/cv">CV match</a></div>
 </header>
 <div class="wrap">

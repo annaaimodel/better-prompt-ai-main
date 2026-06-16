@@ -1,7 +1,9 @@
-title,company,comp,location,link,source,notes
+title,company,comp,location,link,source,notes,tier
 # Drop jobs from the gated groups (Facebook / Skool / Discord / LinkedIn) here.
 # One row per job. Only "title" or "link" is required; fill what you have.
 # "source" is free text e.g. "FB: High Ticket Closers and Setters". Lines starting with # are ignored.
+# "tier" = leave blank for a normal listing, or put "featured" / "urgent" for a PAID
+#   listing — those get a badge and are pinned to the Featured section at the top.
 # You can also point the pipeline at a published Google Sheet instead - see README (INBOX_CSV_URL).
 #
 # --- Seeded 2026-06-12 from the first live sweep (27 direct-apply postings, fully remote) ---

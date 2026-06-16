@@ -194,6 +194,20 @@ def mk(source, title, company, location, comp, link, desc=""):
             "location": clean(location) or "Remote", "comp": clean(comp),
             "link": (link or "").strip(), "desc": clean(desc)}
 
+# Paid listing tiers (set via the inbox sheet's "tier" column once a Featured/
+# Urgent listing is paid). Featured/Urgent roles render with a badge and are
+# pinned to a spotlight section at the top of the board.
+TIER_RANK = {"urgent": 0, "featured": 1}
+def tier_norm(v: str) -> str:
+    v = (v or "").strip().lower()
+    if "urgent" in v:
+        return "urgent"
+    if "feature" in v:
+        return "featured"
+    return ""
+def is_tiered(rec) -> bool:
+    return rec.get("tier") in ("urgent", "featured")
+
 # --- Link health: only ever list specific, working job URLs ---------------
 # Goal: drop links that (a) point at a generic listing/search page rather than
 # a specific posting, or (b) are dead (404 / "no longer available"). The static
@@ -482,6 +496,7 @@ def read_inbox():
                      d.get("location"), d.get("comp") or d.get("salary"),
                      d.get("link"), d.get("notes") or d.get("description"))
             row["inbox"] = True            # manual entries persist until removed from the inbox
+            row["tier"] = tier_norm(d.get("tier", ""))   # featured / urgent (paid) or ""
             rows.append(row)
     if INBOX.exists():
         try:
@@ -561,7 +576,8 @@ def main():
         fields = {"title": j["title"], "company": j["company"], "location": j["location"],
                   "comp": j["comp"], "link": j["link"], "source": j["source"],
                   "category": j["category"], "country": j.get("country") or country_of(j.get("location", "")),
-                  "lead_type": j.get("lead_type", ""), "inbox": bool(j.get("inbox"))}
+                  "lead_type": j.get("lead_type", ""), "inbox": bool(j.get("inbox")),
+                  "tier": j.get("tier", "")}
         if k in store:
             store[k].update(fields); store[k]["last_seen"] = TODAY; store[k]["active"] = True
         else:
@@ -653,6 +669,10 @@ h2{margin:30px 0 12px;font-family:"Playfair Display",Georgia,serif;font-weight:6
 .pill{font-size:12px;background:rgba(201,156,56,.10);color:var(--gold2);border:1px solid rgba(201,156,56,.24);padding:2px 10px;border-radius:999px;font-weight:600}
 .tag{font-size:11px;background:#1b1916;color:#cdbf9c;border:1px solid var(--line2);padding:2px 9px;border-radius:999px}
 .new{font-size:10px;font-weight:800;letter-spacing:.05em;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%);color:#0a0a0b;padding:2px 7px;border-radius:5px;margin-right:7px;vertical-align:middle}
+.feat{font-size:10px;font-weight:800;letter-spacing:.05em;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%);color:#0a0a0b;padding:2px 7px;border-radius:5px;margin-right:7px;vertical-align:middle}
+.urgent{font-size:10px;font-weight:800;letter-spacing:.05em;background:#3a1d12;color:#ffb38a;border:1px solid #7a3b22;padding:2px 7px;border-radius:5px;margin-right:7px;vertical-align:middle}
+.card.featured{border-color:rgba(201,156,56,.55);box-shadow:0 0 0 1px rgba(201,156,56,.22),0 14px 34px -18px rgba(201,156,56,.42);background:linear-gradient(180deg,#1d1813,#141110)}
+.spotlight h2{color:#f2dd88}
 .src{font-size:11px;color:var(--mut);flex:1}
 .controls{position:sticky;top:0;z-index:5;background:rgba(10,10,11,.85);backdrop-filter:blur(10px);padding:14px 0;margin-bottom:6px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px;align-items:center}
 .controls input{width:100%;max-width:480px;padding:11px 15px;border-radius:11px;border:1px solid var(--line2);background:#141312;color:var(--txt);font-size:15px;outline:none}
@@ -701,6 +721,10 @@ def _card(j, tag=False, badge=False, code=None):
     comp = f'<span class="pill">{html.escape(j["comp"])}</span>' if j.get("comp") else ""
     tagh = f'<span class="tag">{html.escape(j["category"])}</span>' if tag else ""
     badgeh = '<span class="new">NEW</span>' if badge and j.get("first_seen") == TODAY else ""
+    tier = j.get("tier", "")
+    tierh = ('<span class="urgent">&#128293; Urgent</span>' if tier == "urgent"
+             else '<span class="feat">&#9733; Featured</span>' if tier == "featured" else "")
+    cls = " featured" if tier in ("urgent", "featured") else ""
     attrs = ""
     if code:
         ctry = j.get("country") or "Other"
@@ -709,7 +733,7 @@ def _card(j, tag=False, badge=False, code=None):
         attrs = (f' data-b="{code}" data-c="{html.escape(ctry, quote=True)}"'
                  f' data-l="{html.escape(lead, quote=True)}"'
                  f' data-s="{html.escape(s, quote=True)}"')
-    return (f'<div class="card"{attrs}><div class="t">{badgeh}{html.escape(j["title"])}</div>'
+    return (f'<div class="card{cls}"{attrs}><div class="t">{tierh}{badgeh}{html.escape(j["title"])}</div>'
             f'<div class="c">{html.escape(j["company"])} &middot; {html.escape(j["location"])}</div>'
             f'<div class="f">{tagh}{comp}<span class="src">via {html.escape(j["source"])}</span>{link}</div></div>')
 
@@ -763,6 +787,17 @@ def _controls(jobs):
             f'<select id="lead" class="csel" aria-label="Lead type">{lopts}</select>'
             '<div class="fcount" id="fcount"></div></div>')
 
+def _spotlight(jobs):
+    """A pinned 'Featured roles' section (paid Featured/Urgent listings) rendered
+    at the very top of the board. Returns '' when there are none."""
+    feats = sorted((j for j in jobs if is_tiered(j)),
+                   key=lambda x: (TIER_RANK.get(x.get("tier"), 9), x["category"], x["company"].lower()))
+    if not feats:
+        return ""
+    cards = "".join(_card(j, tag=True, code=_bucket_code(j["category"])) for j in feats)
+    return ('<section class="dgroup spotlight"><h2>&#10024; Featured roles '
+            f'<span class="n">{len(feats)}</span></h2><div class="grid">{cards}</div></section>')
+
 def write_latest_html(jobs, active_count, scanned):
     if not jobs:
         body = ('<p class="empty">No new roles pulled today.<br>'
@@ -770,8 +805,10 @@ def write_latest_html(jobs, active_count, scanned):
     else:
         groups = {}
         for j in jobs:
+            if is_tiered(j):
+                continue   # shown in the pinned Featured section instead
             groups.setdefault(j["category"], []).append(j)
-        sections = ""
+        sections = _spotlight(jobs)
         for cat, items in groups.items():
             sections += (f'<section class="dgroup"><h2>{html.escape(cat)} <span class="n">{len(items)}</span></h2>'
                          f'<div class="grid">'
@@ -816,8 +853,10 @@ def write_all_html(active, new_count):
     # group by date added (first_seen), newest day first
     by_date = {}
     for j in active:
+        if is_tiered(j):
+            continue   # shown in the pinned Featured section instead
         by_date.setdefault(j.get("first_seen", "—"), []).append(j)
-    groups = ""
+    groups = _spotlight(active)
     for d in sorted(by_date, reverse=True):
         items = sorted(by_date[d], key=lambda x: (x["category"], x["company"].lower()))
         try:

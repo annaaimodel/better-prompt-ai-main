@@ -6,4 +6,5 @@
   <url><loc>https://aurum-hts.vercel.app/jobs/boards</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aurum-hts.vercel.app/directory</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aurum-hts.vercel.app/cv</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://aurum-hts.vercel.app/hiring</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

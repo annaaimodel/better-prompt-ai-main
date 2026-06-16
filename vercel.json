@@ -6,6 +6,8 @@
     { "source": "/jobs/boards", "destination": "/jobs/boards.html" },
     { "source": "/jobs/capture", "destination": "/jobs/capture.html" },
     { "source": "/cv", "destination": "/cv.html" },
+    { "source": "/hiring", "destination": "/employers.html" },
+    { "source": "/employers", "destination": "/employers.html" },
     { "source": "/apply", "destination": "/apply.html" },
     { "source": "/add", "destination": "/add.html" }
   ]

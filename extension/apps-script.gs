@@ -37,6 +37,21 @@ function doPost(e) {
         .setMimeType(ContentService.MimeType.JSON);
     }
 
+    // --- Employer briefs from the "Hiring" page -> "Employers" tab ---------
+    if (j.type === 'employer') {
+      var emp = ss.getSheetByName('Employers') || ss.insertSheet('Employers');
+      if (emp.getLastRow() === 0) {
+        emp.appendRow(['company', 'name', 'email', 'role', 'comp', 'details', 'source', 'savedAt']);
+      }
+      emp.appendRow([
+        j.company || '', j.name || '', j.email || '', j.role || '',
+        j.comp || '', j.details || '', j.source || '', j.savedAt || new Date().toISOString()
+      ]);
+      return ContentService
+        .createTextOutput(JSON.stringify({ ok: true }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
     // --- Saved jobs (extension / Quick Add) -> first sheet -----------------
     var sheet = ss.getSheets()[0];
     if (sheet.getLastRow() === 0) {

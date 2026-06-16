@@ -39,7 +39,7 @@ def _heavy_hours() -> set[int]:
 
 HEAVY_HOURS = _heavy_hours()
 IS_HEAVY = (os.environ.get("FORCE_HEAVY", "").strip().lower() in ("1", "true", "yes")
-            or datetime.datetime.utcnow().hour in HEAVY_HOURS)
+            or datetime.datetime.now(datetime.timezone.utc).hour in HEAVY_HOURS)
 
 # --- What counts as a relevant opportunity -------------------------------
 # Buckets, niche-agnostic (industry is never filtered — only the role).
@@ -518,7 +518,7 @@ def src_jsearch():
         # end-to-end (covering every term over time) and the runs within a day
         # never overlap. We build a monotonic run index from the UTC day and this
         # run's position among the configured heavy hours, then step by max_q.
-        now = datetime.datetime.utcnow()
+        now = datetime.datetime.now(datetime.timezone.utc)
         hh = sorted(HEAVY_HOURS)
         pos = hh.index(now.hour) if now.hour in hh else 0   # manual run -> first slot
         run_index = now.toordinal() * max(len(hh), 1) + pos

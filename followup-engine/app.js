@@ -29,6 +29,86 @@ const NURTURE_ROT = [
   { channel: "text",  valueAngle: "intro",    intent: "Nurture — a relevant intro or timely opportunity" },
 ];
 
+// ---------------------------------------------------------------------------
+// Closing track: after a closing call with no sale, the lead moves onto an
+// objection-specific sequence that dissolves THAT concern with value, not
+// pressure. The first touch is due immediately (a same-day recap).
+// ---------------------------------------------------------------------------
+const OBJECTIONS = {
+  price: { label: "Too expensive / price", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Same-day recap — reaffirm the result they want; price maps to that outcome" },
+    { gapHours: 20,  channel: "email", valueAngle: "proof",    intent: "Case study of a client who balked at price, then made it back many times over" },
+    { gapHours: 48,  channel: "text",  valueAngle: "insight",  intent: "Reframe: the cost of NOT solving this for another 6–12 months" },
+    { gapHours: 72,  channel: "call",  valueAngle: "insight",  intent: "Quick call — walk ROI / payment options against their real numbers" },
+    { gapHours: 96,  channel: "email", valueAngle: "resource", intent: "Send a value/ROI breakdown they can sit with" },
+    { gapHours: 120, channel: "text",  valueAngle: "proof",    intent: "Warm final invite — restate the value + a clear yes/no next step" },
+  ] },
+  money: { label: "No money right now", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Same-day recap with empathy — reaffirm the goal, acknowledge the investment is real" },
+    { gapHours: 20,  channel: "call",  valueAngle: "insight",  intent: "Call to explore payment options / a sequencing path that fits their reality" },
+    { gapHours: 48,  channel: "email", valueAngle: "proof",    intent: "Proof of a client who found a way and the return that paid for it" },
+    { gapHours: 72,  channel: "text",  valueAngle: "insight",  intent: "Reframe around priority + ROI — how the result funds itself" },
+    { gapHours: 96,  channel: "email", valueAngle: "resource", intent: "A resource to help them plan the investment" },
+    { gapHours: 120, channel: "text",  valueAngle: "insight",  intent: "Warm final check — is timing or the path the real blocker?" },
+  ] },
+  think: { label: "\"Think about it\"", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Same-day — make the decision simple: what specifically would you need to be sure of?" },
+    { gapHours: 22,  channel: "email", valueAngle: "insight",  intent: "Surface the real hesitation — name the 2–3 things people weigh, invite the true one" },
+    { gapHours: 48,  channel: "call",  valueAngle: "insight",  intent: "Short call to answer the one open question and bring clarity" },
+    { gapHours: 72,  channel: "text",  valueAngle: "proof",    intent: "Proof of someone who 'thought about it', joined, and what changed" },
+    { gapHours: 96,  channel: "email", valueAngle: "resource", intent: "A simple decision framework to weigh it cleanly" },
+    { gapHours: 120, channel: "text",  valueAngle: "insight",  intent: "Gentle final nudge — a clear yes/no so they're not stuck in limbo" },
+  ] },
+  partner: { label: "Talk to partner / spouse", plays: [
+    { gapHours: 0,   channel: "email", valueAngle: "resource", intent: "Same-day: a clear one-pager they can show their partner (what, why, the result)" },
+    { gapHours: 22,  channel: "text",  valueAngle: "insight",  intent: "Anticipate the questions their partner will ask + crisp answers" },
+    { gapHours: 48,  channel: "text",  valueAngle: "intro",    intent: "Offer a short joint call so the partner can ask directly" },
+    { gapHours: 72,  channel: "email", valueAngle: "proof",    intent: "Proof of a couple/partner who got aligned and the outcome" },
+    { gapHours: 96,  channel: "call",  valueAngle: "insight",  intent: "Check in on the partner conversation — clear any remaining doubt" },
+    { gapHours: 120, channel: "text",  valueAngle: "insight",  intent: "Warm final nudge once they've had the conversation" },
+  ] },
+  research: { label: "Needs more research", plays: [
+    { gapHours: 0,   channel: "email", valueAngle: "proof",    intent: "Same-day: send case studies + references so their diligence is easy" },
+    { gapHours: 22,  channel: "text",  valueAngle: "insight",  intent: "Ask what specifically they want to verify — answer it directly" },
+    { gapHours: 48,  channel: "email", valueAngle: "resource", intent: "A comparison / FAQ resource covering the usual due-diligence questions" },
+    { gapHours: 72,  channel: "call",  valueAngle: "proof",    intent: "Call to answer open questions and offer a reference to speak to" },
+    { gapHours: 96,  channel: "text",  valueAngle: "insight",  intent: "Reframe: research is good — at some point the only data left is doing it" },
+    { gapHours: 120, channel: "email", valueAngle: "proof",    intent: "Final: recap the proof + a clear next step to start" },
+  ] },
+  timing: { label: "Timing's not right", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Same-day recap — name the cost of delay honestly, no fake urgency" },
+    { gapHours: 22,  channel: "email", valueAngle: "insight",  intent: "What actually changes if they wait 6–12 months vs start now" },
+    { gapHours: 48,  channel: "text",  valueAngle: "proof",    intent: "Proof of someone who started at an imperfect time and was glad" },
+    { gapHours: 72,  channel: "call",  valueAngle: "insight",  intent: "Call to design a start that fits their real schedule" },
+    { gapHours: 96,  channel: "email", valueAngle: "resource", intent: "A resource showing how busy clients fit it in" },
+    { gapHours: 120, channel: "text",  valueAngle: "intro",    intent: "Flag a sensible window to begin + a simple next step" },
+  ] },
+  fear_self: { label: "Fear in themselves (self-doubt)", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Same-day: validate the self-doubt; the goal is achievable with support" },
+    { gapHours: 22,  channel: "email", valueAngle: "proof",    intent: "Proof of someone with the SAME starting doubt who succeeded" },
+    { gapHours: 48,  channel: "text",  valueAngle: "insight",  intent: "Shrink the fear — show how small/safe the first step is, they're not alone" },
+    { gapHours: 72,  channel: "call",  valueAngle: "insight",  intent: "Call through their specific 'what if I can't' + the support structure" },
+    { gapHours: 96,  channel: "email", valueAngle: "resource", intent: "A resource showing the hand-holding that makes success likely" },
+    { gapHours: 120, channel: "text",  valueAngle: "proof",    intent: "Final belief-builder + a gentle invite to back themselves" },
+  ] },
+  fear_us: { label: "Fear in you / the program", plays: [
+    { gapHours: 0,   channel: "email", valueAngle: "proof",    intent: "Same-day: proof + references that lower the risk of trusting you" },
+    { gapHours: 22,  channel: "text",  valueAngle: "insight",  intent: "Address their specific doubt about you / the program head-on and honestly" },
+    { gapHours: 48,  channel: "email", valueAngle: "resource", intent: "Transparency: exactly how it works, the support, any guarantee / risk-reversal" },
+    { gapHours: 72,  channel: "call",  valueAngle: "proof",    intent: "Call — offer a client reference they can speak to directly" },
+    { gapHours: 96,  channel: "text",  valueAngle: "insight",  intent: "Reframe the risk: what you do if they get stuck or don't get results" },
+    { gapHours: 120, channel: "email", valueAngle: "proof",    intent: "Final: recap proof + risk-reversal + a clear, safe next step" },
+  ] },
+  other: { label: "Something else / unsure", plays: [
+    { gapHours: 0,   channel: "text",  valueAngle: "insight",  intent: "Same-day recap — reaffirm the goal, invite the real concern to surface" },
+    { gapHours: 24,  channel: "email", valueAngle: "proof",    intent: "Relevant proof that addresses the likely concern" },
+    { gapHours: 48,  channel: "text",  valueAngle: "insight",  intent: "Gently surface the true objection with one sharp question" },
+    { gapHours: 72,  channel: "call",  valueAngle: "insight",  intent: "Quick call to bring clarity and a next step" },
+    { gapHours: 96,  channel: "email", valueAngle: "resource", intent: "A useful resource toward their decision" },
+    { gapHours: 120, channel: "text",  valueAngle: "insight",  intent: "Warm final invite — a clear yes/no" },
+  ] },
+};
+
 const STAGES = ["new", "contacted", "engaged", "booked", "post-call", "won", "lost", "nurture"];
 const ANGLE_LABEL = { insight: "Insight", proof: "Proof", resource: "Resource", intro: "Intro/Opp" };
 const CHANNEL_LABEL = { text: "Text", email: "Email", call: "Call" };
@@ -59,19 +139,26 @@ function now() { return Date.now(); }
 // ---------------------------------------------------------------------------
 // Cadence helpers
 // ---------------------------------------------------------------------------
+// The active sequence for a lead: its objection track if closing, else the
+// setting cadence. Both fall through to long-term nurture when exhausted.
+function activeCadence(lead) {
+  if (lead.track === "closing" && OBJECTIONS[lead.objection]) return OBJECTIONS[lead.objection].plays;
+  return CAD;
+}
 function currentStep(lead) {
-  if (lead.cadenceStep < CAD.length) {
-    return { ...CAD[lead.cadenceStep], nurture: false };
-  }
-  const i = (lead.cadenceStep - CAD.length) % NURTURE_ROT.length;
+  const seq = activeCadence(lead);
+  if (lead.cadenceStep < seq.length) return { ...seq[lead.cadenceStep], nurture: false };
+  const i = (lead.cadenceStep - seq.length) % NURTURE_ROT.length;
   return { ...NURTURE_ROT[i], gapHours: NURTURE_GAP_HOURS, nurture: true };
 }
-function gapForStep(stepIndex) {
-  if (stepIndex < CAD.length) return CAD[stepIndex].gapHours;
+function gapForStep(lead, stepIndex) {
+  const seq = activeCadence(lead);
+  if (stepIndex < seq.length) return seq[stepIndex].gapHours;
   return NURTURE_GAP_HOURS;
 }
 function advanceCadence(lead, summary) {
   const step = currentStep(lead);
+  const seq = activeCadence(lead);
   lead.touches = lead.touches || [];
   lead.touches.push({
     at: new Date().toISOString(),
@@ -79,11 +166,28 @@ function advanceCadence(lead, summary) {
     valueAngle: step.valueAngle, intent: step.intent,
     summary: (summary || "").slice(0, 280),
   });
-  // Light auto-stage progression.
-  if (lead.stage === "new") lead.stage = "contacted";
+  // Light auto-stage progression (setting track only).
+  if (lead.track !== "closing" && lead.stage === "new") lead.stage = "contacted";
   lead.cadenceStep += 1;
-  if (lead.cadenceStep >= CAD.length) lead.stage = lead.stage === "won" || lead.stage === "lost" ? lead.stage : "nurture";
-  lead.nextActionAt = new Date(now() + gapForStep(lead.cadenceStep) * HOUR).toISOString();
+  if (lead.cadenceStep >= seq.length && lead.stage !== "won" && lead.stage !== "lost") lead.stage = "nurture";
+  lead.nextActionAt = new Date(now() + gapForStep(lead, lead.cadenceStep) * HOUR).toISOString();
+  save();
+}
+
+// Move a lead onto the closing track for a given objection (post-call, no sale).
+function startClosing(lead, objKey) {
+  lead.track = "closing";
+  lead.objection = OBJECTIONS[objKey] ? objKey : "other";
+  lead.cadenceStep = 0;
+  lead.stage = "post-call";
+  lead.status = "active";
+  lead.nextActionAt = new Date(now()).toISOString();
+  lead.touches = lead.touches || [];
+  lead.touches.push({
+    at: new Date().toISOString(), channel: "call", direction: "out",
+    valueAngle: "insight", intent: "Closing call held",
+    summary: `Closing call — objection: ${OBJECTIONS[lead.objection].label}`,
+  });
   save();
 }
 
@@ -114,6 +218,10 @@ function fmtDate(iso) {
 // ---------------------------------------------------------------------------
 const $ = (id) => document.getElementById(id);
 const esc = (s) => (s == null ? "" : String(s)).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+function objChip(l) {
+  if (l.track !== "closing" || !OBJECTIONS[l.objection]) return "";
+  return `<span class="chip" style="color:var(--red);border-color:#4a2a24">⚑ ${esc(OBJECTIONS[l.objection].label)}</span>`;
+}
 
 function dueLeads() {
   const cutoff = startOfTomorrow();
@@ -146,6 +254,7 @@ function renderToday() {
         <div class="action">
           <span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span>
           <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span>
+          ${objChip(l)}
           <strong>${relTime(l.nextActionAt)}</strong> — ${esc(step.intent)}
         </div>
       </div>
@@ -191,6 +300,7 @@ function leadRow(l) {
     <div>
       <div class="name"><a href="#" data-open="${l.id}">${esc(l.name) || "Unnamed lead"}</a>
         <span class="chip ${l.temperature}">${esc(l.temperature || "warm")}</span>
+        ${objChip(l)}
         ${closed ? `<span class="chip">${esc(l.status)}</span>` : ""}</div>
       <div class="meta">${esc(l.company || "")}${l.company && l.offerInterest ? " · " : ""}${esc(l.offerInterest || "")}</div>
       ${closed ? "" : `<div class="action small muted">Next: <span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> ${esc(step.intent)} — <strong>${fmtDate(l.nextActionAt)}</strong></div>`}
@@ -211,7 +321,13 @@ function renderCadenceView() {
       <span class="chip ${s.valueAngle}">${ANGLE_LABEL[s.valueAngle]}</span>
       ${esc(s.intent)}
     </div>`).join("");
-  el.innerHTML = rows + `<div class="action small muted" style="padding:8px 0">…then long-term nurture: a value drop every 14 days, rotating angle &amp; channel.</div>`;
+  const closing = Object.values(OBJECTIONS).map((o) =>
+    `<div class="action small" style="padding:4px 0"><span class="chip" style="color:var(--red);border-color:#4a2a24">⚑ ${esc(o.label)}</span> ${o.plays.length}-touch sequence</div>`).join("");
+  el.innerHTML = rows +
+    `<div class="action small muted" style="padding:8px 0">…then long-term nurture: a value drop every 14 days, rotating angle &amp; channel.</div>` +
+    `<div class="section-title">Closing tracks (post-call, by objection)</div>` +
+    `<p class="small muted" style="margin:0 0 6px">After a closing call with no sale, tag the objection on the lead and it switches to the matching sequence:</p>` +
+    closing;
 }
 
 // ---------------------------------------------------------------------------
@@ -241,6 +357,15 @@ function openDetail(id) {
         <button class="btn sm" id="d_lost">Lost</button>
         <button class="btn sm danger" id="d_del">Delete</button>
       </div>
+      <div class="section-title">Closing follow-up ${l.track === "closing" ? `· on track: ${esc(OBJECTIONS[l.objection] ? OBJECTIONS[l.objection].label : l.objection)}` : ""}</div>
+      <p class="small muted" style="margin:0 0 8px">Had a closing call but they didn't buy? Tag the objection — the lead switches to a follow-up sequence built to dissolve that exact concern.</p>
+      <div class="row">
+        <div class="field"><label>Objection from the call</label>
+          <select id="d_obj">${Object.entries(OBJECTIONS).map(([k, v]) => `<option value="${k}" ${l.objection === k ? "selected" : ""}>${esc(v.label)}</option>`).join("")}</select></div>
+        <div class="field" style="display:flex;align-items:flex-end">
+          <button class="btn sm" id="d_startclose" style="width:100%">${l.track === "closing" ? "Update objection track" : "Didn't close → start closing track"}</button>
+        </div>
+      </div>
       <div class="section-title">Touch history (${(l.touches || []).length})</div>
       ${touches.length ? `<ul class="tight small">${touches.map((t) => `<li><span class="chip ${t.channel}">${CHANNEL_LABEL[t.channel] || t.channel}</span> <span class="muted">${fmtDate(t.at)}</span> — ${esc(t.summary || t.intent)}</li>`).join("")}</ul>` : `<p class="small muted">No touches logged yet.</p>`}
     </div>`;
@@ -258,6 +383,7 @@ function openDetail(id) {
   bg.querySelector("#d_draft").onclick = () => { close(); openDraft(l.id); };
   bg.querySelector("#d_won").onclick = () => { l.status = "won"; l.stage = "won"; save(); close(); rerender(); toast("Marked won 🏆"); };
   bg.querySelector("#d_lost").onclick = () => { l.status = "lost"; l.stage = "lost"; save(); close(); rerender(); toast("Marked lost"); };
+  bg.querySelector("#d_startclose").onclick = () => { startClosing(l, bg.querySelector("#d_obj").value); close(); rerender(); setView("today"); toast("Closing track started ▸"); };
   bg.querySelector("#d_del").onclick = () => { if (confirm("Delete this lead permanently?")) { db.leads = db.leads.filter((x) => x.id !== id); save(); close(); rerender(); toast("Deleted"); } };
 }
 
@@ -271,7 +397,7 @@ function openDraft(id) {
   const step = currentStep(l);
   draftCtx = { leadId: id, channel: step.channel, valueAngle: step.valueAngle, intent: step.intent, variants: 1 };
   $("modalTitle").textContent = `Draft — ${l.name || "lead"}`;
-  $("modalMeta").innerHTML = `<span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span> ${esc(step.intent)}`;
+  $("modalMeta").innerHTML = `<span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span> ${objChip(l)} ${esc(step.intent)}`;
   $("modalOut").textContent = "…";
   $("modal").classList.add("open");
   runDraft();
@@ -290,6 +416,9 @@ async function runDraft() {
       body: JSON.stringify({
         channel: draftCtx.channel, valueAngle: draftCtx.valueAngle, intent: draftCtx.intent,
         variants: draftCtx.variants,
+        mode: l.track === "closing" ? "closing" : "setting",
+        objection: l.objection || "other",
+        objectionLabel: l.track === "closing" && OBJECTIONS[l.objection] ? OBJECTIONS[l.objection].label : "",
         contact: { name: l.name, offerInterest: l.offerInterest, stage: l.stage, temperature: l.temperature, notes: l.notes },
         history,
         profile: db.settings,

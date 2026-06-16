@@ -18,6 +18,7 @@
         <button data-view="today" class="active">Today <span class="count" id="todayCount">0</span></button>
         <button data-view="pipeline">Pipeline</button>
         <button data-view="add">Add lead</button>
+        <button data-view="playbook">Playbook</button>
         <button data-view="settings">Settings</button>
       </nav>
     </header>
@@ -71,6 +72,69 @@
         <button class="btn primary" id="saveLeadBtn">Add to pipeline</button>
         <button class="btn ghost" id="clearLeadBtn">Clear</button>
         <p class="help">New leads start at <strong>speed-to-lead</strong> — Cadence will surface them in Today immediately.</p>
+      </div>
+    </section>
+
+    <!-- PLAYBOOK -->
+    <section id="view-playbook" class="hidden">
+      <div class="card">
+        <h2>The Playbook</h2>
+        <p class="small muted">Lock in your offer, your sales method, and your voice once. Every message, email and call script is then built from this — accurate, on-method, and unmistakably <em>you</em>. The more you put here, the less it sounds like AI.</p>
+      </div>
+
+      <div class="card">
+        <h2>① Offer knowledge</h2>
+        <p class="small muted">The locked truth about what you sell. The AI uses only these facts — it won't invent price, deliverables or guarantees.</p>
+        <div class="row">
+          <div class="field"><label>Offer name</label><input id="pb_name" /></div>
+          <div class="field"><label>Price &amp; payment options</label><input id="pb_price" placeholder="e.g. $6k, or 3 x $2.2k" /></div>
+        </div>
+        <div class="field"><label>What it is</label><textarea id="pb_summary" rows="2"></textarea></div>
+        <div class="field"><label>Who it's for (ideal client)</label><textarea id="pb_whoFor" rows="2"></textarea></div>
+        <div class="field"><label>Transformation / promise</label><textarea id="pb_transformation" rows="2"></textarea></div>
+        <div class="field"><label>What's included (deliverables)</label><textarea id="pb_deliverables" rows="3"></textarea></div>
+        <div class="row">
+          <div class="field"><label>Guarantee / risk-reversal</label><textarea id="pb_guarantee" rows="2"></textarea></div>
+          <div class="field"><label>Why you vs alternatives</label><textarea id="pb_differentiators" rows="2"></textarea></div>
+        </div>
+        <div class="field"><label>Common objections &amp; your best responses</label><textarea id="pb_objections" rows="3"></textarea></div>
+        <div class="field"><label>FAQs</label><textarea id="pb_faqs" rows="3"></textarea></div>
+        <div class="field"><label>Anything else (dump it all here)</label><textarea id="pb_extra" rows="3"></textarea></div>
+      </div>
+
+      <div class="card">
+        <h2>② Sales methodology</h2>
+        <p class="small muted">Paste the approach from your training — frameworks, structures, principles. This shapes <em>how</em> every email, script and message is built.</p>
+        <div class="field"><label>Method name (optional)</label><input id="pb_m_name" placeholder="e.g. NEPQ, Straight Line, my own framework" /></div>
+        <div class="field"><label>Core principles / philosophy (paste your training notes)</label><textarea id="pb_m_principles" rows="5"></textarea></div>
+        <div class="field"><label>How emails should be built</label><textarea id="pb_m_email" rows="3"></textarea></div>
+        <div class="field"><label>How call scripts / call preps should be built</label><textarea id="pb_m_call" rows="3"></textarea></div>
+        <div class="field"><label>How texts / DMs should be built</label><textarea id="pb_m_message" rows="3"></textarea></div>
+        <div class="field"><label>Hard don'ts</label><textarea id="pb_m_never" rows="2"></textarea></div>
+      </div>
+
+      <div class="card">
+        <h2>③ Your voice</h2>
+        <p class="small muted">So it never sounds like AI. Answer these, then paste real messages you've actually sent — the AI mirrors your real writing.</p>
+        <div class="row">
+          <div class="field"><label>Formality</label>
+            <select id="pb_t_formality"><option value="">—</option><option>very casual</option><option>casual</option><option>balanced</option><option>professional</option><option>formal</option></select></div>
+          <div class="field"><label>Emoji use</label>
+            <select id="pb_t_emoji"><option value="">—</option><option>none</option><option>rare</option><option>some</option><option>lots</option></select></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Sentence style</label><input id="pb_t_sentence" placeholder="e.g. short & punchy / longer & flowing" /></div>
+          <div class="field"><label>Energy</label><input id="pb_t_energy" placeholder="e.g. calm, high-energy, dry" /></div>
+        </div>
+        <div class="field"><label>Slang / phrases you use</label><textarea id="pb_t_slang" rows="2"></textarea></div>
+        <div class="field"><label>Signature phrases / sign-offs</label><input id="pb_t_signature" /></div>
+        <div class="field"><label>Words/phrases you'd NEVER use (the AI tells)</label><textarea id="pb_t_avoid" rows="2" placeholder="e.g. 'circle back', 'unlock', 'in today's fast-paced world', 'I hope this finds you well'"></textarea></div>
+        <div class="field"><label>Real writing samples — paste a few, separated by a line of three dashes (---)</label>
+          <textarea id="pb_t_samples" rows="7" placeholder="Hey mate, saw you came through from the webinar...&#10;---&#10;Quick one — been thinking about what you said re: your team...&#10;---&#10;..."></textarea>
+          <p class="help">5–10 real texts/emails/DMs work best. This is the single biggest lever for sounding human.</p>
+        </div>
+        <button class="btn primary" id="pb_save">Save Playbook</button>
+        <span class="small muted" id="pb_status" style="margin-left:10px"></span>
       </div>
     </section>
 

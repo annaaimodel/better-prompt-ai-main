@@ -168,6 +168,58 @@ function buildContext(body) {
   return lines.join("\n");
 }
 
+// The Playbook — locked offer knowledge, sales methodology, and the user's
+// captured voice. This is what makes every message accurate, on-method, and
+// unmistakably theirs (not generic AI). Empty fields are simply omitted.
+function buildPlaybook(pb) {
+  if (!pb || typeof pb !== "object") return "";
+  const o = pb.offer || {}, m = pb.methodology || {}, t = pb.tone || {};
+  const out = [];
+
+  const offerBits = [
+    ["Name", clip(o.name, 160)], ["What it is", clip(o.summary, 1200)],
+    ["Who it's for", clip(o.whoFor, 600)], ["Transformation / promise", clip(o.transformation, 800)],
+    ["What's included", clip(o.deliverables, 1200)], ["Price & payment options", clip(o.price, 600)],
+    ["Guarantee / risk-reversal", clip(o.guarantee, 600)], ["Why this vs alternatives", clip(o.differentiators, 800)],
+    ["Common objections & best responses", clip(o.objections, 1500)], ["FAQs", clip(o.faqs, 1500)],
+    ["Other facts", clip(o.extra, 2000)],
+  ].filter(([, v]) => v);
+  if (offerBits.length) {
+    out.push("THE OFFER — use ONLY these facts; never contradict, exaggerate, or invent details about the offer, price, or guarantee:");
+    out.push(offerBits.map(([k, v]) => `- ${k}: ${v}`).join("\n"));
+  }
+
+  const methodBits = [
+    ["Method", clip(m.name, 160)], ["Core principles / philosophy", clip(m.principles, 2500)],
+    ["How to build EMAILS", clip(m.emailStructure, 1200)], ["How to build CALL scripts/preps", clip(m.callStructure, 1200)],
+    ["How to build TEXTS/DMs", clip(m.messageStructure, 1200)], ["Hard don'ts", clip(m.never, 800)],
+  ].filter(([, v]) => v);
+  if (methodBits.length) {
+    out.push("\nSALES METHODOLOGY — build this message according to the user's trained approach:");
+    out.push(methodBits.map(([k, v]) => `- ${k}: ${v}`).join("\n"));
+  }
+
+  const toneBits = [
+    ["Formality", clip(t.formality, 80)], ["Sentence style", clip(t.sentenceLength, 120)],
+    ["Energy", clip(t.energy, 80)], ["Emoji use", clip(t.emoji, 80)],
+    ["Slang / phrases they use", clip(t.slang, 600)], ["Signature phrases / sign-offs", clip(t.signature, 400)],
+    ["Other voice notes", clip(t.extra, 600)],
+  ].filter(([, v]) => v);
+  const avoid = clip(t.avoid, 600);
+  const samples = Array.isArray(t.samples) ? t.samples.filter(Boolean).slice(0, 8).map((s) => clip(s, 1200)) : [];
+  if (toneBits.length || avoid || samples.length) {
+    out.push("\nVOICE — write EXACTLY as this person writes. The output must not read as AI. Match their rhythm, vocabulary, punctuation habits and personality:");
+    if (toneBits.length) out.push(toneBits.map(([k, v]) => `- ${k}: ${v}`).join("\n"));
+    if (avoid) out.push(`- NEVER use these words/phrases (they're dead giveaways of AI or off-brand): ${avoid}`);
+    if (samples.length) {
+      out.push("- Real samples of their actual writing — mirror this voice closely:");
+      out.push(samples.map((s, i) => `  [Sample ${i + 1}]\n  ${s.replace(/\n/g, "\n  ")}`).join("\n"));
+    }
+  }
+
+  return out.length ? out.join("\n") : "";
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") { res.status(405).json({ error: "POST only" }); return; }
 
@@ -202,7 +254,9 @@ export default async function handler(req, res) {
     const signalLabel = clip(body.signalLabel, 120);
     focusBlock = `\n\nCHURN SIGNAL TO ADDRESS${signalLabel ? ` ("${signalLabel}")` : ""}: ${RISK_GUIDE[sigKey]}`;
   }
-  const system = `${base}\n\n${CHANNEL_RULES[channel]}\n\nVALUE ANGLE FOR THIS TOUCH: ${ANGLES[valueAngle]}${focusBlock}`;
+  const playbookBlock = buildPlaybook(body.playbook);
+  const system = `${base}\n\n${CHANNEL_RULES[channel]}\n\nVALUE ANGLE FOR THIS TOUCH: ${ANGLES[valueAngle]}${focusBlock}` +
+    (playbookBlock ? `\n\n=== YOUR PLAYBOOK (authoritative — overrides any generic assumptions) ===\n${playbookBlock}` : "");
 
   const instruction =
     variants === 2 && channel !== "call"

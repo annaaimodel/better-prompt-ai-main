@@ -180,7 +180,17 @@ const TEMP_ORDER = { hot: 0, warm: 1, cold: 2 };
 // ---------------------------------------------------------------------------
 const KEY = "cadence.v1";
 const HOUR = 3600 * 1000;
+
+function defaultPlaybook() {
+  return {
+    offer: { name: "", summary: "", whoFor: "", transformation: "", deliverables: "", price: "", guarantee: "", differentiators: "", objections: "", faqs: "", extra: "" },
+    methodology: { name: "", principles: "", emailStructure: "", callStructure: "", messageStructure: "", never: "" },
+    tone: { formality: "", sentenceLength: "", energy: "", emoji: "", slang: "", signature: "", avoid: "", extra: "", samples: [] },
+  };
+}
+
 let db = load();
+if (!db.playbook) db.playbook = defaultPlaybook();
 
 function load() {
   try {
@@ -190,6 +200,7 @@ function load() {
   return {
     version: 1,
     settings: { access: "", coachName: "", offer: "", idealClient: "", results: [], resources: [], tone: "" },
+    playbook: defaultPlaybook(),
     leads: [],
   };
 }
@@ -548,6 +559,7 @@ async function runDraft() {
         contact: { name: l.name, offerInterest: l.offerInterest, stage: l.stage, temperature: l.temperature, notes: l.notes },
         history,
         profile: db.settings,
+        playbook: db.playbook,
       }),
     });
     const j = await r.json();
@@ -562,10 +574,11 @@ async function runDraft() {
 // Wiring
 // ---------------------------------------------------------------------------
 function setView(name) {
-  ["today", "pipeline", "add", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
+  ["today", "pipeline", "add", "playbook", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === name));
   if (name === "today") renderToday();
   if (name === "pipeline") renderPipeline($("search").value);
+  if (name === "playbook") loadPlaybookForm();
   if (name === "settings") loadSettingsForm();
 }
 function rerender() {
@@ -684,6 +697,56 @@ $("saveSettingsBtn").onclick = () => {
 };
 // Persist access code as you type so first AI call works without a save round-trip.
 $("s_access").addEventListener("change", () => { db.settings.access = $("s_access").value.trim(); save(); });
+
+// Playbook ------------------------------------------------------------------
+function loadPlaybookForm() {
+  const p = db.playbook || defaultPlaybook();
+  const o = p.offer || {}, m = p.methodology || {}, t = p.tone || {};
+  $("pb_name").value = o.name || ""; $("pb_price").value = o.price || "";
+  $("pb_summary").value = o.summary || ""; $("pb_whoFor").value = o.whoFor || "";
+  $("pb_transformation").value = o.transformation || ""; $("pb_deliverables").value = o.deliverables || "";
+  $("pb_guarantee").value = o.guarantee || ""; $("pb_differentiators").value = o.differentiators || "";
+  $("pb_objections").value = o.objections || ""; $("pb_faqs").value = o.faqs || ""; $("pb_extra").value = o.extra || "";
+  $("pb_m_name").value = m.name || ""; $("pb_m_principles").value = m.principles || "";
+  $("pb_m_email").value = m.emailStructure || ""; $("pb_m_call").value = m.callStructure || "";
+  $("pb_m_message").value = m.messageStructure || ""; $("pb_m_never").value = m.never || "";
+  $("pb_t_formality").value = t.formality || ""; $("pb_t_emoji").value = t.emoji || "";
+  $("pb_t_sentence").value = t.sentenceLength || ""; $("pb_t_energy").value = t.energy || "";
+  $("pb_t_slang").value = t.slang || ""; $("pb_t_signature").value = t.signature || "";
+  $("pb_t_avoid").value = t.avoid || "";
+  $("pb_t_samples").value = (t.samples || []).join("\n---\n");
+  updatePlaybookStatus();
+}
+function updatePlaybookStatus() {
+  const p = db.playbook || {};
+  const filled = (obj) => Object.values(obj || {}).filter((v) => (Array.isArray(v) ? v.length : v && String(v).trim())).length;
+  $("pb_status").textContent = `Offer ${filled(p.offer)}/11 · Method ${filled(p.methodology)}/6 · Voice ${filled(p.tone)}/8 fields filled`;
+}
+$("pb_save").onclick = () => {
+  db.playbook = {
+    offer: {
+      name: $("pb_name").value.trim(), summary: $("pb_summary").value.trim(), whoFor: $("pb_whoFor").value.trim(),
+      transformation: $("pb_transformation").value.trim(), deliverables: $("pb_deliverables").value.trim(),
+      price: $("pb_price").value.trim(), guarantee: $("pb_guarantee").value.trim(),
+      differentiators: $("pb_differentiators").value.trim(), objections: $("pb_objections").value.trim(),
+      faqs: $("pb_faqs").value.trim(), extra: $("pb_extra").value.trim(),
+    },
+    methodology: {
+      name: $("pb_m_name").value.trim(), principles: $("pb_m_principles").value.trim(),
+      emailStructure: $("pb_m_email").value.trim(), callStructure: $("pb_m_call").value.trim(),
+      messageStructure: $("pb_m_message").value.trim(), never: $("pb_m_never").value.trim(),
+    },
+    tone: {
+      formality: $("pb_t_formality").value, sentenceLength: $("pb_t_sentence").value.trim(),
+      energy: $("pb_t_energy").value.trim(), emoji: $("pb_t_emoji").value,
+      slang: $("pb_t_slang").value.trim(), signature: $("pb_t_signature").value.trim(),
+      avoid: $("pb_t_avoid").value.trim(),
+      samples: $("pb_t_samples").value.split(/\n-{3,}\n/).map((s) => s.trim()).filter(Boolean),
+    },
+  };
+  save(); updatePlaybookStatus(); toast("Playbook saved");
+  $("pb_status").textContent = "Saved ✓ — every draft now builds from your offer, method & voice";
+};
 
 // Export / import / wipe
 function doExport() {

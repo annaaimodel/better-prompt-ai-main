@@ -486,13 +486,29 @@ def src_adzuna():
 def src_jsearch():
     # Optional, feature-flagged: set JSEARCH_API_KEY (RapidAPI) to pull Google-for-
     # Jobs results (Indeed / LinkedIn / Glassdoor / ZipRecruiter). Off if unset.
+    #
+    # Quota guard: JSearch's free RapidAPI tier is ~200 requests/month and each
+    # search term costs one request. We cap per-run queries to JSEARCH_MAX_QUERIES
+    # (default 6 -> ~180/month on a daily heavy run, under the free limit) and
+    # ROTATE the slice of SEARCH_TERMS used each day, so all terms still get
+    # covered over time instead of only ever hitting the first few. Raise the cap
+    # if you upgrade your RapidAPI plan.
     key = os.environ.get("JSEARCH_API_KEY", "").strip()
     out, ok = [], False
     if not IS_HEAVY:
         return out, False   # heavy source — only on the daily run
     if not key:
         return out, False
-    queries = [t + " remote" for t in SEARCH_TERMS]
+    try:
+        max_q = int(os.environ.get("JSEARCH_MAX_QUERIES", "6"))
+    except ValueError:
+        max_q = 6
+    terms = SEARCH_TERMS
+    if 0 < max_q < len(terms):
+        # Rotate the window by day-of-year so coverage cycles through every term.
+        start = (datetime.date.today().toordinal() * max_q) % len(terms)
+        terms = [terms[(start + i) % len(terms)] for i in range(max_q)]
+    queries = [t + " remote" for t in terms]
     for query in queries:
         try:
             url = "https://jsearch.p.rapidapi.com/search?" + urllib.parse.urlencode(

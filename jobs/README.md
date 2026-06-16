@@ -55,6 +55,11 @@ disables that source.
 
 - `ADZUNA_COUNTRIES` (repo **Variable**) — comma-separated country codes; default
   `us,gb,ca,au`.
+- `JSEARCH_MAX_QUERIES` (repo **Variable**) — JSearch queries per heavy run; default
+  `6`. JSearch's free RapidAPI tier is ~200 requests/month and each query costs one
+  request, so 6/run (~180/month on a daily run) stays under the free limit. The set
+  of search terms used **rotates** each day so all terms get covered over time.
+  Raise this if you're on a paid RapidAPI plan.
 - The categoriser still filters every source down to Closer / Setter / Success
   roles, so adding a broad source won't flood the board with irrelevant jobs.
 

@@ -41,6 +41,9 @@ jobs:
           ADZUNA_API_KEY: ${{ secrets.ADZUNA_API_KEY }}
           THEMUSE_API_KEY: ${{ secrets.THEMUSE_API_KEY }}
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
+          # Optional: cap JSearch queries per run to stay under the RapidAPI free
+          # quota (~200 req/month). Default 6/run (~180/month). Raise on a paid plan.
+          JSEARCH_MAX_QUERIES: ${{ vars.JSEARCH_MAX_QUERIES }}
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
           CAREERJET_AFFID: ${{ secrets.CAREERJET_AFFID }}
           # Optional: comma-separated Adzuna country codes (default: us,gb,ca,au).

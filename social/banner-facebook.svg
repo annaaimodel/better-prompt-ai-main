@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1640 624" width="1640" height="624">
+<defs>
+  <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff4cf"/><stop offset=".3" stop-color="#f6e29a"/>
+    <stop offset=".55" stop-color="#e7c466"/><stop offset="1" stop-color="#a87d28"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="50%" cy="36%" r="62%">
+    <stop offset="0" stop-color="#3a2c0e" stop-opacity=".95"/>
+    <stop offset="55%" stop-color="#140f06" stop-opacity=".5"/>
+    <stop offset="100%" stop-color="#0a0a0b" stop-opacity="0"/>
+  </radialGradient>
+</defs><rect width="1640" height="624" fill="#0a0a0b"/><rect width="1640" height="624" fill="url(#glow)"/>
+  <rect x="745.0" y="130.0" width="150" height="150" rx="30.0" fill="#0c0b0a"/>
+  <rect x="749.0" y="134.0" width="142" height="142" rx="25.500000000000004" fill="none" stroke="url(#metal)" stroke-width="4.05"/>
+  <text x="822.25" y="239.79" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="98" fill="url(#metal)">Au</text>
+  <text x="869.5" y="164.5" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="18" fill="#cda23c">79</text><text x="820" y="400" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="100" letter-spacing="18" fill="url(#metal)">AURUM</text><text x="820" y="470" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-weight="600" font-size="30" letter-spacing="8" fill="#bfa256">HIGH-TICKET SALES</text><line x1="560" y1="510" x2="1080" y2="510" stroke="#c99c38" stroke-opacity=".3" stroke-width="1.5"/><text x="820" y="552" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-style="italic" font-weight="500" font-size="28" letter-spacing="2" fill="#e9e0cc">The Gold Standard for Your High-Ticket Job Search</text></svg>

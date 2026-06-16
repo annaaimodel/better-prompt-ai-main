@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+<defs>
+  <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff4cf"/><stop offset=".3" stop-color="#f6e29a"/>
+    <stop offset=".55" stop-color="#e7c466"/><stop offset="1" stop-color="#a87d28"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="50%" cy="40%" r="62%">
+    <stop offset="0" stop-color="#3a2c0e" stop-opacity=".95"/>
+    <stop offset="55%" stop-color="#140f06" stop-opacity=".5"/>
+    <stop offset="100%" stop-color="#0a0a0b" stop-opacity="0"/>
+  </radialGradient>
+</defs><rect width="1000" height="1000" fill="#0a0a0b"/><rect width="1000" height="1000" fill="url(#glow)"/>
+  <rect x="385.0" y="300.0" width="230" height="230" rx="46.0" fill="#0c0b0a"/>
+  <rect x="389.0" y="304.0" width="222" height="222" rx="39.1" fill="none" stroke="url(#metal)" stroke-width="6.21"/>
+  <text x="503.45" y="468.25" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="150" fill="url(#metal)">Au</text>
+  <text x="575.9" y="352.9" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="26" fill="#cda23c">79</text><text x="500" y="660" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-weight="700" font-size="78" letter-spacing="16" fill="url(#metal)">AURUM</text><text x="500" y="716" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-weight="600" font-size="22" letter-spacing="9" fill="#bfa256">HIGH-TICKET SALES</text></svg>

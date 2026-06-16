@@ -22,11 +22,26 @@
  */
 function doPost(e) {
   try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var j = JSON.parse(e.postData.contents);
+
+    // --- Email signups from the AURUM landing page -> "Subscribers" tab ----
+    if (j.type === 'subscribe') {
+      var subs = ss.getSheetByName('Subscribers') || ss.insertSheet('Subscribers');
+      if (subs.getLastRow() === 0) {
+        subs.appendRow(['email', 'savedAt', 'source']);
+      }
+      subs.appendRow([j.email || '', j.savedAt || new Date().toISOString(), j.source || '']);
+      return ContentService
+        .createTextOutput(JSON.stringify({ ok: true }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // --- Saved jobs (extension / Quick Add) -> first sheet -----------------
+    var sheet = ss.getSheets()[0];
     if (sheet.getLastRow() === 0) {
       sheet.appendRow(['title', 'company', 'comp', 'location', 'link', 'source', 'notes', 'savedAt']);
     }
-    var j = JSON.parse(e.postData.contents);
     sheet.appendRow([
       j.title || '', j.company || '', j.comp || '', j.location || '',
       j.link || '', j.source || '', j.notes || '', j.savedAt || new Date().toISOString()

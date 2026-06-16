@@ -43,13 +43,21 @@ export default async function handler(req, res) {
   };
 
   try {
-    await fetch(process.env.INBOX_SYNC_URL, {
+    const upstream = await fetch(process.env.INBOX_SYNC_URL, {
       method: "POST",
       headers: { "Content-Type": "text/plain" },
       body: JSON.stringify(payload),
     });
+    // Surface a failed save instead of reporting a false success: if the Apps
+    // Script returns a non-2xx, the row almost certainly didn't land.
+    if (!upstream.ok) {
+      console.error("listing sync failed:", upstream.status, await upstream.text().catch(() => ""));
+      res.status(502).json({ error: "Couldn't submit — please try again." });
+      return;
+    }
     res.status(200).json({ ok: true });
   } catch (e) {
+    console.error("listing sync error:", e);
     res.status(502).json({ error: "Couldn't submit — please try again." });
   }
 }

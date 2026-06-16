@@ -208,6 +208,14 @@ def tier_norm(v: str) -> str:
 def is_tiered(rec) -> bool:
     return rec.get("tier") in ("urgent", "featured")
 
+def mentions_high_ticket(j) -> bool:
+    """True if the role's text actually says 'high ticket' / 'high-ticket'.
+    Used to keep the board specifically high-ticket — auto-sourced roles that
+    don't mention it are dropped (manual/inbox adds are exempt)."""
+    text = " ".join(str(j.get(k, "")) for k in ("title", "desc", "comp", "company")).lower()
+    norm = text.replace("-", " ")
+    return "high ticket" in norm or "highticket" in text
+
 # --- Link health: only ever list specific, working job URLs ---------------
 # Goal: drop links that (a) point at a generic listing/search page rather than
 # a specific posting, or (b) are dead (404 / "no longer available"). The static
@@ -556,6 +564,8 @@ def main():
                 continue
             if not is_english(j.get("title", "")):
                 continue
+            if not mentions_high_ticket(j):
+                continue   # keep the board specifically high-ticket (inbox jobs are exempt)
         j.setdefault("country", country_of(j.get("location", "")))  # Adzuna pre-stamps; others derive
         j["lead_type"] = lead_type(j)
         cat = categorise(j)

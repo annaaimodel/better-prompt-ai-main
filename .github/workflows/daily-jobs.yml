@@ -41,6 +41,8 @@ jobs:
           ADZUNA_API_KEY: ${{ secrets.ADZUNA_API_KEY }}
           THEMUSE_API_KEY: ${{ secrets.THEMUSE_API_KEY }}
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
+          JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
+          CAREERJET_AFFID: ${{ secrets.CAREERJET_AFFID }}
           # Optional: comma-separated Adzuna country codes (default: us,gb,ca,au).
           ADZUNA_COUNTRIES: ${{ vars.ADZUNA_COUNTRIES }}
           # Manual runs do a full HEAVY pull; scheduled runs are light except at HEAVY_HOUR.

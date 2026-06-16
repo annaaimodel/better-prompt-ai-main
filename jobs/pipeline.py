@@ -55,7 +55,7 @@ LEAD_INBOUND_KW = ["inbound", "warm lead", "warm leads", "inbound lead", "booked
 LEAD_COLD_KW = ["cold call", "cold calling", "cold caller", "cold outreach", "cold dm",
                 "cold lead", "cold email", "outbound", "prospecting", "cold market", "lead generation"]
 # Success — matched on the JOB TITLE ONLY, and only these CSM-based terms.
-SUCCESS_TITLE = ["customer success", "client success", "student success", "onboarding"]
+SUCCESS_TITLE = ["customer success", "client success", "onboarding"]
 SUCCESS_ACR = ["csm"]
 # VA / Admin / Assistant — matched on the JOB TITLE ONLY, and REMOTE ONLY.
 VA_TITLE = ["virtual assistant", "assistant", "admin"]
@@ -64,7 +64,8 @@ VA_ACR = ["va"]
 # Remote detection: remote if the title/location says so, or it's a remote board.
 REMOTE_KW = ["remote", "anywhere", "work from home", "work-from-home", "wfh",
              "worldwide", "telecommute", "distributed", "home based", "home-based"]
-REMOTE_SOURCES = {"Remotive", "RemoteOK", "Jobicy"}
+REMOTE_SOURCES = {"Remotive", "RemoteOK", "Jobicy", "WeWorkRemotely", "Himalayas",
+                  "Working Nomads", "Jobspresso"}
 
 def _has(t, words):
     return any(w in t for w in words)
@@ -86,7 +87,7 @@ def categorise(j) -> str | None:
     text = title + " " + str(j.get("desc", "")).lower()
     # Success — TITLE only, CSM-based terms only
     if _has(title, SUCCESS_TITLE) or _has_word(title, SUCCESS_ACR):
-        return "Success (CSM / customer / client / student)"
+        return "Success (CSM / customer / client / onboarding)"
     # Closer — title + description
     if _has(text, CLOSER_KW):
         return "Closer"
@@ -509,10 +510,133 @@ def src_jsearch():
             log(f"JSearch/{query} failed: {e}")
     return out, ok
 
+def src_jooble():
+    # Free API key from jooble.org/api/about -> JOOBLE_API_KEY. Keyword aggregator
+    # across thousands of boards. Heavy-only to keep request volume sane.
+    if not IS_HEAVY:
+        return [], False
+    key = os.environ.get("JOOBLE_API_KEY", "").strip()
+    out, ok = [], False
+    if not key:
+        return out, False
+    for what in SEARCH_TERMS:
+        try:
+            body = json.dumps({"keywords": what, "location": "remote"}).encode()
+            req = urllib.request.Request("https://jooble.org/api/" + key, data=body,
+                    headers={"Content-Type": "application/json", "User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=25) as r:
+                data = json.loads(r.read().decode("utf-8", "replace"))
+            ok = True
+            for j in data.get("jobs", []):
+                out.append(mk("Jooble", j.get("title"), j.get("company"),
+                              j.get("location"), j.get("salary"), j.get("link"), j.get("snippet")))
+        except Exception as e:
+            log(f"Jooble/{what} failed: {e}")
+    return out, ok
+
+def src_careerjet():
+    # Free affiliate id from partners.careerjet.com -> CAREERJET_AFFID. Keyword
+    # aggregator. Heavy-only.
+    if not IS_HEAVY:
+        return [], False
+    affid = os.environ.get("CAREERJET_AFFID", "").strip()
+    out, ok = [], False
+    if not affid:
+        return out, False
+    for what in SEARCH_TERMS:
+        try:
+            q = urllib.parse.urlencode({"keywords": what, "location": "remote",
+                "affid": affid, "user_ip": "11.22.33.44", "user_agent": UA,
+                "locale_code": "en_US", "pagesize": 50, "contenttype": "json"})
+            data = get_json("http://public.api.careerjet.net/search?" + q)
+            ok = True
+            for j in data.get("jobs", []):
+                out.append(mk("Careerjet", j.get("title"), j.get("company"),
+                              j.get("locations"), j.get("salary"), j.get("url"), j.get("description")))
+        except Exception as e:
+            log(f"Careerjet/{what} failed: {e}")
+    return out, ok
+
+def src_weworkremotely():
+    # Free, no key: WeWorkRemotely sales-and-marketing RSS. Titles are "Company: Role".
+    import xml.etree.ElementTree as ET
+    out, ok = [], False
+    try:
+        req = urllib.request.Request(
+            "https://weworkremotely.com/categories/remote-sales-and-marketing-jobs.rss",
+            headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=25) as r:
+            root = ET.fromstring(r.read())
+        ok = True
+        for item in root.iter("item"):
+            raw_title = (item.findtext("title") or "").strip()
+            company, sep, role = raw_title.partition(":")
+            title = role.strip() if sep else raw_title
+            comp = company.strip() if sep else ""
+            region = (item.findtext("region") or "").strip()
+            out.append(mk("WeWorkRemotely", title, comp, region or "Remote", "",
+                          item.findtext("link") or "", item.findtext("description") or ""))
+    except Exception as e:
+        log(f"WeWorkRemotely failed: {e}")
+    return out, ok
+
+def src_himalayas():
+    # Free, no key: Himalayas remote jobs API.
+    out, ok = [], False
+    try:
+        data = get_json("https://himalayas.app/jobs/api?limit=100")
+        ok = True
+        for j in data.get("jobs", []):
+            locs = j.get("locationRestrictions")
+            loc = ", ".join(locs) if isinstance(locs, list) else (str(locs or "") or "Remote")
+            out.append(mk("Himalayas", j.get("title"), j.get("companyName"),
+                          loc or "Remote", j.get("salary") or "",
+                          j.get("applicationLink") or "", j.get("description") or j.get("excerpt")))
+    except Exception as e:
+        log(f"Himalayas failed: {e}")
+    return out, ok
+
+def src_workingnomads():
+    # Free, no key: Working Nomads exposed jobs (filtered to sales / customer).
+    out, ok = [], False
+    try:
+        data = get_json("https://www.workingnomads.com/api/exposed_jobs/")
+        ok = True
+        for j in (data if isinstance(data, list) else []):
+            cat = (j.get("category_name") or "").lower()
+            if cat and "sales" not in cat and "customer" not in cat:
+                continue
+            out.append(mk("Working Nomads", j.get("title"), j.get("company_name"),
+                          j.get("location") or "Remote", "", j.get("url"), j.get("description")))
+    except Exception as e:
+        log(f"Working Nomads failed: {e}")
+    return out, ok
+
+def src_jobspresso():
+    # Free, no key: Jobspresso sales RSS (best-effort; feed shape can vary).
+    import xml.etree.ElementTree as ET
+    out, ok = [], False
+    try:
+        req = urllib.request.Request(
+            "https://jobspresso.co/?feed=job_feed&job_categories=sales-marketing",
+            headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=25) as r:
+            root = ET.fromstring(r.read())
+        ok = True
+        for item in root.iter("item"):
+            out.append(mk("Jobspresso", item.findtext("title") or "", "", "Remote", "",
+                          item.findtext("link") or "", item.findtext("description") or ""))
+    except Exception as e:
+        log(f"Jobspresso failed: {e}")
+    return out, ok
+
 # name -> fetcher. The name is also the `source` stamped on each job.
 SOURCES = [("Remotive", src_remotive), ("RemoteOK", src_remoteok),
            ("Arbeitnow", src_arbeitnow), ("Jobicy", src_jobicy),
-           ("The Muse", src_themuse), ("Adzuna", src_adzuna), ("JSearch", src_jsearch)]
+           ("The Muse", src_themuse), ("WeWorkRemotely", src_weworkremotely),
+           ("Himalayas", src_himalayas), ("Working Nomads", src_workingnomads),
+           ("Jobspresso", src_jobspresso), ("Adzuna", src_adzuna),
+           ("Jooble", src_jooble), ("Careerjet", src_careerjet), ("JSearch", src_jsearch)]
 API_SOURCES = {name for name, _ in SOURCES}
 
 # --- Inbox (gated-group posts: manual or Zapier-fed) ---------------------

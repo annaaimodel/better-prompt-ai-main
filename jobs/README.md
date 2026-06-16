@@ -11,7 +11,8 @@ what's new since yesterday.
 - **Where to find jobs (specialist boards):** https://better-prompt-ai-ashy.vercel.app/jobs/boards
 - **Communities directory:** https://better-prompt-ai-ashy.vercel.app/directory
 
-Runs daily at **06:00 UTC (7am UK)** and auto-redeploys to Vercel on each run.
+Refreshes **hourly** (light), with full HEAVY pulls at **00:00 and 14:00 UTC**
+(UK morning + US morning), and auto-redeploys to Vercel on each run.
 
 ## How it works
 
@@ -55,11 +56,15 @@ disables that source.
 
 - `ADZUNA_COUNTRIES` (repo **Variable**) — comma-separated country codes; default
   `us,gb,ca,au`.
+- `HEAVY_HOURS` (repo **Variable**) — comma-separated UTC hours that run in HEAVY
+  mode (Adzuna/JSearch + link validation); default `0,14` (midnight + 14:00 UTC, i.e.
+  fresh for UK morning and US morning). Other hours do a light inbox/free-API refresh.
 - `JSEARCH_MAX_QUERIES` (repo **Variable**) — JSearch queries per heavy run; default
-  `6`. JSearch's free RapidAPI tier is ~200 requests/month and each query costs one
-  request, so 6/run (~180/month on a daily run) stays under the free limit. The set
-  of search terms used **rotates** each day so all terms get covered over time.
-  Raise this if you're on a paid RapidAPI plan.
+  `3`. JSearch's free RapidAPI tier is ~200 requests/month and each query costs one
+  request, so 3/run × 2 heavy runs/day (~180/month) stays under the free limit. The
+  search terms **rotate** each run (seeded by UTC day+hour) so all terms get covered
+  over time without the two daily runs overlapping. Raise this if you run heavy fewer
+  times a day or you're on a paid RapidAPI plan.
 - The categoriser still filters every source down to Closer / Setter / Success
   roles, so adding a broad source won't flood the board with irrelevant jobs.
 
@@ -82,7 +87,7 @@ rows automatically.
 
 ## Running it
 
-- **Daily, automatically:** active on the `master` branch at 06:00 UTC.
+- **Automatically:** active on the `master` branch — hourly light refresh, HEAVY at 00:00 & 14:00 UTC.
 - **On demand:** Actions tab → "Daily high-ticket opportunities" → *Run workflow*.
 - **Locally:** `python jobs/pipeline.py` (Python 3.9+, standard library only).
 

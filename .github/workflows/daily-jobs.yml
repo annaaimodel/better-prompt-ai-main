@@ -2,9 +2,10 @@ name: High-ticket opportunities
 
 on:
   schedule:
-    # Hourly LIGHT refresh (inbox/Quick Add + free APIs). At 06:00 UTC the code
-    # runs in HEAVY mode (also Adzuna/JSearch + link validation) — see HEAVY_HOUR
-    # in jobs/pipeline.py. 06:00 UTC = 7am UK (BST) / 6am UK (GMT in winter).
+    # Hourly LIGHT refresh (inbox/Quick Add + free APIs). At the HEAVY_HOURS the
+    # code runs in HEAVY mode (also Adzuna/JSearch + link validation) — see
+    # HEAVY_HOURS in jobs/pipeline.py. Default 00:00 + 14:00 UTC (UK morning + US
+    # morning). Retune via the HEAVY_HOURS repo Variable without editing the cron.
     - cron: "0 * * * *"
   workflow_dispatch:           # manual runs are always HEAVY (full pull) for testing
 
@@ -42,8 +43,12 @@ jobs:
           THEMUSE_API_KEY: ${{ secrets.THEMUSE_API_KEY }}
           JSEARCH_API_KEY: ${{ secrets.JSEARCH_API_KEY }}
           # Optional: cap JSearch queries per run to stay under the RapidAPI free
-          # quota (~200 req/month). Default 6/run (~180/month). Raise on a paid plan.
+          # quota (~200 req/month). Default 3/run x 2 heavy runs/day (~180/month).
+          # Raise on a paid plan or if you run heavy less often.
           JSEARCH_MAX_QUERIES: ${{ vars.JSEARCH_MAX_QUERIES }}
+          # Optional: comma-separated UTC hours to run HEAVY (Adzuna/JSearch + link
+          # check). Default 0,14 (midnight + 14:00 UTC). Set as a repo Variable.
+          HEAVY_HOURS: ${{ vars.HEAVY_HOURS }}
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
           CAREERJET_AFFID: ${{ secrets.CAREERJET_AFFID }}
           # Optional: comma-separated Adzuna country codes (default: us,gb,ca,au).

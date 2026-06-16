@@ -25,12 +25,21 @@ TODAY = datetime.date.today().isoformat()
 UA = "high-ticket-jobs-bot/1.0 (+personal daily digest; contact: annajtelfer@gmail.com)"
 
 # Run mode. Light runs (every hour) refresh the inbox + free APIs only, so Quick
-# Add jobs appear fast. The HEAVY run (once a day, or any manual run) also pulls
-# Adzuna/JSearch and validates links — keeping within Adzuna's free quota and not
-# hammering external sites hourly. Heavy when it's HEAVY_HOUR (UTC) or FORCE_HEAVY.
-HEAVY_HOUR = int(os.environ.get("HEAVY_HOUR", "6"))
+# Add jobs appear fast. HEAVY runs (a few times a day, or any manual run) also pull
+# Adzuna/JSearch and validate links — keeping within those free quotas and not
+# hammering external sites hourly. Heavy when the current UTC hour is in HEAVY_HOURS,
+# or on a forced/manual run. Default 00:00 + 14:00 UTC: midnight feeds UK morning
+# (after the US workday) and 14:00 feeds US morning (after the UK morning). Override
+# with HEAVY_HOURS (repo Variable), e.g. "0,14" or "6". Legacy HEAVY_HOUR still works.
+def _heavy_hours() -> set[int]:
+    raw = (os.environ.get("HEAVY_HOURS", "").strip()
+           or os.environ.get("HEAVY_HOUR", "").strip() or "0,14")
+    hrs = {int(p) % 24 for p in raw.split(",") if p.strip().lstrip("-").isdigit()}
+    return hrs or {0, 14}
+
+HEAVY_HOURS = _heavy_hours()
 IS_HEAVY = (os.environ.get("FORCE_HEAVY", "").strip().lower() in ("1", "true", "yes")
-            or datetime.datetime.utcnow().hour == HEAVY_HOUR)
+            or datetime.datetime.utcnow().hour in HEAVY_HOURS)
 
 # --- What counts as a relevant opportunity -------------------------------
 # Buckets, niche-agnostic (industry is never filtered — only the role).
@@ -489,24 +498,31 @@ def src_jsearch():
     #
     # Quota guard: JSearch's free RapidAPI tier is ~200 requests/month and each
     # search term costs one request. We cap per-run queries to JSEARCH_MAX_QUERIES
-    # (default 6 -> ~180/month on a daily heavy run, under the free limit) and
+    # (default 3 -> ~180/month at 2 heavy runs/day, under the free limit) and
     # ROTATE the slice of SEARCH_TERMS used each day, so all terms still get
     # covered over time instead of only ever hitting the first few. Raise the cap
-    # if you upgrade your RapidAPI plan.
+    # if you run heavy less often or upgrade your RapidAPI plan.
     key = os.environ.get("JSEARCH_API_KEY", "").strip()
     out, ok = [], False
     if not IS_HEAVY:
-        return out, False   # heavy source — only on the daily run
+        return out, False   # heavy source — only on heavy runs
     if not key:
         return out, False
     try:
-        max_q = int(os.environ.get("JSEARCH_MAX_QUERIES", "6"))
+        max_q = int(os.environ.get("JSEARCH_MAX_QUERIES", "3"))
     except ValueError:
-        max_q = 6
+        max_q = 3
     terms = SEARCH_TERMS
     if 0 < max_q < len(terms):
-        # Rotate the window by day-of-year so coverage cycles through every term.
-        start = (datetime.date.today().toordinal() * max_q) % len(terms)
+        # Rotate the window each heavy run so consecutive runs tile the term list
+        # end-to-end (covering every term over time) and the runs within a day
+        # never overlap. We build a monotonic run index from the UTC day and this
+        # run's position among the configured heavy hours, then step by max_q.
+        now = datetime.datetime.utcnow()
+        hh = sorted(HEAVY_HOURS)
+        pos = hh.index(now.hour) if now.hour in hh else 0   # manual run -> first slot
+        run_index = now.toordinal() * max(len(hh), 1) + pos
+        start = (run_index * max_q) % len(terms)
         terms = [terms[(start + i) % len(terms)] for i in range(max_q)]
     queries = [t + " remote" for t in terms]
     for query in queries:

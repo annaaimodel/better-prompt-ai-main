@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /apply
+Disallow: /add
+Disallow: /jobs/capture
+
+Sitemap: https://aurum-hts.vercel.app/sitemap.xml

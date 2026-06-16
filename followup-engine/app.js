@@ -186,6 +186,11 @@ const SEGMENTS = [
 ];
 const SEGMENT_KEYS = SEGMENTS.map((s) => s.key);
 const SEGMENT_LABEL = Object.fromEntries(SEGMENTS.map((s) => [s.key, s.label]));
+const MASK_LABEL = { significance: "Significance", acceptance: "Acceptance", approval: "Approval", intelligence: "Intelligence", understanding: "Understanding", power: "Power" };
+function maskChip(l) {
+  if (!l.mask || !MASK_LABEL[l.mask.mask]) return "";
+  return `<span class="chip" style="border-color:#3a2f4a;color:#c9a6f0">🎭 ${MASK_LABEL[l.mask.mask]}</span>`;
+}
 // Derive a segment for legacy leads that predate the field.
 function deriveSegment(l) {
   if (["success", "save", "winback"].includes(l.track)) return "csm";
@@ -427,7 +432,7 @@ function renderToday() {
         <div class="action">
           <span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span>
           <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span>
-          ${trackChip(l)}
+          ${trackChip(l)} ${maskChip(l)}
           <strong>${relTime(l.nextActionAt)}</strong> — ${esc(step.intent)}
         </div>
       </div>
@@ -482,7 +487,7 @@ function leadRow(l) {
     <div>
       <div class="name"><a href="#" data-open="${l.id}">${esc(l.name) || "Unnamed lead"}</a>
         <span class="chip ${l.temperature}">${esc(l.temperature || "warm")}</span>
-        ${trackChip(l)}
+        ${trackChip(l)} ${maskChip(l)}
         ${closed ? `<span class="chip">${esc(l.status)}</span>` : ""}</div>
       <div class="meta">${esc(l.company || "")}${l.company && l.offerInterest ? " · " : ""}${esc(l.offerInterest || "")}</div>
       ${assigneeChips(l)}
@@ -564,6 +569,9 @@ function openDetail(id) {
         <div class="field"><label>Closer</label><select id="d_closer">${teamOptions("closers", l.assignedCloser)}</select></div>
         <div class="field"><label>CSM</label><select id="d_csm">${teamOptions("csms", l.assignedCSM)}</select></div>
       </div>
+      <div class="section-title">Mask read ${l.mask && MASK_LABEL[l.mask.mask] ? `· 🎭 ${MASK_LABEL[l.mask.mask]}` : ""}</div>
+      ${l.mask ? `<div class="out small" style="white-space:pre-wrap;margin-bottom:8px">${esc(l.mask.summary || "")}${l.mask.affirmation ? `\n\nAffirm: ${esc(l.mask.affirmation)}` : ""}</div>` : `<p class="small muted" style="margin:0 0 8px">Paste a call transcript and Cadence pools them into their dominant need, then every follow-up affirms it automatically.</p>`}
+      <button class="btn sm" id="d_mask">🎭 ${l.mask ? "Re-run mask read" : "Mask read (paste transcript)"}</button>
       <div class="modal-actions">
         <button class="btn primary sm" id="d_save">Save</button>
         <button class="btn sm" id="d_draft">Draft next ✦</button>
@@ -621,6 +629,7 @@ function openDetail(id) {
     toast(l.assignedCloser ? `Call set — linked to ${l.assignedCloser}` : "Call set ▸ (assign a closer in the lead)");
   };
   bg.querySelector("#d_draft").onclick = () => { close(); openDraft(l.id); };
+  bg.querySelector("#d_mask").onclick = () => { close(); openMaskRead(l.id); };
   bg.querySelector("#d_won").onclick = () => {
     l.assignedCloser = bg.querySelector("#d_closer").value || l.assignedCloser;
     l.assignedCSM = bg.querySelector("#d_csm").value || l.assignedCSM || (db.team.csms || [])[0] || "";
@@ -640,6 +649,67 @@ function openDetail(id) {
 }
 
 // ---------------------------------------------------------------------------
+// Mask Read modal
+// ---------------------------------------------------------------------------
+function openMaskRead(id) {
+  const l = db.leads.find((x) => x.id === id);
+  if (!l) return;
+  const bg = document.createElement("div"); bg.className = "modal-bg open";
+  bg.innerHTML = `
+    <div class="modal">
+      <button class="close-x">&times;</button>
+      <h3>🎭 Mask read — ${esc(l.name) || "lead"}</h3>
+      <p class="small muted" style="margin:0 0 10px">Paste a call transcript (Fathom, Zoom, Otter, Grain — any transcript text). Cadence pools them into their dominant social need and tells you exactly how to lead them.</p>
+      <div class="field"><textarea id="mr_t" rows="8" placeholder="Paste the full transcript here…">${esc(l._lastTranscript || "")}</textarea></div>
+      <div class="modal-actions">
+        <button class="btn primary sm" id="mr_go">Analyze</button>
+        <button class="btn sm ghost" id="mr_close2">Cancel</button>
+      </div>
+      <div id="mr_out" style="margin-top:12px"></div>
+    </div>`;
+  document.body.appendChild(bg);
+  const close = () => bg.remove();
+  bg.querySelector(".close-x").onclick = close;
+  bg.querySelector("#mr_close2").onclick = close;
+  bg.onclick = (e) => { if (e.target === bg) close(); };
+  bg.querySelector("#mr_go").onclick = async () => {
+    const transcript = bg.querySelector("#mr_t").value.trim();
+    if (transcript.length < 80) { toast("Paste a fuller transcript"); return; }
+    if (!db.settings.access) { toast("Set access code in Settings"); return; }
+    const out = bg.querySelector("#mr_out");
+    out.innerHTML = `<p class="small muted">Reading the room…</p>`;
+    try {
+      const r = await fetch("/api/analyze", {
+        method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+        body: JSON.stringify({ transcript, contactName: l.name }),
+      });
+      const j = await r.json();
+      if (!r.ok) { out.innerHTML = `<p class="small">⚠ ${esc(j.error || "Failed")}</p>`; return; }
+      const a = j.analysis || {};
+      out.innerHTML = `
+        <div class="card" style="margin:0">
+          <div class="name">🎭 ${esc(MASK_LABEL[a.mask] || a.mask || "—")}
+            ${a.runnerUp && MASK_LABEL[a.runnerUp] ? `<span class="chip">+ ${esc(MASK_LABEL[a.runnerUp])}</span>` : ""}
+            <span class="chip">${esc(a.confidence || "")} confidence</span></div>
+          <p class="small" style="margin:8px 0">${esc(a.summary || "")}</p>
+          ${a.affirmation ? `<div class="section-title">Affirm their need</div><div class="out small">${esc(a.affirmation)}</div>` : ""}
+          ${(a.evidence || []).length ? `<div class="section-title">Evidence</div><ul class="tight small">${a.evidence.map((e) => `<li>${esc(e)}</li>`).join("")}</ul>` : ""}
+          ${(a.beliefs || []).length ? `<div class="section-title">Beliefs to dissolve (with a question)</div><ul class="tight small">${a.beliefs.map((b) => `<li><strong>${esc(b.belief)}</strong> → <em>${esc(b.question)}</em></li>`).join("")}</ul>` : ""}
+          ${(a.mirror || []).length ? `<div class="section-title">Mirror their words</div><div class="small">${a.mirror.map((m) => `<span class="chip">${esc(m)}</span>`).join(" ")}</div>` : ""}
+          <div class="modal-actions"><button class="btn primary sm" id="mr_save">Save to lead ▸</button></div>
+        </div>`;
+      out.querySelector("#mr_save").onclick = () => {
+        l.mask = { ...a, at: new Date().toISOString() };
+        l._lastTranscript = transcript.slice(0, 20000);
+        l.touches = l.touches || [];
+        l.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: "Mask read", summary: `Mask: ${MASK_LABEL[a.mask] || a.mask}` });
+        save(); close(); rerender(); toast(`Saved — every draft now affirms ${MASK_LABEL[a.mask] || "their need"}`);
+      };
+    } catch (e) { out.innerHTML = `<p class="small">⚠ Network error — try again.</p>`; }
+  };
+}
+
+// ---------------------------------------------------------------------------
 // Draft modal
 // ---------------------------------------------------------------------------
 let draftCtx = null;
@@ -651,7 +721,7 @@ function openDraft(id) {
   draftCtx = { leadId: id, channel: step.channel, valueAngle: step.valueAngle, intent: step.intent, variants: 1, asset };
   $("modalTitle").textContent = `Draft — ${l.name || "lead"}`;
   const assetChip = asset ? `<span class="chip proof">✶ ${esc(asset.title || asset.person || asset.type)}</span>` : "";
-  $("modalMeta").innerHTML = `<span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span> ${trackChip(l)} ${assetChip} ${esc(step.intent)}`;
+  $("modalMeta").innerHTML = `<span class="chip ${step.channel}">${CHANNEL_LABEL[step.channel]}</span> <span class="chip ${step.valueAngle}">${ANGLE_LABEL[step.valueAngle]}</span> ${trackChip(l)} ${maskChip(l)} ${assetChip} ${esc(step.intent)}`;
   $("modalOut").textContent = "…";
   $("modal").classList.add("open");
   runDraft();
@@ -680,6 +750,7 @@ async function runDraft() {
         profile: db.settings,
         playbook: db.playbook,
         asset: draftCtx.asset || null,
+        mask: l.mask || null,
       }),
     });
     const j = await r.json();

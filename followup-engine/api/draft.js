@@ -165,6 +165,14 @@ function buildContext(body) {
   lines.push("\nRECENT TOUCH HISTORY (oldest first — DO NOT repeat what you've already said):");
   lines.push(history.length ? history.map((h) => `- ${clip(h, 400)}`).join("\n") : "- (no prior contact — this is the first touch)");
 
+  const mask = body.mask && typeof body.mask === "object" ? body.mask : null;
+  if (mask && mask.mask) {
+    lines.push(`\nTHEIR DOMINANT NEED / MASK (from a call read — affirm it sincerely and lightly, never overdone): ${clip(mask.mask, 30)}${mask.runnerUp ? ` (secondary: ${clip(mask.runnerUp, 30)})` : ""}.`);
+    if (mask.affirmation) lines.push(`- Suggested sincere affirmation to echo in your own words: ${clip(mask.affirmation, 400)}`);
+    if (Array.isArray(mask.mirror) && mask.mirror.length) lines.push(`- Mirror THEIR words where natural: ${mask.mirror.slice(0, 6).map((m) => `"${clip(m, 120)}"`).join(", ")}`);
+    if (Array.isArray(mask.beliefs) && mask.beliefs.length) lines.push(`- Limiting beliefs to be mindful of: ${mask.beliefs.slice(0, 4).map((b) => clip(b.belief, 160)).filter(Boolean).join("; ")}`);
+  }
+
   return lines.join("\n");
 }
 

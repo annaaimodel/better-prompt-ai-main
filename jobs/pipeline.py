@@ -762,7 +762,7 @@ def main():
         cat = categorise(j)
         if not cat:
             if j.get("inbox"):
-                cat = "From inbox (uncategorised)"
+                cat = "Other"
             else:
                 continue
         # High-ticket gate: auto-sourced roles must say "high ticket" / show

@@ -254,6 +254,7 @@ a.visit:hover{filter:brightness(1.12)}
 mark{background:rgba(201,156,56,.32);color:inherit;border-radius:3px}
 .spotlight{margin:18px 0 2px}
 .sphead{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#f2dd88;margin:0 0 9px}
+.spsub{color:var(--mut);font-size:13px;margin:0 0 12px}
 .pcard{position:relative;background:linear-gradient(180deg,#1d1813,#141110);border:1px solid rgba(201,156,56,.55);border-radius:15px;padding:18px 20px;display:flex;flex-direction:column;gap:9px;box-shadow:0 0 0 1px rgba(201,156,56,.22),0 18px 40px -20px rgba(201,156,56,.5)}
 .pcard .cname{font-family:"Playfair Display",Georgia,serif;font-size:21px;font-weight:600;color:#f6f1e6;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .pbadge{font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%);color:#0a0a0b;padding:3px 9px;border-radius:6px}
@@ -344,6 +345,7 @@ render();
     premium_html = (
         '<section class="spotlight">'
         '<div class="sphead">&#9733; Featured community</div>'
+        '<div class="spsub">Hand-picked partners we rate most highly right now.</div>'
         '<div class="pcard">'
         f'<div class="cname">{html.escape(P["name"])}<span class="pbadge">{html.escape(P["badge"])}</span></div>'
         f'<div class="cdesc">{html.escape(P["desc"])}</div>'

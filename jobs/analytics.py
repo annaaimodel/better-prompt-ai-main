@@ -69,12 +69,50 @@ def _num(d: dict, *names):
                 return d[n]
     return None
 
+def _hourly_series(payload):
+    """Flatten GoatCounter /stats/total 'stats' into [(hour_start_dt, pageviews), ...].
+
+    Each day in 'stats' carries an 'hourly' list of 24 counts. We key them by the
+    UTC hour so they can be summed over an arbitrary window (e.g. rolling 24h).
+    """
+    out = []
+    if not isinstance(payload, dict):
+        return out
+    for day in payload.get("stats") or []:
+        ds = day.get("day")
+        hours = day.get("hourly") or []
+        try:
+            base = datetime.date.fromisoformat(ds)
+        except (ValueError, TypeError):
+            continue
+        for h, c in enumerate(hours):
+            ts = datetime.datetime.combine(base, datetime.time(hour=min(h, 23)),
+                                           tzinfo=datetime.timezone.utc)
+            try:
+                out.append((ts, int(c or 0)))
+            except (TypeError, ValueError):
+                out.append((ts, 0))
+    return out
+
 def fetch_total(start, end):
-    """GoatCounter /stats/total -> {"total": pageviews, ...}. No visitor field here."""
+    """GoatCounter /stats/total -> pageviews + hourly series. No unique-visitor field exists."""
+    d, err = api("/stats/total", {"start": start.isoformat(), "end": end.isoformat()})
+    if err:
+        return None, [], err, d
+    # Defensive: parse a unique-visitor field IF a future GoatCounter ever returns one.
+    visitors = _num(d, "total_unique", "count_unique", "unique", "visitors")
+    return _num(d, "total", "count", "pageviews"), visitors, None, d, _hourly_series(d)
+
+def rolling_24h(now_utc):
+    """Sum pageviews over the last 24h using the hourly series (spans yesterday+today)."""
+    start = (now_utc - datetime.timedelta(days=1)).date()
+    end = now_utc.date()
     d, err = api("/stats/total", {"start": start.isoformat(), "end": end.isoformat()})
     if err:
         return None, err, d
-    return _num(d, "total", "count", "pageviews"), None, d
+    cutoff = now_utc - datetime.timedelta(hours=24)
+    total = sum(c for ts, c in _hourly_series(d) if cutoff <= ts <= now_utc)
+    return total, None, d
 
 def fetch_top_pages(start, end, limit=10):
     # Try the known candidate endpoints; record whichever responds.
@@ -109,19 +147,38 @@ def main():
         log("analytics: not configured — wrote placeholder digest")
         return
 
-    # Totals per range. GoatCounter's /stats/total returns pageviews only.
+    now_utc = datetime.datetime.now(datetime.timezone.utc)
+
+    # Rolling last-24h, summed from the hourly time-series (spans yesterday + today).
+    r24, r24_err, r24_raw = rolling_24h(now_utc)
+    snapshot["ranges"]["Last 24 hours"] = {"window": "rolling", "pageviews": r24, "error": r24_err}
+    snapshot["raw"]["rolling_24h"] = r24_raw
+
+    # Totals per range. GoatCounter reports pageviews only (no unique-visitor field).
     lines += ["| Period | Pageviews |", "|--------|-----------|"]
+    lines.append(f"| **Last 24 hours** | {r24 if r24 is not None else '—'}"
+                 + (f" _(error: {r24_err})_" if r24_err else "") + " |")
+    any_visitors = False
     for label, start, end in RANGES:
-        pv, err, raw = fetch_total(start, end)
+        pv, vis, err, raw, _series = fetch_total(start, end)
+        if vis is not None:
+            any_visitors = True
         snapshot["ranges"][label] = {"start": start.isoformat(), "end": end.isoformat(),
-                                     "pageviews": pv, "error": err}
+                                     "pageviews": pv, "visitors": vis, "error": err}
         snapshot["raw"][f"total::{label}"] = raw
         if err:
             lines.append(f"| {label} | — _(error: {err})_ |")
             log(f"total {label}: {err}")
         else:
             lines.append(f"| {label} | {pv if pv is not None else '—'} |")
-            log(f"total {label}: pageviews={pv}")
+            log(f"total {label}: pageviews={pv} visitors={vis}")
+
+    lines += ["",
+              "> **What's measured:** GoatCounter counts **pageviews** (privacy-first, "
+              "cookie-less), so these are pageviews — it doesn't expose a separate unique-visitor "
+              "figure via its API"
+              + ("." if not any_visitors else "; any visitor data found is kept in analytics.json.")
+              + " *Last 24 hours* is a rolling window summed from the hourly data."]
 
     # Top pages over last 30 days.
     start30 = TODAY - datetime.timedelta(days=29)
@@ -131,10 +188,9 @@ def main():
     snapshot["raw"]["pages"] = raw_pages
     if pages:
         lines += ["", "## Top pages (last 30 days)", "",
-                  "| Page | Pageviews | Visitors |", "|------|-----------|----------|"]
+                  "| Page | Pageviews |", "|------|-----------|"]
         for p in pages:
-            lines.append(f"| `{p['path']}` | {p['pageviews'] if p['pageviews'] is not None else '—'} "
-                         f"| {p['visitors'] if p['visitors'] is not None else '—'} |")
+            lines.append(f"| `{p['path']}` | {p['pageviews'] if p['pageviews'] is not None else '—'} |")
     else:
         lines += ["", "_Top-pages endpoint returned nothing yet (no traffic, or endpoint "
                   "name needs refining — see analytics.json raw payloads)._"]

@@ -189,7 +189,7 @@ const SEGMENT_LABEL = Object.fromEntries(SEGMENTS.map((s) => [s.key, s.label]));
 // Which page a lead belongs on for a given stage (so changing stage moves it).
 const STAGE_SEGMENT = {
   new: "lead", contacted: "set", engaged: "set", booked: "call",
-  "post-call": "close", client: "csm", "at-risk": "csm", alumni: "csm", won: "csm",
+  "post-call": "followup", client: "csm", "at-risk": "csm", alumni: "csm", won: "csm",
 };
 const MASK_LABEL = { significance: "Significance", acceptance: "Acceptance", approval: "Approval", intelligence: "Intelligence", understanding: "Understanding", power: "Power" };
 function maskChip(l) {
@@ -201,7 +201,7 @@ function deriveSegment(l) {
   if (["success", "save", "winback"].includes(l.track)) return "csm";
   if (l.track === "closing") return "close";
   if (l.stage === "booked") return "call";
-  if (l.stage === "post-call") return "close";
+  if (l.stage === "post-call") return "followup";
   if (["contacted", "engaged"].includes(l.stage)) return "set";
   if (["client", "at-risk", "alumni"].includes(l.stage)) return "csm";
   return "lead";

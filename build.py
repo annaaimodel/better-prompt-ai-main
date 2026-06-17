@@ -267,7 +267,7 @@ footer{text-align:center;color:var(--mut);font-size:12px;padding:24px}
 </head>
 <body>
 <header>
-<a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum"><span class="wm">AURUM</span></a>
+<a class="brand" href="/"><img src="/favicon.svg" width="34" height="34" alt="Aurum"><span class="wm">AURUM</span></a>
 <h1>High-Ticket Sales &amp; CSM Communities</h1>
 <p class="sub">A directory across Facebook, Skool, Discord &amp; LinkedIn &middot; __TOTAL__ communities &middot; researched 16 Jun 2026</p>
 <div class="nav"><a href="/jobs">Fresh today</a><a href="/jobs/all">The Vault</a><a href="/jobs/boards">&starf; Boards</a><a class="on" href="/directory">Communities</a><a href="/cv">CV match</a></div>

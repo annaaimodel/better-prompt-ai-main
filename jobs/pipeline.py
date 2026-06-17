@@ -965,7 +965,7 @@ def _doc(heading, sub, nav_key, body, tab=None):
             f'<script defer src="/_vercel/insights/script.js"></script>'
             f'<script data-goatcounter="https://aurum-hts.goatcounter.com/count"'
             f' async src="//gc.zgo.at/count.js"></script></head><body>'
-            f'<header><a class="brand" href="/jobs"><img src="/favicon.svg" width="34" height="34" alt="Aurum">'
+            f'<header><a class="brand" href="/"><img src="/favicon.svg" width="34" height="34" alt="Aurum">'
             f'<span class="wm">AURUM</span></a>'
             f'<h1>{heading}</h1><p class="sub">{sub}</p>{_nav(nav_key)}</header>'
             f'<div class="wrap">{body}</div>'

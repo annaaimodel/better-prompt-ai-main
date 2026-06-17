@@ -6,7 +6,9 @@ on:
     # code runs in HEAVY mode (also Adzuna/JSearch + link validation) — see
     # HEAVY_HOURS in jobs/pipeline.py. Default 00:00 + 14:00 UTC (UK morning + US
     # morning). Retune via the HEAVY_HOURS repo Variable without editing the cron.
-    - cron: "0 * * * *"
+    # NB: GitHub schedules are best-effort and heavily drop the on-the-hour (:00)
+    # slot, which is the most congested. Running at :23 gets dropped far less.
+    - cron: "23 * * * *"
   workflow_dispatch:           # manual runs are always HEAVY (full pull) for testing
 
 permissions:

@@ -558,7 +558,14 @@ function openDetail(id) {
     <div class="modal">
       <button class="close-x">&times;</button>
       <h3>${esc(l.name) || "Lead"}</h3>
-      <div class="small muted" style="margin-bottom:10px">${esc(l.company || "")} ${l.phone ? "· " + esc(l.phone) : ""} ${l.email ? "· " + esc(l.email) : ""}</div>
+      <div class="row">
+        <div class="field"><label>Name</label><input id="d_name" value="${esc(l.name)}" /></div>
+        <div class="field"><label>Company</label><input id="d_company" value="${esc(l.company)}" /></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Email</label><input id="d_email" value="${esc(l.email)}" /></div>
+        <div class="field"><label>Phone</label><input id="d_phone" value="${esc(l.phone)}" /></div>
+      </div>
       <div class="row">
         <div class="field"><label>Stage</label><select id="d_stage">${STAGES.map((s) => `<option ${s === l.stage ? "selected" : ""}>${s}</option>`).join("")}</select></div>
         <div class="field"><label>Temperature</label><select id="d_temp">${["hot", "warm", "cold"].map((t) => `<option ${t === l.temperature ? "selected" : ""}>${t}</option>`).join("")}</select></div>
@@ -617,6 +624,10 @@ function openDetail(id) {
   bg.querySelector(".close-x").onclick = close;
   bg.onclick = (e) => { if (e.target === bg) close(); };
   bg.querySelector("#d_save").onclick = () => {
+    l.name = bg.querySelector("#d_name").value.trim();
+    l.company = bg.querySelector("#d_company").value.trim();
+    l.email = bg.querySelector("#d_email").value.trim();
+    l.phone = bg.querySelector("#d_phone").value.trim();
     l.stage = bg.querySelector("#d_stage").value;
     l.temperature = bg.querySelector("#d_temp").value;
     l.offerInterest = bg.querySelector("#d_interest").value.trim();

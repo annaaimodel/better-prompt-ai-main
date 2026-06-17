@@ -625,7 +625,8 @@ function openDetail(id) {
     l.assignedSetter = bg.querySelector("#d_setter").value;
     l.assignedCloser = bg.querySelector("#d_closer").value;
     l.assignedCSM = bg.querySelector("#d_csm").value;
-    save(); close(); rerender(); toast("Saved");
+    if (l.stage === "client" && l.track !== "success") startClient(l); else save();
+    close(); rerender(); toast("Saved");
   };
   bg.querySelector("#d_setcall").onclick = () => {
     l.assignedSetter = bg.querySelector("#d_setter").value;
@@ -640,9 +641,12 @@ function openDetail(id) {
   bg.querySelector("#d_won").onclick = () => {
     l.assignedCloser = bg.querySelector("#d_closer").value || l.assignedCloser;
     l.assignedCSM = bg.querySelector("#d_csm").value || l.assignedCSM || (db.team.csms || [])[0] || "";
-    l.status = "won"; l.stage = "won"; l.segment = "csm";
-    save(); close(); rerender();
-    toast(l.assignedCSM ? `Won 🏆 — handed to ${l.assignedCSM}` : "Won 🏆 — add a CSM to assign");
+    l.wonAt = new Date().toISOString();
+    l.touches = l.touches || [];
+    l.touches.push({ at: l.wonAt, channel: "call", direction: "out", valueAngle: "proof", intent: "Deal won 🏆", summary: "Deal won — handed to CSM, onboarding started" });
+    startClient(l); // becomes an active client on the success lifecycle (onboarding due now)
+    close(); rerender(); setView("today");
+    toast(l.assignedCSM ? `Won 🏆 — onboarded to ${l.assignedCSM}` : "Won 🏆 — client journey started");
   };
   bg.querySelector("#d_lost").onclick = () => { l.status = "lost"; l.stage = "lost"; save(); close(); rerender(); toast("Marked lost"); };
   bg.querySelector("#d_startclose").onclick = () => { startClosing(l, bg.querySelector("#d_obj").value); close(); rerender(); setView("today"); toast("Closing track started ▸"); };
@@ -811,7 +815,8 @@ document.body.addEventListener("click", (e) => {
       l.stage = sel.value;
       if (l.stage === "won") l.status = "won"; else if (l.stage === "lost") l.status = "lost"; else l.status = "active";
       if (STAGE_SEGMENT[l.stage]) l.segment = STAGE_SEGMENT[l.stage];
-      save(); rerender(); toast(STAGE_SEGMENT[l.stage] ? `Saved — moved to ${SEGMENT_LABEL[l.segment]}` : "Saved");
+      if (l.stage === "client" && l.track !== "success") startClient(l); else save();
+      rerender(); toast(STAGE_SEGMENT[l.stage] ? `Saved — moved to ${SEGMENT_LABEL[l.segment]}` : "Saved");
     }
   }
   else if (t.dataset.aedit) { openAssetEdit(t.dataset.aedit); }

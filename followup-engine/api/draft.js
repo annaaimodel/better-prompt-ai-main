@@ -59,7 +59,7 @@ const CHANNEL_RULES = {
   email:
     "Channel: email. Start with `Subject: ` on the first line (6–9 words, specific, no clickbait, no ALL CAPS), then a blank line, then a short scannable body (≈70–130 words). Open with the value, not 'just following up'. One clear call-to-action. Sign off with the coach's first name only. Output the subject line and body, nothing else.",
   call:
-    "Channel: phone call PREP (not a word-for-word script). Output four short labelled sections: `Opener` (1–2 natural lines to start warmly and earn 20 seconds), `Value to deliver` (the specific insight/proof/resource/opportunity to give on this call), `Discovery` (2–3 sharp questions to understand their situation and surface the real problem), `If they hesitate` (1–2 lines to handle the most likely objection and a low-pressure next step). Keep it conversational, not robotic.",
+    "Channel: a LIVE phone call. Output ONLY lines the rep can read ALOUD on the call — no explanations, no coaching notes, no 'why', no stage directions or parentheticals. Use these short labels and put real, speakable lines under each:\n`Open:` one natural line to say.\n`Ask:` 3–5 real questions phrased EXACTLY as they'd be spoken — in the rep's own voice and method — that surface the prospect's real situation, feelings and the actual problem, and let them reach their own conclusions (lead with their world, not a pitch).\n`Say:` 2–3 value drops written word-for-word as spoken lines — the relevant insight / proof / resource delivered conversationally (weave in the asset if one is provided).\n`Next:` one line proposing a clear, low-pressure next step.\nEvery line must be short, human, and ready to say without editing. Output only these labelled lines.",
 };
 
 const BASE_SYSTEM =

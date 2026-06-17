@@ -16,6 +16,7 @@
       </div>
       <nav class="tabs" id="tabs">
         <button data-view="today" class="active">Today <span class="count" id="todayCount">0</span></button>
+        <button data-view="live">Live ●</button>
         <button data-view="pipeline">Pipeline</button>
         <button data-view="add">Add lead</button>
         <button data-view="playbook">Playbook</button>
@@ -27,6 +28,34 @@
     <!-- TODAY -->
     <section id="view-today">
       <div id="todayList"></div>
+    </section>
+
+    <!-- LIVE -->
+    <section id="view-live" class="hidden">
+      <div class="card">
+        <h2>Live call copilot</h2>
+        <p class="small muted">Start this before your call. It listens through your mic and whispers your next move - questions to ask, objection handling, your mask affirmation, proof to drop - all from your Playbook and method. No typing during the call.</p>
+        <p class="help">Tip for testing: put the call on <strong>speaker</strong> so the mic hears the prospect too. (Chrome only. Two-channel/headset capture via Deepgram is the next upgrade.)</p>
+        <div class="row">
+          <div class="field"><label>Call is with</label><select id="live_lead"></select></div>
+          <div class="field" style="display:flex;align-items:flex-end;gap:8px">
+            <button class="btn primary" id="live_start">● Start listening</button>
+            <button class="btn" id="live_stop" disabled>■ Stop</button>
+          </div>
+        </div>
+        <p class="small" id="live_status">Idle.</p>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h2 style="margin:0">Whispers</h2>
+          <button class="btn sm" id="live_cuenow">Cue me now</button>
+        </div>
+        <div id="live_cues" class="live-cues"><div class="empty small">Cues appear here as the call unfolds.</div></div>
+      </div>
+      <div class="card">
+        <h2>Live transcript</h2>
+        <div id="live_transcript" class="live-transcript small muted">Not started.</div>
+      </div>
     </section>
 
     <!-- PIPELINE -->

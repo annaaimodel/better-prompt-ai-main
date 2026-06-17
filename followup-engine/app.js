@@ -789,9 +789,10 @@ async function runDraft() {
 // Wiring
 // ---------------------------------------------------------------------------
 function setView(name) {
-  ["today", "pipeline", "add", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
+  ["today", "live", "pipeline", "add", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === name));
   if (name === "today") renderToday();
+  if (name === "live") setupLive();
   if (name === "pipeline") renderPipeline($("search").value);
   if (name === "playbook") loadPlaybookForm();
   if (name === "assets") renderAssets();
@@ -1159,6 +1160,115 @@ $("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this
 $("search").addEventListener("input", (e) => renderPipeline(e.target.value));
 $("segNav").addEventListener("click", (e) => { const b = e.target.closest("button[data-seg]"); if (b) { pipelineSegment = b.dataset.seg; renderPipeline($("search").value); } });
 $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.target.value; renderPipeline($("search").value); });
+
+// ---------------------------------------------------------------------------
+// Live call copilot - listens via the browser mic, whispers cues from /api/cue.
+// ---------------------------------------------------------------------------
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "" };
+
+function setupLive() {
+  const sel = $("live_lead");
+  const leads = db.leads.filter((l) => l.status === "active");
+  sel.innerHTML = `<option value="">(no lead - general)</option>` +
+    leads.map((l) => `<option value="${l.id}" ${l.id === Live.leadId ? "selected" : ""}>${esc(l.name || "Unnamed")}${l.company ? " - " + esc(l.company) : ""}</option>`).join("");
+  if (!SR) {
+    $("live_status").innerHTML = "⚠ This browser can't do in-browser speech recognition. Use Chrome (the Deepgram upgrade removes this limit).";
+    $("live_start").disabled = true;
+  }
+}
+function renderTranscript() {
+  const el = $("live_transcript");
+  el.textContent = (Live.transcript + Live.interim).slice(-4000) || "Listening…";
+  el.scrollTop = el.scrollHeight;
+}
+function liveStart() {
+  if (!SR) return;
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  Live.leadId = $("live_lead").value;
+  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0;
+  $("live_cues").innerHTML = "";
+  const rec = new SR();
+  rec.continuous = true; rec.interimResults = true; rec.lang = navigator.language || "en-US";
+  rec.onresult = (e) => {
+    let interim = "";
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      const r = e.results[i];
+      if (r.isFinal) Live.transcript += r[0].transcript + " "; else interim += r[0].transcript;
+    }
+    Live.interim = interim; renderTranscript();
+  };
+  rec.onerror = (e) => {
+    if (e.error === "not-allowed" || e.error === "service-not-allowed") { $("live_status").textContent = "⚠ Mic blocked. Allow microphone access, then Start again."; liveStop(); }
+  };
+  rec.onend = () => { if (Live.running) { try { rec.start(); } catch (e) {} } };
+  Live.rec = rec; Live.running = true;
+  try { rec.start(); } catch (e) {}
+  $("live_start").disabled = true; $("live_stop").disabled = false;
+  $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;
+  renderTranscript();
+  Live.timer = setInterval(() => maybeCue(false), 7000);
+}
+function liveStop() {
+  Live.running = false;
+  if (Live.rec) { try { Live.rec.stop(); } catch (e) {} }
+  clearInterval(Live.timer); Live.timer = null;
+  $("live_start").disabled = false; $("live_stop").disabled = true;
+  $("live_status").textContent = "Stopped.";
+  const full = Live.transcript.trim();
+  if (full && Live.leadId) {
+    const l = db.leads.find((x) => x.id === Live.leadId);
+    if (l) {
+      l._lastTranscript = full.slice(0, 20000);
+      l.touches = l.touches || [];
+      l.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: "Live call", summary: "Live call - transcript saved (" + full.length + " chars)" });
+      save();
+      $("live_status").innerHTML = `Stopped. Transcript saved to ${esc(l.name || "lead")}. <a href="#" id="live_mask">Run Mask Read ▸</a>`;
+      const ml = $("live_mask");
+      if (ml) ml.onclick = (ev) => { ev.preventDefault(); openMaskRead(l.id); };
+    }
+  }
+}
+async function maybeCue(force) {
+  if (!Live.running && !force) return;
+  const t = Live.transcript.trim();
+  if (!force && t.length - Live.lastCueLen < 80) return;
+  if (t.length < 20 || !db.settings.access) return;
+  Live.lastCueLen = t.length;
+  const l = Live.leadId ? db.leads.find((x) => x.id === Live.leadId) : null;
+  const assets = (db.assets || []).map((a) => ({ title: a.title, result: a.result, bestFor: a.bestFor }));
+  try {
+    const r = await fetch("/api/cue", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({
+        transcript: t.slice(-4000),
+        contact: l ? { name: l.name, offerInterest: l.offerInterest, notes: l.notes } : {},
+        mask: l ? l.mask : null,
+        playbook: db.playbook,
+        assets,
+        recentCues: Live.recentCues.slice(-10),
+      }),
+    });
+    const j = await r.json();
+    if (j.cues && j.cues.length) renderCues(j.cues);
+  } catch (e) {}
+}
+function renderCues(cues) {
+  const box = $("live_cues");
+  if (box.querySelector(".empty")) box.innerHTML = "";
+  cues.forEach((c) => {
+    Live.recentCues.push(c.text);
+    const div = document.createElement("div");
+    div.className = "cue " + (["ask", "objection", "mask", "value", "nudge", "book"].includes(c.type) ? c.type : "ask");
+    div.innerHTML = `<span class="cue-type">${esc(c.type || "ask")}</span>${esc(c.text)}`;
+    box.prepend(div);
+  });
+  while (box.children.length > 12) box.removeChild(box.lastChild);
+  if (Live.recentCues.length > 30) Live.recentCues = Live.recentCues.slice(-20);
+}
+$("live_start").onclick = liveStart;
+$("live_stop").onclick = liveStop;
+$("live_cuenow").onclick = () => maybeCue(true);
 
 // Go
 renderToday();

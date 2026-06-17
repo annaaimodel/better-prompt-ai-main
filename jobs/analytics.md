@@ -1,12 +1,22 @@
 # Site analytics — AURUM
 
-_Generated 2026-06-16 17:01 UTC from GoatCounter (`aurum-hts`)._
+_Generated 2026-06-17 17:39 UTC from GoatCounter (`aurum-hts`)._
 
-| Period | Pageviews | Visitors |
-|--------|-----------|----------|
-| Today | — | — |  _error: HTTP 404: {"error":"not found"}_
-| Last 7 days | 0 | — |
-| Last 30 days | 0 | — |
-| All-time | 0 | — |
+| Period | Pageviews |
+|--------|-----------|
+| Today | 0 |
+| Last 7 days | 57 |
+| Last 30 days | 57 |
+| All-time | 57 |
 
-_Top-pages endpoint returned nothing yet (no traffic, or endpoint name needs refining — see analytics.json raw payloads)._
+## Top pages (last 30 days)
+
+| Page | Pageviews | Visitors |
+|------|-----------|----------|
+| `/` | 24 | — |
+| `/jobs` | 15 | — |
+| `/cv` | 6 | — |
+| `/directory` | 6 | — |
+| `/jobs/all` | 3 | — |
+| `/jobs/boards` | 2 | — |
+| `/hiring` | 1 | — |

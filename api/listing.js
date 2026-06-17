@@ -60,14 +60,19 @@ export default async function handler(req, res) {
     // submission — the row is already saved at this point.
     if (process.env.LISTING_NOTIFY_URL) {
       try {
-        await fetch(process.env.LISTING_NOTIFY_URL, {
+        const notify = await fetch(process.env.LISTING_NOTIFY_URL, {
           method: "POST",
           headers: { "Content-Type": "text/plain" },
           body: JSON.stringify(payload),
         });
+        if (!notify.ok) {
+          console.error("listing notify non-2xx:", notify.status, await notify.text().catch(() => ""));
+        }
       } catch (e) {
         console.error("listing notify error:", e);
       }
+    } else {
+      console.error("listing notify skipped: LISTING_NOTIFY_URL not set");
     }
     res.status(200).json({ ok: true });
   } catch (e) {

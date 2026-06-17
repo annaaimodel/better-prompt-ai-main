@@ -9,7 +9,12 @@ on:
     # NB: GitHub schedules are best-effort and heavily drop the on-the-hour (:00)
     # slot, which is the most congested. Running at :23 gets dropped far less.
     - cron: "23 * * * *"
-  workflow_dispatch:           # manual runs are always HEAVY (full pull) for testing
+  workflow_dispatch:           # manual / external-pinger trigger
+    inputs:
+      heavy:
+        description: "Full HEAVY pull (Adzuna/JSearch + link validation)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write              # allows the job to commit the daily results back
@@ -55,8 +60,11 @@ jobs:
           CAREERJET_AFFID: ${{ secrets.CAREERJET_AFFID }}
           # Optional: comma-separated Adzuna country codes (default: us,gb,ca,au).
           ADZUNA_COUNTRIES: ${{ vars.ADZUNA_COUNTRIES }}
-          # Manual runs do a full HEAVY pull; scheduled runs are light except at HEAVY_HOUR.
-          FORCE_HEAVY: ${{ github.event_name == 'workflow_dispatch' && 'true' || '' }}
+          # Heavy only when explicitly requested (the workflow_dispatch "heavy"
+          # checkbox). Otherwise runs are light except at HEAVY_HOURS (the pipeline
+          # still goes heavy at 00:00 + 14:00 UTC by the hour check). This keeps the
+          # hourly external pinger light so it never burns the Adzuna/JSearch quota.
+          FORCE_HEAVY: ${{ (github.event_name == 'workflow_dispatch' && inputs.heavy) && 'true' || '' }}
         run: python jobs/pipeline.py
 
       - name: Commit results

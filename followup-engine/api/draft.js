@@ -197,6 +197,12 @@ function buildPlaybook(pb) {
     out.push(offerBits.map(([k, v]) => `- ${k}: ${v}`).join("\n"));
   }
 
+  const booking = clip(o.booking, 800);
+  if (booking) {
+    out.push("\nBOOKING / NEXT STEP — when you propose the next step or call-to-action, follow this exactly. Reproduce any [BRACKETED] placeholders VERBATIM (do not fill them in, do not invent real dates, times, names, or links — the rep fills those from the calendar):");
+    out.push(booking);
+  }
+
   const methodBits = [
     ["Method", clip(m.name, 160)], ["Core principles / philosophy", clip(m.principles, 2500)],
     ["How to build EMAILS", clip(m.emailStructure, 1200)], ["How to build CALL scripts/preps", clip(m.callStructure, 1200)],
@@ -264,7 +270,8 @@ export default async function handler(req, res) {
   }
   const playbookBlock = buildPlaybook(body.playbook);
   const system = `${base}\n\n${CHANNEL_RULES[channel]}\n\nVALUE ANGLE FOR THIS TOUCH: ${ANGLES[valueAngle]}${focusBlock}` +
-    (playbookBlock ? `\n\n=== YOUR PLAYBOOK (authoritative — overrides any generic assumptions) ===\n${playbookBlock}` : "");
+    (playbookBlock ? `\n\n=== YOUR PLAYBOOK (authoritative — overrides any generic assumptions) ===\n${playbookBlock}` : "") +
+    `\n\nNEVER fabricate specific dates, times, calendar links, or people's names. If a booking/next-step instruction contains [BRACKETED] placeholders, reproduce them EXACTLY (e.g. "[DAY] at [TIME]") for the rep to fill in.`;
 
   const instruction =
     variants === 2 && channel !== "call"

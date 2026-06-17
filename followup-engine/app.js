@@ -215,7 +215,7 @@ const HOUR = 3600 * 1000;
 
 function defaultPlaybook() {
   return {
-    offer: { name: "", summary: "", whoFor: "", transformation: "", deliverables: "", price: "", guarantee: "", differentiators: "", objections: "", faqs: "", extra: "" },
+    offer: { name: "", summary: "", whoFor: "", transformation: "", deliverables: "", price: "", guarantee: "", differentiators: "", objections: "", faqs: "", booking: "", extra: "" },
     methodology: { name: "", principles: "", emailStructure: "", callStructure: "", messageStructure: "", never: "" },
     tone: { formality: "", sentenceLength: "", energy: "", emoji: "", slang: "", signature: "", avoid: "", extra: "", samples: [] },
   };
@@ -939,7 +939,8 @@ function loadPlaybookForm() {
   $("pb_summary").value = o.summary || ""; $("pb_whoFor").value = o.whoFor || "";
   $("pb_transformation").value = o.transformation || ""; $("pb_deliverables").value = o.deliverables || "";
   $("pb_guarantee").value = o.guarantee || ""; $("pb_differentiators").value = o.differentiators || "";
-  $("pb_objections").value = o.objections || ""; $("pb_faqs").value = o.faqs || ""; $("pb_extra").value = o.extra || "";
+  $("pb_objections").value = o.objections || ""; $("pb_faqs").value = o.faqs || "";
+  $("pb_booking").value = o.booking || ""; $("pb_extra").value = o.extra || "";
   $("pb_m_name").value = m.name || ""; $("pb_m_principles").value = m.principles || "";
   $("pb_m_email").value = m.emailStructure || ""; $("pb_m_call").value = m.callStructure || "";
   $("pb_m_message").value = m.messageStructure || ""; $("pb_m_never").value = m.never || "";
@@ -962,7 +963,7 @@ $("pb_save").onclick = () => {
       transformation: $("pb_transformation").value.trim(), deliverables: $("pb_deliverables").value.trim(),
       price: $("pb_price").value.trim(), guarantee: $("pb_guarantee").value.trim(),
       differentiators: $("pb_differentiators").value.trim(), objections: $("pb_objections").value.trim(),
-      faqs: $("pb_faqs").value.trim(), extra: $("pb_extra").value.trim(),
+      faqs: $("pb_faqs").value.trim(), booking: $("pb_booking").value.trim(), extra: $("pb_extra").value.trim(),
     },
     methodology: {
       name: $("pb_m_name").value.trim(), principles: $("pb_m_principles").value.trim(),

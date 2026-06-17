@@ -1,19 +1,19 @@
-# Cadence — MVP Tool → Multi-Tenant SaaS Upgrade Path
+# Cadence - MVP Tool → Multi-Tenant SaaS Upgrade Path
 
 > How the current single-user MVP becomes a real, sellable, multi-customer SaaS
 > business. Do this only AFTER the tool is validated (used by you + one pilot
-> community) — building this layer before product-market fit is wasted effort.
+> community) - building this layer before product-market fit is wasted effort.
 
 ## Where we are now (MVP)
 - Single user, owner-gated by one shared `ACCESS_CODE`.
-- Data lives in the **browser** (localStorage) — per-device, not shared, not
+- Data lives in the **browser** (localStorage) - per-device, not shared, not
   backed up centrally.
 - Vercel serverless functions + Anthropic API. No accounts, no database, no
   billing. **This is a great tool; it is not yet a SaaS *business*.**
 
 ## Where we're going (multi-tenant SaaS)
 Many customers served from one codebase, each with isolated data, self-serve
-signup, and automated recurring billing — plus white-label "orgs" for
+signup, and automated recurring billing - plus white-label "orgs" for
 communities.
 
 ## The 7 pieces to add
@@ -26,7 +26,7 @@ communities.
 - Move leads, playbook, assets, touches from localStorage → a shared DB, every
   row keyed by `org_id` + `user_id` so tenants are isolated.
 - **Recommendation:** Postgres via Supabase or Neon (cheap, scales, easy).
-- Migration: the current JSON shapes map almost 1:1 to tables — low friction.
+- Migration: the current JSON shapes map almost 1:1 to tables - low friction.
 
 ### 3. Org / team model (enables white-label)
 - `Org` (a community/coach) → has many `Users` (members) → has its own
@@ -40,9 +40,9 @@ communities.
 - Stripe webhooks → provision/suspend access. **Stripe Billing** handles most of
   this off-the-shelf.
 
-### 5. Usage metering & limits (CRITICAL — because of copilot COGS)
-- The live copilot costs ~$0.50–$3/call (STT + LLM), and it **scales with usage**
-  — so a flat seat price can go underwater on heavy users.
+### 5. Usage metering & limits (CRITICAL - because of copilot COGS)
+- The live copilot costs ~$0.50-$3/call (STT + LLM), and it **scales with usage**
+  - so a flat seat price can go underwater on heavy users.
 - Track per-org/per-user **live-call minutes & cue calls**; enforce **fair-use
   caps** and/or **usage-based overages** (Stripe metered billing).
 - This is the difference between healthy margins and losing money on power users.

@@ -1,4 +1,4 @@
-// Cadence — Mask Read. Analyse a call transcript (Fathom/Zoom/Otter/etc.) and
+// Cadence - Mask Read. Analyse a call transcript (Fathom/Zoom/Otter/etc.) and
 // pool the PROSPECT into their dominant social mask (per the Six Masks model in
 // the methodology), with evidence, a sincere affirmation, and a belief read.
 //
@@ -6,7 +6,7 @@
 // Returns { analysis: { mask, runnerUp, confidence, evidence[], affirmation,
 //                       beliefs[], mirror[], summary }, usage }
 //
-// Stores/logs nothing — inputs are used in memory only.
+// Stores/logs nothing - inputs are used in memory only.
 //
 // Env vars (set in Vercel): ACCESS_CODE (required), ANTHROPIC_API_KEY (required)
 import Anthropic from "@anthropic-ai/sdk";
@@ -14,7 +14,7 @@ import Anthropic from "@anthropic-ai/sdk";
 const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
 
 const SYSTEM =
-`You analyse a sales-call transcript and profile the PROSPECT (not the rep/salesperson) using the "Six Masks" model — everyone leads with a dominant social need and acts as if they don't. Identify it from how they talk about themselves, what they seek validation for, what they complain about, and what they fear.
+`You analyse a sales-call transcript and profile the PROSPECT (not the rep/salesperson) using the "Six Masks" model - everyone leads with a dominant social need and acts as if they don't. Identify it from how they talk about themselves, what they seek validation for, what they complain about, and what they fear.
 
 The six masks (need → wants to be seen as → core fear):
 - significance → standing out, leaving an impact → being insignificant/unnoticed
@@ -25,10 +25,11 @@ The six masks (need → wants to be seen as → core fear):
 - power → strong, decisive, in control → being weak/not in control
 
 Method rules to honour:
-- Affirmations must be SINCERE and specific — affirm what they want to be seen as. Never manipulative, never overdone.
+- Affirmations must be SINCERE and specific - affirm what they want to be seen as. Never manipulative, never overdone.
 - Treat the prospect's own words as truth ("gospel"); surface the phrases worth mirroring back.
 - For beliefs/objections: name the limiting belief and the single best QUESTION to trace or test it (don't argue).
 - Base everything ONLY on the transcript. If evidence is thin, say so and lower the confidence. Never invent quotes.
+- Never use em dashes (—) or en dashes (–) in any text you write; use commas or a simple hyphen instead.
 
 Return ONLY a JSON object (no markdown, no prose) with these keys:
 {
@@ -80,6 +81,6 @@ export default async function handler(req, res) {
     };
     res.status(200).json({ analysis, usage: msg.usage });
   } catch (e) {
-    res.status(e?.status || 500).json({ error: e?.message || "Analysis failed — try again." });
+    res.status(e?.status || 500).json({ error: e?.message || "Analysis failed - try again." });
   }
 }

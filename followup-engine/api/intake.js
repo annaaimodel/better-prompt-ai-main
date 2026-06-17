@@ -1,4 +1,4 @@
-// Cadence — smart lead intake.
+// Cadence - smart lead intake.
 //
 // Paste a messy inbound lead notification (ad lead form, funnel email, booking
 // confirmation, DM, etc.) and get back a clean, structured contact.
@@ -6,7 +6,7 @@
 // POST { access_code, text }
 // Returns { contact: { name, email, phone, company, offerInterest, source, notes }, usage }
 //
-// Stores/logs nothing — inputs are used in memory only.
+// Stores/logs nothing - inputs are used in memory only.
 //
 // Env vars (set in Vercel):
 //   ACCESS_CODE        (required)  unlocks the app
@@ -25,8 +25,8 @@ Rules:
 - "company": their business/company if stated, else "".
 - "offerInterest": one short phrase for what they want help with or opted in for (e.g. "scaling agency to 50k/mo"), else "".
 - "source": where the lead came from if identifiable (e.g. "Facebook lead form", "Calendly booking", "webinar"), else "".
-- "notes": anything else useful the prospect said about their situation, goals, pain or timeline — a short paragraph, else "".
-Do not invent details that are not in the text. Output JSON only — no prose, no markdown fences.`;
+- "notes": anything else useful the prospect said about their situation, goals, pain or timeline - a short paragraph, else "".
+Do not invent details that are not in the text. Output JSON only - no prose, no markdown fences.`;
 
 function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
 
@@ -68,6 +68,6 @@ export default async function handler(req, res) {
       usage: msg.usage,
     });
   } catch (e) {
-    res.status(e?.status || 500).json({ error: e?.message || "Couldn't read that — try again." });
+    res.status(e?.status || 500).json({ error: e?.message || "Couldn't read that - try again." });
   }
 }

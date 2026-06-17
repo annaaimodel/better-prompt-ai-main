@@ -1,10 +1,10 @@
-# Live Sales Copilot — Spec & Build Plan
+# Live Sales Copilot - Spec & Build Plan
 
 > A hands-free, real-time assistant that listens to a live web call and surfaces
-> your next move — driven entirely by your uploaded **Sales Dojo methodology**,
+> your next move - driven entirely by your uploaded **Sales Dojo methodology**,
 > **Playbook** (offer + voice) and **asset library**. No typing during the call.
 
-Status: **planned** (Phase 2 — build after the core CRM is deployed & validated).
+Status: **planned** (Phase 2 - build after the core CRM is deployed & validated).
 
 ---
 
@@ -22,20 +22,20 @@ layer**, so every source looks identical to us.
 
 **Decision (confirmed): the rep uses the Zoom desktop app.** So v1 standardizes
 on the **system-audio path**, because a virtual audio device captures *all*
-computer audio uniformly — Zoom app, every dialer, and the browser — with one
-method. Bonus: this likely removes the need for a Chrome extension entirely —
+computer audio uniformly - Zoom app, every dialer, and the browser - with one
+method. Bonus: this likely removes the need for a Chrome extension entirely -
 once a virtual audio device exists, a plain in-app **"Live" page** can read both
 the rep's mic and the call audio via `getUserMedia` (two streams → two channels).
 
 **One-time setup (not per-call):** install the free virtual audio device, then
 create a "Multi-Output Device" so the rep still hears the call while we capture
-it. ~5 minutes, once. After that every call — any app — just works.
+it. ~5 minutes, once. After that every call - any app - just works.
 
 ## 2. Hands-free guarantee
 
 The rep does **not** type during the call. Flow:
 1. Before the call: click **Start** once, approve the tab-audio + mic prompt.
-2. During the call: nothing required — cues appear automatically; the rep just
+2. During the call: nothing required - cues appear automatically; the rep just
    talks and glances.
 3. After hang-up: transcript auto-saves to the lead, Mask Read runs, call logged.
 
@@ -50,19 +50,19 @@ tab audio  ─┐
             ├─► 2-channel ─► Deepgram (live STT, ─► rolling transcript ─┐
 mic audio  ─┘   stream        speaker-separated)                        │
                                                                         ▼
-                                            every ~3–5s / on prospect pause:
+                                            every ~3-5s / on prospect pause:
                                             POST transcript + context ─► /api/cue
                                                                         │
                                             Claude (Sonnet) + Playbook  │
                                             + methodology + assets ─────┘
                                                      │
                                                      ▼
-                                            1–3 glanceable cues ─► floating panel
+                                            1-3 glanceable cues ─► floating panel
 
 on hang-up ─► save transcript to lead ─► /api/analyze (Mask Read) ─► log touch
 ```
 
-- **Two channels** (mic = rep, tab = prospect) so we always know who said what —
+- **Two channels** (mic = rep, tab = prospect) so we always know who said what -
   cues respond to the **prospect**. Deepgram multichannel handles this cleanly.
 - **No always-on server / no WebSocket backend of our own.** Deepgram holds the
   audio stream browser-side; cues come from periodic POSTs to a normal Vercel
@@ -96,11 +96,11 @@ Every cue is generated from the loaded **Sales Dojo method** + Playbook + assets
 
 ## 6. Build milestones (test as we go)
 
-- **M1 — Capture proof:** extension captures tab+mic, shows a live raw transcript.
-  *Test: a real Zoom/dialer call — confirm both sides transcribe cleanly.*
-- **M2 — Cues:** transcript → `/api/cue` → cue panel, in your method.
+- **M1 - Capture proof:** extension captures tab+mic, shows a live raw transcript.
+  *Test: a real Zoom/dialer call - confirm both sides transcribe cleanly.*
+- **M2 - Cues:** transcript → `/api/cue` → cue panel, in your method.
   *Test: play a recorded sales call (e.g. YouTube) and watch cues fire.*
-- **M3 — Live polish:** latency tuning, talk-ratio meter, auto-testimonial cues,
+- **M3 - Live polish:** latency tuning, talk-ratio meter, auto-testimonial cues,
   post-call Mask Read + lead logging.
   *Test: a real, low-stakes call.*
 
@@ -116,7 +116,7 @@ Every cue is generated from the loaded **Sales Dojo method** + Playbook + assets
 
 ## 8. Dependencies
 
-1. Core CRM deployed and validated (drafting quality + voice/method dialed in) —
+1. Core CRM deployed and validated (drafting quality + voice/method dialed in) -
    the same Playbook powers the copilot, so tuning it first pays off twice.
 2. Deepgram API key.
 3. Decision on capture surface: standalone Chrome extension (recommended for clean

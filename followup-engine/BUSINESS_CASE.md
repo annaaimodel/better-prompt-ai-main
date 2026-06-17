@@ -39,6 +39,17 @@ so the moat is **niche + method-type + white-label + integration**, not the tech
   worth far more than any per-seat price (huge value headroom).
 - A few AI tools already target closers (GradeMyClose, Closr, CloserCoach) but
   they're **post-call graders / roleplay**, mostly freemium.
+- **"AI Sales Script Generator" (highperformancetrain.com): $5,000 one-time.** A
+  *static* toolkit, delivered via a member portal: AI script builder
+  (customizable templates), call-structure guides, lead-qualification samples,
+  an objection-handling library, usage instructions, lifetime access. Three
+  takeaways: (1) it **validates real willingness-to-pay** at $5k one-time in this
+  niche; (2) it's a **thin slice** of what Cadence does (sells static scripts you
+  copy once vs. a living tool that writes, follows up, and coaches live), so the
+  quality bar to beat is low; (3) it proves the **one-time high-ticket
+  info-product packaging + member-portal distribution** model as an alternative
+  (or addition) to SaaS subscriptions. Packaging and a clear offer beat feature
+  depth: they shipped and sell a simpler thing.
 
 ## 3. White-label pricing to a community
 

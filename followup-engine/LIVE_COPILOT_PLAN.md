@@ -17,11 +17,19 @@ layer**, so every source looks identical to us.
 
 | Where the call runs | Capture method | Setup |
 |---|---|---|
-| Browser tab (HubSpot/HighLevel dialer, web dialers, Zoom-in-browser) | Chrome extension captures **tab audio** | None — the green path |
-| Desktop app (Zoom app, desktop softphone) | **System audio** capture | One-time free virtual audio device (e.g. BlackHole on macOS), or just run the call in-browser |
+| Browser tab (HubSpot/HighLevel dialer, web dialers, Zoom-in-browser) | Chrome extension captures **tab audio** | None |
+| Desktop app (Zoom app, desktop softphone) | **System audio** capture | One-time free virtual audio device (BlackHole on macOS / VB-CABLE on Windows) |
 
-Default design = **tab capture** (covers the majority). System-audio is the
-documented fallback for desktop apps.
+**Decision (confirmed): the rep uses the Zoom desktop app.** So v1 standardizes
+on the **system-audio path**, because a virtual audio device captures *all*
+computer audio uniformly — Zoom app, every dialer, and the browser — with one
+method. Bonus: this likely removes the need for a Chrome extension entirely —
+once a virtual audio device exists, a plain in-app **"Live" page** can read both
+the rep's mic and the call audio via `getUserMedia` (two streams → two channels).
+
+**One-time setup (not per-call):** install the free virtual audio device, then
+create a "Multi-Output Device" so the rep still hears the call while we capture
+it. ~5 minutes, once. After that every call — any app — just works.
 
 ## 2. Hands-free guarantee
 
@@ -102,8 +110,9 @@ Every cue is generated from the loaded **Sales Dojo method** + Playbook + assets
   (two-party consent). Add a simple per-call consent toggle/notice.
 - **Privacy:** transcripts stay on the rep's own infra; audio streams
   browser→Deepgram, nothing stored by us beyond the saved transcript on the lead.
-- **Open question:** Zoom calls usually in-browser or desktop app? (Decides
-  whether we ship the system-audio fallback in v1.)
+- **Resolved:** Zoom = desktop app → system-audio capture is the v1 primary path
+  (universal across Zoom + dialers). Confirm rep's OS (macOS → BlackHole;
+  Windows → VB-CABLE) for the exact one-time setup steps.
 
 ## 8. Dependencies
 

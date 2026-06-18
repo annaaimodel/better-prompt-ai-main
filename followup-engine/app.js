@@ -789,10 +789,11 @@ async function runDraft() {
 // Wiring
 // ---------------------------------------------------------------------------
 function setView(name) {
-  ["today", "live", "pipeline", "add", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
+  ["today", "live", "pipeline", "add", "coach", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === name));
   if (name === "today") renderToday();
   if (name === "live") setupLive();
+  if (name === "coach") setupCoach();
   if (name === "pipeline") renderPipeline($("search").value);
   if (name === "playbook") loadPlaybookForm();
   if (name === "assets") renderAssets();
@@ -1269,6 +1270,42 @@ function renderCues(cues) {
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
 $("live_cuenow").onclick = () => maybeCue(true);
+
+// ---------------------------------------------------------------------------
+// Scenario coach - method-true game plan for a described situation.
+// ---------------------------------------------------------------------------
+function setupCoach() {
+  const sel = $("coach_lead");
+  const leads = db.leads.filter((l) => l.status === "active");
+  const cur = sel.value;
+  sel.innerHTML = `<option value="">(no lead - general)</option>` +
+    leads.map((l) => `<option value="${l.id}" ${l.id === cur ? "selected" : ""}>${esc(l.name || "Unnamed")}${l.company ? " - " + esc(l.company) : ""}</option>`).join("");
+}
+$("coach_go").onclick = async () => {
+  const scenario = $("coach_scenario").value.trim();
+  if (scenario.length < 15) { toast("Describe the situation in a bit more detail"); return; }
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  const l = $("coach_lead").value ? db.leads.find((x) => x.id === $("coach_lead").value) : null;
+  const assets = (db.assets || []).map((a) => ({ title: a.title, result: a.result, bestFor: a.bestFor }));
+  $("coach_go").disabled = true; $("coach_go").textContent = "Thinking…";
+  $("coach_out").textContent = "Working out the play…";
+  try {
+    const r = await fetch("/api/coach", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({
+        scenario,
+        contact: l ? { name: l.name, offerInterest: l.offerInterest, notes: l.notes } : {},
+        mask: l ? l.mask : null,
+        playbook: db.playbook,
+        assets,
+      }),
+    });
+    const j = await r.json();
+    $("coach_out").textContent = r.ok ? (j.text || "(empty)") : ("⚠ " + (j.error || "Failed"));
+  } catch (e) { $("coach_out").textContent = "⚠ Network error - try again."; }
+  $("coach_go").disabled = false; $("coach_go").textContent = "Get the game plan";
+};
+$("coach_copy").onclick = async () => { try { await navigator.clipboard.writeText($("coach_out").textContent); toast("Copied"); } catch (e) { toast("Copy failed"); } };
 
 // Go
 renderToday();

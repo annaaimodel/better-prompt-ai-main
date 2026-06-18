@@ -19,6 +19,7 @@
         <button data-view="live">Live ●</button>
         <button data-view="pipeline">Pipeline</button>
         <button data-view="add">Add lead</button>
+        <button data-view="coach">Coach</button>
         <button data-view="playbook">Playbook</button>
         <button data-view="assets">Assets</button>
         <button data-view="settings">Settings</button>
@@ -104,6 +105,22 @@
         <button class="btn primary" id="saveLeadBtn">Add to pipeline</button>
         <button class="btn ghost" id="clearLeadBtn">Clear</button>
         <p class="help">New leads start at <strong>speed-to-lead</strong> - Cadence will surface them in Today immediately.</p>
+      </div>
+    </section>
+
+    <!-- COACH -->
+    <section id="view-coach" class="hidden">
+      <div class="card">
+        <h2>Scenario coach</h2>
+        <p class="small muted">Describe a tricky situation and get a method-true game plan from your Playbook and the Sales Dojo method: the read, their likely need, the questions to ask, the belief to dissolve, what to say, and the next step.</p>
+        <div class="field"><label>Link a lead (optional - uses their context + mask)</label><select id="coach_lead"></select></div>
+        <div class="field"><label>The scenario</label><textarea id="coach_scenario" rows="5" placeholder="e.g. Prospect loved the call but went quiet after saying they needed to 'run the numbers'. Two follow-ups, no reply. Runs a 7-figure agency, scared of committing again after a bad past coach..."></textarea></div>
+        <button class="btn primary" id="coach_go">Get the game plan</button>
+      </div>
+      <div class="card">
+        <h2>Game plan</h2>
+        <div class="out" id="coach_out" style="white-space:pre-wrap">Describe a scenario above to get started.</div>
+        <div class="modal-actions"><button class="btn sm" id="coach_copy">Copy</button></div>
       </div>
     </section>
 

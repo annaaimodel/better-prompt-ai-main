@@ -1286,6 +1286,7 @@ $("coach_go").onclick = async () => {
   if (scenario.length < 15) { toast("Describe the situation in a bit more detail"); return; }
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
   const l = $("coach_lead").value ? db.leads.find((x) => x.id === $("coach_lead").value) : null;
+  const includePb = $("coach_pb").checked;
   const assets = (db.assets || []).map((a) => ({ title: a.title, result: a.result, bestFor: a.bestFor }));
   $("coach_go").disabled = true; $("coach_go").textContent = "Thinking…";
   $("coach_out").textContent = "Working out the play…";
@@ -1296,8 +1297,8 @@ $("coach_go").onclick = async () => {
         scenario,
         contact: l ? { name: l.name, offerInterest: l.offerInterest, notes: l.notes } : {},
         mask: l ? l.mask : null,
-        playbook: db.playbook,
-        assets,
+        playbook: includePb ? db.playbook : { methodology: (db.playbook || {}).methodology },
+        assets: includePb ? assets : [],
       }),
     });
     const j = await r.json();

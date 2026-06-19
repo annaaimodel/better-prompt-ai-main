@@ -1242,7 +1242,18 @@ $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.tar
 // Live call copilot - listens via the browser mic, whispers cues from /api/cue.
 // ---------------------------------------------------------------------------
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "" };
+const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null };
+async function acquireWakeLock() {
+  try { if ("wakeLock" in navigator) { Live.wakeLock = await navigator.wakeLock.request("screen"); } } catch (e) {}
+}
+function releaseWakeLock() {
+  try { if (Live.wakeLock) { Live.wakeLock.release(); } } catch (e) {}
+  Live.wakeLock = null;
+}
+// The OS releases the wake lock when the tab is hidden; re-acquire on return.
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && Live.running && !Live.wakeLock) acquireWakeLock();
+});
 
 function setupLive() {
   const sel = $("live_lead");
@@ -1284,12 +1295,14 @@ function liveStart() {
   $("live_start").disabled = true; $("live_stop").disabled = false;
   $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;
   renderTranscript();
+  acquireWakeLock();
   Live.timer = setInterval(() => maybeCue(false), 7000);
 }
 function liveStop() {
   Live.running = false;
   if (Live.rec) { try { Live.rec.stop(); } catch (e) {} }
   clearInterval(Live.timer); Live.timer = null;
+  releaseWakeLock();
   $("live_start").disabled = false; $("live_stop").disabled = true;
   $("live_status").textContent = "Stopped.";
   const full = Live.transcript.trim();

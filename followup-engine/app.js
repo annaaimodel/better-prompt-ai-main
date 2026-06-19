@@ -231,6 +231,7 @@ if (!db.creator) db.creator = { niche: "", audience: "", pillars: "", platforms:
 if (!db.contentPlan) db.contentPlan = [];
 // Backfill the segment field on any leads created before segments existed.
 db.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
+maybeDailyBackup();
 
 function load() {
   try {
@@ -285,6 +286,26 @@ function markAssetUsed(lead, assetId) {
   a.lastUsedAt = new Date().toISOString();
 }
 function save() { localStorage.setItem(KEY, JSON.stringify(db)); }
+
+// Auto-backups: rolling snapshots so nothing is ever lost. Taken before risky
+// actions (import/erase) and once a day. Kept in a separate key; quota-safe.
+const BKEY = "cadence.v1.backups";
+function readBackups() { try { return JSON.parse(localStorage.getItem(BKEY)) || []; } catch (e) { return []; } }
+function snapshotBackup(reason) {
+  try {
+    let arr = readBackups();
+    arr.unshift({ at: new Date().toISOString(), reason: reason || "manual", data: JSON.stringify(db) });
+    arr = arr.slice(0, 5);
+    // If we hit the storage quota, drop the oldest snapshot and retry.
+    while (arr.length) {
+      try { localStorage.setItem(BKEY, JSON.stringify(arr)); break; } catch (e) { arr = arr.slice(0, arr.length - 1); }
+    }
+  } catch (e) {}
+}
+function maybeDailyBackup() {
+  const last = readBackups()[0];
+  if (!last || (Date.now() - new Date(last.at).getTime()) > 20 * 3600 * 1000) snapshotBackup("daily");
+}
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
 function now() { return Date.now(); }
 
@@ -878,6 +899,12 @@ document.body.addEventListener("click", (e) => {
   else if (t.dataset.cocopy) { const s = (db.content || []).find((x) => x.id === t.dataset.cocopy); if (s) navigator.clipboard.writeText(s.text).then(() => toast("Copied")).catch(() => toast("Copy failed")); }
   else if (t.dataset.codel) { db.content = (db.content || []).filter((x) => x.id !== t.dataset.codel); save(); renderContentLib(); toast("Deleted"); }
   else if (t.dataset.writeidx) { writeFromPlan(parseInt(t.dataset.writeidx, 10)); }
+  else if (t.dataset.restore) {
+    const b = readBackups()[parseInt(t.dataset.restore, 10)];
+    if (b && confirm(`Restore the backup from ${fmtDate(b.at)}? Your current data will be snapshotted first, then replaced.`)) {
+      try { snapshotBackup("before restore"); db = JSON.parse(b.data); save(); rerender(); loadSettingsForm(); toast("Restored"); } catch (e) { toast("Restore failed"); }
+    }
+  }
 });
 // Highlight the Save button while a stage dropdown has an unsaved change.
 document.body.addEventListener("change", (e) => {
@@ -974,6 +1001,7 @@ function loadSettingsForm() {
   $("s_closers").value = (db.team.closers || []).join(", ");
   $("s_csms").value = (db.team.csms || []).join(", ");
   renderCadenceView();
+  renderBackups();
 }
 const parseNames = (v) => v.split(",").map((x) => x.trim()).filter(Boolean);
 $("s_saveTeam").onclick = () => {
@@ -1201,6 +1229,7 @@ function importStarter(file) {
     try {
       const data = JSON.parse(reader.result);
       let n = 0;
+      snapshotBackup("before pack import");
       if (data.playbook) db.playbook = mergePlaybook(db.playbook, data.playbook);
       if (Array.isArray(data.assets)) {
         const ids = new Set((db.assets || []).map((x) => x.id));
@@ -1226,16 +1255,29 @@ function doImport(file) {
     try {
       const data = JSON.parse(reader.result);
       if (!data || !Array.isArray(data.leads)) throw 0;
+      snapshotBackup("before full import");
       db = data; save(); rerender(); loadSettingsForm(); toast("Imported");
     } catch (e) { toast("Invalid backup file"); }
   };
   reader.readAsText(file);
 }
+function renderBackups() {
+  const el = $("backupsList"); if (!el) return;
+  const arr = readBackups();
+  el.innerHTML = `<div class="section-title">Auto-backups (${arr.length})</div>` +
+    (arr.length ? arr.map((b, i) => `
+      <div class="lead" style="margin-bottom:6px">
+        <div><div class="small"><strong>${fmtDate(b.at)}</strong> <span class="chip">${esc(b.reason)}</span></div>
+        <div class="tiny muted">${(b.data.length / 1024).toFixed(0)} KB</div></div>
+        <div class="btns"><button class="btn sm" data-restore="${i}">Restore</button></div>
+      </div>`).join("") : `<p class="small muted">Snapshots are taken automatically before imports/erase and once a day.</p>`);
+}
 $("exportBtn").onclick = doExport; $("exportBtn2").onclick = doExport;
 $("importBtn").onclick = () => $("importFile").click();
 $("importBtn2").onclick = () => $("importFile").click();
 $("importFile").onchange = (e) => { if (e.target.files[0]) doImport(e.target.files[0]); };
-$("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this device? Export first if unsure.")) { localStorage.removeItem(KEY); db = load(); rerender(); loadSettingsForm(); toast("Wiped"); } };
+$("backupNow") && ($("backupNow").onclick = () => { snapshotBackup("manual"); renderBackups(); toast("Backup taken"); });
+$("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this device? A backup is taken first, and Export is recommended.")) { snapshotBackup("before erase"); localStorage.removeItem(KEY); db = load(); rerender(); loadSettingsForm(); toast("Wiped (recoverable from Auto-backups)"); } };
 $("search").addEventListener("input", (e) => renderPipeline(e.target.value));
 $("segNav").addEventListener("click", (e) => { const b = e.target.closest("button[data-seg]"); if (b) { pipelineSegment = b.dataset.seg; renderPipeline($("search").value); } });
 $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.target.value; renderPipeline($("search").value); });

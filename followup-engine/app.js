@@ -227,6 +227,7 @@ if (!db.assets) db.assets = [];
 if (!db.team) db.team = { setters: [], closers: [], csms: [] };
 if (!db.savedPlans) db.savedPlans = [];
 if (!db.content) db.content = [];
+if (!db.creator) db.creator = { niche: "", audience: "", pillars: "", platforms: "", cadence: "", goal: "" };
 // Backfill the segment field on any leads created before segments existed.
 db.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
 
@@ -243,6 +244,7 @@ function load() {
     team: { setters: [], closers: [], csms: [] },
     savedPlans: [],
     content: [],
+    creator: { niche: "", audience: "", pillars: "", platforms: "", cadence: "", goal: "" },
     leads: [],
   };
 }
@@ -873,6 +875,7 @@ document.body.addEventListener("click", (e) => {
   else if (t.dataset.gpdel) { db.savedPlans = (db.savedPlans || []).filter((x) => x.id !== t.dataset.gpdel); save(); renderSavedPlans(); toast("Deleted"); }
   else if (t.dataset.cocopy) { const s = (db.content || []).find((x) => x.id === t.dataset.cocopy); if (s) navigator.clipboard.writeText(s.text).then(() => toast("Copied")).catch(() => toast("Copy failed")); }
   else if (t.dataset.codel) { db.content = (db.content || []).filter((x) => x.id !== t.dataset.codel); save(); renderContentLib(); toast("Deleted"); }
+  else if (t.dataset.writeidx) { writeFromPlan(parseInt(t.dataset.writeidx, 10)); }
 });
 // Highlight the Save button while a stage dropdown has an unsaved change.
 document.body.addEventListener("change", (e) => {
@@ -1392,7 +1395,58 @@ $("coach_save").onclick = () => {
 // ---------------------------------------------------------------------------
 // Content studio - short-form content from the methodology.
 // ---------------------------------------------------------------------------
-function setupContent() { renderContentLib(); }
+let ContentPlan = [];
+function setupContent() { loadCreatorForm(); renderContentLib(); renderPlan(); }
+function loadCreatorForm() {
+  const c = db.creator || {};
+  $("cr_niche").value = c.niche || ""; $("cr_audience").value = c.audience || "";
+  $("cr_pillars").value = c.pillars || ""; $("cr_platforms").value = c.platforms || "";
+  $("cr_cadence").value = c.cadence || ""; $("cr_goal").value = c.goal || "";
+}
+$("cr_save").onclick = () => {
+  db.creator = {
+    niche: $("cr_niche").value.trim(), audience: $("cr_audience").value.trim(),
+    pillars: $("cr_pillars").value.trim(), platforms: $("cr_platforms").value.trim(),
+    cadence: $("cr_cadence").value.trim(), goal: $("cr_goal").value.trim(),
+  };
+  save(); toast("Creator profile saved");
+};
+function renderPlan() {
+  const el = $("cr_planout"); if (!el) return;
+  if (!ContentPlan.length) { el.innerHTML = `<p class="small muted">Generate a plan and each idea gets a one-click "Write".</p>`; return; }
+  el.innerHTML = ContentPlan.map((p, i) => `
+    <div class="lead" style="margin-bottom:8px">
+      <div>
+        <div class="small"><strong>${esc(p.day)}</strong> <span class="chip">${esc(p.platform)}</span> <span class="chip role">${esc(p.pillar)}</span></div>
+        <div class="action small">${esc(p.hook)}</div>
+      </div>
+      <div class="btns"><button class="btn sm primary" data-writeidx="${i}">Write ▸</button></div>
+    </div>`).join("");
+}
+$("cr_plan").onclick = async () => {
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  const days = parseInt($("cr_days").value, 10) || 7;
+  $("cr_plan").disabled = true; $("cr_plan").textContent = "Planning…";
+  try {
+    const r = await fetch("/api/content", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({ mode: "calendar", days, creator: db.creator, playbook: db.playbook }),
+    });
+    const j = await r.json();
+    if (!r.ok) { toast(j.error || "Failed"); }
+    else { ContentPlan = j.plan || []; renderPlan(); toast(`Planned ${ContentPlan.length} posts`); }
+  } catch (e) { toast("Network error"); }
+  $("cr_plan").disabled = false; $("cr_plan").textContent = "Plan my content";
+};
+function writeFromPlan(i) {
+  const p = ContentPlan[i]; if (!p) return;
+  setView("content");
+  const opt = [...$("ct_platform").options].find((o) => p.platform && o.value.toLowerCase().includes(p.platform.toLowerCase().split(" ")[0]));
+  if (opt) $("ct_platform").value = opt.value;
+  $("ct_topic").value = p.hook;
+  $("ct_out").scrollIntoView({ behavior: "smooth", block: "center" });
+  runContent("script");
+}
 function renderContentLib() {
   const el = $("ct_lib"); if (!el) return;
   el.innerHTML = (db.content || []).length ? db.content.map((s) => savedItemCard(s, "cocopy", "codel")).join("") : `<p class="small muted">Saved content appears here.</p>`;
@@ -1409,7 +1463,7 @@ async function runContent(mode) {
   try {
     const r = await fetch("/api/content", {
       method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
-      body: JSON.stringify({ mode, platform, topic, includeOffer, playbook: db.playbook }),
+      body: JSON.stringify({ mode, platform, topic, includeOffer, playbook: db.playbook, creator: db.creator }),
     });
     const j = await r.json();
     if (!r.ok) { $("ct_out").textContent = "⚠ " + (j.error || "Failed"); }

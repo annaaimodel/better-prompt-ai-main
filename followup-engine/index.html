@@ -134,6 +134,26 @@
     <!-- CONTENT -->
     <section id="view-content" class="hidden">
       <div class="card">
+        <h2>Creator profile</h2>
+        <p class="small muted">Who you are online. Shapes your content and calendar. Scripts are written so you can film them yourself or drop them into an AI talking-head tool.</p>
+        <div class="row">
+          <div class="field"><label>Niche / known for</label><input id="cr_niche" placeholder="e.g. high-ticket closing & sales psychology" /></div>
+          <div class="field"><label>Audience you're growing</label><input id="cr_audience" placeholder="e.g. aspiring closers/setters, coaches who sell" /></div>
+        </div>
+        <div class="field"><label>Content pillars (comma separated)</label><input id="cr_pillars" placeholder="e.g. objection handling, mindset, behind-the-method, client wins" /></div>
+        <div class="row">
+          <div class="field"><label>Main platforms</label><input id="cr_platforms" placeholder="e.g. Reels, TikTok, LinkedIn" /></div>
+          <div class="field"><label>Posting cadence</label><input id="cr_cadence" placeholder="e.g. 5x / week" /></div>
+        </div>
+        <div class="field"><label>Goal</label><input id="cr_goal" placeholder="e.g. grow to 10k followers, generate inbound leads" /></div>
+        <button class="btn primary sm" id="cr_save">Save profile</button>
+      </div>
+      <div class="card">
+        <h2>Content calendar</h2>
+        <div class="kbar"><label class="tiny" style="margin:0">Days</label><select id="cr_days" style="max-width:110px"><option>7</option><option>14</option><option>30</option></select><button class="btn sm primary" id="cr_plan">Plan my content</button></div>
+        <div id="cr_planout"><p class="small muted">Generate a plan and each idea gets a one-click "Write".</p></div>
+      </div>
+      <div class="card">
         <h2>Content studio</h2>
         <p class="small muted">Turn your methodology into short-form content that grows your audience and authority - hooks, scripts, captions and CTAs, in your voice.</p>
         <div class="row">

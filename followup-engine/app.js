@@ -280,6 +280,18 @@ function save() { localStorage.setItem(KEY, JSON.stringify(db)); }
 function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
 function now() { return Date.now(); }
 
+// Save an AI output (draft / coach plan) onto a lead so it is never lost.
+// Deduped by exact text; newest first; capped.
+function saveToLead(lead, kind, label, text) {
+  if (!lead || !text || !text.trim()) return false;
+  lead.saved = lead.saved || [];
+  if (lead.saved.some((s) => s.text === text)) return false;
+  lead.saved.unshift({ id: uid(), at: new Date().toISOString(), kind, label: label || kind, text: String(text).slice(0, 8000) });
+  if (lead.saved.length > 60) lead.saved = lead.saved.slice(0, 60);
+  save();
+  return true;
+}
+
 // ---------------------------------------------------------------------------
 // Cadence helpers
 // ---------------------------------------------------------------------------
@@ -616,6 +628,19 @@ function openDetail(id) {
           ${l.track === "save" ? `<button class="btn sm" id="d_back" style="flex:1">Back on track ▸</button>` : ""}
         </div>
       </div>` : ""}
+      <div class="section-title">Saved drafts &amp; plans (${(l.saved || []).length})</div>
+      ${(l.saved || []).length ? (l.saved || []).map((s) => `
+        <div class="card" style="margin:0 0 8px;padding:11px 13px">
+          <div class="small" style="display:flex;justify-content:space-between;gap:8px;align-items:center">
+            <strong>${s.kind === "plan" ? "🧠 " : "✦ "}${esc(s.label || s.kind)}</strong>
+            <span class="muted tiny">${fmtDate(s.at)}</span>
+          </div>
+          <div class="out small" style="margin-top:6px;max-height:140px;overflow:auto;white-space:pre-wrap">${esc(s.text)}</div>
+          <div class="modal-actions" style="margin-top:6px">
+            <button class="btn sm" data-savedcopy="${s.id}">Copy</button>
+            <button class="btn sm danger" data-saveddel="${s.id}">Delete</button>
+          </div>
+        </div>`).join("") : `<p class="small muted">Drafts and game plans you create will auto-save here.</p>`}
       <div class="section-title">Touch history (${(l.touches || []).length})</div>
       ${touches.length ? `<ul class="tight small">${touches.map((t) => `<li><span class="chip ${t.channel}">${CHANNEL_LABEL[t.channel] || t.channel}</span> <span class="muted">${fmtDate(t.at)}</span> - ${esc(t.summary || t.intent)}</li>`).join("")}</ul>` : `<p class="small muted">No touches logged yet.</p>`}
     </div>`;
@@ -623,6 +648,11 @@ function openDetail(id) {
   const close = () => bg.remove();
   bg.querySelector(".close-x").onclick = close;
   bg.onclick = (e) => { if (e.target === bg) close(); };
+  bg.addEventListener("click", (e) => {
+    const cp = e.target.closest("[data-savedcopy]"), dl = e.target.closest("[data-saveddel]");
+    if (cp) { const s = (l.saved || []).find((x) => x.id === cp.dataset.savedcopy); if (s) navigator.clipboard.writeText(s.text).then(() => toast("Copied")).catch(() => toast("Copy failed")); }
+    else if (dl) { l.saved = (l.saved || []).filter((x) => x.id !== dl.dataset.saveddel); save(); close(); openDetail(id); toast("Deleted"); }
+  });
   bg.querySelector("#d_save").onclick = () => {
     l.name = bg.querySelector("#d_name").value.trim();
     l.company = bg.querySelector("#d_company").value.trim();
@@ -848,11 +878,25 @@ $("modalClose").onclick = () => $("modal").classList.remove("open");
 $("modal").addEventListener("click", (e) => { if (e.target.id === "modal") $("modal").classList.remove("open"); });
 $("regenBtn").onclick = () => { if (draftCtx) { draftCtx.variants = 1; runDraft(); } };
 $("twoBtn").onclick = () => { if (draftCtx) { draftCtx.variants = 2; runDraft(); } };
-$("copyBtn").onclick = async () => { try { await navigator.clipboard.writeText($("modalOut").textContent); toast("Copied"); } catch (e) { toast("Copy failed"); } };
+function draftLabel() {
+  const c = draftCtx || {};
+  return `${CHANNEL_LABEL[c.channel] || "Draft"} - ${ANGLE_LABEL[c.valueAngle] || ""}`.trim();
+}
+function saveCurrentDraft(announce) {
+  if (!draftCtx) return;
+  const l = db.leads.find((x) => x.id === draftCtx.leadId);
+  const txt = $("modalOut").textContent;
+  if (l && txt && txt.length > 4 && !txt.startsWith("Drafting") && !txt.startsWith("⚠") && !txt.startsWith("🔒")) {
+    const did = saveToLead(l, "draft", draftLabel(), txt);
+    if (announce) toast(did ? "Saved to lead" : "Already saved");
+  }
+}
+$("copyBtn").onclick = async () => { try { await navigator.clipboard.writeText($("modalOut").textContent); saveCurrentDraft(false); toast("Copied & saved"); } catch (e) { toast("Copy failed"); } };
+$("saveDraftBtn").onclick = () => saveCurrentDraft(true);
 $("logFromDraftBtn").onclick = () => {
   if (!draftCtx) return;
   const l = db.leads.find((x) => x.id === draftCtx.leadId);
-  if (l) { advanceCadence(l, $("modalOut").textContent.slice(0, 200)); $("modal").classList.remove("open"); rerender(); toast("Logged & advanced ▸"); }
+  if (l) { saveCurrentDraft(false); advanceCadence(l, $("modalOut").textContent.slice(0, 200)); $("modal").classList.remove("open"); rerender(); toast("Saved, logged & advanced ▸"); }
 };
 
 // Add lead - parse
@@ -1303,10 +1347,18 @@ $("coach_go").onclick = async () => {
     });
     const j = await r.json();
     $("coach_out").textContent = r.ok ? (j.text || "(empty)") : ("⚠ " + (j.error || "Failed"));
+    if (r.ok && j.text && l) { saveToLead(l, "plan", "Game plan", j.text); $("coach_out").textContent = j.text + "\n\n(Auto-saved to " + (l.name || "lead") + ")"; }
   } catch (e) { $("coach_out").textContent = "⚠ Network error - try again."; }
   $("coach_go").disabled = false; $("coach_go").textContent = "Get the game plan";
 };
 $("coach_copy").onclick = async () => { try { await navigator.clipboard.writeText($("coach_out").textContent); toast("Copied"); } catch (e) { toast("Copy failed"); } };
+$("coach_save").onclick = () => {
+  const l = $("coach_lead").value ? db.leads.find((x) => x.id === $("coach_lead").value) : null;
+  const txt = $("coach_out").textContent.replace(/\n\n\(Auto-saved to .*\)$/, "");
+  if (!l) { toast("Pick a lead above to save it to"); return; }
+  if (txt.length < 20 || txt.startsWith("Describe") || txt.startsWith("Working")) { toast("Generate a game plan first"); return; }
+  toast(saveToLead(l, "plan", "Game plan", txt) ? `Saved to ${l.name || "lead"}` : "Already saved");
+};
 
 // Go
 renderToday();

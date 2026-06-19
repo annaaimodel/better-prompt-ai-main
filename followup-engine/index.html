@@ -20,6 +20,7 @@
         <button data-view="pipeline">Pipeline</button>
         <button data-view="add">Add lead</button>
         <button data-view="coach">Coach</button>
+        <button data-view="content">Content</button>
         <button data-view="playbook">Playbook</button>
         <button data-view="assets">Assets</button>
         <button data-view="settings">Settings</button>
@@ -121,7 +122,36 @@
       <div class="card">
         <h2>Game plan</h2>
         <div class="out" id="coach_out" style="white-space:pre-wrap">Describe a scenario above to get started.</div>
-        <div class="modal-actions"><button class="btn sm" id="coach_copy">Copy</button><button class="btn sm" id="coach_save">Save to linked lead</button></div>
+        <div class="modal-actions"><button class="btn sm" id="coach_copy">Copy</button><button class="btn sm" id="coach_save">Save plan</button></div>
+      </div>
+      <div class="card">
+        <h2>Saved plans</h2>
+        <p class="small muted">General plans (no lead linked) are kept here. Lead-linked plans save on the lead.</p>
+        <div id="coach_saved"></div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section id="view-content" class="hidden">
+      <div class="card">
+        <h2>Content studio</h2>
+        <p class="small muted">Turn your methodology into short-form content that grows your audience and authority - hooks, scripts, captions and CTAs, in your voice.</p>
+        <div class="row">
+          <div class="field"><label>Platform</label><select id="ct_platform"><option>Reel / TikTok / Short</option><option>YouTube Short</option><option>X (Twitter)</option><option>LinkedIn post</option><option>Instagram carousel</option></select></div>
+          <div class="field"><label>Topic / angle (optional)</label><input id="ct_topic" placeholder="e.g. why 'I'll think about it' is never about thinking" /></div>
+        </div>
+        <label class="small" style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;margin:4px 0 12px"><input type="checkbox" id="ct_pb" style="width:auto" /> Tie it to my offer (leave off for pure methodology content)</label>
+        <button class="btn primary" id="ct_script">Write a script</button>
+        <button class="btn" id="ct_ideas">Give me 10 ideas</button>
+      </div>
+      <div class="card">
+        <h2>Output</h2>
+        <div class="out" id="ct_out" style="white-space:pre-wrap">Pick a platform and hit a button.</div>
+        <div class="modal-actions"><button class="btn sm" id="ct_copy">Copy</button><button class="btn sm" id="ct_save">Save to library</button></div>
+      </div>
+      <div class="card">
+        <h2>Content library</h2>
+        <div id="ct_lib"></div>
       </div>
     </section>
 

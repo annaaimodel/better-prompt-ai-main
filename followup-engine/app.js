@@ -225,6 +225,8 @@ let db = load();
 if (!db.playbook) db.playbook = defaultPlaybook();
 if (!db.assets) db.assets = [];
 if (!db.team) db.team = { setters: [], closers: [], csms: [] };
+if (!db.savedPlans) db.savedPlans = [];
+if (!db.content) db.content = [];
 // Backfill the segment field on any leads created before segments existed.
 db.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
 
@@ -239,6 +241,8 @@ function load() {
     playbook: defaultPlaybook(),
     assets: [],
     team: { setters: [], closers: [], csms: [] },
+    savedPlans: [],
+    content: [],
     leads: [],
   };
 }
@@ -819,11 +823,12 @@ async function runDraft() {
 // Wiring
 // ---------------------------------------------------------------------------
 function setView(name) {
-  ["today", "live", "pipeline", "add", "coach", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
+  ["today", "live", "pipeline", "add", "coach", "content", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === name));
   if (name === "today") renderToday();
   if (name === "live") setupLive();
   if (name === "coach") setupCoach();
+  if (name === "content") setupContent();
   if (name === "pipeline") renderPipeline($("search").value);
   if (name === "playbook") loadPlaybookForm();
   if (name === "assets") renderAssets();
@@ -864,6 +869,10 @@ document.body.addEventListener("click", (e) => {
   }
   else if (t.dataset.aedit) { openAssetEdit(t.dataset.aedit); }
   else if (t.dataset.adel) { if (confirm("Delete this asset?")) { db.assets = (db.assets || []).filter((x) => x.id !== t.dataset.adel); save(); renderAssets(); toast("Deleted"); } }
+  else if (t.dataset.gpcopy) { const s = (db.savedPlans || []).find((x) => x.id === t.dataset.gpcopy); if (s) navigator.clipboard.writeText(s.text).then(() => toast("Copied")).catch(() => toast("Copy failed")); }
+  else if (t.dataset.gpdel) { db.savedPlans = (db.savedPlans || []).filter((x) => x.id !== t.dataset.gpdel); save(); renderSavedPlans(); toast("Deleted"); }
+  else if (t.dataset.cocopy) { const s = (db.content || []).find((x) => x.id === t.dataset.cocopy); if (s) navigator.clipboard.writeText(s.text).then(() => toast("Copied")).catch(() => toast("Copy failed")); }
+  else if (t.dataset.codel) { db.content = (db.content || []).filter((x) => x.id !== t.dataset.codel); save(); renderContentLib(); toast("Deleted"); }
 });
 // Highlight the Save button while a stage dropdown has an unsaved change.
 document.body.addEventListener("change", (e) => {
@@ -1324,6 +1333,25 @@ function setupCoach() {
   const cur = sel.value;
   sel.innerHTML = `<option value="">(no lead - general)</option>` +
     leads.map((l) => `<option value="${l.id}" ${l.id === cur ? "selected" : ""}>${esc(l.name || "Unnamed")}${l.company ? " - " + esc(l.company) : ""}</option>`).join("");
+  renderSavedPlans();
+}
+function savedItemCard(s, copyAttr, delAttr) {
+  return `<div class="card" style="margin:0 0 8px;padding:11px 13px">
+    <div class="small" style="display:flex;justify-content:space-between;gap:8px;align-items:center"><strong>${esc(s.label || "Saved")}</strong><span class="muted tiny">${fmtDate(s.at)}</span></div>
+    <div class="out small" style="margin-top:6px;max-height:160px;overflow:auto;white-space:pre-wrap">${esc(s.text)}</div>
+    <div class="modal-actions" style="margin-top:6px"><button class="btn sm" data-${copyAttr}="${s.id}">Copy</button><button class="btn sm danger" data-${delAttr}="${s.id}">Delete</button></div>
+  </div>`;
+}
+function renderSavedPlans() {
+  const el = $("coach_saved"); if (!el) return;
+  el.innerHTML = (db.savedPlans || []).length ? db.savedPlans.map((s) => savedItemCard(s, "gpcopy", "gpdel")).join("") : `<p class="small muted">No general plans saved yet.</p>`;
+}
+function saveGeneral(arr, label, text) {
+  if (!text || !text.trim()) return false;
+  if (arr.some((s) => s.text === text)) return false;
+  arr.unshift({ id: uid(), at: new Date().toISOString(), label, text: String(text).slice(0, 9000) });
+  if (arr.length > 120) arr.length = 120;
+  save(); return true;
 }
 $("coach_go").onclick = async () => {
   const scenario = $("coach_scenario").value.trim();
@@ -1348,16 +1376,60 @@ $("coach_go").onclick = async () => {
     const j = await r.json();
     $("coach_out").textContent = r.ok ? (j.text || "(empty)") : ("⚠ " + (j.error || "Failed"));
     if (r.ok && j.text && l) { saveToLead(l, "plan", "Game plan", j.text); $("coach_out").textContent = j.text + "\n\n(Auto-saved to " + (l.name || "lead") + ")"; }
+    else if (r.ok && j.text) { saveGeneral(db.savedPlans, "Game plan", j.text); renderSavedPlans(); $("coach_out").textContent = j.text + "\n\n(Auto-saved to general plans)"; }
   } catch (e) { $("coach_out").textContent = "⚠ Network error - try again."; }
   $("coach_go").disabled = false; $("coach_go").textContent = "Get the game plan";
 };
 $("coach_copy").onclick = async () => { try { await navigator.clipboard.writeText($("coach_out").textContent); toast("Copied"); } catch (e) { toast("Copy failed"); } };
 $("coach_save").onclick = () => {
   const l = $("coach_lead").value ? db.leads.find((x) => x.id === $("coach_lead").value) : null;
-  const txt = $("coach_out").textContent.replace(/\n\n\(Auto-saved to .*\)$/, "");
-  if (!l) { toast("Pick a lead above to save it to"); return; }
+  const txt = $("coach_out").textContent.replace(/\n\n\(Auto-saved.*\)$/, "");
   if (txt.length < 20 || txt.startsWith("Describe") || txt.startsWith("Working")) { toast("Generate a game plan first"); return; }
-  toast(saveToLead(l, "plan", "Game plan", txt) ? `Saved to ${l.name || "lead"}` : "Already saved");
+  if (l) { toast(saveToLead(l, "plan", "Game plan", txt) ? `Saved to ${l.name || "lead"}` : "Already saved"); }
+  else { const did = saveGeneral(db.savedPlans, "Game plan", txt); renderSavedPlans(); toast(did ? "Saved to general plans" : "Already saved"); }
+};
+
+// ---------------------------------------------------------------------------
+// Content studio - short-form content from the methodology.
+// ---------------------------------------------------------------------------
+function setupContent() { renderContentLib(); }
+function renderContentLib() {
+  const el = $("ct_lib"); if (!el) return;
+  el.innerHTML = (db.content || []).length ? db.content.map((s) => savedItemCard(s, "cocopy", "codel")).join("") : `<p class="small muted">Saved content appears here.</p>`;
+}
+async function runContent(mode) {
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  const platform = $("ct_platform").value;
+  const topic = $("ct_topic").value.trim();
+  const includeOffer = $("ct_pb").checked;
+  const btn = mode === "ideas" ? $("ct_ideas") : $("ct_script");
+  const label0 = btn.textContent;
+  btn.disabled = true; btn.textContent = "Writing…";
+  $("ct_out").textContent = mode === "ideas" ? "Brainstorming 10 ideas…" : "Writing your script…";
+  try {
+    const r = await fetch("/api/content", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({ mode, platform, topic, includeOffer, playbook: db.playbook }),
+    });
+    const j = await r.json();
+    if (!r.ok) { $("ct_out").textContent = "⚠ " + (j.error || "Failed"); }
+    else {
+      const text = j.text || "(empty)";
+      const label = `${platform} - ${mode === "ideas" ? "10 ideas" : (topic || "script")}`;
+      saveGeneral(db.content, label, text); renderContentLib();
+      $("ct_out").textContent = text + "\n\n(Auto-saved to library)";
+    }
+  } catch (e) { $("ct_out").textContent = "⚠ Network error - try again."; }
+  btn.disabled = false; btn.textContent = label0;
+}
+$("ct_script").onclick = () => runContent("script");
+$("ct_ideas").onclick = () => runContent("ideas");
+$("ct_copy").onclick = async () => { try { await navigator.clipboard.writeText($("ct_out").textContent); toast("Copied"); } catch (e) { toast("Copy failed"); } };
+$("ct_save").onclick = () => {
+  const txt = $("ct_out").textContent.replace(/\n\n\(Auto-saved to library\)$/, "");
+  if (txt.length < 20 || txt.startsWith("Pick a platform") || txt.startsWith("Writing") || txt.startsWith("Brainstorming")) { toast("Generate something first"); return; }
+  const label = `${$("ct_platform").value} - ${$("ct_topic").value.trim() || "saved"}`;
+  toast(saveGeneral(db.content, label, txt) ? "Saved to library" : "Already saved"); renderContentLib();
 };
 
 // Go

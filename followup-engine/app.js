@@ -228,6 +228,7 @@ if (!db.team) db.team = { setters: [], closers: [], csms: [] };
 if (!db.savedPlans) db.savedPlans = [];
 if (!db.content) db.content = [];
 if (!db.creator) db.creator = { niche: "", audience: "", pillars: "", platforms: "", cadence: "", goal: "" };
+if (!db.contentPlan) db.contentPlan = [];
 // Backfill the segment field on any leads created before segments existed.
 db.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
 
@@ -245,6 +246,7 @@ function load() {
     savedPlans: [],
     content: [],
     creator: { niche: "", audience: "", pillars: "", platforms: "", cadence: "", goal: "" },
+    contentPlan: [],
     leads: [],
   };
 }
@@ -1428,7 +1430,6 @@ $("coach_save").onclick = () => {
 // ---------------------------------------------------------------------------
 // Content studio - short-form content from the methodology.
 // ---------------------------------------------------------------------------
-let ContentPlan = [];
 function setupContent() { loadCreatorForm(); renderContentLib(); renderPlan(); }
 function loadCreatorForm() {
   const c = db.creator || {};
@@ -1446,15 +1447,18 @@ $("cr_save").onclick = () => {
 };
 function renderPlan() {
   const el = $("cr_planout"); if (!el) return;
-  if (!ContentPlan.length) { el.innerHTML = `<p class="small muted">Generate a plan and each idea gets a one-click "Write".</p>`; return; }
-  el.innerHTML = ContentPlan.map((p, i) => `
+  const plan = db.contentPlan || [];
+  if (!plan.length) { el.innerHTML = `<p class="small muted">Generate a plan and each idea gets a one-click "Write".</p>`; return; }
+  el.innerHTML = `<div class="small muted" style="margin-bottom:8px">${plan.length} posts saved. <a href="#" id="cr_clear">Clear plan</a></div>` + plan.map((p, i) => `
     <div class="lead" style="margin-bottom:8px">
       <div>
-        <div class="small"><strong>${esc(p.day)}</strong> <span class="chip">${esc(p.platform)}</span> <span class="chip role">${esc(p.pillar)}</span></div>
+        <div class="small"><strong>${esc(p.day)}</strong> <span class="chip">${esc(p.platform)}</span> <span class="chip role">${esc(p.pillar)}</span> ${p.done ? `<span class="chip" style="color:var(--green)">done</span>` : ""}</div>
         <div class="action small">${esc(p.hook)}</div>
       </div>
       <div class="btns"><button class="btn sm primary" data-writeidx="${i}">Write ▸</button></div>
     </div>`).join("");
+  const c = $("cr_clear");
+  if (c) c.onclick = (e) => { e.preventDefault(); if (confirm("Clear the saved content calendar?")) { db.contentPlan = []; save(); renderPlan(); } };
 }
 $("cr_plan").onclick = async () => {
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
@@ -1467,12 +1471,13 @@ $("cr_plan").onclick = async () => {
     });
     const j = await r.json();
     if (!r.ok) { toast(j.error || "Failed"); }
-    else { ContentPlan = j.plan || []; renderPlan(); toast(`Planned ${ContentPlan.length} posts`); }
+    else { db.contentPlan = j.plan || []; save(); renderPlan(); toast(`Planned & saved ${db.contentPlan.length} posts`); }
   } catch (e) { toast("Network error"); }
   $("cr_plan").disabled = false; $("cr_plan").textContent = "Plan my content";
 };
 function writeFromPlan(i) {
-  const p = ContentPlan[i]; if (!p) return;
+  const p = (db.contentPlan || [])[i]; if (!p) return;
+  p.done = true; save(); renderPlan();
   setView("content");
   const opt = [...$("ct_platform").options].find((o) => p.platform && o.value.toLowerCase().includes(p.platform.toLowerCase().split(" ")[0]));
   if (opt) $("ct_platform").value = opt.value;

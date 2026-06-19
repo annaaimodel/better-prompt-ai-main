@@ -1173,13 +1173,33 @@ function openAssetEdit(id) {
   };
   bg.querySelector("#ae_reset").onclick = () => { a.timesUsed = 0; a.lastUsedAt = null; save(); close(); renderAssets(); toast("Usage reset"); };
 }
+// Deep-merge an imported playbook over the current one WITHOUT letting empty
+// imported fields wipe existing values (prevents one starter pack erasing
+// another's methodology/offer/tone).
+function mergePlaybook(current, incoming) {
+  const base = defaultPlaybook();
+  const out = {
+    offer: Object.assign({}, base.offer, (current || {}).offer),
+    methodology: Object.assign({}, base.methodology, (current || {}).methodology),
+    tone: Object.assign({}, base.tone, (current || {}).tone),
+  };
+  ["offer", "methodology", "tone"].forEach((sec) => {
+    const inc = (incoming && incoming[sec]) || {};
+    Object.keys(inc).forEach((k) => {
+      const v = inc[k];
+      const nonEmpty = Array.isArray(v) ? v.length > 0 : (v != null && String(v).trim() !== "");
+      if (nonEmpty) out[sec][k] = v;
+    });
+  });
+  return out;
+}
 function importStarter(file) {
   const reader = new FileReader();
   reader.onload = () => {
     try {
       const data = JSON.parse(reader.result);
       let n = 0;
-      if (data.playbook) db.playbook = Object.assign(defaultPlaybook(), db.playbook, data.playbook);
+      if (data.playbook) db.playbook = mergePlaybook(db.playbook, data.playbook);
       if (Array.isArray(data.assets)) {
         const ids = new Set((db.assets || []).map((x) => x.id));
         data.assets.forEach((a) => { if (!a.id) a.id = uid(); if (!ids.has(a.id)) { db.assets.push(Object.assign({ timesUsed: 0, lastUsedAt: null, bestFor: [] }, a)); n++; } });

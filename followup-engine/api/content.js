@@ -51,10 +51,13 @@ function buildContext(body) {
       (cr.platforms ? "; platforms: " + clip(cr.platforms, 150) : "") +
       (cr.goal ? "; goal: " + clip(cr.goal, 200) : "") + ".");
   }
-  if (m.principles) out.push("METHODOLOGY (the source material - teach from this): " + clip(m.principles, 2200));
+  // Methodology is ALWAYS the backbone of the content.
+  if (m.principles) out.push("METHODOLOGY (the source material - every piece must teach or reframe from this): " + clip(m.principles, 2200));
+  else out.push("METHODOLOGY: (none loaded - lean on general high-ticket sales-psychology principles, but stay specific and useful).");
   if (m.never) out.push("METHOD DON'TS: " + clip(m.never, 400));
-  if (o.name || o.summary) out.push("OFFER (only weave in if relevant): " + clip(o.name, 120) + ". " + clip(o.summary, 500));
-  if (o.whoFor) out.push("AUDIENCE / IDEAL VIEWER: " + clip(o.whoFor, 300));
+  // Offer is only included when the user opts in.
+  if (body.includeOffer && (o.name || o.summary)) out.push("OFFER (weave in where natural): " + clip(o.name, 120) + ". " + clip(o.summary, 500));
+  if (body.includeOffer && o.whoFor) out.push("AUDIENCE / IDEAL VIEWER: " + clip(o.whoFor, 300));
   const voice = [t.formality, t.energy, t.sentenceLength, t.slang, t.signature].filter(Boolean).join("; ");
   if (voice) out.push("CREATOR VOICE (match this): " + clip(voice, 500));
   if (Array.isArray(t.avoid) ? false : t.avoid) out.push("NEVER SAY: " + clip(t.avoid, 300));

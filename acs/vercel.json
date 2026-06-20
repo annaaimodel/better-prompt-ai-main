@@ -6,6 +6,8 @@
     { "source": "/cards", "destination": "/flashcards.html" },
     { "source": "/quiz", "destination": "/quiz.html" },
     { "source": "/exams", "destination": "/quiz.html" },
-    { "source": "/tutor", "destination": "/tutor.html" }
+    { "source": "/tutor", "destination": "/tutor.html" },
+    { "source": "/howto", "destination": "/howto.html" },
+    { "source": "/how-tos", "destination": "/howto.html" }
   ]
 }

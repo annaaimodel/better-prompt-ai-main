@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1116">
+<meta name="description" content="Ask-a-question how-to assistant for Gas Safe engineers — installation, servicing and repair of gas boilers, cookers and fires, grounded in current UK standards.">
+<title>How-Tos · GasPass</title>
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head><body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">🔧</span><span><b>GasPass</b><span>How-Tos</span></span></a>
+  <div class="spacer"></div>
+  <button class="btn sm" id="clear">Clear</button>
+</div></header>
+
+<main class="wrap">
+  <div class="disc" style="margin-top:14px"><b>⚠ For Gas Safe–registered engineers.</b> Ask about <b>any boiler, cooker or fire — including specific brands & models</b> (e.g. Worcester Greenstar, Vaillant ecoTEC, Ideal Logic, a fault code). It searches the web for model-specific facts. The appliance's own <b>manufacturer instructions</b> always take precedence (and are a legal requirement) — verify safety-critical figures against the MI, and only carry out work you're registered and competent to do.</div>
+
+  <!-- appliance + task pickers seed a question -->
+  <div class="filters" id="appPick" style="margin-bottom:4px"></div>
+  <div class="filters" id="taskPick"></div>
+
+  <div class="chat" id="chat"></div>
+</main>
+
+<div class="composer"><div class="wrap">
+  <div class="suggest" id="suggest"></div>
+  <div class="row">
+    <textarea id="box" rows="1" placeholder="Ask about any make/model… e.g. Worcester Greenstar 30i fault EA"></textarea>
+    <button class="btn blue" id="send">Send</button>
+  </div>
+</div></div>
+
+<nav class="nav">
+  <a href="index.html"><span class="i">🏠</span>Home</a>
+  <a href="reference.html"><span class="i">📖</span>Reference</a>
+  <a href="flashcards.html"><span class="i">🃏</span>Cards</a>
+  <a href="quiz.html"><span class="i">📝</span>Exams</a>
+  <a href="tutor.html"><span class="i">💬</span>Tutor</a>
+  <a class="on" href="howto.html"><span class="i">🔧</span>How-Tos</a>
+</nav>
+
+<script src="howto-data.js"></script>
+<script>
+  const A = window.ACSHOWTO;
+
+  // Build grounding context from the vetted how-to notes + standards.
+  const CONTEXT = (() => {
+    const std = "CURRENT UK STANDARDS:\n" + A.standards.map(s => `- ${s.ref}: ${s.scope}`).join('\n');
+    const guides = A.guides.map(g => {
+      const app = A.appliances.find(a => a.id === g.appliance).name;
+      const task = A.tasks.find(t => t.id === g.task).name;
+      let s = `[${app} — ${task}] ${g.title}\n${g.summary}\nSteps:\n` + g.steps.map((x, i) => `${i + 1}. ${x}`).join('\n');
+      if (g.faults) s += '\nCommon faults:\n' + g.faults.map(f => `- ${f.symptom}: ${f.checks.join('; ')}`).join('\n');
+      if (g.safety) s += '\nSafety: ' + g.safety.join(' ');
+      s += '\nStandards: ' + g.standards.join('; ');
+      return s;
+    }).join('\n\n');
+    return std + '\n\n' + guides;
+  })();
+
+  // ---- pickers that seed a starter question ----
+  let pickApp = '', pickTask = '';
+  const appEl = document.getElementById('appPick');
+  const taskEl = document.getElementById('taskPick');
+  function renderPickers() {
+    appEl.innerHTML = '';
+    A.appliances.forEach(a => {
+      const b = document.createElement('button');
+      b.className = 'chip' + (pickApp === a.id ? ' on' : '');
+      b.textContent = a.icon + ' ' + a.name;
+      if (pickApp === a.id) b.style.background = a.color;
+      b.onclick = () => { pickApp = pickApp === a.id ? '' : a.id; renderPickers(); };
+      appEl.appendChild(b);
+    });
+    taskEl.innerHTML = '';
+    A.tasks.forEach(t => {
+      const b = document.createElement('button');
+      b.className = 'chip' + (pickTask === t.id ? ' on' : '');
+      b.textContent = t.icon + ' ' + t.name;
+      if (pickTask === t.id) b.style.background = 'var(--flame)';
+      b.onclick = () => { pickTask = pickTask === t.id ? '' : t.id; renderPickers(); seedFromPickers(); };
+      taskEl.appendChild(b);
+    });
+  }
+  function seedFromPickers() {
+    if (!pickApp || !pickTask) return;
+    const a = A.appliances.find(x => x.id === pickApp);
+    const t = A.tasks.find(x => x.id === pickTask).name.toLowerCase();
+    box.value = `How do I ${t.replace('repair / fault-finding','fault-find').replace('servicing','service').replace('installation','install')} a ${a.name.toLowerCase().replace('gas ','').replace(/s$/, '')}? Walk me through it step by step.`;
+    box.focus();
+  }
+
+  const SAMPLES = [
+    "Worcester Greenstar 4000 showing EA — what now?",
+    "How do I service a Vaillant ecoTEC plus?",
+    "Ideal Logic Combi losing pressure — diagnose it",
+    "Baxi 800 fault codes and what they mean",
+    "Install procedure for a freestanding gas cooker?",
+    "Gas fire pilot won't stay lit — how do I diagnose it?",
+  ];
+
+  const chat = document.getElementById('chat');
+  const box = document.getElementById('box');
+  const sendBtn = document.getElementById('send');
+  let history = [];
+  let busy = false;
+
+  const sg = document.getElementById('suggest');
+  SAMPLES.forEach(s => { const b = document.createElement('button'); b.textContent = s; b.onclick = () => { box.value = s; ask(); }; sg.appendChild(b); });
+
+  function greet() {
+    chat.innerHTML = '';
+    addMsg('a', "Hi — I'm your how-to assistant for installs, servicing and repairs on gas boilers, cookers and fires. Ask about any make and model (Worcester, Vaillant, Ideal, Baxi, Glow-worm…), a fault code, or a procedure — I'll look up model-specific details. Pick an appliance + task above, or just ask. What are you working on?");
+  }
+  function addMsg(role, text, sources) {
+    const d = document.createElement('div');
+    d.className = 'msg ' + role;
+    const body = document.createElement('div');
+    body.textContent = text;
+    d.appendChild(body);
+    if (role === 'a') {
+      if (sources && sources.length) {
+        const sw = document.createElement('div'); sw.className = 'src';
+        sw.innerHTML = '🔎 Sources: ' + sources.map(s =>
+          `<a href="${s.url}" target="_blank" rel="noopener" style="color:var(--blue2)">${(s.title||s.url).replace(/</g,'&lt;')}</a>`
+        ).join(' · ');
+        d.appendChild(sw);
+      }
+      const s = document.createElement('div'); s.className = 'src';
+      s.textContent = 'Field reference — confirm model-specific figures against the manufacturer instructions.';
+      d.appendChild(s);
+    }
+    chat.appendChild(d);
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    return d;
+  }
+  function thinking() {
+    const d = document.createElement('div');
+    d.className = 'msg a';
+    d.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
+    chat.appendChild(d);
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    return d;
+  }
+
+  async function ask() {
+    const q = box.value.trim();
+    if (!q || busy) return;
+    busy = true; sendBtn.disabled = true;
+    addMsg('u', q);
+    box.value = ''; box.style.height = 'auto';
+    const wait = thinking();
+    try {
+      const r = await fetch('/api/ask', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mode: 'howto', question: q, context: CONTEXT, history })
+      });
+      const data = await r.json();
+      wait.remove();
+      if (!r.ok) { addMsg('a', '⚠ ' + (data.error || 'Something went wrong. Please try again.')); }
+      else {
+        addMsg('a', data.text || 'No answer came back — try rephrasing.', data.sources);
+        history.push({ role: 'user', content: q });
+        history.push({ role: 'assistant', content: data.text || '' });
+        history = history.slice(-8);
+      }
+    } catch (e) {
+      wait.remove();
+      addMsg('a', '⚠ Network error — check your connection and try again.');
+    }
+    busy = false; sendBtn.disabled = false; box.focus();
+  }
+
+  sendBtn.onclick = ask;
+  box.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
+  box.addEventListener('input', () => { box.style.height = 'auto'; box.style.height = Math.min(box.scrollHeight, 140) + 'px'; });
+  document.getElementById('clear').onclick = () => { history = []; pickApp = ''; pickTask = ''; renderPickers(); greet(); };
+
+  renderPickers();
+  greet();
+</script>
+</body></html>

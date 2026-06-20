@@ -27,6 +27,13 @@ and MET1 (metering). Designed to be extended later (commercial, LPG, etc.).
 - **💬 AI gas tutor** — ask anything in plain English. Answers are *grounded* in the
   app's own vetted notes (sent from the browser) so the model stays anchored to
   reviewed content.
+- **🔧 How-Tos (field assistant)** — an ask-a-question assistant for *Gas Safe–registered
+  engineers* covering installation, servicing and repair of boilers, cookers and fires.
+  Grounded in a vetted, current-standards knowledge base (`howto-data.js`) **and** wired
+  to **live web search** (`web_search_20260209`) so it can answer **brand/model-specific**
+  questions — Worcester, Vaillant, Ideal, Baxi, Glow-worm, fault codes, specs — with
+  sources. It always defers to the appliance's manufacturer instructions for
+  safety-critical figures, and never fabricates a model-specific number or fault code.
 
 ## Important — this is a revision aid
 

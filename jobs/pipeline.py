@@ -68,7 +68,7 @@ SUCCESS_TITLE = ["customer success", "client success", "onboarding"]
 SUCCESS_ACR = ["csm"]
 # VA / Social / Chat — matched on the JOB TITLE ONLY, and REMOTE ONLY. This bucket
 # is EXEMPT from the high-ticket requirement (these roles rarely say "high ticket").
-VA_TITLE = ["virtual assistant", "chatter"]
+VA_TITLE = ["virtual assistant"]
 VA_ACR = ["va"]
 
 # Remote detection: remote if the title/location says so, or it's a remote board.
@@ -145,8 +145,9 @@ def is_english(title: str) -> bool:
 # Blocked terms — spam companies/keywords we never list. Matched against the
 # company and title with spaces removed, so "Apex Focus Group" / "ApexFocusGroup"
 # both match, and "survey" catches paid-survey / market-research-panel spam.
+# "chatter"/"onlyfans" catch the OnlyFans adult-chat-operator scam listings.
 # Add more lowercase, de-spaced substrings here to block others.
-BLOCKED_TERMS = ["apexfocusgroup", "survey"]
+BLOCKED_TERMS = ["apexfocusgroup", "survey", "chatter", "onlyfans"]
 
 def is_blocked(j) -> bool:
     hay = (str(j.get("company", "")) + " " + str(j.get("title", ""))).lower().replace(" ", "")
@@ -434,7 +435,7 @@ def _first_env(*names):
 SEARCH_TERMS = ["high ticket closer", "appointment setter", "sales closer",
                 "remote closer", "sales development representative",
                 "customer success manager", "onboarding specialist",
-                "remote virtual assistant", "remote chatter",
+                "remote virtual assistant",
                 "online chat agent",
                 "dm setter", "instagram appointment setter", "cold caller",
                 "phone setter", "inbound sales representative"]

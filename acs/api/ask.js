@@ -1,9 +1,10 @@
-// AI gas tutor for the GasPass ACS revision app.
+// AI assistant for the GasPass app. Two modes:
+//   mode "tutor"  → ACS revision tutor (default), grounded in data.js notes.
+//   mode "howto"  → practical install/service/repair field assistant for
+//                   Gas Safe–registered engineers, grounded in howto-data.js.
 //
-// Answers UK domestic gas (ACS) revision questions, grounded in the app's own
-// vetted reference notes which the browser sends as `context` (built from
-// data.js). Keeping the knowledge base on the client means there is a single
-// source of truth and the model stays anchored to content we've reviewed.
+// The browser sends the relevant vetted notes as `context`, so there is a
+// single source of truth and the model stays anchored to reviewed content.
 //
 // Env var (set in Vercel):
 //   ANTHROPIC_API_KEY   (required)  your Anthropic API key
@@ -13,7 +14,7 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
 
-const SYSTEM =
+const TUTOR_SYSTEM =
 `You are "GasPass Tutor", a patient, plain-English revision tutor for UK heating engineers studying for their ACS gas assessments (CCN1 core gas safety plus CENWAT, CKR1, HTR1 and MET1).
 
 HOW TO ANSWER
@@ -28,16 +29,41 @@ SAFETY
 - Never invent specific numbers you are unsure of. It is better to give the method and the source than a wrong figure.
 - Do not help anyone carry out gas work they are not registered/competent to do; encourage proper ACS training and Gas Safe registration.`;
 
+const HOWTO_SYSTEM =
+`You are "GasPass How-To", a practical field assistant for QUALIFIED, GAS SAFE–REGISTERED UK heating engineers. You answer how-to questions on the INSTALLATION, SERVICING and REPAIR/FAULT-FINDING of domestic gas boilers, cookers and gas fires.
+
+WHO YOU ARE TALKING TO
+- Assume the user is a competent, Gas Safe–registered engineer working within their categories. Give professional, practical, ordered guidance — not consumer "call an engineer" answers.
+
+HOW TO ANSWER
+- Lead with a clear, ORDERED procedure (numbered steps) or a focused fault-finding tree. Be specific and practical.
+- UK terminology and UK English. Cite the governing standard where relevant (e.g. BS 6798, BS 6891, BS 5440-1/-2:2023, BS 5871, BS 6172, BS 7593:2019, BS 7967, IGEM/UP/1B Ed 4, IGEM/G/11 GIUSP, Boiler Plus, Approved Docs L/J).
+- GROUND general procedure and UK standards in the HOW-TO NOTES below whenever they cover the topic.
+- BRAND / MODEL-SPECIFIC questions (e.g. "Worcester Greenstar 4000", "Vaillant ecoTEC plus", "Ideal Logic", "Baxi 800", a specific fault/error code, a specific gas rate or CO₂ setpoint): USE THE WEB SEARCH TOOL to find current, accurate information for that exact model, and cite where it came from. Do NOT answer model-specific facts from memory.
+- The MANUFACTURER'S INSTRUCTIONS (MI) always take precedence and are a legal requirement — say so for anything model-specific (clearances, gas rates, CO₂/O₂ setpoints, spark gaps, expansion-vessel pre-charge, fault/error codes, injector sizes). Even after searching, tell the user to confirm the exact figure/procedure against that model's official MI / manufacturer technical line / engineer app before relying on it.
+- Never fabricate a fault-code meaning or a model-specific number. If search doesn't surface a confident answer, say so and point them to the MI / manufacturer helpline.
+- For safety-critical figures (tightness-test permissible drop, ventilation free areas, terminal clearances, combustion pass criteria), give the method and the current standard, and remind them to verify against the live standard + MI.
+
+SAFETY & SCOPE
+- Always re-prove gas tightness and (where relevant) combustion after any gas-side work; re-do flue/spillage tests after work on open-flued appliances.
+- If a situation is unsafe, point them to GIUSP (IGEM/G/11): classify Immediately Dangerous or At Risk and act accordingly (note NCS is no longer part of GIUSP).
+- Only support work the user is registered and competent to do. This is a professional aid, not a substitute for accredited training, the standards, or the appliance MI.`;
+
+const SYSTEMS = { tutor: TUTOR_SYSTEM, howto: HOWTO_SYSTEM };
+const NOTES_LABEL = { tutor: "REVISION NOTES (verified study content)", howto: "HOW-TO NOTES (verified field reference)" };
+
 function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
 
 export default async function handler(req, res) {
   if (req.method !== "POST") { res.status(405).json({ error: "POST only" }); return; }
   if (!process.env.ANTHROPIC_API_KEY) {
-    res.status(503).json({ error: "Tutor isn't configured yet: ANTHROPIC_API_KEY is not set in Vercel." });
+    res.status(503).json({ error: "Not configured yet: ANTHROPIC_API_KEY is not set in Vercel." });
     return;
   }
 
   const body = req.body || {};
+  const mode = body.mode === "howto" ? "howto" : "tutor";
+  const SYSTEM = SYSTEMS[mode];
   const question = clip(body.question, 4000).trim();
   const context = clip(body.context, 60000); // vetted notes sent from the browser
   if (question.length < 2) { res.status(400).json({ error: "Type a question first." }); return; }
@@ -50,19 +76,55 @@ export default async function handler(req, res) {
   messages.push({ role: "user", content: question });
 
   const system = context
-    ? `${SYSTEM}\n\n===== REVISION NOTES (verified study content) =====\n${context}\n===== END NOTES =====`
+    ? `${SYSTEM}\n\n===== ${NOTES_LABEL[mode]} =====\n${context}\n===== END NOTES =====`
     : SYSTEM;
 
+  // How-To mode gets live web search so it can answer brand/model-specific
+  // questions (fault codes, specs, procedures) for any appliance. The
+  // _20260209 variant has built-in dynamic filtering (Sonnet 4.6 supports it).
+  const params = {
+    model: "claude-sonnet-4-6",
+    max_tokens: mode === "howto" ? 1500 : 900,
+    system,
+    messages,
+  };
+  if (mode === "howto") {
+    params.tools = [{ type: "web_search_20260209", name: "web_search", max_uses: 6 }];
+  }
+
   try {
-    const msg = await client.messages.create({
-      model: "claude-sonnet-4-6",
-      max_tokens: 900,
-      system,
-      messages,
-    });
-    const text = (msg.content.find(b => b.type === "text") || {}).text || "";
-    res.status(200).json({ text, usage: msg.usage });
+    // Web search runs a server-side loop; it can return stop_reason "pause_turn"
+    // when it hits the per-turn tool limit — re-send to let it resume.
+    let msg = await client.messages.create(params);
+    let convo = messages;
+    for (let i = 0; i < 4 && msg.stop_reason === "pause_turn"; i++) {
+      convo = [...convo, { role: "assistant", content: msg.content }];
+      msg = await client.messages.create({ ...params, messages: convo });
+    }
+
+    // Join all text blocks (web search + citations can produce several).
+    const text = msg.content
+      .filter(b => b.type === "text")
+      .map(b => b.text)
+      .join("")
+      .trim() || "No answer came back — try rephrasing.";
+
+    // Collect any web sources the model actually searched, for a footer.
+    const sources = [];
+    const seen = new Set();
+    for (const b of msg.content) {
+      if (b.type === "web_search_tool_result" && Array.isArray(b.content)) {
+        for (const r of b.content) {
+          if (r && r.url && !seen.has(r.url)) {
+            seen.add(r.url);
+            sources.push({ title: clip(r.title, 160) || r.url, url: r.url });
+          }
+        }
+      }
+    }
+
+    res.status(200).json({ text, sources: sources.slice(0, 6), usage: msg.usage });
   } catch (e) {
-    res.status(e?.status || 500).json({ error: e?.message || "The tutor couldn't answer just now — please try again." });
+    res.status(e?.status || 500).json({ error: e?.message || "Couldn't answer just now — please try again." });
   }
 }

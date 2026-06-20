@@ -1,0 +1,9 @@
+{
+  "name": "gaspass-acs",
+  "private": true,
+  "type": "module",
+  "description": "GasPass — ACS revision app for UK heating engineers (CCN1, CENWAT, CKR1, HTR1, MET1).",
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest"
+  }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1116">
+<meta name="description" content="AI gas tutor for UK heating engineers — ask any ACS revision question in plain English, grounded in vetted notes.">
+<title>AI Gas Tutor · GasPass ACS</title>
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head><body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">🔥</span><span><b>GasPass</b><span>AI Tutor</span></span></a>
+  <div class="spacer"></div>
+  <button class="btn sm" id="clear">Clear</button>
+</div></header>
+
+<main class="wrap">
+  <div class="disc" style="margin-top:14px"><b>⚠ Study aid.</b> The tutor is for revision and can be wrong. Always verify safety-critical figures against current standards and manufacturer instructions, and only carry out gas work you're registered and competent to do.</div>
+
+  <div class="chat" id="chat"></div>
+</main>
+
+<div class="composer"><div class="wrap">
+  <div class="suggest" id="suggest"></div>
+  <div class="row">
+    <textarea id="box" rows="1" placeholder="Ask the tutor… e.g. What's the max CO/CO₂ ratio?"></textarea>
+    <button class="btn blue" id="send">Send</button>
+  </div>
+</div></div>
+
+<nav class="nav">
+  <a href="index.html"><span class="i">🏠</span>Home</a>
+  <a href="reference.html"><span class="i">📖</span>Reference</a>
+  <a href="flashcards.html"><span class="i">🃏</span>Cards</a>
+  <a href="quiz.html"><span class="i">📝</span>Exams</a>
+  <a class="on" href="tutor.html"><span class="i">💬</span>Tutor</a>
+</nav>
+
+<script src="data.js"></script>
+<script>
+  // Build the grounding context once from the vetted notes.
+  const CONTEXT = ACS.topics.map(t => {
+    const cat = ACS.categories.find(c => c.id === t.cat);
+    return `[${cat.name} — ${cat.full}] ${t.title}\n${t.summary}\n- ` +
+      t.points.join('\n- ') +
+      (t.watch ? `\nWatch out: ${t.watch}` : '') +
+      `\nStandards: ${t.refs.join('; ')}`;
+  }).join('\n\n');
+
+  const chat = document.getElementById('chat');
+  const box = document.getElementById('box');
+  const sendBtn = document.getElementById('send');
+  let history = [];
+  let busy = false;
+
+  const SAMPLES = [
+    "What's the max CO/CO₂ ratio?",
+    "Explain tightness testing simply",
+    "Ventilation for an open-flued boiler?",
+    "Where must the bonding clamp go?",
+    "What is Boiler Plus?",
+  ];
+  const sg = document.getElementById('suggest');
+  SAMPLES.forEach(s => { const b = document.createElement('button'); b.textContent = s; b.onclick = () => { box.value = s; ask(); }; sg.appendChild(b); });
+
+  function greet() {
+    chat.innerHTML = '';
+    addMsg('a', "Hi — I'm your ACS gas tutor. Ask me anything on core gas safety, boilers, cookers, fires or metering and I'll keep it plain and exam-focused. What shall we cover?");
+  }
+  function addMsg(role, text) {
+    const d = document.createElement('div');
+    d.className = 'msg ' + role;
+    d.textContent = text;
+    if (role === 'a') {
+      const s = document.createElement('div'); s.className = 'src';
+      s.textContent = 'Revision aid — verify safety-critical figures against current standards.';
+      d.appendChild(s);
+    }
+    chat.appendChild(d);
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    return d;
+  }
+  function thinking() {
+    const d = document.createElement('div');
+    d.className = 'msg a';
+    d.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
+    chat.appendChild(d);
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    return d;
+  }
+
+  async function ask() {
+    const q = box.value.trim();
+    if (!q || busy) return;
+    busy = true; sendBtn.disabled = true;
+    addMsg('u', q);
+    box.value = ''; box.style.height = 'auto';
+    const wait = thinking();
+    try {
+      const r = await fetch('/api/ask', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: q, context: CONTEXT, history })
+      });
+      const data = await r.json();
+      wait.remove();
+      if (!r.ok) { addMsg('a', '⚠ ' + (data.error || 'Something went wrong. Please try again.')); }
+      else {
+        addMsg('a', data.text || 'No answer came back — try rephrasing.');
+        history.push({ role: 'user', content: q });
+        history.push({ role: 'assistant', content: data.text || '' });
+        history = history.slice(-8);
+      }
+    } catch (e) {
+      wait.remove();
+      addMsg('a', '⚠ Network error — check your connection and try again.');
+    }
+    busy = false; sendBtn.disabled = false; box.focus();
+  }
+
+  sendBtn.onclick = ask;
+  box.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
+  box.addEventListener('input', () => { box.style.height = 'auto'; box.style.height = Math.min(box.scrollHeight, 140) + 'px'; });
+  document.getElementById('clear').onclick = () => { history = []; greet(); };
+
+  greet();
+</script>
+</body></html>

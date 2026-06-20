@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1116">
+<meta name="description" content="Searchable ACS reference library for UK heating engineers — CCN1, CENWAT, CKR1, HTR1 and MET1 with the standards cited.">
+<title>Reference Library · GasPass ACS</title>
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head><body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">🔥</span><span><b>GasPass</b><span>Reference</span></span></a>
+  <div class="spacer"></div>
+  <span class="pill" id="count">—</span>
+</div></header>
+
+<main class="wrap">
+  <section class="hero" style="padding:24px 0 6px">
+    <h1 style="font-size:24px">Reference library</h1>
+    <p style="font-size:14px">Search or filter by category. Every topic cites the standards — verify against current editions.</p>
+  </section>
+
+  <input id="search" class="search" type="search" placeholder="Search topics… (e.g. ventilation, tightness, bonding, condensate)" autocomplete="off">
+  <div class="filters" id="filters"></div>
+
+  <div id="list"></div>
+  <div class="empty" id="empty" hidden>No topics match — try another word or clear the filter.</div>
+
+  <div class="disc"><b>⚠ Revision aid only.</b> Figures and procedures must be checked against the current GSIUR 1998, the relevant BS/IGEM standards and manufacturer instructions.</div>
+  <p class="foot">GasPass · ACS reference</p>
+</main>
+
+<nav class="nav">
+  <a href="index.html"><span class="i">🏠</span>Home</a>
+  <a class="on" href="reference.html"><span class="i">📖</span>Reference</a>
+  <a href="flashcards.html"><span class="i">🃏</span>Cards</a>
+  <a href="quiz.html"><span class="i">📝</span>Exams</a>
+  <a href="tutor.html"><span class="i">💬</span>Tutor</a>
+</nav>
+
+<script src="data.js"></script>
+<script>
+  const cats = ACS.categories, topics = ACS.topics;
+  const catMap = Object.fromEntries(cats.map(c => [c.id, c]));
+  let active = 'all', query = '';
+
+  const fEl = document.getElementById('filters');
+  const mkChip = (id, name, color) => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (id === active ? ' on' : '');
+    b.textContent = name; b.dataset.id = id;
+    if (id === active && color) b.style.background = color;
+    b.onclick = () => { active = id; location.hash = id === 'all' ? '' : id; render(); };
+    return b;
+  };
+  function buildChips() {
+    fEl.innerHTML = '';
+    fEl.appendChild(mkChip('all', 'All'));
+    cats.forEach(c => fEl.appendChild(mkChip(c.id, c.name, c.color)));
+  }
+
+  const list = document.getElementById('list');
+  const empty = document.getElementById('empty');
+
+  function render() {
+    buildChips();
+    const q = query.trim().toLowerCase();
+    const items = topics.filter(t => {
+      if (active !== 'all' && t.cat !== active) return false;
+      if (!q) return true;
+      const hay = (t.title + ' ' + t.summary + ' ' + t.points.join(' ') + ' ' + t.refs.join(' ')).toLowerCase();
+      return hay.includes(q);
+    });
+    document.getElementById('count').textContent = items.length + ' topic' + (items.length !== 1 ? 's' : '');
+    empty.hidden = items.length > 0;
+    list.innerHTML = '';
+    items.forEach(t => {
+      const c = catMap[t.cat];
+      const d = document.createElement('details');
+      d.className = 'topic'; d.id = t.id;
+      d.innerHTML = `
+        <summary>
+          <span class="tag" style="background:${c.color}">${c.name}</span>
+          <span class="ttl">${t.title}</span>
+          <span class="arw">▸</span>
+        </summary>
+        <div class="body">
+          <p class="sum">${t.summary}</p>
+          <ul>${t.points.map(p => `<li>${p}</li>`).join('')}</ul>
+          ${t.watch ? `<div class="watch"><b>Watch out:</b> ${t.watch}</div>` : ''}
+          <div class="refs">${t.refs.map(r => `<span class="ref">${r}</span>`).join('')}</div>
+        </div>`;
+      list.appendChild(d);
+    });
+  }
+
+  document.getElementById('search').addEventListener('input', e => { query = e.target.value; render(); });
+
+  // open from hash (category filter or specific topic)
+  function fromHash() {
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (!h) return;
+    if (catMap[h]) { active = h; render(); return; }
+    const t = topics.find(x => x.id === h);
+    if (t) { active = 'all'; render(); const el = document.getElementById(h); if (el) { el.open = true; el.scrollIntoView({behavior:'smooth', block:'center'}); } }
+  }
+  render();
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
+</script>
+</body></html>

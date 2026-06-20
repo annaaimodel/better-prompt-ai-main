@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1116">
+<meta name="description" content="ACS revision for UK heating engineers — core gas safety (CCN1) plus boilers, cookers, fires and metering. Reference, flashcards, mock exams and an AI gas tutor.">
+<title>GasPass · ACS Revision for Heating Engineers</title>
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head><body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">
+    <span class="mark">🔥</span>
+    <span><b>GasPass</b><span>ACS Revision</span></span>
+  </a>
+  <div class="spacer"></div>
+  <span class="pill">UK · Domestic</span>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Pass your <span class="flame-txt">ACS</span> with confidence</h1>
+    <p>Everything a UK domestic heating engineer needs to revise — core gas safety plus boilers, cookers, fires and metering. Quick to digest, easy to search, and an AI tutor for any question.</p>
+  </section>
+
+  <div class="tiles">
+    <a class="tile" href="reference.html"><span class="ic">📖</span><div><h3>Reference library</h3><p>Bite-size, searchable notes on every topic — with the standards cited.</p></div></a>
+    <a class="tile" href="flashcards.html"><span class="ic">🃏</span><div><h3>Flashcards</h3><p>Rapid recall on the facts and figures examiners love to ask.</p></div></a>
+    <a class="tile" href="quiz.html"><span class="ic">📝</span><div><h3>Mock exams</h3><p>Practice questions per category, marked instantly with explanations.</p></div></a>
+    <a class="tile" href="tutor.html"><span class="ic">💬</span><div><h3>AI gas tutor</h3><p>Ask anything in plain English — answers grounded in the revision notes.</p></div></a>
+  </div>
+
+  <h2 style="margin-top:24px;font-size:18px">What's covered</h2>
+  <div class="grid" id="cats"></div>
+
+  <div class="disc">
+    <b>⚠ Revision aid only.</b> GasPass is drafted from UK gas regulations (GSIUR 1998) and British/IGEM standards as a study tool. Figures and procedures must always be checked against the <b>current</b> editions of the official documents, manufacturer instructions and your accredited training centre's materials. It does not replace accredited ACS training or assessment.
+  </div>
+
+  <p class="foot">GasPass · ACS revision for UK heating engineers · Study aid, not a substitute for official training.</p>
+</main>
+
+<nav class="nav">
+  <a class="on" href="index.html"><span class="i">🏠</span>Home</a>
+  <a href="reference.html"><span class="i">📖</span>Reference</a>
+  <a href="flashcards.html"><span class="i">🃏</span>Cards</a>
+  <a href="quiz.html"><span class="i">📝</span>Exams</a>
+  <a href="tutor.html"><span class="i">💬</span>Tutor</a>
+</nav>
+
+<script src="data.js"></script>
+<script>
+  const g = document.getElementById('cats');
+  ACS.categories.forEach(c => {
+    const n = ACS.topics.filter(t => t.cat === c.id).length;
+    const a = document.createElement('a');
+    a.className = 'card'; a.href = 'reference.html#' + c.id;
+    a.innerHTML = `<h3><span class="tag" style="background:${c.color}">${c.name}</span> ${c.full}</h3>
+      <p>${n} topic${n!==1?'s':''} · tap to revise</p>`;
+    g.appendChild(a);
+  });
+</script>
+</body></html>

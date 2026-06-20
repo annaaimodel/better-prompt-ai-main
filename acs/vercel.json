@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/reference", "destination": "/reference.html" },
+    { "source": "/flashcards", "destination": "/flashcards.html" },
+    { "source": "/cards", "destination": "/flashcards.html" },
+    { "source": "/quiz", "destination": "/quiz.html" },
+    { "source": "/exams", "destination": "/quiz.html" },
+    { "source": "/tutor", "destination": "/tutor.html" }
+  ]
+}

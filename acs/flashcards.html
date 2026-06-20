@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1116">
+<meta name="description" content="ACS flashcards for UK heating engineers — rapid recall on gas safety facts and figures.">
+<title>Flashcards · GasPass ACS</title>
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head><body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">🔥</span><span><b>GasPass</b><span>Flashcards</span></span></a>
+  <div class="spacer"></div>
+  <span class="pill" id="count">—</span>
+</div></header>
+
+<main class="wrap">
+  <section class="hero" style="padding:22px 0 4px">
+    <h1 style="font-size:24px">Flashcards</h1>
+    <p style="font-size:14px">Tap the card to flip. Filter by category, shuffle for a fresh run.</p>
+  </section>
+
+  <div class="filters" id="filters"></div>
+
+  <div class="fc-stage">
+    <div class="fc" id="fc">
+      <div class="face front"><div class="lbl" id="catL">—</div><div class="q" id="q">Loading…</div><div class="hint">tap to reveal the answer</div></div>
+      <div class="face back"><div class="lbl">Answer</div><div class="a" id="a"></div><div class="hint">tap to flip back</div></div>
+    </div>
+  </div>
+
+  <div class="fc-nav">
+    <button class="btn sm" id="prev">‹ Prev</button>
+    <span class="counter" id="counter">0 / 0</span>
+    <button class="btn sm" id="next">Next ›</button>
+  </div>
+  <div style="text-align:center;margin-top:12px">
+    <button class="btn sm" id="shuffle">🔀 Shuffle</button>
+  </div>
+
+  <div class="disc"><b>⚠ Revision aid only.</b> Verify all figures against current standards and manufacturer instructions.</div>
+  <p class="foot">GasPass · ACS flashcards</p>
+</main>
+
+<nav class="nav">
+  <a href="index.html"><span class="i">🏠</span>Home</a>
+  <a href="reference.html"><span class="i">📖</span>Reference</a>
+  <a class="on" href="flashcards.html"><span class="i">🃏</span>Cards</a>
+  <a href="quiz.html"><span class="i">📝</span>Exams</a>
+  <a href="tutor.html"><span class="i">💬</span>Tutor</a>
+</nav>
+
+<script src="data.js"></script>
+<script>
+  const cats = ACS.categories, all = ACS.flashcards;
+  const catMap = Object.fromEntries(cats.map(c => [c.id, c]));
+  let active = 'all', deck = [], i = 0;
+
+  const fEl = document.getElementById('filters');
+  function chips() {
+    fEl.innerHTML = '';
+    const mk = (id, name, color) => {
+      const b = document.createElement('button');
+      b.className = 'chip' + (id === active ? ' on' : '');
+      b.textContent = name;
+      if (id === active && color) b.style.background = color;
+      b.onclick = () => { active = id; build(); };
+      return b;
+    };
+    fEl.appendChild(mk('all', 'All'));
+    cats.forEach(c => fEl.appendChild(mk(c.id, c.name, c.color)));
+  }
+
+  const fc = document.getElementById('fc');
+  function build(shuffle) {
+    deck = all.filter(c => active === 'all' || c.cat === active);
+    if (shuffle) for (let k = deck.length - 1; k > 0; k--) { const j = Math.random() * (k + 1) | 0; [deck[k], deck[j]] = [deck[j], deck[k]]; }
+    i = 0; chips(); show();
+    document.getElementById('count').textContent = deck.length + ' cards';
+  }
+  function show() {
+    fc.classList.remove('flip');
+    const c = deck[i]; if (!c) return;
+    const cat = catMap[c.cat];
+    const l = document.getElementById('catL');
+    l.textContent = cat.name + ' · ' + cat.full; l.style.color = cat.color;
+    document.getElementById('q').textContent = c.q;
+    document.getElementById('a').textContent = c.a;
+    document.getElementById('counter').textContent = (i + 1) + ' / ' + deck.length;
+  }
+  fc.onclick = () => fc.classList.toggle('flip');
+  document.getElementById('next').onclick = () => { i = (i + 1) % deck.length; show(); };
+  document.getElementById('prev').onclick = () => { i = (i - 1 + deck.length) % deck.length; show(); };
+  document.getElementById('shuffle').onclick = () => build(true);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') document.getElementById('next').click();
+    else if (e.key === 'ArrowLeft') document.getElementById('prev').click();
+    else if (e.key === ' ') { e.preventDefault(); fc.classList.toggle('flip'); }
+  });
+  build();
+</script>
+</body></html>

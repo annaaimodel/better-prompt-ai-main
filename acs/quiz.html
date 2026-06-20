@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1116">
+<meta name="description" content="ACS mock exams for UK heating engineers — multiple-choice practice questions marked instantly with explanations.">
+<title>Mock Exams · GasPass ACS</title>
+<link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head><body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">🔥</span><span><b>GasPass</b><span>Mock Exams</span></span></a>
+  <div class="spacer"></div>
+  <span class="pill" id="count">—</span>
+</div></header>
+
+<main class="wrap">
+  <!-- start screen -->
+  <section id="start">
+    <div class="hero" style="padding:22px 0 4px">
+      <h1 style="font-size:24px">Mock exams</h1>
+      <p style="font-size:14px">Pick a category, answer at your own pace, see your score and the reasoning behind every answer.</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div style="text-align:center;margin:18px 0">
+      <button class="btn primary" id="begin">Start mock exam ›</button>
+    </div>
+    <div class="disc"><b>⚠ Practice questions only.</b> These are revision questions, not official ACS exam papers. Always study from current standards and your training centre's materials.</div>
+  </section>
+
+  <!-- quiz screen -->
+  <section id="play" hidden>
+    <div class="progress"><i id="bar"></i></div>
+    <div id="qhost"></div>
+    <div style="text-align:center;margin:8px 0 4px"><button class="btn" id="nextq" disabled>Next ›</button></div>
+  </section>
+
+  <!-- result screen -->
+  <section id="done" hidden>
+    <div class="score">
+      <div class="big" id="pct">0%</div>
+      <p id="scoreline" class="mut"></p>
+      <p id="verdict" style="font-weight:700"></p>
+      <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn primary" id="retry">Try again</button>
+        <button class="btn" id="review">Review answers</button>
+      </div>
+    </div>
+    <div id="reviewHost" hidden></div>
+  </section>
+
+  <p class="foot">GasPass · ACS mock exams</p>
+</main>
+
+<nav class="nav">
+  <a href="index.html"><span class="i">🏠</span>Home</a>
+  <a href="reference.html"><span class="i">📖</span>Reference</a>
+  <a href="flashcards.html"><span class="i">🃏</span>Cards</a>
+  <a class="on" href="quiz.html"><span class="i">📝</span>Exams</a>
+  <a href="tutor.html"><span class="i">💬</span>Tutor</a>
+</nav>
+
+<script src="data.js"></script>
+<script>
+  const cats = ACS.categories, allQ = ACS.quiz;
+  const catMap = Object.fromEntries(cats.map(c => [c.id, c]));
+  let active = 'all', deck = [], idx = 0, score = 0, answers = [];
+
+  const $ = id => document.getElementById(id);
+  function chips() {
+    const fEl = $('filters'); fEl.innerHTML = '';
+    const mk = (id, name, color) => {
+      const b = document.createElement('button');
+      b.className = 'chip' + (id === active ? ' on' : '');
+      b.textContent = name;
+      if (id === active && color) b.style.background = color;
+      b.onclick = () => { active = id; chips(); updateCount(); };
+      return b;
+    };
+    fEl.appendChild(mk('all', 'All'));
+    cats.forEach(c => fEl.appendChild(mk(c.id, c.name, c.color)));
+  }
+  function pool() { return allQ.filter(q => active === 'all' || q.cat === active); }
+  function updateCount() { $('count').textContent = pool().length + ' questions'; }
+
+  function start() {
+    deck = pool().slice();
+    for (let k = deck.length - 1; k > 0; k--) { const j = Math.random() * (k + 1) | 0; [deck[k], deck[j]] = [deck[j], deck[k]]; }
+    idx = 0; score = 0; answers = [];
+    $('start').hidden = true; $('done').hidden = true; $('play').hidden = false;
+    renderQ();
+  }
+  function renderQ() {
+    const q = deck[idx], c = catMap[q.cat];
+    $('bar').style.width = ((idx) / deck.length * 100) + '%';
+    const host = $('qhost');
+    host.innerHTML = `<div class="q-card">
+      <div style="margin-bottom:8px"><span class="tag" style="background:${c.color}">${c.name}</span>
+        <span class="dim" style="font-size:12px;margin-left:8px">Question ${idx+1} of ${deck.length}</span></div>
+      <div class="qn">${q.q}</div>
+      <div id="opts"></div>
+      <div id="exp"></div>
+    </div>`;
+    const opts = $('opts');
+    q.options.forEach((o, i) => {
+      const b = document.createElement('button');
+      b.className = 'opt'; b.textContent = o;
+      b.onclick = () => choose(i, q, opts);
+      opts.appendChild(b);
+    });
+    $('nextq').disabled = true;
+    $('nextq').textContent = idx === deck.length - 1 ? 'See results ›' : 'Next ›';
+  }
+  function choose(i, q, opts) {
+    [...opts.children].forEach((b, k) => {
+      b.disabled = true;
+      if (k === q.answer) b.classList.add('correct');
+      if (k === i && i !== q.answer) b.classList.add('wrong');
+    });
+    const ok = i === q.answer;
+    if (ok) score++;
+    answers.push({ q, picked: i, ok });
+    $('exp').innerHTML = `<div class="explain"><b>${ok ? '✓ Correct.' : '✗ Not quite.'}</b> ${q.explain}</div>`;
+    $('nextq').disabled = false;
+  }
+  $('nextq') && ($('nextq').onclick = () => {
+    if (idx === deck.length - 1) return finish();
+    idx++; renderQ();
+  });
+  function finish() {
+    $('play').hidden = true; $('done').hidden = false;
+    const pct = Math.round(score / deck.length * 100);
+    $('pct').textContent = pct + '%';
+    $('scoreline').textContent = `You scored ${score} out of ${deck.length}.`;
+    const v = $('verdict');
+    if (pct >= 80) { v.textContent = '🎯 Strong — exam-ready on this topic.'; v.style.color = 'var(--green)'; }
+    else if (pct >= 60) { v.textContent = '👍 Getting there — review the ones you missed.'; v.style.color = 'var(--amber)'; }
+    else { v.textContent = '📚 Keep revising — go back over the reference notes.'; v.style.color = 'var(--flame2)'; }
+    $('reviewHost').hidden = true; $('reviewHost').innerHTML = '';
+  }
+  $('begin').onclick = start;
+  $('retry').onclick = start;
+  $('review').onclick = () => {
+    const h = $('reviewHost');
+    if (!h.hidden) { h.hidden = true; return; }
+    h.hidden = false;
+    h.innerHTML = answers.map((a, n) => {
+      const c = catMap[a.q.cat];
+      return `<div class="q-card">
+        <div class="qn">${n+1}. ${a.q.q}</div>
+        ${a.q.options.map((o, i) => {
+          let cls = 'opt';
+          if (i === a.q.answer) cls += ' correct';
+          else if (i === a.picked) cls += ' wrong';
+          return `<div class="${cls}" style="cursor:default">${o}</div>`;
+        }).join('')}
+        <div class="explain">${a.q.explain}</div>
+      </div>`;
+    }).join('');
+    h.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  chips(); updateCount();
+</script>
+</body></html>

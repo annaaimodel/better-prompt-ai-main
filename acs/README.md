@@ -3,6 +3,15 @@
 A standalone revision app for UK domestic gas engineers preparing for (or renewing)
 their ACS assessments. Quick to digest, easy to search, with an AI tutor for any question.
 
+## ▶ Open it in a browser (one click)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fannaaimodel%2Fbetter-prompt-ai-main&root-directory=acs&env=ANTHROPIC_API_KEY&envDescription=Anthropic%20API%20key%20for%20the%20AI%20gas%20tutor&project-name=gaspass-acs&repository-name=gaspass-acs)
+
+Click the button → sign in to Vercel (free) → it's pre-filled with **root directory `acs`**
+and asks for your **`ANTHROPIC_API_KEY`** → Deploy. After ~1 minute you'll get a live URL like
+`https://gaspass-acs.vercel.app` that you can open and share. The reference library, flashcards
+and mock exams work immediately; the AI tutor works once the API key is set.
+
 **Scope:** CCN1 (Core Domestic Gas Safety) + the main domestic modules —
 CENWAT (boilers & water heaters), CKR1 (cookers), HTR1 (fires & space heaters)
 and MET1 (metering). Designed to be extended later (commercial, LPG, etc.).

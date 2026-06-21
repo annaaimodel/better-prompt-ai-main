@@ -96,6 +96,7 @@
           <ul>${t.points.map(p => `<li>${p}</li>`).join('')}</ul>
           ${t.watch ? `<div class="watch"><b>Watch out:</b> ${t.watch}</div>` : ''}
           <div class="refs">${t.refs.map(r => `<span class="ref">${r}</span>`).join('')}</div>
+          ${t.source ? `<div class="srcline">📄 Source: <a href="${t.source.url}" target="_blank" rel="noopener">${t.source.label}</a></div>` : ''}
         </div>`;
       list.appendChild(d);
     });

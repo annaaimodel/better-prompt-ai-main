@@ -41,7 +41,7 @@ window.ACSHOWTO = (function () {
     { ref: "BS 7593:2019", scope: "Preparation, commissioning & maintenance of CH water — cleaning, flushing, inhibitor, in-line filter, periodic inhibitor testing." },
     { ref: "BS 7967:2015", scope: "Use of electronic portable combustion gas analysers (FGA) — CO, CO/CO₂ ratio, combustion performance in dwellings. Generic action levels (TB143): CO ≤350 ppm AND CO/CO₂ ratio <0.004; 0.004–0.008 investigate; >0.008 do not leave in service. Manufacturer limits prevail." },
     { ref: "IGEM/UP/1B (Edition 4)", scope: "Domestic tightness testing & purging. Edition 4 is mandatory from 1 Oct 2026 — permissible pressure drop is now determined by Installation Volume (IV), not meter size. (Both editions valid during the 2026 transition.)" },
-    { ref: "IGEM/G/11 (GIUSP, Edition 2)", scope: "Gas Industry Unsafe Situations Procedure — classify & act on unsafe situations (Immediately Dangerous / At Risk). NOTE: 'Not to Current Standards' (NCS) has been removed from GIUSP — it may be recorded but must NOT appear on an unsafe-situations warning notice. Covers RIDDOR reporting." },
+    { ref: "IGEM/G/11 Edition 2 (GIUSP, amended 2025)", scope: "Gas Industry Unsafe Situations Procedure — classify & act on unsafe situations (Immediately Dangerous / At Risk). NOTE: 'Not to Current Standards' (NCS) has been removed from GIUSP — it may be recorded/advised but must NOT appear on an unsafe-situations warning notice. Covers RIDDOR reporting." },
     { ref: "BS EN 50291 / 50292", scope: "CO alarms (50291) and their siting (50292). ADJ (2022) requires a CO alarm where a fuel-burning appliance is installed — but excludes cookers. A CO alarm is mandatory in the same room as a flueless fire." },
     { ref: "Gas Safe TB143 / TB157", scope: "TB143 = CO/CO₂ combustion checks at commissioning/service. TB157 = combustion checks on natural gas containing up to 20% hydrogen (grid blending)." },
     { ref: "BS 5871-1/-2/-3/-4", scope: "Installation of gas fires/heaters: -1 radiant/convector, stoves & fire/back boilers; -2 inset live fuel effect (ILFE) ≤15 kW; -3 decorative fuel effect (DFE) ≤20 kW; -4 flueless fires/heaters ≤6 kW (all 2005, -4 is 2007)." },
@@ -135,7 +135,7 @@ window.ACSHOWTO = (function () {
         { symptom: "Frozen condensate (common in cold snaps)", checks: ["Thaw the external condensate pipe and reset; advise upsizing/insulating or re-routing internally to prevent recurrence"] },
       ],
       safety: [
-        "If you find an unsafe situation, classify and act under GIUSP (ID / AR / NCS) and issue the appropriate warning notice.",
+        "If you find an unsafe situation, classify and act under GIUSP (IGEM/G/11) — Immediately Dangerous or At Risk — and issue the appropriate warning notice (NCS is recorded/advised, not put on an unsafe-situations notice).",
         "Only fit manufacturer-specified parts; a wrong gas valve or injector is dangerous.",
         "Always re-prove gas tightness and combustion after a gas-side repair.",
       ],

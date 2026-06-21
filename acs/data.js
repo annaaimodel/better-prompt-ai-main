@@ -78,6 +78,7 @@ window.ACS = (function () {
       ],
       refs: ["IGEM/G/11 Edition 2 (GIUSP, amdts to July 2025)", "RIDDOR", "GSIUR 1998"],
       watch: "Current IGEM/G/11 Edition 2 has only TWO unsafe categories — ID and AR. 'Not to Current Standards' (NCS) is NOT a GIUSP unsafe classification: it may be recorded/advised but must never go on an unsafe-situations Warning Notice. Many ACS centres still teach ID/AR/NCS for the exam, so learn all three — but know the current position.",
+      source: { label: "IGEM/G/11 Edition 2 (the official standard, IGEM)", url: "https://www.igem.org.uk/resource/igem-g-11-edition-2-gas-industry-unsafe-situations-procedure.html" },
     },
     {
       id: "tightness",

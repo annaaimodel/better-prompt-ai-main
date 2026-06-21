@@ -149,3 +149,7 @@ details.topic[open]>summary .arw{transform:rotate(90deg)}
 .nav a.on{color:var(--flame2)}
 .foot{text-align:center;color:var(--dim);font-size:12px;padding:24px 16px 8px}
 .empty{text-align:center;color:var(--dim);padding:40px 16px}
+
+/* source citation line in reference topics */
+.srcline{margin-top:10px;font-size:12px;color:var(--dim)}
+.srcline a{color:var(--blue2);text-decoration:underline}

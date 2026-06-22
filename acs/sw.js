@@ -6,7 +6,7 @@
    clean-URL redirect) is rebuilt before it reaches the page — returning a
    redirected/opaque response for a navigation makes the browser fail it with
    ERR_FAILED, which broke every clean-URL page in v2. */
-const VERSION = "gaspass-v3";
+const VERSION = "gaspass-v4";
 const CORE = [
   "./", "index.html", "reference.html", "flashcards.html", "quiz.html",
   "tutor.html", "howto.html", "updates.html",

@@ -78,6 +78,38 @@ details.topic[open]>summary .arw{transform:rotate(90deg)}
 .ref{font-size:11px;color:var(--blue2);background:rgba(79,157,222,.1);border:1px solid rgba(79,157,222,.28);
   padding:3px 8px;border-radius:6px}
 
+/* How-Tos — segmented Browse / Ask toggle */
+.seg{display:flex;gap:6px;background:var(--bg2);border:1px solid var(--line2);border-radius:12px;
+  padding:5px;margin:14px 0 4px}
+.seg button{flex:1;font-size:14px;font-weight:700;padding:9px 10px;border-radius:9px;border:none;
+  background:transparent;color:var(--mut);cursor:pointer;transition:.12s}
+.seg button.on{background:linear-gradient(160deg,var(--flame),var(--flame2));color:#1a1206;box-shadow:var(--sh)}
+
+/* How-Tos — guide cards (extends details.topic) */
+.taskbadge{font-size:10.5px;font-weight:700;letter-spacing:.4px;padding:3px 8px;border-radius:6px;
+  color:var(--mut);background:var(--bg2);border:1px solid var(--line2);white-space:nowrap}
+.steplabel{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+  color:var(--dim);margin:14px 0 4px}
+ol.steps{margin:6px 0;padding-left:22px;counter-reset:none}
+ol.steps li{margin:7px 0;font-size:14.5px;padding-left:3px}
+.fault{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:8px 0}
+.fault>b{display:block;color:var(--flame2);font-size:14px;margin-bottom:4px}
+.fault ul{margin:4px 0 0;padding-left:18px}
+.fault li{margin:4px 0;font-size:13.5px;color:var(--mut)}
+
+/* How-Tos — rendered markdown inside an AI answer bubble */
+.msg.a .md{white-space:normal}
+.md>:first-child{margin-top:0}
+.md>:last-child{margin-bottom:0}
+.md h4{font-size:14.5px;font-weight:800;margin:12px 0 5px;color:var(--txt)}
+.md p{margin:8px 0}
+.md ul,.md ol{margin:8px 0;padding-left:20px}
+.md li{margin:4px 0}
+.md strong{color:var(--txt);font-weight:700}
+.md code{background:var(--bg2);border:1px solid var(--line2);border-radius:5px;padding:1px 5px;
+  font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.md hr{border:none;border-top:1px solid var(--line);margin:12px 0}
+
 /* flashcards */
 .fc-stage{perspective:1200px;margin:18px 0}
 .fc{position:relative;min-height:260px;cursor:pointer;transition:transform .5s;transform-style:preserve-3d}
@@ -127,7 +159,8 @@ details.topic[open]>summary .arw{transform:rotate(90deg)}
 .typing i{width:6px;height:6px;border-radius:50%;background:var(--dim);animation:bl 1.2s infinite}
 .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
 @keyframes bl{0%,60%,100%{opacity:.25}30%{opacity:1}}
-.composer{position:sticky;bottom:72px;background:linear-gradient(0deg,var(--bg) 70%,transparent);padding:10px 0}
+.composer{position:fixed;left:0;right:0;bottom:72px;z-index:35;background:var(--bg);
+  border-top:1px solid var(--line);padding:10px 0}
 .composer .row{display:flex;gap:8px;align-items:flex-end}
 .composer textarea{flex:1;resize:none;background:var(--bg2);border:1px solid var(--line2);border-radius:14px;
   color:var(--txt);font-size:15px;padding:12px 14px;outline:none;max-height:140px;font-family:inherit}

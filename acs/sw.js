@@ -2,11 +2,14 @@
    Reference, flashcards and mock exams work offline; the AI tutor and How-Tos
    need a connection (their /api/ calls are never cached).
 
-   v3 fix: navigations are network-first and any redirected response (Vercel
-   clean-URL redirect) is rebuilt before it reaches the page — returning a
-   redirected/opaque response for a navigation makes the browser fail it with
-   ERR_FAILED, which broke every clean-URL page in v2. */
-const VERSION = "gaspass-v4";
+   v5 fix: Vercel clean-URLs redirect every page (e.g. /howto.html -> /howto).
+   A response that still carries the "redirected" flag is rejected by Safari for
+   a page load ("Response served by service worker has redirections" / ERR_FAILED).
+   So we strip that flag everywhere a response can reach a navigation:
+     - precache: fetch + rebuild each page before storing it (cache.add kept the flag),
+     - online: rebuild the network response,
+     - offline: rebuild the cached fallback too. */
+const VERSION = "gaspass-v5";
 const CORE = [
   "./", "index.html", "reference.html", "flashcards.html", "quiz.html",
   "tutor.html", "howto.html", "updates.html",
@@ -15,11 +18,25 @@ const CORE = [
   "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon-180.png",
 ];
 
+// Rebuild a redirected response as a plain one so it's valid for a navigation.
+async function clean(res) {
+  if (!res || !res.redirected) return res;
+  const body = await res.blob();
+  return new Response(body, { status: res.status, statusText: res.statusText, headers: res.headers });
+}
+
+// Precache a URL, stripping any redirect flag before storing it.
+async function precache(c, url) {
+  try {
+    const res = await fetch(url, { cache: "reload" });
+    if (res && res.ok) await c.put(url, await clean(res));
+  } catch (_) { /* one missing asset shouldn't abort the whole install */ }
+}
+
 self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(VERSION)
-      // don't let one missing asset abort the whole install
-      .then((c) => Promise.allSettled(CORE.map((u) => c.add(u))))
+      .then((c) => Promise.allSettled(CORE.map((u) => precache(c, u))))
       .then(() => self.skipWaiting())
   );
 });
@@ -31,13 +48,6 @@ self.addEventListener("activate", (e) => {
       .then(() => self.clients.claim())
   );
 });
-
-// Rebuild a redirected response as a plain one so it's valid for a navigation.
-async function clean(res) {
-  if (!res || !res.redirected) return res;
-  const body = await res.blob();
-  return new Response(body, { status: res.status, statusText: res.statusText, headers: res.headers });
-}
 
 self.addEventListener("fetch", (e) => {
   const req = e.request;
@@ -57,13 +67,16 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
-  // Page navigations — network-first (handles clean-URL redirects), fall back to cache.
+  // Page navigations — network-first (handles clean-URL redirects), fall back to
+  // cache. Every path is rebuilt so the page never sees a redirected response.
   if (req.mode === "navigate") {
     e.respondWith((async () => {
       try {
         return await clean(await fetch(req));
       } catch (_) {
-        return (await caches.match(req)) || (await caches.match("index.html")) || Response.error();
+        return (await clean(await caches.match(req))) ||
+               (await clean(await caches.match("index.html"))) ||
+               Response.error();
       }
     })());
     return;

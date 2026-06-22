@@ -24,9 +24,20 @@
   <div class="disc" style="margin-top:14px"><b>⚠ For Gas Safe–registered engineers.</b> Browse install / service / repair guides (work offline), or ask the AI about a specific make & model. The appliance's own <b>manufacturer instructions</b> always take precedence — verify safety-critical figures against the MI and current standards, and only do work you're registered and competent to do.</div>
 
   <div class="seg" id="seg">
-    <button data-mode="browse" class="on">📖 Browse guides</button>
+    <button data-mode="browse" class="on">📖 Guides</button>
+    <button data-mode="models">🔎 Brands & codes</button>
     <button data-mode="ask">💬 Ask AI</button>
   </div>
+
+  <!-- ===================== BRANDS & CODES (offline) ============== -->
+  <section id="models" hidden>
+    <input id="codeSearch" class="search" type="search" placeholder="Search a fault code or brand… (e.g. EA, F.28, E133, Vaillant)" autocomplete="off">
+    <div class="filters" id="brandFilters"></div>
+    <div id="codeHits"></div>
+    <div id="brandList"></div>
+    <div class="empty" id="modelEmpty" hidden>No brand or code matches that — try another word.</div>
+    <p class="dim" style="font-size:12px;text-align:center;margin:14px 0">Fault codes &amp; specs for the main UK brands — stored on your device, works offline. Always confirm figures against the appliance's own manufacturer instructions (MI).</p>
+  </section>
 
   <!-- ===================== BROWSE (offline) ===================== -->
   <section id="browse">
@@ -71,16 +82,20 @@
 
   /* ---------- mode toggle ---------- */
   const browseEl = document.getElementById("browse");
+  const modelsEl = document.getElementById("models");
   const askEl = document.getElementById("ask");
   const composerEl = document.getElementById("composer");
-  let started = false;
+  let started = false, builtModels = false;
   document.getElementById("seg").addEventListener("click", e => {
     const b = e.target.closest("button"); if (!b) return;
     const mode = b.dataset.mode;
     [...document.querySelectorAll("#seg button")].forEach(x => x.classList.toggle("on", x === b));
     const ask = mode === "ask";
-    askEl.hidden = !ask; composerEl.hidden = !ask; browseEl.hidden = ask;
+    browseEl.hidden = mode !== "browse";
+    modelsEl.hidden = mode !== "models";
+    askEl.hidden = !ask; composerEl.hidden = !ask;
     document.body.style.paddingBottom = ask ? "150px" : "72px";
+    if (mode === "models" && !builtModels) { builtModels = true; renderModels(); }
     if (ask && !started) { started = true; greet(); }
   });
 
@@ -142,6 +157,88 @@
   document.getElementById("search").addEventListener("input", e => { query = e.target.value; render(); });
   render();
 
+  /* ===================== BRANDS & CODES ===================== */
+  const refList = (A.symptomRefs || []);
+  const allRefs = A.brands.concat(refList);                 // unified list
+  let pickBrand = "all", mquery = "";
+  const brandF = document.getElementById("brandFilters");
+  const brandListEl = document.getElementById("brandList");
+  const codeHitsEl = document.getElementById("codeHits");
+  const modelEmptyEl = document.getElementById("modelEmpty");
+
+  function buildBrandFilters() {
+    brandF.innerHTML = "";
+    brandF.appendChild(chip("All", pickBrand === "all", null, () => { pickBrand = "all"; renderModels(); }));
+    allRefs.forEach(b => brandF.appendChild(chip(b.name, pickBrand === b.id, b.color, () => { pickBrand = b.id; renderModels(); })));
+  }
+
+  function specsHtml(b) {
+    return `<div class="steplabel">Key specs</div><div class="specs">` +
+      b.specs.map(s => `<div class="specrow"><span class="sl">${esc(s.label)}</span><span class="sv">${esc(s.value)}</span></div>`).join("") +
+      `</div>`;
+  }
+  function brandCard(b) {
+    const isRef = !!b.faults;
+    const rows = isRef
+      ? `<div class="steplabel">Common faults</div>` + b.faults.map(f =>
+          `<div class="fault"><b>${esc(f.symptom)}</b><ul><li>${esc(f.checks)}</li></ul></div>`).join("")
+      : `<div class="steplabel">Fault codes</div><table class="codes"><tbody>` + b.codes.map(c =>
+          `<tr><td class="cd">${esc(c.code)}</td><td>${esc(c.meaning)}</td></tr>`).join("") + `</tbody></table>`;
+    const reset = b.reset ? `<div class="watch"><b>Reset:</b> ${esc(b.reset)}</div>` : "";
+    const stds = b.standards ? `<div class="refs">${b.standards.map(r => `<span class="ref">${esc(r)}</span>`).join("")}</div>` : "";
+    return `<details class="topic" id="brand-${b.id}">
+      <summary>
+        <span class="tag" style="background:${b.color}">${esc(b.name)}</span>
+        <span class="ttl">${isRef ? "Faults &amp; specs" : "Fault codes &amp; specs"}</span>
+        <span class="arw">▸</span>
+      </summary>
+      <div class="body">
+        <p class="sum">${esc(b.note)}</p>
+        ${rows}
+        ${specsHtml(b)}
+        ${reset}${stds}
+      </div>
+    </details>`;
+  }
+
+  function renderModels() {
+    buildBrandFilters();
+    const q = mquery.trim().toLowerCase();
+    const pool = pickBrand === "all" ? allRefs : allRefs.filter(b => b.id === pickBrand);
+
+    // Flat code/symptom hits — the fast "what does this code mean" lookup.
+    let hits = [];
+    if (q) {
+      pool.forEach(b => {
+        const nameHit = b.name.toLowerCase().includes(q);
+        if (b.codes) b.codes.forEach(c => {
+          if (nameHit || (c.code + " " + c.meaning).toLowerCase().includes(q))
+            hits.push({ b, key: c.code, val: c.meaning });
+        });
+        if (b.faults) b.faults.forEach(f => {
+          if (nameHit || (f.symptom + " " + f.checks).toLowerCase().includes(q))
+            hits.push({ b, key: f.symptom, val: f.checks });
+        });
+      });
+    }
+
+    if (q) {
+      codeHitsEl.innerHTML = hits.slice(0, 40).map(h =>
+        `<div class="hit">
+          <span class="tag" style="background:${h.b.color}">${esc(h.b.name)}</span>
+          <span class="hcode">${esc(h.key)}</span>
+          <span class="hmean">${esc(h.val)}</span>
+        </div>`).join("");
+      brandListEl.innerHTML = "";
+      modelEmptyEl.hidden = hits.length > 0;
+    } else {
+      codeHitsEl.innerHTML = "";
+      brandListEl.innerHTML = pool.map(brandCard).join("");
+      modelEmptyEl.hidden = pool.length > 0;
+    }
+  }
+  document.getElementById("codeSearch").addEventListener("input", e => { mquery = e.target.value; renderModels(); });
+
   /* ===================== ASK AI ===================== */
   const CONTEXT = (() => {
     const std = "CURRENT UK STANDARDS:\n" + A.standards.map(s => `- ${s.ref}: ${s.scope}`).join("\n");
@@ -152,7 +249,18 @@
       s += "\nStandards: " + g.standards.join("; ");
       return s;
     }).join("\n\n");
-    return std + "\n\n" + guides;
+    const brands = (A.brands || []).map(b => {
+      let s = `[${b.name}] ${b.note}\nFault codes:\n` + b.codes.map(c => `- ${c.code}: ${c.meaning}`).join("\n");
+      s += "\nSpecs: " + b.specs.map(x => `${x.label} = ${x.value}`).join("; ");
+      s += "\nReset: " + b.reset;
+      return s;
+    }).join("\n\n");
+    const refs = (A.symptomRefs || []).map(b => {
+      let s = `[${b.name}] ${b.note}\nCommon faults:\n` + b.faults.map(f => `- ${f.symptom}: ${f.checks}`).join("\n");
+      s += "\nSpecs: " + b.specs.map(x => `${x.label} = ${x.value}`).join("; ");
+      return s;
+    }).join("\n\n");
+    return std + "\n\n" + guides + "\n\nVERIFIED BRAND FAULT CODES & SPECS (UK):\n" + brands + "\n\n" + refs;
   })();
 
   const SAMPLES = [

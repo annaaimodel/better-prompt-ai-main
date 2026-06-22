@@ -197,6 +197,23 @@ ol.steps li{margin:7px 0;font-size:14.5px;padding-left:3px}
 @keyframes updpulse{0%{box-shadow:0 0 0 0 rgba(122,30,5,.55)}70%{box-shadow:0 0 0 7px rgba(122,30,5,0)}100%{box-shadow:0 0 0 0 rgba(122,30,5,0)}}
 @media(max-width:380px){.btn-upd span.lbl-full{display:none}}
 
+/* add-to-home-screen banner (injected by pwa.js) */
+.a2hs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(72px + env(safe-area-inset-bottom));
+  z-index:60;width:calc(100% - 24px);max-width:560px;display:flex;align-items:center;gap:11px;
+  background:var(--card);border:1px solid var(--line2);border-radius:14px;padding:12px 13px;
+  box-shadow:0 10px 34px rgba(0,0,0,.5);animation:a2hsIn .28s ease-out}
+@keyframes a2hsIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
+.a2hs.has-composer{bottom:calc(140px + env(safe-area-inset-bottom))}
+.a2hs-ic{font-size:22px;line-height:1}
+.a2hs-txt{flex:1;font-size:13px;color:var(--mut);line-height:1.4}
+.a2hs-txt b{color:var(--txt);font-weight:700}
+.a2hs-share{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;
+  border-radius:5px;background:var(--bg2);border:1px solid var(--line2);color:var(--blue2);vertical-align:-4px}
+.a2hs-go{flex-shrink:0;font-size:13px;font-weight:700;padding:8px 13px;border-radius:10px;border:none;
+  background:linear-gradient(160deg,var(--flame),var(--flame2));color:#1a1206;cursor:pointer}
+.a2hs-x{flex-shrink:0;width:28px;height:28px;border-radius:8px;border:1px solid var(--line2);
+  background:var(--bg2);color:var(--mut);font-size:13px;cursor:pointer;line-height:1}
+
 /* updates page cards */
 .upd{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;margin:11px 0}
 .upd-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:7px}

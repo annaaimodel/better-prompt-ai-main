@@ -9,11 +9,11 @@
      - precache: fetch + rebuild each page before storing it (cache.add kept the flag),
      - online: rebuild the network response,
      - offline: rebuild the cached fallback too. */
-const VERSION = "gaspass-v5";
+const VERSION = "gaspass-v6";
 const CORE = [
   "./", "index.html", "reference.html", "flashcards.html", "quiz.html",
   "tutor.html", "howto.html", "updates.html",
-  "style.css", "data.js", "howto-data.js", "updates-data.js",
+  "style.css", "data.js", "howto-data.js", "updates-data.js", "pwa.js",
   "favicon.svg", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon-180.png",
 ];

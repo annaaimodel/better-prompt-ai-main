@@ -227,15 +227,16 @@
     try {
       const r = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ mode: "howto", question: q, context: CONTEXT, history }) });
-      const data = await r.json(); wait.remove();
-      if (!r.ok) { addBot("⚠ " + (data.error || "Something went wrong. Please try again.")); }
+      const data = await r.json().catch(() => null); wait.remove();
+      if (!data) { addBot("⚠ That took too long to look up. Try a more specific question (include the exact make & model), or ask again in a moment."); }
+      else if (!r.ok) { addBot("⚠ " + (data.error || "Something went wrong. Please try again.")); }
       else {
         addBot(data.text || "No answer came back — try rephrasing.", data.sources);
         history.push({ role: "user", content: q });
         history.push({ role: "assistant", content: data.text || "" });
         history = history.slice(-8);
       }
-    } catch (e) { wait.remove(); addBot("⚠ Network error — check your connection and try again."); }
+    } catch (e) { wait.remove(); addBot("⚠ Network error — check your connection and try again. (The Ask AI feature needs a signal.)"); }
     busy = false; sendBtn.disabled = false; box.focus();
   }
   sendBtn.onclick = ask;

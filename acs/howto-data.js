@@ -11,12 +11,16 @@
    requirement under GSIUR 1998. Verify figures against the CURRENT
    edition of each standard and the MI before relying on them.
 
-   Standard editions current as of 2026 (verified via web research):
+   Standard editions current as of June 2026 (verified via web research):
      GSIUR 1998 (ACOP L56, 5th ed) · BS 6798:2014 · BS 6891:2015+A1:2019
-     BS 5440-1:2023 · BS 5440-2:2023 · BS 7593:2019 · BS 7967:2015
-     BS 5871-1/-2/-3 · BS 6172 · BS 669-1 · Boiler Plus (2018, England)
-     Approved Docs (England): L (2021, in force Jun 2022), J (2010 +amdts),
-     P (2013), G/G3 (2015). Wales & Scotland differ.
+     BS 5440-1:2023 · BS 5440-2:2023 · BS 7593:2019+A1:2024 · BS 7967:2015
+     BS 5871-1/-2/-3/-4 · BS 6172:2010+A1:2017 · BS 669-1:2022
+     BS EN 50291-1:2018 / BS EN 50292:2023 · BS 7671 (A3:2024; A4 Apr 2026)
+     IGEM/UP/1B Ed 4 (mandatory 1 Oct 2026) · IGEM/G/11 Ed 2 (amdt Jul 2025)
+     IGEM/G/13 · IGEM/G/1 Ed 3 (2025) · Boiler Plus (2018, England)
+     Approved Docs (England): L (2021+2023; Future Homes Standard in force
+     24 Mar 2027), J (2010 +2022 amdt), G/G3 (2015 +2016/2024). Devolved
+     nations differ (Scotland New Build Heat Standard in force Apr 2024).
    ===================================================================== */
 
 window.ACSHOWTO = (function () {
@@ -38,19 +42,24 @@ window.ACSHOWTO = (function () {
     { ref: "BS 6891:2015+A1:2019", scope: "Low-pressure installation pipework up to 35 mm. Max 1 mbar drop meter→appliance (NG)." },
     { ref: "BS 5440-1:2023", scope: "Chimneys/flues for gas appliances ≤70 kW net — design, install, commission, maintain. (Revised Dec 2023.)" },
     { ref: "BS 5440-2:2023", scope: "Ventilation / combustion-air provision for gas appliances ≤70 kW net. (Revised Dec 2023.)" },
-    { ref: "BS 7593:2019", scope: "Preparation, commissioning & maintenance of CH water — cleaning, flushing, inhibitor, in-line filter, periodic inhibitor testing." },
+    { ref: "BS 7593:2019+A1:2024", scope: "Preparation, commissioning & maintenance of CH water — cleaning, flushing, inhibitor, in-line filter, periodic inhibitor testing. (Amendment A1 published Nov 2024 — the plain 2019 version is superseded.)" },
     { ref: "BS 7967:2015", scope: "Use of electronic portable combustion gas analysers (FGA) — CO, CO/CO₂ ratio, combustion performance in dwellings. Generic action levels (TB143): CO ≤350 ppm AND CO/CO₂ ratio <0.004; 0.004–0.008 investigate; >0.008 do not leave in service. Manufacturer limits prevail." },
     { ref: "IGEM/UP/1B Edition 4", scope: "Domestic tightness testing & direct purging (installations up to IV 0.035 m³; above that IGE/UP/1). Mandatory from 1 Oct 2026 (Ed 3 withdrawn 30 Sep 2026; both valid in the transition). Permissible pressure drop is set by Installation Volume (IV in m³), NOT meter size. New: with appliances connected, a pipework-only retest is a mandatory follow-on step — any perceptible movement on it is a fail." },
     { ref: "IGEM/G/11 Edition 2 (GIUSP, amdts July 2022/June 2024/July 2025)", scope: "Gas Industry Unsafe Situations Procedure — TWO unsafe categories only: Immediately Dangerous (ID) and At Risk (AR). Objective: make safe & advise not to use; turn off (with permission) + 'DANGER — DO NOT USE' label, except situations not made safer by turning off (e.g. building over a PE service pipe, mis-sited LPG vessel) which are referred on. Leave a Warning Notice (Appendix 6); report qualifying ID situations under RIDDOR. NOTE: 'Not to Current Standards' (NCS) is NOT a GIUSP unsafe category — recorded/advised only, never on a warning notice." },
-    { ref: "BS EN 50291 / 50292", scope: "CO alarms (50291) and their siting (50292). ADJ (2022) requires a CO alarm where a fuel-burning appliance is installed — but excludes cookers. A CO alarm is mandatory in the same room as a flueless fire." },
+    { ref: "BS EN 50291-1:2018 / BS EN 50292:2023", scope: "CO alarms (50291-1:2018 performance) and their siting/selection (50292 — current is the 2023 edition, NOT 2019). England: Approved Doc J + Smoke & CO Alarm (Amendment) Regs 2022 (in force 1 Oct 2022) require a CO alarm on installing a new/replacement fixed combustion appliance burning solid fuel, GAS (excluding gas cookers) or oil. Wales/Scotland rules are broader. Site ~1–3 m from the appliance." },
     { ref: "Gas Safe TB143 / TB157", scope: "TB143 = CO/CO₂ combustion checks at commissioning/service. TB157 = combustion checks on natural gas containing up to 20% hydrogen (grid blending)." },
     { ref: "BS 5871-1/-2/-3/-4", scope: "Installation of gas fires/heaters: -1 radiant/convector, stoves & fire/back boilers; -2 inset live fuel effect (ILFE) ≤15 kW; -3 decorative fuel effect (DFE) ≤20 kW; -4 flueless fires/heaters ≤6 kW (all 2005, -4 is 2007)." },
     { ref: "BS 6172:2010+A1:2017", scope: "Installation, servicing & maintenance of domestic gas cooking appliances (2nd & 3rd family gases) — includes the stability-device requirement." },
-    { ref: "BS 669-1:2022", scope: "Strip-wound metallic flexible hoses & bayonet sockets for domestic gas cooking appliances (NG; BS 669-2 covers LPG)." },
+    { ref: "BS 669-1:2022", scope: "Strip-wound metallic flexible hoses & bayonet sockets for domestic gas cooking appliances. The 2022 revision now also covers LPG (3rd family). BS 6172 accepts hoses to BS 669-1 OR BS EN 14800; BS 669-2 covers corrugated/catering hoses." },
     { ref: "Boiler Plus (2018, England)", scope: "Min 92% ErP; time & temperature control; combi must add one of FGHR / weather comp / load comp / smart controls." },
-    { ref: "Approved Doc L (2021, in force Jun 2022)", scope: "Conservation of fuel & power. 55 °C max design flow temp for wet systems in new dwellings; min efficiencies." },
-    { ref: "Approved Doc J (2010 +amdts)", scope: "Combustion appliances & fuel storage — air supply, flues, CO alarm requirements." },
-    { ref: "Approved Doc G / G3 (2015)", scope: "Hot water safety; unvented hot water storage needs the separate G3 competence." },
+    { ref: "Approved Doc L (2021 + 2023 amdts) — current", scope: "Conservation of fuel & power (England). 55 °C max design flow temp for wet systems in new dwellings; min efficiencies. This is the operative edition for live work until the Future Homes Standard takes effect." },
+    { ref: "Future Homes Standard / Part L & F 2026 — UPCOMING", scope: "Published 24 Mar 2026, in force 24 Mar 2027 (higher-risk buildings 24 Sep 2027). New homes built to it cannot comply with a gas, oil, LPG or hydrogen-ready boiler — heat pump + solar PV become the default. EXISTING homes are unaffected (boiler replacement still allowed). The earlier '2035 ban' on gas boilers in existing homes was dropped — there is no legal ban or end-of-sale date for existing dwellings." },
+    { ref: "Approved Doc J (2010 +2010/2013/2022 amdts)", scope: "Combustion appliances & fuel storage — air supply, flues, hearths, and CO-alarm requirements (the 2022 amendment requires a CO alarm on new/replacement gas — excl. cookers — oil and solid-fuel appliance installs)." },
+    { ref: "Approved Doc G / G3 (2015 + 2016 & 2024 amdts)", scope: "Hot water safety; unvented hot water storage needs the separate G3 / HWSS competence (re-assessed every 5 years)." },
+    { ref: "IGEM/G/13 (Sept 2022 + amdts Aug 2023)", scope: "Domestic supply capacity & operating pressure at the meter outlet — acceptable meter-outlet working pressure is not less than 18.5 mbar and not more than 23 mbar after 1 min stabilisation; outside that, follow the gas emergency 'Reporting of Low Pressure' process." },
+    { ref: "IGEM/G/1 Edition 3 (Nov 2025)", scope: "Defines the boundaries between the gas network, the primary meter installation and the installation pipework (ISU 132). Relevant to MET1 / where responsibility sits." },
+    { ref: "BS 7671 (18th Edition: A2:2022, A3:2024; A4 due Apr 2026)", scope: "IET Wiring Regulations — basis for bonding/electrical safety checks. Main equipotential bonding 10 mm² min, within 600 mm of the meter outlet, before any branch. Amendment 4 (the 'brown/orange book') publishes April 2026." },
+    { ref: "Liquid Gas UK Codes of Practice (formerly UKLPG)", scope: "LPG installation/use — e.g. CoP 1 'Design, installation & testing of LPG piping' (current July 2025), CoP 33 'Use of LPG cylinders'. LPG: propane ~37 mbar, butane ~28–30 mbar; LPG appliances must not be sited below ground (heavier than air)." },
     { ref: "Gas Safe Building Regs notification", scope: "England & Wales: notify a heat-producing appliance install within 30 days via the Competent Person Scheme; Gas Safe issues the Building Regs Compliance Certificate." },
   ];
 
@@ -70,7 +79,7 @@ window.ACSHOWTO = (function () {
         "Gas supply: size and run pipework to BS 6891 so the drop from meter to appliance is ≤1 mbar at full rate; never undersize. Sleeve and protect penetrations; keep clear of cables.",
         "Flue: route and terminate to BS 5440-1:2023 and the MI — observe terminal clearances from openings, corners, ground and boundaries; maintain the correct fall back to the boiler (condensing flues) and support intervals.",
         "Condensate: connect to an internal soil/waste route where possible; if external, upsize (often ≥32 mm), keep short, insulate and protect against freezing. Provide an air break/trap per MI.",
-        "Flush & cleanse the system to BS 7593:2019 (clean, flush, then add inhibitor); fit an in-line magnetic filter on the return. Record inhibitor concentration.",
+        "Flush & cleanse the system to BS 7593:2019+A1:2024 (clean, flush, then add inhibitor); fit an in-line magnetic filter on the return. Record inhibitor concentration.",
         "Sealed system: fit/verify expansion vessel (check charge to static head, typically ~1 bar), PRV (usually 3 bar) discharging to a safe, visible external point, and a filling loop with double-check valve. Cold-fill to ~1–1.5 bar.",
         "Electrical: connect per MI, verify polarity, earth continuity and correct fusing; carry out the basic electrical safety checks.",
         "Controls (Boiler Plus, England): provide time & temperature control, and for a combi add one of flue gas heat recovery, weather compensation, load compensation, or smart controls with automation/optimisation. Min efficiency 92% ErP. (New dwellings: design to ≤55 °C flow per AD L 2021.)",
@@ -84,7 +93,7 @@ window.ACSHOWTO = (function () {
         "Prove the gas supply is sound (tightness test) before firing — no pressure drop is permitted on new pipework.",
         "PRV and condensate discharges must terminate safely so they can't scald, ice over a walkway, or discharge into an unsafe place.",
       ],
-      standards: ["BS 6798:2014", "BS 6891:2015+A1:2019", "BS 5440-1:2023", "BS 7593:2019", "BS 7967:2015", "Boiler Plus", "Approved Doc L/J", "GSIUR 1998"],
+      standards: ["BS 6798:2014", "BS 6891:2015+A1:2019", "BS 5440-1:2023", "BS 7593:2019+A1:2024", "BS 7967:2015", "Boiler Plus", "Approved Doc L/J", "GSIUR 1998"],
     },
 
     // ===================== BOILERS — SERVICE =========================
@@ -100,7 +109,7 @@ window.ACSHOWTO = (function () {
         "Safe isolation: turn off gas at the appliance isolation valve, isolate electrically, and allow to cool before removing the case.",
         "Inspect & clean per MI: burner and heat exchanger (check for debris/corrosion/sooting), ignition and flame-sensing electrodes (gap & condition), condensate trap (clean and re-prime), and all combustion seals/gaskets — renew if disturbed or damaged.",
         "Check the fan, air/gas path and any air-pressure switch/venturi for blockage or wear.",
-        "Check the sealed system: expansion vessel charge (with system depressurised), PRV operation, system pressure, and clean/check the magnetic filter; confirm inhibitor level (BS 7593:2019) and top up if low.",
+        "Check the sealed system: expansion vessel charge (with system depressurised), PRV operation, system pressure, and clean/check the magnetic filter; confirm inhibitor level (BS 7593:2019+A1:2024) and top up if low.",
         "Reassemble, re-prove gas tightness, then run and confirm gas rate against the data badge and correct operating/standing pressures.",
         "Post-service combustion analysis: confirm CO/CO₂ ratio and CO within the MI limits; investigate ventilation, flue or gas rate if out of spec.",
         "Carry out a flue/spillage check where applicable, complete the benchmark service record, and report any At Risk / Immediately Dangerous findings under GIUSP.",
@@ -110,7 +119,7 @@ window.ACSHOWTO = (function () {
         "If post-service combustion is out of limits, do not leave the appliance in use until resolved.",
         "Check the expansion vessel charge only with the system depressurised, or the reading is meaningless.",
       ],
-      standards: ["BS 6798:2014", "BS 7967:2015", "BS 7593:2019", "BS 5440-1/-2:2023", "GSIUR 1998"],
+      standards: ["BS 6798:2014", "BS 7967:2015", "BS 7593:2019+A1:2024", "BS 5440-1/-2:2023", "GSIUR 1998"],
     },
 
     // ===================== BOILERS — REPAIR ==========================
@@ -131,7 +140,7 @@ window.ACSHOWTO = (function () {
         { symptom: "Ignition lockout / flame failure", checks: ["Inspect ignition & flame-sensing electrodes (gap, cracks, carbon)", "Confirm gas valve operation and inlet/burner pressures per MI", "Check polarity (reversed live/neutral can cause flame-sense failure) and earth", "Check flue is clear and condensate trap primed"] },
         { symptom: "Losing pressure / needs frequent topping up", checks: ["Look for visible leaks on system and around PRV discharge", "Check expansion vessel charge (depressurised) — a flat vessel causes pressure swings & PRV weeping", "Check the PRV isn't passing"] },
         { symptom: "Combi: hot water weak or goes cold", checks: ["Suspect a sticking/worn diverter valve or DHW flow sensor", "Check plate heat exchanger for scale/blockage (low DHW flow/temperature)", "Confirm incoming mains flow rate is adequate"] },
-        { symptom: "Banging / kettling / noisy", checks: ["Likely scale or sludge in the heat exchanger — check inhibitor & filter, clean/flush per BS 7593:2019", "Check pump operation and for trapped air / poor circulation"] },
+        { symptom: "Banging / kettling / noisy", checks: ["Likely scale or sludge in the heat exchanger — check inhibitor & filter, clean/flush per BS 7593:2019+A1:2024", "Check pump operation and for trapped air / poor circulation"] },
         { symptom: "Frozen condensate (common in cold snaps)", checks: ["Thaw the external condensate pipe and reset; advise upsizing/insulating or re-routing internally to prevent recurrence"] },
       ],
       safety: [
@@ -151,13 +160,13 @@ window.ACSHOWTO = (function () {
       steps: [
         "Confirm appliance type and connection method: freestanding cooker (usually bayonet + flexible hose) or built-in hob/oven (often rigid connection). Check the gas type (NG/LPG) matches the appliance.",
         "Provide a correctly positioned cooker connection point / isolation so the appliance can be isolated and moved for cleaning.",
-        "Flexible hose (freestanding): use a hose to BS 669-1 of the correct rating and length; fit the bayonet so the hose hangs in a downward loop, free from the hotplate heat, sharp edges, kinking and the back of the appliance.",
+        "Flexible hose (freestanding): use a hose to BS 669-1 (or BS EN 14800) of the correct rating and length; fit the bayonet so the hose hangs in a downward loop, free from the hotplate heat, sharp edges, kinking and the back of the appliance.",
         "Stability device: fit the stability chain/bracket per BS 6172 and the MI so the cooker cannot tip when weight is applied to an open oven door.",
         "Clearances: maintain the MI clearances to combustible surfaces, especially at the sides above hotplate level and to any overhead units/extractor.",
         "Ventilation: confirm the room meets BS 5440-2:2023 for a flueless appliance — adequate room volume and an openable window/door to outside; check any extract fan/hood won't cause spillage from other open-flued appliances.",
         "Level the appliance and check the oven door and shelves sit correctly.",
         "Tightness test the installation and check the connection for soundness (leak detection fluid / gauge).",
-        "Commission: light each hotplate burner and confirm clean cross-lighting, check oven and grill ignition, and confirm the flame supervision device (FSD) holds the gas on and shuts off if the flame is extinguished.",
+        "Commission: light each hotplate burner and confirm clean cross-lighting, check oven and grill ignition, and confirm the flame supervision device (FSD) holds the gas on and shuts off if the flame is extinguished. (New hobs in flats/multi-storey buildings must have an FSD on all burners — Gas Safe TB 015.)",
         "Check the flame picture (crisp blue, no lifting/sooting), demonstrate to the customer and leave the MI.",
       ],
       safety: [

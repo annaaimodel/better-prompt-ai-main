@@ -201,41 +201,61 @@
     </details>`;
   }
 
+  // Model-name aliases so a model search (e.g. "Greenstar 4000", "ecoTEC",
+  // "Vitodens", "Logic") surfaces the right brand even though codes are
+  // stored at brand level.
+  const MODEL_ALIASES = {
+    worcester: "greenstar 2000 4000 8000 cdi si ri highflow heatslave bosch life style",
+    vaillant: "ecotec ecofit plus pro exclusive green iq",
+    ideal: "logic vogue independent max imini",
+    baxi: "ecoblue 600 800 400 duo-tec duotec platinum advance",
+    potterton: "promax assure gold titanium",
+    glowworm: "energy ultimate3 betacom4 easicom3 compact",
+    main: "eco compact elite combi",
+    viessmann: "vitodens 050 100 111 200 lambda pro",
+    alpha: "e-tec etec protec cd intec nx",
+    vokera: "easi-heat easiheat compact evolve vision mynute",
+    "fire-ref": "fire fireplace pilot oxypilot ods dfe ilfe flueless stove",
+    "cooker-ref": "cooker oven hob grill ffd fsd range hotplate",
+  };
+  function brandAlias(b) { return (b.name + " " + (MODEL_ALIASES[b.id] || "")).toLowerCase(); }
+  function brandHay(b) {
+    return (brandAlias(b) + " " + (b.note || "") + " " +
+      (b.codes || []).map(c => c.code + " " + c.meaning).join(" ") + " " +
+      (b.faults || []).map(f => f.symptom + " " + f.checks).join(" ") + " " +
+      b.specs.map(s => s.label + " " + s.value).join(" ")).toLowerCase();
+  }
+
   function renderModels() {
     buildBrandFilters();
     const q = mquery.trim().toLowerCase();
+    const terms = q ? q.split(/\s+/) : [];
     const pool = pickBrand === "all" ? allRefs : allRefs.filter(b => b.id === pickBrand);
+    // every word must appear — so "greenstar 4000" still finds Worcester
+    const cards = q ? pool.filter(b => terms.every(t => brandHay(b).includes(t))) : pool;
 
     // Flat code/symptom hits — the fast "what does this code mean" lookup.
     let hits = [];
-    if (q) {
-      pool.forEach(b => {
-        const nameHit = b.name.toLowerCase().includes(q);
-        if (b.codes) b.codes.forEach(c => {
-          if (nameHit || (c.code + " " + c.meaning).toLowerCase().includes(q))
-            hits.push({ b, key: c.code, val: c.meaning });
-        });
-        if (b.faults) b.faults.forEach(f => {
-          if (nameHit || (f.symptom + " " + f.checks).toLowerCase().includes(q))
-            hits.push({ b, key: f.symptom, val: f.checks });
-        });
+    if (q) pool.forEach(b => {
+      const nameHit = terms.every(t => brandAlias(b).includes(t));
+      if (b.codes) b.codes.forEach(c => {
+        if (nameHit || (c.code + " " + c.meaning).toLowerCase().includes(q))
+          hits.push({ b, key: c.code, val: c.meaning });
       });
-    }
+      if (b.faults) b.faults.forEach(f => {
+        if (nameHit || (f.symptom + " " + f.checks).toLowerCase().includes(q))
+          hits.push({ b, key: f.symptom, val: f.checks });
+      });
+    });
 
-    if (q) {
-      codeHitsEl.innerHTML = hits.slice(0, 40).map(h =>
-        `<div class="hit">
-          <span class="tag" style="background:${h.b.color}">${esc(h.b.name)}</span>
-          <span class="hcode">${esc(h.key)}</span>
-          <span class="hmean">${esc(h.val)}</span>
-        </div>`).join("");
-      brandListEl.innerHTML = "";
-      modelEmptyEl.hidden = hits.length > 0;
-    } else {
-      codeHitsEl.innerHTML = "";
-      brandListEl.innerHTML = pool.map(brandCard).join("");
-      modelEmptyEl.hidden = pool.length > 0;
-    }
+    codeHitsEl.innerHTML = (q && hits.length) ? hits.slice(0, 40).map(h =>
+      `<div class="hit">
+        <span class="tag" style="background:${h.b.color}">${esc(h.b.name)}</span>
+        <span class="hcode">${esc(h.key)}</span>
+        <span class="hmean">${esc(h.val)}</span>
+      </div>`).join("") : "";
+    brandListEl.innerHTML = cards.map(brandCard).join("");
+    modelEmptyEl.hidden = cards.length > 0 || hits.length > 0;
   }
   document.getElementById("codeSearch").addEventListener("input", e => { mquery = e.target.value; renderModels(); });
 

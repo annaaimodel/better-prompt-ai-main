@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0e1116">
-<meta name="description" content="Ask-a-question how-to assistant for Gas Safe engineers — installation, servicing and repair of gas boilers, cookers and fires, grounded in current UK standards.">
+<meta name="description" content="How-Tos for Gas Safe engineers — browse offline install/service/repair guides for boilers, water heaters, fires, cookers, warm-air units and metering, or ask the AI about any brand & model.">
 <title>How-Tos · GasPass</title>
 <link rel="icon" href="favicon.svg">
 <link rel="manifest" href="manifest.webmanifest">
@@ -18,21 +18,36 @@
   <a class="logo" href="index.html"><span class="mark">🔧</span><span><b>GasPass</b><span>How-Tos</span></span></a>
   <div class="spacer"></div>
   <a class="btn-upd" href="updates.html"><span class="dot"></span><span class="lbl-full">Recent </span>Updates</a>
-  <button class="btn sm" id="clear">Clear</button>
 </div></header>
 
 <main class="wrap">
-  <div class="disc" style="margin-top:14px"><b>⚠ For Gas Safe–registered engineers.</b> Ask about <b>any boiler, cooker or fire — including specific brands & models</b> (e.g. Worcester Greenstar, Vaillant ecoTEC, Ideal Logic, a fault code). It searches the web for model-specific facts. The appliance's own <b>manufacturer instructions</b> always take precedence (and are a legal requirement) — verify safety-critical figures against the MI, and only carry out work you're registered and competent to do.</div>
+  <div class="disc" style="margin-top:14px"><b>⚠ For Gas Safe–registered engineers.</b> Browse install / service / repair guides (work offline), or ask the AI about a specific make & model. The appliance's own <b>manufacturer instructions</b> always take precedence — verify safety-critical figures against the MI and current standards, and only do work you're registered and competent to do.</div>
 
-  <!-- appliance + task pickers seed a question -->
-  <div class="filters" id="appPick" style="margin-bottom:4px"></div>
-  <div class="filters" id="taskPick"></div>
+  <div class="seg" id="seg">
+    <button data-mode="browse" class="on">📖 Browse guides</button>
+    <button data-mode="ask">💬 Ask AI</button>
+  </div>
 
-  <div class="chat" id="chat"></div>
+  <!-- ===================== BROWSE (offline) ===================== -->
+  <section id="browse">
+    <input id="search" class="search" type="search" placeholder="Search guides… (e.g. tightness, spillage, diverter, condensate, FSD)" autocomplete="off">
+    <div class="filters" id="appFilters"></div>
+    <div class="filters" id="taskFilters"></div>
+    <div id="guideList"></div>
+    <div class="empty" id="empty" hidden>No guides match — try another filter or word.</div>
+    <p class="dim" style="font-size:12px;text-align:center;margin:14px 0">These guides are stored on your device and work without a connection.</p>
+  </section>
+
+  <!-- ===================== ASK AI (online) ====================== -->
+  <section id="ask" hidden>
+    <p class="mut" style="font-size:13px;margin:10px 0 0">Ask about any make & model — fault codes, specs, step-by-step. Answers search the web; always verify against the manufacturer's instructions.</p>
+    <div class="chat" id="chat"></div>
+  </section>
+
+  <p class="foot">GasPass · How-Tos</p>
 </main>
 
-<div class="composer"><div class="wrap">
-  <div class="suggest" id="suggest"></div>
+<div class="composer" id="composer" hidden><div class="wrap">
   <div class="row">
     <textarea id="box" rows="1" placeholder="Ask about any make/model… e.g. Worcester Greenstar 30i fault EA"></textarea>
     <button class="btn blue" id="send">Send</button>
@@ -42,7 +57,6 @@
 <nav class="nav">
   <a href="index.html"><span class="i">🏠</span>Home</a>
   <a href="reference.html"><span class="i">📖</span>Reference</a>
-  <a href="flashcards.html"><span class="i">🃏</span>Cards</a>
   <a href="quiz.html"><span class="i">📝</span>Exams</a>
   <a href="tutor.html"><span class="i">💬</span>Tutor</a>
   <a class="on" href="howto.html"><span class="i">🔧</span>How-Tos</a>
@@ -51,141 +65,181 @@
 <script src="howto-data.js"></script>
 <script>
   const A = window.ACSHOWTO;
+  const appMap = Object.fromEntries(A.appliances.map(a => [a.id, a]));
+  const taskMap = Object.fromEntries(A.tasks.map(t => [t.id, t]));
+  const esc = s => (s == null ? "" : String(s)).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-  // Build grounding context from the vetted how-to notes + standards.
+  /* ---------- mode toggle ---------- */
+  const browseEl = document.getElementById("browse");
+  const askEl = document.getElementById("ask");
+  const composerEl = document.getElementById("composer");
+  let started = false;
+  document.getElementById("seg").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    const mode = b.dataset.mode;
+    [...document.querySelectorAll("#seg button")].forEach(x => x.classList.toggle("on", x === b));
+    const ask = mode === "ask";
+    askEl.hidden = !ask; composerEl.hidden = !ask; browseEl.hidden = ask;
+    document.body.style.paddingBottom = ask ? "150px" : "72px";
+    if (ask && !started) { started = true; greet(); }
+  });
+
+  /* ===================== BROWSE ===================== */
+  let pickApp = "all", pickTask = "all", query = "";
+  const appF = document.getElementById("appFilters");
+  const taskF = document.getElementById("taskFilters");
+  const listEl = document.getElementById("guideList");
+  const emptyEl = document.getElementById("empty");
+
+  function chip(label, on, color, onClick) {
+    const b = document.createElement("button");
+    b.className = "chip" + (on ? " on" : ""); b.textContent = label;
+    if (on && color) b.style.background = color;
+    b.onclick = onClick; return b;
+  }
+  function buildFilters() {
+    appF.innerHTML = ""; taskF.innerHTML = "";
+    appF.appendChild(chip("All appliances", pickApp === "all", null, () => { pickApp = "all"; render(); }));
+    A.appliances.forEach(a => appF.appendChild(chip(a.icon + " " + a.name, pickApp === a.id, a.color, () => { pickApp = a.id; render(); })));
+    taskF.appendChild(chip("All tasks", pickTask === "all", null, () => { pickTask = "all"; render(); }));
+    A.tasks.forEach(t => taskF.appendChild(chip(t.icon + " " + t.name, pickTask === t.id, "var(--flame)", () => { pickTask = t.id; render(); })));
+  }
+  function render() {
+    buildFilters();
+    const q = query.trim().toLowerCase();
+    const items = A.guides.filter(g => {
+      if (pickApp !== "all" && g.appliance !== pickApp) return false;
+      if (pickTask !== "all" && g.task !== pickTask) return false;
+      if (!q) return true;
+      const hay = (g.title + " " + g.summary + " " + g.steps.join(" ") + " " + (g.standards || []).join(" ") +
+        " " + (g.faults || []).map(f => f.symptom + " " + f.checks.join(" ")).join(" ")).toLowerCase();
+      return hay.includes(q);
+    });
+    emptyEl.hidden = items.length > 0;
+    listEl.innerHTML = items.map(g => {
+      const a = appMap[g.appliance], t = taskMap[g.task];
+      const faults = g.faults ? `<div class="steplabel">Common faults</div>` +
+        g.faults.map(f => `<div class="fault"><b>${esc(f.symptom)}</b><ul>${f.checks.map(c => `<li>${esc(c)}</li>`).join("")}</ul></div>`).join("") : "";
+      const safety = g.safety && g.safety.length ? `<div class="watch"><b>Safety:</b> ${g.safety.map(esc).join(" ")}</div>` : "";
+      const refs = (g.standards || []).map(r => `<span class="ref">${esc(r)}</span>`).join("");
+      return `<details class="topic" id="${g.id}">
+        <summary>
+          <span class="tag" style="background:${a.color}">${esc(a.name)}</span>
+          <span class="taskbadge">${esc(t.name)}</span>
+          <span class="ttl">${esc(g.title)}</span>
+          <span class="arw">▸</span>
+        </summary>
+        <div class="body">
+          <p class="sum">${esc(g.summary)}</p>
+          <div class="steplabel">Steps</div>
+          <ol class="steps">${g.steps.map(s => `<li>${esc(s)}</li>`).join("")}</ol>
+          ${faults}${safety}
+          <div class="refs">${refs}</div>
+        </div>
+      </details>`;
+    }).join("");
+  }
+  document.getElementById("search").addEventListener("input", e => { query = e.target.value; render(); });
+  render();
+
+  /* ===================== ASK AI ===================== */
   const CONTEXT = (() => {
-    const std = "CURRENT UK STANDARDS:\n" + A.standards.map(s => `- ${s.ref}: ${s.scope}`).join('\n');
+    const std = "CURRENT UK STANDARDS:\n" + A.standards.map(s => `- ${s.ref}: ${s.scope}`).join("\n");
     const guides = A.guides.map(g => {
-      const app = A.appliances.find(a => a.id === g.appliance).name;
-      const task = A.tasks.find(t => t.id === g.task).name;
-      let s = `[${app} — ${task}] ${g.title}\n${g.summary}\nSteps:\n` + g.steps.map((x, i) => `${i + 1}. ${x}`).join('\n');
-      if (g.faults) s += '\nCommon faults:\n' + g.faults.map(f => `- ${f.symptom}: ${f.checks.join('; ')}`).join('\n');
-      if (g.safety) s += '\nSafety: ' + g.safety.join(' ');
-      s += '\nStandards: ' + g.standards.join('; ');
+      let s = `[${appMap[g.appliance].name} — ${taskMap[g.task].name}] ${g.title}\n${g.summary}\nSteps:\n` + g.steps.map((x, i) => `${i + 1}. ${x}`).join("\n");
+      if (g.faults) s += "\nCommon faults:\n" + g.faults.map(f => `- ${f.symptom}: ${f.checks.join("; ")}`).join("\n");
+      if (g.safety) s += "\nSafety: " + g.safety.join(" ");
+      s += "\nStandards: " + g.standards.join("; ");
       return s;
-    }).join('\n\n');
-    return std + '\n\n' + guides;
+    }).join("\n\n");
+    return std + "\n\n" + guides;
   })();
-
-  // ---- pickers that seed a starter question ----
-  let pickApp = '', pickTask = '';
-  const appEl = document.getElementById('appPick');
-  const taskEl = document.getElementById('taskPick');
-  function renderPickers() {
-    appEl.innerHTML = '';
-    A.appliances.forEach(a => {
-      const b = document.createElement('button');
-      b.className = 'chip' + (pickApp === a.id ? ' on' : '');
-      b.textContent = a.icon + ' ' + a.name;
-      if (pickApp === a.id) b.style.background = a.color;
-      b.onclick = () => { pickApp = pickApp === a.id ? '' : a.id; renderPickers(); };
-      appEl.appendChild(b);
-    });
-    taskEl.innerHTML = '';
-    A.tasks.forEach(t => {
-      const b = document.createElement('button');
-      b.className = 'chip' + (pickTask === t.id ? ' on' : '');
-      b.textContent = t.icon + ' ' + t.name;
-      if (pickTask === t.id) b.style.background = 'var(--flame)';
-      b.onclick = () => { pickTask = pickTask === t.id ? '' : t.id; renderPickers(); seedFromPickers(); };
-      taskEl.appendChild(b);
-    });
-  }
-  function seedFromPickers() {
-    if (!pickApp || !pickTask) return;
-    const a = A.appliances.find(x => x.id === pickApp);
-    const t = A.tasks.find(x => x.id === pickTask).name.toLowerCase();
-    box.value = `How do I ${t.replace('repair / fault-finding','fault-find').replace('servicing','service').replace('installation','install')} a ${a.name.toLowerCase().replace('gas ','').replace(/s$/, '')}? Walk me through it step by step.`;
-    box.focus();
-  }
 
   const SAMPLES = [
     "Worcester Greenstar 4000 showing EA — what now?",
     "How do I service a Vaillant ecoTEC plus?",
     "Ideal Logic Combi losing pressure — diagnose it",
     "Baxi 800 fault codes and what they mean",
-    "Install procedure for a freestanding gas cooker?",
-    "Gas fire pilot won't stay lit — how do I diagnose it?",
   ];
 
-  const chat = document.getElementById('chat');
-  const box = document.getElementById('box');
-  const sendBtn = document.getElementById('send');
-  let history = [];
-  let busy = false;
+  // minimal, safe markdown → HTML for answers
+  function md(src) {
+    const lines = esc(src).split("\n");
+    let html = "", list = null, para = [];
+    const inline = t => t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/`(.+?)`/g, "<code>$1</code>");
+    const fP = () => { if (para.length) { html += "<p>" + inline(para.join(" ")) + "</p>"; para = []; } };
+    const fL = () => { if (list) { html += "</" + list + ">"; list = null; } };
+    for (const raw of lines) {
+      const line = raw.trim();
+      if (!line) { fP(); fL(); continue; }
+      if (/^#{1,6}\s/.test(line)) { fP(); fL(); html += "<h4>" + inline(line.replace(/^#{1,6}\s/, "")) + "</h4>"; continue; }
+      if (/^(-|\*)\s/.test(line)) { fP(); if (list !== "ul") { fL(); html += "<ul>"; list = "ul"; } html += "<li>" + inline(line.replace(/^(-|\*)\s/, "")) + "</li>"; continue; }
+      if (/^\d+\.\s/.test(line)) { fP(); if (list !== "ol") { fL(); html += "<ol>"; list = "ol"; } html += "<li>" + inline(line.replace(/^\d+\.\s/, "")) + "</li>"; continue; }
+      if (/^---+$/.test(line)) { fP(); fL(); html += "<hr>"; continue; }
+      para.push(line);
+    }
+    fP(); fL(); return html;
+  }
 
-  const sg = document.getElementById('suggest');
-  SAMPLES.forEach(s => { const b = document.createElement('button'); b.textContent = s; b.onclick = () => { box.value = s; ask(); }; sg.appendChild(b); });
+  const chat = document.getElementById("chat");
+  const box = document.getElementById("box");
+  const sendBtn = document.getElementById("send");
+  let history = [], busy = false;
+
+  function addUser(text) {
+    const d = document.createElement("div"); d.className = "msg u"; d.textContent = text;
+    chat.appendChild(d); scroll(); return d;
+  }
+  function addBot(text, sources) {
+    const d = document.createElement("div"); d.className = "msg a";
+    const body = document.createElement("div"); body.className = "md"; body.innerHTML = md(text);
+    d.appendChild(body);
+    if (sources && sources.length) {
+      const sw = document.createElement("div"); sw.className = "src";
+      sw.innerHTML = "🔎 Sources: " + sources.map(s => `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.title || s.url)}</a>`).join(" · ");
+      d.appendChild(sw);
+    }
+    const n = document.createElement("div"); n.className = "src";
+    n.textContent = "Field reference — confirm model-specific figures against the manufacturer instructions.";
+    d.appendChild(n);
+    chat.appendChild(d); scroll(); return d;
+  }
+  function scroll() { window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" }); }
 
   function greet() {
-    chat.innerHTML = '';
-    addMsg('a', "Hi — I'm your how-to assistant for installs, servicing and repairs on gas boilers, cookers and fires. Ask about any make and model (Worcester, Vaillant, Ideal, Baxi, Glow-worm…), a fault code, or a procedure — I'll look up model-specific details. Pick an appliance + task above, or just ask. What are you working on?");
-  }
-  function addMsg(role, text, sources) {
-    const d = document.createElement('div');
-    d.className = 'msg ' + role;
-    const body = document.createElement('div');
-    body.textContent = text;
-    d.appendChild(body);
-    if (role === 'a') {
-      if (sources && sources.length) {
-        const sw = document.createElement('div'); sw.className = 'src';
-        sw.innerHTML = '🔎 Sources: ' + sources.map(s =>
-          `<a href="${s.url}" target="_blank" rel="noopener" style="color:var(--blue2)">${(s.title||s.url).replace(/</g,'&lt;')}</a>`
-        ).join(' · ');
-        d.appendChild(sw);
-      }
-      const s = document.createElement('div'); s.className = 'src';
-      s.textContent = 'Field reference — confirm model-specific figures against the manufacturer instructions.';
-      d.appendChild(s);
-    }
-    chat.appendChild(d);
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    return d;
+    addBot("Hi — ask me about installs, servicing or repairs on any make & model (Worcester, Vaillant, Ideal, Baxi, Glow-worm…), a fault code, or a procedure and I'll look up the model-specific details.");
+    const wrap = document.createElement("div"); wrap.className = "suggest";
+    SAMPLES.forEach(s => { const b = document.createElement("button"); b.textContent = s; b.onclick = () => { box.value = s; ask(); }; wrap.appendChild(b); });
+    chat.appendChild(wrap); scroll();
   }
   function thinking() {
-    const d = document.createElement('div');
-    d.className = 'msg a';
+    const d = document.createElement("div"); d.className = "msg a";
     d.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
-    chat.appendChild(d);
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    return d;
+    chat.appendChild(d); scroll(); return d;
   }
 
   async function ask() {
-    const q = box.value.trim();
-    if (!q || busy) return;
+    const q = box.value.trim(); if (!q || busy) return;
     busy = true; sendBtn.disabled = true;
-    addMsg('u', q);
-    box.value = ''; box.style.height = 'auto';
+    const sg = chat.querySelector(".suggest"); if (sg) sg.remove();
+    addUser(q); box.value = ""; box.style.height = "auto";
     const wait = thinking();
     try {
-      const r = await fetch('/api/ask', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mode: 'howto', question: q, context: CONTEXT, history })
-      });
-      const data = await r.json();
-      wait.remove();
-      if (!r.ok) { addMsg('a', '⚠ ' + (data.error || 'Something went wrong. Please try again.')); }
+      const r = await fetch("/api/ask", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: "howto", question: q, context: CONTEXT, history }) });
+      const data = await r.json(); wait.remove();
+      if (!r.ok) { addBot("⚠ " + (data.error || "Something went wrong. Please try again.")); }
       else {
-        addMsg('a', data.text || 'No answer came back — try rephrasing.', data.sources);
-        history.push({ role: 'user', content: q });
-        history.push({ role: 'assistant', content: data.text || '' });
+        addBot(data.text || "No answer came back — try rephrasing.", data.sources);
+        history.push({ role: "user", content: q });
+        history.push({ role: "assistant", content: data.text || "" });
         history = history.slice(-8);
       }
-    } catch (e) {
-      wait.remove();
-      addMsg('a', '⚠ Network error — check your connection and try again.');
-    }
+    } catch (e) { wait.remove(); addBot("⚠ Network error — check your connection and try again."); }
     busy = false; sendBtn.disabled = false; box.focus();
   }
-
   sendBtn.onclick = ask;
-  box.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(); } });
-  box.addEventListener('input', () => { box.style.height = 'auto'; box.style.height = Math.min(box.scrollHeight, 140) + 'px'; });
-  document.getElementById('clear').onclick = () => { history = []; pickApp = ''; pickTask = ''; renderPickers(); greet(); };
-
-  renderPickers();
-  greet();
+  box.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); ask(); } });
+  box.addEventListener("input", () => { box.style.height = "auto"; box.style.height = Math.min(box.scrollHeight, 140) + "px"; });
 </script>
 </body></html>

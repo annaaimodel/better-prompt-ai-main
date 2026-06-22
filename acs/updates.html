@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1116">
+<meta name="description" content="Recent UK gas standards, building-regulation and legal updates for heating engineers — reviewed monthly and kept current in GasPass.">
+<title>Recent Updates · GasPass</title>
+<link rel="icon" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GasPass">
+<script src="pwa.js" defer></script>
+<link rel="stylesheet" href="style.css">
+</head><body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="mark">🔥</span><span><b>GasPass</b><span>Updates</span></span></a>
+  <div class="spacer"></div>
+  <a class="btn-upd on" href="updates.html"><span class="dot"></span><span class="lbl-full">Recent </span>Updates</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero" style="padding:24px 0 6px">
+    <h1 style="font-size:24px">Recent <span class="flame-txt">updates</span></h1>
+    <p style="font-size:14px">UK gas standards, building regulations and the law affecting engineers — kept current. <span id="reviewed" class="dim"></span></p>
+  </section>
+
+  <div class="disc" style="margin-top:6px"><b>⚖ Includes legal updates that apply to gas engineers directly.</b> Filter to <b>Legal</b> below. Each item links to the official source. Always verify against the live standard / regulation and the manufacturer's instructions before relying on it.</div>
+
+  <div class="filters" id="filters"></div>
+  <div id="list"></div>
+  <div class="empty" id="empty" hidden>No updates in this category.</div>
+
+  <p class="foot">GasPass · reviewed <b id="cadence">monthly</b> · last reviewed <span id="reviewed2"></span></p>
+</main>
+
+<nav class="nav">
+  <a href="index.html"><span class="i">🏠</span>Home</a>
+  <a href="reference.html"><span class="i">📖</span>Reference</a>
+  <a href="quiz.html"><span class="i">📝</span>Exams</a>
+  <a href="tutor.html"><span class="i">💬</span>Tutor</a>
+  <a href="howto.html"><span class="i">🔧</span>How-Tos</a>
+</nav>
+
+<script src="updates-data.js"></script>
+<script>
+  const U = window.ACSUPDATES;
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const fmt = iso => { const d = new Date(iso + "T00:00:00"); return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear(); };
+  const TONE = { live: "var(--green)", upcoming: "var(--amber)", info: "var(--blue2)" };
+  const TYPECOLOR = { "Legal": "#cf5f7a", "Standard": "#4f9dde", "Building Regs": "#e08a4f", "Policy": "#9a7bd6", "Electrical": "#e0a23a", "Metering": "#6bbf6b" };
+
+  document.getElementById("reviewed").textContent = "Last reviewed " + fmt(U.lastReviewed) + ".";
+  document.getElementById("reviewed2").textContent = fmt(U.lastReviewed);
+  document.getElementById("cadence").textContent = U.reviewCadence;
+
+  // newest first (mixes recently-in-force + upcoming mandatory changes)
+  const items = U.updates.slice().sort((a, b) => b.date.localeCompare(a.date));
+  const types = ["All", ...Array.from(new Set(items.map(i => i.type)))];
+  let active = "All";
+
+  const fEl = document.getElementById("filters");
+  function chips() {
+    fEl.innerHTML = "";
+    types.forEach(t => {
+      const b = document.createElement("button");
+      b.className = "chip" + (t === active ? " on" : "");
+      b.textContent = t === "Legal" ? "⚖ Legal" : t;
+      if (t === active && t !== "All") b.style.background = TYPECOLOR[t] || "var(--flame)";
+      b.onclick = () => { active = t; render(); };
+      fEl.appendChild(b);
+    });
+  }
+
+  const list = document.getElementById("list");
+  const empty = document.getElementById("empty");
+  function render() {
+    chips();
+    const show = items.filter(i => active === "All" || i.type === active);
+    empty.hidden = show.length > 0;
+    list.innerHTML = show.map(i => `
+      <div class="upd">
+        <div class="upd-top">
+          <span class="tag" style="background:${TYPECOLOR[i.type] || '#4f9dde'}">${i.type}</span>
+          <span class="upd-date">${fmt(i.date)}</span>
+          <span class="upd-status" style="color:${TONE[i.status.tone] || 'var(--mut)'};border-color:${TONE[i.status.tone] || 'var(--line2)'}">${i.status.text}</span>
+        </div>
+        <h3 class="upd-title">${i.title}</h3>
+        <p class="upd-detail">${i.detail}</p>
+        <div class="srcline">📄 <a href="${i.url}" target="_blank" rel="noopener">${i.source}</a></div>
+      </div>`).join("");
+  }
+  render();
+</script>
+</body></html>

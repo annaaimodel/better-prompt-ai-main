@@ -1,10 +1,11 @@
 /* GasPass service worker — offline support for the study tools.
    Reference, flashcards and mock exams work fully offline; the AI tutor and
    How-Tos need a connection (their /api/ calls are never cached). */
-const VERSION = "gaspass-v1";
+const VERSION = "gaspass-v2";
 const CORE = [
   "./", "index.html", "reference.html", "flashcards.html", "quiz.html",
-  "tutor.html", "howto.html", "style.css", "data.js", "howto-data.js",
+  "tutor.html", "howto.html", "updates.html",
+  "style.css", "data.js", "howto-data.js", "updates-data.js",
   "favicon.svg", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon-180.png",
 ];

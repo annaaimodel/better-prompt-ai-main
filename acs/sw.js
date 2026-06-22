@@ -9,7 +9,7 @@
      - precache: fetch + rebuild each page before storing it (cache.add kept the flag),
      - online: rebuild the network response,
      - offline: rebuild the cached fallback too. */
-const VERSION = "gaspass-v7";
+const VERSION = "gaspass-v8";
 const CORE = [
   "./", "index.html", "reference.html", "flashcards.html", "quiz.html",
   "tutor.html", "howto.html", "updates.html",

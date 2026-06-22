@@ -97,6 +97,23 @@ ol.steps li{margin:7px 0;font-size:14.5px;padding-left:3px}
 .fault ul{margin:4px 0 0;padding-left:18px}
 .fault li{margin:4px 0;font-size:13.5px;color:var(--mut)}
 
+/* How-Tos — brands & codes lookup */
+table.codes{width:100%;border-collapse:collapse;margin:6px 0 2px;font-size:14px}
+table.codes td{padding:8px 6px;border-top:1px solid var(--line);vertical-align:top}
+table.codes tr:first-child td{border-top:none}
+table.codes td.cd{white-space:nowrap;font-weight:700;color:var(--flame2);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;padding-right:12px;width:1%}
+.specs{display:flex;flex-direction:column;gap:6px;margin:6px 0 2px}
+.specrow{display:flex;gap:10px;font-size:13.5px;flex-wrap:wrap}
+.specrow .sl{color:var(--mut);flex:1;min-width:120px}
+.specrow .sv{color:var(--txt);font-weight:600;text-align:right}
+.hit{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;background:var(--card);
+  border:1px solid var(--line);border-radius:11px;padding:10px 12px;margin:8px 0}
+.hit .tag{flex-shrink:0}
+.hit .hcode{font-weight:700;color:var(--flame2);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px}
+.hit .hmean{flex:1;min-width:180px;font-size:13.5px;color:var(--mut)}
+
 /* How-Tos — rendered markdown inside an AI answer bubble */
 .msg.a .md{white-space:normal}
 .md>:first-child{margin-top:0}

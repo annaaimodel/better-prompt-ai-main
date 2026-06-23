@@ -16603,6 +16603,22 @@
   "tier": "",
   "first_seen": "2026-06-23",
   "last_seen": "2026-06-23",
+  "active": false
+ },
+ "3976d7f7320e255e": {
+  "title": "Account Executive - New Business",
+  "company": "Molecular You",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/molecular-you/jobs/account-executive-new-business",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-23",
+  "last_seen": "2026-06-23",
   "active": true
  }
 }

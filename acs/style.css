@@ -19,7 +19,8 @@ h1,h2,h3{line-height:1.2;margin:0 0 .4em}
 
 /* header */
 .top{position:sticky;top:0;z-index:30;background:rgba(14,17,22,.86);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  padding-top:env(safe-area-inset-top)}
 .top .wrap{display:flex;align-items:center;gap:12px;height:56px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
 .logo .mark{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;

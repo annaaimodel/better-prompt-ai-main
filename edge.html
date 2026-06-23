@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="AURUM · The Slight Edge — turn one realistic goal into simple daily actions that compound over time. Easy to do. Easy not to do. Show up today.">
+<meta name="description" content="The Slight Edge: Actionable Steps — turn one realistic goal into simple daily actions that compound over time. Easy to do. Easy not to do. Show up today.">
 <meta name="theme-color" content="#0a0a0b">
-<title>AURUM · The Slight Edge — small daily actions, compounded</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>The Slight Edge: Actionable Steps — small daily wins, compounded</title>
+<link rel="icon" type="image/svg+xml" href="/slight-edge-mark.svg"><link rel="apple-touch-icon" href="/slight-edge-mark.svg">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap');
 :root{
@@ -24,10 +24,13 @@ a{color:inherit;text-decoration:none}
 /* top bar */
 .bar{position:sticky;top:0;z-index:40;background:rgba(10,10,11,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line2)}
 .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
-.brand{display:inline-flex;align-items:center;gap:10px}
-.brand img{display:block}
-.wm{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:20px;letter-spacing:.2em;padding-left:.2em;background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand{display:inline-flex;align-items:center;gap:11px}
+.brand img,.brand svg{display:block;flex:none}
+.lock{display:flex;flex-direction:column;line-height:1.05}
+.wm{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:18px;letter-spacing:.05em;background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub2{font-size:9.5px;font-weight:700;letter-spacing:.30em;text-transform:uppercase;color:var(--mut);margin-top:3px}
 .tag{font-size:10px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);border-left:1px solid var(--line2);padding-left:10px;margin-left:2px}
+@media(max-width:380px){.wm{font-size:16px}.sub2{letter-spacing:.22em}}
 .barbtn{font-size:12.5px;color:var(--mut);border:1px solid var(--line2);border-radius:9px;padding:7px 12px;cursor:pointer;background:transparent;font-weight:600}
 .barbtn:hover{border-color:var(--gold);color:var(--gold2)}
 
@@ -163,6 +166,10 @@ textarea.fi{min-height:84px;resize:vertical}
 
 .donebtn{width:100%;margin-top:14px}
 .celebrate{text-align:center;color:var(--good);font-size:13.5px;margin-top:10px;font-weight:600}
+.encourage{text-align:center;color:var(--gold2);font-size:13px;margin-top:10px;background:rgba(201,156,56,.08);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.encourage b{color:#f6f1e6}
+.hint{text-align:center;color:var(--mut);font-size:12px;margin-top:8px}
+.hint b{color:var(--gold2)}
 
 /* chart */
 .chartcard svg{width:100%;height:auto;display:block}
@@ -211,7 +218,7 @@ footer a{color:var(--mut)}footer a:hover{color:var(--gold2)}
 <body>
 
 <div class="bar"><div class="wrap">
-  <a class="brand" href="/edge"><img src="/favicon.svg" width="32" height="32" alt="Aurum"><span class="wm">AURUM</span><span class="tag">The Slight Edge</span></a>
+  <a class="brand" href="/edge"><img src="/slight-edge-mark.svg" width="34" height="34" alt="The Slight Edge"><span class="lock"><span class="wm">The Slight Edge</span><span class="sub2">Actionable Steps</span></span></a>
   <button class="barbtn" id="navBtn" onclick="App.navAction()">Begin</button>
 </div></div>
 
@@ -277,8 +284,8 @@ footer a{color:var(--mut)}footer a:hover{color:var(--gold2)}
 <main id="view-dash" class="hidden"><div class="wrap dash" id="dash"></div></main>
 
 <footer>
-  <div class="brand" style="margin-bottom:10px"><span class="wm" style="font-size:16px">AURUM</span></div>
-  <div>The Slight Edge · small daily actions, compounded over time.</div>
+  <div class="brand" style="margin-bottom:12px;justify-content:center"><img src="/slight-edge-mark.svg" width="26" height="26" alt=""><span class="lock"><span class="wm" style="font-size:15px">The Slight Edge</span><span class="sub2">Actionable Steps</span></span></div>
+  <div>Small daily actions, compounded over time.</div>
   <div style="margin-top:8px">Your goals &amp; progress are stored privately on this device. <a href="#" onclick="App.exportData();return false">Back up</a> · <a href="#" onclick="App.importData();return false">Restore</a> · <a href="#" onclick="App.resetAll();return false">Reset</a></div>
   <div style="margin-top:8px;color:var(--mut2)">Method &amp; quotes from <i>The Slight Edge</i> by Jeff Olson. This is a personal habit tool, not medical, financial or professional advice.</div>
 </footer>
@@ -288,7 +295,7 @@ footer a{color:var(--mut)}footer a:hover{color:var(--gold2)}
 
 <script>
 /* =========================================================================
-   AURUM · The Slight Edge — single-file app. State lives in localStorage.
+   The Slight Edge: Actionable Steps — single-file app. State lives in localStorage.
    ========================================================================= */
 const STORE_KEY = 'aurum_edge_v1';
 const todayKey = (d=new Date()) => { const z=new Date(d.getTime()-d.getTimezoneOffset()*6e4); return z.toISOString().slice(0,10); };
@@ -617,18 +624,21 @@ const App = (()=>{
   /* ================= DASHBOARD ================= */
   function openDash(){ location.hash='dash'; $('navBtn').textContent='My plan'; show('dash'); renderDash(); }
 
+  // A day "counts" once it's locked in — any effort logged. (allDone kept for back-compat.)
+  const isLocked = log => !!(log && (log.locked || log.allDone));
   function streakFor(g){
     let s=0; let d=new Date();
-    // count back from today while days are complete; today not yet complete doesn't break a prior streak
+    // count back from today while days are locked; today not yet locked doesn't break a prior streak
     for(let i=0;i<400;i++){ const k=todayKey(d); const log=g.log[k];
-      if(log&&log.allDone){ s++; } else if(i===0){ /* today incomplete: keep counting prior days */ } else { break; }
+      if(isLocked(log)){ s++; } else if(i===0){ /* today not locked yet: keep counting prior days */ } else { break; }
       d=new Date(d.getTime()-864e5);
     }
     return s;
   }
-  function longestStreak(g){ const keys=Object.keys(g.log).filter(k=>g.log[k].allDone).sort(); let best=0,cur=0,prev=null;
+  function longestStreak(g){ const keys=Object.keys(g.log).filter(k=>isLocked(g.log[k])).sort(); let best=0,cur=0,prev=null;
     keys.forEach(k=>{ if(prev&&daysBetween(prev,k)===1)cur++; else cur=1; best=Math.max(best,cur); prev=k; }); return best; }
-  function daysDone(g){ return Object.values(g.log).filter(l=>l.allDone).length; }
+  function daysDone(g){ return Object.values(g.log).filter(l=>isLocked(l)).length; }
+  function fullDays(g){ return Object.values(g.log).filter(l=>l && l.full).length; }
   function weekNo(g){ return Math.floor(daysBetween(g.startDate,todayKey())/7)+1; }
 
   function renderDash(){
@@ -667,7 +677,10 @@ const App = (()=>{
     const wk=weekNo(g);
     // next milestone
     const nextMile=g.plan.milestones.find(m=>!m.done && m.byWeek>=wk) || g.plan.milestones.find(m=>!m.done);
-    const allDone=doneCount===total;
+    const full=isFull(g,log);           // every action's target met
+    const effort=hasEffort(g,log);      // at least one action with progress
+    const locked=isLocked(log);
+    const remaining=total-doneCount;
 
     return `<div class="gcard" data-g="${g.id}">
       <div class="ghead"><div><div class="gcat">${c.ce} ${esc(c.name)}</div><h3 class="gt">${esc(g.title)}</h3></div>
@@ -676,10 +689,19 @@ const App = (()=>{
       <div class="actions">${g.plan.dailyActions.map(a=>actionRow(g,a,log)).join('')}</div>
 
       <div class="progline"><i style="width:${pct}%"></i></div>
-      <div class="progcap"><span>${doneCount}/${total} done today</span><span>Week ${wk}${g.timeframeWeeks?` of ${g.timeframeWeeks}`:''}</span></div>
+      <div class="progcap"><span>${doneCount}/${total} today${fullDays(g)?` · ${fullDays(g)} full ${fullDays(g)===1?'day':'days'}`:''}</span><span>Week ${wk}${g.timeframeWeeks?` of ${g.timeframeWeeks}`:''}</span></div>
 
-      <button class="btn primary donebtn" onclick="App.completeDay('${g.id}')" ${allDone?'':'disabled'} id="cd_${g.id}">${log.allDone?'Day complete ✓':(allDone?'Lock in today ✓':`Complete all ${total} to lock in the day`)}</button>
-      ${log.allDone?`<div class="celebrate">Logged. The slight edge is working for you today. 🔥</div>`:''}
+      <button class="btn primary donebtn" onclick="App.completeDay('${g.id}')" ${(effort||locked)?'':'disabled'} id="cd_${g.id}">${
+        locked ? (full ? 'Full day complete ✓' : `Day locked ✓ · ${doneCount}/${total}`)
+               : (effort ? (full ? 'Lock in a full day ✓' : 'Lock in today ✓') : 'Log an action to lock in your day')
+      }</button>
+      ${ locked
+          ? (full
+              ? `<div class="celebrate">Perfect day — every action done. The slight edge is compounding. 🔥</div>`
+              : `<div class="encourage">You showed up — that's the win. <b>Finish the last ${remaining}</b> to make it a full day. 💪</div>`)
+          : (effort && !full
+              ? `<div class="hint">Or complete all ${total} for a <b>full day</b>.</div>`
+              : '') }
 
       ${nextMile?`<div style="margin-top:14px"><div class="gcat" style="margin-bottom:6px">Next mini-target</div>
         <div class="miles"><div class="mile next"><span class="mdot"></span><div class="mbody"><div class="ml">${esc(nextMile.label)}</div><div class="mm">${esc(nextMile.targetValue||nextMile.metric)}</div></div><span class="mweek">Wk ${nextMile.byWeek}</span></div></div>
@@ -702,16 +724,33 @@ const App = (()=>{
       <span class="cbox">✓</span><span class="atxt">${esc(a.label)}${a.why?`<span class="awhy">${esc(a.why)}</span>`:''}</span></div>`;
   }
 
-  function ensureLog(g){ const k=todayKey(); if(!g.log[k]) g.log[k]={done:{},allDone:false,note:''}; return g.log[k]; }
-  function recompute(g){ const log=ensureLog(g); const all=g.plan.dailyActions.every(a=>{ const v=log.done[a.id]; if(a.type==='number') return v!=null && (!a.target || +v>=a.target); return !!v; }); return all; }
+  function ensureLog(g){ const k=todayKey(); if(!g.log[k]) g.log[k]={done:{},locked:false,full:false,note:''}; return g.log[k]; }
+  // a single action counts as "progress" if checked, or a number with any value > 0
+  function actProgress(a,log){ const v=log.done[a.id]; return a.type==='number' ? (v!=null && +v>0) : !!v; }
+  // a single action "meets target" (full)
+  function actMet(a,log){ const v=log.done[a.id]; return a.type==='number' ? (v!=null && (!a.target || +v>=a.target)) : !!v; }
+  function hasEffort(g,log){ return g.plan.dailyActions.some(a=>actProgress(a,log)); }
+  function isFull(g,log){ return g.plan.dailyActions.every(a=>actMet(a,log)); }
 
-  function toggleAct(gid,aid){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g); log.done[aid]=!log.done[aid]; if(!log.done[aid])delete log.done[aid]; save(); refreshCard(g); }
-  function setNum(gid,aid,val){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g); if(val===''||val==null){delete log.done[aid];}else{log.done[aid]=clampN(parseFloat(val)||0,0,1e7);} save(); // light refresh: update progress + button only
-    const allDone=g.plan.dailyActions.filter(a=>{const v=log.done[a.id];return a.type==='number'?(v!=null&&(!a.target||+v>=a.target)):!!v;}).length===g.plan.dailyActions.length;
-    const btn=$('cd_'+gid); if(btn)btn.disabled=!allDone && !log.allDone; if(btn&&allDone&&!log.allDone)btn.textContent='Lock in today ✓'; }
+  // If a locked day reaches full completion, mark it & celebrate. Returns true if it just upgraded.
+  function maybeUpgradeFull(g,log){ if(log.locked && !log.full && isFull(g,log)){ log.full=true; save(); toast('That makes it a full day! 🔥'); return true; } return false; }
+
+  function toggleAct(gid,aid){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g); log.done[aid]=!log.done[aid]; if(!log.done[aid])delete log.done[aid]; save(); maybeUpgradeFull(g,log); refreshCard(g); }
+  function setNum(gid,aid,val){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g); if(val===''||val==null){delete log.done[aid];}else{log.done[aid]=clampN(parseFloat(val)||0,0,1e7);} save();
+    // if already locked and we just hit full, re-render to celebrate; otherwise light-touch the button only
+    if(maybeUpgradeFull(g,log)){ refreshCard(g); return; }
+    const effort=hasEffort(g,log), full=isFull(g,log), locked=isLocked(log); const total=g.plan.dailyActions.length;
+    const done=g.plan.dailyActions.filter(a=>actProgress(a,log)).length;
+    const btn=$('cd_'+gid); if(btn){ btn.disabled=!(effort||locked);
+      btn.textContent = locked ? (full?'Full day complete ✓':`Day locked ✓ · ${done}/${total}`) : (effort ? (full?'Lock in a full day ✓':'Lock in today ✓') : 'Log an action to lock in your day'); } }
   function refreshCard(g){ const old=document.querySelector(`.gcard[data-g="${g.id}"]`); if(old){ const div=document.createElement('div'); div.innerHTML=goalCardHtml(g); old.replaceWith(div.firstElementChild); } }
 
-  function completeDay(gid){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g); if(!recompute(g)){ toast('Finish all actions first'); return; } log.allDone=true; save(); toast('Locked in. 🔥 '+(streakFor(g))+'-day streak'); renderDash(); }
+  function completeDay(gid){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g);
+    if(isLocked(log)) return;                                   // already locked
+    if(!hasEffort(g,log)){ toast('Log at least one action first 🌱'); return; }
+    log.locked=true; log.full=isFull(g,log); save();
+    toast(log.full ? `Full day locked. 🔥 ${streakFor(g)}-day streak` : `You showed up. 🔥 ${streakFor(g)}-day streak — finish the rest for a full day`);
+    renderDash(); }
   function toggleMiles(gid){ const el=$('miles_'+gid); if(el)el.classList.toggle('hidden'); }
   function markMile(gid){ const g=DB.goals.find(x=>x.id===gid); const m=g.plan.milestones.find(x=>!x.done); if(!m){ toast('All targets hit — set a new goal!'); return; } m.done=true; save(); toast('Milestone hit. The curve is bending up. 📈'); renderDash(); }
 
@@ -749,7 +788,7 @@ const App = (()=>{
   }
 
   /* ----- data tools ----- */
-  function exportData(){ const blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='aurum-slight-edge-backup.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); toast('Backup downloaded'); }
+  function exportData(){ const blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='slight-edge-actionable-steps-backup.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); toast('Backup downloaded'); }
   function importData(){ $('importFile').click(); }
   function resetAll(){ if(confirm('Erase ALL goals and progress on this device? Export a backup first if you want to keep it.')){ localStorage.removeItem(STORE_KEY); DB={v:1,goals:[],activeId:null}; location.hash=''; boot(); toast('Reset complete'); } }
 

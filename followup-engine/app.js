@@ -229,6 +229,8 @@ if (!db.savedPlans) db.savedPlans = [];
 if (!db.content) db.content = [];
 if (!db.creator) db.creator = { niche: "", audience: "", pillars: "", platforms: "", cadence: "", goal: "" };
 if (!db.contentPlan) db.contentPlan = [];
+if (!db.scripts) db.scripts = [];
+if (typeof db.liveScriptId !== "string") db.liveScriptId = "";
 // Backfill the segment field on any leads created before segments existed.
 db.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
 maybeDailyBackup();
@@ -248,6 +250,8 @@ function load() {
     content: [],
     creator: { niche: "", audience: "", pillars: "", platforms: "", cadence: "", goal: "" },
     contentPlan: [],
+    scripts: [],
+    liveScriptId: "",
     leads: [],
   };
 }
@@ -1286,7 +1290,23 @@ $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.tar
 // Live call copilot - listens via the browser mic, whispers cues from /api/cue.
 // ---------------------------------------------------------------------------
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null };
+const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1 };
+function splitScript(text) { return String(text || "").split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean); }
+function populateScripts() {
+  const sel = $("sc_select");
+  sel.innerHTML = `<option value="">(none)</option>` +
+    (db.scripts || []).map((s) => `<option value="${s.id}" ${s.id === db.liveScriptId ? "selected" : ""}>${esc(s.name || "Untitled")}</option>`).join("");
+  const cur = (db.scripts || []).find((s) => s.id === db.liveScriptId);
+  $("sc_text").value = cur ? cur.text : $("sc_text").value;
+  $("sc_name").value = cur ? cur.name : $("sc_name").value;
+}
+function renderScriptLive(activeIdx) {
+  const el = $("sc_live");
+  if (!Live.scriptBlocks.length) { el.innerHTML = `<p class="small muted">No script loaded.</p>`; return; }
+  el.innerHTML = Live.scriptBlocks.map((b, i) => `<div class="sblock ${i === activeIdx ? "active" : (activeIdx >= 0 && i < activeIdx ? "past" : "")}">${esc(b)}</div>`).join("");
+  const act = el.querySelector(".sblock.active");
+  if (act) act.scrollIntoView({ behavior: "smooth", block: "center" });
+}
 async function acquireWakeLock() {
   try { if ("wakeLock" in navigator) { Live.wakeLock = await navigator.wakeLock.request("screen"); } } catch (e) {}
 }
@@ -1304,11 +1324,39 @@ function setupLive() {
   const leads = db.leads.filter((l) => l.status === "active");
   sel.innerHTML = `<option value="">(no lead - general)</option>` +
     leads.map((l) => `<option value="${l.id}" ${l.id === Live.leadId ? "selected" : ""}>${esc(l.name || "Unnamed")}${l.company ? " - " + esc(l.company) : ""}</option>`).join("");
+  populateScripts();
   if (!SR) {
     $("live_status").innerHTML = "⚠ This browser can't do in-browser speech recognition. Use Chrome (the Deepgram upgrade removes this limit).";
     $("live_start").disabled = true;
   }
 }
+$("sc_select").onchange = () => {
+  db.liveScriptId = $("sc_select").value; save();
+  const cur = (db.scripts || []).find((s) => s.id === db.liveScriptId);
+  $("sc_text").value = cur ? cur.text : ""; $("sc_name").value = cur ? cur.name : "";
+};
+$("sc_save").onclick = () => {
+  const text = $("sc_text").value.trim();
+  const name = $("sc_name").value.trim() || "Untitled script";
+  if (!text) { toast("Paste a script first"); return; }
+  let cur = (db.scripts || []).find((s) => s.id === db.liveScriptId);
+  if (cur) { cur.name = name; cur.text = text; }
+  else { cur = { id: uid(), name, text }; db.scripts.push(cur); db.liveScriptId = cur.id; }
+  save(); populateScripts(); toast("Script saved");
+};
+$("sc_upload").onclick = () => $("sc_file").click();
+$("sc_file").onchange = (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = () => { $("sc_text").value = String(r.result || ""); toast("Loaded - name it and Save"); };
+  r.readAsText(f);
+};
+$("sc_del").onclick = () => {
+  if (!db.liveScriptId) { toast("No saved script selected"); return; }
+  if (!confirm("Delete this script?")) return;
+  db.scripts = (db.scripts || []).filter((s) => s.id !== db.liveScriptId);
+  db.liveScriptId = ""; save(); $("sc_text").value = ""; $("sc_name").value = ""; populateScripts(); toast("Deleted");
+};
 function renderTranscript() {
   const el = $("live_transcript");
   el.textContent = (Live.transcript + Live.interim).slice(-4000) || "Listening…";
@@ -1319,7 +1367,9 @@ function liveStart() {
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
   Live.leadId = $("live_lead").value;
   Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0;
+  Live.scriptBlocks = splitScript($("sc_text").value); Live.scriptIdx = -1;
   $("live_cues").innerHTML = "";
+  if (Live.scriptBlocks.length) { $("sc_editor").style.display = "none"; $("sc_live").style.display = "block"; renderScriptLive(-1); }
   const rec = new SR();
   rec.continuous = true; rec.interimResults = true; rec.lang = navigator.language || "en-US";
   rec.onresult = (e) => {
@@ -1347,6 +1397,7 @@ function liveStop() {
   if (Live.rec) { try { Live.rec.stop(); } catch (e) {} }
   clearInterval(Live.timer); Live.timer = null;
   releaseWakeLock();
+  $("sc_editor").style.display = ""; $("sc_live").style.display = "none"; $("sc_note").textContent = "";
   $("live_start").disabled = false; $("live_stop").disabled = true;
   $("live_status").textContent = "Stopped.";
   const full = Live.transcript.trim();
@@ -1381,10 +1432,15 @@ async function maybeCue(force) {
         playbook: db.playbook,
         assets,
         recentCues: Live.recentCues.slice(-10),
+        scriptBlocks: Live.scriptBlocks,
       }),
     });
     const j = await r.json();
     if (j.cues && j.cues.length) renderCues(j.cues);
+    if (Live.scriptBlocks.length && typeof j.scriptIndex === "number" && j.scriptIndex >= 0 && j.scriptIndex < Live.scriptBlocks.length) {
+      Live.scriptIdx = j.scriptIndex; renderScriptLive(Live.scriptIdx);
+    }
+    if (Live.scriptBlocks.length) $("sc_note").textContent = j.scriptNote ? "- " + j.scriptNote : "";
   } catch (e) {}
 }
 function renderCues(cues) {

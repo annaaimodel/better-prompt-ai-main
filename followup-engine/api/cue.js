@@ -32,7 +32,9 @@ Hard rules:
 - Never invent facts, client results, names, dates, times, or links. Use only what is provided.
 - Never use em dashes or en dashes; use a simple hyphen.
 
-Return ONLY a JSON object: {"cues":[{"type":"ask|objection|mask|value|nudge|book","text":"<short line>"}]}. No markdown, no prose.`;
+SCRIPT FOLLOWING: if numbered SCRIPT BLOCKS are provided, also work out which block the rep should be on RIGHT NOW based on the conversation so far, and return its number as "scriptIndex" (0-based), plus a one-line "scriptNote" directing what to do with the script next (e.g. "Move to discovery", "They raised price - jump to ROI block", "Stay here, dig deeper"). The script is the rep's plan; your cues adapt it live with the method. If no script is provided, set scriptIndex to null and scriptNote to "".
+
+Return ONLY a JSON object: {"cues":[{"type":"ask|objection|mask|value|nudge|book","text":"<short line>"}],"scriptIndex":<number or null>,"scriptNote":"<short or empty>"}. No markdown, no prose.`;
 
 function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
 
@@ -71,14 +73,16 @@ export default async function handler(req, res) {
   if (!process.env.ANTHROPIC_API_KEY) { res.status(503).json({ error: "Not configured: ANTHROPIC_API_KEY is not set in Vercel." }); return; }
 
   const transcript = clip(body.transcript, 6000);
-  if (transcript.trim().length < 20) { res.status(200).json({ cues: [] }); return; }
+  if (transcript.trim().length < 20) { res.status(200).json({ cues: [], scriptIndex: null, scriptNote: "" }); return; }
 
-  const userText = `${buildContext(body)}\n\nLIVE TRANSCRIPT (newest at the end):\n${transcript}\n\nGive the 1-3 most useful cues right now (or an empty list if nothing new).`;
+  const blocks = Array.isArray(body.scriptBlocks) ? body.scriptBlocks.slice(0, 60).map((b, i) => `[${i}] ${clip(b, 400)}`) : [];
+  const scriptText = blocks.length ? `\n\nSCRIPT BLOCKS (the rep's plan, numbered):\n${blocks.join("\n")}` : "";
+  const userText = `${buildContext(body)}${scriptText}\n\nLIVE TRANSCRIPT (newest at the end):\n${transcript}\n\nGive the 1-3 most useful cues right now (or an empty list if nothing new)${blocks.length ? ", plus the current scriptIndex and a short scriptNote" : ""}.`;
 
   try {
     const msg = await client.messages.create({
       model: "claude-haiku-4-5",
-      max_tokens: 320,
+      max_tokens: 360,
       system: SYSTEM,
       messages: [{ role: "user", content: userText }],
     });
@@ -89,7 +93,8 @@ export default async function handler(req, res) {
     const cues = Array.isArray(parsed.cues)
       ? parsed.cues.slice(0, 3).map((x) => ({ type: clip(x.type, 20).toLowerCase() || "ask", text: clip(x.text, 200) })).filter((x) => x.text)
       : [];
-    res.status(200).json({ cues, usage: msg.usage });
+    const scriptIndex = (typeof parsed.scriptIndex === "number" && parsed.scriptIndex >= 0) ? Math.floor(parsed.scriptIndex) : null;
+    res.status(200).json({ cues, scriptIndex, scriptNote: clip(parsed.scriptNote, 160), usage: msg.usage });
   } catch (e) {
     res.status(e?.status || 500).json({ error: e?.message || "Cue failed." });
   }

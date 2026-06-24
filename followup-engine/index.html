@@ -48,6 +48,24 @@
         <p class="small" id="live_status">Idle.</p>
       </div>
       <div class="card">
+        <h2>Call script <span class="small muted" id="sc_note"></span></h2>
+        <p class="small muted">Optional. Load a script and the whisper follows along live, highlighting the section you're on and adding method direction as needed. Leave a blank line between sections.</p>
+        <div id="sc_editor">
+          <div class="row">
+            <div class="field"><label>Saved scripts</label><select id="sc_select"></select></div>
+            <div class="field"><label>Name</label><input id="sc_name" placeholder="e.g. Discovery call v1" /></div>
+          </div>
+          <div class="field"><textarea id="sc_text" rows="6" placeholder="Paste your call script here. Leave a blank line between sections."></textarea></div>
+          <div class="kbar">
+            <button class="btn sm primary" id="sc_save">Save script</button>
+            <button class="btn sm" id="sc_upload">Upload .txt</button>
+            <input id="sc_file" type="file" accept=".txt,text/plain" class="hidden" />
+            <button class="btn sm danger" id="sc_del">Delete</button>
+          </div>
+        </div>
+        <div id="sc_live" class="script-live" style="display:none"></div>
+      </div>
+      <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center">
           <h2 style="margin:0">Whispers</h2>
           <button class="btn sm" id="live_cuenow">Cue me now</button>

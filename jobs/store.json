@@ -16651,7 +16651,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-06-24",
-  "active": true
+  "active": false
  },
  "746e0c93ca692df0": {
   "title": "Remote High-Ticket Sales Closer - Inbound Commissions",
@@ -17176,6 +17176,22 @@
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
+  "tier": "",
+  "first_seen": "2026-06-24",
+  "last_seen": "2026-06-24",
+  "active": true
+ },
+ "970939db52b49f12": {
+  "title": "Account Executive, NorCal",
+  "company": "Uber",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.themuse.com/jobs/uber/account-executive-norcal",
+  "source": "The Muse",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Cold",
+  "inbox": false,
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-06-24",

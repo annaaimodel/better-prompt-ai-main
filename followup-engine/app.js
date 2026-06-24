@@ -1290,8 +1290,24 @@ $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.tar
 // Live call copilot - listens via the browser mic, whispers cues from /api/cue.
 // ---------------------------------------------------------------------------
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1 };
+const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false };
 function splitScript(text) { return String(text || "").split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean); }
+function updateScriptControls() {
+  $("sc_pos").textContent = Live.scriptBlocks.length ? `Section ${Math.max(1, Live.scriptIdx + 1)} / ${Live.scriptBlocks.length}` : "";
+  const ab = $("sc_auto");
+  ab.textContent = Live.scriptManual ? "Manual - resume auto" : "Auto: on";
+  ab.classList.toggle("primary", !Live.scriptManual);
+}
+function nudgeScript(d) {
+  if (!Live.scriptBlocks.length) return;
+  Live.scriptManual = true;
+  const base = Live.scriptIdx < 0 ? 0 : Live.scriptIdx;
+  Live.scriptIdx = Math.max(0, Math.min(Live.scriptBlocks.length - 1, base + d));
+  renderScriptLive(Live.scriptIdx);
+}
+$("sc_back").onclick = () => nudgeScript(-1);
+$("sc_next").onclick = () => nudgeScript(1);
+$("sc_auto").onclick = () => { Live.scriptManual = !Live.scriptManual; updateScriptControls(); toast(Live.scriptManual ? "Manual mode" : "Auto tracking on"); };
 function populateScripts() {
   const sel = $("sc_select");
   sel.innerHTML = `<option value="">(none)</option>` +
@@ -1306,6 +1322,7 @@ function renderScriptLive(activeIdx) {
   el.innerHTML = Live.scriptBlocks.map((b, i) => `<div class="sblock ${i === activeIdx ? "active" : (activeIdx >= 0 && i < activeIdx ? "past" : "")}">${esc(b)}</div>`).join("");
   const act = el.querySelector(".sblock.active");
   if (act) act.scrollIntoView({ behavior: "smooth", block: "center" });
+  updateScriptControls();
 }
 async function acquireWakeLock() {
   try { if ("wakeLock" in navigator) { Live.wakeLock = await navigator.wakeLock.request("screen"); } } catch (e) {}
@@ -1367,9 +1384,9 @@ function liveStart() {
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
   Live.leadId = $("live_lead").value;
   Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0;
-  Live.scriptBlocks = splitScript($("sc_text").value); Live.scriptIdx = -1;
+  Live.scriptBlocks = splitScript($("sc_text").value); Live.scriptIdx = -1; Live.scriptManual = false;
   $("live_cues").innerHTML = "";
-  if (Live.scriptBlocks.length) { $("sc_editor").style.display = "none"; $("sc_live").style.display = "block"; renderScriptLive(-1); }
+  if (Live.scriptBlocks.length) { $("sc_editor").style.display = "none"; $("sc_live").style.display = "block"; $("sc_controls").style.display = "flex"; renderScriptLive(-1); }
   const rec = new SR();
   rec.continuous = true; rec.interimResults = true; rec.lang = navigator.language || "en-US";
   rec.onresult = (e) => {
@@ -1397,7 +1414,7 @@ function liveStop() {
   if (Live.rec) { try { Live.rec.stop(); } catch (e) {} }
   clearInterval(Live.timer); Live.timer = null;
   releaseWakeLock();
-  $("sc_editor").style.display = ""; $("sc_live").style.display = "none"; $("sc_note").textContent = "";
+  $("sc_editor").style.display = ""; $("sc_live").style.display = "none"; $("sc_controls").style.display = "none"; $("sc_note").textContent = "";
   $("live_start").disabled = false; $("live_stop").disabled = true;
   $("live_status").textContent = "Stopped.";
   const full = Live.transcript.trim();
@@ -1437,7 +1454,7 @@ async function maybeCue(force) {
     });
     const j = await r.json();
     if (j.cues && j.cues.length) renderCues(j.cues);
-    if (Live.scriptBlocks.length && typeof j.scriptIndex === "number" && j.scriptIndex >= 0 && j.scriptIndex < Live.scriptBlocks.length) {
+    if (!Live.scriptManual && Live.scriptBlocks.length && typeof j.scriptIndex === "number" && j.scriptIndex >= 0 && j.scriptIndex < Live.scriptBlocks.length) {
       Live.scriptIdx = j.scriptIndex; renderScriptLive(Live.scriptIdx);
     }
     if (Live.scriptBlocks.length) $("sc_note").textContent = j.scriptNote ? "- " + j.scriptNote : "";

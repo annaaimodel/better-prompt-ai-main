@@ -72,6 +72,24 @@
         <div id="sc_live" class="script-live" style="display:none"></div>
       </div>
       <div class="card">
+        <h2>Objection handler</h2>
+        <p class="small muted">Tap the objection the moment it lands and the method-true lines drop into your whispers. Or type a specific one.</p>
+        <div class="kbar" id="obj_buttons">
+          <button class="btn sm" data-lbl="Too expensive / price">Too expensive</button>
+          <button class="btn sm" data-lbl="No money right now">No money</button>
+          <button class="btn sm" data-lbl="I need to think about it">Think about it</button>
+          <button class="btn sm" data-lbl="I need to talk to my partner/spouse">Talk to partner</button>
+          <button class="btn sm" data-lbl="I need to do more research">More research</button>
+          <button class="btn sm" data-lbl="Timing is not right / too busy">Timing</button>
+          <button class="btn sm" data-lbl="Fear in themselves - self doubt, what if I cannot do it">Fear (self)</button>
+          <button class="btn sm" data-lbl="Fear in you / the program - will this actually work">Fear (us)</button>
+        </div>
+        <div class="kbar" style="margin-top:6px">
+          <input id="obj_text" placeholder="Or type exactly what they said..." />
+          <button class="btn sm primary" id="obj_go">Handle ▸</button>
+        </div>
+      </div>
+      <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center">
           <h2 style="margin:0">Whispers</h2>
           <button class="btn sm" id="live_cuenow">Cue me now</button>

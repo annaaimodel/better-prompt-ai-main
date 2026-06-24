@@ -1477,6 +1477,38 @@ $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
 $("live_cuenow").onclick = () => maybeCue(true);
 
+// Quick objection handler - drops method-true lines into the whispers panel.
+async function handleObjection(label) {
+  if (!label) return;
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  const lid = $("live_lead").value;
+  const l = lid ? db.leads.find((x) => x.id === lid) : null;
+  const box = $("live_cues"); if (box.querySelector(".empty")) box.innerHTML = "";
+  const loading = document.createElement("div");
+  loading.className = "cue objection"; loading.innerHTML = `<span class="cue-type">objection</span>Handling "${esc(label)}"…`;
+  box.prepend(loading);
+  try {
+    const r = await fetch("/api/objection", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({
+        objection: label,
+        contact: l ? { name: l.name, offerInterest: l.offerInterest, notes: l.notes } : {},
+        mask: l ? l.mask : null,
+        playbook: db.playbook,
+        assets: (db.assets || []).map((a) => ({ title: a.title, result: a.result, bestFor: a.bestFor })),
+        transcript: (Live.transcript || "").slice(-2000),
+      }),
+    });
+    const j = await r.json();
+    loading.remove();
+    if (r.ok && j.lines && j.lines.length) renderCues(j.lines.map((t) => ({ type: "objection", text: t })));
+    else toast(j.error || "No suggestion");
+  } catch (e) { loading.remove(); toast("Network error"); }
+}
+$("obj_buttons").addEventListener("click", (e) => { const b = e.target.closest("button[data-lbl]"); if (b) handleObjection(b.dataset.lbl); });
+$("obj_go").onclick = () => { const t = $("obj_text").value.trim(); if (t) { handleObjection(t); $("obj_text").value = ""; } };
+$("obj_text").addEventListener("keydown", (e) => { if (e.key === "Enter") $("obj_go").click(); });
+
 // ---------------------------------------------------------------------------
 // Scenario coach - method-true game plan for a described situation.
 // ---------------------------------------------------------------------------

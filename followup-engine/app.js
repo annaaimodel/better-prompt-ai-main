@@ -1084,6 +1084,16 @@ $("pb_save").onclick = () => {
   save(); updatePlaybookStatus(); toast("Playbook saved");
   $("pb_status").textContent = "Saved ✓ - every draft now builds from your offer, method & voice";
 };
+function clearPlaybookSection(section, label) {
+  if (!confirm(`Clear the ${label} section? A backup is taken first, so it's recoverable from Settings -> Data.`)) return;
+  snapshotBackup("before clear " + section);
+  db.playbook = db.playbook || defaultPlaybook();
+  db.playbook[section] = defaultPlaybook()[section];
+  save(); loadPlaybookForm(); toast(`${label} cleared - add a new one`);
+}
+$("pb_clear_offer").onclick = () => clearPlaybookSection("offer", "offer knowledge");
+$("pb_clear_method").onclick = () => clearPlaybookSection("methodology", "sales methodology");
+$("pb_clear_voice").onclick = () => clearPlaybookSection("tone", "voice");
 
 // Assets library ------------------------------------------------------------
 const ASSET_TYPE_LABEL = { testimonial: "Testimonial", "case-study": "Case study", story: "Story", stat: "Stat", resource: "Resource" };

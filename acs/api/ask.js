@@ -12,6 +12,11 @@
 // Stores/logs nothing — inputs are used in memory only.
 import Anthropic from "@anthropic-ai/sdk";
 
+// Raise the serverless time limit so web-search answers can finish (the
+// vercel.json setting isn't always honoured; this per-function export is).
+export const maxDuration = 60;
+export const config = { maxDuration: 60 };
+
 const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
 
 const TUTOR_SYSTEM =
@@ -88,12 +93,14 @@ export default async function handler(req, res) {
   // _20260209 variant has built-in dynamic filtering (Sonnet 4.6 supports it).
   const params = {
     model: "claude-sonnet-4-6",
-    max_tokens: mode === "howto" ? 2200 : 900,
+    max_tokens: mode === "howto" ? 1800 : 900,
     system,
     messages,
   };
   if (mode === "howto") {
-    params.tools = [{ type: "web_search_20260209", name: "web_search", max_uses: 8 }];
+    // keep the search budget tight so the answer returns inside the function
+    // time limit — a few good searches beat many slow ones.
+    params.tools = [{ type: "web_search_20260209", name: "web_search", max_uses: 4 }];
   }
 
   try {
@@ -101,7 +108,7 @@ export default async function handler(req, res) {
     // when it hits the per-turn tool limit — re-send to let it resume.
     let msg = await client.messages.create(params);
     let convo = messages;
-    for (let i = 0; i < 4 && msg.stop_reason === "pause_turn"; i++) {
+    for (let i = 0; i < 2 && msg.stop_reason === "pause_turn"; i++) {
       convo = [...convo, { role: "assistant", content: msg.content }];
       msg = await client.messages.create({ ...params, messages: convo });
     }

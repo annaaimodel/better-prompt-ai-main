@@ -1054,6 +1054,44 @@ function loadPlaybookForm() {
   $("pb_t_samples").value = (t.samples || []).join("\n---\n");
   updatePlaybookStatus();
 }
+// Fill the Playbook form from a parsed blob (only non-empty values; never wipes).
+function fillPlaybookFromParsed(pb) {
+  const o = pb.offer || {}, m = pb.methodology || {}, t = pb.tone || {};
+  const set = (id, v) => { if (v && String(v).trim()) $(id).value = v; };
+  set("pb_name", o.name); set("pb_price", o.price); set("pb_summary", o.summary); set("pb_whoFor", o.whoFor);
+  set("pb_transformation", o.transformation); set("pb_deliverables", o.deliverables); set("pb_guarantee", o.guarantee);
+  set("pb_differentiators", o.differentiators); set("pb_objections", o.objections); set("pb_faqs", o.faqs);
+  set("pb_booking", o.booking); set("pb_extra", o.extra);
+  set("pb_m_name", m.name); set("pb_m_principles", m.principles); set("pb_m_email", m.emailStructure);
+  set("pb_m_call", m.callStructure); set("pb_m_message", m.messageStructure); set("pb_m_never", m.never);
+  set("pb_t_formality", t.formality); set("pb_t_emoji", t.emoji); set("pb_t_sentence", t.sentenceLength);
+  set("pb_t_energy", t.energy); set("pb_t_slang", t.slang); set("pb_t_signature", t.signature); set("pb_t_avoid", t.avoid);
+  if (Array.isArray(t.samples) && t.samples.length) {
+    const cur = $("pb_t_samples").value.trim();
+    $("pb_t_samples").value = (cur ? cur + "\n---\n" : "") + t.samples.join("\n---\n");
+  }
+}
+$("pb_parse_go").onclick = async () => {
+  const text = $("pb_parse_text").value.trim();
+  if (text.length < 20) { toast("Paste a bit more detail first"); return; }
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  const section = $("pb_parse_section").value;
+  $("pb_parse_go").disabled = true; $("pb_parse_go").textContent = "Parsing…"; $("pb_parse_status").textContent = "";
+  try {
+    const r = await fetch("/api/parse-playbook", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({ text, section }),
+    });
+    const j = await r.json();
+    if (!r.ok) { toast(j.error || "Parse failed"); }
+    else {
+      fillPlaybookFromParsed(j.playbook || {});
+      $("pb_parse_status").textContent = "Filled below - review, then hit Save Playbook";
+      toast("Filled from paste - review & Save");
+    }
+  } catch (e) { toast("Network error"); }
+  $("pb_parse_go").disabled = false; $("pb_parse_go").textContent = "Parse & fill ▸";
+};
 function updatePlaybookStatus() {
   const p = db.playbook || {};
   const filled = (obj) => Object.values(obj || {}).filter((v) => (Array.isArray(v) ? v.length : v && String(v).trim())).length;

@@ -225,6 +225,17 @@
       </div>
 
       <div class="card">
+        <h2>⚡ Quick fill from paste</h2>
+        <p class="small muted">Paste a load of info - your offer doc, sales training, FAQs, about-you - and the AI fills the fields below. Review, then hit Save Playbook. (It only fills what it finds; it won't wipe what's already there.)</p>
+        <div class="row">
+          <div class="field" style="flex:0 0 200px"><label>Fill</label><select id="pb_parse_section"><option value="all">Everything</option><option value="offer">Offer knowledge</option><option value="methodology">Sales methodology</option><option value="tone">Voice</option></select></div>
+        </div>
+        <div class="field"><textarea id="pb_parse_text" rows="6" placeholder="Paste a load of info here - offer details, your sales training, FAQs, how you talk..."></textarea></div>
+        <button class="btn primary" id="pb_parse_go">Parse &amp; fill ▸</button>
+        <span class="small muted" id="pb_parse_status" style="margin-left:10px"></span>
+      </div>
+
+      <div class="card">
         <h2>① Offer knowledge</h2>
         <p class="small muted">The locked truth about what you sell. The AI uses only these facts - it won't invent price, deliverables or guarantees.</p>
         <div class="row">

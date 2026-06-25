@@ -9,7 +9,6 @@
     { "source": "/hiring", "destination": "/employers.html" },
     { "source": "/employers", "destination": "/employers.html" },
     { "source": "/apply", "destination": "/apply.html" },
-    { "source": "/add", "destination": "/add.html" },
-    { "source": "/edge", "destination": "/edge.html" }
+    { "source": "/add", "destination": "/add.html" }
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "name": "slight-edge-actionable-steps",
+  "private": true,
+  "type": "module",
+  "description": "The Slight Edge: Actionable Steps — turn one realistic goal into simple daily actions that compound over time (after Jeff Olson's The Slight Edge).",
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest"
+  }
+}

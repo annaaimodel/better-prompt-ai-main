@@ -114,6 +114,11 @@ table.codes td.cd{white-space:nowrap;font-weight:700;color:var(--flame2);
 .hit .hcode{font-weight:700;color:var(--flame2);
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px}
 .hit .hmean{flex:1;min-width:180px;font-size:13.5px;color:var(--mut)}
+.contact{margin-top:12px;background:rgba(79,157,222,.08);border:1px solid rgba(79,157,222,.28);
+  border-radius:10px;padding:11px 13px;font-size:13px}
+.contact b{color:var(--blue2)}
+.contact a{color:var(--blue2);text-decoration:underline;font-weight:700}
+.contact .cnote{display:block;margin-top:5px;color:var(--mut);font-size:12px;font-weight:400}
 
 /* How-Tos — rendered markdown inside an AI answer bubble */
 .msg.a .md{white-space:normal}

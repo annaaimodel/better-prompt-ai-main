@@ -186,6 +186,10 @@
           `<tr><td class="cd">${esc(c.code)}</td><td>${esc(c.meaning)}</td></tr>`).join("") + `</tbody></table>`;
     const reset = b.reset ? `<div class="watch"><b>Reset:</b> ${esc(b.reset)}</div>` : "";
     const stds = b.standards ? `<div class="refs">${b.standards.map(r => `<span class="ref">${esc(r)}</span>`).join("")}</div>` : "";
+    const c = CONTACTS[b.id];
+    const contact = c ? `<div class="contact">📞 <b>${esc(b.name)} technical line (trade):</b>
+      <a href="tel:${c.tel.replace(/[^0-9+]/g, "")}">${esc(c.tel)}</a> · <a href="${c.web}" target="_blank" rel="noopener">support site</a>
+      <span class="cnote">Where a figure isn't published (e.g. an exact CO₂ setpoint), it's only released to the engineer — call this line for the model value.</span></div>` : "";
     return `<details class="topic" id="brand-${b.id}">
       <summary>
         <span class="tag" style="background:${b.color}">${esc(b.name)}</span>
@@ -196,10 +200,23 @@
         <p class="sum">${esc(b.note)}</p>
         ${rows}
         ${specsHtml(b)}
-        ${reset}${stds}
+        ${reset}${stds}${contact}
       </div>
     </details>`;
   }
+  // Verified UK manufacturer technical / trade support lines.
+  const CONTACTS = {
+    worcester: { tel: "0330 123 3366", web: "https://www.worcester-bosch.co.uk/professional/support" },
+    vaillant: { tel: "0330 100 3481", web: "https://www.vaillant.co.uk/contact/technical-help/" },
+    ideal: { tel: "01482 498663", web: "https://idealheating.com/support" },
+    baxi: { tel: "0344 871 1545", web: "https://www.baxi.co.uk/trade/technical-support" },
+    potterton: { tel: "0344 871 1545", web: "https://www.potterton.co.uk/customer-support" },
+    glowworm: { tel: "01773 828300", web: "https://www.glow-worm.co.uk/trade/" },
+    main: { tel: "0344 871 1570", web: "https://www.mainheating.co.uk/support" },
+    viessmann: { tel: "01952 675060", web: "https://www.viessmann.co.uk/en/professionals.html" },
+    alpha: { tel: "0344 871 8764", web: "https://www.alpha-innovation.co.uk/customer-support" },
+    vokera: { tel: "0344 391 0999", web: "https://www.vokera.co.uk/trade-professionals/technical-support/" },
+  };
 
   // Model-name aliases so a model search (e.g. "Greenstar 4000", "ecoTEC",
   // "Vitodens", "Logic") surfaces the right brand even though codes are
@@ -273,6 +290,8 @@
       let s = `[${b.name}] ${b.note}\nFault codes:\n` + b.codes.map(c => `- ${c.code}: ${c.meaning}`).join("\n");
       s += "\nSpecs: " + b.specs.map(x => `${x.label} = ${x.value}`).join("; ");
       s += "\nReset: " + b.reset;
+      const c = CONTACTS[b.id];
+      if (c) s += `\nTechnical line (trade) — give this if a figure isn't published: ${c.tel} (${c.web})`;
       return s;
     }).join("\n\n");
     const refs = (A.symptomRefs || []).map(b => {

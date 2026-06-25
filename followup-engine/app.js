@@ -547,6 +547,7 @@ function leadRow(l) {
       <select class="stage" data-stage="${l.id}">${STAGES.map((s) => `<option ${s === l.stage ? "selected" : ""}>${s}</option>`).join("")}</select>
       <button class="btn sm" data-savestage="${l.id}">Save</button>
       ${closed ? `<button class="btn sm" data-reopen="${l.id}">Reopen</button>` : `<button class="btn primary sm" data-draft="${l.id}">Draft ✦</button>`}
+      <button class="btn sm danger" data-leaddel="${l.id}">Delete</button>
     </div>
   </div>`;
 }
@@ -730,7 +731,7 @@ function openDetail(id) {
   if (flagBtn) flagBtn.onclick = () => { startSave(l, bg.querySelector("#d_sig").value); close(); rerender(); setView("today"); toast("Flagged at-risk - save-play started ⚠"); };
   const backBtn = bg.querySelector("#d_back");
   if (backBtn) backBtn.onclick = () => { backOnTrack(l); close(); rerender(); setView("today"); toast("Back on track ▸"); };
-  bg.querySelector("#d_del").onclick = () => { if (confirm("Delete this lead permanently?")) { db.leads = db.leads.filter((x) => x.id !== id); save(); close(); rerender(); toast("Deleted"); } };
+  bg.querySelector("#d_del").onclick = () => { if (confirm("Delete this lead? A backup is taken first (recoverable from Settings -> Data).")) { snapshotBackup("before delete lead"); db.leads = db.leads.filter((x) => x.id !== id); save(); close(); rerender(); toast("Deleted"); } };
 }
 
 // ---------------------------------------------------------------------------
@@ -902,6 +903,12 @@ document.body.addEventListener("click", (e) => {
   else if (t.dataset.gpdel) { db.savedPlans = (db.savedPlans || []).filter((x) => x.id !== t.dataset.gpdel); save(); renderSavedPlans(); toast("Deleted"); }
   else if (t.dataset.cocopy) { const s = (db.content || []).find((x) => x.id === t.dataset.cocopy); if (s) navigator.clipboard.writeText(s.text).then(() => toast("Copied")).catch(() => toast("Copy failed")); }
   else if (t.dataset.codel) { db.content = (db.content || []).filter((x) => x.id !== t.dataset.codel); save(); renderContentLib(); toast("Deleted"); }
+  else if (t.dataset.leaddel) {
+    const l = db.leads.find((x) => x.id === t.dataset.leaddel);
+    if (l && confirm(`Delete ${l.name || "this lead"}? A backup is taken first (recoverable from Settings -> Data).`)) {
+      snapshotBackup("before delete lead"); db.leads = db.leads.filter((x) => x.id !== t.dataset.leaddel); save(); rerender(); toast("Lead deleted");
+    }
+  }
   else if (t.dataset.writeidx) { writeFromPlan(parseInt(t.dataset.writeidx, 10)); }
   else if (t.dataset.restore) {
     const b = readBackups()[parseInt(t.dataset.restore, 10)];
@@ -1422,6 +1429,32 @@ $("sc_del").onclick = () => {
   db.scripts = (db.scripts || []).filter((s) => s.id !== db.liveScriptId);
   db.liveScriptId = ""; save(); $("sc_text").value = ""; $("sc_name").value = ""; populateScripts(); toast("Deleted");
 };
+$("sc_gen").onclick = async () => {
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  const kind = $("sc_kind").value, notes = $("sc_focus").value.trim();
+  $("sc_gen").disabled = true; $("sc_gen").textContent = "Writing…";
+  try {
+    const r = await fetch("/api/script", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({ kind, notes, playbook: db.playbook, assets: (db.assets || []).map((a) => ({ title: a.title, result: a.result, bestFor: a.bestFor })) }),
+    });
+    const j = await r.json();
+    if (!r.ok) { toast(j.error || "Failed"); }
+    else {
+      $("sc_text").value = j.text || "";
+      if (!$("sc_name").value.trim()) $("sc_name").value = $("sc_kind").selectedOptions[0].textContent;
+      db.liveScriptId = ""; populateScriptsKeepText();
+      toast("Script built - name it and Save");
+    }
+  } catch (e) { toast("Network error"); }
+  $("sc_gen").disabled = false; $("sc_gen").textContent = "Build from Playbook ▸";
+};
+// Refresh the saved-scripts dropdown without clobbering the textarea/name.
+function populateScriptsKeepText() {
+  const sel = $("sc_select");
+  sel.innerHTML = `<option value="">(none)</option>` +
+    (db.scripts || []).map((s) => `<option value="${s.id}" ${s.id === db.liveScriptId ? "selected" : ""}>${esc(s.name || "Untitled")}</option>`).join("");
+}
 function renderTranscript() {
   const el = $("live_transcript");
   el.textContent = (Live.transcript + Live.interim).slice(-4000) || "Listening…";

@@ -51,11 +51,16 @@
         <h2>Call script <span class="small muted" id="sc_note"></span></h2>
         <p class="small muted">Optional. Load a script and the whisper follows along live, highlighting the section you're on and adding method direction as needed. Leave a blank line between sections.</p>
         <div id="sc_editor">
+          <div class="row" style="align-items:flex-end">
+            <div class="field"><label>AI build a script</label><select id="sc_kind"><option value="discovery">Discovery call</option><option value="closing">Closing call</option><option value="setter">Setter call (book the closer)</option><option value="followup">Follow-up call</option><option value="custom">Custom (use notes)</option></select></div>
+            <div class="field"><label>Focus / notes (optional)</label><input id="sc_focus" placeholder="e.g. warm webinar leads, 20 min" /></div>
+            <div class="field" style="display:flex;align-items:flex-end"><button class="btn primary" id="sc_gen" style="width:100%">Build from Playbook ▸</button></div>
+          </div>
           <div class="row">
             <div class="field"><label>Saved scripts</label><select id="sc_select"></select></div>
             <div class="field"><label>Name</label><input id="sc_name" placeholder="e.g. Discovery call v1" /></div>
           </div>
-          <div class="field"><textarea id="sc_text" rows="6" placeholder="Paste your call script here. Leave a blank line between sections."></textarea></div>
+          <div class="field"><textarea id="sc_text" rows="6" placeholder="Build a script above, or paste your own. Leave a blank line between sections."></textarea></div>
           <div class="kbar">
             <button class="btn sm primary" id="sc_save">Save script</button>
             <button class="btn sm" id="sc_upload">Upload .txt</button>

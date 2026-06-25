@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="The Slight Edge — Actionable Steps">
   <defs>
     <linearGradient id="se" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0" stop-color="#a47a26"/>
-      <stop offset=".55" stop-color="#d9b24c"/>
-      <stop offset="1" stop-color="#f6e29a"/>
+      <stop offset="0" stop-color="#0d7038"/>
+      <stop offset=".55" stop-color="#15924f"/>
+      <stop offset="1" stop-color="#34c878"/>
     </linearGradient>
   </defs>
   <!-- ascending steps: small daily actions compounding upward -->
@@ -11,5 +11,5 @@
   <rect x="18" y="22" width="9" height="20" rx="2.2" fill="url(#se)"/>
   <rect x="31" y="13" width="9" height="29" rx="2.2" fill="url(#se)"/>
   <!-- the slight edge: the spark just beyond the top step -->
-  <circle cx="35.5" cy="7.5" r="3.1" fill="#f6e29a"/>
+  <circle cx="35.5" cy="7.5" r="3.1" fill="#34c878"/>
 </svg>

@@ -1,0 +1,815 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="The Slight Edge: Actionable Steps — turn one realistic goal into simple daily actions that compound over time. Easy to do. Easy not to do. Show up today.">
+<meta name="theme-color" content="#0a0a0b">
+<title>The Slight Edge: Actionable Steps — small daily wins, compounded</title>
+<link rel="icon" type="image/svg+xml" href="/slight-edge-mark.svg"><link rel="apple-touch-icon" href="/slight-edge-mark.svg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap');
+:root{
+  --bg:#0a0a0b;--bg2:#0d0c0b;--card:#141312;--card2:#171513;--line:rgba(201,156,56,.16);--line2:#262320;
+  --txt:#f3efe6;--mut:#9a948a;--mut2:#6f6a61;--gold:#c99c38;--gold2:#f2dd88;--goldd:#a47a26;
+  --good:#7bd6a2;--goodbg:#11261c;--goodln:#1d4733;--warn:#ffb020;--shadow:0 18px 50px -24px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none}
+.serif{font-family:"Playfair Display",Georgia,serif}
+.gold{background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+.hidden{display:none!important}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:40;background:rgba(10,10,11,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line2)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{display:inline-flex;align-items:center;gap:11px}
+.brand img,.brand svg{display:block;flex:none}
+.lock{display:flex;flex-direction:column;line-height:1.05}
+.wm{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:18px;letter-spacing:.05em;background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub2{font-size:9.5px;font-weight:700;letter-spacing:.30em;text-transform:uppercase;color:var(--mut);margin-top:3px}
+.tag{font-size:10px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);border-left:1px solid var(--line2);padding-left:10px;margin-left:2px}
+@media(max-width:380px){.wm{font-size:16px}.sub2{letter-spacing:.22em}}
+.barbtn{font-size:12.5px;color:var(--mut);border:1px solid var(--line2);border-radius:9px;padding:7px 12px;cursor:pointer;background:transparent;font-weight:600}
+.barbtn:hover{border-color:var(--gold);color:var(--gold2)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:700;padding:13px 22px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:filter .15s,box-shadow .15s,border-color .15s,transform .1s;font-family:inherit}
+.btn:active{transform:translateY(1px)}
+.btn.primary{color:#0a0a0b;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%)}
+.btn.primary:hover{filter:brightness(1.07);box-shadow:0 12px 30px -12px rgba(201,156,56,.6)}
+.btn.ghost{color:var(--txt);background:transparent;border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--gold)}
+.btn.sm{font-size:13.5px;padding:9px 15px;border-radius:10px}
+.btn:disabled{opacity:.5;cursor:default;filter:none;box-shadow:none}
+
+/* hero */
+.hero{text-align:center;padding:62px 18px 30px;background:radial-gradient(1100px 480px at 50% -140px,rgba(201,156,56,.20),transparent 70%)}
+.kick{font-size:11px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin:0 0 20px}
+.hero h1{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(32px,7.5vw,56px);line-height:1.1;letter-spacing:-.01em;margin:0 auto 16px;max-width:16ch;color:#f6f1e4}
+.hero p.lead{color:#cfc7b6;font-size:clamp(15px,2.5vw,18.5px);max-width:54ch;margin:0 auto 26px}
+.heroq{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:17px;color:var(--gold2);max-width:46ch;margin:6px auto 30px;opacity:.92}
+.heroq cite{display:block;font-style:normal;font-family:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-top:9px}
+
+/* generic section */
+section.blk{padding:30px 0}
+.eyebrow{text-align:center;color:var(--gold2);font-size:11.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin:0 0 10px}
+h2.sec{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(22px,4vw,30px);text-align:center;color:#f4eedd;margin:0 0 26px}
+
+/* curve illustration */
+.curvewrap{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+.curvewrap svg{width:100%;height:auto;display:block}
+.curvekey{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:var(--mut)}
+.curvekey b{font-weight:600}
+.dotg{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--gold);margin-right:6px;vertical-align:middle}
+.dotr{display:inline-block;width:9px;height:9px;border-radius:50%;background:#7a3b34;margin-right:6px;vertical-align:middle}
+
+/* feature pills */
+.pills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.pill .ic{font-size:22px;margin-bottom:8px}
+.pill h4{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:16px;margin:0 0 5px;color:#f6f1e6}
+.pill p{color:var(--mut);font-size:13.5px;margin:0}
+
+/* habits list */
+.habits{display:grid;gap:9px;counter-reset:h}
+.habit{display:flex;gap:13px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+.habit::before{counter-increment:h;content:counter(h);flex:none;font-family:"Playfair Display",serif;font-weight:700;font-size:15px;color:#0a0a0b;background:linear-gradient(175deg,#f6e29a,#b8862f);width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.habit b{color:#f3efe6;font-weight:600}
+.habit span{color:var(--mut);font-size:13.5px}
+
+/* ===== WIZARD ===== */
+.wizwrap{max-width:560px;margin:0 auto;padding:26px 18px 70px}
+.wizcard{background:linear-gradient(180deg,#171513,#121110);border:1px solid var(--line);border-radius:18px;padding:24px 22px;box-shadow:var(--shadow)}
+.prog{display:flex;gap:6px;margin-bottom:20px}
+.prog i{flex:1;height:4px;border-radius:3px;background:var(--line2);transition:background .25s}
+.prog i.on{background:linear-gradient(90deg,#f6e29a,#b8862f)}
+.step h3{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:22px;margin:0 0 6px;color:#f5efe0}
+.step .help{color:var(--mut);font-size:13.5px;margin:0 0 18px}
+label.fl{display:block;font-size:12px;color:var(--mut);margin:14px 0 6px;font-weight:600;letter-spacing:.02em}
+input.fi,textarea.fi,select.fi{width:100%;padding:13px 14px;border-radius:11px;border:1px solid var(--line2);background:#100f0d;color:var(--txt);font-size:16px;font-family:inherit;outline:none}
+input.fi:focus,textarea.fi:focus,select.fi:focus{border-color:var(--gold)}
+textarea.fi{min-height:84px;resize:vertical}
+.two{display:flex;gap:11px}.two>div{flex:1}
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.cat{display:flex;flex-direction:column;gap:5px;text-align:left;background:#100f0d;border:1px solid var(--line2);border-radius:13px;padding:14px;cursor:pointer;transition:border-color .15s,background .15s}
+.cat:hover{border-color:var(--gold)}
+.cat.sel{border-color:var(--gold);background:rgba(201,156,56,.08)}
+.cat .ce{font-size:22px}
+.cat b{font-size:14.5px;color:#f3efe6;font-weight:600}
+.cat span{font-size:12px;color:var(--mut)}
+.chiprow{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+.sug{font-size:13px;background:rgba(201,156,56,.09);color:var(--gold2);border:1px solid rgba(201,156,56,.22);padding:7px 12px;border-radius:999px;cursor:pointer}
+.sug:hover{background:rgba(201,156,56,.16)}
+.tf{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tfo{text-align:center;background:#100f0d;border:1px solid var(--line2);border-radius:12px;padding:13px 8px;cursor:pointer}
+.tfo:hover{border-color:var(--gold)}
+.tfo.sel{border-color:var(--gold);background:rgba(201,156,56,.08)}
+.tfo b{display:block;font-size:17px;color:#f3efe6}
+.tfo span{font-size:11.5px;color:var(--mut)}
+.wbtns{display:flex;gap:11px;margin-top:24px}
+.wbtns .btn{flex:1}
+.err{color:#ffb3a0;font-size:13px;margin-top:10px;min-height:16px}
+
+/* generating */
+.gen{text-align:center;padding:30px 10px}
+.spinner{width:46px;height:46px;margin:0 auto 18px;border-radius:50%;border:3px solid var(--line2);border-top-color:var(--gold);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.genline{color:var(--mut);font-size:14px;min-height:20px;transition:opacity .3s}
+
+/* plan review */
+.review .rsum{background:rgba(201,156,56,.07);border:1px solid var(--line);border-radius:13px;padding:15px 16px;margin-bottom:16px}
+.review .rsum p{margin:0;color:#e9e2d2;font-size:14.5px}
+.review .rprin{font-family:"Playfair Display",serif;font-style:italic;color:var(--gold2);font-size:15px;margin:0 0 4px}
+.badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#0a0a0b;background:linear-gradient(175deg,#f6e29a,#b8862f);padding:3px 9px;border-radius:6px}
+.badge.soft{color:var(--gold2);background:rgba(201,156,56,.12);border:1px solid var(--line)}
+.realism{display:flex;gap:9px;background:var(--goodbg);border:1px solid var(--goodln);color:#cdebd9;border-radius:11px;padding:11px 13px;font-size:13px;margin-bottom:16px}
+
+/* ===== DASHBOARD ===== */
+.dash{padding:22px 0 80px}
+.daterow{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
+.daterow .d1{font-family:"Playfair Display",serif;font-size:20px;color:#f4eedd}
+.daterow .d2{font-size:12.5px;color:var(--mut)}
+.quote{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:14px 16px;margin:14px 0 20px}
+.quote p{font-family:"Playfair Display",serif;font-style:italic;font-size:16px;color:#efe7d4;margin:0 0 6px;line-height:1.45}
+.quote cite{font-style:normal;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;margin-bottom:18px;box-shadow:var(--shadow)}
+.ghead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px}
+.ghead .gt{font-family:"Playfair Display",serif;font-weight:600;font-size:19px;color:#f5efe0;margin:0}
+.ghead .gcat{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.gmeta{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0 4px}
+.stat{text-align:center}
+.stat .n{font-family:"Playfair Display",serif;font-size:24px;color:var(--gold2);line-height:1}
+.stat .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-top:4px}
+.streakwrap{display:flex;align-items:center;gap:10px;margin-left:auto}
+.flame{font-size:15px}
+
+.actions{margin:14px 0 4px;display:grid;gap:9px}
+.act{display:flex;align-items:center;gap:12px;background:#100f0d;border:1px solid var(--line2);border-radius:12px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s}
+.act:hover{border-color:var(--line)}
+.act.done{border-color:var(--goodln);background:var(--goodbg)}
+.cbox{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;color:#0a0a0b;transition:.15s}
+.act.done .cbox{background:linear-gradient(175deg,#8ce0ad,#3fae73);border-color:transparent}
+.act .atxt{flex:1;font-size:14.5px;color:#ece5d6}
+.act.done .atxt{color:#bfe6cf}
+.act .awhy{display:block;font-size:11.5px;color:var(--mut2);margin-top:2px}
+.act .num{flex:none;display:flex;align-items:center;gap:6px}
+.act .num input{width:62px;padding:7px 8px;border-radius:8px;border:1px solid var(--line2);background:#0c0b0a;color:var(--txt);font-size:14px;text-align:center;outline:none;font-family:inherit}
+.act .num input:focus{border-color:var(--gold)}
+.act .num span{font-size:11.5px;color:var(--mut)}
+
+.progline{height:9px;border-radius:6px;background:#0c0b0a;border:1px solid var(--line2);overflow:hidden;margin:14px 0 6px}
+.progline i{display:block;height:100%;background:linear-gradient(90deg,#b8862f,#f6e29a);width:0;transition:width .5s}
+.progcap{display:flex;justify-content:space-between;font-size:12px;color:var(--mut)}
+
+.donebtn{width:100%;margin-top:14px}
+.celebrate{text-align:center;color:var(--good);font-size:13.5px;margin-top:10px;font-weight:600}
+.encourage{text-align:center;color:var(--gold2);font-size:13px;margin-top:10px;background:rgba(201,156,56,.08);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.encourage b{color:#f6f1e6}
+.hint{text-align:center;color:var(--mut);font-size:12px;margin-top:8px}
+.hint b{color:var(--gold2)}
+
+/* chart */
+.chartcard svg{width:100%;height:auto;display:block}
+.chartlbl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);margin-top:6px}
+
+/* milestones */
+.miles{display:grid;gap:0;margin-top:6px}
+.mile{display:flex;gap:13px;padding:11px 0;border-bottom:1px solid var(--line2);align-items:flex-start}
+.mile:last-child{border-bottom:none}
+.mdot{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
+.mile.hit .mdot{background:linear-gradient(175deg,#8ce0ad,#3fae73);border-color:transparent}
+.mile.next .mdot{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,156,56,.14)}
+.mbody{flex:1}
+.mbody .ml{font-size:14px;color:#ece5d6}
+.mile.hit .mbody .ml{color:#bfe6cf}
+.mbody .mm{font-size:12px;color:var(--mut);margin-top:1px}
+.mweek{font-size:11px;color:var(--gold);font-weight:700;white-space:nowrap;margin-top:2px}
+
+/* story / sub cards */
+.sub{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 17px;margin-bottom:16px}
+.sub h4{font-family:"Playfair Display",serif;font-weight:600;font-size:16px;margin:0 0 8px;color:#f4eedd;display:flex;align-items:center;gap:8px}
+.sub p{margin:0 0 8px;font-size:14px;color:#d8d0c1}
+.sub .lesson{font-size:13px;color:var(--gold2);background:rgba(201,156,56,.08);border-radius:9px;padding:9px 11px;margin:0}
+.sub .src{font-size:11px;color:var(--mut2);margin-top:8px}
+
+.weekly{background:linear-gradient(180deg,#171513,#121110);border:1px solid var(--gold);border-radius:14px;padding:16px 17px;margin-bottom:16px}
+.weekly h4{font-family:"Playfair Display",serif;color:var(--gold2);margin:0 0 6px;font-size:16px}
+.weekly p{margin:0 0 10px;font-size:14px;color:#e3dccd}
+
+.addgoal{text-align:center;margin:6px 0 0}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(6,6,7,.74);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:18px}
+.modal .mc{background:#141312;border:1px solid var(--line);border-radius:16px;padding:22px;max-width:440px;width:100%;box-shadow:var(--shadow)}
+.modal h3{font-family:"Playfair Display",serif;margin:0 0 8px;color:#f4eedd;font-size:20px}
+.modal p{color:var(--mut);font-size:14px;margin:0 0 16px}
+.modal .mrow{display:flex;gap:10px}.modal .mrow .btn{flex:1}
+
+footer{border-top:1px solid var(--line2);padding:24px 18px;text-align:center;color:var(--mut2);font-size:12px}
+footer a{color:var(--mut)}footer a:hover{color:var(--gold2)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:#1b1916;border:1px solid var(--gold);color:#f3eada;padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:80;box-shadow:var(--shadow)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<div class="bar"><div class="wrap">
+  <a class="brand" href="/"><img src="/slight-edge-mark.svg" width="34" height="34" alt="The Slight Edge"><span class="lock"><span class="wm">The Slight Edge</span><span class="sub2">Actionable Steps</span></span></a>
+  <button class="barbtn" id="navBtn" onclick="App.navAction()">Begin</button>
+</div></div>
+
+<!-- ============ LANDING ============ -->
+<main id="view-hero">
+  <header class="hero">
+    <p class="kick">Small actions · compounded daily</p>
+    <h1>The <span class="gold">Slight Edge</span><br>is built one day at a time</h1>
+    <p class="lead">Pick one real goal. We turn it into simple daily actions — easy to do, easy <i>not</i> to do — with measurable mini-targets you watch compound over weeks. Then you just show up.</p>
+    <p class="heroq serif">"Simple daily disciplines — simple productive actions, repeated consistently over time — that, in a nutshell, is the slight edge."<cite>Jeff Olson · The Slight Edge</cite></p>
+    <button class="btn primary" onclick="App.startWizard()">Set my goal &rarr;</button>
+    <div id="resumeRow" class="hidden" style="margin-top:14px"><button class="btn ghost sm" onclick="App.openDash()">Resume my plan</button></div>
+  </header>
+
+  <div class="wrap">
+    <section class="blk">
+      <p class="eyebrow">Why it works</p>
+      <h2 class="sec">Two paths. The gap between them is tiny.</h2>
+      <div class="curvewrap" id="curveCard"></div>
+      <div class="curvekey">
+        <span><i class="dotg"></i><b>The success curve</b> — small right choices, compounded up</span>
+        <span><i class="dotr"></i><b>The failure curve</b> — the same choices skipped, compounded down</span>
+      </div>
+    </section>
+
+    <section class="blk">
+      <div class="pills">
+        <div class="pill"><div class="ic">🎯</div><h4>One realistic goal</h4><p>We ask about your goal, your starting point and an honest timeframe — then build the path.</p></div>
+        <div class="pill"><div class="ic">📿</div><h4>Tiny daily actions</h4><p>3–5 actions that take minutes. The kind that are easy to do — and just as easy to skip.</p></div>
+        <div class="pill"><div class="ic">📈</div><h4>Measurable mini-targets</h4><p>Weekly milestones you can actually hit, so you see the compounding before the payoff arrives.</p></div>
+        <div class="pill"><div class="ic">🔥</div><h4>Show up daily</h4><p>Check in each day, build a streak, and let momentum do the heavy lifting over time.</p></div>
+      </div>
+    </section>
+
+    <section class="blk">
+      <p class="eyebrow">The method</p>
+      <h2 class="sec">The seven slight-edge habits</h2>
+      <div class="habits">
+        <div class="habit"><div><b>Show up.</b> <span>Most people never start. You will.</span></div></div>
+        <div class="habit"><div><b>Show up consistently.</b> <span>Consistency beats intensity, every time.</span></div></div>
+        <div class="habit"><div><b>Show up with a positive outlook.</b> <span>Attitude is a daily choice.</span></div></div>
+        <div class="habit"><div><b>Be committed for the long haul.</b> <span>Plant, cultivate, then harvest.</span></div></div>
+        <div class="habit"><div><b>Cultivate a burning desire backed by faith.</b> <span>Want it — and believe it's possible.</span></div></div>
+        <div class="habit"><div><b>Be willing to pay the price.</b> <span>Do what others won't.</span></div></div>
+        <div class="habit"><div><b>Practise slight-edge integrity.</b> <span>Do it even when no one is watching.</span></div></div>
+      </div>
+      <p style="text-align:center;color:var(--mut2);font-size:11.5px;margin-top:14px">Habits as set out in Jeff Olson's <i>The Slight Edge</i>.</p>
+    </section>
+
+    <section class="blk" style="text-align:center">
+      <button class="btn primary" onclick="App.startWizard()">Begin — set my goal &rarr;</button>
+    </section>
+  </div>
+</main>
+
+<!-- ============ WIZARD ============ -->
+<main id="view-wizard" class="hidden"><div class="wizwrap">
+  <div class="prog" id="prog"></div>
+  <div class="wizcard" id="wizcard"></div>
+</div></main>
+
+<!-- ============ DASHBOARD ============ -->
+<main id="view-dash" class="hidden"><div class="wrap dash" id="dash"></div></main>
+
+<footer>
+  <div class="brand" style="margin-bottom:12px;justify-content:center"><img src="/slight-edge-mark.svg" width="26" height="26" alt=""><span class="lock"><span class="wm" style="font-size:15px">The Slight Edge</span><span class="sub2">Actionable Steps</span></span></div>
+  <div>Small daily actions, compounded over time.</div>
+  <div style="margin-top:8px">Your goals &amp; progress are stored privately on this device. <a href="#" onclick="App.exportData();return false">Back up</a> · <a href="#" onclick="App.importData();return false">Restore</a> · <a href="#" onclick="App.resetAll();return false">Reset</a></div>
+  <div style="margin-top:8px;color:var(--mut2)">Method &amp; quotes from <i>The Slight Edge</i> by Jeff Olson. This is a personal habit tool, not medical, financial or professional advice.</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<input type="file" id="importFile" accept="application/json" class="hidden">
+
+<script>
+/* =========================================================================
+   The Slight Edge: Actionable Steps — single-file app. State lives in localStorage.
+   ========================================================================= */
+const STORE_KEY = 'aurum_edge_v1';
+const todayKey = (d=new Date()) => { const z=new Date(d.getTime()-d.getTimezoneOffset()*6e4); return z.toISOString().slice(0,10); };
+const fmtDate = (d=new Date()) => d.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'});
+const uid = () => Math.random().toString(36).slice(2,9);
+const clampN = (v,min,max)=>Math.max(min,Math.min(max,v));
+const daysBetween = (a,b)=>Math.round((new Date(b)-new Date(a))/864e5);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- Persistence ---------- */
+function load(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || null; }catch(e){ return null; } }
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(DB)); }catch(e){} }
+let DB = load() || { v:1, goals:[], activeId:null };
+
+/* ---------- Verified quotes (Jeff Olson · The Slight Edge — high-confidence) ---------- */
+const QUOTES = [
+  ["Every action that is easy to do is also easy not to do.","Jeff Olson · The Slight Edge"],
+  ["What you do today matters. What you do every day matters.","Jeff Olson · The Slight Edge"],
+  ["Successful people do what unsuccessful people are not willing to do.","Jeff Olson · The Slight Edge"],
+  ["Simple disciplines compounded over time. That's how the tortoise won; that's how you get to be a winner, too.","Jeff Olson · The Slight Edge"],
+  ["Showing up is essential. Showing up consistently is powerful. Showing up consistently with a positive outlook is even more powerful.","Jeff Olson · The Slight Edge"],
+  ["There is no 'some day.' There's only today.","Jeff Olson · The Slight Edge"],
+  ["Greatness is always in the moment of the decision.","Jeff Olson · The Slight Edge"],
+  ["A positive philosophy turns into a positive attitude, which turns into positive actions, which turns into positive results.","Jeff Olson · The Slight Edge"],
+  ["The difference between winning and losing is so slight, so subtle, that most never see it.","Jeff Olson · The Slight Edge"],
+  ["Simple daily disciplines, repeated consistently over time, make you or break you.","Jeff Olson · The Slight Edge"],
+  ["Successful people fail their way to the top.","Jeff Olson · The Slight Edge"],
+  ["You already have everything you need to achieve everything you want.","Jeff Olson · The Slight Edge"],
+];
+const quoteForToday = () => { const n=Math.floor((Date.now()/864e5)); return QUOTES[n % QUOTES.length]; };
+
+/* ---------- Success stories (documented; rotates daily) ---------- */
+const STORIES = [
+  {ic:"🚴",t:"The 1% that won the Tour",
+   p:"When Dave Brailsford took over British Cycling in 2003, he chased the \"aggregation of marginal gains\" — improving everything by just 1%, from bike seats to how riders washed their hands. Team GB won 8 cycling golds at both Beijing 2008 and London 2012, and Team Sky took the Tour de France in 2012, 2013, 2015, 2016, 2017 and 2018.",
+   l:"A hundred tiny 1% gains, stacked, become a winning margin.",
+   s:"Source: Harvard Business Review (2015); Olympic records."},
+  {ic:"🪙",t:"The penny that doubles",
+   p:"A single penny that doubles every day for 30 days becomes $5,368,709.12. For the first two weeks it looks like almost nothing — then the curve goes vertical. Most people quit during the part that looks like nothing.",
+   l:"The compounding you can't see yet is still happening. Don't quit early.",
+   s:"Illustrative compounding maths (2^29 cents)."},
+  {ic:"💰",t:"$5 a day, three decades",
+   p:"Set aside $5 a day and invest it at a 7% average annual return, and after 30 years you'd have roughly $186,000 — yet you only ever put in about $54,750. The other ~$132,000 is compounding doing the work while you slept.",
+   l:"Small, boring, consistent contributions beat big heroic ones.",
+   s:"Illustrative; 7% is an assumed long-run average, not a guarantee."},
+  {ic:"✍️",t:"2,000 words, every day",
+   p:"Stephen King writes about 2,000 words a day — \"ten pages\" — including holidays. No single day's pages feel like a novel. Strung together over a career, they became more than 60 books.",
+   l:"A fixed daily quota you never skip quietly builds a body of work.",
+   s:"Source: Stephen King, On Writing (2000)."},
+  {ic:"📚",t:"250 words every 15 minutes",
+   p:"The Victorian novelist Anthony Trollope wrote for three hours each morning before his day job, holding himself to 250 words every quarter-hour with a watch on the desk. If he finished a novel mid-session, he started the next one. Lifetime: ~47 novels.",
+   l:"A tiny timed target, applied relentlessly, out-produces inspiration.",
+   s:"Source: Trollope, An Autobiography."},
+  {ic:"📈",t:"1% better, 37× better",
+   p:"James Clear's now-famous maths: get 1% better every day for a year and you end up about 37 times better (1.01³⁶⁵ ≈ 37.8). Get 1% worse each day and you decline to nearly nothing. Direction, compounded, decides everything.",
+   l:"Tiny gains snowball up; tiny slips collapse down. Choose the direction daily.",
+   s:"Illustrative metaphor — James Clear, Atomic Habits."},
+  {ic:"⛓️",t:"Don't break the chain",
+   p:"A simple trick credited to writer Brad Isaac: put a big wall calendar up and mark an X for every day you do the work. After a few days you have a chain — and your only job becomes not breaking it.",
+   l:"A visible streak turns motivation into momentum.",
+   s:"Attributed to Brad Isaac (Lifehacker, 2007)."},
+];
+const storyForToday = () => { const n=Math.floor((Date.now()/864e5)); return STORIES[n % STORIES.length]; };
+
+/* ---------- Daily micro-tips ---------- */
+const TIPS = [
+  "Make today's actions so small they feel almost too easy. That's the point.",
+  "Stack a new action onto something you already do daily — coffee, commute, brushing your teeth.",
+  "On a hard day, do the 2-minute version. Showing up beats skipping, always.",
+  "You're not behind. The slight edge is patient — plant now, harvest later.",
+  "Track the action, not the outcome. The outcome takes care of itself.",
+  "Missed yesterday? The chain restarts today. Never miss twice.",
+  "Boring and consistent beats exciting and sporadic. Every single time.",
+];
+const tipForToday = () => TIPS[Math.floor(Date.now()/864e5) % TIPS.length];
+
+/* ---------- Goal categories & template plans (fallback when no AI) ---------- */
+const CATS = {
+  weight_loss:{ce:"⚖️",name:"Weight loss",blurb:"Lose weight steadily & keep it off",unit:"lb",
+    suggest:["Lose 20 lb","Lose a stone for a wedding","Drop 2 dress sizes"],
+    actions:[
+      {id:"steps",label:"Hit my step target",type:"number",unit:"steps",target:8000,why:"Daily movement is the most repeatable fat-loss lever."},
+      {id:"protein",label:"Eat a protein-forward meal",type:"check",why:"Protein keeps you full and protects muscle."},
+      {id:"water",label:"Drink water before each meal",type:"check",why:"Cuts mindless calories with zero effort."},
+      {id:"weigh",label:"Log my weight or a photo",type:"check",why:"What gets measured gets managed."}]},
+  fitness:{ce:"💪",name:"Health & fitness",blurb:"Get fitter, stronger, more energetic",unit:"workouts",
+    suggest:["Run a 5K","Do 20 push-ups","Train 4× a week"],
+    actions:[
+      {id:"move",label:"Move my body",type:"number",unit:"min",target:20,why:"Minutes compound into a fitter body."},
+      {id:"mobility",label:"Stretch or mobilise",type:"check",why:"Keeps you doing this for years, not weeks."},
+      {id:"sleep",label:"Lights out on time",type:"check",why:"Recovery is where progress is actually made."}]},
+  career:{ce:"📈",name:"Career",blurb:"Get promoted, land a role, grow income",unit:"applications",
+    suggest:["Land a new job in 90 days","Get a promotion","Build my network"],
+    actions:[
+      {id:"learn",label:"Sharpen one job-relevant skill",type:"number",unit:"min",target:20,why:"Skill compounds into opportunity."},
+      {id:"outreach",label:"Make one outreach / application",type:"check",why:"Reps in the market beat waiting to feel ready."},
+      {id:"win",label:"Note one win or lesson today",type:"check",why:"Builds the story you'll tell in interviews & reviews."}]},
+  education:{ce:"🎓",name:"Education & skills",blurb:"Learn a skill, study, pass an exam",unit:"sessions",
+    suggest:["Pass my exam","Learn to code","Become conversational in Spanish"],
+    actions:[
+      {id:"study",label:"Focused study session",type:"number",unit:"min",target:25,why:"Daily reps beat weekend cramming."},
+      {id:"recall",label:"Review yesterday's material",type:"check",why:"Spaced repetition locks it in."},
+      {id:"apply",label:"Apply it once (practice problem/phrase)",type:"check",why:"Doing beats only reading."}]},
+  finances:{ce:"🪙",name:"Finances",blurb:"Save, clear debt, build wealth",unit:"£",
+    suggest:["Build a £5,000 emergency fund","Clear my credit card","Save for a deposit"],
+    actions:[
+      {id:"save",label:"Move money to savings / overpay debt",type:"number",unit:"£",target:5,why:"Small daily amounts compound enormously."},
+      {id:"track",label:"Log today's spending",type:"check",why:"Awareness is the whole game."},
+      {id:"noimpulse",label:"No unplanned purchases today",type:"check",why:"Every skip is a vote for the goal."}]},
+  custom:{ce:"✨",name:"Something else",blurb:"Any goal you can take daily action on",unit:"reps",
+    suggest:["Write a book","Meditate daily","Build a side project"],
+    actions:[
+      {id:"main",label:"Do the one key action toward my goal",type:"number",unit:"min",target:15,why:"The main thing, done daily, is the whole strategy."},
+      {id:"track2",label:"Log progress",type:"check",why:"Visible progress fuels momentum."}]},
+};
+
+/* Build a template plan when AI is unavailable. Mirrors the AI plan shape. */
+function templatePlan(goal){
+  const c = CATS[goal.category] || CATS.custom;
+  const weeks = goal.timeframeWeeks || 12;
+  const base = parseFloat(goal.baseline), tgt = parseFloat(goal.target);
+  const milestones = [];
+  const marks = [0.25,0.5,0.75,1];
+  marks.forEach(m=>{
+    const wk = Math.max(1, Math.round(weeks*m));
+    let targetValue = "On track";
+    if(!isNaN(base)&&!isNaN(tgt)){ const v = base + (tgt-base)*m; targetValue = (Math.round(v*10)/10)+(goal.unit?(' '+goal.unit):''); }
+    milestones.push({label:`${Math.round(m*100)}% of the way there`, byWeek:wk, metric:goal.unit||'progress', targetValue, done:false});
+  });
+  // scale a primary numeric action to the user's daily minutes if given
+  const acts = c.actions.map(a=>({...a}));
+  if(goal.dailyMinutes){ const main=acts.find(a=>a.unit==='min'); if(main) main.target = clampN(goal.dailyMinutes,5,180); }
+  return {
+    summary:`Small daily actions toward "${goal.title}", building over ${weeks} weeks. Do the actions, hit the weekly mini-targets, and let them compound.`,
+    principle:"Show up consistently — consistency beats intensity.",
+    realism: (weeks<2? "That's a very short window — treat this as a sprint and keep the actions tiny." : weeks>78? "That's a long horizon — perfect for the slight edge. Focus only on today's actions." : "This timeframe is realistic for steady, compounding progress."),
+    dailyActions:acts, milestones, weeklyReview:"What went well this week, and what one thing will I tighten next week?",
+    motivation:`Every day you complete these, "${goal.title}" gets quietly closer.`,
+    source:'template'
+  };
+}
+
+/* =========================================================================
+   App controller
+   ========================================================================= */
+const App = (()=>{
+  let wiz = {};               // wizard working state
+  const $ = id => document.getElementById(id);
+  const show = v => { ['hero','wizard','dash'].forEach(x=>$('view-'+x).classList.toggle('hidden', x!==v)); window.scrollTo(0,0); };
+  function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2200); }
+
+  /* ----- routing ----- */
+  function boot(){
+    drawCurve();
+    const hasGoals = DB.goals.length>0;
+    $('resumeRow').classList.toggle('hidden', !hasGoals);
+    $('navBtn').textContent = hasGoals ? 'My plan' : 'Begin';
+    if(hasGoals && location.hash==='#dash'){ openDash(); } else { show('hero'); }
+  }
+  function navAction(){ DB.goals.length>0 ? openDash() : startWizard(); }
+
+  /* ----- landing curve SVG ----- */
+  function drawCurve(){
+    const W=680,H=240,p=24;
+    const pts=(fn)=>{let s='';for(let i=0;i<=60;i++){const x=p+(W-2*p)*(i/60);const t=i/60;const y=H-p-(H-2*p)*fn(t);s+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' ';}return s;};
+    const up=t=>Math.pow(t,2.3), down=t=>0.32*(1-Math.pow(t,1.6));
+    $('curveCard').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Success curve versus failure curve">
+      <defs><linearGradient id="gg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#a47a26"/><stop offset="1" stop-color="#f6e29a"/></linearGradient></defs>
+      <line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#262320"/>
+      <line x1="${p}" y1="${p}" x2="${p}" y2="${H-p}" stroke="#262320"/>
+      <path d="${pts(down)}" fill="none" stroke="#7a3b34" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>
+      <path d="${pts(up)}" fill="none" stroke="url(#gg)" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="${W-p}" cy="${H-p-(H-2*p)*up(1)}" r="5" fill="#f6e29a"/>
+      <text x="${p+6}" y="${p+4}" fill="#6f6a61" font-size="11" font-family="sans-serif">results</text>
+      <text x="${W-p-30}" y="${H-p+16}" fill="#6f6a61" font-size="11" font-family="sans-serif">time</text>
+    </svg>`;
+  }
+
+  /* ================= WIZARD ================= */
+  const STEPS = ['category','goal','why','where','time','commit','generate','review'];
+  function startWizard(){ wiz={ step:0, category:null, title:'', why:'', baseline:'', target:'', unit:'', timeframeWeeks:null, dailyMinutes:null, plan:null }; show('wizard'); renderWiz(); }
+  function setStep(i){ wiz.step=clampN(i,0,STEPS.length-1); renderWiz(); }
+  function renderProg(){ $('prog').innerHTML = STEPS.slice(0,7).map((_,i)=>`<i class="${i<=Math.min(wiz.step,6)?'on':''}"></i>`).join(''); }
+
+  function renderWiz(){
+    renderProg();
+    const name = STEPS[wiz.step];
+    const c = CATS[wiz.category];
+    let html='';
+    if(name==='category'){
+      html=`<div class="step"><h3>What do you want to change?</h3><p class="help">Pick the area. You'll set the exact goal next.</p>
+        <div class="cats">${Object.entries(CATS).map(([k,v])=>`<button class="cat ${wiz.category===k?'sel':''}" onclick="App.pickCat('${k}')"><span class="ce">${v.ce}</span><b>${v.name}</b><span>${v.blurb}</span></button>`).join('')}</div>
+        <div class="wbtns"><button class="btn primary" onclick="App.next()" ${wiz.category?'':'disabled'} id="nx">Continue &rarr;</button></div></div>`;
+    } else if(name==='goal'){
+      html=`<div class="step"><h3>Name your goal</h3><p class="help">Make it specific and personal. One clear goal beats five vague ones.</p>
+        <label class="fl">My goal</label><input class="fi" id="f_title" placeholder="e.g. ${esc(c.suggest[0])}" value="${esc(wiz.title)}">
+        <div class="chiprow">${c.suggest.map(s=>`<span class="sug" onclick="App.fill('f_title','${esc(s).replace(/'/g,"\\'")}')">${esc(s)}</span>`).join('')}</div>
+        ${wizNav()}<div class="err" id="werr"></div></div>`;
+    } else if(name==='why'){
+      html=`<div class="step"><h3>Why does this matter?</h3><p class="help">Your reason is the fuel. On the hard days, this is what gets you to show up.</p>
+        <label class="fl">When I reach this, it will mean…</label><textarea class="fi" id="f_why" placeholder="e.g. I'll have the energy to keep up with my kids and feel confident again.">${esc(wiz.why)}</textarea>
+        ${wizNav('Skip')}</div>`;
+    } else if(name==='where'){
+      html=`<div class="step"><h3>Where are you now — and where to?</h3><p class="help">Numbers let us build measurable mini-targets. Rough is fine; skip if it doesn't apply.</p>
+        <div class="two">
+          <div><label class="fl">Starting point</label><input class="fi" id="f_base" inputmode="decimal" placeholder="e.g. 196" value="${esc(wiz.baseline)}"></div>
+          <div><label class="fl">Target</label><input class="fi" id="f_tgt" inputmode="decimal" placeholder="e.g. 175" value="${esc(wiz.target)}"></div>
+        </div>
+        <label class="fl">Unit</label><input class="fi" id="f_unit" placeholder="e.g. ${esc(c.unit)}" value="${esc(wiz.unit||c.unit)}">
+        ${wizNav('Skip')}</div>`;
+    } else if(name==='time'){
+      const opts=[[4,'1 month'],[12,'3 months'],[24,'6 months'],[52,'1 year']];
+      html=`<div class="step"><h3>By when — realistically?</h3><p class="help">The slight edge rewards patience. Pick a timeframe you can actually sustain.</p>
+        <div class="tf">${opts.map(([w,l])=>`<button class="tfo ${wiz.timeframeWeeks===w?'sel':''}" onclick="App.pickTf(${w})"><b>${l}</b><span>${w} weeks</span></button>`).join('')}</div>
+        <label class="fl">…or set your own (weeks)</label><input class="fi" id="f_weeks" inputmode="numeric" placeholder="e.g. 16" value="${wiz.timeframeWeeks&&![4,12,24,52].includes(wiz.timeframeWeeks)?wiz.timeframeWeeks:''}" oninput="App.customTf(this.value)">
+        ${wizNav()}<div class="err" id="werr"></div></div>`;
+    } else if(name==='commit'){
+      const opts=[[10,'10 min'],[20,'20 min'],[30,'30 min'],[60,'60 min']];
+      html=`<div class="step"><h3>How much time, daily?</h3><p class="help">Be honest — a small amount you'll actually do beats a big amount you won't.</p>
+        <div class="tf">${opts.map(([m,l])=>`<button class="tfo ${wiz.dailyMinutes===m?'sel':''}" onclick="App.pickMin(${m})"><b>${l}</b><span>a day</span></button>`).join('')}</div>
+        ${wizNav('Build my plan ✨')}</div>`;
+    } else if(name==='generate'){
+      html=`<div class="step gen"><div class="spinner"></div><h3 style="text-align:center">Building your slight edge…</h3><div class="genline" id="genline">Studying your goal</div></div>`;
+    } else if(name==='review'){
+      html=reviewHtml();
+    }
+    $('wizcard').innerHTML=html;
+    if(name==='generate') runGenerate();
+    const ti=$('f_title'); if(ti){ ti.focus(); ti.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();next();}}); }
+  }
+  function wizNav(nextLabel){ return `<div class="wbtns"><button class="btn ghost" onclick="App.back()">Back</button><button class="btn primary" onclick="App.next()">${nextLabel||'Continue'} &rarr;</button></div>`; }
+
+  function pickCat(k){ wiz.category=k; renderWiz(); }
+  function pickTf(w){ wiz.timeframeWeeks=w; renderWiz(); }
+  function customTf(v){ const n=parseInt(v,10); wiz.timeframeWeeks=isNaN(n)?null:clampN(n,1,260); document.querySelectorAll('.tf .tfo').forEach(e=>e.classList.remove('sel')); }
+  function pickMin(m){ wiz.dailyMinutes=m; renderWiz(); }
+  function fill(id,val){ const el=$(id); if(el){ el.value=val; el.focus(); } }
+
+  function captureStep(){
+    const n=STEPS[wiz.step];
+    if(n==='goal') wiz.title=($('f_title')||{}).value?.trim()||'';
+    if(n==='why') wiz.why=($('f_why')||{}).value?.trim()||'';
+    if(n==='where'){ wiz.baseline=($('f_base')||{}).value?.trim()||''; wiz.target=($('f_tgt')||{}).value?.trim()||''; wiz.unit=($('f_unit')||{}).value?.trim()||''; }
+    if(n==='time'){ const w=$('f_weeks'); if(w&&w.value.trim())customTf(w.value); }
+  }
+  function back(){ if(wiz.step===0){ show('hero'); return; } captureStep(); setStep(wiz.step-1); }
+  function next(){
+    captureStep();
+    const n=STEPS[wiz.step];
+    if(n==='category' && !wiz.category) return;
+    if(n==='goal' && wiz.title.length<3){ const e=$('werr'); if(e)e.textContent='Give your goal a name first.'; return; }
+    if(n==='time' && !wiz.timeframeWeeks){ const e=$('werr'); if(e)e.textContent='Pick a timeframe to continue.'; return; }
+    setStep(wiz.step+1);
+  }
+
+  /* ----- plan generation (AI w/ template fallback) ----- */
+  async function runGenerate(){
+    const lines=['Studying your goal','Choosing daily actions','Setting measurable mini-targets','Mapping your milestones','Locking in your plan'];
+    let i=0; const gl=()=>{ const e=$('genline'); if(e)e.textContent=lines[i%lines.length]; i++; };
+    gl(); const iv=setInterval(gl,900);
+    let plan=null;
+    try{
+      const r=await fetch('/api/edge-plan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+        category:CATS[wiz.category]?.name||wiz.category, title:wiz.title, why:wiz.why,
+        baseline:wiz.baseline, target:wiz.target, unit:wiz.unit||CATS[wiz.category]?.unit||'',
+        timeframeWeeks:wiz.timeframeWeeks, dailyMinutes:wiz.dailyMinutes, hp:''
+      })});
+      const d=await r.json().catch(()=>({}));
+      if(d&&d.ok&&d.plan&&Array.isArray(d.plan.dailyActions)&&d.plan.dailyActions.length){
+        plan=normalisePlan(d.plan); plan.source='ai';
+      }
+    }catch(e){}
+    if(!plan) plan=templatePlan(wiz);     // graceful fallback — app never breaks
+    clearInterval(iv);
+    wiz.plan=plan;
+    setTimeout(()=>setStep(STEPS.indexOf('review')),350);
+  }
+  function normalisePlan(p){
+    const acts=(p.dailyActions||[]).slice(0,6).map((a,i)=>({
+      id:(a.id||('a'+i)).toString().slice(0,24).replace(/[^a-z0-9_]/gi,'')||('a'+i),
+      label:String(a.label||'Daily action').slice(0,140),
+      type:a.type==='number'?'number':'check',
+      unit:String(a.unit||'').slice(0,16),
+      target:(a.target!=null&&!isNaN(+a.target))?+a.target:null,
+      why:String(a.why||'').slice(0,160)
+    }));
+    const miles=(p.milestones||[]).slice(0,8).map(m=>({
+      label:String(m.label||'Milestone').slice(0,120),
+      byWeek:clampN(parseInt(m.byWeek,10)||1,1,260),
+      metric:String(m.metric||'').slice(0,60),
+      targetValue:String(m.targetValue||'').slice(0,60), done:false
+    })).sort((a,b)=>a.byWeek-b.byWeek);
+    return { summary:String(p.summary||'').slice(0,400), principle:String(p.principle||'Show up consistently.').slice(0,140),
+      realism:String(p.realism||'').slice(0,300), dailyActions:acts.length?acts:templatePlan(wiz).dailyActions,
+      milestones:miles.length?miles:templatePlan(wiz).milestones, weeklyReview:String(p.weeklyReview||'What went well, and what will I tighten next week?').slice(0,200),
+      motivation:String(p.motivation||'').slice(0,200) };
+  }
+
+  function reviewHtml(){
+    const p=wiz.plan;
+    return `<div class="step review">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px">
+        <h3 style="margin:0">Your plan</h3><span class="badge ${p.source==='ai'?'':'soft'}">${p.source==='ai'?'Personalised':'Expert template'}</span></div>
+      <p class="rprin serif">"${esc(p.principle)}"</p>
+      <div class="rsum"><p>${esc(p.summary)}</p></div>
+      ${p.realism?`<div class="realism"><span>🧭</span><span>${esc(p.realism)}</span></div>`:''}
+      <label class="fl" style="margin-top:4px">Your daily actions</label>
+      <div class="actions" style="pointer-events:none">${p.dailyActions.map(a=>`<div class="act"><span class="cbox">✓</span><span class="atxt">${esc(a.label)}${a.type==='number'&&a.target?` <span style="color:var(--gold2)">· ${a.target} ${esc(a.unit)}</span>`:''}${a.why?`<span class="awhy">${esc(a.why)}</span>`:''}</span></div>`).join('')}</div>
+      <label class="fl">Your mini-targets</label>
+      <div class="miles">${wiz.plan.milestones.map(m=>`<div class="mile"><span class="mdot"></span><div class="mbody"><div class="ml">${esc(m.label)}</div><div class="mm">${esc(m.targetValue||m.metric)}</div></div><span class="mweek">Wk ${m.byWeek}</span></div>`).join('')}</div>
+      <div class="wbtns"><button class="btn ghost" onclick="App.regen()">Rebuild</button><button class="btn primary" onclick="App.commitGoal()">Start day 1 &rarr;</button></div>
+    </div>`;
+  }
+  function regen(){ setStep(STEPS.indexOf('generate')); }
+
+  function commitGoal(){
+    const g={ id:uid(), category:wiz.category, title:wiz.title, why:wiz.why,
+      baseline:wiz.baseline, target:wiz.target, unit:wiz.unit||CATS[wiz.category]?.unit||'',
+      timeframeWeeks:wiz.timeframeWeeks, dailyMinutes:wiz.dailyMinutes,
+      createdAt:new Date().toISOString(), startDate:todayKey(), plan:wiz.plan, log:{} };
+    DB.goals.push(g); DB.activeId=g.id; save();
+    toast('Day 1 begins. Show up. 🔥');
+    openDash();
+  }
+
+  /* ================= DASHBOARD ================= */
+  function openDash(){ location.hash='dash'; $('navBtn').textContent='My plan'; show('dash'); renderDash(); }
+
+  // A day "counts" once it's locked in — any effort logged. (allDone kept for back-compat.)
+  const isLocked = log => !!(log && (log.locked || log.allDone));
+  function streakFor(g){
+    let s=0; let d=new Date();
+    // count back from today while days are locked; today not yet locked doesn't break a prior streak
+    for(let i=0;i<400;i++){ const k=todayKey(d); const log=g.log[k];
+      if(isLocked(log)){ s++; } else if(i===0){ /* today not locked yet: keep counting prior days */ } else { break; }
+      d=new Date(d.getTime()-864e5);
+    }
+    return s;
+  }
+  function longestStreak(g){ const keys=Object.keys(g.log).filter(k=>isLocked(g.log[k])).sort(); let best=0,cur=0,prev=null;
+    keys.forEach(k=>{ if(prev&&daysBetween(prev,k)===1)cur++; else cur=1; best=Math.max(best,cur); prev=k; }); return best; }
+  function daysDone(g){ return Object.values(g.log).filter(l=>isLocked(l)).length; }
+  function fullDays(g){ return Object.values(g.log).filter(l=>l && l.full).length; }
+  function weekNo(g){ return Math.floor(daysBetween(g.startDate,todayKey())/7)+1; }
+
+  function renderDash(){
+    const [q,qc]=quoteForToday(); const story=storyForToday();
+    const active=DB.goals;
+    let html=`<div class="daterow"><span class="d1">${fmtDate()}</span><span class="d2">Day ${daysBetween(active[0].startDate,todayKey())+1} of your edge</span></div>
+      <div class="quote"><p>"${esc(q)}"</p><cite>${esc(qc)}</cite></div>`;
+
+    active.forEach(g=>{ html+=goalCardHtml(g); });
+
+    html+=`<div class="addgoal"><button class="btn ghost sm" onclick="App.startWizard()">+ Add another goal</button></div>`;
+
+    // compounding chart across the primary goal
+    html+=chartHtml(active[0]);
+
+    // weekly review prompt on day 7 multiples
+    const dd=daysDone(active[0]);
+    if(dd>0 && (daysBetween(active[0].startDate,todayKey())+1)%7===0){
+      html+=`<div class="weekly"><h4>🗓 Weekly review</h4><p>${esc(active[0].plan.weeklyReview)}</p><p style="color:var(--mut);font-size:13px">A minute of honest reflection each week is its own slight edge.</p></div>`;
+    }
+
+    // daily tip + story
+    html+=`<div class="sub"><h4>💡 Today's nudge</h4><p>${esc(tipForToday())}</p></div>`;
+    html+=`<div class="sub"><h4>${story.ic} ${esc(story.t)}</h4><p>${esc(story.p)}</p><p class="lesson">⚡ ${esc(story.l)}</p><p class="src">${esc(story.s)}</p></div>`;
+
+    $('dash').innerHTML=html;
+  }
+
+  function goalCardHtml(g){
+    const k=todayKey(); const log=g.log[k]||{done:{}};
+    const c=CATS[g.category]||CATS.custom;
+    const total=g.plan.dailyActions.length;
+    const doneCount=g.plan.dailyActions.filter(a=>!!log.done[a.id]).length;
+    const pct=Math.round(100*doneCount/total);
+    const streak=streakFor(g);
+    const wk=weekNo(g);
+    // next milestone
+    const nextMile=g.plan.milestones.find(m=>!m.done && m.byWeek>=wk) || g.plan.milestones.find(m=>!m.done);
+    const full=isFull(g,log);           // every action's target met
+    const effort=hasEffort(g,log);      // at least one action with progress
+    const locked=isLocked(log);
+    const remaining=total-doneCount;
+
+    return `<div class="gcard" data-g="${g.id}">
+      <div class="ghead"><div><div class="gcat">${c.ce} ${esc(c.name)}</div><h3 class="gt">${esc(g.title)}</h3></div>
+        <div class="streakwrap"><div class="stat"><div class="n">${streak}</div><div class="l">${streak===1?'day':'days'} 🔥</div></div></div></div>
+
+      <div class="actions">${g.plan.dailyActions.map(a=>actionRow(g,a,log)).join('')}</div>
+
+      <div class="progline"><i style="width:${pct}%"></i></div>
+      <div class="progcap"><span>${doneCount}/${total} today${fullDays(g)?` · ${fullDays(g)} full ${fullDays(g)===1?'day':'days'}`:''}</span><span>Week ${wk}${g.timeframeWeeks?` of ${g.timeframeWeeks}`:''}</span></div>
+
+      <button class="btn primary donebtn" onclick="App.completeDay('${g.id}')" ${(effort||locked)?'':'disabled'} id="cd_${g.id}">${
+        locked ? (full ? 'Full day complete ✓' : `Day locked ✓ · ${doneCount}/${total}`)
+               : (effort ? (full ? 'Lock in a full day ✓' : 'Lock in today ✓') : 'Log an action to lock in your day')
+      }</button>
+      ${ locked
+          ? (full
+              ? `<div class="celebrate">Perfect day — every action done. The slight edge is compounding. 🔥</div>`
+              : `<div class="encourage">You showed up — that's the win. <b>Finish the last ${remaining}</b> to make it a full day. 💪</div>`)
+          : (effort && !full
+              ? `<div class="hint">Or complete all ${total} for a <b>full day</b>.</div>`
+              : '') }
+
+      ${nextMile?`<div style="margin-top:14px"><div class="gcat" style="margin-bottom:6px">Next mini-target</div>
+        <div class="miles"><div class="mile next"><span class="mdot"></span><div class="mbody"><div class="ml">${esc(nextMile.label)}</div><div class="mm">${esc(nextMile.targetValue||nextMile.metric)}</div></div><span class="mweek">Wk ${nextMile.byWeek}</span></div></div>
+        <div style="text-align:right;margin-top:6px"><button class="btn ghost sm" onclick="App.toggleMiles('${g.id}')">All milestones</button> <button class="btn ghost sm" onclick="App.markMile('${g.id}')">Hit a target ✓</button></div>
+        <div class="miles hidden" id="miles_${g.id}" style="margin-top:6px">${g.plan.milestones.map((m,idx)=>`<div class="mile ${m.done?'hit':''}"><span class="mdot"></span><div class="mbody"><div class="ml">${esc(m.label)}</div><div class="mm">${esc(m.targetValue||m.metric)}</div></div><span class="mweek">Wk ${m.byWeek}</span></div>`).join('')}</div>
+      </div>`:''}
+      <div style="text-align:right;margin-top:10px"><button class="btn ghost sm" onclick="App.editGoal('${g.id}')" style="font-size:12px;padding:6px 10px">Manage</button></div>
+    </div>`;
+  }
+  function actionRow(g,a,log){
+    const v=log.done[a.id];
+    if(a.type==='number'){
+      const hit=v!=null && (!a.target || +v>=a.target);
+      return `<label class="act ${hit?'done':''}" data-a="${a.id}">
+        <span class="cbox">✓</span>
+        <span class="atxt">${esc(a.label)}${a.why?`<span class="awhy">${esc(a.why)}</span>`:''}</span>
+        <span class="num"><input type="number" inputmode="decimal" value="${v!=null?esc(v):''}" placeholder="0" onclick="event.preventDefault()" oninput="App.setNum('${g.id}','${a.id}',this.value)"><span>${esc(a.unit)}${a.target?` / ${a.target}`:''}</span></span></label>`;
+    }
+    return `<div class="act ${v?'done':''}" data-a="${a.id}" onclick="App.toggleAct('${g.id}','${a.id}')">
+      <span class="cbox">✓</span><span class="atxt">${esc(a.label)}${a.why?`<span class="awhy">${esc(a.why)}</span>`:''}</span></div>`;
+  }
+
+  function ensureLog(g){ const k=todayKey(); if(!g.log[k]) g.log[k]={done:{},locked:false,full:false,note:''}; return g.log[k]; }
+  // a single action counts as "progress" if checked, or a number with any value > 0
+  function actProgress(a,log){ const v=log.done[a.id]; return a.type==='number' ? (v!=null && +v>0) : !!v; }
+  // a single action "meets target" (full)
+  function actMet(a,log){ const v=log.done[a.id]; return a.type==='number' ? (v!=null && (!a.target || +v>=a.target)) : !!v; }
+  function hasEffort(g,log){ return g.plan.dailyActions.some(a=>actProgress(a,log)); }
+  function isFull(g,log){ return g.plan.dailyActions.every(a=>actMet(a,log)); }
+
+  // If a locked day reaches full completion, mark it & celebrate. Returns true if it just upgraded.
+  function maybeUpgradeFull(g,log){ if(log.locked && !log.full && isFull(g,log)){ log.full=true; save(); toast('That makes it a full day! 🔥'); return true; } return false; }
+
+  function toggleAct(gid,aid){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g); log.done[aid]=!log.done[aid]; if(!log.done[aid])delete log.done[aid]; save(); maybeUpgradeFull(g,log); refreshCard(g); }
+  function setNum(gid,aid,val){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g); if(val===''||val==null){delete log.done[aid];}else{log.done[aid]=clampN(parseFloat(val)||0,0,1e7);} save();
+    // if already locked and we just hit full, re-render to celebrate; otherwise light-touch the button only
+    if(maybeUpgradeFull(g,log)){ refreshCard(g); return; }
+    const effort=hasEffort(g,log), full=isFull(g,log), locked=isLocked(log); const total=g.plan.dailyActions.length;
+    const done=g.plan.dailyActions.filter(a=>actProgress(a,log)).length;
+    const btn=$('cd_'+gid); if(btn){ btn.disabled=!(effort||locked);
+      btn.textContent = locked ? (full?'Full day complete ✓':`Day locked ✓ · ${done}/${total}`) : (effort ? (full?'Lock in a full day ✓':'Lock in today ✓') : 'Log an action to lock in your day'); } }
+  function refreshCard(g){ const old=document.querySelector(`.gcard[data-g="${g.id}"]`); if(old){ const div=document.createElement('div'); div.innerHTML=goalCardHtml(g); old.replaceWith(div.firstElementChild); } }
+
+  function completeDay(gid){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g);
+    if(isLocked(log)) return;                                   // already locked
+    if(!hasEffort(g,log)){ toast('Log at least one action first 🌱'); return; }
+    log.locked=true; log.full=isFull(g,log); save();
+    toast(log.full ? `Full day locked. 🔥 ${streakFor(g)}-day streak` : `You showed up. 🔥 ${streakFor(g)}-day streak — finish the rest for a full day`);
+    renderDash(); }
+  function toggleMiles(gid){ const el=$('miles_'+gid); if(el)el.classList.toggle('hidden'); }
+  function markMile(gid){ const g=DB.goals.find(x=>x.id===gid); const m=g.plan.milestones.find(x=>!x.done); if(!m){ toast('All targets hit — set a new goal!'); return; } m.done=true; save(); toast('Milestone hit. The curve is bending up. 📈'); renderDash(); }
+
+  /* ----- manage / edit goal ----- */
+  function editGoal(gid){ const g=DB.goals.find(x=>x.id===gid);
+    modal(`Manage goal`,`"${esc(g.title)}" · ${daysDone(g)} days logged · longest streak ${longestStreak(g)}.`,[
+      {label:'Mark as achieved 🏆',cls:'primary',fn:()=>{ if(confirm('Mark this goal achieved and remove it from your daily plan? Your record stays in a backup if you export.')){ DB.goals=DB.goals.filter(x=>x.id!==gid); save(); closeModal(); DB.goals.length?renderDash():boot(); toast('Goal achieved — that is the slight edge. 🏆'); } }},
+      {label:'Delete goal',cls:'ghost',fn:()=>{ if(confirm('Delete this goal and its progress? This cannot be undone.')){ DB.goals=DB.goals.filter(x=>x.id!==gid); save(); closeModal(); DB.goals.length?renderDash():boot(); } }},
+      {label:'Cancel',cls:'ghost',fn:closeModal}
+    ]);
+  }
+
+  /* ----- chart: cumulative actions completed (the success curve, real data) ----- */
+  function chartHtml(g){
+    const start=new Date(g.startDate); const today=new Date(todayKey());
+    const span=Math.max(daysBetween(g.startDate,todayKey())+1, 7);
+    const days=Math.min(span,84);
+    let cum=0; const pts=[]; let totalActions=0;
+    for(let i=0;i<days;i++){ const d=new Date(start.getTime()+i*864e5); const k=todayKey(d); const log=g.log[k];
+      const n=log?Object.values(log.done).filter(v=>v===true||(+v>0)).length:0; cum+=n; totalActions=cum; pts.push(cum); }
+    const W=680,H=170,p=22; const maxY=Math.max(totalActions,5);
+    const path=pts.map((y,i)=>{ const x=p+(W-2*p)*(pts.length<=1?0:i/(pts.length-1)); const yy=H-p-(H-2*p)*(y/maxY); return (i?'L':'M')+x.toFixed(1)+' '+yy.toFixed(1); }).join(' ');
+    const lastX=p+(W-2*p)*(pts.length<=1?0:1), lastY=H-p-(H-2*p)*(pts[pts.length-1]/maxY);
+    const invest = g.dailyMinutes ? Math.round(g.dailyMinutes*daysDone(g)) : null;
+    return `<div class="sub chartcard"><h4>📈 Your compounding</h4>
+      <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative actions completed over time">
+        <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(201,156,56,.35)"/><stop offset="1" stop-color="rgba(201,156,56,0)"/></linearGradient></defs>
+        <line x1="${p}" y1="${H-p}" x2="${W-p}" y2="${H-p}" stroke="#262320"/>
+        ${pts.length>1?`<path d="${path} L ${lastX} ${H-p} L ${p} ${H-p} Z" fill="url(#cg)"/>`:''}
+        <path d="${path}" fill="none" stroke="#f6e29a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="${lastX}" cy="${lastY}" r="4.5" fill="#f6e29a"/>
+      </svg>
+      <div class="chartlbl"><span>${totalActions} actions taken so far</span>${invest!=null?`<span>${invest>=60?(Math.round(invest/6)/10)+' hrs':invest+' min'} invested</span>`:'<span>keep showing up</span>'}</div>
+    </div>`;
+  }
+
+  /* ----- data tools ----- */
+  function exportData(){ const blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='slight-edge-actionable-steps-backup.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); toast('Backup downloaded'); }
+  function importData(){ $('importFile').click(); }
+  function resetAll(){ if(confirm('Erase ALL goals and progress on this device? Export a backup first if you want to keep it.')){ localStorage.removeItem(STORE_KEY); DB={v:1,goals:[],activeId:null}; location.hash=''; boot(); toast('Reset complete'); } }
+
+  /* ----- tiny modal ----- */
+  function modal(title,body,buttons){ const wrap=document.createElement('div'); wrap.className='modal'; wrap.id='modalRoot';
+    wrap.innerHTML=`<div class="mc"><h3>${esc(title)}</h3><p>${body}</p><div class="mrow"></div></div>`;
+    const row=wrap.querySelector('.mrow'); buttons.forEach(b=>{ const btn=document.createElement('button'); btn.className='btn '+(b.cls||'ghost')+' sm'; btn.textContent=b.label; btn.onclick=b.fn; row.appendChild(btn); });
+    wrap.addEventListener('click',e=>{ if(e.target===wrap)closeModal(); }); document.body.appendChild(wrap); }
+  function closeModal(){ const m=$('modalRoot'); if(m)m.remove(); }
+
+  /* ----- wire file import ----- */
+  document.addEventListener('DOMContentLoaded',()=>{
+    const fi=document.getElementById('importFile');
+    fi&&fi.addEventListener('change',e=>{ const f=e.target.files[0]; if(!f)return; const rd=new FileReader();
+      rd.onload=()=>{ try{ const d=JSON.parse(rd.result); if(!d||!Array.isArray(d.goals))throw 0; DB=d; save(); toast('Restored from backup'); DB.goals.length?openDash():boot(); }catch(err){ toast('That file could not be read'); } };
+      rd.readAsText(f); e.target.value=''; });
+    boot();
+  });
+
+  return { navAction, startWizard, openDash, pickCat, pickTf, pickMin, customTf, fill, next, back, regen, commitGoal,
+    toggleAct, setNum, completeDay, toggleMiles, markMile, editGoal, exportData, importData, resetAll };
+})();
+</script>
+</body></html>

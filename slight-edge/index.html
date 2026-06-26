@@ -428,10 +428,32 @@ function templatePlan(goal){
   // scale a primary numeric action to the user's daily minutes if given
   const acts = c.actions.map(a=>({...a}));
   if(goal.dailyMinutes){ const main=acts.find(a=>a.unit==='min'); if(main) main.target = clampN(goal.dailyMinutes,5,180); }
+
+  // safe-pace check (mainly weight goals): is the required rate sustainable?
+  let timeframeRealistic = true, recommendedTimeframeWeeks = null, realism;
+  const u = (goal.unit||'').toLowerCase();
+  const isWeight = goal.category==='weight_loss' || /\blb|kg|stone|pound/.test(u);
+  const totalChange = (!isNaN(base)&&!isNaN(tgt)) ? Math.abs(base-tgt) : null;
+  if(totalChange!=null && isWeight && weeks>0){
+    const safe = /kg/.test(u) ? 0.9 : /stone/.test(u) ? 0.14 : 2;     // safe per-week ceiling
+    const rec  = /kg/.test(u) ? 0.7 : /stone/.test(u) ? 0.1  : 1.5;   // comfortable per-week pace
+    const need = totalChange / weeks;
+    if(need > safe){
+      timeframeRealistic = false;
+      recommendedTimeframeWeeks = Math.ceil(totalChange / rec);
+      const unit = goal.unit || 'lb';
+      realism = `Losing ${Math.round(totalChange)} ${unit} in ${weeks} weeks needs about ${(Math.round(need*10)/10)} ${unit}/week — faster than the safe ~${safe} ${unit}/week. A steadier ~${recommendedTimeframeWeeks} weeks keeps it healthy and lasting.`;
+    }
+  }
+  if(timeframeRealistic){
+    realism = weeks<2 ? "That's a very short window — treat this as a sprint and keep the actions tiny."
+            : weeks>78 ? "That's a long horizon — perfect for the slight edge. Focus only on today's actions."
+            : "This timeframe is realistic for steady, compounding progress.";
+  }
   return {
     summary:`Small daily actions toward "${goal.title}", building over ${weeks} weeks. Do the actions, hit the weekly mini-targets, and let them compound.`,
     principle:"Show up consistently — consistency beats intensity.",
-    realism: (weeks<2? "That's a very short window — treat this as a sprint and keep the actions tiny." : weeks>78? "That's a long horizon — perfect for the slight edge. Focus only on today's actions." : "This timeframe is realistic for steady, compounding progress."),
+    realism, timeframeRealistic, recommendedTimeframeWeeks,
     dailyActions:acts, milestones, weeklyReview:"What went well this week, and what one thing will I tighten next week?",
     motivation:`Every day you complete these, "${goal.title}" gets quietly closer.`,
     source:'template'
@@ -588,8 +610,12 @@ const App = (()=>{
       metric:String(m.metric||'').slice(0,60),
       targetValue:String(m.targetValue||'').slice(0,60), done:false
     })).sort((a,b)=>a.byWeek-b.byWeek);
+    const recWk = (p.recommendedTimeframeWeeks!=null && !isNaN(+p.recommendedTimeframeWeeks)) ? clampN(parseInt(p.recommendedTimeframeWeeks,10),1,520) : null;
     return { summary:String(p.summary||'').slice(0,400), principle:String(p.principle||'Show up consistently.').slice(0,140),
-      realism:String(p.realism||'').slice(0,300), dailyActions:acts.length?acts:templatePlan(wiz).dailyActions,
+      realism:String(p.realism||'').slice(0,300),
+      timeframeRealistic: p.timeframeRealistic===false ? false : true,
+      recommendedTimeframeWeeks: p.timeframeRealistic===false ? recWk : null,
+      dailyActions:acts.length?acts:templatePlan(wiz).dailyActions,
       milestones:miles.length?miles:templatePlan(wiz).milestones, weeklyReview:String(p.weeklyReview||'What went well, and what will I tighten next week?').slice(0,200),
       motivation:String(p.motivation||'').slice(0,200) };
   }
@@ -601,7 +627,7 @@ const App = (()=>{
         <h3 style="margin:0">Your plan</h3><span class="badge ${p.source==='ai'?'':'soft'}">${p.source==='ai'?'Personalised':'Expert template'}</span></div>
       <p class="rprin serif">"${esc(p.principle)}"</p>
       <div class="rsum"><p>${esc(p.summary)}</p></div>
-      ${p.realism?`<div class="realism"><span>🧭</span><span>${esc(p.realism)}</span></div>`:''}
+      ${p.realism?`<div class="realism"><span>🧭</span><div><span>${esc(p.realism)}</span>${(p.timeframeRealistic===false && p.recommendedTimeframeWeeks)?`<div style="margin-top:10px"><button class="btn primary sm" onclick="App.useSafeTimeframe(${p.recommendedTimeframeWeeks})">Use the safer ${p.recommendedTimeframeWeeks}-week plan &rarr;</button></div>`:''}</div></div>`:''}
       <label class="fl" style="margin-top:4px">Your daily actions</label>
       <div class="actions" style="pointer-events:none">${p.dailyActions.map(a=>`<div class="act"><span class="cbox">✓</span><span class="atxt">${esc(a.label)}${a.type==='number'&&a.target?` <span style="color:var(--gold2)">· ${a.target} ${esc(a.unit)}</span>`:''}${a.why?`<span class="awhy">${esc(a.why)}</span>`:''}</span></div>`).join('')}</div>
       <label class="fl">Your mini-targets</label>
@@ -610,6 +636,7 @@ const App = (()=>{
     </div>`;
   }
   function regen(){ setStep(STEPS.indexOf('generate')); }
+  function useSafeTimeframe(weeks){ const w=parseInt(weeks,10); if(w>0) wiz.timeframeWeeks=clampN(w,1,520); setStep(STEPS.indexOf('generate')); }
 
   function commitGoal(){
     const g={ id:uid(), category:wiz.category, title:wiz.title, why:wiz.why,
@@ -808,7 +835,7 @@ const App = (()=>{
     boot();
   });
 
-  return { navAction, startWizard, openDash, pickCat, pickTf, pickMin, customTf, fill, next, back, regen, commitGoal,
+  return { navAction, startWizard, openDash, pickCat, pickTf, pickMin, customTf, fill, next, back, regen, useSafeTimeframe, commitGoal,
     toggleAct, setNum, completeDay, toggleMiles, markMile, editGoal, exportData, importData, resetAll };
 })();
 </script>

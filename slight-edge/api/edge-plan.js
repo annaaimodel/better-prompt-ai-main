@@ -20,7 +20,9 @@ You will receive the user's goal details. Return ONLY a single JSON object (no p
 {
   "summary": "1-2 sentence plain-English description of the plan and the compounding idea behind it",
   "principle": "one short Slight Edge principle that applies to this goal (e.g. 'Show up every day', 'Be consistent', 'Be patient — plant, cultivate, harvest')",
-  "realism": "If the user's timeframe is realistic, say so briefly. If it's too aggressive or too slow, say so kindly and suggest a more realistic timeframe. <=2 sentences.",
+  "realism": "One <=2 sentence honest note on whether the timeframe is realistic. If it is too aggressive (or too slow), say so kindly and name the safer timeframe.",
+  "timeframeRealistic": true | false,
+  "recommendedTimeframeWeeks": <integer number of weeks that achieves a safe, sustainable rate — ONLY when timeframeRealistic is false; otherwise null>,
   "dailyActions": [
     { "id": "short_slug", "label": "the daily action, phrased as a doable verb", "type": "check" | "number", "unit": "e.g. minutes, pages, £, steps (empty for check)", "target": <number or null>, "why": "one line on why this small action compounds" }
   ],
@@ -31,7 +33,13 @@ You will receive the user's goal details. Return ONLY a single JSON object (no p
   "motivation": "one punchy, specific line of encouragement tied to THIS goal"
 }
 
-Rules: 3-5 dailyActions, each genuinely doable in the user's stated daily time budget. 3-6 milestones spread across their timeframe, the last roughly at their target date. Use the user's own units and numbers. Keep every string concise. Be specific to their goal, baseline and timeframe — never generic. Output JSON only.`;
+Rules:
+- CONSISTENCY (critical): derive ONE rate of progress per week from the baseline, target and timeframe, and reuse the SAME number and the SAME unit everywhere — summary, realism and milestones. NEVER express the same quantity two different ways (e.g. never say "4lb/month" in one place and "4lb/week" in another). Do the arithmetic and make every figure agree.
+- SAFETY: for weight loss, a safe sustainable rate is about 0.5–2 lb/week (~0.25–1 kg, roughly up to 1% of body weight per week). If the user's timeframe requires a faster rate than that, set "timeframeRealistic": false and set "recommendedTimeframeWeeks" to a whole number of weeks that achieves ~1–1.5 lb/week; explain kindly in "realism". If the timeframe is fine, set "timeframeRealistic": true and "recommendedTimeframeWeeks": null. Apply the same common-sense safety lens to other health goals.
+- Build dailyActions and milestones for the timeframe the USER actually gave (they may choose to keep it) — but keep every number internally consistent with that timeframe.
+- 3-5 dailyActions, each genuinely doable in the user's stated daily time budget. 3-6 milestones spread across their timeframe, the last roughly at their target date.
+- Refer to the target naturally — "your goal of 200 lb", "your 200 lb target" — never the bare "your 200lb".
+- Use the user's own units and numbers. Keep every string concise. Be specific to their goal, baseline and timeframe — never generic. Output JSON only.`;
 
 function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
 function num(v) { const n = Number(v); return Number.isFinite(n) ? n : null; }

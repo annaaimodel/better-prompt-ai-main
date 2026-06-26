@@ -13,17 +13,13 @@ Set up 2026-06-26: cron-job.org pings the workflow hourly (verified 204 +
 dispatched run `93a01a8`). The board now refreshes itself, and the 00:00 & 14:00
 UTC heavy pulls fire automatically. No more manual hard-runs needed.
 
-## 2. 🟡 Fix the "no email" on /hiring listings
-Saving works now, but the email alert doesn't fire. Two likely causes:
-- The **notifier Apps Script's "Who has access"** isn't set to **Anyone** (same
-  issue we fixed on the sync) → it 403s silently. Fix in its Deploy → Manage
-  deployments → ✏️ → Anyone.
-- **`LISTING_NOTIFY_URL`** may be missing in the *live* Vercel project (the
-  `…-ashy` one where saves now work).
-
-**Bulletproof alternative (recommended):** paste your main sync Apps Script here
-and I'll fold the email straight into it — no separate notifier, nothing to
-mismatch.
+## 2. ✅ DONE — /hiring email alerts
+Fixed 2026-06-26 by folding the email into the main sync Apps Script (emails on
+type:"listing"), then deploying it as a fresh web app and pointing
+`INBOX_SYNC_URL` at it. New roles now save AND email you.
+Leftover cleanup (optional, no rush): the old standalone notifier, the
+`LISTING_NOTIFY_URL` Vercel env var, and `docs/listing-notify.gs` are now unused
+and can be deleted; old Apps Script deployments can be archived.
 
 ## 3. 🟢 Put a custom domain on the site
 A `vercel.app` URL converts worse and some FB groups flag it as spam. A clean

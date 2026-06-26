@@ -131,9 +131,10 @@ textarea.fi{min-height:84px;resize:vertical}
 .daterow{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
 .daterow .d1{font-family:"Playfair Display",serif;font-size:20px;color:var(--txt)}
 .daterow .d2{font-size:12.5px;color:var(--mut)}
-.quote{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:12px;padding:14px 16px;margin:14px 0 20px;box-shadow:var(--shadow)}
-.quote p{font-family:"Playfair Display",serif;font-style:italic;font-size:16px;color:var(--txt);margin:0 0 6px;line-height:1.45}
-.quote cite{font-style:normal;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+/* daily affirmation card — scenic framed quote, backdrop rotates each day */
+.qcard{position:relative;border-radius:16px;padding:38px 26px;margin:14px 0 22px;text-align:center;overflow:hidden;box-shadow:var(--shadow);background-size:cover;background-position:center}
+.qcard::before{content:"";position:absolute;inset:13px;border:1px solid rgba(255,255,255,.6);border-radius:9px;pointer-events:none}
+.qcard p{position:relative;margin:0;color:#fff;font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(18px,4.6vw,25px);line-height:1.34;letter-spacing:.01em;text-shadow:0 1px 18px rgba(0,0,0,.25);max-width:30ch;margin:0 auto}
 
 .gcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;margin-bottom:18px;box-shadow:var(--shadow)}
 .ghead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px}
@@ -150,7 +151,7 @@ textarea.fi{min-height:84px;resize:vertical}
 .act{display:flex;align-items:center;gap:12px;background:#f7faf8;border:1px solid var(--line2);border-radius:12px;padding:11px 13px;cursor:pointer;transition:border-color .15s,background .15s}
 .act:hover{border-color:var(--line)}
 .act.done{border-color:var(--goodln);background:var(--goodbg)}
-.cbox{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;transition:.15s}
+.cbox{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;transition:.15s;cursor:pointer}
 .act.done .cbox{background:linear-gradient(175deg,#34c878,#0d7038);border-color:transparent}
 .act .atxt{flex:1;font-size:14.5px;color:var(--txt)}
 .act.done .atxt{color:var(--goldd)}
@@ -310,22 +311,403 @@ function load(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || null
 function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(DB)); }catch(e){} }
 let DB = load() || { v:1, goals:[], activeId:null };
 
-/* ---------- Verified quotes (Jeff Olson · The Slight Edge — high-confidence) ---------- */
-const QUOTES = [
-  ["Every action that is easy to do is also easy not to do.","Jeff Olson · The Slight Edge"],
-  ["What you do today matters. What you do every day matters.","Jeff Olson · The Slight Edge"],
-  ["Successful people do what unsuccessful people are not willing to do.","Jeff Olson · The Slight Edge"],
-  ["Simple disciplines compounded over time. That's how the tortoise won; that's how you get to be a winner, too.","Jeff Olson · The Slight Edge"],
-  ["Showing up is essential. Showing up consistently is powerful. Showing up consistently with a positive outlook is even more powerful.","Jeff Olson · The Slight Edge"],
-  ["There is no 'some day.' There's only today.","Jeff Olson · The Slight Edge"],
-  ["Greatness is always in the moment of the decision.","Jeff Olson · The Slight Edge"],
-  ["A positive philosophy turns into a positive attitude, which turns into positive actions, which turns into positive results.","Jeff Olson · The Slight Edge"],
-  ["The difference between winning and losing is so slight, so subtle, that most never see it.","Jeff Olson · The Slight Edge"],
-  ["Simple daily disciplines, repeated consistently over time, make you or break you.","Jeff Olson · The Slight Edge"],
-  ["Successful people fail their way to the top.","Jeff Olson · The Slight Edge"],
-  ["You already have everything you need to achieve everything you want.","Jeff Olson · The Slight Edge"],
+/* ---------- 365 daily affirmations — one locked to each day of the year ---------- */
+const MOTIVATION = [
+  // 1–25 · today / now
+  "Today is a fresh page — write something good on it.",
+  "This day will never come again. Make it count.",
+  "Right now is the only moment you can act in. Use it.",
+  "Win the morning and the day will follow.",
+  "Today's small effort is tomorrow's quiet advantage.",
+  "You don't have to do it all — just do today.",
+  "Begin where you are, with what you have, right now.",
+  "The best time to start was yesterday. The second best is today.",
+  "Show up for today and let tomorrow take care of itself.",
+  "One good day, repeated, becomes a good life.",
+  "Make today the kind of day you'd be proud to repeat.",
+  "Today is built from the choices you make in the next hour.",
+  "You are one decision away from a better day.",
+  "Treat today like it matters, because it does.",
+  "A great day rarely happens by accident — choose it.",
+  "Today's effort is a gift to the person you'll be tomorrow.",
+  "Do today what your future self will thank you for.",
+  "Every sunrise is a clean slate. Step onto it.",
+  "The day is yours. Set the tone early.",
+  "Small and steady today beats big and never.",
+  "Don't wait for Monday. Your fresh start is today.",
+  "Today counts twice — it shapes now and what comes next.",
+  "Be present. This ordinary day is quietly extraordinary.",
+  "Plant something good today and let time grow it.",
+  "Today is enough. You are enough. Begin.",
+  // 26–50 · small steps / consistency
+  "Small steps every day add up to big distances.",
+  "Consistency turns the ordinary into the remarkable.",
+  "You don't need to be fast — you need to keep going.",
+  "Drops of water carve stone. Keep dripping.",
+  "Tiny, boring, daily — that's how big things get built.",
+  "The secret is simple: do it again tomorrow.",
+  "Progress hides in the habits you barely notice.",
+  "A little, often, beats a lot, once.",
+  "Show up on the days you don't feel like it. That's the difference.",
+  "Inch by inch, anything is possible.",
+  "The streak you protect protects you back.",
+  "Repeat the right things until they repeat themselves.",
+  "Momentum loves the person who simply doesn't stop.",
+  "What you do daily, you become.",
+  "Don't break the chain — add one more link today.",
+  "Steady steps in the same direction move mountains.",
+  "The slow path, walked every day, still gets there.",
+  "Build the habit and the habit builds you.",
+  "Each rep is a vote for who you're becoming.",
+  "Small wins, stacked, become unstoppable.",
+  "You're closer than you think — keep stacking days.",
+  "The compound effect is just patience with a plan.",
+  "Be relentless about the little things.",
+  "Tomorrow's results are today's routines in disguise.",
+  "Keep tending the field; the harvest always comes.",
+  // 51–75 · growth / becoming
+  "You are a work in progress, and that's a beautiful thing.",
+  "Grow through what you go through.",
+  "Each day you're either growing or standing still — choose growth.",
+  "The person you're becoming is worth the effort.",
+  "Outgrow yesterday's version of you.",
+  "Comfort is cozy, but growth lives just outside it.",
+  "You were made to expand, not to stay the same.",
+  "Stretch a little further than you did yesterday.",
+  "Become the kind of person your goals require.",
+  "Growth is uncomfortable — lean in anyway.",
+  "The seed doesn't see the tree, but it grows anyway.",
+  "Invest in yourself; it pays the best interest.",
+  "You don't find a better you — you build one.",
+  "Learn something today and you're already ahead.",
+  "Bloom at your own pace; flowers don't compete.",
+  "Every challenge is growth wearing a disguise.",
+  "Be a little braver, a little kinder, a little better today.",
+  "Progress, not perfection, is the goal.",
+  "You can be both a masterpiece and a work in progress.",
+  "The roots grow deep before the tree grows tall.",
+  "Keep watering yourself — you're still growing.",
+  "What feels hard today is building who you'll be.",
+  "Level up quietly; let your results make the noise.",
+  "You'll be amazed how far small steps can take you.",
+  "Becoming is the whole point. Enjoy it.",
+  // 76–100 · self-belief
+  "Believe you can, and you're halfway there.",
+  "You are capable of more than you imagine.",
+  "Trust yourself — you've made it through every day so far.",
+  "Your potential doesn't have an expiry date.",
+  "Doubt kills more dreams than failure ever will.",
+  "You don't need permission to become who you want to be.",
+  "Back yourself, even when no one else does.",
+  "The voice that says you can is the one to listen to.",
+  "You are stronger than your excuses.",
+  "Confidence is built by keeping promises to yourself.",
+  "You already have what it takes — start using it.",
+  "Be your own biggest believer.",
+  "Speak to yourself like someone you love.",
+  "You are not behind; you are on your own path.",
+  "Your only limit is the one you agree to.",
+  "Stand tall — you've earned your place here.",
+  "You are enough, exactly as you are, and still growing.",
+  "The world needs what only you can give.",
+  "Bet on yourself; the odds are better than you think.",
+  "You've survived 100% of your hardest days.",
+  "Stop shrinking to fit spaces you've outgrown.",
+  "Your future self is cheering you on.",
+  "Decide that you're worth the effort — because you are.",
+  "Walk like you belong, because you do.",
+  "You are proof that ordinary people do extraordinary things.",
+  // 101–125 · courage / fear
+  "Do it scared. Courage is fear that keeps moving.",
+  "On the other side of fear is everything you want.",
+  "Feel the fear and take the step anyway.",
+  "Brave doesn't mean unafraid — it means unstopped.",
+  "Comfort zones are lovely, but nothing grows there.",
+  "Be afraid and do it anyway; that's how brave is born.",
+  "Fortune favours the one who starts before they're ready.",
+  "The leap is scary; the regret is scarier.",
+  "Courage is a muscle — use it today.",
+  "Say yes to the thing that scares you a little.",
+  "The view is best from the edge of your comfort zone.",
+  "Risk the bloom; staying a bud hurts more.",
+  "What would you do if you knew you couldn't fail? Start that.",
+  "Fear is a liar. Move anyway.",
+  "Be bold — the timid rarely get the view.",
+  "Step into the arena; the critics matter less than you think.",
+  "Make the brave call, send the bold email, take the shot.",
+  "Doubt your doubts before you doubt your dreams.",
+  "The dragon guarding your goal is smaller than it looks.",
+  "Brave the first step; the path appears as you walk.",
+  "Don't let fear write the ending of a story you haven't lived.",
+  "You can be nervous and unstoppable at the same time.",
+  "Courage today, confidence tomorrow.",
+  "Jump. You'll learn to fly on the way down.",
+  "The bravest thing you can do is begin.",
+  // 126–150 · positive mind / vibe / life
+  "Positive mind, positive vibe, positive life.",
+  "Guard your mind — it shapes everything you see.",
+  "A positive thought is a small seed with a big future.",
+  "Your vibe attracts your tribe; raise it.",
+  "Think well, feel well, live well.",
+  "Where the mind goes, energy flows.",
+  "Choose thoughts that lift you, not ones that weigh you down.",
+  "A calm mind is a superpower.",
+  "Fill your mind with what you want to grow.",
+  "Good energy is contagious — be the source.",
+  "Optimism is a strategy, not just a feeling.",
+  "See the good, seek the good, become the good.",
+  "Your mindset is the lens; keep it clear.",
+  "Positivity isn't ignoring the storm — it's trusting the sun.",
+  "Protect your peace like the treasure it is.",
+  "What you focus on grows. Focus well.",
+  "Smile first; the reasons often follow.",
+  "Keep your face to the sunshine and shadows fall behind.",
+  "A grateful mind is a magnet for good days.",
+  "Radiate the energy you want to receive.",
+  "Mind your thoughts — they become your world.",
+  "Bring the good vibes you wish to find.",
+  "Light wins. Be a little of it today.",
+  "Your attitude sets the temperature of your day.",
+  "Positive minds build positive lives, one thought at a time.",
+  // 151–175 · gratitude
+  "Gratitude turns what you have into enough.",
+  "Start today by naming three good things.",
+  "The more you thank, the more you find to thank for.",
+  "Joy grows in the soil of gratitude.",
+  "Appreciate the small things; they're the big things.",
+  "A thankful heart sees gifts everywhere.",
+  "Count blessings, not problems.",
+  "Gratitude is the shortest path to contentment.",
+  "Notice the good — it's been there all along.",
+  "Be grateful for the climb; it's making you strong.",
+  "Today is a gift. That's why it's called the present.",
+  "Thank yourself, too — you're doing better than you think.",
+  "Gratitude doesn't change the day; it changes you.",
+  "Find the good and praise it.",
+  "A grateful glance turns an ordinary day golden.",
+  "Say thank you more; complain less.",
+  "Abundance begins the moment you appreciate what is.",
+  "Every breath is a reason to be grateful.",
+  "The happiest people aren't the luckiest — they're the most grateful.",
+  "Pause. Look around. There is so much to be thankful for.",
+  "Gratitude is wealth that money can't buy.",
+  "Be thankful for today; it gave you a chance and asked nothing.",
+  "Let gratitude be your first thought and your last.",
+  "A grateful heart is a happy home.",
+  "Bless what you have while you build what you want.",
+  // 176–200 · resilience / setbacks
+  "Fall seven times, stand up eight.",
+  "A setback is a setup for a comeback.",
+  "You weren't given this mountain to stay at the bottom.",
+  "Storms make trees take deeper roots.",
+  "Rock bottom is solid ground to build on.",
+  "Every failure is data, not defeat.",
+  "Bend, don't break; the willow outlasts the storm.",
+  "The comeback is always stronger than the setback.",
+  "You've bounced back before; you'll bounce back again.",
+  "Scars are proof you healed and kept going.",
+  "Tough times don't last; tough people do.",
+  "When you can't change the wind, adjust your sails.",
+  "Fail forward — every stumble points you onward.",
+  "Pressure makes diamonds; you're being made.",
+  "Get knocked down, get up, learn, repeat.",
+  "The wound is often where the strength enters.",
+  "Setbacks are tuition for your comeback story.",
+  "Keep going; the night is darkest just before dawn.",
+  "You are not your mistakes; you are what you do next.",
+  "Resilience is built one recovery at a time.",
+  "Detours often lead to better destinations.",
+  "What tries to break you is also building you.",
+  "Rest if you must, but don't you quit.",
+  "The strongest steel is forged in the hottest fire.",
+  "You can begin again, as many times as it takes.",
+  // 201–225 · discipline / effort
+  "Discipline is choosing what you want most over what you want now.",
+  "Effort is the bridge between dreams and reality.",
+  "Work in silence; let success make the sound.",
+  "Motivation gets you started; discipline keeps you going.",
+  "Do the hard thing while it's still small.",
+  "Sweat today, shine tomorrow.",
+  "The price of discipline is far cheaper than regret.",
+  "Earn it. The win means more that way.",
+  "Outwork yesterday, not everyone else.",
+  "Show up, do the work, repeat — the path is the shortcut.",
+  "Discipline is self-respect in action.",
+  "The grind you hide becomes the glow-up they admire.",
+  "Effort is a choice you get to make again every day.",
+  "Don't wish it were easier; become better.",
+  "Hard work beats talent when talent skips the work.",
+  "The reps you don't want to do are the ones that count.",
+  "Be the hardest worker in your own quiet room.",
+  "Discipline today, freedom tomorrow.",
+  "Push a little past comfortable; that's where growth lives.",
+  "Your effort compounds even when results lag behind.",
+  "No one rises to low standards — raise yours.",
+  "Make excellence a habit, not an event.",
+  "Choose the discomfort of discipline over the ache of regret.",
+  "The work works, if you do.",
+  "Keep your standards high and your excuses few.",
+  // 226–250 · calm / peace / balance
+  "Breathe. You're exactly where you need to begin.",
+  "Peace is not the absence of storms but calm within them.",
+  "Slow down to speed up.",
+  "You can do anything, but not everything — choose well.",
+  "Rest is productive, too.",
+  "Let go of what you can't control and hold what you can.",
+  "A quiet mind hears the right next step.",
+  "Inhale courage, exhale doubt.",
+  "Stillness is where your best ideas find you.",
+  "Protect your energy; not everything deserves a reaction.",
+  "Calm is a power you can practise.",
+  "You don't have to carry it all today.",
+  "Find peace in progress, not perfection.",
+  "Take the pressure off; presence is enough.",
+  "Quiet the noise and listen to your own knowing.",
+  "Balance isn't found — it's created, day by day.",
+  "Be gentle with yourself; you're doing your best.",
+  "A rested mind is a sharper mind.",
+  "Trade hurry for purpose.",
+  "Peace begins the moment you stop fighting the day.",
+  "Make space for stillness; it makes space for clarity.",
+  "You are allowed to move at the speed of calm.",
+  "Let today be soft where it can be.",
+  "Centred, not stressed — that's the goal.",
+  "Still waters restore the sailor for the next voyage.",
+  // 251–275 · dreams / vision
+  "Dream big, start small, begin now.",
+  "Your dreams are calling — answer them.",
+  "If it doesn't scare and excite you, dream bigger.",
+  "Aim for the moon; even a miss lands among stars.",
+  "The future belongs to those who prepare for it today.",
+  "See it clearly, then build it daily.",
+  "A goal without a daily action is just a wish.",
+  "Picture the summit, then take the next step toward it.",
+  "Your vision pulls you forward — keep it bright.",
+  "Dreams don't work unless you do.",
+  "Give your goals a deadline and your days a purpose.",
+  "Write the dream down; make it real enough to chase.",
+  "The biggest adventure is living the life of your dreams.",
+  "Let your dreams be bigger than your fears.",
+  "You're allowed to want a bigger life — then go earn it.",
+  "What you can imagine, you can begin.",
+  "Keep your eyes on the stars and your feet on the path.",
+  "Build a life you don't need a vacation from.",
+  "The vision is free; the discipline is the price.",
+  "One day, or day one — your choice decides.",
+  "Make your future self proud, starting today.",
+  "Chase the vision, not the applause.",
+  "Goals are dreams with their work boots on.",
+  "The view from the top begins with this single step.",
+  "Design your life on purpose, not by accident.",
+  // 276–300 · action / momentum
+  "Done is better than perfect.",
+  "Start before you're ready; readiness is a myth.",
+  "Action cures fear.",
+  "A small step taken beats a big plan delayed.",
+  "Stop overthinking and start over-doing.",
+  "Motion creates emotion — move and your mood follows.",
+  "The first step is the hardest and the most important.",
+  "Direction beats speed; just start moving.",
+  "You can't steer a parked car — get going.",
+  "Less planning, more doing.",
+  "Momentum is built, not found — make the first move.",
+  "Do the thing, and you'll have the power.",
+  "Progress is made by those who simply begin.",
+  "One brave action can change your whole week.",
+  "Stop waiting for perfect conditions; create them.",
+  "The dream is built in the doing.",
+  "Take imperfect action today; refine it tomorrow.",
+  "If it matters, start it now, however small.",
+  "Action is the antidote to anxiety.",
+  "Move a muscle, change a thought.",
+  "Begin badly if you must, but begin.",
+  "You learn to swim by getting in the water.",
+  "The path reveals itself to those who walk it.",
+  "Do something today your future self will high-five you for.",
+  "Forward is forward, no matter how small.",
+  // 301–325 · kindness / self-worth / connection
+  "Be kind; everyone is fighting a battle you can't see.",
+  "Kindness is free — sprinkle it everywhere.",
+  "You matter, more than you know.",
+  "Lift someone today and you lift yourself.",
+  "Treat yourself with the kindness you give others.",
+  "Your worth isn't measured by your productivity.",
+  "Be the reason someone believes in good people.",
+  "Surround yourself with those who see your light.",
+  "A kind word can change someone's entire day.",
+  "You are worthy of the life you're working toward.",
+  "Compassion starts at home, with you.",
+  "Make someone smile; it always comes back around.",
+  "Your presence is a present.",
+  "Speak life into others and into yourself.",
+  "You deserve good things and the time to grow them.",
+  "Be soft in a world that tells you to harden.",
+  "The people who matter will cheer your growth.",
+  "Hold space for yourself the way you do for others.",
+  "Generosity and gratitude make any day richer.",
+  "You are loved, you are capable, you are enough.",
+  "Be the kind of friend you wish you had.",
+  "Pour into yourself so you have more to give.",
+  "Small kindnesses are never wasted.",
+  "Choose people who feel like sunlight.",
+  "Your value was never up for debate.",
+  // 326–350 · energy / drive / vibe
+  "Wake up with purpose; rest with pride.",
+  "Bring energy to the room, don't wait to borrow it.",
+  "Be the thermostat, not the thermometer.",
+  "Protect your mornings; they set your momentum.",
+  "Move your body and your mind will follow.",
+  "Your energy introduces you before you speak.",
+  "Do more of what makes you feel alive.",
+  "Feed your focus, starve your distractions.",
+  "Show up like it's the day everything changes — it might be.",
+  "Enthusiasm is the spark; keep striking it.",
+  "Make your good days louder than your bad ones.",
+  "Choose progress over perfection and energy over excuses.",
+  "Be unapologetically committed to your own growth.",
+  "Your effort sets the tone; make it ring.",
+  "Turn 'I have to' into 'I get to'.",
+  "Pour energy into today and tomorrow pays you back.",
+  "Run your own race at your own pace.",
+  "Stay hungry, stay humble, stay moving.",
+  "Let your actions be louder than your alarm.",
+  "Bring the spark; don't wait for the fire.",
+  "Make momentum your default setting.",
+  "Energy flows where attention goes — aim it well.",
+  "Be relentless in the pursuit of becoming.",
+  "Today's enthusiasm is tomorrow's achievement.",
+  "Light yourself up and watch the day follow.",
+  // 351–365 · patience / faith / closing
+  "Trust the process; the seeds you plant will bloom.",
+  "Patience is not waiting — it's working while you wait.",
+  "Good things take time; great things take a little more.",
+  "Keep going; you're closer than you've ever been.",
+  "The harvest rewards the one who kept showing up.",
+  "Stay the course; consistency always pays.",
+  "Your breakthrough is built on the boring days.",
+  "Faith is taking the step without seeing the whole staircase.",
+  "Time rewards the patient and the persistent.",
+  "What you nurture today, you'll celebrate tomorrow.",
+  "Don't quit on a hard day; that's when it counts most.",
+  "The view is worth the climb — keep climbing.",
+  "Slowly is still forward. Keep moving.",
+  "Everything you're building is on its way to you.",
+  "One day at a time, you are becoming who you're meant to be.",
 ];
-const quoteForToday = () => { const n=Math.floor((Date.now()/864e5)); return QUOTES[n % QUOTES.length]; };
+// Serene, scenic gradient backdrops — rotated daily so each day feels fresh.
+const PALETTES = [
+  "linear-gradient(135deg,#5ba8d8,#2c6fa6)", // clear sky
+  "linear-gradient(135deg,#46b07a,#1f7a4d)", // forest
+  "linear-gradient(135deg,#3fa9b0,#1f6f78)", // ocean teal
+  "linear-gradient(135deg,#7cc05a,#3f8f4a)", // meadow
+  "linear-gradient(135deg,#f0a868,#d9774f)", // sunrise
+  "linear-gradient(135deg,#7e8fd6,#4a51a0)", // dusk
+  "linear-gradient(135deg,#4fc1a8,#248f7e)", // lagoon
+  "linear-gradient(135deg,#8fb98a,#4f8a5f)", // sage
+];
+function dayOfYear(d=new Date()){ return Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()) - Date.UTC(d.getFullYear(),0,0)) / 864e5); }
+const quoteForToday = () => MOTIVATION[(dayOfYear()-1+MOTIVATION.length) % MOTIVATION.length];
+const paletteForToday = () => PALETTES[(dayOfYear()-1+PALETTES.length) % PALETTES.length];
 
 /* ---------- Success stories (documented; rotates daily) ---------- */
 const STORIES = [
@@ -669,10 +1051,10 @@ const App = (()=>{
   function weekNo(g){ return Math.floor(daysBetween(g.startDate,todayKey())/7)+1; }
 
   function renderDash(){
-    const [q,qc]=quoteForToday(); const story=storyForToday();
+    const q=quoteForToday(); const pal=paletteForToday(); const story=storyForToday();
     const active=DB.goals;
     let html=`<div class="daterow"><span class="d1">${fmtDate()}</span><span class="d2">Day ${daysBetween(active[0].startDate,todayKey())+1} of your edge</span></div>
-      <div class="quote"><p>"${esc(q)}"</p><cite>${esc(qc)}</cite></div>`;
+      <div class="qcard" style="background-image:radial-gradient(130% 100% at 50% -15%,rgba(255,255,255,.30),transparent 58%),${pal}"><p>${esc(q)}</p></div>`;
 
     active.forEach(g=>{ html+=goalCardHtml(g); });
 
@@ -741,11 +1123,11 @@ const App = (()=>{
   function actionRow(g,a,log){
     const v=log.done[a.id];
     if(a.type==='number'){
-      const hit=v!=null && (!a.target || +v>=a.target);
-      return `<label class="act ${hit?'done':''}" data-a="${a.id}">
-        <span class="cbox">✓</span>
-        <span class="atxt">${esc(a.label)}${a.why?`<span class="awhy">${esc(a.why)}</span>`:''}</span>
-        <span class="num"><input type="number" inputmode="decimal" value="${v!=null?esc(v):''}" placeholder="0" onclick="event.preventDefault()" oninput="App.setNum('${g.id}','${a.id}',this.value)"><span>${esc(a.unit)}${a.target?` / ${a.target}`:''}</span></span></label>`;
+      const hit=actMet(a,log);
+      return `<div class="act ${hit?'done':''}" data-a="${a.id}">
+        <span class="cbox" onclick="App.toggleNum('${g.id}','${a.id}')" title="Mark done">✓</span>
+        <span class="atxt" onclick="App.toggleNum('${g.id}','${a.id}')">${esc(a.label)}${a.why?`<span class="awhy">${esc(a.why)}</span>`:''}</span>
+        <span class="num"><input type="number" inputmode="decimal" value="${v!=null?esc(v):''}" placeholder="0" oninput="App.setNum('${g.id}','${a.id}',this.value)"><span>${esc(a.unit)}${a.target?` / ${a.target}`:''}</span></span></div>`;
     }
     return `<div class="act ${v?'done':''}" data-a="${a.id}" onclick="App.toggleAct('${g.id}','${a.id}')">
       <span class="cbox">✓</span><span class="atxt">${esc(a.label)}${a.why?`<span class="awhy">${esc(a.why)}</span>`:''}</span></div>`;
@@ -763,11 +1145,18 @@ const App = (()=>{
   function maybeUpgradeFull(g,log){ if(log.locked && !log.full && isFull(g,log)){ log.full=true; save(); toast('That makes it a full day! 🔥'); return true; } return false; }
 
   function toggleAct(gid,aid){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g); log.done[aid]=!log.done[aid]; if(!log.done[aid])delete log.done[aid]; save(); maybeUpgradeFull(g,log); refreshCard(g); }
+  // Tapping the tick box on a NUMBER action completes it to target (or clears it).
+  function toggleNum(gid,aid){ const g=DB.goals.find(x=>x.id===gid); const a=g.plan.dailyActions.find(x=>x.id===aid); const log=ensureLog(g);
+    if(actMet(a,log)){ delete log.done[aid]; } else { log.done[aid] = a.target || (log.done[aid]>0?log.done[aid]:1); }
+    save(); maybeUpgradeFull(g,log); refreshCard(g); }
   function setNum(gid,aid,val){ const g=DB.goals.find(x=>x.id===gid); const log=ensureLog(g); if(val===''||val==null){delete log.done[aid];}else{log.done[aid]=clampN(parseFloat(val)||0,0,1e7);} save();
-    // if already locked and we just hit full, re-render to celebrate; otherwise light-touch the button only
+    // if already locked and we just hit full, re-render to celebrate; otherwise update this row + the button live (keeps input focus)
     if(maybeUpgradeFull(g,log)){ refreshCard(g); return; }
+    const a=g.plan.dailyActions.find(x=>x.id===aid);
+    const row=document.querySelector(`.gcard[data-g="${gid}"] .act[data-a="${aid}"]`); if(row && a) row.classList.toggle('done', actMet(a,log));
     const effort=hasEffort(g,log), full=isFull(g,log), locked=isLocked(log); const total=g.plan.dailyActions.length;
     const done=g.plan.dailyActions.filter(a=>actProgress(a,log)).length;
+    const prog=document.querySelector(`.gcard[data-g="${gid}"] .progline i`); if(prog) prog.style.width=Math.round(100*g.plan.dailyActions.filter(x=>!!log.done[x.id]).length/total)+'%';
     const btn=$('cd_'+gid); if(btn){ btn.disabled=!(effort||locked);
       btn.textContent = locked ? (full?'Full day complete ✓':`Day locked ✓ · ${done}/${total}`) : (effort ? (full?'Lock in a full day ✓':'Lock in today ✓') : 'Log an action to lock in your day'); } }
   function refreshCard(g){ const old=document.querySelector(`.gcard[data-g="${g.id}"]`); if(old){ const div=document.createElement('div'); div.innerHTML=goalCardHtml(g); old.replaceWith(div.firstElementChild); } }
@@ -836,7 +1225,7 @@ const App = (()=>{
   });
 
   return { navAction, startWizard, openDash, pickCat, pickTf, pickMin, customTf, fill, next, back, regen, useSafeTimeframe, commitGoal,
-    toggleAct, setNum, completeDay, toggleMiles, markMile, editGoal, exportData, importData, resetAll };
+    toggleAct, toggleNum, setNum, completeDay, toggleMiles, markMile, editGoal, exportData, importData, resetAll };
 })();
 </script>
 </body></html>

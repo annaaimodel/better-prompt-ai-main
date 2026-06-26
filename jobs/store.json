@@ -17627,6 +17627,22 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-06-26",
+  "active": false
+ },
+ "ae049e8bfa2c2fbd": {
+  "title": "Small Business Account Executive",
+  "company": "MPLC",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/mplc/jobs/small-business-account-executive",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-26",
+  "last_seen": "2026-06-26",
   "active": true
  }
 }

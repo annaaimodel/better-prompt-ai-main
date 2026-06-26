@@ -131,10 +131,12 @@ textarea.fi{min-height:84px;resize:vertical}
 .daterow{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
 .daterow .d1{font-family:"Playfair Display",serif;font-size:20px;color:var(--txt)}
 .daterow .d2{font-size:12.5px;color:var(--mut)}
-/* daily affirmation card — scenic framed quote, backdrop rotates each day */
-.qcard{position:relative;border-radius:16px;padding:38px 26px;margin:14px 0 22px;text-align:center;overflow:hidden;box-shadow:var(--shadow);background-size:cover;background-position:center}
-.qcard::before{content:"";position:absolute;inset:13px;border:1px solid rgba(255,255,255,.6);border-radius:9px;pointer-events:none}
-.qcard p{position:relative;margin:0;color:#fff;font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(18px,4.6vw,25px);line-height:1.34;letter-spacing:.01em;text-shadow:0 1px 18px rgba(0,0,0,.25);max-width:30ch;margin:0 auto}
+/* daily affirmation card — scenic SVG landscape behind a framed quote, rotates each day */
+.qcard{position:relative;border-radius:16px;margin:14px 0 22px;min-height:158px;overflow:hidden;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;text-align:center;padding:34px 26px}
+.qcard .scene{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.qcard .ov{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,22,16,.10),rgba(8,22,16,.30) 60%,rgba(8,22,16,.42))}
+.qcard::before{content:"";position:absolute;inset:13px;z-index:2;border:1px solid rgba(255,255,255,.65);border-radius:9px;pointer-events:none}
+.qcard p{position:relative;z-index:3;margin:0 auto;color:#fff;font-family:"Playfair Display",Georgia,serif;font-weight:600;font-size:clamp(18px,4.6vw,25px);line-height:1.34;letter-spacing:.01em;text-shadow:0 1px 16px rgba(0,0,0,.45);max-width:28ch}
 
 .gcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;margin-bottom:18px;box-shadow:var(--shadow)}
 .ghead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px}
@@ -694,20 +696,40 @@ const MOTIVATION = [
   "Everything you're building is on its way to you.",
   "One day at a time, you are becoming who you're meant to be.",
 ];
-// Serene, scenic gradient backdrops — rotated daily so each day feels fresh.
-const PALETTES = [
-  "linear-gradient(135deg,#5ba8d8,#2c6fa6)", // clear sky
-  "linear-gradient(135deg,#46b07a,#1f7a4d)", // forest
-  "linear-gradient(135deg,#3fa9b0,#1f6f78)", // ocean teal
-  "linear-gradient(135deg,#7cc05a,#3f8f4a)", // meadow
-  "linear-gradient(135deg,#f0a868,#d9774f)", // sunrise
-  "linear-gradient(135deg,#7e8fd6,#4a51a0)", // dusk
-  "linear-gradient(135deg,#4fc1a8,#248f7e)", // lagoon
-  "linear-gradient(135deg,#8fb98a,#4f8a5f)", // sage
+// Scenic landscape backdrops drawn in SVG — layered mountain ridges under a
+// graded sky, rotated daily. Three ridge silhouettes × eight colour palettes.
+const RIDGES = [
+  { a:"M0,300 L0,150 L120,90 L240,165 L360,95 L500,160 L640,110 L800,150 L800,300 Z",
+    b:"M0,300 L0,205 L160,238 L340,193 L520,238 L700,202 L800,222 L800,300 Z",
+    c:"M0,300 L0,258 L220,286 L460,260 L680,286 L800,267 L800,300 Z" },
+  { a:"M0,300 L0,172 Q200,108 400,166 T800,150 L800,300 Z",
+    b:"M0,300 L0,216 Q220,256 440,216 T800,206 L800,300 Z",
+    c:"M0,300 L0,262 Q260,290 520,263 T800,273 L800,300 Z" },
+  { a:"M0,300 L0,186 L160,150 L300,80 L460,170 L620,128 L800,176 L800,300 Z",
+    b:"M0,300 L0,226 L210,200 L420,242 L640,206 L800,226 L800,300 Z",
+    c:"M0,300 L0,268 L250,286 L520,262 L800,283 L800,300 Z" },
 ];
+const SCENES = [
+  { sky0:"#7fb6e6", sky1:"#dcefff", sun:"#fff6dd", sx:642, sy:78, sr:34, m:["#6f93b8","#54749a","#3c5a7e"], r:0 }, // blue day peaks
+  { sky0:"#fbb56a", sky1:"#ffe6c2", sun:"#fff1cf", sx:600, sy:96, sr:42, m:["#c98a5a","#a96f47","#7e5132"], r:2 }, // sunrise
+  { sky0:"#a7e0c2", sky1:"#eafaf0", sun:"",        sx:0,   sy:0,  sr:0,  m:["#5a9e6a","#3f8552","#2c6b41"], r:1 }, // forest
+  { sky0:"#8a93d8", sky1:"#e8dcf3", sun:"#fdf6ff", sx:172, sy:80, sr:26, m:["#5b5fa0","#474b86","#34386a"], r:0 }, // dusk
+  { sky0:"#58c1ad", sky1:"#dff5ee", sun:"#ffffff", sx:632, sy:80, sr:30, m:["#2f8f86","#247a72","#19625c"], r:1 }, // lagoon
+  { sky0:"#f0c25e", sky1:"#fbeec0", sun:"#fff4cf", sx:182, sy:90, sr:40, m:["#b58a4a","#8a6a3a","#63492a"], r:2 }, // golden hour
+  { sky0:"#cfe0bf", sky1:"#eef6e3", sun:"",        sx:0,   sy:0,  sr:0,  m:["#8fb98a","#6f9e6a","#4f8a5f"], r:0 }, // sage hills
+  { sky0:"#5ba8d8", sky1:"#bfe2f3", sun:"#fff6dd", sx:620, sy:82, sr:32, m:["#3f7fae","#2f6690","#234e70"], r:1 }, // ocean blue
+];
+function sceneSVG(s){
+  const R=RIDGES[s.r];
+  return `<svg class="scene" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`
+    + `<defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${s.sky0}"/><stop offset="1" stop-color="${s.sky1}"/></linearGradient></defs>`
+    + `<rect width="800" height="300" fill="url(#sk)"/>`
+    + (s.sun?`<circle cx="${s.sx}" cy="${s.sy}" r="${s.sr}" fill="${s.sun}" opacity="0.85"/>`:``)
+    + `<path d="${R.a}" fill="${s.m[0]}"/><path d="${R.b}" fill="${s.m[1]}"/><path d="${R.c}" fill="${s.m[2]}"/></svg>`;
+}
 function dayOfYear(d=new Date()){ return Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()) - Date.UTC(d.getFullYear(),0,0)) / 864e5); }
 const quoteForToday = () => MOTIVATION[(dayOfYear()-1+MOTIVATION.length) % MOTIVATION.length];
-const paletteForToday = () => PALETTES[(dayOfYear()-1+PALETTES.length) % PALETTES.length];
+const sceneForToday = () => sceneSVG(SCENES[(dayOfYear()-1+SCENES.length) % SCENES.length]);
 
 /* ---------- Success stories (documented; rotates daily) ---------- */
 const STORIES = [
@@ -1051,10 +1073,10 @@ const App = (()=>{
   function weekNo(g){ return Math.floor(daysBetween(g.startDate,todayKey())/7)+1; }
 
   function renderDash(){
-    const q=quoteForToday(); const pal=paletteForToday(); const story=storyForToday();
+    const q=quoteForToday(); const story=storyForToday();
     const active=DB.goals;
     let html=`<div class="daterow"><span class="d1">${fmtDate()}</span><span class="d2">Day ${daysBetween(active[0].startDate,todayKey())+1} of your edge</span></div>
-      <div class="qcard" style="background-image:radial-gradient(130% 100% at 50% -15%,rgba(255,255,255,.30),transparent 58%),${pal}"><p>${esc(q)}</p></div>`;
+      <div class="qcard">${sceneForToday()}<div class="ov"></div><p>${esc(q)}</p></div>`;
 
     active.forEach(g=>{ html+=goalCardHtml(g); });
 

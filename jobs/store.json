@@ -17611,6 +17611,22 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-06-26",
+  "active": false
+ },
+ "35489fdb05373e48": {
+  "title": "Analytical Sales Representative - Northwest",
+  "company": "Emerson",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/emerson/jobs/analytical-sales-representative-northwest",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-26",
+  "last_seen": "2026-06-26",
   "active": true
  }
 }

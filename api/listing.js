@@ -55,25 +55,8 @@ export default async function handler(req, res) {
       res.status(502).json({ error: "Couldn't submit — please try again." });
       return;
     }
-    // Best-effort email alert via a separate standalone Apps Script (see
-    // docs/listing-notify.gs). Never let a notification failure break the
-    // submission — the row is already saved at this point.
-    if (process.env.LISTING_NOTIFY_URL) {
-      try {
-        const notify = await fetch(process.env.LISTING_NOTIFY_URL, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify(payload),
-        });
-        if (!notify.ok) {
-          console.error("listing notify non-2xx:", notify.status, await notify.text().catch(() => ""));
-        }
-      } catch (e) {
-        console.error("listing notify error:", e);
-      }
-    } else {
-      console.error("listing notify skipped: LISTING_NOTIFY_URL not set");
-    }
+    // The email alert is sent by the sync Apps Script itself (it emails on
+    // type:"listing"), so there's nothing more to do here.
     res.status(200).json({ ok: true });
   } catch (e) {
     console.error("listing sync error:", e);

@@ -4,20 +4,14 @@ Quick, prioritised list of the things that need your logins/credentials (so I
 can't do them for you). Ping me here once you're at a desk — say *"I'm on my
 computer"* — and I'll walk you through each, live.
 
-_Last updated: 2026-06-18._
+_Last updated: 2026-06-26._
 
 ---
 
-## 1. 🔴 Set up the external pinger  — HIGHEST IMPACT
-**Why:** GitHub keeps dropping the scheduled job-refresh runs. This is what made
-the board look "light" (today's 00:00 heavy pull got skipped). The pinger fires
-hourly from an external service, which **also** guarantees the 00:00 & 14:00 UTC
-*heavy* pulls (Adzuna/Jooble) — so it fixes both reliability **and** freshness.
-
-**Steps:** follow `docs/external-pinger.md` —
-1. Create a fine-grained GitHub token (this repo only, **Actions: Read & write**).
-2. Add it to a free **cron-job.org** job (hourly) per the guide.
-Takes ~5 min. I'll verify it fired (HTTP 204 + a dispatched run) once you're done.
+## 1. ✅ DONE — external pinger
+Set up 2026-06-26: cron-job.org pings the workflow hourly (verified 204 +
+dispatched run `93a01a8`). The board now refreshes itself, and the 00:00 & 14:00
+UTC heavy pulls fire automatically. No more manual hard-runs needed.
 
 ## 2. 🟡 Fix the "no email" on /hiring listings
 Saving works now, but the email alert doesn't fire. Two likely causes:

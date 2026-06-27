@@ -17643,7 +17643,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-06-27",
-  "active": true
+  "active": false
  },
  "676b6c7e85257c15": {
   "title": "Enterprise Account Executive",
@@ -17799,6 +17799,22 @@
   "category": "Setter — DM Setting",
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-06-27",
+  "last_seen": "2026-06-27",
+  "active": true
+ },
+ "e4c9431de52950e2": {
+  "title": "Luxury Real Estate Virtual Assistant (English/Spanish)",
+  "company": "SmartScale360",
+  "location": "Colombia",
+  "comp": "",
+  "link": "https://himalayas.app/companies/smartscale360/jobs/luxury-real-estate-virtual-assistant-english-spanish",
+  "source": "Himalayas",
+  "category": "VA / Social / Chat",
+  "country": "Latin America",
+  "lead_type": "Cold",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-27",

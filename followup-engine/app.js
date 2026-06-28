@@ -1570,25 +1570,29 @@ $("live_cuenow").onclick = () => maybeCue(true);
 function productCardHTML(p, active) {
   return `<div class="sblock ${active ? "active" : ""}"><strong>${esc(p.name || "Product")}</strong>${(p.keywords && p.keywords.length) ? ` <span class="tiny muted">(${esc(p.keywords.join(", "))})</span>` : ""}<div style="margin-top:4px">${esc(p.info || "")}</div></div>`;
 }
-function showProductCard(p) {
+// Show ALL products tagged with a spoken keyword, grouped under that keyword.
+function showProductGroup(kw, products) {
   const panel = $("pk_panel");
   if (panel.querySelector("p")) panel.innerHTML = "";
-  const div = document.createElement("div");
-  div.innerHTML = productCardHTML(p, true);
-  panel.prepend(div.firstChild);
-  while (panel.children.length > 6) panel.removeChild(panel.lastChild);
+  const wrap = document.createElement("div");
+  wrap.innerHTML = `<div class="section-title" style="margin:6px 0 4px">🔔 ${esc(kw)} - ${products.length} product${products.length > 1 ? "s" : ""}</div>` +
+    products.map((p) => productCardHTML(p, true)).join("");
+  panel.prepend(wrap);
+  while (panel.children.length > 8) panel.removeChild(panel.lastChild);
 }
-// Scan a chunk of fresh transcript for product keywords and pop matches.
-const productLastShown = {};
+// Scan a chunk of fresh transcript; for each keyword spoken, pop every product
+// tagged with it (de-duped per keyword for 25s).
+const triggerLastShown = {};
 function scanProducts(textChunk) {
   if (!textChunk) return;
   const hay = textChunk.toLowerCase();
-  (db.products || []).forEach((p) => {
-    if (!(p.keywords || []).some((k) => k && hay.includes(k.toLowerCase()))) return;
-    const last = productLastShown[p.id] || 0;
-    if (Date.now() - last < 25000) return; // don't re-pop the same product within 25s
-    productLastShown[p.id] = Date.now();
-    showProductCard(p);
+  const present = new Set();
+  (db.products || []).forEach((p) => (p.keywords || []).forEach((k) => { if (k && hay.includes(k.toLowerCase())) present.add(k.toLowerCase()); }));
+  present.forEach((kw) => {
+    if (Date.now() - (triggerLastShown[kw] || 0) < 25000) return;
+    triggerLastShown[kw] = Date.now();
+    const matches = (db.products || []).filter((p) => (p.keywords || []).some((k) => k.toLowerCase() === kw));
+    if (matches.length) showProductGroup(kw, matches);
   });
 }
 $("pk_search").addEventListener("input", (e) => {

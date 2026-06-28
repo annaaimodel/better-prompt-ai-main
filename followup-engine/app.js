@@ -1013,6 +1013,7 @@ function loadSettingsForm() {
   $("s_results").value = (s.results || []).join("\n");
   $("s_resources").value = (s.resources || []).map((r) => (r.url ? `${r.title} - ${r.url}` : r.title)).join("\n");
   $("s_tone").value = s.tone || "";
+  $("s_deepgram").value = s.deepgram || "";
   $("s_setters").value = (db.team.setters || []).join(", ");
   $("s_closers").value = (db.team.closers || []).join(", ");
   $("s_csms").value = (db.team.csms || []).join(", ");
@@ -1045,6 +1046,7 @@ $("saveSettingsBtn").onclick = () => {
 };
 // Persist access code as you type so first AI call works without a save round-trip.
 $("s_access").addEventListener("change", () => { db.settings.access = $("s_access").value.trim(); save(); });
+$("s_deepgram").addEventListener("change", () => { db.settings.deepgram = $("s_deepgram").value.trim(); save(); });
 
 // Playbook ------------------------------------------------------------------
 function loadPlaybookForm() {
@@ -1350,7 +1352,7 @@ $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.tar
 // Live call copilot - listens via the browser mic, whispers cues from /api/cue.
 // ---------------------------------------------------------------------------
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false };
+const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false, dg: null };
 function splitScript(text) { return String(text || "").split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean); }
 function updateScriptControls() {
   $("sc_pos").textContent = Live.scriptBlocks.length ? `Section ${Math.max(1, Live.scriptIdx + 1)} / ${Live.scriptBlocks.length}` : "";
@@ -1465,9 +1467,60 @@ function renderTranscript() {
   el.textContent = (Live.transcript + Live.interim).slice(-4000) || "Listening…";
   el.scrollTop = el.scrollHeight;
 }
-function liveStart() {
+// Headset mode: capture the call audio (the prospect) via screen/tab share and
+// transcribe it with Deepgram, alongside the mic (you) via Web Speech.
+async function startProspectCapture() {
+  const key = (db.settings.deepgram || "").trim();
+  if (!key) { toast("Add your Deepgram API key in Settings for headset mode"); setView("settings"); return false; }
+  let display;
+  try { display = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: true }); }
+  catch (e) { toast("Sharing cancelled - needed to hear the prospect on a headset"); return false; }
+  const audioTracks = display.getAudioTracks();
+  if (!audioTracks.length) { toast("No audio shared - tick 'Share tab audio' when you pick the call"); display.getTracks().forEach((t) => t.stop()); return false; }
+  display.getVideoTracks().forEach((t) => t.stop());
+  const ac = new (window.AudioContext || window.webkitAudioContext)();
+  const source = ac.createMediaStreamSource(new MediaStream([audioTracks[0]]));
+  const processor = ac.createScriptProcessor(4096, 1, 1);
+  const sink = ac.createGain(); sink.gain.value = 0;
+  source.connect(processor); processor.connect(sink); sink.connect(ac.destination);
+  const url = `wss://api.deepgram.com/v1/listen?model=nova-2&encoding=linear16&sample_rate=${Math.round(ac.sampleRate)}&channels=1&interim_results=true&smart_format=true`;
+  const ws = new WebSocket(url, ["token", key]);
+  ws.binaryType = "arraybuffer";
+  ws.onopen = () => { $("live_status").innerHTML = `<span class="live-dot">●</span> Listening (headset - both sides)…`; };
+  ws.onmessage = (m) => {
+    try {
+      const d = JSON.parse(m.data);
+      const alt = d.channel && d.channel.alternatives && d.channel.alternatives[0];
+      if (alt && alt.transcript && d.is_final) { Live.transcript += alt.transcript + " "; renderTranscript(); scanProducts(alt.transcript + " "); }
+    } catch (e) {}
+  };
+  ws.onerror = () => { $("live_status").innerHTML += " (transcription error - check Deepgram key)"; };
+  processor.onaudioprocess = (e) => {
+    if (ws.readyState !== 1) return;
+    const input = e.inputBuffer.getChannelData(0);
+    const buf = new Int16Array(input.length);
+    for (let i = 0; i < input.length; i++) { const s = Math.max(-1, Math.min(1, input[i])); buf[i] = s < 0 ? s * 0x8000 : s * 0x7fff; }
+    ws.send(buf.buffer);
+  };
+  // If the user stops sharing from the browser bar, stop cleanly.
+  audioTracks[0].addEventListener("ended", () => { if (Live.running) liveStop(); });
+  Live.dg = { ws, ac, processor, source, sink, display };
+  return true;
+}
+function stopProspectCapture() {
+  const d = Live.dg; Live.dg = null; if (!d) return;
+  try { if (d.ws && d.ws.readyState === 1) d.ws.send(JSON.stringify({ type: "CloseStream" })); } catch (e) {}
+  try { d.ws && d.ws.close(); } catch (e) {}
+  try { if (d.processor) { d.processor.onaudioprocess = null; d.processor.disconnect(); } } catch (e) {}
+  try { d.source && d.source.disconnect(); } catch (e) {}
+  try { d.sink && d.sink.disconnect(); } catch (e) {}
+  try { d.ac && d.ac.close(); } catch (e) {}
+  try { d.display && d.display.getTracks().forEach((t) => t.stop()); } catch (e) {}
+}
+async function liveStart() {
   if (!SR) return;
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  if ($("live_headset").checked) { const ok = await startProspectCapture(); if (!ok) return; }
   Live.leadId = $("live_lead").value;
   Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0;
   Live.scriptBlocks = splitScript($("sc_text").value); Live.scriptIdx = -1; Live.scriptManual = false;
@@ -1499,6 +1552,7 @@ function liveStart() {
 function liveStop() {
   Live.running = false;
   if (Live.rec) { try { Live.rec.stop(); } catch (e) {} }
+  stopProspectCapture();
   clearInterval(Live.timer); Live.timer = null;
   releaseWakeLock();
   $("sc_editor").style.display = ""; $("sc_live").style.display = "none"; $("sc_controls").style.display = "none"; $("sc_note").textContent = "";

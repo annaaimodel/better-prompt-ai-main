@@ -231,6 +231,7 @@ if (!db.creator) db.creator = { niche: "", audience: "", pillars: "", platforms:
 if (!db.contentPlan) db.contentPlan = [];
 if (!db.scripts) db.scripts = [];
 if (typeof db.liveScriptId !== "string") db.liveScriptId = "";
+if (!db.products) db.products = [];
 // Backfill the segment field on any leads created before segments existed.
 db.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
 maybeDailyBackup();
@@ -252,6 +253,7 @@ function load() {
     contentPlan: [],
     scripts: [],
     liveScriptId: "",
+    products: [],
     leads: [],
   };
 }
@@ -853,12 +855,13 @@ async function runDraft() {
 // Wiring
 // ---------------------------------------------------------------------------
 function setView(name) {
-  ["today", "live", "pipeline", "add", "coach", "content", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
+  ["today", "live", "pipeline", "add", "coach", "content", "products", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === name));
   if (name === "today") renderToday();
   if (name === "live") setupLive();
   if (name === "coach") setupCoach();
   if (name === "content") setupContent();
+  if (name === "products") renderProducts();
   if (name === "pipeline") renderPipeline($("search").value);
   if (name === "playbook") loadPlaybookForm();
   if (name === "assets") renderAssets();
@@ -909,6 +912,8 @@ document.body.addEventListener("click", (e) => {
       snapshotBackup("before delete lead"); db.leads = db.leads.filter((x) => x.id !== t.dataset.leaddel); save(); rerender(); toast("Lead deleted");
     }
   }
+  else if (t.dataset.predit) { openProductEdit(t.dataset.predit); }
+  else if (t.dataset.prdel) { if (confirm("Delete this product?")) { db.products = (db.products || []).filter((x) => x.id !== t.dataset.prdel); save(); renderProducts(); toast("Deleted"); } }
   else if (t.dataset.writeidx) { writeFromPlan(parseInt(t.dataset.writeidx, 10)); }
   else if (t.dataset.restore) {
     const b = readBackups()[parseInt(t.dataset.restore, 10)];
@@ -1471,12 +1476,13 @@ function liveStart() {
   const rec = new SR();
   rec.continuous = true; rec.interimResults = true; rec.lang = navigator.language || "en-US";
   rec.onresult = (e) => {
-    let interim = "";
+    let interim = "", finals = "";
     for (let i = e.resultIndex; i < e.results.length; i++) {
       const r = e.results[i];
-      if (r.isFinal) Live.transcript += r[0].transcript + " "; else interim += r[0].transcript;
+      if (r.isFinal) { Live.transcript += r[0].transcript + " "; finals += r[0].transcript + " "; } else interim += r[0].transcript;
     }
     Live.interim = interim; renderTranscript();
+    if (finals) scanProducts(finals);
   };
   rec.onerror = (e) => {
     if (e.error === "not-allowed" || e.error === "service-not-allowed") { $("live_status").textContent = "⚠ Mic blocked. Allow microphone access, then Start again."; liveStop(); }
@@ -1557,6 +1563,101 @@ function renderCues(cues) {
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
 $("live_cuenow").onclick = () => maybeCue(true);
+
+// ---------------------------------------------------------------------------
+// Product knowledge - keyword-triggered cards during the call + management.
+// ---------------------------------------------------------------------------
+function productCardHTML(p, active) {
+  return `<div class="sblock ${active ? "active" : ""}"><strong>${esc(p.name || "Product")}</strong>${(p.keywords && p.keywords.length) ? ` <span class="tiny muted">(${esc(p.keywords.join(", "))})</span>` : ""}<div style="margin-top:4px">${esc(p.info || "")}</div></div>`;
+}
+function showProductCard(p) {
+  const panel = $("pk_panel");
+  if (panel.querySelector("p")) panel.innerHTML = "";
+  const div = document.createElement("div");
+  div.innerHTML = productCardHTML(p, true);
+  panel.prepend(div.firstChild);
+  while (panel.children.length > 6) panel.removeChild(panel.lastChild);
+}
+// Scan a chunk of fresh transcript for product keywords and pop matches.
+const productLastShown = {};
+function scanProducts(textChunk) {
+  if (!textChunk) return;
+  const hay = textChunk.toLowerCase();
+  (db.products || []).forEach((p) => {
+    if (!(p.keywords || []).some((k) => k && hay.includes(k.toLowerCase()))) return;
+    const last = productLastShown[p.id] || 0;
+    if (Date.now() - last < 25000) return; // don't re-pop the same product within 25s
+    productLastShown[p.id] = Date.now();
+    showProductCard(p);
+  });
+}
+$("pk_search").addEventListener("input", (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  const panel = $("pk_panel");
+  if (!q) { panel.innerHTML = `<p class="small muted">Products pop up here when you say their keyword.</p>`; return; }
+  const hits = (db.products || []).filter((p) => (p.name || "").toLowerCase().includes(q) || (p.keywords || []).some((k) => k.includes(q)) || (p.info || "").toLowerCase().includes(q)).slice(0, 8);
+  panel.innerHTML = hits.length ? hits.map((p) => productCardHTML(p, false)).join("") : `<p class="small muted">No product matches "${esc(q)}".</p>`;
+});
+
+function renderProducts() {
+  const el = $("pr_list");
+  const list = db.products || [];
+  el.innerHTML = `<div class="section-title">Your products (${list.length})</div>` + (list.length ? list.map((p) => `
+    <div class="card" style="margin:0 0 8px;padding:11px 13px">
+      <div class="small" style="display:flex;justify-content:space-between;gap:8px;align-items:center"><strong>${esc(p.name || "Product")}</strong>
+        <span><button class="btn sm" data-predit="${p.id}">Edit</button> <button class="btn sm danger" data-prdel="${p.id}">Delete</button></span></div>
+      ${(p.keywords && p.keywords.length) ? `<div class="action small">${p.keywords.map((k) => `<span class="chip">${esc(k)}</span>`).join(" ")}</div>` : ""}
+      <div class="out small" style="margin-top:6px;max-height:120px;overflow:auto;white-space:pre-wrap">${esc(p.info || "")}</div>
+    </div>`).join("") : `<p class="small muted">No products yet. Add one above or paste a doc to auto-fill.</p>`);
+}
+$("pr_add").onclick = () => {
+  const name = $("pr_name").value.trim();
+  const keywords = $("pr_keywords").value.split(",").map((k) => k.trim().toLowerCase()).filter(Boolean);
+  const info = $("pr_info").value.trim();
+  if (!name && !info) { toast("Add a name or info"); return; }
+  db.products.push({ id: uid(), name, keywords, info }); save();
+  $("pr_name").value = ""; $("pr_keywords").value = ""; $("pr_info").value = "";
+  renderProducts(); toast("Product added");
+};
+$("pr_parse_go").onclick = async () => {
+  const text = $("pr_parse_text").value.trim();
+  if (text.length < 20) { toast("Paste the product info first"); return; }
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  $("pr_parse_go").disabled = true; $("pr_parse_go").textContent = "Parsing…"; $("pr_parse_status").textContent = "";
+  try {
+    const r = await fetch("/api/parse-products", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({ text }),
+    });
+    const j = await r.json();
+    if (!r.ok) { toast(j.error || "Failed"); }
+    else {
+      const added = (j.products || []).map((p) => ({ id: uid(), name: p.name || "", keywords: p.keywords || [], info: p.info || "" }));
+      db.products.push(...added); save(); renderProducts();
+      $("pr_parse_text").value = ""; $("pr_parse_status").textContent = `Added ${added.length} products - review below`;
+      toast(`Added ${added.length} products`);
+    }
+  } catch (e) { toast("Network error"); }
+  $("pr_parse_go").disabled = false; $("pr_parse_go").textContent = "Parse into products ▸";
+};
+function openProductEdit(id) {
+  const p = (db.products || []).find((x) => x.id === id); if (!p) return;
+  const bg = document.createElement("div"); bg.className = "modal-bg open";
+  bg.innerHTML = `<div class="modal"><button class="close-x">&times;</button><h3>Edit product</h3>
+    <div class="field"><label>Name</label><input id="pe_name" value="${esc(p.name)}" /></div>
+    <div class="field"><label>Trigger keywords (comma separated)</label><input id="pe_keywords" value="${esc((p.keywords || []).join(", "))}" /></div>
+    <div class="field"><label>Info</label><textarea id="pe_info" rows="5">${esc(p.info)}</textarea></div>
+    <div class="modal-actions"><button class="btn primary sm" id="pe_save">Save</button></div></div>`;
+  document.body.appendChild(bg);
+  const close = () => bg.remove();
+  bg.querySelector(".close-x").onclick = close; bg.onclick = (e) => { if (e.target === bg) close(); };
+  bg.querySelector("#pe_save").onclick = () => {
+    p.name = bg.querySelector("#pe_name").value.trim();
+    p.keywords = bg.querySelector("#pe_keywords").value.split(",").map((k) => k.trim().toLowerCase()).filter(Boolean);
+    p.info = bg.querySelector("#pe_info").value.trim();
+    save(); close(); renderProducts(); toast("Saved");
+  };
+}
 
 // Quick objection handler - drops method-true lines into the whispers panel.
 async function handleObjection(label) {

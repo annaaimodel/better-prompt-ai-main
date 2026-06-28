@@ -21,6 +21,7 @@
         <button data-view="add">Add lead</button>
         <button data-view="coach">Coach</button>
         <button data-view="content">Content</button>
+        <button data-view="products">Products</button>
         <button data-view="playbook">Playbook</button>
         <button data-view="assets">Assets</button>
         <button data-view="settings">Settings</button>
@@ -100,6 +101,11 @@
           <button class="btn sm" id="live_cuenow">Cue me now</button>
         </div>
         <div id="live_cues" class="live-cues"><div class="empty small">Cues appear here as the call unfolds.</div></div>
+      </div>
+      <div class="card">
+        <h2>Product knowledge</h2>
+        <div class="kbar"><input id="pk_search" placeholder="Search products to pull one up manually..." /></div>
+        <div id="pk_panel" class="script-live"><p class="small muted">Products pop up here when you say their keyword. Manage them in the Products tab.</p></div>
       </div>
       <div class="card">
         <h2>Live transcript</h2>
@@ -220,6 +226,29 @@
         <h2>Content library</h2>
         <div id="ct_lib"></div>
       </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="view-products" class="hidden">
+      <div class="card">
+        <h2>Product knowledge</h2>
+        <p class="small muted">Add the products/info you need on calls, each with trigger keywords. During a live call, the moment you (or the lead) say a keyword, the product card pops up in the Live tab for you to read - no typing, no searching.</p>
+      </div>
+      <div class="card">
+        <h2>⚡ Quick fill from paste</h2>
+        <p class="small muted">Paste your product doc and the AI splits it into product cards with keywords and info. Review and they're added below.</p>
+        <div class="field"><textarea id="pr_parse_text" rows="6" placeholder="Paste all your product information here..."></textarea></div>
+        <button class="btn primary" id="pr_parse_go">Parse into products ▸</button>
+        <span class="small muted" id="pr_parse_status" style="margin-left:10px"></span>
+      </div>
+      <div class="card">
+        <h2>Add a product</h2>
+        <div class="field"><label>Product / topic name</label><input id="pr_name" placeholder="e.g. Semaglutide" /></div>
+        <div class="field"><label>Trigger keywords (comma separated)</label><input id="pr_keywords" placeholder="e.g. weight loss, lose weight, ozempic, semaglutide" /></div>
+        <div class="field"><label>Info to read on the call</label><textarea id="pr_info" rows="4"></textarea></div>
+        <button class="btn primary" id="pr_add">Add product</button>
+      </div>
+      <div id="pr_list"></div>
     </section>
 
     <!-- PLAYBOOK -->

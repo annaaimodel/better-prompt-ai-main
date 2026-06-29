@@ -322,9 +322,11 @@ async function syncPush() {
   Sync.pushing = false;
 }
 
-// Pull the cloud copy; if it is newer than what is on this device, adopt it.
-// announce=true reports even when nothing changed (used by the manual button).
-async function syncPull(announce) {
+// Pull the cloud copy. Normally we only adopt it if it is newer than what is on
+// this device (last write wins). force=true adopts it regardless (the manual
+// "Pull cloud" button) - a backup is taken first so it is always recoverable.
+// announce=true reports even when nothing changed.
+async function syncPull(announce, force) {
   if (!syncOn() || Sync.pulling) return;
   Sync.pulling = true; updateSyncStatus("Checking cloud…");
   try {
@@ -332,19 +334,21 @@ async function syncPull(announce) {
     const j = await r.json().catch(() => ({}));
     if (!r.ok) { Sync.lastError = j.error || "Sync failed"; updateSyncStatus("Sync error: " + Sync.lastError); Sync.pulling = false; return; }
     const remote = j.data, remoteAt = j.updatedAt || 0;
-    if (remote && remoteAt > (db.updatedAt || 0)) {
+    if (remote && (force || remoteAt > (db.updatedAt || 0))) {
+      if (force) snapshotBackup("before force pull");
       db = ensureShape(remote);
-      if (!db.updatedAt) db.updatedAt = remoteAt;
+      db.updatedAt = remoteAt || Date.now();
+      db.syncedAt = remoteAt;
       persistLocal();
       rerender(); if (typeof loadSettingsForm === "function") loadSettingsForm();
-      updateSyncStatus("Pulled newer data from cloud.");
-      toast("Synced from another device");
+      updateSyncStatus(force ? "Replaced this device with the cloud copy." : "Pulled newer data from cloud.");
+      toast("Synced from cloud");
     } else if (!remote) {
       // Nothing in the cloud yet - seed it from this device.
       updateSyncStatus("First sync - uploading this device…");
       await syncPush();
     } else {
-      updateSyncStatus(announce ? "Already up to date." : "Synced.");
+      updateSyncStatus(announce ? "Already up to date (this device is newest)." : "Synced.");
     }
   } catch (e) { updateSyncStatus("Sync error: offline"); }
   Sync.pulling = false;
@@ -1097,11 +1101,22 @@ function loadSettingsForm() {
 }
 $("s_sync").addEventListener("change", () => {
   db.settings.sync = $("s_sync").checked;
-  save();
+  // Persist the toggle WITHOUT bumping the data clock or pushing - turning sync
+  // on must never overwrite the cloud before we have looked at it.
+  persistLocal();
   if (db.settings.sync) { toast("Sync on"); syncPull(true); } else { updateSyncStatus(); toast("Sync off"); }
 });
-$("s_syncNow").onclick = () => { if (!syncOn()) { toast("Turn sync on first"); return; } syncPush(); };
-$("s_syncPull").onclick = () => { if (!syncOn()) { toast("Turn sync on first"); return; } syncPull(true); };
+// Push: make the cloud match THIS device. Pull (force): make this device match the cloud.
+$("s_syncNow").onclick = () => {
+  if (!syncOn()) { toast("Turn sync on first"); return; }
+  if (!confirm("Upload THIS device's data to the cloud, replacing what's there?\n\nOther devices will pull this copy.")) return;
+  db.updatedAt = Date.now(); persistLocal(); syncPush();
+};
+$("s_syncPull").onclick = () => {
+  if (!syncOn()) { toast("Turn sync on first"); return; }
+  if (!confirm("Replace THIS device's data with the cloud copy?\n\nA backup is taken first (Settings -> Data -> Auto-backups).")) return;
+  syncPull(true, true);
+};
 const parseNames = (v) => v.split(",").map((x) => x.trim()).filter(Boolean);
 $("s_saveTeam").onclick = () => {
   db.team = {

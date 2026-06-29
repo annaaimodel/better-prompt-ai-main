@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Cadence - Follow-Up Engine</title>
-  <link rel="stylesheet" href="/styles.css?v=3" />
+  <link rel="stylesheet" href="/styles.css?v=4" />
 </head>
 <body>
   <div class="app">
@@ -355,9 +355,10 @@
         <p class="small muted">Keep your leads, playbook, products and everything else in step across your phone and laptop. Pulls the latest when this device opens and saves automatically as you work. Same access code on each device = same data.</p>
         <label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="s_sync" style="width:auto" /> <span>Sync this device</span></label>
         <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn sm" id="s_syncNow">Sync now</button>
-          <button class="btn sm" id="s_syncPull">Pull from cloud</button>
+          <button class="btn sm" id="s_syncNow">⬆ Push this device → cloud</button>
+          <button class="btn sm" id="s_syncPull">⬇ Pull cloud → this device</button>
         </div>
+        <p class="help" style="margin-top:6px">First time on a new device: tick the box, then if your data does not appear use <strong>Pull cloud → this device</strong>. To make the cloud match the device you trust, use <strong>Push this device → cloud</strong> there.</p>
         <p class="help" id="s_syncStatus" style="margin-top:8px">Off.</p>
       </div>
 
@@ -425,6 +426,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=3"></script>
+  <script src="/app.js?v=4"></script>
 </body>
 </html>

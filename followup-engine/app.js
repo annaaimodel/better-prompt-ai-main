@@ -335,7 +335,9 @@ async function syncPull(announce, force) {
     if (!r.ok) { Sync.lastError = j.error || "Sync failed"; updateSyncStatus("Sync error: " + Sync.lastError); Sync.pulling = false; return; }
     const remote = j.data, remoteAt = j.updatedAt || 0;
     if (remote && (force || remoteAt > (db.updatedAt || 0))) {
-      if (force) snapshotBackup("before force pull");
+      // Always snapshot the current device BEFORE adopting a cloud copy, even on
+      // a silent background pull, so nothing is ever overwritten unrecoverably.
+      if ((db.leads || []).length || (db.products || []).length) snapshotBackup(force ? "before force pull" : "before sync overwrite");
       db = ensureShape(remote);
       db.updatedAt = remoteAt || Date.now();
       db.syncedAt = remoteAt;
@@ -378,7 +380,7 @@ function snapshotBackup(reason) {
   try {
     let arr = readBackups();
     arr.unshift({ at: new Date().toISOString(), reason: reason || "manual", data: JSON.stringify(db) });
-    arr = arr.slice(0, 5);
+    arr = arr.slice(0, 12);
     // If we hit the storage quota, drop the oldest snapshot and retry.
     while (arr.length) {
       try { localStorage.setItem(BKEY, JSON.stringify(arr)); break; } catch (e) { arr = arr.slice(0, arr.length - 1); }

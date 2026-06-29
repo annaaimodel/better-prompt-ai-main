@@ -1722,7 +1722,7 @@ $("live_cuenow").onclick = () => maybeCue(true);
 // ---------------------------------------------------------------------------
 function productCardHTML(p, active) {
   const obj = p.kind === "objection";
-  const badge = obj ? ` <span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ Objection</span>` : "";
+  const badge = obj ? ` <span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ Objection / Q&A</span>` : "";
   return `<div class="sblock ${obj ? "obj " : ""}${active ? "active" : ""}"><strong>${esc(p.name || (obj ? "Objection" : "Product"))}</strong>${badge}${(p.keywords && p.keywords.length) ? ` <span class="tiny muted">(${esc(p.keywords.join(", "))})</span>` : ""}<div style="margin-top:4px">${esc(p.info || "")}</div></div>`;
 }
 // Show ALL products tagged with a spoken keyword, grouped under that keyword.
@@ -1731,7 +1731,7 @@ function showProductGroup(kw, products) {
   if (panel.querySelector("p")) panel.innerHTML = "";
   const wrap = document.createElement("div");
   const allObj = products.every((p) => p.kind === "objection");
-  const noun = allObj ? "objection" : "card";
+  const noun = allObj ? "Q&A" : "card";
   const icon = allObj ? "⚠" : "🔔";
   wrap.innerHTML = `<div class="section-title" style="margin:6px 0 4px">${icon} ${esc(kw)} - ${products.length} ${noun}${products.length > 1 ? "s" : ""}</div>` +
     products.map((p) => productCardHTML(p, true)).join("");
@@ -1768,7 +1768,7 @@ function renderProducts() {
   const objs = list.filter((p) => p.kind === "objection");
   const cardHTML = (p) => {
     const obj = p.kind === "objection";
-    const badge = obj ? ` <span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ Objection</span>` : "";
+    const badge = obj ? ` <span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ Objection / Q&A</span>` : "";
     return `
     <div class="card" style="margin:0 0 8px;padding:11px 13px">
       <div class="small" style="display:flex;justify-content:space-between;gap:8px;align-items:center"><strong>${esc(p.name || (obj ? "Objection" : "Product"))}</strong>${badge}
@@ -1779,7 +1779,7 @@ function renderProducts() {
   };
   let html = "";
   html += `<div class="section-title">Products (${prods.length})</div>` + (prods.length ? prods.map(cardHTML).join("") : `<p class="small muted">No products yet. Add one above or paste a doc to auto-fill.</p>`);
-  html += `<div class="section-title" style="margin-top:14px">Objections (${objs.length})</div>` + (objs.length ? objs.map(cardHTML).join("") : `<p class="small muted">No objection cards yet. Set the type to Objection when adding or parsing.</p>`);
+  html += `<div class="section-title" style="margin-top:14px">Objections / Q&A (${objs.length})</div>` + (objs.length ? objs.map(cardHTML).join("") : `<p class="small muted">No objection / Q&A cards yet. Set the type when adding or parsing.</p>`);
   el.innerHTML = html;
 }
 $("pr_add").onclick = () => {
@@ -1790,7 +1790,7 @@ $("pr_add").onclick = () => {
   if (!name && !info) { toast("Add a name or info"); return; }
   db.products.push({ id: uid(), name, keywords, info, kind }); save();
   $("pr_name").value = ""; $("pr_keywords").value = ""; $("pr_info").value = "";
-  renderProducts(); toast(kind === "objection" ? "Objection added" : "Product added");
+  renderProducts(); toast(kind === "objection" ? "Objection / Q&A added" : "Product added");
 };
 $("pr_parse_go").onclick = async () => {
   const text = $("pr_parse_text").value.trim();
@@ -1819,7 +1819,7 @@ function openProductEdit(id) {
   const p = (db.products || []).find((x) => x.id === id); if (!p) return;
   const bg = document.createElement("div"); bg.className = "modal-bg open";
   bg.innerHTML = `<div class="modal"><button class="close-x">&times;</button><h3>Edit card</h3>
-    <div class="field"><label>Type</label><select id="pe_kind"><option value="product"${p.kind !== "objection" ? " selected" : ""}>Product / topic</option><option value="objection"${p.kind === "objection" ? " selected" : ""}>Objection + response</option></select></div>
+    <div class="field"><label>Type</label><select id="pe_kind"><option value="product"${p.kind !== "objection" ? " selected" : ""}>Product / topic</option><option value="objection"${p.kind === "objection" ? " selected" : ""}>Objection / Q&A</option></select></div>
     <div class="field"><label>Name</label><input id="pe_name" value="${esc(p.name)}" /></div>
     <div class="field"><label>Trigger keywords (comma separated)</label><input id="pe_keywords" value="${esc((p.keywords || []).join(", "))}" /></div>
     <div class="field"><label>Info / response</label><textarea id="pe_info" rows="5">${esc(p.info)}</textarea></div>

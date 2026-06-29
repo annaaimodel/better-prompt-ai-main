@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Cadence - Follow-Up Engine</title>
-  <link rel="stylesheet" href="/styles.css?v=5" />
+  <link rel="stylesheet" href="/styles.css?v=6" />
 </head>
 <body>
   <div class="app">
@@ -242,13 +242,13 @@
         <div class="action" style="align-items:center;gap:8px">
           <button class="btn primary" id="pr_parse_go">Parse into cards ▸</button>
           <label class="small muted">Add all as</label>
-          <select id="pr_parse_kind" class="stage"><option value="product">Products</option><option value="objection">Objections</option></select>
+          <select id="pr_parse_kind" class="stage"><option value="product">Products</option><option value="objection">Objections / Q&amp;A</option></select>
           <span class="small muted" id="pr_parse_status"></span>
         </div>
       </div>
       <div class="card">
         <h2>Add a card</h2>
-        <div class="field"><label>Type</label><select id="pr_kind"><option value="product">Product / topic</option><option value="objection">Objection + response</option></select></div>
+        <div class="field"><label>Type</label><select id="pr_kind"><option value="product">Product / topic</option><option value="objection">Objection / Q&amp;A</option></select></div>
         <div class="field"><label>Name</label><input id="pr_name" placeholder="e.g. Semaglutide, or: Too expensive" /></div>
         <div class="field"><label>Trigger keywords (comma separated)</label><input id="pr_keywords" placeholder="e.g. weight loss, lose weight, ozempic, semaglutide" /></div>
         <div class="field"><label>Info / response to read on the call</label><textarea id="pr_info" rows="4"></textarea></div>
@@ -426,6 +426,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=5"></script>
+  <script src="/app.js?v=6"></script>
 </body>
 </html>

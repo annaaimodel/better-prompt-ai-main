@@ -212,20 +212,29 @@ function defaultPlaybook() {
   };
 }
 
-let db = load();
-if (!db.playbook) db.playbook = defaultPlaybook();
-if (!db.assets) db.assets = [];
-if (!db.team) db.team = { setters: [], closers: [], csms: [] };
-if (!db.savedPlans) db.savedPlans = [];
-if (!db.content) db.content = [];
-if (!db.creator) db.creator = { niche: "", audience: "", pillars: "", platforms: "", cadence: "", goal: "" };
-if (!db.contentPlan) db.contentPlan = [];
-if (!db.scripts) db.scripts = [];
-if (typeof db.liveScriptId !== "string") db.liveScriptId = "";
-if (!db.products) db.products = [];
-db.products.forEach((p) => { if (!p.kind) p.kind = "product"; });
-// Backfill the segment field on any leads created before segments existed.
-db.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
+// Fill in any missing collections/fields so old data (or a copy pulled from
+// another device) is always safe to render. Pure shape work, no side effects.
+function ensureShape(d) {
+  if (!d.settings) d.settings = { access: "", coachName: "", offer: "", idealClient: "", results: [], resources: [], tone: "" };
+  if (!d.playbook) d.playbook = defaultPlaybook();
+  if (!d.assets) d.assets = [];
+  if (!d.team) d.team = { setters: [], closers: [], csms: [] };
+  if (!d.savedPlans) d.savedPlans = [];
+  if (!d.content) d.content = [];
+  if (!d.creator) d.creator = { niche: "", audience: "", pillars: "", platforms: "", cadence: "", goal: "" };
+  if (!d.contentPlan) d.contentPlan = [];
+  if (!d.scripts) d.scripts = [];
+  if (typeof d.liveScriptId !== "string") d.liveScriptId = "";
+  if (!d.products) d.products = [];
+  if (!d.leads) d.leads = [];
+  d.products.forEach((p) => { if (!p.kind) p.kind = "product"; });
+  if (typeof d.updatedAt !== "number") d.updatedAt = 0;
+  if (typeof d.settings.sync !== "boolean") d.settings.sync = false;
+  // Backfill the segment field on any leads created before segments existed.
+  d.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
+  return d;
+}
+let db = ensureShape(load());
 maybeDailyBackup();
 
 function load() {
@@ -283,7 +292,79 @@ function markAssetUsed(lead, assetId) {
   a.timesUsed = (a.timesUsed || 0) + 1;
   a.lastUsedAt = new Date().toISOString();
 }
-function save() { localStorage.setItem(KEY, JSON.stringify(db)); }
+// Persist locally without touching the sync clock or pushing (used when adopting
+// a pulled copy from the cloud, so we keep the remote timestamp).
+function persistLocal() { localStorage.setItem(KEY, JSON.stringify(db)); }
+function save() { db.updatedAt = Date.now(); persistLocal(); schedulePush(); }
+
+// ----- Cross-device sync -------------------------------------------------
+// One private JSON document per access code, stored server-side. Pull on load
+// and on tab focus; debounced push on every save. Last write wins by updatedAt.
+const Sync = { pushTimer: null, pulling: false, pushing: false, lastError: "" };
+function syncOn() { return !!(db.settings.sync && db.settings.access); }
+function syncHeaders() { return { "Content-Type": "application/json", "x-access-code": db.settings.access }; }
+
+function schedulePush() {
+  if (!syncOn()) return;
+  if (Sync.pushTimer) clearTimeout(Sync.pushTimer);
+  Sync.pushTimer = setTimeout(syncPush, 1500);
+}
+
+async function syncPush() {
+  if (!syncOn() || Sync.pushing) return;
+  Sync.pushing = true; updateSyncStatus("Saving to cloud…");
+  try {
+    const r = await fetch("/api/sync", { method: "POST", headers: syncHeaders(), body: JSON.stringify({ data: db, updatedAt: db.updatedAt }) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) { Sync.lastError = j.error || "Sync failed"; updateSyncStatus("Sync error: " + Sync.lastError); }
+    else { Sync.lastError = ""; db.syncedAt = j.updatedAt || db.updatedAt; updateSyncStatus("Synced just now."); }
+  } catch (e) { Sync.lastError = "Network error"; updateSyncStatus("Sync error: offline"); }
+  Sync.pushing = false;
+}
+
+// Pull the cloud copy; if it is newer than what is on this device, adopt it.
+// announce=true reports even when nothing changed (used by the manual button).
+async function syncPull(announce) {
+  if (!syncOn() || Sync.pulling) return;
+  Sync.pulling = true; updateSyncStatus("Checking cloud…");
+  try {
+    const r = await fetch("/api/sync", { method: "GET", headers: syncHeaders() });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) { Sync.lastError = j.error || "Sync failed"; updateSyncStatus("Sync error: " + Sync.lastError); Sync.pulling = false; return; }
+    const remote = j.data, remoteAt = j.updatedAt || 0;
+    if (remote && remoteAt > (db.updatedAt || 0)) {
+      db = ensureShape(remote);
+      if (!db.updatedAt) db.updatedAt = remoteAt;
+      persistLocal();
+      rerender(); if (typeof loadSettingsForm === "function") loadSettingsForm();
+      updateSyncStatus("Pulled newer data from cloud.");
+      toast("Synced from another device");
+    } else if (!remote) {
+      // Nothing in the cloud yet - seed it from this device.
+      updateSyncStatus("First sync - uploading this device…");
+      await syncPush();
+    } else {
+      updateSyncStatus(announce ? "Already up to date." : "Synced.");
+    }
+  } catch (e) { updateSyncStatus("Sync error: offline"); }
+  Sync.pulling = false;
+}
+
+function agoLabel(ms) {
+  if (!ms) return "never";
+  const s = Math.max(0, Math.round((Date.now() - ms) / 1000));
+  if (s < 60) return "just now";
+  const m = Math.round(s / 60); if (m < 60) return m + "m ago";
+  const h = Math.round(m / 60); if (h < 24) return h + "h ago";
+  return Math.round(h / 24) + "d ago";
+}
+function updateSyncStatus(msg) {
+  const el = document.getElementById("s_syncStatus");
+  if (!el) return;
+  if (!db.settings.access) { el.textContent = "Set your access code above first."; return; }
+  if (!db.settings.sync) { el.textContent = "Off. Turn on to share this data across devices."; return; }
+  el.textContent = msg || "On.";
+}
 
 // Auto-backups: rolling snapshots so nothing is ever lost. Taken before risky
 // actions (import/erase) and once a day. Kept in a separate key; quota-safe.
@@ -910,7 +991,7 @@ document.body.addEventListener("click", (e) => {
   else if (t.dataset.restore) {
     const b = readBackups()[parseInt(t.dataset.restore, 10)];
     if (b && confirm(`Restore the backup from ${fmtDate(b.at)}? Your current data will be snapshotted first, then replaced.`)) {
-      try { snapshotBackup("before restore"); db = JSON.parse(b.data); save(); rerender(); loadSettingsForm(); toast("Restored"); } catch (e) { toast("Restore failed"); }
+      try { snapshotBackup("before restore"); db = ensureShape(JSON.parse(b.data)); save(); rerender(); loadSettingsForm(); toast("Restored"); } catch (e) { toast("Restore failed"); }
     }
   }
 });
@@ -1009,9 +1090,18 @@ function loadSettingsForm() {
   $("s_setters").value = (db.team.setters || []).join(", ");
   $("s_closers").value = (db.team.closers || []).join(", ");
   $("s_csms").value = (db.team.csms || []).join(", ");
+  $("s_sync").checked = !!db.settings.sync;
+  updateSyncStatus(db.syncedAt ? "On. Last synced " + agoLabel(db.syncedAt) + "." : "On.");
   renderCadenceView();
   renderBackups();
 }
+$("s_sync").addEventListener("change", () => {
+  db.settings.sync = $("s_sync").checked;
+  save();
+  if (db.settings.sync) { toast("Sync on"); syncPull(true); } else { updateSyncStatus(); toast("Sync off"); }
+});
+$("s_syncNow").onclick = () => { if (!syncOn()) { toast("Turn sync on first"); return; } syncPush(); };
+$("s_syncPull").onclick = () => { if (!syncOn()) { toast("Turn sync on first"); return; } syncPull(true); };
 const parseNames = (v) => v.split(",").map((x) => x.trim()).filter(Boolean);
 $("s_saveTeam").onclick = () => {
   db.team = {
@@ -1314,7 +1404,7 @@ function doImport(file) {
       const data = JSON.parse(reader.result);
       if (!data || !Array.isArray(data.leads)) throw 0;
       snapshotBackup("before full import");
-      db = data; save(); rerender(); loadSettingsForm(); toast("Imported");
+      db = ensureShape(data); save(); rerender(); loadSettingsForm(); toast("Imported");
     } catch (e) { toast("Invalid backup file"); }
   };
   reader.readAsText(file);
@@ -1335,7 +1425,7 @@ $("importBtn").onclick = () => $("importFile").click();
 $("importBtn2").onclick = () => $("importFile").click();
 $("importFile").onchange = (e) => { if (e.target.files[0]) doImport(e.target.files[0]); };
 $("backupNow") && ($("backupNow").onclick = () => { snapshotBackup("manual"); renderBackups(); toast("Backup taken"); });
-$("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this device? A backup is taken first, and Export is recommended.")) { snapshotBackup("before erase"); localStorage.removeItem(KEY); db = load(); rerender(); loadSettingsForm(); toast("Wiped (recoverable from Auto-backups)"); } };
+$("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this device? A backup is taken first, and Export is recommended.")) { snapshotBackup("before erase"); localStorage.removeItem(KEY); db = ensureShape(load()); rerender(); loadSettingsForm(); toast("Wiped (recoverable from Auto-backups)"); } };
 $("search").addEventListener("input", (e) => renderPipeline(e.target.value));
 $("segNav").addEventListener("click", (e) => { const b = e.target.closest("button[data-seg]"); if (b) { pipelineSegment = b.dataset.seg; renderPipeline($("search").value); } });
 $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.target.value; renderPipeline($("search").value); });
@@ -1925,3 +2015,14 @@ $("ct_save").onclick = () => {
 
 // Go
 renderToday();
+
+// Cross-device sync: pull the latest on load, and again whenever the tab regains
+// focus (so switching back from your other device shows its changes).
+if (syncOn()) syncPull();
+let lastFocusPull = 0;
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState !== "visible" || !syncOn()) return;
+  if (Date.now() - lastFocusPull < 8000) return; // avoid hammering on quick flips
+  lastFocusPull = Date.now();
+  syncPull();
+});

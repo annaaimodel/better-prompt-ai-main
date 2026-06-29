@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Cadence - Follow-Up Engine</title>
-  <link rel="stylesheet" href="/styles.css?v=2" />
+  <link rel="stylesheet" href="/styles.css?v=3" />
 </head>
 <body>
   <div class="app">
@@ -351,6 +351,17 @@
       </div>
 
       <div class="card">
+        <h2>Cross-device sync</h2>
+        <p class="small muted">Keep your leads, playbook, products and everything else in step across your phone and laptop. Pulls the latest when this device opens and saves automatically as you work. Same access code on each device = same data.</p>
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="s_sync" style="width:auto" /> <span>Sync this device</span></label>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn sm" id="s_syncNow">Sync now</button>
+          <button class="btn sm" id="s_syncPull">Pull from cloud</button>
+        </div>
+        <p class="help" id="s_syncStatus" style="margin-top:8px">Off.</p>
+      </div>
+
+      <div class="card">
         <h2>Team / roster</h2>
         <p class="small muted">Names you can assign leads to. As a call gets set it links to a setter + closer; on close it hands to a CSM. (Comma-separated.)</p>
         <div class="field"><label>Setters</label><input id="s_setters" placeholder="e.g. Anna, Jordan" /></div>
@@ -414,6 +425,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=2"></script>
+  <script src="/app.js?v=3"></script>
 </body>
 </html>

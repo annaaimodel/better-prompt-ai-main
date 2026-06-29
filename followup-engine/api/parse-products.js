@@ -14,7 +14,7 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
 
-const SYSTEM =
+const PRODUCT_SYSTEM =
 `Extract distinct PRODUCTS (or items/topics) from the user's pasted material so a sales rep can pull each up by keyword during a live call. Return ONLY JSON, no markdown:
 {"products":[{"name":"<product name>","keywords":["<word/phrase a rep or prospect might say to trigger this>", ...],"info":"<the concise, factual information to read to the lead about this product>"}]}
 
@@ -23,6 +23,18 @@ Rules:
 - "keywords": the trigger words/phrases - include the condition or need it addresses (e.g. "weight loss", "lose weight"), common names, and obvious synonyms. 3-8 short keywords each. Lowercase.
 - "info": the key facts to say to a lead - what it is, what it does, who it's for, dosing/usage, price if stated. Keep it tight and readable aloud. Use ONLY facts in the text; never invent.
 - Do not invent products or details that are not in the material.
+Output JSON only.`;
+
+const OBJECTION_SYSTEM =
+`Extract OBJECTION / Q&A pairs from the user's pasted material so a sales rep can pull up the right response the instant a prospect says something on a live call. The material is a list of objections or questions, each followed by the response the rep should give. Return ONLY JSON, no markdown:
+{"products":[{"name":"<the objection or question, short>","keywords":["<a phrase the prospect might actually SAY that signals this>", ...],"info":"<the exact response the rep should read>"}]}
+
+Rules:
+- One object per distinct objection/question. A single entry may list several phrasings (often separated by "/" or "or") - keep them as ONE object and use each phrasing as a keyword.
+- "name": a short label for the objection/question (e.g. "Send me an email / more info", "Too expensive", "Talk to my partner").
+- "keywords": the words/phrases a real prospect would SAY that should trigger this response - pull them from the question itself plus obvious variations (e.g. "send me an email", "more information", "send info", "email me"). 3-8 short natural spoken phrases, lowercase. This is how the rep finds the answer mid-call.
+- "info": the response text to read back, taken from the material. Keep the wording; do not invent or add claims.
+- Treat blank lines, quotes, dashes or numbering as separators between the question and its answer. Never merge two separate objections into one.
 Output JSON only.`;
 
 function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
@@ -36,14 +48,17 @@ export default async function handler(req, res) {
   if (!process.env.ANTHROPIC_API_KEY) { res.status(503).json({ error: "Not configured: ANTHROPIC_API_KEY is not set in Vercel." }); return; }
 
   const text = clip(body.text, 24000);
-  if (text.trim().length < 20) { res.status(400).json({ error: "Paste the product info first." }); return; }
+  if (text.trim().length < 20) { res.status(400).json({ error: "Paste the info first." }); return; }
+  const isObjection = body.kind === "objection";
+  const system = isObjection ? OBJECTION_SYSTEM : PRODUCT_SYSTEM;
+  const label = isObjection ? "OBJECTIONS / Q&A MATERIAL" : "PRODUCT MATERIAL";
 
   try {
     const msg = await client.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 3000,
-      system: SYSTEM,
-      messages: [{ role: "user", content: `PRODUCT MATERIAL:\n${text}` }],
+      system,
+      messages: [{ role: "user", content: `${label}:\n${text}` }],
     });
     const raw = (msg.content.find((b) => b.type === "text") || {}).text || "{}";
     const mt = raw.match(/\{[\s\S]*\}/);

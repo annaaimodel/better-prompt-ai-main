@@ -1794,26 +1794,26 @@ $("pr_add").onclick = () => {
 };
 $("pr_parse_go").onclick = async () => {
   const text = $("pr_parse_text").value.trim();
-  if (text.length < 20) { toast("Paste the product info first"); return; }
+  if (text.length < 20) { toast("Paste the info first"); return; }
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  const kind = $("pr_parse_kind").value === "objection" ? "objection" : "product";
   $("pr_parse_go").disabled = true; $("pr_parse_go").textContent = "Parsing…"; $("pr_parse_status").textContent = "";
   try {
     const r = await fetch("/api/parse-products", {
       method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
-      body: JSON.stringify({ text }),
+      body: JSON.stringify({ text, kind }),
     });
     const j = await r.json();
-    if (!r.ok) { toast(j.error || "Failed"); }
+    if (!r.ok) { toast(j.error || "Failed"); $("pr_parse_status").textContent = j.error || "Failed - try again"; }
     else {
-      const kind = $("pr_parse_kind").value === "objection" ? "objection" : "product";
       const added = (j.products || []).map((p) => ({ id: uid(), name: p.name || "", keywords: p.keywords || [], info: p.info || "", kind }));
       db.products.push(...added); save(); renderProducts();
-      const noun = kind === "objection" ? "objections" : "products";
+      const noun = kind === "objection" ? "Q&A cards" : "products";
       $("pr_parse_text").value = ""; $("pr_parse_status").textContent = `Added ${added.length} ${noun} - review below`;
       toast(`Added ${added.length} ${noun}`);
     }
   } catch (e) { toast("Network error"); }
-  $("pr_parse_go").disabled = false; $("pr_parse_go").textContent = "Parse into products ▸";
+  $("pr_parse_go").disabled = false; $("pr_parse_go").textContent = "Parse into cards ▸";
 };
 function openProductEdit(id) {
   const p = (db.products || []).find((x) => x.id === id); if (!p) return;

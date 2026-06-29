@@ -148,5 +148,7 @@ nav.segnav button.seg .count { opacity: .7; font-weight: 700; }
 .sblock { padding: 9px 12px; margin: 4px 0; border-left: 3px solid transparent; border-radius: 6px; white-space: pre-wrap; font-size: 15px; line-height: 1.4; color: var(--muted); transition: .15s; }
 .sblock.active { color: var(--text); background: var(--panel-2); border-left-color: var(--gold); font-weight: 500; }
 .sblock.past { opacity: .55; }
+.sblock.obj { border-left-color: var(--red); }
+.sblock.obj.active { border-left-color: var(--red); background: rgba(180,60,50,.10); }
 .live-dot { color: var(--red); }
 nav.tabs button[data-view="live"].active { color: var(--red); }

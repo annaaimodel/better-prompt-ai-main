@@ -223,6 +223,7 @@ if (!db.contentPlan) db.contentPlan = [];
 if (!db.scripts) db.scripts = [];
 if (typeof db.liveScriptId !== "string") db.liveScriptId = "";
 if (!db.products) db.products = [];
+db.products.forEach((p) => { if (!p.kind) p.kind = "product"; });
 // Backfill the segment field on any leads created before segments existed.
 db.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
 maybeDailyBackup();
@@ -1613,14 +1614,19 @@ $("live_cuenow").onclick = () => maybeCue(true);
 // Product knowledge - keyword-triggered cards during the call + management.
 // ---------------------------------------------------------------------------
 function productCardHTML(p, active) {
-  return `<div class="sblock ${active ? "active" : ""}"><strong>${esc(p.name || "Product")}</strong>${(p.keywords && p.keywords.length) ? ` <span class="tiny muted">(${esc(p.keywords.join(", "))})</span>` : ""}<div style="margin-top:4px">${esc(p.info || "")}</div></div>`;
+  const obj = p.kind === "objection";
+  const badge = obj ? ` <span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ Objection</span>` : "";
+  return `<div class="sblock ${obj ? "obj " : ""}${active ? "active" : ""}"><strong>${esc(p.name || (obj ? "Objection" : "Product"))}</strong>${badge}${(p.keywords && p.keywords.length) ? ` <span class="tiny muted">(${esc(p.keywords.join(", "))})</span>` : ""}<div style="margin-top:4px">${esc(p.info || "")}</div></div>`;
 }
 // Show ALL products tagged with a spoken keyword, grouped under that keyword.
 function showProductGroup(kw, products) {
   const panel = $("pk_panel");
   if (panel.querySelector("p")) panel.innerHTML = "";
   const wrap = document.createElement("div");
-  wrap.innerHTML = `<div class="section-title" style="margin:6px 0 4px">🔔 ${esc(kw)} - ${products.length} product${products.length > 1 ? "s" : ""}</div>` +
+  const allObj = products.every((p) => p.kind === "objection");
+  const noun = allObj ? "objection" : "card";
+  const icon = allObj ? "⚠" : "🔔";
+  wrap.innerHTML = `<div class="section-title" style="margin:6px 0 4px">${icon} ${esc(kw)} - ${products.length} ${noun}${products.length > 1 ? "s" : ""}</div>` +
     products.map((p) => productCardHTML(p, true)).join("");
   panel.prepend(wrap);
   while (panel.children.length > 8) panel.removeChild(panel.lastChild);
@@ -1651,22 +1657,33 @@ $("pk_search").addEventListener("input", (e) => {
 function renderProducts() {
   const el = $("pr_list");
   const list = db.products || [];
-  el.innerHTML = `<div class="section-title">Your products (${list.length})</div>` + (list.length ? list.map((p) => `
+  const prods = list.filter((p) => p.kind !== "objection");
+  const objs = list.filter((p) => p.kind === "objection");
+  const cardHTML = (p) => {
+    const obj = p.kind === "objection";
+    const badge = obj ? ` <span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ Objection</span>` : "";
+    return `
     <div class="card" style="margin:0 0 8px;padding:11px 13px">
-      <div class="small" style="display:flex;justify-content:space-between;gap:8px;align-items:center"><strong>${esc(p.name || "Product")}</strong>
-        <span><button class="btn sm" data-predit="${p.id}">Edit</button> <button class="btn sm danger" data-prdel="${p.id}">Delete</button></span></div>
+      <div class="small" style="display:flex;justify-content:space-between;gap:8px;align-items:center"><strong>${esc(p.name || (obj ? "Objection" : "Product"))}</strong>${badge}
+        <span style="margin-left:auto"><button class="btn sm" data-predit="${p.id}">Edit</button> <button class="btn sm danger" data-prdel="${p.id}">Delete</button></span></div>
       ${(p.keywords && p.keywords.length) ? `<div class="action small">${p.keywords.map((k) => `<span class="chip">${esc(k)}</span>`).join(" ")}</div>` : ""}
       <div class="out small" style="margin-top:6px;max-height:120px;overflow:auto;white-space:pre-wrap">${esc(p.info || "")}</div>
-    </div>`).join("") : `<p class="small muted">No products yet. Add one above or paste a doc to auto-fill.</p>`);
+    </div>`;
+  };
+  let html = "";
+  html += `<div class="section-title">Products (${prods.length})</div>` + (prods.length ? prods.map(cardHTML).join("") : `<p class="small muted">No products yet. Add one above or paste a doc to auto-fill.</p>`);
+  html += `<div class="section-title" style="margin-top:14px">Objections (${objs.length})</div>` + (objs.length ? objs.map(cardHTML).join("") : `<p class="small muted">No objection cards yet. Set the type to Objection when adding or parsing.</p>`);
+  el.innerHTML = html;
 }
 $("pr_add").onclick = () => {
   const name = $("pr_name").value.trim();
   const keywords = $("pr_keywords").value.split(",").map((k) => k.trim().toLowerCase()).filter(Boolean);
   const info = $("pr_info").value.trim();
+  const kind = $("pr_kind").value === "objection" ? "objection" : "product";
   if (!name && !info) { toast("Add a name or info"); return; }
-  db.products.push({ id: uid(), name, keywords, info }); save();
+  db.products.push({ id: uid(), name, keywords, info, kind }); save();
   $("pr_name").value = ""; $("pr_keywords").value = ""; $("pr_info").value = "";
-  renderProducts(); toast("Product added");
+  renderProducts(); toast(kind === "objection" ? "Objection added" : "Product added");
 };
 $("pr_parse_go").onclick = async () => {
   const text = $("pr_parse_text").value.trim();
@@ -1681,10 +1698,12 @@ $("pr_parse_go").onclick = async () => {
     const j = await r.json();
     if (!r.ok) { toast(j.error || "Failed"); }
     else {
-      const added = (j.products || []).map((p) => ({ id: uid(), name: p.name || "", keywords: p.keywords || [], info: p.info || "" }));
+      const kind = $("pr_parse_kind").value === "objection" ? "objection" : "product";
+      const added = (j.products || []).map((p) => ({ id: uid(), name: p.name || "", keywords: p.keywords || [], info: p.info || "", kind }));
       db.products.push(...added); save(); renderProducts();
-      $("pr_parse_text").value = ""; $("pr_parse_status").textContent = `Added ${added.length} products - review below`;
-      toast(`Added ${added.length} products`);
+      const noun = kind === "objection" ? "objections" : "products";
+      $("pr_parse_text").value = ""; $("pr_parse_status").textContent = `Added ${added.length} ${noun} - review below`;
+      toast(`Added ${added.length} ${noun}`);
     }
   } catch (e) { toast("Network error"); }
   $("pr_parse_go").disabled = false; $("pr_parse_go").textContent = "Parse into products ▸";
@@ -1692,10 +1711,11 @@ $("pr_parse_go").onclick = async () => {
 function openProductEdit(id) {
   const p = (db.products || []).find((x) => x.id === id); if (!p) return;
   const bg = document.createElement("div"); bg.className = "modal-bg open";
-  bg.innerHTML = `<div class="modal"><button class="close-x">&times;</button><h3>Edit product</h3>
+  bg.innerHTML = `<div class="modal"><button class="close-x">&times;</button><h3>Edit card</h3>
+    <div class="field"><label>Type</label><select id="pe_kind"><option value="product"${p.kind !== "objection" ? " selected" : ""}>Product / topic</option><option value="objection"${p.kind === "objection" ? " selected" : ""}>Objection + response</option></select></div>
     <div class="field"><label>Name</label><input id="pe_name" value="${esc(p.name)}" /></div>
     <div class="field"><label>Trigger keywords (comma separated)</label><input id="pe_keywords" value="${esc((p.keywords || []).join(", "))}" /></div>
-    <div class="field"><label>Info</label><textarea id="pe_info" rows="5">${esc(p.info)}</textarea></div>
+    <div class="field"><label>Info / response</label><textarea id="pe_info" rows="5">${esc(p.info)}</textarea></div>
     <div class="modal-actions"><button class="btn primary sm" id="pe_save">Save</button></div></div>`;
   document.body.appendChild(bg);
   const close = () => bg.remove();
@@ -1704,6 +1724,7 @@ function openProductEdit(id) {
     p.name = bg.querySelector("#pe_name").value.trim();
     p.keywords = bg.querySelector("#pe_keywords").value.split(",").map((k) => k.trim().toLowerCase()).filter(Boolean);
     p.info = bg.querySelector("#pe_info").value.trim();
+    p.kind = bg.querySelector("#pe_kind").value === "objection" ? "objection" : "product";
     save(); close(); renderProducts(); toast("Saved");
   };
 }

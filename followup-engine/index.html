@@ -239,15 +239,20 @@
         <h2>⚡ Quick fill from paste</h2>
         <p class="small muted">Paste your product doc and the AI splits it into product cards with keywords and info. Review and they're added below.</p>
         <div class="field"><textarea id="pr_parse_text" rows="6" placeholder="Paste all your product information here..."></textarea></div>
-        <button class="btn primary" id="pr_parse_go">Parse into products ▸</button>
-        <span class="small muted" id="pr_parse_status" style="margin-left:10px"></span>
+        <div class="action" style="align-items:center;gap:8px">
+          <button class="btn primary" id="pr_parse_go">Parse into cards ▸</button>
+          <label class="small muted">Add all as</label>
+          <select id="pr_parse_kind" class="stage"><option value="product">Products</option><option value="objection">Objections</option></select>
+          <span class="small muted" id="pr_parse_status"></span>
+        </div>
       </div>
       <div class="card">
-        <h2>Add a product</h2>
-        <div class="field"><label>Product / topic name</label><input id="pr_name" placeholder="e.g. Semaglutide" /></div>
+        <h2>Add a card</h2>
+        <div class="field"><label>Type</label><select id="pr_kind"><option value="product">Product / topic</option><option value="objection">Objection + response</option></select></div>
+        <div class="field"><label>Name</label><input id="pr_name" placeholder="e.g. Semaglutide, or: Too expensive" /></div>
         <div class="field"><label>Trigger keywords (comma separated)</label><input id="pr_keywords" placeholder="e.g. weight loss, lose weight, ozempic, semaglutide" /></div>
-        <div class="field"><label>Info to read on the call</label><textarea id="pr_info" rows="4"></textarea></div>
-        <button class="btn primary" id="pr_add">Add product</button>
+        <div class="field"><label>Info / response to read on the call</label><textarea id="pr_info" rows="4"></textarea></div>
+        <button class="btn primary" id="pr_add">Add card</button>
       </div>
       <div id="pr_list"></div>
     </section>

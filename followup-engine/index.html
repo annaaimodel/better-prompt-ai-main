@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Cadence - Follow-Up Engine</title>
-  <link rel="stylesheet" href="/styles.css?v=8" />
+  <link rel="stylesheet" href="/styles.css?v=9" />
 </head>
 <body>
   <div class="app">
@@ -54,22 +54,25 @@
           <h2>Call script <span class="small muted" id="sc_note"></span></h2>
           <p class="small muted">Optional. Load a script and the whisper follows along live, highlighting the section you're on and adding method direction as needed. Leave a blank line between sections.</p>
           <div id="sc_editor">
-            <div class="row" style="align-items:flex-end">
-              <div class="field"><label>AI build a script</label><select id="sc_kind"><option value="discovery">Discovery call</option><option value="closing">Closing call</option><option value="setter">Setter call (book the closer)</option><option value="followup">Follow-up call</option><option value="custom">Custom (use notes)</option></select></div>
-              <div class="field"><label>Focus / notes (optional)</label><input id="sc_focus" placeholder="e.g. warm webinar leads, 20 min" /></div>
-              <div class="field" style="display:flex;align-items:flex-end"><button class="btn primary" id="sc_gen" style="width:100%">Build from Playbook ▸</button></div>
-            </div>
-            <div class="row">
-              <div class="field"><label>Saved scripts</label><select id="sc_select"></select></div>
-              <div class="field"><label>Name</label><input id="sc_name" placeholder="e.g. Discovery call v1" /></div>
-            </div>
-            <div class="field"><textarea id="sc_text" rows="6" placeholder="Build a script above, or paste your own. Leave a blank line between sections."></textarea></div>
+            <div class="field"><textarea id="sc_text" rows="8" placeholder="Load or build a script below, or paste your own here. Leave a blank line between sections."></textarea></div>
             <div class="kbar">
               <button class="btn sm primary" id="sc_save">Save script</button>
               <button class="btn sm" id="sc_upload">Upload .txt</button>
               <input id="sc_file" type="file" accept=".txt,text/plain" class="hidden" />
               <button class="btn sm danger" id="sc_del">Delete</button>
             </div>
+            <details class="sc-tools">
+              <summary class="small muted">Build or load a script</summary>
+              <div class="row" style="align-items:flex-end;margin-top:8px">
+                <div class="field"><label>AI build a script</label><select id="sc_kind"><option value="discovery">Discovery call</option><option value="closing">Closing call</option><option value="setter">Setter call (book the closer)</option><option value="followup">Follow-up call</option><option value="custom">Custom (use notes)</option></select></div>
+                <div class="field"><label>Focus / notes (optional)</label><input id="sc_focus" placeholder="e.g. warm webinar leads, 20 min" /></div>
+                <div class="field" style="display:flex;align-items:flex-end"><button class="btn primary" id="sc_gen" style="width:100%">Build from Playbook ▸</button></div>
+              </div>
+              <div class="row">
+                <div class="field"><label>Saved scripts</label><select id="sc_select"></select></div>
+                <div class="field"><label>Name</label><input id="sc_name" placeholder="e.g. Discovery call v1" /></div>
+              </div>
+            </details>
           </div>
           <div id="sc_controls" class="kbar" style="display:none;margin-bottom:6px">
             <button class="btn sm" id="sc_back">◀ Back</button>
@@ -428,6 +431,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=8"></script>
+  <script src="/app.js?v=9"></script>
 </body>
 </html>

@@ -137,6 +137,11 @@ nav.segnav button.seg .count { opacity: .7; font-weight: 700; }
 .live-cols { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
 .live-cols > .card { flex: 1 1 360px; min-width: 0; }
 @media (min-width: 900px) { .live-cols > .card:last-child { position: sticky; top: 12px; } }
+.sc-tools { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 8px; }
+.sc-tools summary { cursor: pointer; list-style: none; user-select: none; padding: 2px 0; }
+.sc-tools summary::-webkit-details-marker { display: none; }
+.sc-tools summary::before { content: "▸ "; color: var(--muted); }
+.sc-tools[open] summary::before { content: "▾ "; }
 .live-cues { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; min-height: 80px; }
 .cue { border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 8px; padding: 11px 13px; background: var(--panel-2); font-size: 16px; line-height: 1.35; animation: cuein .2s ease; }
 .cue .cue-type { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-right: 8px; }

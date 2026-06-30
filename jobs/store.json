@@ -67,17 +67,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Oklahoma City, OK",
-  "comp": "$10k",
-  "link": "https://jooble.org/jdp/7825887456430241741",
-  "source": "Jooble",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
+  "source": "Ashby",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-30",
   "active": true,
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
-  "inbox": false,
+  "inbox": true,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -205,7 +205,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-30",
-  "active": false,
+  "active": true,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -288,7 +288,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-06-30",
-  "active": false,
+  "active": true,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -18413,7 +18413,7 @@
   "tier": "",
   "first_seen": "2026-06-29",
   "last_seen": "2026-06-30",
-  "active": true
+  "active": false
  },
  "c89aff73dcbec8d4": {
   "title": "Remote Sales Opportunity High-Ticket Closers & Appointment Setters",

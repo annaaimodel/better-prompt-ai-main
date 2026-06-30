@@ -1468,7 +1468,13 @@ function nudgeScript(d) {
 }
 $("sc_back").onclick = () => nudgeScript(-1);
 $("sc_next").onclick = () => nudgeScript(1);
-$("sc_auto").onclick = () => { Live.scriptManual = !Live.scriptManual; updateScriptControls(); toast(Live.scriptManual ? "Manual mode" : "Auto tracking on"); };
+$("sc_auto").onclick = () => {
+  Live.scriptManual = !Live.scriptManual; updateScriptControls();
+  toast(Live.scriptManual ? "Manual mode" : "Auto tracking on");
+  // Resuming auto: re-sync the highlight to the live conversation right now,
+  // instead of waiting for the transcript to grow enough to trigger a cue.
+  if (!Live.scriptManual && Live.running) maybeCue(true);
+};
 function populateScripts() {
   const sel = $("sc_select");
   sel.innerHTML = `<option value="">(none)</option>` +

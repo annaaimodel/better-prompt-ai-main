@@ -1605,8 +1605,9 @@ $("rv_copy").onclick = async () => {
   try { await navigator.clipboard.writeText(txt); toast("Review copied"); } catch (e) { toast("Copy failed"); }
 };
 async function runReview() {
-  const transcript = currentTranscript();
-  if (transcript.length < 40) { toast("Need a call transcript to review"); return; }
+  const pasted = ($("rv_paste").value || "").trim();
+  const transcript = pasted || currentTranscript();
+  if (transcript.length < 40) { toast("Paste a transcript, or run a call first"); return; }
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
   const id = $("live_lead").value;
   const l = id ? db.leads.find((x) => x.id === id) : null;

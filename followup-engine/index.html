@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Cadence - Follow-Up Engine</title>
-  <link rel="stylesheet" href="/styles.css?v=12" />
+  <link rel="stylesheet" href="/styles.css?v=13" />
 </head>
 <body>
   <div class="app">
@@ -125,7 +125,8 @@
           <span><button class="btn sm primary" id="rv_go">Review this call ▸</button> <button class="btn sm" id="rv_copy">Copy</button></span>
         </div>
         <p class="small muted">A method-true diagnosis of the call - what worked, where it was lost, how each objection was handled, and exactly what to do better. Uses your script, methodology, cards and the cues that fired. Saved to the lead.</p>
-        <div id="rv_out" class="rv-out"><p class="small muted">Finish (or stop) a call, then review it here. Works on the last call's transcript, or whatever's in the transcript box.</p></div>
+        <div class="field"><textarea id="rv_paste" rows="4" placeholder="Optional: paste a transcript here to review it (e.g. from Fathom, Zoom, Otter). Leave blank to use the live / last call's transcript."></textarea></div>
+        <div id="rv_out" class="rv-out"><p class="small muted">Finish (or stop) a call, then review it here. Works on a pasted transcript above, or the live / last call's transcript.</p></div>
       </div>
     </section>
 
@@ -441,6 +442,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=12"></script>
+  <script src="/app.js?v=13"></script>
 </body>
 </html>

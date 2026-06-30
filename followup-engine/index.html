@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Cadence - Follow-Up Engine</title>
-  <link rel="stylesheet" href="/styles.css?v=11" />
+  <link rel="stylesheet" href="/styles.css?v=12" />
 </head>
 <body>
   <div class="app">
@@ -113,8 +113,19 @@
         <div id="pk_panel" class="script-live"><p class="small muted">Products pop up here when you say their keyword. Manage them in the Products tab.</p></div>
       </div>
       <div class="card">
-        <h2>Live transcript</h2>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h2 style="margin:0">Live transcript</h2>
+          <span><button class="btn sm" id="tr_copy">Copy</button> <button class="btn sm" id="tr_save">Save to lead</button></span>
+        </div>
         <div id="live_transcript" class="live-transcript small muted">Not started.</div>
+      </div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h2 style="margin:0">Call review</h2>
+          <span><button class="btn sm primary" id="rv_go">Review this call ▸</button> <button class="btn sm" id="rv_copy">Copy</button></span>
+        </div>
+        <p class="small muted">A method-true diagnosis of the call - what worked, where it was lost, how each objection was handled, and exactly what to do better. Uses your script, methodology, cards and the cues that fired. Saved to the lead.</p>
+        <div id="rv_out" class="rv-out"><p class="small muted">Finish (or stop) a call, then review it here. Works on the last call's transcript, or whatever's in the transcript box.</p></div>
       </div>
     </section>
 
@@ -430,6 +441,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=11"></script>
+  <script src="/app.js?v=12"></script>
 </body>
 </html>

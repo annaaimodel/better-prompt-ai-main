@@ -137,6 +137,20 @@ nav.segnav button.seg .count { opacity: .7; font-weight: 700; }
 .live-cols { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
 .live-cols > .card { flex: 1 1 360px; min-width: 0; }
 @media (min-width: 900px) { .live-cols > .card:last-child { position: sticky; top: 12px; } }
+.rv-out { margin-top: 6px; }
+.rv-head { display: flex; align-items: baseline; gap: 10px; font-size: 15px; margin-bottom: 10px; }
+.rv-score { font-weight: 700; font-size: 20px; color: var(--gold); white-space: nowrap; }
+.rv-sec { margin: 10px 0; padding-top: 8px; border-top: 1px solid var(--line); }
+.rv-h { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 4px; }
+.rv-lost { border-left: 3px solid var(--red); padding-left: 10px; border-top: 0; }
+.rv-next { border-left: 3px solid var(--green); padding-left: 10px; }
+.rv-list { margin: 4px 0 0; padding-left: 18px; }
+.rv-list li { margin: 3px 0; }
+.rv-obj { margin: 6px 0; }
+.rv-tag { font-size: 11px; padding: 1px 6px; border-radius: 6px; border: 1px solid var(--line); }
+.rv-well { color: var(--green); border-color: #2a4a2a; }
+.rv-partly { color: var(--gold); border-color: #4a3f24; }
+.rv-poorly, .rv-missed { color: var(--red); border-color: #4a2a24; }
 .sc-tools { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 8px; }
 .sc-tools summary { cursor: pointer; list-style: none; user-select: none; padding: 2px 0; }
 .sc-tools summary::-webkit-details-marker { display: none; }

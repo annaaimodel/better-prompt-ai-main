@@ -747,7 +747,7 @@ function openDetail(id) {
       ${(l.saved || []).length ? (l.saved || []).map((s) => `
         <div class="card" style="margin:0 0 8px;padding:11px 13px">
           <div class="small" style="display:flex;justify-content:space-between;gap:8px;align-items:center">
-            <strong>${s.kind === "plan" ? "🧠 " : "✦ "}${esc(s.label || s.kind)}</strong>
+            <strong>${({ plan: "🧠 ", transcript: "📄 ", review: "🔍 " }[s.kind] || "✦ ")}${esc(s.label || s.kind)}</strong>
             <span class="muted tiny">${fmtDate(s.at)}</span>
           </div>
           <div class="out small" style="margin-top:6px;max-height:140px;overflow:auto;white-space:pre-wrap">${esc(s.text)}</div>
@@ -1571,6 +1571,101 @@ function renderTranscript() {
   const el = $("live_transcript");
   el.textContent = (Live.transcript + Live.interim).slice(-4000) || "Listening…";
   el.scrollTop = el.scrollHeight;
+}
+// The full transcript to copy/save/review: this session's, else the selected
+// lead's last saved one.
+function currentTranscript() {
+  const live = (Live.transcript || "").trim();
+  if (live) return live;
+  const id = $("live_lead").value;
+  const l = id ? db.leads.find((x) => x.id === id) : null;
+  return l && l._lastTranscript ? l._lastTranscript : "";
+}
+$("tr_copy").onclick = async () => {
+  const t = currentTranscript();
+  if (!t) { toast("No transcript yet"); return; }
+  try { await navigator.clipboard.writeText(t); toast("Transcript copied"); } catch (e) { toast("Copy failed"); }
+};
+$("tr_save").onclick = () => {
+  const t = currentTranscript();
+  if (!t) { toast("No transcript yet"); return; }
+  const id = $("live_lead").value;
+  const l = id ? db.leads.find((x) => x.id === id) : null;
+  if (!l) { toast("Pick the lead this call was with (top of page)"); return; }
+  l._lastTranscript = t.slice(0, 20000);
+  const ok = saveToLead(l, "transcript", "Call transcript " + fmtDate(new Date().toISOString()), t);
+  toast(ok ? `Transcript saved to ${l.name || "lead"}` : "Already saved");
+};
+
+// Call review -------------------------------------------------------------
+$("rv_go").onclick = runReview;
+$("rv_copy").onclick = async () => {
+  const txt = $("rv_out").dataset.plain || "";
+  if (!txt) { toast("Run a review first"); return; }
+  try { await navigator.clipboard.writeText(txt); toast("Review copied"); } catch (e) { toast("Copy failed"); }
+};
+async function runReview() {
+  const transcript = currentTranscript();
+  if (transcript.length < 40) { toast("Need a call transcript to review"); return; }
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  const id = $("live_lead").value;
+  const l = id ? db.leads.find((x) => x.id === id) : null;
+  const cards = (db.products || []).map((p) => ({ name: p.name, info: p.info, kind: p.kind }));
+  $("rv_go").disabled = true; $("rv_go").textContent = "Reviewing…";
+  $("rv_out").innerHTML = `<p class="small muted">Reviewing the call against your method, script and cards…</p>`;
+  try {
+    const r = await fetch("/api/review", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({
+        transcript,
+        playbook: db.playbook,
+        script: $("sc_text").value || "",
+        cards,
+        cues: Live.recentCues.slice(-25),
+        contact: l ? { name: l.name, offerInterest: l.offerInterest } : {},
+        mask: l ? l.mask : null,
+      }),
+    });
+    const j = await r.json();
+    if (!r.ok) { $("rv_out").innerHTML = `<p class="small">⚠ ${esc(j.error || "Review failed")}</p>`; }
+    else {
+      renderReview(j.review || {});
+      if (l) { saveToLead(l, "review", "Call review " + fmtDate(new Date().toISOString()), $("rv_out").dataset.plain || ""); toast(`Review saved to ${l.name || "lead"}`); }
+    }
+  } catch (e) { $("rv_out").innerHTML = `<p class="small">⚠ Network error - try again.</p>`; }
+  $("rv_go").disabled = false; $("rv_go").textContent = "Review this call ▸";
+}
+function renderReview(rv) {
+  const HAND = { well: "✓ handled well", partly: "~ partly handled", poorly: "✗ handled poorly", missed: "✗ missed" };
+  const list = (arr) => `<ul class="rv-list">${(arr || []).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  let html = "";
+  if (rv.score || rv.outcome) html += `<div class="rv-head"><span class="rv-score">${esc(rv.score || "")}</span><span>${esc(rv.outcome || "")}</span></div>`;
+  if (rv.lostAt) html += `<div class="rv-sec rv-lost"><div class="rv-h">Where it was lost</div><div>${esc(rv.lostAt)}</div></div>`;
+  if (rv.wentWell && rv.wentWell.length) html += `<div class="rv-sec"><div class="rv-h">What worked</div>${list(rv.wentWell)}</div>`;
+  if (rv.objections && rv.objections.length) {
+    html += `<div class="rv-sec"><div class="rv-h">Objections</div>` + rv.objections.map((o) =>
+      `<div class="rv-obj"><strong>${esc(o.objection)}</strong> <span class="rv-tag rv-${esc(o.handling || "")}">${esc(HAND[o.handling] || o.handling || "")}</span><div class="small">Better: ${esc(o.better || "")}</div></div>`).join("") + `</div>`;
+  }
+  if (rv.missed && rv.missed.length) html += `<div class="rv-sec"><div class="rv-h">Missed</div>${list(rv.missed)}</div>`;
+  if (rv.method) html += `<div class="rv-sec"><div class="rv-h">Method</div><div>${esc(rv.method)}</div></div>`;
+  if (rv.improve && rv.improve.length) html += `<div class="rv-sec"><div class="rv-h">Do better next time</div>${list(rv.improve)}</div>`;
+  if (rv.nextStep) html += `<div class="rv-sec rv-next"><div class="rv-h">Next step</div><div>${esc(rv.nextStep)}</div></div>`;
+  $("rv_out").innerHTML = html || `<p class="small muted">No review returned - try again.</p>`;
+  $("rv_out").dataset.plain = reviewToText(rv);
+}
+function reviewToText(rv) {
+  const lines = [];
+  lines.push("CALL REVIEW");
+  if (rv.score) lines.push("Score: " + rv.score);
+  if (rv.outcome) lines.push("Outcome: " + rv.outcome);
+  if (rv.lostAt) lines.push("\nWHERE IT WAS LOST:\n" + rv.lostAt);
+  if (rv.wentWell && rv.wentWell.length) lines.push("\nWHAT WORKED:\n- " + rv.wentWell.join("\n- "));
+  if (rv.objections && rv.objections.length) lines.push("\nOBJECTIONS:\n" + rv.objections.map((o) => `- ${o.objection} [${o.handling}]\n  Better: ${o.better}`).join("\n"));
+  if (rv.missed && rv.missed.length) lines.push("\nMISSED:\n- " + rv.missed.join("\n- "));
+  if (rv.method) lines.push("\nMETHOD:\n" + rv.method);
+  if (rv.improve && rv.improve.length) lines.push("\nDO BETTER NEXT TIME:\n- " + rv.improve.join("\n- "));
+  if (rv.nextStep) lines.push("\nNEXT STEP:\n" + rv.nextStep);
+  return lines.join("\n");
 }
 // Headset mode: capture the call audio (the prospect) via screen/tab share and
 // transcribe it with Deepgram, alongside the mic (you) via Web Speech.

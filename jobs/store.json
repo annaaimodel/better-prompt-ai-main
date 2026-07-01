@@ -18829,7 +18829,7 @@
   "tier": "",
   "first_seen": "2026-07-01",
   "last_seen": "2026-07-01",
-  "active": true
+  "active": false
  },
  "2dc5ede48cfefa7f": {
   "title": "Senior Enterprise Account Executive",
@@ -18841,6 +18841,22 @@
   "category": "Closer",
   "country": "United States",
   "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-01",
+  "last_seen": "2026-07-01",
+  "active": false
+ },
+ "ce8f6fed3157b0b3": {
+  "title": "Install Base Account Executive",
+  "company": "CyberSheath",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/cybersheath/jobs/install-base-account-executive",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-01",

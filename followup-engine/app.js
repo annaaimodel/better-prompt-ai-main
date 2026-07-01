@@ -1818,6 +1818,12 @@ function renderCues(cues) {
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
 $("live_cuenow").onclick = () => maybeCue(true);
+$("live_clear").onclick = () => { $("live_cues").innerHTML = `<div class="empty small">Cues appear here as the call unfolds.</div>`; };
+$("pk_clear").onclick = () => {
+  $("pk_panel").innerHTML = `<p class="small muted">Products pop up here when you say their keyword. Manage them in the Products tab.</p>`;
+  // Reset the per-keyword cooldown so a product can pop again if you say it.
+  Object.keys(triggerLastShown).forEach((k) => delete triggerLastShown[k]);
+};
 
 // ---------------------------------------------------------------------------
 // Product knowledge - keyword-triggered cards during the call + management.

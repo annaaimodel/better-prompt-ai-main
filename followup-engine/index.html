@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Cadence - Follow-Up Engine</title>
-  <link rel="stylesheet" href="/styles.css?v=13" />
+  <link rel="stylesheet" href="/styles.css?v=14" />
 </head>
 <body>
   <div class="app">
@@ -84,7 +84,7 @@
         <div class="card">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h2 style="margin:0">Whispers</h2>
-            <button class="btn sm" id="live_cuenow">Cue me now</button>
+            <span><button class="btn sm" id="live_cuenow">Cue me now</button> <button class="btn sm" id="live_clear">Clear</button></span>
           </div>
           <div id="live_cues" class="live-cues"><div class="empty small">Cues appear here as the call unfolds.</div></div>
         </div>
@@ -108,8 +108,11 @@
         </div>
       </div>
       <div class="card">
-        <h2>Product knowledge</h2>
-        <div class="kbar"><input id="pk_search" placeholder="Search products to pull one up manually..." /></div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h2 style="margin:0">Product knowledge</h2>
+          <button class="btn sm" id="pk_clear">Clear</button>
+        </div>
+        <div class="kbar" style="margin-top:8px"><input id="pk_search" placeholder="Search products to pull one up manually..." /></div>
         <div id="pk_panel" class="script-live"><p class="small muted">Products pop up here when you say their keyword. Manage them in the Products tab.</p></div>
       </div>
       <div class="card">
@@ -442,6 +445,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=13"></script>
+  <script src="/app.js?v=14"></script>
 </body>
 </html>

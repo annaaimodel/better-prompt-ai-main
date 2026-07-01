@@ -18798,5 +18798,53 @@
   "first_seen": "2026-07-01",
   "last_seen": "2026-07-01",
   "active": false
+ },
+ "2f4852cf7319a4ee": {
+  "title": "Client Success Coach (CSM)",
+  "company": "Impact Clients",
+  "location": "Northern America, Europe, South Africa",
+  "comp": "$120k - $220k",
+  "link": "https://remotive.com/remote-jobs/customer-service/client-success-coach-csm-2091039",
+  "source": "Remotive",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Europe",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-01",
+  "last_seen": "2026-07-01",
+  "active": true
+ },
+ "1d8611121c2f8176": {
+  "title": "Enterprise SDR",
+  "company": "BLP Digital AG",
+  "location": "Austria, Belgium, Germany, Luxembourg, Netherlands, Spain, Switzerland, United Kingdom",
+  "comp": "",
+  "link": "https://himalayas.app/companies/blp-digital-ag/jobs/enterprise-sdr",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-01",
+  "last_seen": "2026-07-01",
+  "active": true
+ },
+ "2dc5ede48cfefa7f": {
+  "title": "Senior Enterprise Account Executive",
+  "company": "Paradigm",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/paradigmiq/jobs/senior-enterprise-account-executive",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-01",
+  "last_seen": "2026-07-01",
+  "active": true
  }
 }

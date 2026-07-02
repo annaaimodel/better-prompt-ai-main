@@ -19165,6 +19165,22 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-07-02",
+  "active": false
+ },
+ "6684db81c9a1f224": {
+  "title": "Vice President - Provider Sales",
+  "company": "Sagility",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/sagility/jobs/vice-president-provider-sales",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-02",
+  "last_seen": "2026-07-02",
   "active": true
  }
 }

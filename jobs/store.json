@@ -19149,6 +19149,22 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-07-02",
+  "active": false
+ },
+ "395b30c8cb1fd969": {
+  "title": "Virtual Assistant (Non Voice)",
+  "company": "Outsourcey",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/outsourcey/jobs/virtual-assistant-non-voice-9008512476",
+  "source": "Himalayas",
+  "category": "VA / Social / Chat",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-02",
+  "last_seen": "2026-07-02",
   "active": true
  }
 }

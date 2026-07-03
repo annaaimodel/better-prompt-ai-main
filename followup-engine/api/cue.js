@@ -47,6 +47,12 @@ Return ONLY a JSON object: {"cues":[{"type":"ask|objection|mask|value|nudge|tone
 
 function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
 
+// Hard filter: the prospect is live on the line, so cues about outreach tactics
+// (voicemails, calling back, reaching multiple prospects) are always noise and
+// the model occasionally emits them anyway. Drop them deterministically.
+const OUTREACH_RE = /voice ?mail|call(?:ing)? ?back|call them back|stop (?:calling|leaving|reaching|texting|emailing|messaging)|reach(?:ing|ed)? out|leave (?:a|them) (?:message|voicemail)|other prospects|different prospects|wait for (?:them|the prospect) to (?:call|respond|reply|reach)/i;
+function stripOutreachCues(cues) { return cues.filter((c) => c && c.text && !OUTREACH_RE.test(c.text)); }
+
 function buildContext(body) {
   const c = body.contact || {}, p = body.playbook || {}, o = p.offer || {}, m = p.methodology || {}, mask = body.mask || {};
   const out = [];
@@ -100,7 +106,7 @@ export default async function handler(req, res) {
     let parsed = {};
     try { parsed = JSON.parse(mt ? mt[0] : raw); } catch (e) { parsed = {}; }
     const cues = Array.isArray(parsed.cues)
-      ? parsed.cues.slice(0, 3).map((x) => ({ type: clip(x.type, 20).toLowerCase() || "ask", text: clip(x.text, 200) })).filter((x) => x.text)
+      ? stripOutreachCues(parsed.cues.slice(0, 4).map((x) => ({ type: clip(x.type, 20).toLowerCase() || "ask", text: clip(x.text, 200) })).filter((x) => x.text)).slice(0, 3)
       : [];
     const scriptIndex = (typeof parsed.scriptIndex === "number" && parsed.scriptIndex >= 0) ? Math.floor(parsed.scriptIndex) : null;
     res.status(200).json({ cues, scriptIndex, scriptNote: clip(parsed.scriptNote, 160), usage: msg.usage });

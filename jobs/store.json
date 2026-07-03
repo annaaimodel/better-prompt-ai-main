@@ -19504,6 +19504,38 @@
   "tier": "",
   "first_seen": "2026-07-03",
   "last_seen": "2026-07-03",
+  "active": false
+ },
+ "c7e96b16fef42b7d": {
+  "title": "Sr. Business Growth Executive (MID Pharmacy)",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/mckesson/jobs/sr-business-growth-executive-mid-pharmacy",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-03",
+  "last_seen": "2026-07-03",
+  "active": true
+ },
+ "b0fbddfe52142fd3": {
+  "title": "Enterprise:Account Executive, New Logo - ENT",
+  "company": "name",
+  "location": "Ireland, United Kingdom, United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/trimble/jobs/enterprise-account-executive-new-logo-ent",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-03",
+  "last_seen": "2026-07-03",
   "active": true
  }
 }

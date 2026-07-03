@@ -19520,7 +19520,7 @@
   "tier": "",
   "first_seen": "2026-07-03",
   "last_seen": "2026-07-03",
-  "active": true
+  "active": false
  },
  "b0fbddfe52142fd3": {
   "title": "Enterprise:Account Executive, New Logo - ENT",
@@ -19536,6 +19536,6 @@
   "tier": "",
   "first_seen": "2026-07-03",
   "last_seen": "2026-07-03",
-  "active": true
+  "active": false
  }
 }

@@ -1808,7 +1808,7 @@ function renderCues(cues) {
   cues.forEach((c) => {
     Live.recentCues.push(c.text);
     const div = document.createElement("div");
-    div.className = "cue " + (["ask", "objection", "mask", "value", "nudge", "book"].includes(c.type) ? c.type : "ask");
+    div.className = "cue " + (["ask", "objection", "mask", "value", "nudge", "tone", "book"].includes(c.type) ? c.type : "ask");
     div.innerHTML = `<span class="cue-type">${esc(c.type || "ask")}</span>${esc(c.text)}`;
     box.prepend(div);
   });

@@ -19633,5 +19633,21 @@
   "first_seen": "2026-07-04",
   "last_seen": "2026-07-04",
   "active": false
+ },
+ "3606f8ead940e4b3": {
+  "title": "Corporate Counsel",
+  "company": "Smartsheet",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/smartsheet/jobs/corporate-counsel",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-04",
+  "last_seen": "2026-07-04",
+  "active": true
  }
 }

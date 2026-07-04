@@ -1,12 +1,12 @@
 # Site analytics — AURUM
 
-_Generated 2026-07-03 13:21 UTC from GoatCounter (`aurum-hts`)._
+_Generated 2026-07-04 11:48 UTC from GoatCounter (`aurum-hts`)._
 
 | Period | Pageviews |
 |--------|-----------|
 | **Last 24 hours** | 0 |
 | Today | 0 |
-| Last 7 days | 17 |
+| Last 7 days | 16 |
 | Last 30 days | 225 |
 | All-time | 225 |
 

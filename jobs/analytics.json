@@ -1,50 +1,50 @@
 {
- "generated_utc": "2026-07-04T11:48:50.642823+00:00",
+ "generated_utc": "2026-07-05T11:50:03.876702+00:00",
  "site": "aurum-hts",
  "configured": true,
  "ranges": {
   "Last 24 hours": {
    "window": "rolling",
-   "pageviews": 0,
+   "pageviews": 1,
    "error": null
   },
   "Today": {
-   "start": "2026-07-04",
-   "end": "2026-07-04",
+   "start": "2026-07-05",
+   "end": "2026-07-05",
    "pageviews": 0,
    "visitors": null,
    "error": null
   },
   "Last 7 days": {
-   "start": "2026-06-28",
-   "end": "2026-07-04",
-   "pageviews": 16,
+   "start": "2026-06-29",
+   "end": "2026-07-05",
+   "pageviews": 7,
    "visitors": null,
    "error": null
   },
   "Last 30 days": {
-   "start": "2026-06-05",
-   "end": "2026-07-04",
-   "pageviews": 225,
+   "start": "2026-06-06",
+   "end": "2026-07-05",
+   "pageviews": 226,
    "visitors": null,
    "error": null
   },
   "All-time": {
    "start": "2026-06-16",
-   "end": "2026-07-04",
-   "pageviews": 225,
+   "end": "2026-07-05",
+   "pageviews": 226,
    "visitors": null,
    "error": null
   }
  },
  "raw": {
   "rolling_24h": {
-   "total": 0,
+   "total": 1,
    "total_events": 0,
-   "total_utc": 0,
+   "total_utc": 1,
    "stats": [
     {
-     "day": "2026-07-03",
+     "day": "2026-07-04",
      "hourly": [
       0,
       0,
@@ -64,17 +64,19 @@
       0,
       0,
       0,
-      0,
+      1,
       0,
       0,
       0,
       0,
       0
      ],
-     "daily": 0
+     "daily": 1,
+     "weekly": 1,
+     "monthly": 1
     },
     {
-     "day": "2026-07-04",
+     "day": "2026-07-05",
      "hourly": [
       0,
       0,
@@ -111,7 +113,7 @@
    "total_utc": 0,
    "stats": [
     {
-     "day": "2026-07-04",
+     "day": "2026-07-05",
      "hourly": [
       0,
       0,
@@ -143,42 +145,10 @@
    ]
   },
   "total::Last 7 days": {
-   "total": 16,
+   "total": 7,
    "total_events": 0,
-   "total_utc": 16,
+   "total_utc": 7,
    "stats": [
-    {
-     "day": "2026-06-28",
-     "hourly": [
-      0,
-      0,
-      0,
-      0,
-      3,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      1,
-      3,
-      0,
-      0,
-      0
-     ],
-     "daily": 10,
-     "weekly": 16,
-     "monthly": 15
-    },
     {
      "day": "2026-06-29",
      "hourly": [
@@ -207,7 +177,9 @@
       0,
       0
      ],
-     "daily": 3
+     "daily": 3,
+     "weekly": 7,
+     "monthly": 5
     },
     {
      "day": "2026-06-30",
@@ -268,7 +240,7 @@
       0
      ],
      "daily": 1,
-     "monthly": 1
+     "monthly": 2
     },
     {
      "day": "2026-07-02",
@@ -351,24 +323,17 @@
       0,
       0,
       0,
-      0,
+      1,
       0,
       0,
       0,
       0,
       0
      ],
-     "daily": 0
-    }
-   ]
-  },
-  "total::Last 30 days": {
-   "total": 225,
-   "total_events": 0,
-   "total_utc": 225,
-   "stats": [
+     "daily": 1
+    },
     {
-     "day": "2026-06-05",
+     "day": "2026-07-05",
      "hourly": [
       0,
       0,
@@ -395,9 +360,15 @@
       0,
       0
      ],
-     "daily": 0,
-     "monthly": 224
-    },
+     "daily": 0
+    }
+   ]
+  },
+  "total::Last 30 days": {
+   "total": 226,
+   "total_events": 0,
+   "total_utc": 226,
+   "stats": [
     {
      "day": "2026-06-06",
      "hourly": [
@@ -426,7 +397,8 @@
       0,
       0
      ],
-     "daily": 0
+     "daily": 0,
+     "monthly": 224
     },
     {
      "day": "2026-06-07",
@@ -606,8 +578,7 @@
       0,
       0
      ],
-     "daily": 0,
-     "weekly": 132
+     "daily": 0
     },
     {
      "day": "2026-06-13",
@@ -637,7 +608,8 @@
       0,
       0
      ],
-     "daily": 0
+     "daily": 0,
+     "weekly": 150
     },
     {
      "day": "2026-06-14",
@@ -817,8 +789,7 @@
       2,
       3
      ],
-     "daily": 18,
-     "weekly": 66
+     "daily": 18
     },
     {
      "day": "2026-06-20",
@@ -848,7 +819,8 @@
       0,
       0
      ],
-     "daily": 10
+     "daily": 10,
+     "weekly": 58
     },
     {
      "day": "2026-06-21",
@@ -1028,8 +1000,7 @@
       0,
       0
      ],
-     "daily": 10,
-     "weekly": 27
+     "daily": 10
     },
     {
      "day": "2026-06-27",
@@ -1059,7 +1030,8 @@
       0,
       1
      ],
-     "daily": 1
+     "daily": 1,
+     "weekly": 17
     },
     {
      "day": "2026-06-28",
@@ -1180,7 +1152,7 @@
       0
      ],
      "daily": 1,
-     "monthly": 1
+     "monthly": 2
     },
     {
      "day": "2026-07-02",
@@ -1263,6 +1235,37 @@
       0,
       0,
       0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "daily": 1,
+     "weekly": 1
+    },
+    {
+     "day": "2026-07-05",
+     "hourly": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0,
       0,
@@ -1275,9 +1278,9 @@
    ]
   },
   "total::All-time": {
-   "total": 225,
+   "total": 226,
    "total_events": 0,
-   "total_utc": 225,
+   "total_utc": 226,
    "stats": [
     {
      "day": "2026-06-16",
@@ -1731,7 +1734,7 @@
       0
      ],
      "daily": 2,
-     "weekly": 3
+     "weekly": 4
     },
     {
      "day": "2026-07-01",
@@ -1762,7 +1765,7 @@
       0
      ],
      "daily": 1,
-     "monthly": 1
+     "monthly": 2
     },
     {
      "day": "2026-07-02",
@@ -1845,6 +1848,36 @@
       0,
       0,
       0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "daily": 1
+    },
+    {
+     "day": "2026-07-05",
+     "hourly": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0,
       0,
@@ -1860,44 +1893,13 @@
   "pages": {
    "hits": [
     {
-     "count": 61,
+     "count": 62,
      "path_id": 92392326,
      "path": "/jobs",
      "event": false,
      "title": "Fresh in the Vault · Aurum",
      "max": 10,
      "stats": [
-      {
-       "day": "2026-06-05",
-       "hourly": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-       ],
-       "daily": 0,
-       "monthly": 60
-      },
       {
        "day": "2026-06-06",
        "hourly": [
@@ -1926,7 +1928,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "monthly": 60
       },
       {
        "day": "2026-06-07",
@@ -2106,8 +2109,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 27
+       "daily": 0
       },
       {
        "day": "2026-06-13",
@@ -2137,7 +2139,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 32
       },
       {
        "day": "2026-06-14",
@@ -2317,8 +2320,7 @@
         1,
         1
        ],
-       "daily": 5,
-       "weekly": 21
+       "daily": 5
       },
       {
        "day": "2026-06-20",
@@ -2348,7 +2350,8 @@
         0,
         0
        ],
-       "daily": 1
+       "daily": 1,
+       "weekly": 19
       },
       {
        "day": "2026-06-21",
@@ -2528,8 +2531,7 @@
         0,
         0
        ],
-       "daily": 3,
-       "weekly": 13
+       "daily": 3
       },
       {
        "day": "2026-06-27",
@@ -2559,7 +2561,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 10
       },
       {
        "day": "2026-06-28",
@@ -2680,7 +2683,7 @@
         0
        ],
        "daily": 1,
-       "monthly": 1
+       "monthly": 2
       },
       {
        "day": "2026-07-02",
@@ -2763,27 +2766,18 @@
         0,
         0,
         0,
-        0,
+        1,
         0,
         0,
         0,
         0,
         0
        ],
-       "daily": 0
-      }
-     ]
-    },
-    {
-     "count": 51,
-     "path_id": 92391693,
-     "path": "/",
-     "event": false,
-     "title": "AURUM · High-Ticket Sales — The Gold Standard for Your Job Search",
-     "max": 14,
-     "stats": [
+       "daily": 1,
+       "weekly": 1
+      },
       {
-       "day": "2026-06-05",
+       "day": "2026-07-05",
        "hourly": [
         0,
         0,
@@ -2810,9 +2804,18 @@
         0,
         0
        ],
-       "daily": 0,
-       "monthly": 51
-      },
+       "daily": 0
+      }
+     ]
+    },
+    {
+     "count": 51,
+     "path_id": 92391693,
+     "path": "/",
+     "event": false,
+     "title": "AURUM · High-Ticket Sales — The Gold Standard for Your Job Search",
+     "max": 14,
+     "stats": [
       {
        "day": "2026-06-06",
        "hourly": [
@@ -2841,7 +2844,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "monthly": 51
       },
       {
        "day": "2026-06-07",
@@ -3021,8 +3025,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 35
+       "daily": 0
       },
       {
        "day": "2026-06-13",
@@ -3052,7 +3055,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 37
       },
       {
        "day": "2026-06-14",
@@ -3232,8 +3236,7 @@
         1,
         0
        ],
-       "daily": 2,
-       "weekly": 12
+       "daily": 2
       },
       {
        "day": "2026-06-20",
@@ -3263,7 +3266,8 @@
         0,
         0
        ],
-       "daily": 1
+       "daily": 1,
+       "weekly": 12
       },
       {
        "day": "2026-06-21",
@@ -3443,8 +3447,7 @@
         0,
         0
        ],
-       "daily": 2,
-       "weekly": 4
+       "daily": 2
       },
       {
        "day": "2026-06-27",
@@ -3474,7 +3477,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 2
       },
       {
        "day": "2026-06-28",
@@ -3685,19 +3689,9 @@
         0
        ],
        "daily": 0
-      }
-     ]
-    },
-    {
-     "count": 35,
-     "path_id": 92408304,
-     "path": "/hiring",
-     "event": false,
-     "title": "Post a Role · AURUM — Get Your High-Ticket Role Seen",
-     "max": 6,
-     "stats": [
+      },
       {
-       "day": "2026-06-05",
+       "day": "2026-07-05",
        "hourly": [
         0,
         0,
@@ -3724,9 +3718,18 @@
         0,
         0
        ],
-       "daily": 0,
-       "monthly": 35
-      },
+       "daily": 0
+      }
+     ]
+    },
+    {
+     "count": 35,
+     "path_id": 92408304,
+     "path": "/hiring",
+     "event": false,
+     "title": "Post a Role · AURUM — Get Your High-Ticket Role Seen",
+     "max": 6,
+     "stats": [
       {
        "day": "2026-06-06",
        "hourly": [
@@ -3755,7 +3758,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "monthly": 35
       },
       {
        "day": "2026-06-07",
@@ -3935,8 +3939,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 25
+       "daily": 0
       },
       {
        "day": "2026-06-13",
@@ -3966,7 +3969,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 27
       },
       {
        "day": "2026-06-14",
@@ -4146,8 +4150,7 @@
         0,
         0
        ],
-       "daily": 2,
-       "weekly": 6
+       "daily": 2
       },
       {
        "day": "2026-06-20",
@@ -4177,7 +4180,8 @@
         0,
         0
        ],
-       "daily": 4
+       "daily": 4,
+       "weekly": 5
       },
       {
        "day": "2026-06-21",
@@ -4357,8 +4361,7 @@
         0,
         0
        ],
-       "daily": 1,
-       "weekly": 4
+       "daily": 1
       },
       {
        "day": "2026-06-27",
@@ -4388,7 +4391,8 @@
         0,
         1
        ],
-       "daily": 1
+       "daily": 1,
+       "weekly": 3
       },
       {
        "day": "2026-06-28",
@@ -4599,19 +4603,9 @@
         0
        ],
        "daily": 0
-      }
-     ]
-    },
-    {
-     "count": 28,
-     "path_id": 92395074,
-     "path": "/jobs/all",
-     "event": false,
-     "title": "The Vault · Aurum",
-     "max": 2,
-     "stats": [
+      },
       {
-       "day": "2026-06-05",
+       "day": "2026-07-05",
        "hourly": [
         0,
         0,
@@ -4638,9 +4632,18 @@
         0,
         0
        ],
-       "daily": 0,
-       "monthly": 28
-      },
+       "daily": 0
+      }
+     ]
+    },
+    {
+     "count": 28,
+     "path_id": 92395074,
+     "path": "/jobs/all",
+     "event": false,
+     "title": "The Vault · Aurum",
+     "max": 2,
+     "stats": [
       {
        "day": "2026-06-06",
        "hourly": [
@@ -4669,7 +4672,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "monthly": 28
       },
       {
        "day": "2026-06-07",
@@ -4849,8 +4853,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 13
+       "daily": 0
       },
       {
        "day": "2026-06-13",
@@ -4880,7 +4883,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 18
       },
       {
        "day": "2026-06-14",
@@ -5060,8 +5064,7 @@
         0,
         1
        ],
-       "daily": 5,
-       "weekly": 10
+       "daily": 5
       },
       {
        "day": "2026-06-20",
@@ -5091,7 +5094,8 @@
         0,
         0
        ],
-       "daily": 1
+       "daily": 1,
+       "weekly": 8
       },
       {
        "day": "2026-06-21",
@@ -5271,8 +5275,7 @@
         0,
         0
        ],
-       "daily": 3,
-       "weekly": 5
+       "daily": 3
       },
       {
        "day": "2026-06-27",
@@ -5302,7 +5305,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 2
       },
       {
        "day": "2026-06-28",
@@ -5513,19 +5517,9 @@
         0
        ],
        "daily": 0
-      }
-     ]
-    },
-    {
-     "count": 23,
-     "path_id": 92392348,
-     "path": "/directory",
-     "event": false,
-     "title": "Communities · Aurum",
-     "max": 2,
-     "stats": [
+      },
       {
-       "day": "2026-06-05",
+       "day": "2026-07-05",
        "hourly": [
         0,
         0,
@@ -5552,9 +5546,18 @@
         0,
         0
        ],
-       "daily": 0,
-       "monthly": 23
-      },
+       "daily": 0
+      }
+     ]
+    },
+    {
+     "count": 23,
+     "path_id": 92392348,
+     "path": "/directory",
+     "event": false,
+     "title": "Communities · Aurum",
+     "max": 2,
+     "stats": [
       {
        "day": "2026-06-06",
        "hourly": [
@@ -5583,7 +5586,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "monthly": 23
       },
       {
        "day": "2026-06-07",
@@ -5763,8 +5767,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 17
+       "daily": 0
       },
       {
        "day": "2026-06-13",
@@ -5794,7 +5797,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 18
       },
       {
        "day": "2026-06-14",
@@ -5974,8 +5978,7 @@
         0,
         0
        ],
-       "daily": 1,
-       "weekly": 5
+       "daily": 1
       },
       {
        "day": "2026-06-20",
@@ -6005,7 +6008,8 @@
         0,
         0
        ],
-       "daily": 1
+       "daily": 1,
+       "weekly": 5
       },
       {
        "day": "2026-06-21",
@@ -6185,8 +6189,7 @@
         0,
         0
        ],
-       "daily": 1,
-       "weekly": 1
+       "daily": 1
       },
       {
        "day": "2026-06-27",
@@ -6427,19 +6430,9 @@
         0
        ],
        "daily": 0
-      }
-     ]
-    },
-    {
-     "count": 15,
-     "path_id": 92392337,
-     "path": "/jobs/boards",
-     "event": false,
-     "title": "Boards · Aurum",
-     "max": 2,
-     "stats": [
+      },
       {
-       "day": "2026-06-05",
+       "day": "2026-07-05",
        "hourly": [
         0,
         0,
@@ -6466,9 +6459,18 @@
         0,
         0
        ],
-       "daily": 0,
-       "monthly": 15
-      },
+       "daily": 0
+      }
+     ]
+    },
+    {
+     "count": 15,
+     "path_id": 92392337,
+     "path": "/jobs/boards",
+     "event": false,
+     "title": "Boards · Aurum",
+     "max": 2,
+     "stats": [
       {
        "day": "2026-06-06",
        "hourly": [
@@ -6497,7 +6499,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "monthly": 15
       },
       {
        "day": "2026-06-07",
@@ -6677,8 +6680,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 8
+       "daily": 0
       },
       {
        "day": "2026-06-13",
@@ -6708,7 +6710,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 10
       },
       {
        "day": "2026-06-14",
@@ -6888,8 +6891,7 @@
         0,
         1
        ],
-       "daily": 2,
-       "weekly": 7
+       "daily": 2
       },
       {
        "day": "2026-06-20",
@@ -6919,7 +6921,8 @@
         0,
         0
        ],
-       "daily": 1
+       "daily": 1,
+       "weekly": 5
       },
       {
        "day": "2026-06-21",
@@ -7340,19 +7343,9 @@
         0
        ],
        "daily": 0
-      }
-     ]
-    },
-    {
-     "count": 10,
-     "path_id": 92392437,
-     "path": "/cv",
-     "event": false,
-     "title": "CV Match · Aurum",
-     "max": 4,
-     "stats": [
+      },
       {
-       "day": "2026-06-05",
+       "day": "2026-07-05",
        "hourly": [
         0,
         0,
@@ -7379,9 +7372,18 @@
         0,
         0
        ],
-       "daily": 0,
-       "monthly": 10
-      },
+       "daily": 0
+      }
+     ]
+    },
+    {
+     "count": 10,
+     "path_id": 92392437,
+     "path": "/cv",
+     "event": false,
+     "title": "CV Match · Aurum",
+     "max": 4,
+     "stats": [
       {
        "day": "2026-06-06",
        "hourly": [
@@ -7410,7 +7412,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "monthly": 10
       },
       {
        "day": "2026-06-07",
@@ -7590,8 +7593,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 7
+       "daily": 0
       },
       {
        "day": "2026-06-13",
@@ -7621,7 +7623,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 8
       },
       {
        "day": "2026-06-14",
@@ -7801,8 +7804,7 @@
         0,
         0
        ],
-       "daily": 1,
-       "weekly": 3
+       "daily": 1
       },
       {
        "day": "2026-06-20",
@@ -7832,7 +7834,8 @@
         0,
         0
        ],
-       "daily": 1
+       "daily": 1,
+       "weekly": 2
       },
       {
        "day": "2026-06-21",
@@ -8253,19 +8256,9 @@
         0
        ],
        "daily": 0
-      }
-     ]
-    },
-    {
-     "count": 2,
-     "path_id": 92983970,
-     "path": "/add",
-     "event": false,
-     "title": "Quick Add (private)",
-     "max": 1,
-     "stats": [
+      },
       {
-       "day": "2026-06-05",
+       "day": "2026-07-05",
        "hourly": [
         0,
         0,
@@ -8292,9 +8285,18 @@
         0,
         0
        ],
-       "daily": 0,
-       "monthly": 2
-      },
+       "daily": 0
+      }
+     ]
+    },
+    {
+     "count": 2,
+     "path_id": 92983970,
+     "path": "/add",
+     "event": false,
+     "title": "Quick Add (private)",
+     "max": 1,
+     "stats": [
       {
        "day": "2026-06-06",
        "hourly": [
@@ -8323,7 +8325,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "monthly": 2
       },
       {
        "day": "2026-06-07",
@@ -8713,8 +8716,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 2
+       "daily": 0
       },
       {
        "day": "2026-06-20",
@@ -8744,7 +8746,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 2
       },
       {
        "day": "2026-06-21",
@@ -9165,18 +9168,48 @@
         0
        ],
        "daily": 0
+      },
+      {
+       "day": "2026-07-05",
+       "hourly": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "daily": 0
       }
      ]
     }
    ],
-   "total": 225,
+   "total": 226,
    "more": false
   }
  },
  "top_pages_30d": [
   {
    "path": "/jobs",
-   "pageviews": 61,
+   "pageviews": 62,
    "visitors": null
   },
   {

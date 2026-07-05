@@ -19890,5 +19890,21 @@
   "first_seen": "2026-07-05",
   "last_seen": "2026-07-05",
   "active": false
+ },
+ "7c13801d19dfd15d": {
+  "title": "Sales Development Representative",
+  "company": "Hireframe",
+  "location": "Philippines",
+  "comp": "",
+  "link": "https://himalayas.app/companies/hireframe/jobs/sales-development-representative",
+  "source": "Himalayas",
+  "category": "Setter — DM Setting",
+  "country": "Other",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-05",
+  "last_seen": "2026-07-05",
+  "active": true
  }
 }

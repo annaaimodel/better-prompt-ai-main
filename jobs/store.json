@@ -19953,7 +19953,7 @@
   "tier": "",
   "first_seen": "2026-07-06",
   "last_seen": "2026-07-06",
-  "active": true
+  "active": false
  },
  "f24dae682234ec28": {
   "title": "Customer Success Manager",
@@ -19969,6 +19969,6 @@
   "tier": "",
   "first_seen": "2026-07-06",
   "last_seen": "2026-07-06",
-  "active": true
+  "active": false
  }
 }

@@ -20117,7 +20117,7 @@
   "tier": "",
   "first_seen": "2026-07-07",
   "last_seen": "2026-07-07",
-  "active": true
+  "active": false
  },
  "a67bfe84cee387eb": {
   "title": "GTM Sales Associate",
@@ -20133,7 +20133,7 @@
   "tier": "",
   "first_seen": "2026-07-07",
   "last_seen": "2026-07-07",
-  "active": true
+  "active": false
  },
  "92e9b3f203706ff1": {
   "title": "Strategic Account Executive - Atlanta",
@@ -20149,6 +20149,6 @@
   "tier": "",
   "first_seen": "2026-07-07",
   "last_seen": "2026-07-07",
-  "active": true
+  "active": false
  }
 }

@@ -212,6 +212,80 @@ function defaultPlaybook() {
   };
 }
 
+// Built-in Quick Pitch script (compliant version - support language, doctor owns
+// meds). Seeded once into Saved scripts; blank lines chunk it into teleprompter
+// blocks. Placeholders: NAME, PRODUCT, ADDRESS, WEIGHT, AGE, PRICE, YOUR NAME.
+const QUICK_PITCH_TEXT = `QUICK PITCH
+
+OPENING (lift your energy on "what's going on")
+Hi, is this NAME?
+Hi NAME, this is the PRODUCT you ordered online for your weight loss, after watching the video. How are you?
+Good. Well, I wanted to welcome you. We shipped that out to ADDRESS, is that correct?
+So NAME, I'm YOUR NAME, the senior health specialist here, I'll be helping you out. I just want to go over a quick protocol and make sure there are no conflicts with anything you might be taking.
+So NAME, what brings you to this? Are you looking to lose weight, improve overall health, a little bit of both? What's going on?
+
+QUALIFY (optional, weeds out time-wasters)
+Just so we're certain about the results, you're wanting to lose weight. What's your weight like now?
+And what's your ideal weight, what are you wanting to get down to?
+Is that extra weight mostly around the middle, or all over?
+Did you gain it recently, or has it come on gradually over the years?
+
+PAIN POINT QUESTIONS (get them to say it, do not say it for them)
+Have you ever been down to your ideal weight before?
+What was that like for you? Do you remember how it felt?
+What would it do for you, how would it change your life, if you got back down to your ideal weight?
+
+HEALTH ANCHORS (jot every answer as you go)
+Are you on any blood pressure or cholesterol medication?
+Have you ever been diagnosed with diabetes or prediabetes? Type 1 or type 2?
+Any high levels of stress, anxiety, or feelings of depression?
+Any low energy or fatigue through the day?
+Any problems sleeping, falling asleep or staying asleep?
+
+AGE AND RAPPORT
+If I may ask, what's your age?
+AGE years young, huh?
+Well, at least you're not 92, right? There's still some gas in the tank.
+
+MOTIVATION (dig the pain a second time)
+I'm assuming another goal is to feel less reliant on some of these medications over time. Is that right? Your doctor stays in charge of that, of course.
+What's given you the motivation to get healthy and make a change now?
+So family is really important to you. Is that right? Well, let's keep you around for them, okay?
+
+TRANSITION (honest urgency, no fear)
+I'm really glad you're taking action now. Most people think they can put this off and keep doing what they've been doing, and we know where that gets them. Honestly, most of our clients are just sick and tired of feeling sick and tired. So we're going to work on getting you feeling healthy, okay?
+
+THE PROTOCOL (AM and PM, keep it simple)
+The way we get this done, NAME, is you follow the exact process we use with all our clients to support your weight loss and, more importantly, help you keep it off. We help rebalance your hormonal signaling and support a healthy metabolic rate.
+So when you get the PRODUCT you ordered, take that in the morning, a dropper in water or under the tongue, with or without food.
+Around when you take your other pills, you'll also take a capsule of Cardiozen and a capsule of GLP-1 Max. Cardiozen supports oxygen and nutrient delivery. GLP-1 Max is not a chemical or a semaglutide, it supports your metabolism, curbs appetite a little, and supports healthy blood sugar so your body can use stored fat for energy.
+Then in the evening, a capsule of Lipocorpus and a capsule of Deep Sleep, to support mood and help manage stress and cortisol at night, so your body stays in fat-burning mode while you sleep.
+So it's just your AM essentials and your PM essentials. Simple.
+
+REBUTTAL - "Is this coming with what I ordered? / That's not what I ordered"
+(Not a no, it's confusion. Slow down and clarify.)
+Yeah, I know you only ordered the PRODUCT online. The reason we go over this on the phone, NAME, is that when you watched the video we didn't know your medications, your age, your goals, or that you've got WEIGHT to lose. That's exactly why we call you and set it up the right way.
+So yes, there are a few additional supplements I'll send out. But the good news is it's temporary, not long term. Once you've got your results we move you into maintenance and you stop taking them. It's a one-and-done protocol.
+Okay?
+
+COMPLIANCE LINE (protects you and them)
+Keep following your doctor's orders on your medications for now, that way we're being totally safe. When you finish the program you go back to your doctor, and if your numbers are better they'll advise you on anything to do with your medication. We're just using the supplements to support your body.
+
+THE CLOSE (anchor high, deliver it slow)
+So now you're a member with us. We discount off what you already ordered online, and anything you were double-billed for.
+The 12-month standard program, NAME, the full one-year protocol, is right around PRICE. That's everything you need for the full year, all-inclusive, nothing else to buy.
+
+IF "THAT'S A LOT OF MONEY" (double down, do not discount)
+You're right, NAME, that is a lot of money. But once you've lost the weight, you're feeling better, breathing better, spending more time with the grandkids, you're going to see it's money well spent. So let's go ahead and get you what you need, okay?
+
+IF "I DON'T HAVE THAT KIND OF MONEY" (walk down)
+You're right, that is a lot. Are you on a budget?
+Okay, so let's not do anything too big. Rather than the 12 months, let's stick with the 6-month program. It still gets you your 90-day results guarantee, and we go from there. Would that be better for you?
+(Do not quote a price yet. Let them ask, then apply discounts.)
+
+RESULTS GUARANTEE (never say money-back)
+You'll get the results, but you have to take the supplements. Commit to 90 days with me, we commit to 90 days with you.`;
+
 // Fill in any missing collections/fields so old data (or a copy pulled from
 // another device) is always safe to render. Pure shape work, no side effects.
 function ensureShape(d) {
@@ -230,6 +304,13 @@ function ensureShape(d) {
   d.products.forEach((p) => { if (!p.kind) p.kind = "product"; });
   if (typeof d.updatedAt !== "number") d.updatedAt = 0;
   if (typeof d.settings.sync !== "boolean") d.settings.sync = false;
+  // Seed the built-in Quick Pitch once. The flag means it won't reappear if deleted.
+  if (!d.seededQuickPitch) {
+    if (!d.scripts.some((s) => s.name === "Quick Pitch")) {
+      d.scripts.push({ id: uid(), name: "Quick Pitch", text: QUICK_PITCH_TEXT });
+    }
+    d.seededQuickPitch = true;
+  }
   // Backfill the segment field on any leads created before segments existed.
   d.leads.forEach((l) => { if (!l.segment) l.segment = deriveSegment(l); });
   return d;

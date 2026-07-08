@@ -20645,7 +20645,7 @@
   "tier": "",
   "first_seen": "2026-07-08",
   "last_seen": "2026-07-08",
-  "active": true
+  "active": false
  },
  "03b9a088fcb913b4": {
   "title": "Remote Customer Success Manager",
@@ -20670,6 +20670,22 @@
   "comp": "$150k - $230k",
   "link": "https://jooble.org/jdp/2792236541608002946",
   "source": "Jooble",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-08",
+  "last_seen": "2026-07-08",
+  "active": true
+ },
+ "73ac8a754c06c94b": {
+  "title": "Sr Director - Sales and Client Success (Mortgage Risk)",
+  "company": "FICO",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/fico/jobs/sr-director-sales-and-client-success-mortgage-risk",
+  "source": "Himalayas",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
   "lead_type": "",

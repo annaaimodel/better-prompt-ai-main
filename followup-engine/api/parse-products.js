@@ -49,9 +49,13 @@ export default async function handler(req, res) {
 
   const text = clip(body.text, 24000);
   if (text.trim().length < 20) { res.status(400).json({ error: "Paste the info first." }); return; }
-  const isObjection = body.kind === "objection";
-  const system = isObjection ? OBJECTION_SYSTEM : PRODUCT_SYSTEM;
-  const label = isObjection ? "OBJECTIONS / Q&A MATERIAL" : "PRODUCT MATERIAL";
+  // objection + qa parse as question/answer pairs; product + knowledge parse as topics.
+  const qaStyle = body.kind === "objection" || body.kind === "qa";
+  const system = qaStyle ? OBJECTION_SYSTEM : PRODUCT_SYSTEM;
+  const label = body.kind === "objection" ? "OBJECTIONS + RESPONSES"
+    : body.kind === "qa" ? "QUESTIONS + ANSWERS (things prospects ask and how to answer)"
+    : body.kind === "knowledge" ? "KNOWLEDGE / INFORMATION (topics and facts to have on hand)"
+    : "PRODUCT MATERIAL";
 
   try {
     const msg = await client.messages.create({

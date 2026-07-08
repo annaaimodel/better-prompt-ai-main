@@ -174,5 +174,9 @@ nav.segnav button.seg .count { opacity: .7; font-weight: 700; }
 .sblock.past { opacity: .55; }
 .sblock.obj { border-left-color: var(--red); }
 .sblock.obj.active { border-left-color: var(--red); background: rgba(180,60,50,.10); }
+.sblock.qa { border-left-color: var(--blue); }
+.sblock.qa.active { border-left-color: var(--blue); background: rgba(60,110,180,.10); }
+.sblock.kno { border-left-color: var(--gold-soft); }
+.sblock.kno.active { border-left-color: var(--gold-soft); background: rgba(180,150,70,.10); }
 .live-dot { color: var(--red); }
 nav.tabs button[data-view="live"].active { color: var(--red); }

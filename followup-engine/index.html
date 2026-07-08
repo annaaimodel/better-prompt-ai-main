@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Cadence - Follow-Up Engine</title>
-  <link rel="stylesheet" href="/styles.css?v=16" />
+  <link rel="stylesheet" href="/styles.css?v=17" />
 </head>
 <body>
   <div class="app">
@@ -21,7 +21,7 @@
         <button data-view="add">Add lead</button>
         <button data-view="coach">Coach</button>
         <button data-view="content">Content</button>
-        <button data-view="products">Products</button>
+        <button data-view="products">Knowledge</button>
         <button data-view="playbook">Playbook</button>
         <button data-view="assets">Assets</button>
         <button data-view="settings">Settings</button>
@@ -37,7 +37,7 @@
     <section id="view-live" class="hidden">
       <div class="card">
         <h2>Live call copilot</h2>
-        <p class="small muted">Start this before your call. It listens through your mic and whispers your next move - questions to ask, objection handling, your mask affirmation, proof to drop - all from your Playbook and method. No typing during the call.</p>
+        <p class="small muted">Start this before your call. It listens through your mic and whispers when it helps - the next question to ask, an answer from your knowledge base, product and offer info, proof to drop. Say a keyword and the matching card pops up. No typing during the call.</p>
         <label class="small" style="display:flex;align-items:center;gap:8px;text-transform:none;letter-spacing:0;margin-bottom:8px"><input type="checkbox" id="live_headset" style="width:auto" /> <strong>Headset mode</strong> - capture both sides (needs a Deepgram key in Settings). On Start you'll pick the call tab/window to share its audio.</label>
         <p class="help">Headset mode: your mic = you, the shared call audio = the prospect. Mic-only mode: put the call on <strong>speaker</strong>. Chrome on a computer.</p>
         <div class="row">
@@ -109,11 +109,11 @@
       </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center">
-          <h2 style="margin:0">Product knowledge</h2>
+          <h2 style="margin:0">Knowledge</h2>
           <button class="btn sm" id="pk_clear">Clear</button>
         </div>
-        <div class="kbar" style="margin-top:8px"><input id="pk_search" placeholder="Search products to pull one up manually..." /></div>
-        <div id="pk_panel" class="script-live"><p class="small muted">Products pop up here when you say their keyword. Manage them in the Products tab.</p></div>
+        <div class="kbar" style="margin-top:8px"><input id="pk_search" placeholder="Search your knowledge base to pull a card up manually..." /></div>
+        <div id="pk_panel" class="script-live"><p class="small muted">Cards pop up here when you say their keyword. Manage them in the Knowledge tab.</p></div>
       </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center">
@@ -251,24 +251,24 @@
     <!-- PRODUCTS -->
     <section id="view-products" class="hidden">
       <div class="card">
-        <h2>Product knowledge</h2>
-        <p class="small muted">Add the products/info you need on calls, each with trigger keywords. During a live call, the moment you (or the lead) say a keyword, the product card pops up in the Live tab for you to read - no typing, no searching.</p>
+        <h2>Knowledge base</h2>
+        <p class="small muted">Everything the whisper uses on a call: products, objections, Q&amp;A and extra knowledge. Each card has trigger keywords - the moment you (or the lead) say one, the card pops up in the Live tab, and the whisper can also draw on all of it to help you.</p>
       </div>
       <div class="card">
         <h2>⚡ Quick fill from paste</h2>
-        <p class="small muted">Paste your product doc and the AI splits it into product cards with keywords and info. Review and they're added below.</p>
-        <div class="field"><textarea id="pr_parse_text" rows="6" placeholder="Paste all your product information here..."></textarea></div>
+        <p class="small muted">Paste a doc and the AI splits it into cards with keywords and info. Pick the type, review, and they're added below.</p>
+        <div class="field"><textarea id="pr_parse_text" rows="6" placeholder="Paste your product info, objection list, Q&amp;A, or any knowledge here..."></textarea></div>
         <div class="action" style="align-items:center;gap:8px">
           <button class="btn primary" id="pr_parse_go">Parse into cards ▸</button>
           <label class="small muted">Add all as</label>
-          <select id="pr_parse_kind" class="stage"><option value="product">Products</option><option value="objection">Objections / Q&amp;A</option></select>
+          <select id="pr_parse_kind" class="stage"><option value="product">Products</option><option value="objection">Objections</option><option value="qa">Q&amp;A</option><option value="knowledge">Additional knowledge</option></select>
           <span class="small muted" id="pr_parse_status"></span>
         </div>
       </div>
       <div class="card">
         <h2>Add a card</h2>
-        <div class="field"><label>Type</label><select id="pr_kind"><option value="product">Product / topic</option><option value="objection">Objection / Q&amp;A</option></select></div>
-        <div class="field"><label>Name</label><input id="pr_name" placeholder="e.g. Semaglutide, or: Too expensive" /></div>
+        <div class="field"><label>Type</label><select id="pr_kind"><option value="product">Product / topic</option><option value="objection">Objection + response</option><option value="qa">Q&amp;A</option><option value="knowledge">Additional knowledge / info</option></select></div>
+        <div class="field"><label>Name</label><input id="pr_name" placeholder="e.g. Semaglutide, Too expensive, or a topic" /></div>
         <div class="field"><label>Trigger keywords (comma separated)</label><input id="pr_keywords" placeholder="e.g. weight loss, lose weight, ozempic, semaglutide" /></div>
         <div class="field"><label>Info / response to read on the call</label><textarea id="pr_info" rows="4"></textarea></div>
         <button class="btn primary" id="pr_add">Add card</button>
@@ -445,6 +445,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=16"></script>
+  <script src="/app.js?v=17"></script>
 </body>
 </html>

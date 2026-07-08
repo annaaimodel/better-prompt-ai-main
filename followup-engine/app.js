@@ -1829,7 +1829,7 @@ async function liveStart() {
   $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;
   renderTranscript();
   acquireWakeLock();
-  Live.timer = setInterval(() => maybeCue(false), 7000);
+  Live.timer = setInterval(() => maybeCue(false), 14000);
 }
 function liveStop() {
   Live.running = false;
@@ -1857,7 +1857,7 @@ function liveStop() {
 async function maybeCue(force) {
   if (!Live.running && !force) return;
   const t = Live.transcript.trim();
-  if (!force && t.length - Live.lastCueLen < 80) return;
+  if (!force && t.length - Live.lastCueLen < 220) return;
   if (t.length < 20 || !db.settings.access) return;
   Live.lastCueLen = t.length;
   const l = Live.leadId ? db.leads.find((x) => x.id === Live.leadId) : null;
@@ -1873,6 +1873,7 @@ async function maybeCue(force) {
         assets,
         recentCues: Live.recentCues.slice(-10),
         scriptBlocks: Live.scriptBlocks,
+        cards: (db.products || []).slice(0, 40).map((p) => ({ kind: normKind(p.kind), name: p.name, info: p.info })),
       }),
     });
     const j = await r.json();
@@ -1901,7 +1902,7 @@ $("live_stop").onclick = liveStop;
 $("live_cuenow").onclick = () => maybeCue(true);
 $("live_clear").onclick = () => { $("live_cues").innerHTML = `<div class="empty small">Cues appear here as the call unfolds.</div>`; };
 $("pk_clear").onclick = () => {
-  $("pk_panel").innerHTML = `<p class="small muted">Products pop up here when you say their keyword. Manage them in the Products tab.</p>`;
+  $("pk_panel").innerHTML = `<p class="small muted">Cards pop up here when you say their keyword. Manage them in the Knowledge tab.</p>`;
   // Reset the per-keyword cooldown so a product can pop again if you say it.
   Object.keys(triggerLastShown).forEach((k) => delete triggerLastShown[k]);
 };
@@ -1909,19 +1910,32 @@ $("pk_clear").onclick = () => {
 // ---------------------------------------------------------------------------
 // Product knowledge - keyword-triggered cards during the call + management.
 // ---------------------------------------------------------------------------
+// Knowledge card kinds. Everything the whisper can use on a call.
+const CARD_KINDS = ["product", "objection", "qa", "knowledge"];
+const KIND_META = {
+  product:   { label: "Product",   sec: "Products",             cls: "",    badge: "" },
+  objection: { label: "Objection", sec: "Objections",           cls: "obj", badge: "⚠ Objection",  color: "var(--red)",       border: "#4a2a24" },
+  qa:        { label: "Q&A",       sec: "Q&A",                  cls: "qa",  badge: "Q&A",          color: "var(--blue)",      border: "#24384a" },
+  knowledge: { label: "Knowledge", sec: "Additional knowledge", cls: "kno", badge: "Knowledge",    color: "var(--gold-soft)", border: "#4a3f24" },
+};
+function normKind(k) { return CARD_KINDS.includes(k) ? k : "product"; }
+function kindBadge(k) { const m = KIND_META[k]; return m && m.badge ? ` <span class="chip" style="color:${m.color};border-color:${m.border}">${m.badge}</span>` : ""; }
+function kindOptions(sel) { return CARD_KINDS.map((k) => `<option value="${k}"${k === sel ? " selected" : ""}>${KIND_META[k].label}${k === "product" ? " / topic" : k === "objection" ? " + response" : k === "knowledge" ? " / info" : ""}</option>`).join(""); }
+
 function productCardHTML(p, active) {
-  const obj = p.kind === "objection";
-  const badge = obj ? ` <span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ Objection / Q&A</span>` : "";
-  return `<div class="sblock ${obj ? "obj " : ""}${active ? "active" : ""}"><strong>${esc(p.name || (obj ? "Objection" : "Product"))}</strong>${badge}${(p.keywords && p.keywords.length) ? ` <span class="tiny muted">(${esc(p.keywords.join(", "))})</span>` : ""}<div style="margin-top:4px">${esc(p.info || "")}</div></div>`;
+  const k = normKind(p.kind);
+  const cls = KIND_META[k].cls ? KIND_META[k].cls + " " : "";
+  return `<div class="sblock ${cls}${active ? "active" : ""}"><strong>${esc(p.name || KIND_META[k].label)}</strong>${kindBadge(k)}${(p.keywords && p.keywords.length) ? ` <span class="tiny muted">(${esc(p.keywords.join(", "))})</span>` : ""}<div style="margin-top:4px">${esc(p.info || "")}</div></div>`;
 }
 // Show ALL products tagged with a spoken keyword, grouped under that keyword.
 function showProductGroup(kw, products) {
   const panel = $("pk_panel");
   if (panel.querySelector("p")) panel.innerHTML = "";
   const wrap = document.createElement("div");
-  const allObj = products.every((p) => p.kind === "objection");
-  const noun = allObj ? "Q&A" : "card";
-  const icon = allObj ? "⚠" : "🔔";
+  const kinds = new Set(products.map((p) => normKind(p.kind)));
+  const oneKind = kinds.size === 1 ? [...kinds][0] : null;
+  const noun = oneKind && oneKind !== "product" ? KIND_META[oneKind].label : "card";
+  const icon = oneKind === "objection" ? "⚠" : "🔔";
   wrap.innerHTML = `<div class="section-title" style="margin:6px 0 4px">${icon} ${esc(kw)} - ${products.length} ${noun}${products.length > 1 ? "s" : ""}</div>` +
     products.map((p) => productCardHTML(p, true)).join("");
   panel.prepend(wrap);
@@ -1945,47 +1959,47 @@ function scanProducts(textChunk) {
 $("pk_search").addEventListener("input", (e) => {
   const q = e.target.value.trim().toLowerCase();
   const panel = $("pk_panel");
-  if (!q) { panel.innerHTML = `<p class="small muted">Products pop up here when you say their keyword.</p>`; return; }
+  if (!q) { panel.innerHTML = `<p class="small muted">Cards pop up here when you say their keyword.</p>`; return; }
   const hits = (db.products || []).filter((p) => (p.name || "").toLowerCase().includes(q) || (p.keywords || []).some((k) => k.includes(q)) || (p.info || "").toLowerCase().includes(q)).slice(0, 8);
-  panel.innerHTML = hits.length ? hits.map((p) => productCardHTML(p, false)).join("") : `<p class="small muted">No product matches "${esc(q)}".</p>`;
+  panel.innerHTML = hits.length ? hits.map((p) => productCardHTML(p, false)).join("") : `<p class="small muted">No card matches "${esc(q)}".</p>`;
 });
 
 function renderProducts() {
   const el = $("pr_list");
   const list = db.products || [];
-  const prods = list.filter((p) => p.kind !== "objection");
-  const objs = list.filter((p) => p.kind === "objection");
   const cardHTML = (p) => {
-    const obj = p.kind === "objection";
-    const badge = obj ? ` <span class="chip" style="color:var(--red);border-color:#4a2a24">⚠ Objection / Q&A</span>` : "";
+    const k = normKind(p.kind);
     return `
     <div class="card" style="margin:0 0 8px;padding:11px 13px">
-      <div class="small" style="display:flex;justify-content:space-between;gap:8px;align-items:center"><strong>${esc(p.name || (obj ? "Objection" : "Product"))}</strong>${badge}
+      <div class="small" style="display:flex;justify-content:space-between;gap:8px;align-items:center"><strong>${esc(p.name || KIND_META[k].label)}</strong>${kindBadge(k)}
         <span style="margin-left:auto"><button class="btn sm" data-predit="${p.id}">Edit</button> <button class="btn sm danger" data-prdel="${p.id}">Delete</button></span></div>
       ${(p.keywords && p.keywords.length) ? `<div class="action small">${p.keywords.map((k) => `<span class="chip">${esc(k)}</span>`).join(" ")}</div>` : ""}
       <div class="out small" style="margin-top:6px;max-height:120px;overflow:auto;white-space:pre-wrap">${esc(p.info || "")}</div>
     </div>`;
   };
   let html = "";
-  html += `<div class="section-title">Products (${prods.length})</div>` + (prods.length ? prods.map(cardHTML).join("") : `<p class="small muted">No products yet. Add one above or paste a doc to auto-fill.</p>`);
-  html += `<div class="section-title" style="margin-top:14px">Objections / Q&A (${objs.length})</div>` + (objs.length ? objs.map(cardHTML).join("") : `<p class="small muted">No objection / Q&A cards yet. Set the type when adding or parsing.</p>`);
+  CARD_KINDS.forEach((k, i) => {
+    const items = list.filter((p) => normKind(p.kind) === k);
+    html += `<div class="section-title"${i ? ' style="margin-top:14px"' : ""}>${KIND_META[k].sec} (${items.length})</div>` +
+      (items.length ? items.map(cardHTML).join("") : `<p class="small muted">No ${KIND_META[k].sec.toLowerCase()} yet. Set the type when adding or parsing.</p>`);
+  });
   el.innerHTML = html;
 }
 $("pr_add").onclick = () => {
   const name = $("pr_name").value.trim();
   const keywords = $("pr_keywords").value.split(",").map((k) => k.trim().toLowerCase()).filter(Boolean);
   const info = $("pr_info").value.trim();
-  const kind = $("pr_kind").value === "objection" ? "objection" : "product";
+  const kind = normKind($("pr_kind").value);
   if (!name && !info) { toast("Add a name or info"); return; }
   db.products.push({ id: uid(), name, keywords, info, kind }); save();
   $("pr_name").value = ""; $("pr_keywords").value = ""; $("pr_info").value = "";
-  renderProducts(); toast(kind === "objection" ? "Objection / Q&A added" : "Product added");
+  renderProducts(); toast(KIND_META[kind].label + " added");
 };
 $("pr_parse_go").onclick = async () => {
   const text = $("pr_parse_text").value.trim();
   if (text.length < 20) { toast("Paste the info first"); return; }
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
-  const kind = $("pr_parse_kind").value === "objection" ? "objection" : "product";
+  const kind = normKind($("pr_parse_kind").value);
   $("pr_parse_go").disabled = true; $("pr_parse_go").textContent = "Parsing…"; $("pr_parse_status").textContent = "";
   try {
     const r = await fetch("/api/parse-products", {
@@ -1997,9 +2011,9 @@ $("pr_parse_go").onclick = async () => {
     else {
       const added = (j.products || []).map((p) => ({ id: uid(), name: p.name || "", keywords: p.keywords || [], info: p.info || "", kind }));
       db.products.push(...added); save(); renderProducts();
-      const noun = kind === "objection" ? "Q&A cards" : "products";
-      $("pr_parse_text").value = ""; $("pr_parse_status").textContent = `Added ${added.length} ${noun} - review below`;
-      toast(`Added ${added.length} ${noun}`);
+      const noun = KIND_META[kind].sec.toLowerCase();
+      $("pr_parse_text").value = ""; $("pr_parse_status").textContent = `Added ${added.length} to ${noun} - review below`;
+      toast(`Added ${added.length} cards`);
     }
   } catch (e) { toast("Network error"); }
   $("pr_parse_go").disabled = false; $("pr_parse_go").textContent = "Parse into cards ▸";
@@ -2008,7 +2022,7 @@ function openProductEdit(id) {
   const p = (db.products || []).find((x) => x.id === id); if (!p) return;
   const bg = document.createElement("div"); bg.className = "modal-bg open";
   bg.innerHTML = `<div class="modal"><button class="close-x">&times;</button><h3>Edit card</h3>
-    <div class="field"><label>Type</label><select id="pe_kind"><option value="product"${p.kind !== "objection" ? " selected" : ""}>Product / topic</option><option value="objection"${p.kind === "objection" ? " selected" : ""}>Objection / Q&A</option></select></div>
+    <div class="field"><label>Type</label><select id="pe_kind">${kindOptions(normKind(p.kind))}</select></div>
     <div class="field"><label>Name</label><input id="pe_name" value="${esc(p.name)}" /></div>
     <div class="field"><label>Trigger keywords (comma separated)</label><input id="pe_keywords" value="${esc((p.keywords || []).join(", "))}" /></div>
     <div class="field"><label>Info / response</label><textarea id="pe_info" rows="5">${esc(p.info)}</textarea></div>
@@ -2020,7 +2034,7 @@ function openProductEdit(id) {
     p.name = bg.querySelector("#pe_name").value.trim();
     p.keywords = bg.querySelector("#pe_keywords").value.split(",").map((k) => k.trim().toLowerCase()).filter(Boolean);
     p.info = bg.querySelector("#pe_info").value.trim();
-    p.kind = bg.querySelector("#pe_kind").value === "objection" ? "objection" : "product";
+    p.kind = normKind(bg.querySelector("#pe_kind").value);
     save(); close(); renderProducts(); toast("Saved");
   };
 }

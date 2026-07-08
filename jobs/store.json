@@ -20502,5 +20502,21 @@
   "first_seen": "2026-07-08",
   "last_seen": "2026-07-08",
   "active": false
+ },
+ "985907cded7b0dec": {
+  "title": "Customer Success Engineer",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/algolia/jobs/customer-success-engineer",
+  "source": "Himalayas",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-08",
+  "last_seen": "2026-07-08",
+  "active": true
  }
 }

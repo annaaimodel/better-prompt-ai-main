@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Cadence - Follow-Up Engine</title>
-  <link rel="stylesheet" href="/styles.css?v=17" />
+  <link rel="stylesheet" href="/styles.css?v=18" />
 </head>
 <body>
   <div class="app">
@@ -114,6 +114,10 @@
         </div>
         <div class="kbar" style="margin-top:8px"><input id="pk_search" placeholder="Search your knowledge base to pull a card up manually..." /></div>
         <div id="pk_panel" class="script-live"><p class="small muted">Cards pop up here when you say their keyword. Manage them in the Knowledge tab.</p></div>
+      </div>
+      <div class="card">
+        <h2>Medications mentioned</h2>
+        <div id="live_meds" style="display:flex;flex-wrap:wrap;gap:6px"><span class="small muted">Medications the prospect mentions will be noted here (doctor owns all medication decisions).</span></div>
       </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center">
@@ -445,6 +449,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=17"></script>
+  <script src="/app.js?v=18"></script>
 </body>
 </html>

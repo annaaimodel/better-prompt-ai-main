@@ -19,8 +19,8 @@ const SYSTEM =
 `You are a calm LIVE sales-call copilot whispering to a closer DURING the call. You read a rolling transcript (rep and prospect mixed, newest at the end) and, only when it genuinely helps, output a SHORT cue the rep can glance at. Less is more.
 
 You do exactly three jobs, nothing else:
-1. QUESTION NUDGES - suggest the next good question to ask (surface their real problem/goal, let them conclude).
-2. SHARE KNOWLEDGE - when the prospect raises a topic, need, objection, or question that a KNOWLEDGE BASE card or the offer covers, surface that fact/answer so the rep can say it.
+1. SHARE KNOWLEDGE (your most valuable job) - the moment the prospect mentions a condition, symptom, need, question, doubt, or objection that any KNOWLEDGE BASE card (product, objection, Q&A, or knowledge) or the offer covers, fire a short cue with the matching fact or answer so the rep can say it. Do this proactively, this is the main reason you exist. Pull the specific card content, do not be vague.
+2. QUESTION NUDGES - suggest the next good question to ask (surface their real problem/goal, let them conclude).
 3. NEXT STEP - when it's time, a short move toward the booking/next step (keep any [BRACKETS]).
 
 Cue types: "ask" (a question to ask), "value" (a fact, offer detail, proof, or knowledge-base answer to share), "objection" (the answer/approach for an objection they raised, from the knowledge base or method), "book" (next step).
@@ -40,7 +40,9 @@ NEVER DO:
 
 SCRIPT FOLLOWING: if numbered SCRIPT BLOCKS are provided, work out which block the rep should be on RIGHT NOW and return its number as "scriptIndex" (0-based), plus a one-line "scriptNote" (e.g. "Move to discovery", "They raised price, handle it here"). If no script is provided, set scriptIndex to null and scriptNote to "".
 
-Return ONLY a JSON object: {"cues":[{"type":"ask|value|objection|book","text":"<short line>"}],"scriptIndex":<number or null>,"scriptNote":"<short or empty>"}. No markdown, no prose.`;
+MEDICATIONS: also return "meds", a list of the names of any medications, prescriptions, or drugs the PROSPECT mentions they take (brand or generic, e.g. metformin, lisinopril, insulin, Ozempic, warfarin). Names only, no dosages or advice. Do NOT include the supplements being sold. Empty list if none mentioned.
+
+Return ONLY a JSON object: {"cues":[{"type":"ask|value|objection|book","text":"<short line>"}],"scriptIndex":<number or null>,"scriptNote":"<short or empty>","meds":["..."]}. No markdown, no prose.`;
 
 function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
 
@@ -97,7 +99,7 @@ export default async function handler(req, res) {
 
   const blocks = Array.isArray(body.scriptBlocks) ? body.scriptBlocks.slice(0, 60).map((b, i) => `[${i}] ${clip(b, 400)}`) : [];
   const scriptText = blocks.length ? `\n\nSCRIPT BLOCKS (the rep's plan, numbered):\n${blocks.join("\n")}` : "";
-  const userText = `${buildContext(body)}${scriptText}\n\nLIVE TRANSCRIPT (newest at the end):\n${transcript}\n\nGive the 1-3 most useful cues right now (or an empty list if nothing new)${blocks.length ? ", plus the current scriptIndex and a short scriptNote" : ""}.`;
+  const userText = `${buildContext(body)}${scriptText}\n\nLIVE TRANSCRIPT (newest at the end):\n${transcript}\n\nGive the single most useful cue right now (prefer an empty list if nothing new, especially any knowledge-base fact or answer that fits what they just said)${blocks.length ? ", plus the current scriptIndex and a short scriptNote" : ""}. Also return any medications the prospect mentioned.`;
 
   try {
     const msg = await client.messages.create({
@@ -114,7 +116,8 @@ export default async function handler(req, res) {
       ? stripOutreachCues(parsed.cues.slice(0, 4).map((x) => ({ type: clip(x.type, 20).toLowerCase() || "ask", text: clip(x.text, 200) })).filter((x) => x.text)).slice(0, 3)
       : [];
     const scriptIndex = (typeof parsed.scriptIndex === "number" && parsed.scriptIndex >= 0) ? Math.floor(parsed.scriptIndex) : null;
-    res.status(200).json({ cues, scriptIndex, scriptNote: clip(parsed.scriptNote, 160), usage: msg.usage });
+    const meds = Array.isArray(parsed.meds) ? parsed.meds.slice(0, 20).map((x) => clip(x, 60).trim()).filter(Boolean) : [];
+    res.status(200).json({ cues, scriptIndex, scriptNote: clip(parsed.scriptNote, 160), meds, usage: msg.usage });
   } catch (e) {
     res.status(e?.status || 500).json({ error: e?.message || "Cue failed." });
   }

@@ -1532,7 +1532,7 @@ $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.tar
 // Live call copilot - listens via the browser mic, whispers cues from /api/cue.
 // ---------------------------------------------------------------------------
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false, dg: null };
+const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false, dg: null, meds: [] };
 function splitScript(text) { return String(text || "").split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean); }
 function updateScriptControls() {
   $("sc_pos").textContent = Live.scriptBlocks.length ? `Section ${Math.max(1, Live.scriptIdx + 1)} / ${Live.scriptBlocks.length}` : "";
@@ -1804,7 +1804,7 @@ async function liveStart() {
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
   if ($("live_headset").checked) { const ok = await startProspectCapture(); if (!ok) return; }
   Live.leadId = $("live_lead").value;
-  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0;
+  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0; Live.meds = []; renderMeds();
   Live.scriptBlocks = splitScript($("sc_text").value); Live.scriptIdx = -1; Live.scriptManual = false;
   $("live_cues").innerHTML = "";
   if (Live.scriptBlocks.length) { $("sc_editor").style.display = "none"; $("sc_live").style.display = "block"; $("sc_controls").style.display = "flex"; renderScriptLive(-1); }
@@ -1845,8 +1845,10 @@ function liveStop() {
     const l = db.leads.find((x) => x.id === Live.leadId);
     if (l) {
       l._lastTranscript = full.slice(0, 20000);
+      if (Live.meds.length) l.meds = [...Live.meds];
       l.touches = l.touches || [];
-      l.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: "Live call", summary: "Live call - transcript saved (" + full.length + " chars)" });
+      const medsNote = Live.meds.length ? " Meds noted: " + Live.meds.join(", ") + "." : "";
+      l.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: "Live call", summary: "Live call - transcript saved (" + full.length + " chars)." + medsNote });
       save();
       $("live_status").innerHTML = `Stopped. Transcript saved to ${esc(l.name || "lead")}. <a href="#" id="live_mask">Run Mask Read ▸</a>`;
       const ml = $("live_mask");
@@ -1878,6 +1880,7 @@ async function maybeCue(force) {
     });
     const j = await r.json();
     if (j.cues && j.cues.length) renderCues(j.cues);
+    if (Array.isArray(j.meds) && j.meds.length) addMeds(j.meds);
     if (!Live.scriptManual && Live.scriptBlocks.length && typeof j.scriptIndex === "number" && j.scriptIndex >= 0 && j.scriptIndex < Live.scriptBlocks.length) {
       Live.scriptIdx = j.scriptIndex; renderScriptLive(Live.scriptIdx);
     }
@@ -1896,6 +1899,21 @@ function renderCues(cues) {
   });
   while (box.children.length > 12) box.removeChild(box.lastChild);
   if (Live.recentCues.length > 30) Live.recentCues = Live.recentCues.slice(-20);
+}
+// Medications the prospect mentions, accumulated across the call (deduped).
+function addMeds(names) {
+  let changed = false;
+  names.forEach((n) => {
+    const name = String(n || "").trim();
+    if (name && !Live.meds.some((m) => m.toLowerCase() === name.toLowerCase())) { Live.meds.push(name); changed = true; }
+  });
+  if (changed) renderMeds();
+}
+function renderMeds() {
+  const el = $("live_meds"); if (!el) return;
+  el.innerHTML = Live.meds.length
+    ? Live.meds.map((m) => `<span class="chip" style="color:var(--red);border-color:#4a2a24">💊 ${esc(m)}</span>`).join(" ")
+    : `<span class="small muted">Medications the prospect mentions will be noted here (doctor owns all medication decisions).</span>`;
 }
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;

@@ -21333,7 +21333,7 @@
   "tier": "",
   "first_seen": "2026-07-12",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "aa37b351508e6b84": {
   "title": "Sr Growth Account Executive",
@@ -21349,6 +21349,6 @@
   "tier": "",
   "first_seen": "2026-07-12",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  }
 }

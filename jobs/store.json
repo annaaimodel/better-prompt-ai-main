@@ -21317,6 +21317,38 @@
   "tier": "",
   "first_seen": "2026-07-12",
   "last_seen": "2026-07-12",
+  "active": false
+ },
+ "954602f69d716d13": {
+  "title": "Sales Director",
+  "company": "KNOREX",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/knorex/jobs/sales-director",
+  "source": "Himalayas",
+  "category": "Setter / SDR",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-12",
+  "last_seen": "2026-07-12",
+  "active": true
+ },
+ "aa37b351508e6b84": {
+  "title": "Sr Growth Account Executive",
+  "company": "Skillsoft",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/skillsoft/jobs/sr-growth-account-executive",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-12",
+  "last_seen": "2026-07-12",
   "active": true
  }
 }

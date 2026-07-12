@@ -69,7 +69,9 @@ header.top {
     -webkit-backdrop-filter: saturate(160%) blur(14px);
   }
 }
-.brand { display: flex; align-items: baseline; gap: 11px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brandmark { display: block; flex: 0 0 auto; border-radius: 9px; box-shadow: 0 4px 14px rgba(224, 189, 118, .25); }
+.brandtext { display: flex; flex-direction: column; gap: 2px; line-height: 1.15; }
 .brand h1 { font-size: 21px; margin: 0; font-weight: 700; letter-spacing: -.02em; }
 .brand .dot { color: var(--gold); }
 .brand .tag { color: var(--muted); font-size: 12px; letter-spacing: .01em; }

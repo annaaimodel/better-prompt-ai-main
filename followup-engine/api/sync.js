@@ -50,7 +50,7 @@ export default async function handler(req, res) {
   if (!process.env.ACCESS_CODE) { res.status(503).json({ error: "Not configured: set ACCESS_CODE in Vercel." }); return; }
   const body = req.method === "POST" ? (req.body || {}) : {};
   const code = req.headers["x-access-code"] || body.access_code || "";
-  if (code !== process.env.ACCESS_CODE) { res.status(401).json({ error: "Invalid access code." }); return; }
+  if (!String(process.env.ACCESS_CODE || "").split(",").map((s) => s.trim()).filter(Boolean).includes(code)) { res.status(401).json({ error: "Invalid access code." }); return; }
   if (!KV_URL || !KV_TOKEN) { res.status(503).json({ error: "Sync store not configured. Add a KV store in Vercel to enable cross-device sync." }); return; }
 
   const key = keyFor(code);

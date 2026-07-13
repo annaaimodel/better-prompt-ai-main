@@ -1931,7 +1931,7 @@ function addMeds(names) {
   let changed = false;
   names.forEach((n) => {
     const name = String(n || "").trim();
-    if (name && !Live.meds.some((m) => m.toLowerCase() === name.toLowerCase())) { Live.meds.push(name); changed = true; lookupMed(name); }
+    if (name && !Live.meds.some((m) => m.toLowerCase() === name.toLowerCase())) { Live.meds.push(name); changed = true; showMedCue(name); lookupMed(name); }
   });
   if (changed) renderMeds();
 }
@@ -1939,7 +1939,7 @@ function addMeds(names) {
 async function lookupMed(name) {
   const key = name.toLowerCase();
   if (Live.medInfo[key]) return;
-  if (!db.settings.access) { Live.medInfo[key] = { state: "noaccess" }; renderMeds(); return; }
+  if (!db.settings.access) { Live.medInfo[key] = { state: "noaccess" }; renderMeds(); showMedCue(name); return; }
   Live.medInfo[key] = { state: "loading" }; renderMeds();
   try {
     const r = await fetch("/api/med", {
@@ -1957,23 +1957,40 @@ async function lookupMed(name) {
     }
   } catch (e) { Live.medInfo[key] = { state: "error" }; }
   renderMeds();
-  pushMedCue(name, Live.medInfo[key]);
+  showMedCue(name); // enrich the instant cue in place with the details
 }
-// Pop a medication into the Whispers panel so it's visible live, once per med.
-function pushMedCue(name, info) {
-  if (!info || info.cued) return;
-  info.cued = true;
+// The whisper line for a medication, given whatever we know so far.
+function medCueText(name, info) {
   let text = `💊 ${name}`;
-  if (info.state === "ok" && info.recognized !== false) {
+  const st = info && info.state;
+  if (st === "ok" && info.recognized !== false) {
     if (info.uses) text += ` (${info.uses})`;
     const se = (info.sideEffects || []).slice(0, 3).join(", ");
     const rk = (info.risks || []).slice(0, 3).join("; ");
     if (se) text += ` - side effects: ${se}`;
     if (rk) text += `. Risks: ${rk}`;
-  } else if (info.recognized === false) {
+  } else if (info && info.recognized === false) {
     text += " - mentioned (not a recognised medication)";
+  } else if (st === "error" || st === "noaccess") {
+    text += " - mentioned";
+  } else {
+    text += " - looking up side effects…";
   }
-  renderCues([{ type: "med", text }]);
+  return text;
+}
+// Pop a medication into Whispers instantly, and update that same cue in place
+// once the lookup returns (no waiting, no duplicate).
+function showMedCue(name) {
+  const box = $("live_cues"); if (!box) return;
+  if (box.querySelector(".empty")) box.innerHTML = "";
+  const key = name.toLowerCase();
+  const html = `<span class="cue-type">med</span>${esc(medCueText(name, Live.medInfo[key]))}`;
+  let el = [...box.querySelectorAll(".cue.med")].find((e) => e.dataset.med === key);
+  if (el) { el.innerHTML = html; return; }
+  el = document.createElement("div");
+  el.className = "cue med"; el.dataset.med = key; el.innerHTML = html;
+  box.prepend(el);
+  while (box.children.length > 12) box.removeChild(box.lastChild);
 }
 function renderMeds() {
   const el = $("live_meds"); if (!el) return;

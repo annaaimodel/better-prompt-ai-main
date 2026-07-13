@@ -67,17 +67,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Charlotte, NC",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-571547146953411006",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-13",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -205,7 +205,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-13",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -238,7 +238,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-13",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -289,7 +289,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-13",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -485,7 +485,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-13",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -502,7 +502,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-13",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1359,7 +1359,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-13",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -3398,7 +3398,7 @@
   "company": "Curvion Blue",
   "location": "Barton, South Canberra",
   "comp": "",
-  "link": "https://www.adzuna.com.au/land/ad/5769923810?se=TEEB8U9-8RGrrswnwXSlXw&utm_medium=api&utm_source=3e941a8f&v=B5A204F637C070F53AB943FA40D8CCC01BF6E4B2",
+  "link": "https://www.adzuna.com.au/details/5769923810?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -3966,7 +3966,7 @@
   "company": "The People Pod",
   "location": "Manchester, Greater Manchester",
   "comp": "$100000-$100000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=HIRb409-8RG9QpwdThZ74Q&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=AAJ1YsN-8RGfuPZ_H4hNCg&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -8643,7 +8643,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-13",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8659,7 +8659,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-13",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -11506,14 +11506,14 @@
   "company": "Tony Robbins RPM",
   "location": "Gilbert, Maricopa County",
   "comp": "$41014-$41014",
-  "link": "https://www.adzuna.com/land/ad/5763196504?se=UNogTFV18RGJrp8MYb30BQ&utm_medium=api&utm_source=3e941a8f&v=3E5CECE83470D908FBEE4E981D7F607FB9F5C73D",
+  "link": "https://www.adzuna.com/land/ad/5798502124?se=1lRJR8N-8RGUz5ES-7gh4g&utm_medium=api&utm_source=3e941a8f&v=21520C50730E2418C6F911F733978D75F29BA921",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
   "lead_type": "",
   "first_seen": "2026-06-14",
-  "last_seen": "2026-07-01",
-  "active": false,
+  "last_seen": "2026-07-13",
+  "active": true,
   "inbox": false,
   "tier": ""
  },
@@ -11536,14 +11536,14 @@
   "company": "Rushing Roofing & Contracting LLC",
   "location": "Richardson, Dallas",
   "comp": "$112759-$112759",
-  "link": "https://www.adzuna.com/land/ad/5796502354?se=2jygpoZ98RGFO9Trx9AKkA&utm_medium=api&utm_source=3e941a8f&v=52BE68B5B6A98F999AB52A5F2BBD9F4F808D5D7D",
+  "link": "https://www.adzuna.com/land/ad/5796502354?se=wF2PSsN-8RGfuPZ_H4hNCg&utm_medium=api&utm_source=3e941a8f&v=52BE68B5B6A98F999AB52A5F2BBD9F4F808D5D7D",
   "source": "Adzuna",
   "category": "Setter — Phone Setting",
   "country": "United States",
   "lead_type": "Cold",
   "first_seen": "2026-06-14",
-  "last_seen": "2026-07-12",
-  "active": false,
+  "last_seen": "2026-07-13",
+  "active": true,
   "inbox": false,
   "tier": ""
  },
@@ -13283,7 +13283,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "6b656e7f656b21f1": {
   "title": "Remote Virtual Assistant",
@@ -13347,7 +13347,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "8811bc462d922d62": {
   "title": "Real Estate Virtual Assistant (US)",
@@ -13411,7 +13411,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "4c963677649ea6cf": {
   "title": "Canadian Real Estate Virtual Assistant",
@@ -13448,18 +13448,18 @@
  "db5ae6d6de4f29a4": {
   "title": "Virtual Assistant",
   "company": "NorthPoint Search Group",
-  "location": "Atlanta, GA",
+  "location": "Remote",
   "comp": "",
-  "link": "https://jooble.org/jdp/3879161154680980295",
+  "link": "https://jooble.org/jdp/6439790274368231425",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-08",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "46d5fbd58be3479d": {
   "title": "Virtual Assistant (Dental Office and Open Dental Experience Required)",
@@ -14563,7 +14563,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "7e58821d3595c4b2": {
   "title": "Remote High-Ticket Closer: Inbound Leads & High Earnings",
@@ -14666,7 +14666,7 @@
   "company": "Theinvestorsedge",
   "location": "Saint Louis, MO",
   "comp": "$36k",
-  "link": "https://jooble.org/jdp/-6433962643897924025",
+  "link": "https://jooble.org/jdp/-2964683408945150437",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -14947,7 +14947,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "74d5af1aa5663cae": {
   "title": "(Remote) - Virtual Assistant - 18.00 - 21.00/hour at NoGigiddy Chicago, IL",
@@ -14963,7 +14963,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "ec22b574b9b6b3ff": {
   "title": "Remote Virtual Assistant for Admin & Productivity",
@@ -14979,7 +14979,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "bd7630aeba82e123": {
   "title": "Virtual Assistant ARG (Remote)",
@@ -15707,7 +15707,7 @@
   "company": "Freedom Digital Co",
   "location": "Bundall, Gold Coast",
   "comp": "",
-  "link": "https://www.adzuna.com.au/land/ad/5768643215?se=hOh2W_p98RG1-IwfRWwy_Q&utm_medium=api&utm_source=3e941a8f&v=C03A1214965258099744102CC9A0146F0148FF9B",
+  "link": "https://www.adzuna.com.au/details/5768643215?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "Australia",
@@ -15715,8 +15715,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-19",
-  "last_seen": "2026-07-12",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "febc4f93256ed55c": {
   "title": "Remote Inbound High-Ticket TV Sales Closer",
@@ -16276,7 +16276,7 @@
   "tier": "",
   "first_seen": "2026-06-22",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "e9b7318a03d4b47c": {
   "title": "Remote Elite High-Ticket B2B Closer — $20K-$40K/Month",
@@ -16667,7 +16667,7 @@
   "company": "7FigureLaw, LLC",
   "location": "Barton, South Canberra",
   "comp": "",
-  "link": "https://www.adzuna.com.au/land/ad/5773124756?se=_JJxn7188RG1-IwfRWwy_Q&utm_medium=api&utm_source=3e941a8f&v=644DE851B2CAF25B67AA1EFE839F96A787457CE2",
+  "link": "https://www.adzuna.com.au/details/5773124756?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "Australia",
@@ -16675,15 +16675,15 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-11",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "370aba4db0b268de": {
   "title": "High Ticket Remote Sales Closer | Australia",
   "company": "7FigureLaw, LLC",
   "location": "Barton, South Canberra",
   "comp": "",
-  "link": "https://www.adzuna.com.au/land/ad/5774129341?se=TEEB8U9-8RGrrswnwXSlXw&utm_medium=api&utm_source=3e941a8f&v=BDDB5B6563C6474385B5FFCE6678109CF085DB54",
+  "link": "https://www.adzuna.com.au/details/5774129341?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "Australia",
@@ -16964,7 +16964,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "7de9e5de9eb9f7bd": {
   "title": "Remote Real Estate Virtual Assistant - Listings & Admin",
@@ -16980,7 +16980,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "2575e3f9735751c2": {
   "title": "Remote Legal Virtual Assistant | Admin & Scheduling Pro",
@@ -17012,7 +17012,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "34bec4f4132b6b54": {
   "title": "Real Estate Virtual Assistant",
@@ -17028,7 +17028,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "72f0bb24b43376fc": {
   "title": "Sales Development Representative - SDR",
@@ -17321,9 +17321,9 @@
  "5150fe0fad2c37ba": {
   "title": "Senior High-Ticket Closer for Remote Growth Consulting",
   "company": "Curvion Blue",
-  "location": "Charlotte, NC",
+  "location": "Boise, ID",
   "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/-3009031377704349868",
+  "link": "https://jooble.org/jdp/4386122744690963266",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -17444,7 +17444,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "c42ba3c9f09f7236": {
   "title": "Travel & Tourism Virtual Assistant - WFH",
@@ -17508,7 +17508,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "7a6112cdc1bdec18": {
   "title": "Part-Time Virtual Assistant (Roofing Operations & Customer Service)",
@@ -17556,7 +17556,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "74af105fecb22e7a": {
   "title": "Simple Virtual Assistants (Only US)",
@@ -17572,7 +17572,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "ee2d0ce3975d8fce": {
   "title": "CPT-11095 Part-Time Virtual Assistant (Administrative, Social Media & Grant Supp",
@@ -18154,10 +18154,10 @@
  "c353b591704c4ea0": {
   "title": "Customer Success Manager",
   "company": "Simplex",
-  "location": "Austin, TX",
-  "comp": "$100k - $140k",
-  "link": "https://jooble.org/jdp/-7203593751189264833",
-  "source": "Jooble",
+  "location": "Austin, Travis County",
+  "comp": "$143980-$143980",
+  "link": "https://www.adzuna.com/land/ad/5779798536?se=ynmXU8N-8RGUz5ES-7gh4g&utm_medium=api&utm_source=3e941a8f&v=486A3B60B6E35959D8E58B71073B2EE07D42139B",
+  "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
   "lead_type": "",
@@ -18316,7 +18316,7 @@
   "company": "Curvion Blue",
   "location": "Boston, Suffolk County",
   "comp": "$71091-$71091",
-  "link": "https://www.adzuna.com/land/ad/5780797468?se=SqEBMspz8RG5B_ZD6wKS8Q&utm_medium=api&utm_source=3e941a8f&v=40276A4B5AA7C89F739F8135D924616ED621FC76",
+  "link": "https://www.adzuna.com/land/ad/5780797468?se=XPPIXMN-8RGJvOn3FPIDyg&utm_medium=api&utm_source=3e941a8f&v=40276A4B5AA7C89F739F8135D924616ED621FC76",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
@@ -18324,8 +18324,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-29",
-  "last_seen": "2026-06-29",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "5af6942f1c8a96e3": {
   "title": "Senior High-Ticket Closer - Growth Consulting (Remote)",
@@ -18682,18 +18682,18 @@
  "fc54152d1e310acf": {
   "title": "Executive Virtual Assistant",
   "company": "Hire Hangar",
-  "location": "United States",
-  "comp": "",
-  "link": "https://jooble.org/jdp/5115432191048141755",
+  "location": "Remote",
+  "comp": "$800 - $2,000 per month",
+  "link": "https://jooble.org/jdp/-106452533360135692",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-30",
-  "last_seen": "2026-07-04",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "5e163e26112900d8": {
   "title": "A-Team Sales Closers - Remote USA Only",
@@ -19109,7 +19109,7 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "a6b751aaf5443ac4": {
   "title": "Virtual Assistant NI (Remote)",
@@ -20341,7 +20341,7 @@
   "tier": "",
   "first_seen": "2026-07-08",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "b43e80abc939580f": {
   "title": "Remote Virtual Assistant (AR / Collections Support) [Remote India]",
@@ -20602,18 +20602,18 @@
  "c3856ec3ed97b74b": {
   "title": "Virtual Assistant",
   "company": "Jobs for Humanity",
-  "location": "Kansas City, KS",
-  "comp": "",
-  "link": "https://jooble.org/jdp/7883668280301805537",
+  "location": "Remote",
+  "comp": "$20.55 - $28.55 per hour",
+  "link": "https://jooble.org/jdp/-2250562040382224986",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-08",
-  "last_seen": "2026-07-08",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "24047ffd2af7ed3e": {
   "title": "Remote Virtual Assistant: Admin Pro for Productivity",
@@ -20629,7 +20629,7 @@
   "tier": "",
   "first_seen": "2026-07-08",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "7ad3c5853d294365": {
   "title": "Account Executive- Auto",
@@ -20981,7 +20981,7 @@
   "tier": "",
   "first_seen": "2026-07-10",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "e28668b1be1c8eac": {
   "title": "Sr. Customer Success Manager - Remote",
@@ -21068,7 +21068,7 @@
   "company": "Presidio",
   "location": "US",
   "comp": "$184020-$184020",
-  "link": "https://www.adzuna.com/land/ad/5795942329?se=LDsh3k9-8RGTid5naCdrtg&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
+  "link": "https://www.adzuna.com/land/ad/5795942329?se=ynmXU8N-8RGUz5ES-7gh4g&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -21093,7 +21093,7 @@
   "tier": "",
   "first_seen": "2026-07-11",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "6130d35dc8080237": {
   "title": "Remote Virtual Assistant for Admin & Scheduling",
@@ -21109,7 +21109,7 @@
   "tier": "",
   "first_seen": "2026-07-11",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "f15d4b1b2d191557": {
   "title": "DM Setter and Phone Setter",
@@ -21124,8 +21124,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-11",
-  "last_seen": "2026-07-11",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "e23b6e26a47c576f": {
   "title": "Solution Engineer - Nexus Black",
@@ -21397,7 +21397,7 @@
   "tier": "",
   "first_seen": "2026-07-13",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "a6abb56f82d9af4c": {
   "title": "Virtual Assistant - Need to Comment on videos Any Posted on 2026-07-12 01:29:10 1-2/hr",
@@ -21413,7 +21413,7 @@
   "tier": "",
   "first_seen": "2026-07-13",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "68625f9b711a1dd1": {
   "title": "Virtual Assistant - Contract to Hire",
@@ -21429,7 +21429,7 @@
   "tier": "",
   "first_seen": "2026-07-13",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "38f66c7f5bc42cf2": {
   "title": "US‑Based Virtual Assistant for Ongoing Client Support (Long-Term) - Contract to Hire",
@@ -21445,7 +21445,7 @@
   "tier": "",
   "first_seen": "2026-07-13",
   "last_seen": "2026-07-13",
-  "active": true
+  "active": false
  },
  "7366425f92863207": {
   "title": "Loan Processor Support VA",
@@ -21488,6 +21488,278 @@
   "source": "RemoteOK",
   "category": "VA / Social / Chat",
   "country": "Other",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "6514d5b85ef4788c": {
+  "title": "Enterprise Customer Success Manager",
+  "company": "Transcend",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/transcend/jobs/enterprise-customer-success-manager",
+  "source": "Himalayas",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "28518c84441039cf": {
+  "title": "Senior Product Builder (Product Manager), Enterprise Readiness & Admin Platform",
+  "company": "Apollo",
+  "location": "Canada, United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/apollo/jobs/senior-product-builder-product-manager-enterprise-readiness-admin-platform",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "Canada",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "81a93e3163f288a2": {
+  "title": "Virtual Assistant - REMOTE",
+  "company": "Qureos Inc",
+  "location": "Los Angeles, Los Angeles County",
+  "comp": "$46121-$46121",
+  "link": "https://www.adzuna.com/details/5797911948?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Social / Chat",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "e80583c4a97e215f": {
+  "title": "Virtual Assistant",
+  "company": "Onramp Lab",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/8023937911568493942",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "4d76a1901259befe": {
+  "title": "Virtual Assistant",
+  "company": "Friendly Faces Senior Care",
+  "location": "Remote",
+  "comp": "$7 per hour",
+  "link": "https://jooble.org/jdp/5266080155079902444",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "d46d9c154e7e234b": {
+  "title": "Virtual Assistant",
+  "company": "MCI Careers",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/6728246339217430161",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "933318d58235dc4b": {
+  "title": "Virtual Assistant",
+  "company": "Pavago",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/5388462940595971368",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "5dcf1ec750742a56": {
+  "title": "Virtual Assistant",
+  "company": "Global",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/7397703056290913649",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "0e3807ba2ba6c908": {
+  "title": "Virtual Assistant",
+  "company": "Infinity Business Services",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/-5026755999897907430",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "a97cb2258d0064d8": {
+  "title": "Virtual Assistant",
+  "company": "Texas Sports Academy Main",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/5733578503768521797",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "c9b691888067bba7": {
+  "title": "Virtual Assistant",
+  "company": "AlphaHire",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/7874514502305255884",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "a7f2bf316bba8a07": {
+  "title": "Virtual Assistant",
+  "company": "FullPond",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/5274621885130074822",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "17ff9fedf49fcd27": {
+  "title": "Executive Virtual Assistant",
+  "company": "Changing Lives Productions LLC",
+  "location": "Remote",
+  "comp": "$12 - $15 per hour",
+  "link": "https://jooble.org/jdp/-4268142017725906942",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "fce80ac8235b5b4e": {
+  "title": "Administrative Assistant/Virtual Assistant",
+  "company": "Beyond HR, LLC",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/3862414901366017537",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "165966bd01734098": {
+  "title": "Virtual Assistant (Operations, Billing & Client Support)",
+  "company": "Prime System Solutions",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/4794893764752300550",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "843bdcd92626485e": {
+  "title": "Executive Virtual Assistant",
+  "company": "Hire Overseas",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jooble.org/jdp/-2924545382596955752",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "7e932f3d9a800037": {
+  "title": "Virtual Assistant - CRM & Administrative Support",
+  "company": "Crukus Virtual Staffing",
+  "location": "Remote",
+  "comp": "$300 per month",
+  "link": "https://jooble.org/jdp/7383776705142672895",
+  "source": "Jooble",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",

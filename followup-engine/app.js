@@ -828,10 +828,11 @@ function openDetail(id) {
         <p class="help" style="margin:-4px 0 8px">For your awareness and the health advisor. Not medical advice - the doctor is the authority.</p>
         ${l.meds.map((m) => {
           const name = typeof m === "string" ? m : (m.name || "");
+          const uses = (typeof m === "object" && m.uses) || "";
           const se = (typeof m === "object" && m.sideEffects || []).join(", ");
           const rk = (typeof m === "object" && m.risks || []).join("; ");
           const cls = (typeof m === "object" && [m.generic && m.generic.toLowerCase() !== name.toLowerCase() ? m.generic : "", m.class].filter(Boolean).join(" · ")) || "";
-          return `<div class="medcard"><div class="medcard-h">💊 ${esc(name)}${cls ? ` <span class="tiny muted">${esc(cls)}</span>` : ""}</div>${se ? `<div class="small"><span class="medlabel">Side effects</span> ${esc(se)}</div>` : ""}${rk ? `<div class="small"><span class="medlabel medlabel-risk">Risks</span> ${esc(rk)}</div>` : ""}</div>`;
+          return `<div class="medcard"><div class="medcard-h">💊 ${esc(name)}${cls ? ` <span class="tiny muted">${esc(cls)}</span>` : ""}</div>${uses ? `<div class="small"><span class="medlabel medlabel-use">Used for</span> ${esc(uses)}</div>` : ""}${se ? `<div class="small"><span class="medlabel">Side effects</span> ${esc(se)}</div>` : ""}${rk ? `<div class="small"><span class="medlabel medlabel-risk">Risks</span> ${esc(rk)}</div>` : ""}</div>`;
         }).join("")}` : ""}
       <div class="section-title">Saved drafts &amp; plans (${(l.saved || []).length})</div>
       ${(l.saved || []).length ? (l.saved || []).map((s) => `
@@ -1821,7 +1822,7 @@ async function liveStart() {
       const name = typeof m === "string" ? m : (m && m.name);
       if (!name || Live.meds.some((x) => x.toLowerCase() === name.toLowerCase())) return;
       Live.meds.push(name);
-      if (typeof m === "object") Live.medInfo[name.toLowerCase()] = { state: "ok", cued: true, recognized: true, generic: m.generic || "", class: m.class || "", sideEffects: m.sideEffects || [], risks: m.risks || [] };
+      if (typeof m === "object") Live.medInfo[name.toLowerCase()] = { state: "ok", cued: true, recognized: true, generic: m.generic || "", class: m.class || "", uses: m.uses || "", sideEffects: m.sideEffects || [], risks: m.risks || [] };
     });
   }
   renderMeds();
@@ -1867,7 +1868,7 @@ function liveStop() {
       l._lastTranscript = full.slice(0, 20000);
       if (Live.meds.length) l.meds = Live.meds.map((m) => {
         const info = Live.medInfo[m.toLowerCase()] || {};
-        return { name: m, generic: info.generic || "", class: info.class || "", sideEffects: info.sideEffects || [], risks: info.risks || [] };
+        return { name: m, generic: info.generic || "", class: info.class || "", uses: info.uses || "", sideEffects: info.sideEffects || [], risks: info.risks || [] };
       });
       l.touches = l.touches || [];
       const medsNote = Live.meds.length ? " Meds noted: " + Live.meds.join(", ") + "." : "";
@@ -1955,6 +1956,7 @@ function pushMedCue(name, info) {
   info.cued = true;
   let text = `💊 ${name}`;
   if (info.state === "ok" && info.recognized !== false) {
+    if (info.uses) text += ` (${info.uses})`;
     const se = (info.sideEffects || []).slice(0, 3).join(", ");
     const rk = (info.risks || []).slice(0, 3).join("; ");
     if (se) text += ` - side effects: ${se}`;
@@ -1981,6 +1983,7 @@ function renderMeds() {
       else if (info.state === "error") body = `<div class="small muted">Could not look this up.</div>`;
       else if (info.recognized === false) body = `<div class="small muted">Not recognised as a medication - noted anyway.</div>`;
       else body =
+        (info.uses ? `<div class="small"><span class="medlabel medlabel-use">Used for</span> ${esc(info.uses)}</div>` : "") +
         (info.sideEffects && info.sideEffects.length ? `<div class="small"><span class="medlabel">Side effects</span> ${esc(info.sideEffects.join(", "))}</div>` : "") +
         (info.risks && info.risks.length ? `<div class="small"><span class="medlabel medlabel-risk">Risks</span> ${esc(info.risks.join("; "))}</div>` : "");
       return `<div class="medcard"><div class="medcard-h">💊 ${esc(m)}${sub}</div>${body}</div>`;

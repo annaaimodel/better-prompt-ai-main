@@ -224,5 +224,6 @@ nav.segnav button.seg .count { opacity: .7; font-weight: 700; }
 .medcard .small { margin-top: 3px; line-height: 1.45; }
 .medlabel { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; margin-right: 6px; }
 .medlabel-risk { color: var(--red); }
+.medlabel-use { color: var(--blue); }
 .live-dot { color: var(--red); }
 nav.tabs button[data-view="live"].active { color: var(--red); }

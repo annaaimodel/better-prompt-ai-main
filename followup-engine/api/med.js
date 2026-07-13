@@ -19,14 +19,15 @@ const SYSTEM =
 `You are a concise clinical drug-reference tool. Given the name of a medication (brand or generic), return its most commonly documented facts, for a non-clinician's AWARENESS only (a sales rep noting what a customer already takes, so they understand it and possible interactions).
 
 Rules:
-- Only well-documented, widely-known facts. If you are not confident the input is a real medication, set "recognized" to false and leave the arrays empty.
+- Only well-documented, widely-known facts. If you are not confident the input is a real medication, set "recognized" to false and leave the fields empty.
+- "uses": what the medication is commonly used for / what it treats, a short plain phrase (e.g. "type 2 diabetes and blood sugar", "high blood pressure", "high cholesterol", "blood thinner to prevent clots"). This helps a non-clinician quickly understand the drug.
 - "sideEffects": the 3 most common or most notable side effects. Each 1 to 4 words.
 - "risks": up to 3 serious risks, warnings, or important interactions. Each a short phrase.
 - Plain language. NO dosing, NO advice, NO recommendations, NO comparisons to supplements. This is reference only; the person's doctor is the authority.
 - Never use em dashes or en dashes; use a simple hyphen.
 
 Return ONLY JSON, no markdown:
-{"recognized":true|false,"generic":"<generic name or ''>","class":"<short drug class or ''>","sideEffects":["...","...","..."],"risks":["...","..."]}`;
+{"recognized":true|false,"generic":"<generic name or ''>","class":"<short drug class or ''>","uses":"<what it treats, short>","sideEffects":["...","...","..."],"risks":["...","..."]}`;
 
 function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
 
@@ -57,6 +58,7 @@ export default async function handler(req, res) {
       recognized: parsed.recognized !== false,
       generic: clip(parsed.generic, 80),
       class: clip(parsed.class, 80),
+      uses: clip(parsed.uses, 120),
       sideEffects: Array.isArray(parsed.sideEffects) ? parsed.sideEffects.slice(0, 3).map((x) => clip(x, 60)).filter(Boolean) : [],
       risks: Array.isArray(parsed.risks) ? parsed.risks.slice(0, 3).map((x) => clip(x, 90)).filter(Boolean) : [],
       usage: msg.usage,

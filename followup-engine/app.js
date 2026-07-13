@@ -824,6 +824,15 @@ function openDetail(id) {
           ${l.track === "save" ? `<button class="btn sm" id="d_back" style="flex:1">Back on track ▸</button>` : ""}
         </div>
       </div>` : ""}
+      ${(l.meds || []).length ? `<div class="section-title">Medications noted (${l.meds.length})</div>
+        <p class="help" style="margin:-4px 0 8px">For your awareness and the health advisor. Not medical advice - the doctor is the authority.</p>
+        ${l.meds.map((m) => {
+          const name = typeof m === "string" ? m : (m.name || "");
+          const se = (typeof m === "object" && m.sideEffects || []).join(", ");
+          const rk = (typeof m === "object" && m.risks || []).join("; ");
+          const cls = (typeof m === "object" && [m.generic && m.generic.toLowerCase() !== name.toLowerCase() ? m.generic : "", m.class].filter(Boolean).join(" · ")) || "";
+          return `<div class="medcard"><div class="medcard-h">💊 ${esc(name)}${cls ? ` <span class="tiny muted">${esc(cls)}</span>` : ""}</div>${se ? `<div class="small"><span class="medlabel">Side effects</span> ${esc(se)}</div>` : ""}${rk ? `<div class="small"><span class="medlabel medlabel-risk">Risks</span> ${esc(rk)}</div>` : ""}</div>`;
+        }).join("")}` : ""}
       <div class="section-title">Saved drafts &amp; plans (${(l.saved || []).length})</div>
       ${(l.saved || []).length ? (l.saved || []).map((s) => `
         <div class="card" style="margin:0 0 8px;padding:11px 13px">
@@ -1804,7 +1813,18 @@ async function liveStart() {
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
   if ($("live_headset").checked) { const ok = await startProspectCapture(); if (!ok) return; }
   Live.leadId = $("live_lead").value;
-  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0; Live.meds = []; Live.medInfo = {}; renderMeds();
+  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0; Live.meds = []; Live.medInfo = {};
+  // Pre-load any medications noted on this lead before, so you can refer back.
+  const seedLead = Live.leadId ? db.leads.find((x) => x.id === Live.leadId) : null;
+  if (seedLead && Array.isArray(seedLead.meds)) {
+    seedLead.meds.forEach((m) => {
+      const name = typeof m === "string" ? m : (m && m.name);
+      if (!name || Live.meds.some((x) => x.toLowerCase() === name.toLowerCase())) return;
+      Live.meds.push(name);
+      if (typeof m === "object") Live.medInfo[name.toLowerCase()] = { state: "ok", cued: true, recognized: true, generic: m.generic || "", class: m.class || "", sideEffects: m.sideEffects || [], risks: m.risks || [] };
+    });
+  }
+  renderMeds();
   Live.scriptBlocks = splitScript($("sc_text").value); Live.scriptIdx = -1; Live.scriptManual = false;
   $("live_cues").innerHTML = "";
   if (Live.scriptBlocks.length) { $("sc_editor").style.display = "none"; $("sc_live").style.display = "block"; $("sc_controls").style.display = "flex"; renderScriptLive(-1); }
@@ -1845,7 +1865,10 @@ function liveStop() {
     const l = db.leads.find((x) => x.id === Live.leadId);
     if (l) {
       l._lastTranscript = full.slice(0, 20000);
-      if (Live.meds.length) l.meds = [...Live.meds];
+      if (Live.meds.length) l.meds = Live.meds.map((m) => {
+        const info = Live.medInfo[m.toLowerCase()] || {};
+        return { name: m, generic: info.generic || "", class: info.class || "", sideEffects: info.sideEffects || [], risks: info.risks || [] };
+      });
       l.touches = l.touches || [];
       const medsNote = Live.meds.length ? " Meds noted: " + Live.meds.join(", ") + "." : "";
       l.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: "Live call", summary: "Live call - transcript saved (" + full.length + " chars)." + medsNote });
@@ -1893,7 +1916,7 @@ function renderCues(cues) {
   cues.forEach((c) => {
     Live.recentCues.push(c.text);
     const div = document.createElement("div");
-    div.className = "cue " + (["ask", "objection", "mask", "value", "nudge", "tone", "book"].includes(c.type) ? c.type : "ask");
+    div.className = "cue " + (["ask", "objection", "mask", "value", "nudge", "tone", "book", "med"].includes(c.type) ? c.type : "ask");
     div.innerHTML = `<span class="cue-type">${esc(c.type || "ask")}</span>${esc(c.text)}`;
     box.prepend(div);
   });
@@ -1924,6 +1947,22 @@ async function lookupMed(name) {
     Live.medInfo[key] = r.ok ? { state: "ok", ...j } : { state: "error" };
   } catch (e) { Live.medInfo[key] = { state: "error" }; }
   renderMeds();
+  pushMedCue(name, Live.medInfo[key]);
+}
+// Pop a medication into the Whispers panel so it's visible live, once per med.
+function pushMedCue(name, info) {
+  if (!info || info.cued) return;
+  info.cued = true;
+  let text = `💊 ${name}`;
+  if (info.state === "ok" && info.recognized !== false) {
+    const se = (info.sideEffects || []).slice(0, 3).join(", ");
+    const rk = (info.risks || []).slice(0, 3).join("; ");
+    if (se) text += ` - side effects: ${se}`;
+    if (rk) text += `. Risks: ${rk}`;
+  } else if (info.recognized === false) {
+    text += " - mentioned (not a recognised medication)";
+  }
+  renderCues([{ type: "med", text }]);
 }
 function renderMeds() {
   const el = $("live_meds"); if (!el) return;

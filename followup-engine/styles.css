@@ -205,6 +205,7 @@ nav.segnav button.seg .count { opacity: .7; font-weight: 700; }
 .cue.nudge { border-left-color: var(--gold); }
 .cue.tone { border-left-color: #7bd0d0; }
 .cue.book { border-left-color: var(--gold-soft); }
+.cue.med { border-left-color: var(--red); background: rgba(180, 60, 50, .08); }
 @keyframes cuein { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
 .live-transcript { max-height: 200px; overflow-y: auto; white-space: pre-wrap; line-height: 1.55; }
 .script-live { max-height: 340px; overflow-y: auto; margin-top: 6px; }

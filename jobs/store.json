@@ -8,7 +8,7 @@
   "source": "Ashby",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -24,7 +24,7 @@
   "source": "Wellfound",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -40,7 +40,7 @@
   "source": "Workable",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -57,7 +57,7 @@
   "source": "Ashby",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -67,17 +67,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Charlotte, NC",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-571547146953411006",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -89,7 +89,7 @@
   "source": "Ashby",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -105,7 +105,7 @@
   "source": "Workable",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -121,7 +121,7 @@
   "source": "Workable",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -138,7 +138,7 @@
   "source": "Workable",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -155,7 +155,7 @@
   "source": "Workable",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -172,7 +172,7 @@
   "source": "Workable",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -188,7 +188,7 @@
   "source": "LinkedIn",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
@@ -204,8 +204,8 @@
   "source": "AllRemote",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
-  "active": true,
+  "last_seen": "2026-07-13",
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -221,7 +221,7 @@
   "source": "SalesAgents.uk",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -237,8 +237,8 @@
   "source": "BeBee",
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
-  "active": true,
+  "last_seen": "2026-07-13",
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -254,7 +254,7 @@
   "source": "WeWorkRemotely",
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -271,7 +271,7 @@
   "source": "WeWorkRemotely",
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -288,8 +288,8 @@
   "source": "remote.io",
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
-  "active": true,
+  "last_seen": "2026-07-13",
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -305,7 +305,7 @@
   "source": "RemoteLatinos",
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -321,7 +321,7 @@
   "source": "Workable",
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -337,7 +337,7 @@
   "source": "Workable",
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -353,7 +353,7 @@
   "source": "Ashby",
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -369,7 +369,7 @@
   "source": "Ashby",
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -385,7 +385,7 @@
   "source": "Workable",
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -402,7 +402,7 @@
   "source": "Workable",
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -418,7 +418,7 @@
   "source": "Workable",
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -434,7 +434,7 @@
   "source": "Workable",
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -451,7 +451,7 @@
   "source": "Ashby",
   "category": "Other",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -467,7 +467,7 @@
   "source": "Workable",
   "category": "Other",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -484,8 +484,8 @@
   "source": "Nomadic Closer",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
-  "active": true,
+  "last_seen": "2026-07-13",
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -501,8 +501,8 @@
   "source": "Nomadic Closer",
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
-  "active": true,
+  "last_seen": "2026-07-13",
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -518,7 +518,7 @@
   "source": "WorkinVirtual",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "generic",
   "country": "Worldwide / Anywhere",
@@ -535,7 +535,7 @@
   "source": "LinkedIn",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -551,7 +551,7 @@
   "source": "JobMatrix",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -567,7 +567,7 @@
   "source": "Remotive",
   "category": "Closer",
   "first_seen": "2026-06-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Worldwide / Anywhere",
   "lead_type": "Cold",
@@ -1358,8 +1358,8 @@
   "source": "The Muse",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
-  "active": true,
+  "last_seen": "2026-07-13",
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -1742,7 +1742,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "Inbound",
   "inbox": false,
@@ -1810,7 +1810,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -1826,7 +1826,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -1842,7 +1842,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -1939,16 +1939,16 @@
  "8eb45cd42e073b09": {
   "title": "High Ticket Sales Closer",
   "company": "Rustman Agency",
-  "location": "Rockerville, Pennington County",
-  "comp": "$126770-$126770",
-  "link": "https://www.adzuna.com/details/5324761097?utm_medium=api&utm_source=3e941a8f",
-  "source": "Adzuna",
+  "location": "United States",
+  "comp": "",
+  "link": "https://jooble.org/jdp/3449134189085557525",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
-  "lead_type": "Inbound",
+  "lead_type": "",
   "inbox": false,
   "tier": ""
  },
@@ -1986,7 +1986,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2014,7 +2014,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2051,16 +2051,16 @@
  "00b36bf89af0f59f": {
   "title": "High Ticket Remote Sales Closer | Australia",
   "company": "7Figures",
-  "location": "Seybold, Miami-Dade County",
-  "comp": "$66340-$66340",
-  "link": "https://www.adzuna.com/details/5689248799?utm_medium=api&utm_source=3e941a8f",
-  "source": "Adzuna",
+  "location": "United States",
+  "comp": "$10,000 per month",
+  "link": "https://jooble.org/jdp/-6024607497919391453",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
-  "lead_type": "Inbound",
+  "lead_type": "",
   "inbox": false,
   "tier": ""
  },
@@ -2300,7 +2300,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2316,7 +2316,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": false,
@@ -2428,7 +2428,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -3398,11 +3398,11 @@
   "company": "Curvion Blue",
   "location": "Barton, South Canberra",
   "comp": "",
-  "link": "https://www.adzuna.com.au/land/ad/5769923810?se=RMTvWvp98RGNqvBiBxieKA&utm_medium=api&utm_source=3e941a8f&v=B5A204F637C070F53AB943FA40D8CCC01BF6E4B2",
+  "link": "https://www.adzuna.com.au/land/ad/5769923810?se=DAtfJE5-8RG6JP0nGhfLVg&utm_medium=api&utm_source=3e941a8f&v=B5A204F637C070F53AB943FA40D8CCC01BF6E4B2",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Australia",
   "lead_type": "",
@@ -3966,11 +3966,11 @@
   "company": "The People Pod",
   "location": "Manchester, Greater Manchester",
   "comp": "$100000-$100000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=znUXQ_p98RGNqvBiBxieKA&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=Wp6RC05-8RG1-IwfRWwy_Q&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United Kingdom",
   "lead_type": "",
@@ -5449,7 +5449,7 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "Canada",
   "lead_type": "",
@@ -7967,7 +7967,7 @@
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "country": "Australia",
   "lead_type": "",
   "inbox": false,
@@ -8434,7 +8434,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8450,7 +8450,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8466,7 +8466,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8482,7 +8482,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8498,7 +8498,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8530,7 +8530,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8546,7 +8546,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8562,7 +8562,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8594,7 +8594,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8610,7 +8610,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8626,7 +8626,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8642,7 +8642,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -8658,7 +8658,7 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "country": "United States",
   "lead_type": "",
@@ -12067,7 +12067,7 @@
   "lead_type": "Inbound",
   "first_seen": "2026-06-15",
   "last_seen": "2026-07-12",
-  "active": true,
+  "active": false,
   "inbox": false,
   "tier": ""
  },
@@ -12272,7 +12272,7 @@
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "inbox": true,
   "tier": ""
@@ -12335,7 +12335,7 @@
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "inbox": true,
   "tier": ""
@@ -12352,7 +12352,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12368,7 +12368,7 @@
   "lead_type": "Inbound",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12384,7 +12384,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12400,7 +12400,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12416,7 +12416,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12432,7 +12432,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12448,7 +12448,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12464,7 +12464,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12480,7 +12480,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12496,7 +12496,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12512,7 +12512,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12528,7 +12528,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12544,7 +12544,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12560,7 +12560,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12576,7 +12576,7 @@
   "lead_type": "",
   "inbox": true,
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "tier": ""
  },
@@ -12673,7 +12673,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "bb7ee4f315665ef1": {
@@ -13210,7 +13210,7 @@
   "company": "ACHIEVE",
   "location": "Tempe, AZ",
   "comp": "$5,250 per month",
-  "link": "https://jooble.org/jdp/8543095615610611950",
+  "link": "https://jooble.org/jdp/-3289981322767831588",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -13218,7 +13218,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "6bb1df188520c450": {
@@ -13235,7 +13235,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "ec377c0f8961d40a": {
   "title": "Customer Success Manager (Remote-USA)",
@@ -13282,7 +13282,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "6b656e7f656b21f1": {
@@ -13298,7 +13298,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "09d9e3c7ada9bb6e": {
@@ -13314,7 +13314,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "732f2304b7925730": {
@@ -13330,7 +13330,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "a370c7b9c35509ea": {
@@ -13346,7 +13346,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "8811bc462d922d62": {
@@ -13411,7 +13411,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "4c963677649ea6cf": {
   "title": "Canadian Real Estate Virtual Assistant",
@@ -14099,7 +14099,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "34079eb7828f4cef": {
   "title": "High Ticket Sales Closer - Remote ($20K-$30K/month OTE)",
@@ -14114,7 +14114,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "ba102f88689b472b": {
@@ -14211,7 +14211,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "c5fa923fb4e4ccb8": {
   "title": "Setter - High-End Gigs Launchpad",
@@ -14226,7 +14226,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "44fdd134f04cf4e4": {
@@ -14242,7 +14242,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "2f682b572ac82537": {
@@ -14258,7 +14258,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "b187d049449e2cc7": {
@@ -14274,7 +14274,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "a4669f899b1c181d": {
@@ -14290,7 +14290,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "ca259ce9bbffdc81": {
@@ -14306,7 +14306,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "6e19f3067f80b041": {
@@ -14360,9 +14360,9 @@
  "7f48de3feea25292": {
   "title": "Remote High-Ticket Closer - High-Earning Inbound Leads",
   "company": "The WFS Group",
-  "location": "United States",
+  "location": "New York, NY",
   "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/5572249353460914880",
+  "link": "https://jooble.org/jdp/5271430340478559989",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -14370,7 +14370,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "5ac9e286a6008fb1": {
@@ -14402,7 +14402,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "108ab61a2d07551c": {
@@ -14546,7 +14546,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "6c5c676cab4067a7": {
@@ -14562,8 +14562,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-12",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "7e58821d3595c4b2": {
   "title": "Remote High-Ticket Closer: Inbound Leads & High Earnings",
@@ -14578,7 +14578,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "67bb77887a4a8670": {
@@ -14658,7 +14658,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "3c73f1d01e90c171": {
@@ -14675,7 +14675,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "357131c6f6dab4f8": {
   "title": "Remote High-Ticket Closer | Inbound Leads, Elite Training",
@@ -14930,7 +14930,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "a2886f1813486c5d": {
@@ -14946,7 +14946,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "74d5af1aa5663cae": {
@@ -14963,7 +14963,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "ec22b574b9b6b3ff": {
   "title": "Remote Virtual Assistant for Admin & Productivity",
@@ -14978,7 +14978,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "bd7630aeba82e123": {
@@ -14995,7 +14995,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "86abef7afc116f76": {
   "title": "Remote Virtual Assistant — US-Based, 1+ Year Experience",
@@ -15186,7 +15186,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "7e3555109b1cb243": {
@@ -15202,7 +15202,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "38fba1d055d45707": {
@@ -15330,7 +15330,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "221545b9505759cf": {
@@ -15474,15 +15474,15 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-18",
-  "last_seen": "2026-07-03",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "0843bd12adf0bb71": {
   "title": "Enterprise Customer Success Manager",
   "company": "Connecteam",
   "location": "Remote",
   "comp": "$100k - $140k",
-  "link": "https://jooble.org/jdp/232335799210774984",
+  "link": "https://jooble.org/jdp/2843297222686565248",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "Worldwide / Anywhere",
@@ -15490,8 +15490,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-18",
-  "last_seen": "2026-06-18",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "d2255c7925e0a2aa": {
   "title": "Customer Success Manager",
@@ -15716,7 +15716,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "febc4f93256ed55c": {
   "title": "Remote Inbound High-Ticket TV Sales Closer",
@@ -15764,7 +15764,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "f431777817c71f10": {
   "title": "Remote High-Ticket Closer — Uncapped Pay & Hot Leads",
@@ -15827,8 +15827,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-19",
-  "last_seen": "2026-07-12",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "13952d269088f9d7": {
   "title": "Remote Customer Success Manager II - East",
@@ -16212,7 +16212,7 @@
   "tier": "",
   "first_seen": "2026-06-22",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "936e6b525f84a95f": {
   "title": "Customer Success Manager",
@@ -16683,7 +16683,7 @@
   "company": "7FigureLaw, LLC",
   "location": "Barton, South Canberra",
   "comp": "",
-  "link": "https://www.adzuna.com.au/land/ad/5774129341?se=RMTvWvp98RGNqvBiBxieKA&utm_medium=api&utm_source=3e941a8f&v=BDDB5B6563C6474385B5FFCE6678109CF085DB54",
+  "link": "https://www.adzuna.com.au/land/ad/5774129341?se=DAtfJE5-8RG6JP0nGhfLVg&utm_medium=api&utm_source=3e941a8f&v=BDDB5B6563C6474385B5FFCE6678109CF085DB54",
   "source": "Adzuna",
   "category": "Closer",
   "country": "Australia",
@@ -16691,7 +16691,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "49b9d67679a9bfdd": {
@@ -16899,7 +16899,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "5f2fec47aaf4c737": {
@@ -16963,7 +16963,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "7de9e5de9eb9f7bd": {
@@ -16979,7 +16979,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "2575e3f9735751c2": {
@@ -17011,7 +17011,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "34bec4f4132b6b54": {
@@ -17027,7 +17027,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "72f0bb24b43376fc": {
@@ -17044,7 +17044,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "0fab5238da00509f": {
   "title": "Virtual Sales Rep: Fully Remote, No Cold Calls, Great Training",
@@ -17092,7 +17092,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "34b7645dcd4955f3": {
   "title": "Setter - Sales Mentorship P/T",
@@ -17107,7 +17107,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "521a6f066b71a589": {
@@ -17123,7 +17123,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "93cea4a7466237c1": {
@@ -17139,7 +17139,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "97c67061392f1e05": {
@@ -17155,7 +17155,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "74e75f0d36b4020c": {
@@ -17171,7 +17171,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "c8bcb5b876d77a0c": {
@@ -17187,7 +17187,7 @@
   "inbox": true,
   "tier": "",
   "first_seen": "2026-06-24",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "970939db52b49f12": {
@@ -17315,7 +17315,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-26",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "5150fe0fad2c37ba": {
@@ -17331,7 +17331,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-26",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "464d34abbdd56455": {
@@ -17396,7 +17396,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "d8cae334eca1140e": {
   "title": "Remote Customer Success Manager II - East",
@@ -17443,7 +17443,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-26",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "c42ba3c9f09f7236": {
@@ -17507,8 +17507,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-26",
-  "last_seen": "2026-07-10",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "7a6112cdc1bdec18": {
   "title": "Part-Time Virtual Assistant (Roofing Operations & Customer Service)",
@@ -17555,8 +17555,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-26",
-  "last_seen": "2026-07-10",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "74af105fecb22e7a": {
   "title": "Simple Virtual Assistants (Only US)",
@@ -17571,8 +17571,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-26",
-  "last_seen": "2026-07-10",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "ee2d0ce3975d8fce": {
   "title": "CPT-11095 Part-Time Virtual Assistant (Administrative, Social Media & Grant Supp",
@@ -17667,16 +17667,16 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-27",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true,
   "delisted": "dead"
  },
  "aac559728628ffd4": {
   "title": "Remote High Ticket Sales Closer",
   "company": "GrabJobs",
-  "location": "Newark, NJ",
+  "location": "San Diego, CA",
   "comp": "$150k - $300k",
-  "link": "https://jooble.org/jdp/-4802290864797205785",
+  "link": "https://jooble.org/jdp/-3345266350387635127",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -17684,7 +17684,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-27",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "74212bf7145525c3": {
@@ -18612,7 +18612,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-30",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "a0839d71d5eae368": {
@@ -18820,7 +18820,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-01",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "1d8611121c2f8176": {
@@ -19061,7 +19061,7 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "740f887a26071f5c": {
   "title": "Virtual Assistant",
@@ -19076,7 +19076,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-02",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "8ff036c56c2bebba": {
@@ -19108,8 +19108,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-02",
-  "last_seen": "2026-07-12",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "a6b751aaf5443ac4": {
   "title": "Virtual Assistant NI (Remote)",
@@ -19204,7 +19204,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-02",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "33769bb8c0c4dcef": {
@@ -19221,7 +19221,7 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "4546cc8d71dd0404": {
   "title": "Remote High-Ticket Closer | Inbound Leads & Big Earnings",
@@ -19316,8 +19316,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-03",
-  "last_seen": "2026-07-03",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "de3c0c33ec5ff6a5": {
   "title": "Remote Customer Success Manager II - West",
@@ -19332,8 +19332,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-03",
-  "last_seen": "2026-07-03",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "ddb6fbb44a3ed1e3": {
   "title": "REMOTE LAND SALES CLOSER",
@@ -19444,7 +19444,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-03",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "8d1ead58c9eea336": {
@@ -19604,7 +19604,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-04",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "5d1e7be8f520ba1d": {
@@ -19732,7 +19732,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-05",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "28b64427015dcec7": {
@@ -19748,7 +19748,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-05",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "be42cda4ead53700": {
@@ -19845,7 +19845,7 @@
   "tier": "",
   "first_seen": "2026-07-05",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "bbf2df2e96d0c770": {
   "title": "Remote High-Ticket Sales Closer",
@@ -20004,7 +20004,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-06",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "68d657c8003778c6": {
@@ -20164,7 +20164,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-07",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "717a8d4d277b4b61": {
@@ -20330,9 +20330,9 @@
  "ae2ba86f6745b0d5": {
   "title": "Remote Virtual Assistant Talent Pool Recruitment",
   "company": "Dfbooking Recruitment Services",
-  "location": "Garland, TX",
+  "location": "New York, NY",
   "comp": "",
-  "link": "https://jooble.org/jdp/-5824799075741973690",
+  "link": "https://jooble.org/jdp/8414769980396178023",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -20340,7 +20340,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-08",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "b43e80abc939580f": {
@@ -20628,8 +20628,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-08",
-  "last_seen": "2026-07-10",
-  "active": false
+  "last_seen": "2026-07-13",
+  "active": true
  },
  "7ad3c5853d294365": {
   "title": "Account Executive- Auto",
@@ -20868,7 +20868,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-10",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "ee7eb8c1c1d0a94f": {
@@ -20884,7 +20884,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-10",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "717891b9ff7e1bb2": {
@@ -20981,7 +20981,7 @@
   "tier": "",
   "first_seen": "2026-07-10",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "e28668b1be1c8eac": {
   "title": "Sr. Customer Success Manager - Remote",
@@ -20997,7 +20997,7 @@
   "tier": "",
   "first_seen": "2026-07-10",
   "last_seen": "2026-07-12",
-  "active": true
+  "active": false
  },
  "03f3a3427f51deb6": {
   "title": "Strategic Customer Success Manager",
@@ -21068,7 +21068,7 @@
   "company": "Presidio",
   "location": "US",
   "comp": "$184020-$184020",
-  "link": "https://www.adzuna.com/land/ad/5795942329?se=Ar0DLPp98RG6JP0nGhfLVg&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
+  "link": "https://www.adzuna.com/land/ad/5795942329?se=xEl-9U1-8RG6JP0nGhfLVg&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -21076,7 +21076,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-11",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "f569837528d0f0f4": {
@@ -21092,7 +21092,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-11",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "6130d35dc8080237": {
@@ -21108,7 +21108,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-11",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "f15d4b1b2d191557": {
@@ -21172,7 +21172,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-11",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "19f08fc0da92ec00": {
@@ -21364,7 +21364,7 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-12",
-  "last_seen": "2026-07-12",
+  "last_seen": "2026-07-13",
   "active": true
  },
  "17bb8dc68eb5f6ea": {
@@ -21382,5 +21382,69 @@
   "first_seen": "2026-07-12",
   "last_seen": "2026-07-12",
   "active": false
+ },
+ "3efc142151890e68": {
+  "title": "Tech Savvy Virtual Assistant: Video Editing, GoHighLevel & Social Media Part Time Posted on 2026-07-12 06:42:57 $5 per hour",
+  "company": "Key… See More",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.clickclickjob.com/jobs/view/6a534e33416602747fd42dae",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "a6abb56f82d9af4c": {
+  "title": "Virtual Assistant - Need to Comment on videos Any Posted on 2026-07-12 01:29:10 1-2/hr",
+  "company": "1-2/hr",
+  "location": "Remote",
+  "comp": "$13-$20",
+  "link": "https://www.clickclickjob.com/jobs/view/6a534e34416602747fd42dd1",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "68625f9b711a1dd1": {
+  "title": "Virtual Assistant - Contract to Hire",
+  "company": "vacancy target jobs",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://vacancyglobal.up.railway.app/job/virtual-assistant-contract-to-hire-1",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
+ },
+ "38f66c7f5bc42cf2": {
+  "title": "US‑Based Virtual Assistant for Ongoing Client Support (Long-Term) - Contract to Hire",
+  "company": "Upwork",
+  "location": "Remote",
+  "comp": "$10-$30",
+  "link": "https://www.upwork.com/freelance-jobs/apply/Based-Virtual-Assistant-for-Ongoing-Client-Support-Long-Term_~022074517006994377210/",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-13",
+  "last_seen": "2026-07-13",
+  "active": true
  }
 }

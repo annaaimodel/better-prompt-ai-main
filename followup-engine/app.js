@@ -1135,9 +1135,9 @@ $("parseBtn").onclick = async () => {
   if (!db.settings.access) { toast("Set access code in Settings"); setView("settings"); return; }
   $("parseBtn").disabled = true; $("parseBtn").textContent = "Parsing…";
   try {
-    const r = await fetch("/api/intake", {
+    const r = await fetch("/api/parse", {
       method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
-      body: JSON.stringify({ text }),
+      body: JSON.stringify({ target: "intake", text }),
     });
     const j = await r.json();
     if (!r.ok) { toast(j.error || "Parse failed"); }
@@ -1284,9 +1284,9 @@ $("pb_parse_go").onclick = async () => {
   const section = $("pb_parse_section").value;
   $("pb_parse_go").disabled = true; $("pb_parse_go").textContent = "Parsing…"; $("pb_parse_status").textContent = "";
   try {
-    const r = await fetch("/api/parse-playbook", {
+    const r = await fetch("/api/parse", {
       method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
-      body: JSON.stringify({ text, section }),
+      body: JSON.stringify({ target: "playbook", text, section }),
     });
     const j = await r.json();
     if (!r.ok) { toast(j.error || "Parse failed"); }
@@ -2151,9 +2151,9 @@ $("pr_parse_go").onclick = async () => {
   const kind = normKind($("pr_parse_kind").value);
   $("pr_parse_go").disabled = true; $("pr_parse_go").textContent = "Parsing…"; $("pr_parse_status").textContent = "";
   try {
-    const r = await fetch("/api/parse-products", {
+    const r = await fetch("/api/parse", {
       method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
-      body: JSON.stringify({ text, kind }),
+      body: JSON.stringify({ target: "products", text, kind }),
     });
     const j = await r.json();
     if (!r.ok) { toast(j.error || "Failed"); $("pr_parse_status").textContent = j.error || "Failed - try again"; }

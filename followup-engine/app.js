@@ -300,6 +300,7 @@ function ensureShape(d) {
   if (!d.scripts) d.scripts = [];
   if (typeof d.liveScriptId !== "string") d.liveScriptId = "";
   if (!d.products) d.products = [];
+  if (!d.medRefs) d.medRefs = [];
   if (!d.leads) d.leads = [];
   d.products.forEach((p) => { if (!p.kind) p.kind = "product"; });
   if (typeof d.updatedAt !== "number") d.updatedAt = 0;
@@ -1025,13 +1026,14 @@ async function runDraft() {
 // Wiring
 // ---------------------------------------------------------------------------
 function setView(name) {
-  ["today", "live", "pipeline", "add", "coach", "content", "products", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
+  ["today", "live", "pipeline", "add", "coach", "content", "products", "meds", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === name));
   if (name === "today") renderToday();
   if (name === "live") setupLive();
   if (name === "coach") setupCoach();
   if (name === "content") setupContent();
   if (name === "products") renderProducts();
+  if (name === "meds") renderMedRefs();
   if (name === "pipeline") renderPipeline($("search").value);
   if (name === "playbook") loadPlaybookForm();
   if (name === "assets") renderAssets();
@@ -1946,6 +1948,13 @@ async function lookupMed(name) {
     });
     const j = await r.json();
     Live.medInfo[key] = r.ok ? { state: "ok", ...j } : { state: "error" };
+    // Quietly build the Med reference library from meds heard on calls.
+    if (r.ok && j.recognized !== false && !(db.medRefs || []).some((x) => (x.name || "").toLowerCase() === (j.name || name).toLowerCase())) {
+      db.medRefs = db.medRefs || [];
+      db.medRefs.unshift({ id: uid(), name: j.name || name, generic: j.generic || "", class: j.class || "", uses: j.uses || "", sideEffects: j.sideEffects || [], risks: j.risks || [], at: new Date().toISOString() });
+      if (db.medRefs.length > 200) db.medRefs = db.medRefs.slice(0, 200);
+      save();
+    }
   } catch (e) { Live.medInfo[key] = { state: "error" }; }
   renderMeds();
   pushMedCue(name, Live.medInfo[key]);
@@ -1989,6 +1998,54 @@ function renderMeds() {
       return `<div class="medcard"><div class="medcard-h">💊 ${esc(m)}${sub}</div>${body}</div>`;
     }).join("");
 }
+
+// Med reference tab: look up any medication on demand and build a library.
+function medRefCardHTML(m, delAttr) {
+  const cls = [m.generic && m.generic.toLowerCase() !== (m.name || "").toLowerCase() ? m.generic : "", m.class].filter(Boolean).join(" · ");
+  const del = delAttr ? ` <button class="btn sm danger" ${delAttr}="${m.id}" style="float:right">Remove</button>` : "";
+  return `<div class="medcard"><div class="medcard-h">💊 ${esc(m.name)}${cls ? ` <span class="tiny muted">${esc(cls)}</span>` : ""}${del}</div>` +
+    (m.uses ? `<div class="small"><span class="medlabel medlabel-use">Used for</span> ${esc(m.uses)}</div>` : "") +
+    (m.sideEffects && m.sideEffects.length ? `<div class="small"><span class="medlabel">Side effects</span> ${esc(m.sideEffects.join(", "))}</div>` : "") +
+    (m.risks && m.risks.length ? `<div class="small"><span class="medlabel medlabel-risk">Risks</span> ${esc(m.risks.join("; "))}</div>` : "") + `</div>`;
+}
+function renderMedRefs() {
+  const el = $("mr_list"); if (!el) return;
+  const list = db.medRefs || [];
+  $("mr_count").textContent = list.length ? `${list.length} saved` : "";
+  el.innerHTML = list.length ? list.map((m) => medRefCardHTML(m, "data-mrdel")).join("") : `<p class="small muted">No references saved yet. Look one up above.</p>`;
+}
+async function medLookup() {
+  const name = $("mr_input").value.trim();
+  if (name.length < 2) { toast("Type a medication name"); return; }
+  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
+  $("mr_go").disabled = true; $("mr_go").textContent = "Looking up…";
+  $("mr_out").innerHTML = `<p class="small muted" style="margin-top:10px">Looking up ${esc(name)}…</p>`;
+  try {
+    const r = await fetch("/api/med", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({ name }),
+    });
+    const j = await r.json();
+    if (!r.ok) { $("mr_out").innerHTML = `<p class="small" style="margin-top:10px">⚠ ${esc(j.error || "Lookup failed")}</p>`; }
+    else if (j.recognized === false) { $("mr_out").innerHTML = `<p class="small muted" style="margin-top:10px">"${esc(name)}" was not recognised as a medication.</p>`; }
+    else {
+      const entry = { id: uid(), name: j.name || name, generic: j.generic || "", class: j.class || "", uses: j.uses || "", sideEffects: j.sideEffects || [], risks: j.risks || [], at: new Date().toISOString() };
+      $("mr_out").innerHTML = `<div style="margin-top:12px">${medRefCardHTML(entry)}</div>`;
+      // Save to the reference library, replacing any existing entry with the same name.
+      db.medRefs = (db.medRefs || []).filter((x) => (x.name || "").toLowerCase() !== entry.name.toLowerCase());
+      db.medRefs.unshift(entry); if (db.medRefs.length > 200) db.medRefs = db.medRefs.slice(0, 200);
+      save(); renderMedRefs();
+      $("mr_input").value = "";
+    }
+  } catch (e) { $("mr_out").innerHTML = `<p class="small" style="margin-top:10px">⚠ Network error - try again.</p>`; }
+  $("mr_go").disabled = false; $("mr_go").textContent = "Look up ▸";
+}
+$("mr_go").onclick = medLookup;
+$("mr_input").addEventListener("keydown", (e) => { if (e.key === "Enter") medLookup(); });
+$("mr_list").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-mrdel]"); if (!b) return;
+  db.medRefs = (db.medRefs || []).filter((x) => x.id !== b.dataset.mrdel); save(); renderMedRefs(); toast("Removed");
+});
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
 $("live_cuenow").onclick = () => maybeCue(true);

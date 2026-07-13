@@ -1532,7 +1532,7 @@ $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.tar
 // Live call copilot - listens via the browser mic, whispers cues from /api/cue.
 // ---------------------------------------------------------------------------
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false, dg: null, meds: [] };
+const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false, dg: null, meds: [], medInfo: {} };
 function splitScript(text) { return String(text || "").split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean); }
 function updateScriptControls() {
   $("sc_pos").textContent = Live.scriptBlocks.length ? `Section ${Math.max(1, Live.scriptIdx + 1)} / ${Live.scriptBlocks.length}` : "";
@@ -1804,7 +1804,7 @@ async function liveStart() {
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
   if ($("live_headset").checked) { const ok = await startProspectCapture(); if (!ok) return; }
   Live.leadId = $("live_lead").value;
-  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0; Live.meds = []; renderMeds();
+  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0; Live.meds = []; Live.medInfo = {}; renderMeds();
   Live.scriptBlocks = splitScript($("sc_text").value); Live.scriptIdx = -1; Live.scriptManual = false;
   $("live_cues").innerHTML = "";
   if (Live.scriptBlocks.length) { $("sc_editor").style.display = "none"; $("sc_live").style.display = "block"; $("sc_controls").style.display = "flex"; renderScriptLive(-1); }
@@ -1905,15 +1905,47 @@ function addMeds(names) {
   let changed = false;
   names.forEach((n) => {
     const name = String(n || "").trim();
-    if (name && !Live.meds.some((m) => m.toLowerCase() === name.toLowerCase())) { Live.meds.push(name); changed = true; }
+    if (name && !Live.meds.some((m) => m.toLowerCase() === name.toLowerCase())) { Live.meds.push(name); changed = true; lookupMed(name); }
   });
   if (changed) renderMeds();
 }
+// Look up a newly mentioned medication's side effects + risks once, then cache.
+async function lookupMed(name) {
+  const key = name.toLowerCase();
+  if (Live.medInfo[key]) return;
+  if (!db.settings.access) { Live.medInfo[key] = { state: "noaccess" }; renderMeds(); return; }
+  Live.medInfo[key] = { state: "loading" }; renderMeds();
+  try {
+    const r = await fetch("/api/med", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({ name }),
+    });
+    const j = await r.json();
+    Live.medInfo[key] = r.ok ? { state: "ok", ...j } : { state: "error" };
+  } catch (e) { Live.medInfo[key] = { state: "error" }; }
+  renderMeds();
+}
 function renderMeds() {
   const el = $("live_meds"); if (!el) return;
-  el.innerHTML = Live.meds.length
-    ? Live.meds.map((m) => `<span class="chip" style="color:var(--red);border-color:#4a2a24">💊 ${esc(m)}</span>`).join(" ")
-    : `<span class="small muted">Medications the prospect mentions will be noted here (doctor owns all medication decisions).</span>`;
+  if (!Live.meds.length) {
+    el.innerHTML = `<span class="small muted">Medications the prospect mentions will be noted here, with their common side effects and risks, for your awareness. Not medical advice - the doctor owns all medication decisions.</span>`;
+    return;
+  }
+  el.innerHTML = `<p class="help" style="margin:0 0 8px">For your awareness only. Not medical advice, and never use this to alarm the prospect - their doctor is the authority.</p>` +
+    Live.meds.map((m) => {
+      const info = Live.medInfo[m.toLowerCase()] || { state: "loading" };
+      const sub = (info.state === "ok" && (info.generic || info.class))
+        ? ` <span class="tiny muted">${esc([info.generic && info.generic.toLowerCase() !== m.toLowerCase() ? info.generic : "", info.class].filter(Boolean).join(" · "))}</span>` : "";
+      let body = "";
+      if (info.state === "loading") body = `<div class="small muted">Looking up side effects and risks…</div>`;
+      else if (info.state === "noaccess") body = `<div class="small muted">Set your access code in Settings to auto-look-up.</div>`;
+      else if (info.state === "error") body = `<div class="small muted">Could not look this up.</div>`;
+      else if (info.recognized === false) body = `<div class="small muted">Not recognised as a medication - noted anyway.</div>`;
+      else body =
+        (info.sideEffects && info.sideEffects.length ? `<div class="small"><span class="medlabel">Side effects</span> ${esc(info.sideEffects.join(", "))}</div>` : "") +
+        (info.risks && info.risks.length ? `<div class="small"><span class="medlabel medlabel-risk">Risks</span> ${esc(info.risks.join("; "))}</div>` : "");
+      return `<div class="medcard"><div class="medcard-h">💊 ${esc(m)}${sub}</div>${body}</div>`;
+    }).join("");
 }
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;

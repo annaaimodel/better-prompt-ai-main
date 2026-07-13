@@ -217,5 +217,11 @@ nav.segnav button.seg .count { opacity: .7; font-weight: 700; }
 .sblock.qa.active { border-left-color: var(--blue); background: rgba(60, 110, 180, .1); }
 .sblock.kno { border-left-color: var(--gold-soft); }
 .sblock.kno.active { border-left-color: var(--gold-soft); background: rgba(180, 150, 70, .1); }
+/* Medications mentioned */
+.medcard { border: 1px solid var(--line); border-left: 3px solid var(--red); border-radius: var(--radius-sm); padding: 10px 13px; margin-bottom: 8px; background: var(--panel-2); }
+.medcard-h { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.medcard .small { margin-top: 3px; line-height: 1.45; }
+.medlabel { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; margin-right: 6px; }
+.medlabel-risk { color: var(--red); }
 .live-dot { color: var(--red); }
 nav.tabs button[data-view="live"].active { color: var(--red); }

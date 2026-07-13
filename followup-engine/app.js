@@ -1852,7 +1852,7 @@ async function liveStart() {
   $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;
   renderTranscript();
   acquireWakeLock();
-  Live.timer = setInterval(() => maybeCue(false), 14000);
+  Live.timer = setInterval(() => maybeCue(false), 10000);
 }
 function liveStop() {
   Live.running = false;
@@ -1885,7 +1885,7 @@ function liveStop() {
 async function maybeCue(force) {
   if (!Live.running && !force) return;
   const t = Live.transcript.trim();
-  if (!force && t.length - Live.lastCueLen < 220) return;
+  if (!force && t.length - Live.lastCueLen < 140) return;
   if (t.length < 20 || !db.settings.access) return;
   Live.lastCueLen = t.length;
   const l = Live.leadId ? db.leads.find((x) => x.id === Live.leadId) : null;
@@ -1901,7 +1901,7 @@ async function maybeCue(force) {
         assets,
         recentCues: Live.recentCues.slice(-10),
         scriptBlocks: Live.scriptBlocks,
-        cards: (db.products || []).slice(0, 40).map((p) => ({ kind: normKind(p.kind), name: p.name, info: p.info })),
+        cards: (db.products || []).filter((p) => normKind(p.kind) !== "product").slice(0, 40).map((p) => ({ kind: normKind(p.kind), name: p.name, info: p.info })),
       }),
     });
     const j = await r.json();

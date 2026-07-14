@@ -51,6 +51,16 @@ export default async function handler(req, res) {
   const body = req.method === "POST" ? (req.body || {}) : {};
   const code = req.headers["x-access-code"] || body.access_code || "";
   if (!String(process.env.ACCESS_CODE || "").split(",").map((s) => s.trim()).filter(Boolean).includes(code)) { res.status(401).json({ error: "Invalid access code." }); return; }
+
+  // Admin check: is this access code allowed to change locked settings (Lite mode)?
+  // ADMIN_CODE is a comma-separated list of admin codes. If unset, everyone is admin
+  // (no restriction configured). Returns before the KV check so it works without a store.
+  if (req.method === "POST" && body.action === "amIAdmin") {
+    const admins = String(process.env.ADMIN_CODE || "").split(",").map((s) => s.trim()).filter(Boolean);
+    res.status(200).json({ admin: admins.length === 0 || admins.includes(code) });
+    return;
+  }
+
   if (!KV_URL || !KV_TOKEN) { res.status(503).json({ error: "Sync store not configured. Add a KV store in Vercel to enable cross-device sync." }); return; }
 
   const key = keyFor(code);

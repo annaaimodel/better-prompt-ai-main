@@ -1192,11 +1192,13 @@ function loadSettingsForm() {
   $("s_csms").value = (db.team.csms || []).join(", ");
   $("s_sync").checked = !!db.settings.sync;
   $("s_lite").checked = !!db.settings.lite;
+  applyLite(); // reflect admin lock state on the toggle
   updateSyncStatus(db.syncedAt ? "On. Last synced " + agoLabel(db.syncedAt) + "." : "On.");
   renderCadenceView();
   renderBackups();
 }
 $("s_lite").addEventListener("change", () => {
+  if (isAdmin !== true) { applyLite(); toast("Locked - an admin access code is required to change this"); return; }
   db.settings.lite = $("s_lite").checked;
   save(); applyLite();
   toast(db.settings.lite ? "Lite mode on" : "Lite mode off");
@@ -1244,7 +1246,7 @@ $("saveSettingsBtn").onclick = () => {
   save(); toast("Profile saved");
 };
 // Persist access code as you type so first AI call works without a save round-trip.
-$("s_access").addEventListener("change", () => { db.settings.access = $("s_access").value.trim(); save(); });
+$("s_access").addEventListener("change", () => { db.settings.access = $("s_access").value.trim(); save(); checkAdmin(); });
 $("s_deepgram").addEventListener("change", () => { db.settings.deepgram = $("s_deepgram").value.trim(); save(); });
 
 // Playbook ------------------------------------------------------------------
@@ -2407,9 +2409,13 @@ $("ct_save").onclick = () => {
 };
 
 // Lite mode: hide the CRM/content tabs for a focused, call-first setup.
+// Only admin access codes (server-verified) may turn it off; everyone else is
+// locked into Lite, re-enforced on every load. isAdmin: null=unknown, forces lock.
 const LITE_TABS = ["pipeline", "add", "coach", "content"];
+let isAdmin = null;
+function liteActive() { return isAdmin === true ? !!db.settings.lite : true; }
 function applyLite() {
-  const lite = !!db.settings.lite;
+  const lite = liteActive();
   LITE_TABS.forEach((v) => {
     const b = document.querySelector(`#tabs button[data-view="${v}"]`);
     if (b) b.classList.toggle("hidden", lite);
@@ -2419,11 +2425,30 @@ function applyLite() {
     const active = document.querySelector("#tabs button.active");
     if (active && LITE_TABS.includes(active.dataset.view)) setView("today");
   }
+  // Reflect state and lock on the Settings toggle if it's on screen.
+  const cb = document.getElementById("s_lite");
+  if (cb) { cb.checked = lite; cb.disabled = (isAdmin !== true); }
+  const lock = document.getElementById("s_lite_lock");
+  if (lock) lock.textContent = isAdmin === true ? "" : "Locked by your administrator. Enter an admin access code in Settings to change this.";
+}
+// Ask the server whether the current access code is an admin, then apply.
+async function checkAdmin() {
+  if (!db.settings.access) { isAdmin = null; applyLite(); return; }
+  try {
+    const r = await fetch("/api/sync", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({ action: "amIAdmin" }),
+    });
+    const j = await r.json();
+    isAdmin = r.ok ? !!j.admin : null;
+  } catch (e) { isAdmin = null; }
+  applyLite();
 }
 
 // Go
 renderToday();
 applyLite();
+checkAdmin();
 
 // Cross-device sync: pull the latest on load, and again whenever the tab regains
 // focus (so switching back from your other device shows its changes).

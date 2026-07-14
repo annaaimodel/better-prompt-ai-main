@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Live headset transcription — speak into your headset and get a real-time transcript in your browser. Nothing is uploaded; it runs entirely on your device.">
+<title>Live Transcript · Headset Transcription</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+:root{--bg:#0a0a0b;--card:#141312;--line:rgba(201,156,56,.14);--line2:#262320;--txt:#f3efe6;--mut:#9a948a;--gold:#c99c38;--gold2:#f2dd88;--goldd:#a47a26;--live:#e0483d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+.gold{background:linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header{text-align:center;padding:40px 20px 26px;background:radial-gradient(900px 380px at 50% -120px,rgba(201,156,56,.16),transparent 70%);border-bottom:1px solid var(--line2)}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+header h1{font-weight:700;font-size:clamp(26px,5vw,40px);letter-spacing:-.01em;margin:0 auto 10px;max-width:16ch}
+header p{color:#cfc7b6;font-size:15px;max-width:52ch;margin:0 auto}
+
+.panel{background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:18px;margin:22px 0}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:6px;flex:1 1 200px;min-width:160px}
+.field label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+select{width:100%;background:#0f0e0d;color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:14px;font-family:inherit}
+select:focus{outline:none;border-color:var(--gold)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:700;padding:12px 22px;border-radius:11px;cursor:pointer;border:1px solid transparent;transition:filter .15s,box-shadow .15s,border-color .15s,opacity .15s;font-family:inherit}
+.btn.primary{color:#0a0a0b;background:linear-gradient(175deg,#f6e29a 0%,#d9b24c 45%,#b8862f 100%)}
+.btn.primary:hover{filter:brightness(1.07);box-shadow:0 12px 30px -12px rgba(201,156,56,.6)}
+.btn.stop{color:#fff;background:linear-gradient(175deg,#e0483d,#a52f27)}
+.btn.stop:hover{filter:brightness(1.08)}
+.btn.ghost{color:var(--txt);background:transparent;border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--gold)}
+.btn:disabled{opacity:.4;cursor:not-allowed;filter:none;box-shadow:none}
+
+.statusbar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:16px 0 4px;font-size:13px;color:var(--mut)}
+.dot{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--mut)}
+.dot::before{content:"";width:10px;height:10px;border-radius:50%;background:#555}
+.dot.on{color:var(--live)}
+.dot.on::before{background:var(--live);animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(224,72,61,.6)}50%{box-shadow:0 0 0 6px rgba(224,72,61,0)}}
+.stat b{color:var(--txt)}
+
+.transcript{background:#0f0e0d;border:1px solid var(--line);border-radius:14px;padding:20px;min-height:280px;max-height:52vh;overflow-y:auto;font-size:17px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.transcript:empty::before{content:"Your live transcript will appear here. Put on your headset, pick it below, and press Start listening.";color:var(--mut);font-size:15px}
+.interim{color:var(--mut);font-style:italic}
+.ts{color:var(--goldd);font-size:12px;font-weight:700;letter-spacing:.05em;margin-right:6px}
+
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.toggles{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:14px;color:var(--mut)}
+.toggles label{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.toggles input{accent-color:var(--gold);width:16px;height:16px}
+
+.note{font-size:13px;color:var(--mut);margin-top:18px;padding:14px 16px;border:1px solid var(--line2);border-radius:12px;background:rgba(255,255,255,.015)}
+.note b{color:var(--txt)}
+.err{border-color:rgba(224,72,61,.5);color:#f0b7b2}
+.err b{color:#f7d9d6}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:30px 20px 40px}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+.hidden{display:none!important}
+</style></head>
+<body>
+<header>
+  <p class="kicker">Live Transcription</p>
+  <h1>Speak into your <span class="gold">headset</span>. See every word.</h1>
+  <p>Real-time speech-to-text, running entirely in your browser. Nothing is recorded or uploaded — the audio never leaves your device.</p>
+</header>
+
+<div class="wrap">
+  <div id="unsupported" class="panel err hidden">
+    <b>This browser can't do live transcription.</b><br>
+    The built-in speech engine needs <b>Google Chrome</b> or <b>Microsoft Edge</b> on desktop (or Chrome on Android).
+    Safari and Firefox don't support it yet. Open this page in Chrome and you're set.
+  </div>
+
+  <div class="panel" id="app">
+    <div class="controls">
+      <div class="field">
+        <label for="mic">Microphone (your headset)</label>
+        <select id="mic"><option>Default microphone</option></select>
+      </div>
+      <div class="field" style="flex:0 1 190px">
+        <label for="lang">Spoken language</label>
+        <select id="lang">
+          <option value="en-US">English (US)</option>
+          <option value="en-GB">English (UK)</option>
+          <option value="es-ES">Spanish</option>
+          <option value="fr-FR">French</option>
+          <option value="de-DE">German</option>
+          <option value="it-IT">Italian</option>
+          <option value="pt-BR">Portuguese (BR)</option>
+          <option value="nl-NL">Dutch</option>
+          <option value="hi-IN">Hindi</option>
+          <option value="ja-JP">Japanese</option>
+          <option value="zh-CN">Chinese (Mandarin)</option>
+        </select>
+      </div>
+      <button id="toggle" class="btn primary">● Start listening</button>
+    </div>
+
+    <div class="statusbar">
+      <span id="status" class="dot">Idle</span>
+      <span class="stat">Time: <b id="elapsed">0:00</b></span>
+      <span class="stat">Words: <b id="words">0</b></span>
+    </div>
+
+    <div class="toggles">
+      <label><input type="checkbox" id="optTimestamps"> Timestamp each line</label>
+      <label><input type="checkbox" id="optAutoscroll" checked> Auto-scroll</label>
+    </div>
+
+    <div class="transcript" id="transcript" aria-live="polite"></div>
+
+    <div class="actions">
+      <button id="copy" class="btn ghost">Copy</button>
+      <button id="download" class="btn ghost">Download .txt</button>
+      <button id="clear" class="btn ghost">Clear</button>
+    </div>
+
+    <div class="note">
+      <b>Tip:</b> pick your headset above so the browser listens to the right mic. If the list is empty
+      or shows generic names, press Start once and allow microphone access — the real device names appear
+      after that. To capture the <i>other</i> side of a call too, set your system's input to your headset
+      and keep the call on speaker, or use your OS "stereo mix"/loopback input.
+    </div>
+  </div>
+
+  <footer>
+    Powered by your browser's built-in speech engine (Web Speech API). Private by design — no server, no account, no recording.
+  </footer>
+</div>
+
+<script>
+(function(){
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var el = function(id){return document.getElementById(id);};
+  var transcriptEl = el('transcript'), statusEl = el('status'),
+      toggleBtn = el('toggle'), micSel = el('mic'), langSel = el('lang'),
+      elapsedEl = el('elapsed'), wordsEl = el('words');
+
+  if(!SR){ el('unsupported').classList.remove('hidden'); el('app').classList.add('hidden'); return; }
+
+  var recog = null, listening = false, wantOn = false;
+  var finalText = '';               // committed transcript (no interim)
+  var lines = [];                   // {ts, text} committed segments for timestamped view
+  var startTime = 0, timer = null;
+
+  // ---- device list -------------------------------------------------------
+  function loadDevices(){
+    if(!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) return;
+    navigator.mediaDevices.enumerateDevices().then(function(devs){
+      var cur = micSel.value;
+      micSel.innerHTML = '<option value="">Default microphone</option>';
+      devs.filter(function(d){return d.kind==='audioinput';}).forEach(function(d,i){
+        var o = document.createElement('option');
+        o.value = d.deviceId;
+        o.textContent = d.label || ('Microphone ' + (i+1));
+        micSel.appendChild(o);
+      });
+      if(cur) micSel.value = cur;
+    }).catch(function(){});
+  }
+  loadDevices();
+  if(navigator.mediaDevices) navigator.mediaDevices.addEventListener &&
+    navigator.mediaDevices.addEventListener('devicechange', loadDevices);
+
+  // Request permission (also unlocks real device labels + confirms the chosen mic works)
+  function primeMic(){
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return Promise.resolve();
+    var constraints = { audio: micSel.value ? { deviceId: { exact: micSel.value } } : true };
+    return navigator.mediaDevices.getUserMedia(constraints).then(function(stream){
+      stream.getTracks().forEach(function(t){t.stop();}); // we only needed the permission grant
+      loadDevices();
+    });
+  }
+
+  // ---- helpers -----------------------------------------------------------
+  function fmtTime(sec){ var m=Math.floor(sec/60), s=sec%60; return m+':'+(s<10?'0':'')+s; }
+  function stamp(){ var d=new Date(); return d.toTimeString().slice(0,8); }
+  function countWords(t){ t=t.trim(); return t? t.split(/\s+/).length : 0; }
+
+  function render(interim){
+    var showTs = el('optTimestamps').checked;
+    var html = '';
+    if(showTs){
+      html = lines.map(function(l){
+        return '<span class="ts">['+l.ts+']</span>' + escapeHtml(l.text);
+      }).join('\n');
+    } else {
+      html = escapeHtml(finalText.trim());
+    }
+    if(interim){
+      if(html) html += (showTs? '\n' : ' ');
+      html += '<span class="interim">'+escapeHtml(interim)+'</span>';
+    }
+    transcriptEl.innerHTML = html;
+    wordsEl.textContent = countWords(finalText);
+    if(el('optAutoscroll').checked) transcriptEl.scrollTop = transcriptEl.scrollHeight;
+  }
+  function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function setStatus(state){
+    statusEl.className = 'dot' + (state==='live'?' on':'');
+    statusEl.textContent = state==='live' ? 'Listening…' : (state==='error'?'Error':'Idle');
+  }
+
+  // ---- recognition lifecycle --------------------------------------------
+  function build(){
+    var r = new SR();
+    r.continuous = true;
+    r.interimResults = true;
+    r.lang = langSel.value;
+    r.onresult = function(e){
+      var interim = '';
+      for(var i=e.resultIndex; i<e.results.length; i++){
+        var res = e.results[i];
+        var txt = res[0].transcript;
+        if(res.isFinal){
+          var clean = txt.trim();
+          if(clean){
+            finalText += (finalText? ' ':'') + clean;
+            lines.push({ ts: stamp(), text: clean });
+          }
+        } else {
+          interim += txt;
+        }
+      }
+      render(interim);
+    };
+    r.onerror = function(e){
+      if(e.error==='not-allowed' || e.error==='service-not-allowed'){
+        wantOn = false; showError('Microphone access was blocked. Click the 🔒/camera icon in the address bar and allow the microphone, then press Start again.');
+        stopUI();
+      } else if(e.error==='no-speech'){
+        // harmless — engine will restart via onend
+      } else if(e.error==='audio-capture'){
+        wantOn=false; showError('No microphone was found. Plug in / connect your headset, then reload.'); stopUI();
+      }
+    };
+    r.onend = function(){
+      listening = false;
+      // Chrome stops after silence; restart if the user still wants it on.
+      if(wantOn){ try{ r.start(); listening=true; }catch(_){ setTimeout(function(){ if(wantOn) start(); },300); } }
+      else setStatus('idle');
+    };
+    r.onstart = function(){ listening=true; setStatus('live'); };
+    return r;
+  }
+
+  function start(){
+    recog = build();
+    try{ recog.start(); }catch(_){}
+  }
+
+  function tick(){ elapsedEl.textContent = fmtTime(Math.floor((Date.now()-startTime)/1000)); }
+
+  function startUI(){
+    wantOn = true;
+    toggleBtn.textContent = '■ Stop listening';
+    toggleBtn.className = 'btn stop';
+    micSel.disabled = true; langSel.disabled = true;
+    startTime = Date.now(); tick(); timer = setInterval(tick, 1000);
+    clearError();
+  }
+  function stopUI(){
+    toggleBtn.textContent = '● Start listening';
+    toggleBtn.className = 'btn primary';
+    micSel.disabled = false; langSel.disabled = false;
+    if(timer){ clearInterval(timer); timer=null; }
+    setStatus('idle');
+  }
+
+  toggleBtn.addEventListener('click', function(){
+    if(wantOn){ wantOn=false; if(recog){ try{recog.stop();}catch(_){}} stopUI(); return; }
+    primeMic().then(function(){ startUI(); start(); })
+              .catch(function(){ startUI(); start(); }); // permission dialog handled by onerror
+  });
+
+  el('optTimestamps').addEventListener('change', function(){ render(''); });
+
+  el('copy').addEventListener('click', function(){
+    var out = el('optTimestamps').checked
+      ? lines.map(function(l){return '['+l.ts+'] '+l.text;}).join('\n')
+      : finalText.trim();
+    navigator.clipboard.writeText(out).then(function(){
+      var b=el('copy'); var o=b.textContent; b.textContent='Copied ✓'; setTimeout(function(){b.textContent=o;},1400);
+    });
+  });
+  el('download').addEventListener('click', function(){
+    var out = el('optTimestamps').checked
+      ? lines.map(function(l){return '['+l.ts+'] '+l.text;}).join('\n')
+      : finalText.trim();
+    var blob = new Blob([out||''], {type:'text/plain'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'transcript.txt';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  el('clear').addEventListener('click', function(){
+    if(finalText && !confirm('Clear the transcript?')) return;
+    finalText=''; lines=[]; render(''); wordsEl.textContent='0';
+  });
+
+  function showError(msg){
+    var n = el('runtimeErr');
+    if(!n){ n=document.createElement('div'); n.id='runtimeErr'; n.className='note err'; el('app').appendChild(n); }
+    n.innerHTML = '<b>Heads up:</b> '+msg;
+  }
+  function clearError(){ var n=el('runtimeErr'); if(n) n.remove(); }
+
+  setStatus('idle');
+})();
+</script>
+</body></html>

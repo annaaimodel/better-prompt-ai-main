@@ -1091,7 +1091,7 @@ document.body.addEventListener("click", (e) => {
   else if (t.dataset.restore) {
     const b = readBackups()[parseInt(t.dataset.restore, 10)];
     if (b && confirm(`Restore the backup from ${fmtDate(b.at)}? Your current data will be snapshotted first, then replaced.`)) {
-      try { snapshotBackup("before restore"); db = ensureShape(JSON.parse(b.data)); save(); rerender(); loadSettingsForm(); toast("Restored"); } catch (e) { toast("Restore failed"); }
+      try { snapshotBackup("before restore"); db = ensureShape(JSON.parse(b.data)); save(); rerender(); loadSettingsForm(); updateGate(); toast("Restored"); } catch (e) { toast("Restore failed"); }
     }
   }
 });
@@ -1246,7 +1246,7 @@ $("saveSettingsBtn").onclick = () => {
   save(); toast("Profile saved");
 };
 // Persist access code as you type so first AI call works without a save round-trip.
-$("s_access").addEventListener("change", () => { db.settings.access = $("s_access").value.trim(); save(); checkAdmin(); });
+$("s_access").addEventListener("change", () => { db.settings.access = $("s_access").value.trim(); save(); checkAdmin(); updateGate(); });
 $("s_deepgram").addEventListener("change", () => { db.settings.deepgram = $("s_deepgram").value.trim(); save(); });
 
 // Playbook ------------------------------------------------------------------
@@ -1523,7 +1523,10 @@ function doImport(file) {
       const data = JSON.parse(reader.result);
       if (!data || !Array.isArray(data.leads)) throw 0;
       snapshotBackup("before full import");
-      db = ensureShape(data); save(); rerender(); loadSettingsForm(); toast("Imported");
+      const priorAccess = db.settings.access;
+      db = ensureShape(data);
+      if (!db.settings.access && priorAccess) db.settings.access = priorAccess; // keep them logged in through an import
+      save(); rerender(); loadSettingsForm(); updateGate(); toast("Imported");
     } catch (e) { toast("Invalid backup file"); }
   };
   reader.readAsText(file);
@@ -1544,7 +1547,7 @@ $("importBtn").onclick = () => $("importFile").click();
 $("importBtn2").onclick = () => $("importFile").click();
 $("importFile").onchange = (e) => { if (e.target.files[0]) doImport(e.target.files[0]); };
 $("backupNow") && ($("backupNow").onclick = () => { snapshotBackup("manual"); renderBackups(); toast("Backup taken"); });
-$("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this device? A backup is taken first, and Export is recommended.")) { snapshotBackup("before erase"); localStorage.removeItem(KEY); db = ensureShape(load()); rerender(); loadSettingsForm(); toast("Wiped (recoverable from Auto-backups)"); } };
+$("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this device? A backup is taken first, and Export is recommended.")) { snapshotBackup("before erase"); localStorage.removeItem(KEY); db = ensureShape(load()); rerender(); loadSettingsForm(); updateGate(); toast("Wiped (recoverable from Auto-backups)"); } };
 $("search").addEventListener("input", (e) => renderPipeline(e.target.value));
 $("segNav").addEventListener("click", (e) => { const b = e.target.closest("button[data-seg]"); if (b) { pipelineSegment = b.dataset.seg; renderPipeline($("search").value); } });
 $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.target.value; renderPipeline($("search").value); });
@@ -2445,10 +2448,50 @@ async function checkAdmin() {
   applyLite();
 }
 
+// Access gate: no valid access code, no app. The code is entered here, not in
+// Settings. Verified against the server so a made-up code cannot get in.
+function updateGate() {
+  const g = document.getElementById("gate");
+  if (g) g.classList.toggle("hidden", !!db.settings.access);
+}
+async function verifyAccessCode(code) {
+  try {
+    const r = await fetch("/api/sync", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": code },
+      body: JSON.stringify({ action: "amIAdmin" }),
+    });
+    return r.ok; // 200 = valid code, 401 = invalid
+  } catch (e) { return null; } // network error
+}
+async function submitGate() {
+  const code = $("gate_code").value.trim();
+  if (!code) { $("gate_err").textContent = "Enter your access code."; return; }
+  $("gate_go").disabled = true; $("gate_go").textContent = "Checking…"; $("gate_err").textContent = "";
+  const ok = await verifyAccessCode(code);
+  if (ok === true) {
+    db.settings.access = code; persistLocal();
+    updateGate(); checkAdmin(); applyLite(); rerender(); loadSettingsForm();
+    $("gate_code").value = "";
+  } else if (ok === false) {
+    $("gate_err").textContent = "That access code is not valid.";
+  } else {
+    $("gate_err").textContent = "Could not check right now - check your connection and try again.";
+  }
+  $("gate_go").disabled = false; $("gate_go").textContent = "Enter";
+}
+$("gate_go").onclick = submitGate;
+$("gate_code").addEventListener("keydown", (e) => { if (e.key === "Enter") submitGate(); });
+$("s_lock").onclick = () => {
+  db.settings.access = ""; persistLocal(); isAdmin = null;
+  $("gate_code").value = ""; $("gate_err").textContent = ""; updateGate(); setView("today");
+  toast("Locked");
+};
+
 // Go
 renderToday();
 applyLite();
 checkAdmin();
+updateGate();
 
 // Cross-device sync: pull the latest on load, and again whenever the tab regains
 // focus (so switching back from your other device shows its changes).

@@ -5,9 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Aurum OS - high-ticket sales</title>
-  <link rel="stylesheet" href="/styles.css?v=29" />
+  <link rel="stylesheet" href="/styles.css?v=30" />
 </head>
 <body>
+  <div id="gate" class="gate">
+    <div class="gate-card">
+      <svg class="brandmark" width="46" height="46" viewBox="0 0 32 32" aria-hidden="true">
+        <defs>
+          <linearGradient id="aurumMarkGate" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f3e0b0"/>
+            <stop offset="1" stop-color="#d9b46a"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="30" height="30" rx="8" fill="url(#aurumMarkGate)"/>
+        <path d="M16 8 L23.5 24 M16 8 L8.5 24 M11.6 19.2 H20.4" stroke="#1a1407" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <h1>Aurum <span class="dot">OS</span></h1>
+      <p class="small muted" style="margin:2px 0 0">the operating system for high-ticket sales</p>
+      <input id="gate_code" type="password" placeholder="Access code" autocomplete="off" />
+      <button class="btn primary" id="gate_go">Enter</button>
+      <p class="small" id="gate_err" style="color:var(--red);min-height:18px;margin:8px 0 0"></p>
+    </div>
+  </div>
   <div class="app">
     <header class="top">
       <div class="brand">
@@ -401,9 +420,10 @@
     <section id="view-settings" class="hidden">
       <div class="card">
         <h2>Access</h2>
-        <p class="small muted">Your <code>ACCESS_CODE</code> (set in Vercel). Stored only in this browser; sent with each AI request to unlock drafting.</p>
+        <p class="small muted">You entered your access code on the start screen. It is stored only in this browser and sent with each request to unlock the app. You can change it here, or Lock to sign out and require the code again.</p>
         <div class="field"><label>Access code</label><input id="s_access" type="password" placeholder="••••••" /></div>
-        <div class="field"><label>Deepgram API key (for headset / two-channel live calls)</label><input id="s_deepgram" type="password" placeholder="optional - enables Headset mode on the Live page" /></div>
+        <button class="btn sm" id="s_lock">Lock app</button>
+        <div class="field" style="margin-top:14px"><label>Deepgram API key (for headset / two-channel live calls)</label><input id="s_deepgram" type="password" placeholder="optional - enables Headset mode on the Live page" /></div>
         <p class="help">Get a free key at deepgram.com. Used only by your browser to transcribe the prospect's audio on headset calls. Leave blank to use mic-only (speaker) mode.</p>
       </div>
 
@@ -490,6 +510,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=29"></script>
+  <script src="/app.js?v=30"></script>
 </body>
 </html>

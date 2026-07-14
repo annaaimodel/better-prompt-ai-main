@@ -55,6 +55,20 @@ label { display: block; font-size: 11px; color: var(--muted); margin: 0 0 5px; t
 .row { display: flex; gap: 12px; flex-wrap: wrap; }
 .row > * { flex: 1; min-width: 140px; }
 
+/* Access gate */
+.gate {
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 24px;
+  background:
+    radial-gradient(900px 480px at 82% -10%, rgba(224, 189, 118, .1), transparent 58%),
+    var(--bg);
+}
+.gate.hidden { display: none !important; }
+.gate-card { width: 100%; max-width: 340px; text-align: center; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 24px; box-shadow: var(--shadow); }
+.gate-card .brandmark { border-radius: 11px; box-shadow: 0 4px 16px rgba(224, 189, 118, .28); margin-bottom: 6px; }
+.gate-card h1 { font-size: 24px; margin: 8px 0 0; font-weight: 700; letter-spacing: -.02em; }
+.gate-card input { margin: 18px 0 10px; text-align: center; letter-spacing: .1em; }
+.gate-card .btn { width: 100%; }
+
 /* Layout */
 .app { max-width: 1080px; margin: 0 auto; padding: 0 20px 96px; }
 header.top {

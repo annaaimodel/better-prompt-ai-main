@@ -21941,7 +21941,7 @@
   "tier": "",
   "first_seen": "2026-07-14",
   "last_seen": "2026-07-14",
-  "active": true
+  "active": false
  },
  "42050f5242e3a028": {
   "title": "Virtual Assistant - Recruitment",
@@ -21953,6 +21953,22 @@
   "category": "VA / Social / Chat",
   "country": "United States",
   "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-14",
+  "last_seen": "2026-07-14",
+  "active": false
+ },
+ "87c535c4855d745b": {
+  "title": "Army Account Manager - Eastern U.S & Europe",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/curtiss-wright-corporation/jobs/army-account-manager-eastern-u-s-europe",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-14",

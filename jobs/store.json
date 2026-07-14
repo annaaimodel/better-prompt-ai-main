@@ -21781,7 +21781,7 @@
   "tier": "",
   "first_seen": "2026-07-13",
   "last_seen": "2026-07-14",
-  "active": true
+  "active": false
  },
  "ac153faaadbaa924": {
   "title": "Executive Virtual Assistant",
@@ -21905,6 +21905,22 @@
   "category": "Closer",
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-14",
+  "last_seen": "2026-07-14",
+  "active": true
+ },
+ "451b0dd1d345b6a0": {
+  "title": "Senior Renewals Operations Manager, Customer Success",
+  "company": "Veeam Software",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/veeam-software/jobs/senior-renewals-operations-manager-customer-success-1170244866",
+  "source": "Himalayas",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "United States",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-14",

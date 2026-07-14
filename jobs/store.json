@@ -21925,6 +21925,38 @@
   "tier": "",
   "first_seen": "2026-07-14",
   "last_seen": "2026-07-14",
+  "active": false
+ },
+ "ff159636c6232ef0": {
+  "title": "Account Executive - TOLA (Enterprise)",
+  "company": "Cyera",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/cyera-com/jobs/account-executive-tola-enterprise",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-14",
+  "last_seen": "2026-07-14",
+  "active": true
+ },
+ "42050f5242e3a028": {
+  "title": "Virtual Assistant - Recruitment",
+  "company": "Military, Veterans and Diverse Job Seekers",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/military-veterans-and-diverse-job-seekers/jobs/virtual-assistant-recruitment",
+  "source": "Himalayas",
+  "category": "VA / Social / Chat",
+  "country": "United States",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-14",
+  "last_seen": "2026-07-14",
   "active": true
  }
 }

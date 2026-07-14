@@ -305,6 +305,7 @@ function ensureShape(d) {
   d.products.forEach((p) => { if (!p.kind) p.kind = "product"; });
   if (typeof d.updatedAt !== "number") d.updatedAt = 0;
   if (typeof d.settings.sync !== "boolean") d.settings.sync = false;
+  if (typeof d.settings.lite !== "boolean") d.settings.lite = false;
   // Seed the built-in Quick Pitch once. The flag means it won't reappear if deleted.
   if (!d.seededQuickPitch) {
     if (!d.scripts.some((s) => s.name === "Quick Pitch")) {
@@ -1190,10 +1191,16 @@ function loadSettingsForm() {
   $("s_closers").value = (db.team.closers || []).join(", ");
   $("s_csms").value = (db.team.csms || []).join(", ");
   $("s_sync").checked = !!db.settings.sync;
+  $("s_lite").checked = !!db.settings.lite;
   updateSyncStatus(db.syncedAt ? "On. Last synced " + agoLabel(db.syncedAt) + "." : "On.");
   renderCadenceView();
   renderBackups();
 }
+$("s_lite").addEventListener("change", () => {
+  db.settings.lite = $("s_lite").checked;
+  save(); applyLite();
+  toast(db.settings.lite ? "Lite mode on" : "Lite mode off");
+});
 $("s_sync").addEventListener("change", () => {
   db.settings.sync = $("s_sync").checked;
   // Persist the toggle WITHOUT bumping the data clock or pushing - turning sync
@@ -2399,8 +2406,24 @@ $("ct_save").onclick = () => {
   toast(saveGeneral(db.content, label, txt) ? "Saved to library" : "Already saved"); renderContentLib();
 };
 
+// Lite mode: hide the CRM/content tabs for a focused, call-first setup.
+const LITE_TABS = ["pipeline", "add", "coach", "content"];
+function applyLite() {
+  const lite = !!db.settings.lite;
+  LITE_TABS.forEach((v) => {
+    const b = document.querySelector(`#tabs button[data-view="${v}"]`);
+    if (b) b.classList.toggle("hidden", lite);
+  });
+  // If we're sitting on a now-hidden tab, fall back to Today.
+  if (lite) {
+    const active = document.querySelector("#tabs button.active");
+    if (active && LITE_TABS.includes(active.dataset.view)) setView("today");
+  }
+}
+
 // Go
 renderToday();
+applyLite();
 
 // Cross-device sync: pull the latest on load, and again whenever the tab regains
 // focus (so switching back from your other device shows its changes).

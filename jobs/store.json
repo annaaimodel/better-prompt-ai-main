@@ -22554,6 +22554,22 @@
   "tier": "",
   "first_seen": "2026-07-15",
   "last_seen": "2026-07-15",
+  "active": false
+ },
+ "9288957a1bc25bc5": {
+  "title": "Account Executive",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/svetness-personal-training/jobs/account-executive",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-15",
+  "last_seen": "2026-07-15",
   "active": true
  }
 }

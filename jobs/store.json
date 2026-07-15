@@ -22325,7 +22325,7 @@
   "tier": "",
   "first_seen": "2026-07-15",
   "last_seen": "2026-07-15",
-  "active": true
+  "active": false
  },
  "9139d85255baa27e": {
   "title": "Customer Success Manager, West at Vercel Remote",
@@ -22337,6 +22337,38 @@
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
   "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-15",
+  "last_seen": "2026-07-15",
+  "active": true
+ },
+ "7826fb4f0c1790b5": {
+  "title": "Tableau Admin with AWS - Remote (Mc Lean, VA, US)",
+  "company": "NTT DATA",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/nttdata/jobs/tableau-admin-with-aws-remote-mc-lean-va-us-388218746",
+  "source": "Himalayas",
+  "category": "VA / Social / Chat",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-15",
+  "last_seen": "2026-07-15",
+  "active": true
+ },
+ "4818989e9511d715": {
+  "title": "Account Executive, Practice Solutions",
+  "company": "Tebra",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/tebra/jobs/account-executive-practice-solutions",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-15",

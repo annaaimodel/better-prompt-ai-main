@@ -2414,7 +2414,7 @@ $("ct_save").onclick = () => {
 // Lite mode: hide the CRM/content tabs for a focused, call-first setup.
 // Only admin access codes (server-verified) may turn it off; everyone else is
 // locked into Lite, re-enforced on every load. isAdmin: null=unknown, forces lock.
-const LITE_TABS = ["pipeline", "add", "coach", "content"];
+const LITE_TABS = ["today", "pipeline", "add", "coach", "content"];
 let isAdmin = null;
 function liteActive() { return isAdmin === true ? !!db.settings.lite : true; }
 function applyLite() {
@@ -2426,7 +2426,7 @@ function applyLite() {
   // If we're sitting on a now-hidden tab, fall back to Today.
   if (lite) {
     const active = document.querySelector("#tabs button.active");
-    if (active && LITE_TABS.includes(active.dataset.view)) setView("today");
+    if (active && LITE_TABS.includes(active.dataset.view)) setView("live");
   }
   // Reflect state and lock on the Settings toggle if it's on screen.
   const cb = document.getElementById("s_lite");

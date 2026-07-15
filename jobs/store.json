@@ -22357,7 +22357,7 @@
   "tier": "",
   "first_seen": "2026-07-15",
   "last_seen": "2026-07-15",
-  "active": true
+  "active": false
  },
  "4818989e9511d715": {
   "title": "Account Executive, Practice Solutions",
@@ -22373,6 +22373,6 @@
   "tier": "",
   "first_seen": "2026-07-15",
   "last_seen": "2026-07-15",
-  "active": true
+  "active": false
  }
 }

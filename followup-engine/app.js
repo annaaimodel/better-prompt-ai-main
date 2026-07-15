@@ -1556,7 +1556,21 @@ $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.tar
 // Live call copilot - listens via the browser mic, whispers cues from /api/cue.
 // ---------------------------------------------------------------------------
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-const Live = { rec: null, running: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false, dg: null, meds: [], medInfo: {} };
+const Live = { rec: null, running: false, paused: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false, dg: null, meds: [], medInfo: {} };
+// Load any medications noted on a lead before, so they show and don't re-look-up.
+function seedMedsFromLead(leadId) {
+  Live.meds = []; Live.medInfo = {};
+  const seedLead = leadId ? db.leads.find((x) => x.id === leadId) : null;
+  if (seedLead && Array.isArray(seedLead.meds)) {
+    seedLead.meds.forEach((m) => {
+      const name = typeof m === "string" ? m : (m && m.name);
+      if (!name || Live.meds.some((x) => x.toLowerCase() === name.toLowerCase())) return;
+      Live.meds.push(name);
+      if (typeof m === "object") Live.medInfo[name.toLowerCase()] = { state: "ok", cued: true, recognized: true, generic: m.generic || "", class: m.class || "", uses: m.uses || "", sideEffects: m.sideEffects || [], risks: m.risks || [] };
+    });
+  }
+  renderMeds();
+}
 function splitScript(text) { return String(text || "").split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean); }
 function updateScriptControls() {
   $("sc_pos").textContent = Live.scriptBlocks.length ? `Section ${Math.max(1, Live.scriptIdx + 1)} / ${Live.scriptBlocks.length}` : "";
@@ -1797,7 +1811,7 @@ async function startProspectCapture() {
     try {
       const d = JSON.parse(m.data);
       const alt = d.channel && d.channel.alternatives && d.channel.alternatives[0];
-      if (alt && alt.transcript && d.is_final) { Live.transcript += alt.transcript + " "; renderTranscript(); scanProducts(alt.transcript + " "); }
+      if (!Live.paused && alt && alt.transcript && d.is_final) { Live.transcript += alt.transcript + " "; renderTranscript(); scanProducts(alt.transcript + " "); }
     } catch (e) {}
   };
   ws.onerror = () => { $("live_status").innerHTML += " (transcription error - check Deepgram key)"; };
@@ -1828,24 +1842,15 @@ async function liveStart() {
   if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
   if ($("live_headset").checked) { const ok = await startProspectCapture(); if (!ok) return; }
   Live.leadId = $("live_lead").value;
-  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0; Live.meds = []; Live.medInfo = {};
-  // Pre-load any medications noted on this lead before, so you can refer back.
-  const seedLead = Live.leadId ? db.leads.find((x) => x.id === Live.leadId) : null;
-  if (seedLead && Array.isArray(seedLead.meds)) {
-    seedLead.meds.forEach((m) => {
-      const name = typeof m === "string" ? m : (m && m.name);
-      if (!name || Live.meds.some((x) => x.toLowerCase() === name.toLowerCase())) return;
-      Live.meds.push(name);
-      if (typeof m === "object") Live.medInfo[name.toLowerCase()] = { state: "ok", cued: true, recognized: true, generic: m.generic || "", class: m.class || "", uses: m.uses || "", sideEffects: m.sideEffects || [], risks: m.risks || [] };
-    });
-  }
-  renderMeds();
+  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0; Live.paused = false;
+  seedMedsFromLead(Live.leadId);
   Live.scriptBlocks = splitScript($("sc_text").value); Live.scriptIdx = -1; Live.scriptManual = false;
   $("live_cues").innerHTML = "";
   if (Live.scriptBlocks.length) { $("sc_editor").style.display = "none"; $("sc_live").style.display = "block"; $("sc_controls").style.display = "flex"; renderScriptLive(-1); }
   const rec = new SR();
   rec.continuous = true; rec.interimResults = true; rec.lang = navigator.language || "en-US";
   rec.onresult = (e) => {
+    if (Live.paused) return; // between calls: ignore mic input
     let interim = "", finals = "";
     for (let i = e.resultIndex; i < e.results.length; i++) {
       const r = e.results[i];
@@ -1861,13 +1866,15 @@ async function liveStart() {
   Live.rec = rec; Live.running = true;
   try { rec.start(); } catch (e) {}
   $("live_start").disabled = true; $("live_stop").disabled = false;
+  $("live_pause").disabled = false; $("live_pause").textContent = "❚❚ Pause";
   $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;
   renderTranscript();
   acquireWakeLock();
   Live.timer = setInterval(() => maybeCue(false), 10000);
 }
 function liveStop() {
-  Live.running = false;
+  Live.running = false; Live.paused = false;
+  $("live_pause").disabled = true; $("live_pause").textContent = "❚❚ Pause";
   if (Live.rec) { try { Live.rec.stop(); } catch (e) {} }
   stopProspectCapture();
   clearInterval(Live.timer); Live.timer = null;
@@ -1895,6 +1902,7 @@ function liveStop() {
   }
 }
 async function maybeCue(force) {
+  if (Live.paused) return; // between calls: no cues
   if (!Live.running && !force) return;
   const t = Live.transcript.trim();
   if (!force && t.length - Live.lastCueLen < 140) return;
@@ -2077,6 +2085,33 @@ $("mr_list").addEventListener("click", (e) => {
 });
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
+// Pause/Resume: halt capture and whispers between calls without tearing down
+// the mic/headset connection. Picking a new lead before Resume starts fresh.
+$("live_pause").onclick = () => {
+  if (!Live.running) return;
+  Live.paused = !Live.paused;
+  const btn = $("live_pause");
+  if (Live.paused) {
+    releaseWakeLock();
+    btn.textContent = "▶ Resume";
+    $("live_status").innerHTML = "❚❚ Paused. Capture and whispers are off. If the next call is a new person, pick them above, then Resume for a fresh start.";
+  } else {
+    // If the selected lead changed while paused, treat Resume as a new call.
+    const sel = $("live_lead").value;
+    if (sel !== Live.leadId) {
+      Live.leadId = sel;
+      Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0;
+      seedMedsFromLead(sel);
+      $("live_cues").innerHTML = `<div class="empty small">Cues appear here as the call unfolds.</div>`;
+      Live.scriptIdx = -1; Live.scriptManual = false;
+      if (Live.scriptBlocks.length) renderScriptLive(-1);
+      renderTranscript();
+    }
+    acquireWakeLock();
+    btn.textContent = "❚❚ Pause";
+    $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;
+  }
+};
 $("live_cuenow").onclick = () => maybeCue(true);
 $("live_clear").onclick = () => { $("live_cues").innerHTML = `<div class="empty small">Cues appear here as the call unfolds.</div>`; };
 $("pk_clear").onclick = () => {

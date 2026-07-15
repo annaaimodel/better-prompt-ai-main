@@ -67,9 +67,9 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Phoenix, AZ",
+  "location": "Little Rock, AR",
   "comp": "$10k",
-  "link": "https://jooble.org/jdp/8533456092709652744",
+  "link": "https://jooble.org/jdp/-6780628492108170093",
   "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
@@ -3966,12 +3966,12 @@
   "company": "The People Pod",
   "location": "Manchester, Greater Manchester",
   "comp": "$100000-$100000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=sBIsqOF_8RGiaoWouE5fcA&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=vn8c0FeA8RGDMNFo9qkXsw&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-15",
-  "active": false,
+  "active": true,
   "country": "United Kingdom",
   "lead_type": "",
   "inbox": false,
@@ -6634,7 +6634,7 @@
   "company": "St Trinity Property Group",
   "location": "The Rocks, Sydney",
   "comp": "",
-  "link": "https://www.adzuna.com.au/land/ad/5664750953?se=UiOr1FWA8RGDMNFo9qkXsw&utm_medium=api&utm_source=3e941a8f&v=CCAC70D1BB716F034EECD4428BA3CF01A927605C",
+  "link": "https://www.adzuna.com.au/land/ad/5664750953?se=EHf23leA8RG9Q6Xm1NH9UQ&utm_medium=api&utm_source=3e941a8f&v=CCAC70D1BB716F034EECD4428BA3CF01A927605C",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "first_seen": "2026-06-13",
@@ -8435,7 +8435,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8451,7 +8451,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8467,7 +8467,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8483,7 +8483,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8499,7 +8499,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8531,7 +8531,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8547,7 +8547,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8563,7 +8563,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -11506,7 +11506,7 @@
   "company": "Tony Robbins RPM",
   "location": "Gilbert, Maricopa County",
   "comp": "$41014-$41014",
-  "link": "https://www.adzuna.com/land/ad/5798502124?se=EmainlWA8RGCUYE-F6ElsQ&utm_medium=api&utm_source=3e941a8f&v=21520C50730E2418C6F911F733978D75F29BA921",
+  "link": "https://www.adzuna.com/land/ad/5798502124?se=-DL1uVeA8RGDMNFo9qkXsw&utm_medium=api&utm_source=3e941a8f&v=21520C50730E2418C6F911F733978D75F29BA921",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
@@ -12674,7 +12674,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "bb7ee4f315665ef1": {
   "title": "Social Media Manager (Remote)",
@@ -13139,7 +13139,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-15",
-  "active": true
+  "active": false
  },
  "9b3777c808462e9a": {
   "title": "Remote High Ticket Closer",
@@ -13402,7 +13402,7 @@
   "company": "Link Up Overseas",
   "location": "United States",
   "comp": "",
-  "link": "https://jooble.org/jdp/-6085034706746975805",
+  "link": "https://jooble.org/jdp/1256057176204686684",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -14110,7 +14110,7 @@
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
-  "lead_type": "",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
@@ -14643,7 +14643,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "11094b46cea2a0bd": {
   "title": "Remote High-Ticket Fitness Sales Closer",
@@ -14666,16 +14666,16 @@
   "company": "Theinvestorsedge",
   "location": "Saint Louis, MO",
   "comp": "$36k",
-  "link": "https://jooble.org/jdp/-2964683408945150437",
+  "link": "https://jooble.org/jdp/-6433962643897924025",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
-  "lead_type": "Cold",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-13",
-  "active": false
+  "last_seen": "2026-07-15",
+  "active": true
  },
  "357131c6f6dab4f8": {
   "title": "Remote High-Ticket Closer | Inbound Leads, Elite Training",
@@ -15139,7 +15139,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-15",
-  "active": true
+  "active": false
  },
  "b4b8a9230a365c95": {
   "title": "Remote High-Ticket Closer for ETA Deals",
@@ -15748,7 +15748,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "13edc91b189cdbc6": {
   "title": "Remote High-Ticket Closer | One-Call Close, $20k-$30k OTE",
@@ -15764,7 +15764,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-07-15",
-  "active": true
+  "active": false
  },
  "f431777817c71f10": {
   "title": "Remote High-Ticket Closer — Uncapped Pay & Hot Leads",
@@ -15780,7 +15780,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-07-15",
-  "active": true
+  "active": false
  },
  "7c2276d12832f325": {
   "title": "Remote High-Ticket Closer | Elite B2B Sales",
@@ -17401,9 +17401,9 @@
  "d8cae334eca1140e": {
   "title": "Remote Customer Success Manager II - East",
   "company": "GrabJobs",
-  "location": "Milwaukee, WI",
+  "location": "Glendale, CA",
   "comp": "$125k",
-  "link": "https://jooble.org/jdp/-3156703472806608613",
+  "link": "https://jooble.org/jdp/3656373504433612004",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -17417,9 +17417,9 @@
  "1886d675e26af7e3": {
   "title": "Remote Customer Success Manager",
   "company": "GrabJobs",
-  "location": "Lexington, KY",
+  "location": "Columbus, OH",
   "comp": "$120k - $130k",
-  "link": "https://jooble.org/jdp/-319837492616740213",
+  "link": "https://jooble.org/jdp/5478317293773950228",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -17893,7 +17893,7 @@
   "tier": "",
   "first_seen": "2026-06-27",
   "last_seen": "2026-07-15",
-  "active": true
+  "active": false
  },
  "be95aea4e0bbc94d": {
   "title": "Remote virtual assistant",
@@ -18156,7 +18156,7 @@
   "company": "Simplex",
   "location": "Austin, Travis County",
   "comp": "$143980-$143980",
-  "link": "https://www.adzuna.com/land/ad/5779798536?se=il6TmOF_8RGnybZGKZMVYw&utm_medium=api&utm_source=3e941a8f&v=486A3B60B6E35959D8E58B71073B2EE07D42139B",
+  "link": "https://www.adzuna.com/land/ad/5779798536?se=hPZaw1eA8RGCUYE-F6ElsQ&utm_medium=api&utm_source=3e941a8f&v=486A3B60B6E35959D8E58B71073B2EE07D42139B",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -18165,7 +18165,7 @@
   "tier": "",
   "first_seen": "2026-06-28",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "ba745d1456f09c3f": {
   "title": "Remote Closer | Real Estate",
@@ -19205,7 +19205,7 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "33769bb8c0c4dcef": {
   "title": "Elite PR Sales Closer High-Ticket B2B (Remote)",
@@ -19733,7 +19733,7 @@
   "tier": "",
   "first_seen": "2026-07-05",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "28b64427015dcec7": {
   "title": "Remote Virtual Assistant – No Commute, Flexible Schedule",
@@ -19749,7 +19749,7 @@
   "tier": "",
   "first_seen": "2026-07-05",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "be42cda4ead53700": {
   "title": "Remote High Ticket Closer",
@@ -20005,7 +20005,7 @@
   "tier": "",
   "first_seen": "2026-07-06",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "68d657c8003778c6": {
   "title": "Sr Growth Account Executive, U4B Mid Market",
@@ -20165,7 +20165,7 @@
   "tier": "",
   "first_seen": "2026-07-07",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "717a8d4d277b4b61": {
   "title": "Corporate Account Executive - East",
@@ -21068,7 +21068,7 @@
   "company": "Presidio",
   "location": "US",
   "comp": "$184020-$184020",
-  "link": "https://www.adzuna.com/land/ad/5795942329?se=il6TmOF_8RGnybZGKZMVYw&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
+  "link": "https://www.adzuna.com/land/ad/5795942329?se=hPZaw1eA8RGCUYE-F6ElsQ&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -21077,7 +21077,7 @@
   "tier": "",
   "first_seen": "2026-07-11",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "f569837528d0f0f4": {
   "title": "Virtual Coverage Assistant - Beginner at American Income Life Virginia Beach, VA",
@@ -21365,7 +21365,7 @@
   "tier": "",
   "first_seen": "2026-07-12",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "17bb8dc68eb5f6ea": {
   "title": "ServiceNow Senior Solutions Consultant",
@@ -22213,7 +22213,7 @@
   "tier": "",
   "first_seen": "2026-07-15",
   "last_seen": "2026-07-15",
-  "active": false
+  "active": true
  },
  "f646df72c1807b5a": {
   "title": "Remote Senior B2B Closer — High-Ticket Deals",
@@ -22245,7 +22245,7 @@
   "tier": "",
   "first_seen": "2026-07-15",
   "last_seen": "2026-07-15",
-  "active": true
+  "active": false
  },
  "759e4a7bdf195e9e": {
   "title": "Virtual Assistant",

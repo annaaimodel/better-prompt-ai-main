@@ -2039,7 +2039,7 @@ function medRefCardHTML(m, delAttr) {
 }
 function renderMedRefs() {
   const el = $("mr_list"); if (!el) return;
-  const list = db.medRefs || [];
+  const list = [...(db.medRefs || [])].sort((a, b) => (a.name || "").toLowerCase().localeCompare((b.name || "").toLowerCase()));
   $("mr_count").textContent = list.length ? `${list.length} saved` : "";
   el.innerHTML = list.length ? list.map((m) => medRefCardHTML(m, "data-mrdel")).join("") : `<p class="small muted">No references saved yet. Look one up above.</p>`;
 }
@@ -2157,7 +2157,7 @@ function renderProducts() {
   };
   let html = "";
   CARD_KINDS.forEach((k, i) => {
-    const items = list.filter((p) => normKind(p.kind) === k);
+    const items = list.filter((p) => normKind(p.kind) === k).sort((a, b) => (a.name || "").toLowerCase().localeCompare((b.name || "").toLowerCase()));
     html += `<div class="section-title"${i ? ' style="margin-top:14px"' : ""}>${KIND_META[k].sec} (${items.length})</div>` +
       (items.length ? items.map(cardHTML).join("") : `<p class="small muted">No ${KIND_META[k].sec.toLowerCase()} yet. Set the type when adding or parsing.</p>`);
   });

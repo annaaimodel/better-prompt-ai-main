@@ -22586,7 +22586,7 @@
   "tier": "",
   "first_seen": "2026-07-16",
   "last_seen": "2026-07-16",
-  "active": true
+  "active": false
  },
  "78c0ad98fa018a3a": {
   "title": "Personal Training Sales (Referred)",
@@ -22602,7 +22602,7 @@
   "tier": "",
   "first_seen": "2026-07-16",
   "last_seen": "2026-07-16",
-  "active": true
+  "active": false
  },
  "e234b255d543b773": {
   "title": "Virtual Assistant",

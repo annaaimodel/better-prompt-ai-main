@@ -3966,7 +3966,7 @@
   "company": "The People Pod",
   "location": "Manchester, Greater Manchester",
   "comp": "$100000-$100000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=6pDM4x6B8RG6zLerRpN0aw&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=gIUyriKB8RG6zLerRpN0aw&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -6634,7 +6634,7 @@
   "company": "St Trinity Property Group",
   "location": "The Rocks, Sydney",
   "comp": "",
-  "link": "https://www.adzuna.com.au/land/ad/5664750953?se=DFyL8R6B8RG6Wp_STbVE7A&utm_medium=api&utm_source=3e941a8f&v=CCAC70D1BB716F034EECD4428BA3CF01A927605C",
+  "link": "https://www.adzuna.com.au/land/ad/5664750953?se=5LnRtyKB8RG6zLerRpN0aw&utm_medium=api&utm_source=3e941a8f&v=CCAC70D1BB716F034EECD4428BA3CF01A927605C",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "first_seen": "2026-06-13",
@@ -13139,7 +13139,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-16",
-  "active": false
+  "active": true
  },
  "9b3777c808462e9a": {
   "title": "Remote High Ticket Closer",
@@ -13402,7 +13402,7 @@
   "company": "Link Up Overseas",
   "location": "United States",
   "comp": "",
-  "link": "https://jooble.org/jdp/-6085034706746975805",
+  "link": "https://jooble.org/jdp/1256057176204686684",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -14110,7 +14110,7 @@
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
-  "lead_type": "",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
@@ -14643,7 +14643,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-16",
-  "active": false
+  "active": true
  },
  "11094b46cea2a0bd": {
   "title": "Remote High-Ticket Fitness Sales Closer",
@@ -15139,7 +15139,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-16",
-  "active": true
+  "active": false
  },
  "b4b8a9230a365c95": {
   "title": "Remote High-Ticket Closer for ETA Deals",
@@ -15224,9 +15224,9 @@
  "12ae3f79cd5180bc": {
   "title": "Remote B2B Ad Sales Closer Independent Contractor",
   "company": "Terraboost Media",
-  "location": "Chula Vista, CA",
-  "comp": "",
-  "link": "https://jooble.org/jdp/5744130897155449387",
+  "location": "Norwalk, CT",
+  "comp": "$1,500 per month",
+  "link": "https://jooble.org/jdp/-9126904231873307243",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -15234,8 +15234,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-07",
-  "active": false
+  "last_seen": "2026-07-16",
+  "active": true
  },
  "9283e6c697e165eb": {
   "title": "High-Ticket Coaching Closer (Remote, Uncapped Commissions)",
@@ -15751,14 +15751,14 @@
   "active": false
  },
  "13edc91b189cdbc6": {
-  "title": "Remote High-Ticket Closer | One-Call Close, $20k-$30k OTE",
+  "title": "Remote High-Ticket Closer | One-Call Close, $20k–$30k OTE",
   "company": "Schnell Global",
-  "location": "New York, NY",
-  "comp": "$20k - $30k",
-  "link": "https://jooble.org/jdp/-5455224956098730338",
-  "source": "Jooble",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.jobleads.com/us/job/remote-high-ticket-closer-one-call-close-20k-30k-ote--united-states--e7e2d82206c939654248478109d44c290",
+  "source": "JSearch",
   "category": "Closer",
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -15780,7 +15780,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-07-16",
-  "active": true
+  "active": false
  },
  "7c2276d12832f325": {
   "title": "Remote High-Ticket Closer | Elite B2B Sales",
@@ -16308,7 +16308,7 @@
   "tier": "",
   "first_seen": "2026-06-22",
   "last_seen": "2026-07-16",
-  "active": false
+  "active": true
  },
  "f5db68d463940a56": {
   "title": "Remote Medicare Sales Closer - Inbound, High Earnings",
@@ -17259,7 +17259,7 @@
   "company": "InEight",
   "location": "Benson, Douglas County",
   "comp": "$109002-$109002",
-  "link": "https://www.adzuna.com/land/ad/5670250604?se=IN0P2B6B8RG6zLerRpN0aw&utm_medium=api&utm_source=3e941a8f&v=1050412946A4A4DF650FE57243C43A6EAB58A4A3",
+  "link": "https://www.adzuna.com/land/ad/5670250604?se=8gPVpyKB8RGxWf0Q5h4kpA&utm_medium=api&utm_source=3e941a8f&v=1050412946A4A4DF650FE57243C43A6EAB58A4A3",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -17401,12 +17401,12 @@
  "d8cae334eca1140e": {
   "title": "Remote Customer Success Manager II - East",
   "company": "GrabJobs",
-  "location": "Arizona",
+  "location": "Milwaukee, WI",
   "comp": "$125k",
-  "link": "https://jooble.org/jdp/2508474760195415642",
+  "link": "https://jooble.org/jdp/-3156703472806608613",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
-  "country": "Other",
+  "country": "United States",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -17417,9 +17417,9 @@
  "1886d675e26af7e3": {
   "title": "Remote Customer Success Manager",
   "company": "GrabJobs",
-  "location": "United States",
-  "comp": "$130k - $265k",
-  "link": "https://jooble.org/jdp/-4026578739623548783",
+  "location": "Tampa, FL",
+  "comp": "$75k - $105k",
+  "link": "https://jooble.org/jdp/-2603392916243954029",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -18156,7 +18156,7 @@
   "company": "Simplex",
   "location": "Austin, Travis County",
   "comp": "$143980-$143980",
-  "link": "https://www.adzuna.com/land/ad/5779798536?se=IN0P2B6B8RG6zLerRpN0aw&utm_medium=api&utm_source=3e941a8f&v=486A3B60B6E35959D8E58B71073B2EE07D42139B",
+  "link": "https://www.adzuna.com/land/ad/5779798536?se=8gPVpyKB8RGxWf0Q5h4kpA&utm_medium=api&utm_source=3e941a8f&v=486A3B60B6E35959D8E58B71073B2EE07D42139B",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -21068,7 +21068,7 @@
   "company": "Presidio",
   "location": "US",
   "comp": "$184020-$184020",
-  "link": "https://www.adzuna.com/land/ad/5795942329?se=IN0P2B6B8RG6zLerRpN0aw&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
+  "link": "https://www.adzuna.com/land/ad/5795942329?se=8gPVpyKB8RGxWf0Q5h4kpA&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -21701,7 +21701,7 @@
   "tier": "",
   "first_seen": "2026-07-13",
   "last_seen": "2026-07-16",
-  "active": true
+  "active": false
  },
  "fce80ac8235b5b4e": {
   "title": "Administrative Assistant/Virtual Assistant",
@@ -22246,7 +22246,7 @@
   "tier": "",
   "first_seen": "2026-07-15",
   "last_seen": "2026-07-16",
-  "active": false
+  "active": true
  },
  "759e4a7bdf195e9e": {
   "title": "Virtual Assistant",

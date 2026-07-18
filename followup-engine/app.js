@@ -1901,6 +1901,56 @@ function liveStop() {
     }
   }
 }
+// The knowledge cards sent to the cue engine: objection + Q&A first so they are
+// never sliced off, then knowledge. Shared by the live whisper and the tester.
+function cueCards() {
+  const rank = { objection: 0, qa: 1, knowledge: 2 };
+  return (db.products || [])
+    .filter((p) => normKind(p.kind) !== "product")
+    .map((p) => ({ kind: normKind(p.kind), name: p.name, info: p.info }))
+    .sort((a, b) => (rank[a.kind] ?? 3) - (rank[b.kind] ?? 3))
+    .slice(0, 60);
+}
+// Test whisper: run a pasted transcript through the exact same cue engine.
+async function testWhisper() {
+  const t = ($("tw_text").value || "").trim();
+  const out = $("tw_out");
+  if (t.length < 20) { out.innerHTML = `<div class="empty small">Paste at least a sentence or two of transcript.</div>`; return; }
+  if (!db.settings.access) { toast("Set your access code first"); return; }
+  const btn = $("tw_go"), old = btn.textContent; btn.disabled = true; btn.textContent = "Testing…";
+  out.innerHTML = `<div class="empty small">Thinking…</div>`;
+  const l = $("live_lead").value ? db.leads.find((x) => x.id === $("live_lead").value) : null;
+  try {
+    const r = await fetch("/api/cue", {
+      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
+      body: JSON.stringify({
+        transcript: t.slice(-4000),
+        contact: l ? { name: l.name, offerInterest: l.offerInterest, notes: l.notes } : {},
+        mask: l ? l.mask : null,
+        playbook: db.playbook,
+        assets: (db.assets || []).map((a) => ({ title: a.title, result: a.result, bestFor: a.bestFor })),
+        recentCues: [],
+        scriptBlocks: splitScript($("sc_text").value),
+        cards: cueCards(),
+      }),
+    });
+    const j = await r.json();
+    if (!r.ok) { out.innerHTML = `<div class="small" style="color:var(--red)">${esc(j.error || "Test failed.")}</div>`; return; }
+    const parts = [];
+    if (Array.isArray(j.cues) && j.cues.length) {
+      parts.push(j.cues.map((c) => `<div class="cue ${["ask", "objection", "mask", "value", "nudge", "tone", "book", "med"].includes(c.type) ? c.type : "ask"}"><span class="cue-type">${esc(c.type || "ask")}</span>${esc(c.text)}</div>`).join(""));
+    } else {
+      parts.push(`<div class="empty small">No cue for this snippet - the engine stays quiet when nothing new fits. Try pasting the moment an objection or question lands.</div>`);
+    }
+    if (Array.isArray(j.meds) && j.meds.length) parts.push(`<p class="small muted" style="margin:10px 0 0">Medications detected: <strong>${j.meds.map(esc).join(", ")}</strong></p>`);
+    if (j.scriptNote) parts.push(`<p class="small muted" style="margin:4px 0 0">Script note: ${esc(j.scriptNote)}</p>`);
+    out.innerHTML = parts.join("");
+  } catch (e) {
+    out.innerHTML = `<div class="small" style="color:var(--red)">Test failed - ${esc((e && e.message) || "network error")}.</div>`;
+  } finally {
+    btn.disabled = false; btn.textContent = old;
+  }
+}
 async function maybeCue(force) {
   if (Live.paused) return; // between calls: no cues
   if (!Live.running && !force) return;
@@ -1921,14 +1971,7 @@ async function maybeCue(force) {
         assets,
         recentCues: Live.recentCues.slice(-10),
         scriptBlocks: Live.scriptBlocks,
-        cards: (() => {
-          const rank = { objection: 0, qa: 1, knowledge: 2 }; // objection + Q&A first so they're never sliced off
-          return (db.products || [])
-            .filter((p) => normKind(p.kind) !== "product")
-            .map((p) => ({ kind: normKind(p.kind), name: p.name, info: p.info }))
-            .sort((a, b) => (rank[a.kind] ?? 3) - (rank[b.kind] ?? 3))
-            .slice(0, 60);
-        })(),
+        cards: cueCards(),
       }),
     });
     const j = await r.json();
@@ -2092,6 +2135,7 @@ $("mr_list").addEventListener("click", (e) => {
 });
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
+$("tw_go").onclick = testWhisper;
 // Pause/Resume: halt capture and whispers between calls without tearing down
 // the mic/headset connection. Picking a new lead before Resume starts fresh.
 $("live_pause").onclick = () => {

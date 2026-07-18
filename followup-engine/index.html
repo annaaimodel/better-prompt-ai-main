@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>Aurum Method OS - high-ticket sales</title>
-  <link rel="stylesheet" href="/styles.css?v=34" />
+  <link rel="stylesheet" href="/styles.css?v=35" />
 </head>
 <body>
   <div id="gate" class="gate">
@@ -158,6 +158,15 @@
           <span><button class="btn sm" id="tr_copy">Copy</button> <button class="btn sm" id="tr_save">Save to lead</button></span>
         </div>
         <div id="live_transcript" class="live-transcript small muted">Not started.</div>
+      </div>
+      <div class="card">
+        <details>
+          <summary style="cursor:pointer;font-weight:600;font-size:16px">Test whisper (paste a transcript)</summary>
+          <p class="small muted" style="margin:8px 0">Paste any call transcript and see exactly what the whisper would fire - questions, objection handling, Q&amp;A answers and medications - using your real Playbook and Knowledge cards. No call needed. Uses the lead selected above for context, if any.</p>
+          <div class="field"><textarea id="tw_text" rows="5" placeholder="Paste a snippet of transcript here - ideally an objection or a question the prospect raises."></textarea></div>
+          <button class="btn sm primary" id="tw_go">Test whisper ▸</button>
+          <div id="tw_out" class="live-cues" style="margin-top:12px"></div>
+        </details>
       </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center">
@@ -511,6 +520,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=34"></script>
+  <script src="/app.js?v=35"></script>
 </body>
 </html>

@@ -18,18 +18,19 @@ const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
 const SYSTEM =
 `You are a calm LIVE sales-call copilot whispering to a closer DURING the call. You read a rolling transcript (rep and prospect mixed, newest at the end) and, only when it genuinely helps, output a SHORT cue the rep can glance at. Less is more.
 
-You do exactly three jobs, nothing else:
-1. QUESTION NUDGES (your main job) - suggest the next good question the rep should ask to move the conversation forward: surface their real problem, dig into what they just said, uncover the goal or the concern, and let them reach their own conclusion. Offer a fresh, relevant question often, whenever the conversation opens a natural one.
-2. ANSWER FROM KNOWLEDGE - when the prospect raises an objection, doubt, or question that an OBJECTION, Q&A, or KNOWLEDGE card covers, fire a short cue with that answer so the rep can say it.
+Your jobs, in priority order:
+1. HANDLE OBJECTIONS + ANSWER (TOP PRIORITY) - the moment the prospect raises an objection, doubt, concern, hesitation, or asks a question that an OBJECTION, Q&A or KNOWLEDGE card, or a known objection/FAQ in the playbook, covers, immediately fire a cue with that exact answer or approach so the rep can say it. Never let a covered objection or question go unanswered. This is your most important job.
+2. QUESTION NUDGES - when nothing above is on the table, suggest the next good question the rep should ask to move the conversation forward: surface their real problem, dig into what they just said, uncover the goal or the concern, and let them reach their own conclusion. Offer a fresh, relevant question whenever the conversation opens one.
 3. NEXT STEP - when it's time, a short move toward the booking/next step (keep any [BRACKETS]).
 
-Cue types: "ask" (a question to ask - your default), "value" (a knowledge/Q&A fact or offer detail to share), "objection" (the answer/approach for an objection they raised), "book" (next step).
+Cue types: "objection" (the answer/approach for an objection or concern they raised), "value" (a knowledge/Q&A fact or offer detail to share), "ask" (a question to ask), "book" (next step).
 
 DO NOT whisper the names of the products or supplements being sold, and do not read out product details. Those appear automatically for the rep in a separate Knowledge panel. Your job is questions and answers, not naming products.
 
 CADENCE:
-- Lead with QUESTIONS. Offer the next good question whenever one naturally fits, even if nothing is wrong, to keep the rep digging.
-- At most ONE cue per turn (two only if truly needed). Never a stream.
+- If the prospect just raised an objection, doubt or a question your KNOWLEDGE BASE or playbook covers, ALWAYS fire that answer - do not skip it in favour of a question. It can go alongside a question.
+- Otherwise, lead with the next good QUESTION whenever one naturally fits, even if nothing is wrong, to keep the rep digging.
+- Usually ONE cue per turn; send TWO only when both an objection/answer AND a question genuinely help. Never a stream.
 - Do NOT re-send, rephrase, or nag the same point. If anything in RECENT CUES already covers it, pick a different angle or return an empty list. If genuinely nothing new fits, return an empty list.
 
 NEVER DO:
@@ -71,12 +72,17 @@ function buildContext(body) {
       assets.map((a) => `${clip(a.title, 100)}${a.result ? " (" + clip(a.result, 100) + ")" : ""}`).join(" | "));
   }
 
-  // The user's knowledge base: products, objections, Q&A and extra knowledge.
-  // Surface the matching one when the prospect raises that topic/need/question.
-  const cards = Array.isArray(body.cards) ? body.cards.filter((x) => x && (x.name || x.info)).slice(0, 40) : [];
+  // The user's knowledge base. Objection + Q&A responses are the rep's approved
+  // lines to fire the moment a concern or question lands, so surface them
+  // prominently and separately from general knowledge.
+  const cards = Array.isArray(body.cards) ? body.cards.filter((x) => x && (x.name || x.info)).slice(0, 60) : [];
   if (cards.length) {
-    out.push("\nKNOWLEDGE BASE (share the matching fact/answer when relevant; quote only from here):\n" +
-      cards.map((x) => `[${clip(x.kind, 10) || "product"}] ${clip(x.name, 70)}: ${clip(x.info, 200)}`).join("\n"));
+    const objqa = cards.filter((x) => x.kind === "objection" || x.kind === "qa");
+    const know = cards.filter((x) => x.kind !== "objection" && x.kind !== "qa");
+    if (objqa.length) out.push("\nOBJECTION + Q&A RESPONSES (fire the matching one the MOMENT they raise that concern or ask that question - these are the rep's approved lines):\n" +
+      objqa.map((x) => `"${clip(x.name, 90)}" -> ${clip(x.info, 300)}`).join("\n"));
+    if (know.length) out.push("\nKNOWLEDGE (share the matching fact/answer when relevant; quote only from here):\n" +
+      know.map((x) => `${clip(x.name, 80)}: ${clip(x.info, 220)}`).join("\n"));
   }
 
   out.push("\nTHE PROSPECT: " + (clip(c.name, 80) || "(unknown)") + (c.offerInterest ? ", wants: " + clip(c.offerInterest, 200) : "") + (c.notes ? ". Notes: " + clip(c.notes, 600) : ""));
@@ -101,7 +107,7 @@ export default async function handler(req, res) {
 
   const blocks = Array.isArray(body.scriptBlocks) ? body.scriptBlocks.slice(0, 60).map((b, i) => `[${i}] ${clip(b, 400)}`) : [];
   const scriptText = blocks.length ? `\n\nSCRIPT BLOCKS (the rep's plan, numbered):\n${blocks.join("\n")}` : "";
-  const userText = `${buildContext(body)}${scriptText}\n\nLIVE TRANSCRIPT (newest at the end):\n${transcript}\n\nGive the single most useful cue right now. Lead with a good next QUESTION for the rep to ask based on what the prospect just said; otherwise an objection/Q&A answer if one fits, or an empty list if truly nothing new. Do not name the products/supplements${blocks.length ? ". Also give the current scriptIndex and a short scriptNote" : ""}. Also return any medications the prospect mentioned.`;
+  const userText = `${buildContext(body)}${scriptText}\n\nLIVE TRANSCRIPT (newest at the end):\n${transcript}\n\nGive the most useful cue(s) right now. If the prospect just raised an objection, doubt, concern or a question your OBJECTION/Q&A/KNOWLEDGE base or playbook covers, fire that answer first (a question can go alongside). Otherwise give the next good QUESTION for the rep to ask based on what the prospect just said. Return an empty list only if truly nothing new fits. Do not name the products/supplements${blocks.length ? ". Also give the current scriptIndex and a short scriptNote" : ""}. Also return any medications the prospect mentioned.`;
 
   try {
     const msg = await client.messages.create({

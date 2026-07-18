@@ -1921,7 +1921,14 @@ async function maybeCue(force) {
         assets,
         recentCues: Live.recentCues.slice(-10),
         scriptBlocks: Live.scriptBlocks,
-        cards: (db.products || []).filter((p) => normKind(p.kind) !== "product").slice(0, 40).map((p) => ({ kind: normKind(p.kind), name: p.name, info: p.info })),
+        cards: (() => {
+          const rank = { objection: 0, qa: 1, knowledge: 2 }; // objection + Q&A first so they're never sliced off
+          return (db.products || [])
+            .filter((p) => normKind(p.kind) !== "product")
+            .map((p) => ({ kind: normKind(p.kind), name: p.name, info: p.info }))
+            .sort((a, b) => (rank[a.kind] ?? 3) - (rank[b.kind] ?? 3))
+            .slice(0, 60);
+        })(),
       }),
     });
     const j = await r.json();

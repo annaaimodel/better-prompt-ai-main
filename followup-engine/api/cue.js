@@ -19,8 +19,8 @@ const SYSTEM =
 `You are a calm LIVE sales-call copilot whispering to a closer DURING the call. You read a rolling transcript (rep and prospect mixed, newest at the end) and, only when it genuinely helps, output a SHORT cue the rep can glance at. Less is more.
 
 Your jobs, in priority order:
-1. HANDLE OBJECTIONS + ANSWER (TOP PRIORITY) - the moment the prospect raises an objection, doubt, concern, hesitation, or asks a question that an OBJECTION, Q&A or KNOWLEDGE card, or a known objection/FAQ in the playbook, covers, immediately fire a cue with that exact answer or approach so the rep can say it. Never let a covered objection or question go unanswered. This is your most important job.
-2. QUESTION NUDGES - when nothing above is on the table, suggest the next good question the rep should ask to move the conversation forward: surface their real problem, dig into what they just said, uncover the goal or the concern, and let them reach their own conclusion. Offer a fresh, relevant question whenever the conversation opens one.
+1. HANDLE OBJECTIONS + ANSWER (TOP PRIORITY) - the moment the prospect raises an objection, doubt, concern, hesitation, or asks a question that an OBJECTION, Q&A or KNOWLEDGE card, or a known objection/FAQ in the playbook, covers, immediately fire a cue with that answer so the rep can say it. When the matching card has an approved response, give that response IN FULL, word for word - do NOT shorten, summarise or trim it. The rep reads it aloud, so they need the complete line. Never let a covered objection or question go unanswered. This is your most important job.
+2. QUESTION NUDGES - when nothing above is on the table, suggest the next good question the rep should ask to move the conversation forward: surface their real problem, dig into what they just said, uncover the goal or the concern, and let them reach their own conclusion. Offer a fresh, relevant question whenever the conversation opens one. Keep questions short, one sentence.
 3. NEXT STEP - when it's time, a short move toward the booking/next step (keep any [BRACKETS]).
 
 Cue types: "objection" (the answer/approach for an objection or concern they raised), "value" (a knowledge/Q&A fact or offer detail to share), "ask" (a question to ask), "book" (next step).
@@ -79,8 +79,8 @@ function buildContext(body) {
   if (cards.length) {
     const objqa = cards.filter((x) => x.kind === "objection" || x.kind === "qa");
     const know = cards.filter((x) => x.kind !== "objection" && x.kind !== "qa");
-    if (objqa.length) out.push("\nOBJECTION + Q&A RESPONSES (fire the matching one the MOMENT they raise that concern or ask that question - these are the rep's approved lines):\n" +
-      objqa.map((x) => `"${clip(x.name, 90)}" -> ${clip(x.info, 300)}`).join("\n"));
+    if (objqa.length) out.push("\nOBJECTION + Q&A RESPONSES (fire the matching one IN FULL the MOMENT they raise that concern or ask that question - these are the rep's approved lines, quote them completely):\n" +
+      objqa.map((x) => `"${clip(x.name, 90)}" -> ${clip(x.info, 700)}`).join("\n"));
     if (know.length) out.push("\nKNOWLEDGE (share the matching fact/answer when relevant; quote only from here):\n" +
       know.map((x) => `${clip(x.name, 80)}: ${clip(x.info, 220)}`).join("\n"));
   }
@@ -112,7 +112,7 @@ export default async function handler(req, res) {
   try {
     const msg = await client.messages.create({
       model: "claude-haiku-4-5",
-      max_tokens: 360,
+      max_tokens: 700,
       system: SYSTEM,
       messages: [{ role: "user", content: userText }],
     });
@@ -121,7 +121,7 @@ export default async function handler(req, res) {
     let parsed = {};
     try { parsed = JSON.parse(mt ? mt[0] : raw); } catch (e) { parsed = {}; }
     const cues = Array.isArray(parsed.cues)
-      ? stripOutreachCues(parsed.cues.slice(0, 4).map((x) => ({ type: clip(x.type, 20).toLowerCase() || "ask", text: clip(x.text, 200) })).filter((x) => x.text)).slice(0, 3)
+      ? stripOutreachCues(parsed.cues.slice(0, 4).map((x) => ({ type: clip(x.type, 20).toLowerCase() || "ask", text: clip(x.text, 700) })).filter((x) => x.text)).slice(0, 3)
       : [];
     const scriptIndex = (typeof parsed.scriptIndex === "number" && parsed.scriptIndex >= 0) ? Math.floor(parsed.scriptIndex) : null;
     const meds = Array.isArray(parsed.meds) ? parsed.meds.slice(0, 20).map((x) => clip(x, 60).trim()).filter(Boolean) : [];

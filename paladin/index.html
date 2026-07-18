@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paladin — Learn History, One Story at a Time</title>
+<meta name="description" content="Paladin turns history into 5-minute animated, narrated stories with active-recall quizzes and collectible characters. The fun way to learn history. Start your 7-day free trial.">
+<meta property="og:title" content="Paladin — Learn History, One Story at a Time">
+<meta property="og:description" content="5-minute animated history stories, narrated and gamified. Meet Cleopatra, Napoleon, Caesar and more. Start free.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Baloo+2:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230c0a09'/%3E%3Cpath d='M28 30c-4-8-2-14 2-14 3 0 5 4 6 9 5-2 11-2 16 0 1-5 3-9 6-9 4 0 6 6 2 14 5 5 8 12 8 19 0 15-12 24-24 24S20 64 20 49c0-7 3-14 8-19z' fill='%23ee8b2e'/%3E%3Ccircle cx='40' cy='50' r='5' fill='%230c0a09'/%3E%3Ccircle cx='60' cy='50' r='5' fill='%230c0a09'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0c0a09;
+    --bg-2:#12100d;
+    --surface:#1a1510;
+    --surface-2:#221b14;
+    --line:rgba(240,220,190,.10);
+    --line-strong:rgba(240,220,190,.18);
+    --orange:#ee8b2e;
+    --orange-bright:#ff9d3c;
+    --ember:#ff6a1a;
+    --gold:#e2b874;
+    --cream:#f6efe3;
+    --muted:#b3a48d;
+    --muted-dim:#8a7d69;
+    --good:#43c59e;
+    --serif:'Cinzel',Georgia,'Times New Roman',serif;
+    --round:'Baloo 2',var(--sans);
+    --sans:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --maxw:1140px;
+    --radius:20px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ::selection{background:var(--orange);color:#1a1005;}
+  :focus-visible{outline:2px solid var(--orange-bright);outline-offset:3px;border-radius:6px;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:var(--round);
+    font-weight:700;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:.72rem;
+    color:var(--orange);
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:800;line-height:1.08;letter-spacing:.01em;text-wrap:balance;}
+  .section{padding:96px 0;position:relative;}
+  .section-head{max-width:640px;margin:0 auto 56px;text-align:center;}
+  .section-head h2{font-size:clamp(1.9rem,4.4vw,3rem);margin:14px 0 16px;}
+  .section-head p{color:var(--muted);font-size:1.05rem;}
+
+  /* ---------------- buttons ---------------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--round);font-weight:700;font-size:1.02rem;
+    padding:15px 28px;border-radius:100px;border:none;cursor:pointer;
+    transition:transform .18s ease, box-shadow .25s ease, background .2s;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(180deg,var(--orange-bright),var(--orange));
+    color:#2a1602;
+    box-shadow:0 10px 30px -8px rgba(238,139,46,.6), inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(238,139,46,.75), inset 0 1px 0 rgba(255,255,255,.4);}
+  .btn-ghost{background:rgba(255,255,255,.04);color:var(--cream);border:1px solid var(--line-strong);}
+  .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px);}
+  .btn-lg{padding:18px 36px;font-size:1.1rem;}
+
+  /* ---------------- nav ---------------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(12,10,9,.72);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s, background .3s;
+  }
+  header.nav.scrolled{border-bottom-color:var(--line);background:rgba(12,10,9,.9);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand .logo{width:38px;height:38px;flex:0 0 auto;}
+  .brand .name{font-family:var(--round);font-weight:800;font-size:1.5rem;color:var(--orange);letter-spacing:.01em;}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{color:var(--muted);font-weight:600;font-size:.95rem;transition:color .2s;}
+  .nav-links a:hover{color:var(--cream);}
+  .nav-cta{display:flex;align-items:center;gap:14px;}
+  .nav-toggle{display:none;background:none;border:none;color:var(--cream);cursor:pointer;padding:8px;}
+
+  /* ---------------- hero ---------------- */
+  .hero{position:relative;overflow:hidden;padding-top:40px;}
+  .hero-bg{position:absolute;inset:0;z-index:0;}
+  #embers{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.9;}
+  .hero-glow{
+    position:absolute;left:50%;top:34%;transform:translate(-50%,-50%);
+    width:min(900px,120vw);height:min(900px,120vw);
+    background:radial-gradient(circle, rgba(238,139,46,.28) 0%, rgba(238,139,46,.08) 34%, transparent 62%);
+    z-index:0;pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:2;text-align:center;padding:56px 0 90px;}
+  .hero .badge-pill{
+    display:inline-flex;align-items:center;gap:9px;
+    background:rgba(238,139,46,.10);
+    border:1px solid rgba(238,139,46,.32);
+    color:var(--orange-bright);
+    font-family:var(--round);font-weight:700;font-size:.82rem;letter-spacing:.04em;
+    padding:8px 16px;border-radius:100px;margin-bottom:30px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,7.4vw,5.4rem);
+    text-transform:uppercase;
+    letter-spacing:.015em;
+    margin-bottom:22px;
+  }
+  .hero h1 .l1{color:var(--orange);display:block;}
+  .hero h1 .l2{color:var(--cream);display:block;}
+  .hero-sub{max-width:620px;margin:0 auto 36px;font-size:1.18rem;color:var(--muted);}
+  .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:26px;}
+  .hero-note{font-size:.86rem;color:var(--muted-dim);font-weight:500;}
+  .hero-note b{color:var(--cream);}
+
+  /* poster figures behind headline */
+  .poster{
+    position:absolute;left:0;right:0;top:-10px;height:560px;z-index:1;
+    display:flex;align-items:flex-end;justify-content:center;gap:0;
+    -webkit-mask-image:linear-gradient(to bottom, black 55%, transparent 96%);
+            mask-image:linear-gradient(to bottom, black 55%, transparent 96%);
+    opacity:.9;pointer-events:none;
+  }
+  .poster svg{height:100%;width:auto;}
+
+  /* laurels */
+  .laurels{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
+  .laurel{
+    display:flex;align-items:center;gap:8px;
+    color:var(--gold);
+  }
+  .laurel svg{width:52px;height:64px;flex:0 0 auto;opacity:.92;}
+  .laurel .lt{font-family:var(--round);font-weight:700;line-height:1.15;font-size:.92rem;color:var(--cream);text-align:left;}
+  .laurel .lt b{color:var(--orange-bright);display:block;font-size:1.15rem;}
+  .laurel .lt small{color:var(--muted);font-weight:600;font-size:.78rem;}
+
+  .storechips{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+  .storechip{
+    display:flex;align-items:center;gap:10px;
+    background:#0e0c0a;border:1px solid var(--line-strong);
+    padding:10px 18px;border-radius:14px;transition:border-color .2s,transform .2s;
+  }
+  .storechip:hover{border-color:var(--orange);transform:translateY(-2px);}
+  .storechip svg{width:24px;height:24px;}
+  .storechip span{text-align:left;line-height:1.1;}
+  .storechip small{display:block;font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+  .storechip b{font-family:var(--round);font-size:1rem;}
+
+  /* ---------------- stat bar ---------------- */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat{padding:36px 20px;text-align:center;border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat .num{font-family:var(--serif);font-weight:800;font-size:2.3rem;color:var(--orange);line-height:1;}
+  .stat .lbl{margin-top:8px;color:var(--muted);font-size:.9rem;font-weight:600;}
+  .stars{color:var(--gold);letter-spacing:2px;}
+
+  /* ---------------- how it works ---------------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .step{
+    background:linear-gradient(180deg,var(--surface),var(--bg-2));
+    border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;position:relative;
+    transition:border-color .25s, transform .25s;
+  }
+  .step:hover{border-color:var(--line-strong);transform:translateY(-4px);}
+  .step .n{
+    font-family:var(--serif);font-weight:800;font-size:1rem;color:var(--orange);
+    width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:rgba(238,139,46,.12);border:1px solid rgba(238,139,46,.3);margin-bottom:20px;
+  }
+  .step h3{font-size:1.3rem;margin-bottom:10px;color:var(--cream);}
+  .step p{color:var(--muted);font-size:.98rem;}
+
+  /* ---------------- features ---------------- */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .feat{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;
+    transition:border-color .25s, transform .25s, background .25s;
+  }
+  .feat:hover{border-color:var(--orange);transform:translateY(-4px);background:var(--surface-2);}
+  .feat .ic{
+    width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 30% 25%, rgba(255,157,60,.28), rgba(238,139,46,.08));
+    border:1px solid rgba(238,139,46,.28);margin-bottom:18px;color:var(--orange-bright);
+  }
+  .feat .ic svg{width:26px;height:26px;}
+  .feat h3{font-family:var(--sans);font-weight:700;font-size:1.15rem;margin-bottom:8px;color:var(--cream);}
+  .feat p{color:var(--muted);font-size:.94rem;}
+
+  /* ---------------- characters ---------------- */
+  .chars{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .char-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .card{
+    position:relative;border-radius:18px;padding:2px;overflow:hidden;
+    background:linear-gradient(160deg,var(--rarity,#e2b874),transparent 60%);
+    transition:transform .3s ease;
+  }
+  .card:hover{transform:translateY(-6px) rotate(-.6deg);}
+  .card-inner{
+    background:linear-gradient(180deg,var(--surface-2),#0f0c0a);
+    border-radius:16px;padding:22px 20px 20px;height:100%;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .card .portrait{
+    height:150px;border-radius:12px;position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 30%, var(--tint,#3a2c1c), #0d0a08 78%);
+    border:1px solid var(--line);
+  }
+  .card .portrait .mono{font-family:var(--serif);font-weight:900;font-size:3.4rem;color:var(--rarity,#e2b874);opacity:.9;text-shadow:0 4px 24px rgba(0,0,0,.6);}
+  .card .portrait .era{position:absolute;top:10px;left:10px;font-size:1.4rem;}
+  .card .rar{
+    position:absolute;top:10px;right:10px;font-family:var(--round);font-weight:700;font-size:.62rem;
+    letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:100px;
+    background:rgba(0,0,0,.55);color:var(--rarity,#e2b874);border:1px solid var(--rarity,#e2b874);
+  }
+  .card h3{font-family:var(--sans);font-weight:700;font-size:1.1rem;color:var(--cream);}
+  .card .role{color:var(--muted);font-size:.82rem;margin-top:-8px;}
+  .card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:.78rem;color:var(--muted-dim);font-weight:600;}
+  .card .meta .lvl{color:var(--gold);}
+
+  /* ---------------- quiz ---------------- */
+  .quiz-wrap{
+    background:linear-gradient(150deg,var(--surface-2),var(--bg-2));
+    border:1px solid var(--line-strong);border-radius:26px;
+    max-width:720px;margin:0 auto;padding:44px 40px;text-align:center;position:relative;overflow:hidden;
+  }
+  .quiz-wrap::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% -20%, rgba(238,139,46,.18), transparent 60%);pointer-events:none;}
+  .quiz-q{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin:6px 0 26px;color:var(--cream);position:relative;}
+  .quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;}
+  .opt{
+    background:rgba(255,255,255,.03);border:1px solid var(--line-strong);border-radius:14px;
+    padding:18px;font-family:var(--sans);font-weight:600;color:var(--cream);cursor:pointer;font-size:1rem;
+    transition:all .18s;text-align:left;display:flex;align-items:center;gap:12px;
+  }
+  .opt:hover{border-color:var(--orange);background:rgba(238,139,46,.08);transform:translateY(-2px);}
+  .opt .emo{font-size:1.4rem;}
+  .quiz-progress{height:6px;border-radius:100px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:28px;}
+  .quiz-progress i{display:block;height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-bright));width:0;transition:width .4s ease;}
+  .quiz-result{position:relative;}
+  .quiz-result .mono{font-family:var(--serif);font-size:4rem;font-weight:900;color:var(--orange);}
+  .quiz-result h3{font-family:var(--serif);font-size:1.9rem;margin:6px 0 10px;color:var(--cream);}
+  .quiz-result p{color:var(--muted);max-width:440px;margin:0 auto 24px;}
+  .hidden{display:none !important;}
+
+  /* ---------------- testimonials ---------------- */
+  .tmony{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .quote{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;
+    display:flex;flex-direction:column;gap:16px;
+  }
+  .quote .rs{color:var(--gold);letter-spacing:2px;font-size:.9rem;}
+  .quote p{color:var(--cream);font-size:1rem;font-style:italic;line-height:1.55;}
+  .quote .who{display:flex;align-items:center;gap:12px;margin-top:auto;}
+  .quote .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--ember));display:flex;align-items:center;justify-content:center;font-family:var(--round);font-weight:800;color:#1a1005;}
+  .quote .who b{font-size:.9rem;color:var(--cream);display:block;}
+  .quote .who small{font-size:.78rem;color:var(--muted);}
+
+  /* ---------------- pricing ---------------- */
+  .price-toggle{display:flex;justify-content:center;align-items:center;gap:14px;margin-bottom:44px;}
+  .price-toggle span{font-weight:600;color:var(--muted);}
+  .price-toggle span.on{color:var(--cream);}
+  .switch{width:58px;height:32px;border-radius:100px;background:var(--surface-2);border:1px solid var(--line-strong);position:relative;cursor:pointer;padding:0;}
+  .switch i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:var(--orange);transition:left .22s ease;}
+  .switch.annual i{left:29px;}
+  .save-tag{background:rgba(67,197,158,.14);color:var(--good);font-family:var(--round);font-weight:700;font-size:.72rem;padding:4px 10px;border-radius:100px;border:1px solid rgba(67,197,158,.3);}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:0 auto;align-items:stretch;}
+  .plan{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:34px 30px;display:flex;flex-direction:column;position:relative;}
+  .plan.featured{border-color:var(--orange);background:linear-gradient(180deg,var(--surface-2),var(--surface));box-shadow:0 24px 60px -30px rgba(238,139,46,.5);}
+  .plan .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,var(--orange-bright),var(--orange));color:#2a1602;font-family:var(--round);font-weight:800;font-size:.72rem;letter-spacing:.06em;padding:6px 16px;border-radius:100px;text-transform:uppercase;}
+  .plan h3{font-family:var(--sans);font-weight:700;font-size:1.15rem;color:var(--cream);margin-bottom:6px;}
+  .plan .desc{color:var(--muted);font-size:.9rem;margin-bottom:22px;min-height:40px;}
+  .plan .cost{font-family:var(--serif);font-weight:800;font-size:2.8rem;color:var(--cream);line-height:1;}
+  .plan .cost small{font-family:var(--sans);font-size:1rem;color:var(--muted);font-weight:600;}
+  .plan .sub{color:var(--muted-dim);font-size:.82rem;margin:8px 0 24px;}
+  .plan ul{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+  .plan li{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--cream);}
+  .plan li svg{width:18px;height:18px;flex:0 0 auto;margin-top:3px;color:var(--good);}
+  .plan .btn{width:100%;margin-top:auto;}
+
+  /* ---------------- faq ---------------- */
+  .faq{max-width:760px;margin:0 auto;}
+  .qa{border-bottom:1px solid var(--line);}
+  .qa button{
+    width:100%;background:none;border:none;color:var(--cream);cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;gap:20px;
+    padding:24px 4px;font-family:var(--sans);font-weight:600;font-size:1.08rem;text-align:left;
+  }
+  .qa button .chev{flex:0 0 auto;transition:transform .25s;color:var(--orange);}
+  .qa.open button .chev{transform:rotate(45deg);}
+  .qa .ans{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .qa .ans p{padding:0 4px 24px;color:var(--muted);font-size:.98rem;}
+
+  /* ---------------- final cta ---------------- */
+  .cta-final{text-align:center;position:relative;overflow:hidden;}
+  .cta-card{
+    background:linear-gradient(150deg,#2a1a0c,#160f0a);
+    border:1px solid rgba(238,139,46,.3);border-radius:30px;
+    padding:70px 40px;position:relative;overflow:hidden;
+  }
+  .cta-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%, rgba(238,139,46,.22), transparent 55%);}
+  .cta-card h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:16px;position:relative;}
+  .cta-card p{color:var(--muted);font-size:1.1rem;max-width:520px;margin:0 auto 32px;position:relative;}
+  .cta-card .hero-actions{position:relative;}
+
+  /* ---------------- footer ---------------- */
+  footer{border-top:1px solid var(--line);background:var(--bg-2);padding:64px 0 40px;}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+  .foot-brand p{color:var(--muted);font-size:.92rem;margin:16px 0 20px;max-width:280px;}
+  .foot-social{display:flex;gap:12px;}
+  .foot-social a{width:38px;height:38px;border-radius:10px;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .2s;}
+  .foot-social a:hover{color:var(--orange);border-color:var(--orange);}
+  .foot-col h4{font-family:var(--round);font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-dim);margin-bottom:18px;}
+  .foot-col a{display:block;color:var(--muted);font-size:.92rem;padding:6px 0;transition:color .2s;}
+  .foot-col a:hover{color:var(--cream);}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;color:var(--muted-dim);font-size:.85rem;}
+  .foot-bottom a{color:var(--muted);}
+  .foot-bottom a:hover{color:var(--cream);}
+
+  /* ---------------- reveal ---------------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------------- responsive ---------------- */
+  @media(max-width:920px){
+    .nav-links{display:none;}
+    .nav-toggle{display:block;}
+    .nav-cta .btn:not(.nav-toggle){display:none;}
+    .steps,.feat-grid,.char-row,.tmony,.plans{grid-template-columns:1fr 1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .stat:nth-child(2){border-right:none;}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line);}
+    .poster{height:440px;}
+  }
+  @media(max-width:600px){
+    .section{padding:70px 0;}
+    .steps,.feat-grid,.char-row,.tmony,.plans,.foot-grid{grid-template-columns:1fr;}
+    .quiz-opts{grid-template-columns:1fr;}
+    .quiz-wrap{padding:32px 22px;}
+    .plan.featured{order:-1;}
+    .hero h1{font-size:clamp(2.3rem,10vw,3.2rem);}
+    .laurel svg{width:44px;height:54px;}
+    .poster{height:340px;opacity:.7;}
+    .cta-card{padding:48px 24px;}
+    .foot-bottom{flex-direction:column;align-items:flex-start;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Paladin home">
+      <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+        <rect width="100" height="100" rx="24" fill="#141009"/>
+        <path d="M28 30c-4-8-2-14 2-14 3 0 5 4 6 9 5-2 11-2 16 0 1-5 3-9 6-9 4 0 6 6 2 14 5 5 8 12 8 19 0 15-12 24-24 24S20 64 20 49c0-7 3-14 8-19z" fill="#ee8b2e"/>
+        <circle cx="40" cy="50" r="5" fill="#141009"/>
+        <circle cx="60" cy="50" r="5" fill="#141009"/>
+      </svg>
+      <span class="name">Paladin</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#characters">Characters</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#pricing" class="btn btn-primary">Start free trial</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<span id="top"></span>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <canvas id="embers" aria-hidden="true"></canvas>
+
+  <!-- painterly poster silhouettes -->
+  <div class="poster" aria-hidden="true">
+    <svg viewBox="0 0 900 560" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="fig" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#4a3826"/>
+          <stop offset="1" stop-color="#0e0b09"/>
+        </linearGradient>
+        <linearGradient id="figc" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#6b4a26"/>
+          <stop offset="1" stop-color="#120c08"/>
+        </linearGradient>
+        <radialGradient id="flame" cx="50%" cy="30%" r="70%">
+          <stop offset="0" stop-color="#ffb24d"/>
+          <stop offset="1" stop-color="#ff5a1a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- side busts -->
+      <g fill="url(#fig)">
+        <path d="M120 560c0-70 30-118 70-118s70 48 70 118zM150 470a40 40 0 1 1 80 0 40 40 0 0 1-80 0z"/>
+        <path d="M640 560c0-70 30-118 70-118s70 48 70 118zM670 470a40 40 0 1 1 80 0 40 40 0 0 1-80 0z"/>
+      </g>
+      <!-- inner busts -->
+      <g fill="url(#figc)">
+        <path d="M250 560c0-88 36-150 90-150s90 62 90 150zM292 430a48 48 0 1 1 96 0 48 48 0 0 1-96 0z"/>
+        <path d="M470 560c0-88 36-150 90-150s90 62 90 150zM512 430a48 48 0 1 1 96 0 48 48 0 0 1-96 0z"/>
+      </g>
+      <!-- central commander -->
+      <g fill="url(#figc)">
+        <path d="M360 560c0-108 40-190 90-190s90 82 90 190z"/>
+        <circle cx="450" cy="335" r="60"/>
+        <!-- bicorne hat -->
+        <path d="M372 320c14-26 42-40 78-40s64 14 78 40c-22-10-52-16-78-16s-56 6-78 16z" fill="#0f0b08"/>
+      </g>
+      <!-- flame accent (Joan's sword) -->
+      <path d="M175 300c-6 40-2 80 15 130 8-54 6-96-15-130z" fill="url(#flame)" opacity=".8"/>
+    </svg>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="badge-pill">⚔️ The Duolingo of History</div>
+    <h1>
+      <span class="l1">Uncover the past,</span>
+      <span class="l2">one story at a time</span>
+    </h1>
+    <p class="hero-sub">History isn't dates to memorize — it's the best stories ever told. Paladin turns them into <b style="color:var(--cream)">5-minute animated, narrated episodes</b> you'll actually remember.</p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn btn-primary btn-lg">Start 7-day free trial</a>
+      <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
+    </div>
+    <p class="hero-note"><b>4.6 ★</b> on the App Store · No commitment · Cancel anytime</p>
+
+    <div class="laurels">
+      <div class="laurel">
+        <svg viewBox="0 0 60 74" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 8C6 20 6 54 24 68M18 20C10 24 12 34 20 36M16 34C9 38 11 46 19 47M20 48c-7 3-6 10 1 12"/></svg>
+        <div class="lt"><b>3 Million+</b><small>history lovers trust us</small></div>
+        <svg viewBox="0 0 60 74" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" style="transform:scaleX(-1)"><path d="M20 8C6 20 6 54 24 68M18 20C10 24 12 34 20 36M16 34C9 38 11 46 19 47M20 48c-7 3-6 10 1 12"/></svg>
+      </div>
+      <div class="laurel">
+        <svg viewBox="0 0 60 74" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 8C6 20 6 54 24 68M18 20C10 24 12 34 20 36M16 34C9 38 11 46 19 47M20 48c-7 3-6 10 1 12"/></svg>
+        <div class="lt"><b>Best of 2026</b><small>History Learning Apps</small></div>
+        <svg viewBox="0 0 60 74" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" style="transform:scaleX(-1)"><path d="M20 8C6 20 6 54 24 68M18 20C10 24 12 34 20 36M16 34C9 38 11 46 19 47M20 48c-7 3-6 10 1 12"/></svg>
+      </div>
+    </div>
+
+    <div class="storechips">
+      <a href="#pricing" class="storechip">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12.6c0-2 1.6-3 1.7-3-1-1.3-2.4-1.5-2.9-1.5-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.4 2 2.4 2 1 0 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-1 2.3-2c.7-1.1 1-2.2 1-2.3 0 0-1.9-.7-1.9-2.9zM14.6 6.3c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.9.1 1.8-.4 2.3-1.1z"/></svg>
+        <span><small>Download on the</small><b>App Store</b></span>
+      </a>
+      <a href="#pricing" class="storechip">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1L13 12.1v-.2L3.7 2.2zM16.3 15.3l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.8 2zM15.7 15.9l-3.2-3.2-9.3 9.3c.4.4 1 .4 1.6.1l10.9-6.2M15.7 8.1L4.8 1.9c-.6-.3-1.2-.3-1.6.1l9.3 9.3z"/></svg>
+        <span><small>Get it on</small><b>Google Play</b></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">4.6<span class="stars">★</span></div><div class="lbl">App Store rating</div></div>
+      <div class="stat"><div class="num">3M+</div><div class="lbl">Curious learners</div></div>
+      <div class="stat"><div class="num">500+</div><div class="lbl">Story episodes</div></div>
+      <div class="stat"><div class="num">5 min</div><div class="lbl">Per lesson</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Learning history, finally made addictive</h2>
+      <p>Three steps, five minutes a day. No textbooks, no lectures — just the moments that shaped the world.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">01</div><h3>Pick a legend</h3><p>Choose from hundreds of icons — Cleopatra, Napoleon, Caesar, Joan of Arc — or follow a guided Path through an era.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>Watch it unfold</h3><p>A cinematic, voice-narrated story brings the moment to life in five minutes. Tap through, feel the drama, meet the people.</p></div>
+      <div class="step reveal"><div class="n">03</div><h3>Make it stick</h3><p>Quick active-recall quizzes lock the knowledge in, build your streak, and unlock the next collectible character.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="section" id="features" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What's inside</span>
+      <h2>Everything you need to fall for history</h2>
+      <p>Built for people who love a good story and hate being bored.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <h3>Animated stories</h3><p>Hand-crafted, cinematic episodes that make the past feel like the best show you're not watching yet.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M5 10a7 7 0 0 0 14 0M12 17v4"/></svg></div>
+        <h3>Voice narration</h3><p>Every story is fully narrated by a warm, dramatic voice — learn on a walk, a commute, or with your eyes closed.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Active-recall quizzes</h3><p>Short, smart questions after every story turn passive watching into knowledge that actually lasts.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <h3>Collectible characters</h3><p>Unlock a beautifully illustrated card for every figure you master. Build a deck of the greatest people who ever lived.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
+        <h3>Guided Paths</h3><p>Follow curated journeys — Ancient Rome, WWII, the Space Race — that connect stories into the bigger picture.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+        <h3>1v1 knowledge battles</h3><p>Challenge friends and strangers to fast-paced history duels. Keep your streak, climb the ranks, flex your deck.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHARACTERS ============ -->
+<section class="section chars" id="characters">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Collect them all</span>
+      <h2>Meet your Paladins</h2>
+      <p>Every legend you master joins your collection. Here are a few of the greats waiting for you.</p>
+    </div>
+    <div class="char-row">
+      <div class="card reveal" style="--rarity:#e2b874;--tint:#4a3410;">
+        <div class="card-inner"><div class="portrait"><span class="era">👑</span><span class="rar">Legendary</span><span class="mono">C</span></div><h3>Cleopatra</h3><p class="role">Last Pharaoh of Egypt</p><div class="meta"><span>Ancient Egypt</span><span class="lvl">★ Lv. 9</span></div></div>
+      </div>
+      <div class="card reveal" style="--rarity:#7fb4ff;--tint:#16294a;">
+        <div class="card-inner"><div class="portrait"><span class="era">🎖️</span><span class="rar">Epic</span><span class="mono">N</span></div><h3>Napoleon</h3><p class="role">Emperor of the French</p><div class="meta"><span>19th Century</span><span class="lvl">★ Lv. 8</span></div></div>
+      </div>
+      <div class="card reveal" style="--rarity:#c9a24b;--tint:#3d2f10;">
+        <div class="card-inner"><div class="portrait"><span class="era">🏛️</span><span class="rar">Legendary</span><span class="mono">J</span></div><h3>Julius Caesar</h3><p class="role">Dictator of Rome</p><div class="meta"><span>Ancient Rome</span><span class="lvl">★ Lv. 9</span></div></div>
+      </div>
+      <div class="card reveal" style="--rarity:#ff8a5c;--tint:#4a2110;">
+        <div class="card-inner"><div class="portrait"><span class="era">⚔️</span><span class="rar">Epic</span><span class="mono">J</span></div><h3>Joan of Arc</h3><p class="role">The Maid of Orléans</p><div class="meta"><span>Medieval France</span><span class="lvl">★ Lv. 7</span></div></div>
+      </div>
+      <div class="card reveal" style="--rarity:#9ad1a5;--tint:#173322;">
+        <div class="card-inner"><div class="portrait"><span class="era">🎩</span><span class="rar">Rare</span><span class="mono">A</span></div><h3>Abraham Lincoln</h3><p class="role">16th U.S. President</p><div class="meta"><span>19th Century</span><span class="lvl">★ Lv. 6</span></div></div>
+      </div>
+      <div class="card reveal" style="--rarity:#d7c7ff;--tint:#2a2246;">
+        <div class="card-inner"><div class="portrait"><span class="era">🕊️</span><span class="rar">Epic</span><span class="mono">G</span></div><h3>Gandhi</h3><p class="role">Father of a Nation</p><div class="meta"><span>20th Century</span><span class="lvl">★ Lv. 8</span></div></div>
+      </div>
+      <div class="card reveal" style="--rarity:#8fd6e6;--tint:#123a44;">
+        <div class="card-inner"><div class="portrait"><span class="era">💻</span><span class="rar">Rare</span><span class="mono">A</span></div><h3>Alan Turing</h3><p class="role">Father of Computing</p><div class="meta"><span>WWII Era</span><span class="lvl">★ Lv. 6</span></div></div>
+      </div>
+      <div class="card reveal" style="--rarity:#e6b3d0;--tint:#42213a;">
+        <div class="card-inner"><div class="portrait"><span class="era">👸</span><span class="rar">Legendary</span><span class="mono">E</span></div><h3>Elizabeth II</h3><p class="role">Queen of the United Kingdom</p><div class="meta"><span>Modern Era</span><span class="lvl">★ Lv. 9</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="section" id="quiz">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Discover your Paladin</span>
+      <h2>Which legend matches your mind?</h2>
+      <p>Answer a few quick questions and we'll reveal the historical figure you're most like.</p>
+    </div>
+    <div class="quiz-wrap reveal">
+      <div class="quiz-progress"><i id="qBar"></i></div>
+      <div id="quizStage">
+        <div class="quiz-q" id="qText">When the stakes are highest, you rely on…</div>
+        <div class="quiz-opts" id="qOpts"></div>
+      </div>
+      <div class="quiz-result hidden" id="qResult">
+        <div class="mono" id="rMono">C</div>
+        <h3 id="rName">Cleopatra</h3>
+        <p id="rDesc"></p>
+        <a href="#pricing" class="btn btn-primary btn-lg">Unlock your Paladin — free for 7 days</a>
+        <div style="margin-top:18px"><button class="btn btn-ghost" id="qRetry" type="button">Try again</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section" id="reviews" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Loved by learners</span>
+      <h2>People who thought they hated history</h2>
+    </div>
+    <div class="tmony">
+      <div class="quote reveal"><div class="rs">★★★★★</div><p>"I've learned more history in two weeks of five-minute sessions than I did in a year of school. The animations make it impossible to forget."</p><div class="who"><div class="av">M</div><div><b>Maya R.</b><small>App Store review</small></div></div></div>
+      <div class="quote reveal"><div class="rs">★★★★★</div><p>"The narration turns my commute into a mini history documentary. I'm genuinely addicted to my streak now."</p><div class="who"><div class="av">D</div><div><b>Daniel K.</b><small>App Store review</small></div></div></div>
+      <div class="quote reveal"><div class="rs">★★★★☆</div><p>"Collecting the character cards scratches the same itch as a game, except I'm actually learning. My kids and I battle each other."</p><div class="who"><div class="av">S</div><div><b>Sofia L.</b><small>App Store review</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>Start free. Stay curious.</h2>
+      <p>Every plan begins with a 7-day free trial. Full access, no strings — cancel anytime before it ends.</p>
+    </div>
+
+    <div class="price-toggle reveal">
+      <span id="lblMonthly" class="on">Monthly</span>
+      <button class="switch" id="planSwitch" aria-label="Toggle billing period"><i></i></button>
+      <span id="lblAnnual">Annual</span>
+      <span class="save-tag">Save 55%</span>
+    </div>
+
+    <div class="plans">
+      <div class="plan reveal">
+        <h3>Free</h3>
+        <p class="desc">A taste of Paladin, forever.</p>
+        <div class="cost">$0</div>
+        <div class="sub">No card required</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>One free story a day</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Daily streak &amp; quizzes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>3 starter characters</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Download free</a>
+      </div>
+
+      <div class="plan featured reveal">
+        <div class="tag">Most popular</div>
+        <h3>Paladin Pro</h3>
+        <p class="desc">The full library, unlocked.</p>
+        <div class="cost" id="proPrice">$12.99<small id="proPer">/mo</small></div>
+        <div class="sub" id="proSub">Billed monthly · 7-day free trial</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Unlimited stories &amp; Paths</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Full voice narration</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Deep Dive explanations</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Collect every character</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>1v1 battles &amp; leaderboards</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Start 7-day free trial</a>
+      </div>
+
+      <div class="plan reveal">
+        <h3>Scholar</h3>
+        <p class="desc">For the whole family or classroom.</p>
+        <div class="cost" id="famPrice">$19.99<small id="famPer">/mo</small></div>
+        <div class="sub" id="famSub">Up to 6 profiles · 7-day free trial</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Everything in Pro</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>6 individual profiles</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Progress dashboard</li>
+        </ul>
+        <a href="#" class="btn btn-ghost">Start free trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" style="background:var(--bg-2);border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>Good to know</h2>
+    </div>
+    <div class="faq">
+      <div class="qa reveal"><button type="button">Is Paladin really the "Duolingo of History"? <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="ans"><p>Same idea, different subject. Bite-sized daily lessons, streaks, quizzes and a bit of friendly competition — all aimed at one thing: making history a habit you look forward to instead of a chore.</p></div></div>
+      <div class="qa reveal"><button type="button">How long is each lesson? <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="ans"><p>About five minutes. Each story is designed to fit into a coffee break, a commute, or the moment before bed — short enough to finish, rich enough to remember.</p></div></div>
+      <div class="qa reveal"><button type="button">What does it cost after the free trial? <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="ans"><p>Paladin Pro is $12.99/month, or a discounted annual plan that works out to a little over $5/month. You get 7 days completely free first, and you can cancel anytime before it renews — no questions asked.</p></div></div>
+      <div class="qa reveal"><button type="button">Which devices is it on? <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="ans"><p>Paladin is available on iPhone and iPad via the App Store, and on Android via Google Play. Your streak and collection sync across every device you sign in on.</p></div></div>
+      <div class="qa reveal"><button type="button">Is the history accurate? <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="ans"><p>Every story is researched from credible sources and reviewed before it ships. Want to go deeper? Optional "Deep Dive" notes give you the context, nuance and further reading behind each episode.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section cta-final">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <h2>The past is calling.</h2>
+      <p>Join over 3 million people learning history the fun way. Your first story is five minutes away.</p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn btn-primary btn-lg">Start your free trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand" aria-label="Paladin home">
+          <svg class="logo" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#141009"/><path d="M28 30c-4-8-2-14 2-14 3 0 5 4 6 9 5-2 11-2 16 0 1-5 3-9 6-9 4 0 6 6 2 14 5 5 8 12 8 19 0 15-12 24-24 24S20 64 20 49c0-7 3-14 8-19z" fill="#ee8b2e"/><circle cx="40" cy="50" r="5" fill="#141009"/><circle cx="60" cy="50" r="5" fill="#141009"/></svg>
+          <span class="name">Paladin</span>
+        </a>
+        <p>Learn history the fun way — one five-minute story at a time.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3v3.2a5 5 0 0 0 4 2v3a8 8 0 0 1-4-1.1V16a6 6 0 1 1-6-6c.3 0 .7 0 1 .1v3.2a3 3 0 1 0 2 2.8V3h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6 6-6z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href="#how">How it works</a><a href="#features">Features</a><a href="#characters">Characters</a><a href="#pricing">Pricing</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Contact</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="#">Cookie Settings</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Paladin. A demo landing page built for learning purposes — not affiliated with the original app.</span>
+      <span><a href="#">Terms &amp; Conditions</a> · <a href="#">Privacy Policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // nav scroll state
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // mobile menu (simple scroll-to since links hidden): toggle a lightweight menu
+  var toggle = document.getElementById('navToggle');
+  toggle.addEventListener('click', function(){
+    document.querySelector('#pricing').scrollIntoView({behavior:'smooth'});
+  });
+
+  // reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // FAQ accordion
+  document.querySelectorAll('.qa button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var qa = btn.parentElement;
+      var ans = qa.querySelector('.ans');
+      var open = qa.classList.toggle('open');
+      ans.style.maxHeight = open ? ans.scrollHeight + 'px' : 0;
+    });
+  });
+
+  // pricing toggle
+  var sw = document.getElementById('planSwitch');
+  var annual = false;
+  var prices = {
+    monthly:{pro:['$12.99','/mo','Billed monthly · 7-day free trial'], fam:['$19.99','/mo','Up to 6 profiles · 7-day free trial']},
+    annual: {pro:['$5.83','/mo','$69.99/yr billed annually · 7-day trial'], fam:['$8.33','/mo','$99.99/yr billed annually · 7-day trial']}
+  };
+  function renderPrice(){
+    var p = annual ? prices.annual : prices.monthly;
+    document.getElementById('proPrice').innerHTML = p.pro[0]+'<small>'+p.pro[1]+'</small>';
+    document.getElementById('proSub').textContent = p.pro[2];
+    document.getElementById('famPrice').innerHTML = p.fam[0]+'<small>'+p.fam[1]+'</small>';
+    document.getElementById('famSub').textContent = p.fam[2];
+    document.getElementById('lblMonthly').classList.toggle('on', !annual);
+    document.getElementById('lblAnnual').classList.toggle('on', annual);
+    sw.classList.toggle('annual', annual);
+  }
+  sw.addEventListener('click', function(){ annual = !annual; renderPrice(); });
+  renderPrice();
+
+  // ---- "Discover your Paladin" quiz ----
+  var Q = [
+    {q:"When the stakes are highest, you rely on…", opts:[
+      {t:"Cunning strategy",emo:"🧠",tag:"mind"},
+      {t:"Bold action",emo:"⚡",tag:"bold"},
+      {t:"Quiet resolve",emo:"🕊️",tag:"calm"},
+      {t:"Sheer charisma",emo:"✨",tag:"charm"}]},
+    {q:"Your ideal way to change the world is…", opts:[
+      {t:"Lead from the front",emo:"⚔️",tag:"bold"},
+      {t:"Outthink everyone",emo:"♟️",tag:"mind"},
+      {t:"Inspire with words",emo:"📜",tag:"charm"},
+      {t:"Stand firm for what's right",emo:"🛡️",tag:"calm"}]},
+    {q:"People describe you as…", opts:[
+      {t:"Fearless",emo:"🔥",tag:"bold"},
+      {t:"Brilliant",emo:"💡",tag:"mind"},
+      {t:"Magnetic",emo:"🌟",tag:"charm"},
+      {t:"Principled",emo:"🌿",tag:"calm"}]}
+  ];
+  var RESULTS = {
+    bold:{m:"N",n:"Napoleon",d:"A fearless force of nature. You move first, think fast, and bend the moment to your will. History remembers the bold."},
+    mind:{m:"A",n:"Alan Turing",d:"A brilliant mind that sees the pattern everyone else misses. You change the world quietly, one breakthrough at a time."},
+    charm:{m:"C",n:"Cleopatra",d:"Magnetic, sharp and unforgettable. You win hearts and rooms alike — and you always know exactly what you want."},
+    calm:{m:"G",n:"Gandhi",d:"Unshakeable and principled. Your strength is patience, and your quiet conviction moves more than any army could."}
+  };
+  var idx = 0, tally = {};
+  var qText = document.getElementById('qText'),
+      qOpts = document.getElementById('qOpts'),
+      qBar  = document.getElementById('qBar'),
+      stage = document.getElementById('quizStage'),
+      resEl = document.getElementById('qResult');
+
+  function render(){
+    var item = Q[idx];
+    qText.textContent = item.q;
+    qBar.style.width = (idx/Q.length*100)+'%';
+    qOpts.innerHTML = '';
+    item.opts.forEach(function(o){
+      var b = document.createElement('button');
+      b.className = 'opt';
+      b.innerHTML = '<span class="emo">'+o.emo+'</span>'+o.t;
+      b.addEventListener('click', function(){
+        tally[o.tag] = (tally[o.tag]||0)+1;
+        idx++;
+        if(idx < Q.length){ render(); }
+        else{ finish(); }
+      });
+      qOpts.appendChild(b);
+    });
+  }
+  function finish(){
+    qBar.style.width = '100%';
+    var best = 'bold', max = -1;
+    Object.keys(tally).forEach(function(k){ if(tally[k]>max){max=tally[k];best=k;} });
+    var r = RESULTS[best];
+    document.getElementById('rMono').textContent = r.m;
+    document.getElementById('rName').textContent = r.n;
+    document.getElementById('rDesc').textContent = r.d;
+    stage.classList.add('hidden');
+    resEl.classList.remove('hidden');
+  }
+  document.getElementById('qRetry').addEventListener('click', function(){
+    idx = 0; tally = {}; resEl.classList.add('hidden'); stage.classList.remove('hidden'); render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

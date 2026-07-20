@@ -23330,7 +23330,7 @@
   "tier": "",
   "first_seen": "2026-07-20",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "4e137c5d638fd76c": {
   "title": "Enterprise Account Executive",
@@ -23346,6 +23346,6 @@
   "tier": "",
   "first_seen": "2026-07-20",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  }
 }

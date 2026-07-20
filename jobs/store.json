@@ -23314,6 +23314,38 @@
   "tier": "",
   "first_seen": "2026-07-20",
   "last_seen": "2026-07-20",
+  "active": false
+ },
+ "7c77c2da2418b608": {
+  "title": "Business Development Representative",
+  "company": "Pavago",
+  "location": "United Arab Emirates",
+  "comp": "",
+  "link": "https://himalayas.app/companies/pavago/jobs/business-development-representative",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "Other",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-20",
+  "last_seen": "2026-07-20",
+  "active": true
+ },
+ "4e137c5d638fd76c": {
+  "title": "Enterprise Account Executive",
+  "company": "Forrester Research, Inc. (US)",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/forrester-research-inc-us/jobs/enterprise-account-executive-2198666377",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-20",
+  "last_seen": "2026-07-20",
   "active": true
  }
 }

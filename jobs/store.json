@@ -67,17 +67,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Phoenix, AZ",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/8533456092709652744",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-20",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -205,7 +205,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-20",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -238,7 +238,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-20",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -289,7 +289,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-20",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -485,7 +485,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-20",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -502,7 +502,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-20",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1359,7 +1359,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-20",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -3966,7 +3966,7 @@
   "company": "The People Pod",
   "location": "Manchester, Greater Manchester",
   "comp": "$100000-$100000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=TomkStaD8RGbbMLcfp6qmw&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=eBGKhkOE8RGFn_qa-CaiPg&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
@@ -7967,7 +7967,7 @@
   "category": "Success (CSM / customer / client / onboarding)",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-20",
-  "active": true,
+  "active": false,
   "country": "Australia",
   "lead_type": "",
   "inbox": false,
@@ -8444,9 +8444,9 @@
  "73fa1c5af639bcb9": {
   "title": "Remote Virtual Assistant - Travel",
   "company": "Travelwmissy",
-  "location": "Jacksonville, Calhoun County",
-  "comp": "$47076-$47076",
-  "link": "https://www.adzuna.com/details/5787644266?utm_medium=api&utm_source=3e941a8f",
+  "location": "Saint Petersburg, Pinellas County",
+  "comp": "$55147-$55147",
+  "link": "https://www.adzuna.com/details/5807905271?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
@@ -14110,7 +14110,7 @@
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
-  "lead_type": "",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
@@ -14579,7 +14579,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "67bb77887a4a8670": {
   "title": "Remote High-Ticket Coaching Closer (One-Call Close)",
@@ -14659,7 +14659,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-20",
-  "active": false
+  "active": true
  },
  "3c73f1d01e90c171": {
   "title": "Remote Sales Closer - High-Ticket Deals, Big Impact",
@@ -14675,7 +14675,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-20",
-  "active": false
+  "active": true
  },
  "357131c6f6dab4f8": {
   "title": "Remote High-Ticket Closer | Inbound Leads, Elite Training",
@@ -15139,7 +15139,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "b4b8a9230a365c95": {
   "title": "Remote High-Ticket Closer for ETA Deals",
@@ -15224,13 +15224,13 @@
  "12ae3f79cd5180bc": {
   "title": "Remote B2B Ad Sales Closer Independent Contractor",
   "company": "Terraboost Media",
-  "location": "Norwalk, CT",
-  "comp": "$1,500 per month",
-  "link": "https://jooble.org/jdp/-9126904231873307243",
+  "location": "Pittsburg, TX",
+  "comp": "",
+  "link": "https://jooble.org/jdp/-2163336188954513519",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
-  "lead_type": "",
+  "lead_type": "Cold",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
@@ -15780,7 +15780,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "7c2276d12832f325": {
   "title": "Remote High-Ticket Closer | Elite B2B Sales",
@@ -15812,7 +15812,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "a323352f1ba1b643": {
   "title": "Elite Remote Sales Closer",
@@ -16948,7 +16948,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "970c74124203fa35": {
   "title": "Remote Virtual Assistant",
@@ -17321,9 +17321,9 @@
  "5150fe0fad2c37ba": {
   "title": "Senior High-Ticket Closer for Remote Growth Consulting",
   "company": "Curvion Blue",
-  "location": "Boise, ID",
+  "location": "Sacramento, CA",
   "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/4386122744690963266",
+  "link": "https://jooble.org/jdp/69464911935177625",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -17401,9 +17401,9 @@
  "d8cae334eca1140e": {
   "title": "Remote Customer Success Manager II - East",
   "company": "GrabJobs",
-  "location": "San Bernardino, CA",
+  "location": "United States",
   "comp": "$125k",
-  "link": "https://jooble.org/jdp/-7848126381278830703",
+  "link": "https://jooble.org/jdp/-7150562458052186406",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -17417,9 +17417,9 @@
  "1886d675e26af7e3": {
   "title": "Remote Customer Success Manager",
   "company": "GrabJobs",
-  "location": "Saint Paul, MN",
-  "comp": "$125k - $235k",
-  "link": "https://jooble.org/jdp/-4058918702056569466",
+  "location": "San Diego, CA",
+  "comp": "$75k - $105k",
+  "link": "https://jooble.org/jdp/8202333997099839477",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -17508,7 +17508,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "7a6112cdc1bdec18": {
   "title": "Part-Time Virtual Assistant (Roofing Operations & Customer Service)",
@@ -17524,7 +17524,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "daefbbda055e29ab": {
   "title": "Virtual Assistant II — Flexible Hours & Growth",
@@ -17556,7 +17556,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "74af105fecb22e7a": {
   "title": "Simple Virtual Assistants (Only US)",
@@ -18021,7 +18021,7 @@
   "tier": "",
   "first_seen": "2026-06-28",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "b5821ad5a924e5da": {
   "title": "Bilingual Legal Virtual Assistant - Remote Admin & Research",
@@ -18156,7 +18156,7 @@
   "company": "Simplex",
   "location": "Austin, Travis County",
   "comp": "$143980-$143980",
-  "link": "https://www.adzuna.com/land/ad/5779798536?se=wpGtaXqB8RGuXZiVwx-Xkw&utm_medium=api&utm_source=3e941a8f&v=486A3B60B6E35959D8E58B71073B2EE07D42139B",
+  "link": "https://www.adzuna.com/land/ad/5779798536?se=QEo5fEOE8RGFn_qa-CaiPg&utm_medium=api&utm_source=3e941a8f&v=486A3B60B6E35959D8E58B71073B2EE07D42139B",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -18164,8 +18164,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-28",
-  "last_seen": "2026-07-17",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "ba745d1456f09c3f": {
   "title": "Remote Closer | Real Estate",
@@ -19317,7 +19317,7 @@
   "tier": "",
   "first_seen": "2026-07-03",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "de3c0c33ec5ff6a5": {
   "title": "Remote Customer Success Manager II - West",
@@ -19556,8 +19556,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-04",
-  "last_seen": "2026-07-18",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "efe9b1a9a117b523": {
   "title": "Account Executive, Large Market",
@@ -21068,7 +21068,7 @@
   "company": "Presidio",
   "location": "US",
   "comp": "$184020-$184020",
-  "link": "https://www.adzuna.com/land/ad/5795942329?se=OqUER9aD8RGbbMLcfp6qmw&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
+  "link": "https://www.adzuna.com/land/ad/5795942329?se=QEo5fEOE8RGFn_qa-CaiPg&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -21116,7 +21116,7 @@
   "company": "remote zest jobs",
   "location": "Remote",
   "comp": "",
-  "link": "https://remotezest.up.railway.app/job/dm-setter-and-phone-setter",
+  "link": "https://remotezest.up.railway.app/job/dm-setter-and-phone-setter-1",
   "source": "JSearch",
   "category": "Closer",
   "country": "Worldwide / Anywhere",
@@ -21124,8 +21124,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-11",
-  "last_seen": "2026-07-18",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "e23b6e26a47c576f": {
   "title": "Solution Engineer - Nexus Black",
@@ -21701,7 +21701,7 @@
   "tier": "",
   "first_seen": "2026-07-13",
   "last_seen": "2026-07-20",
-  "active": false
+  "active": true
  },
  "fce80ac8235b5b4e": {
   "title": "Administrative Assistant/Virtual Assistant",
@@ -21878,7 +21878,7 @@
   "tier": "",
   "first_seen": "2026-07-14",
   "last_seen": "2026-07-20",
-  "active": false
+  "active": true
  },
  "2b5c26d41344cf0d": {
   "title": "High Ticket Closer-Remote",
@@ -22102,7 +22102,7 @@
   "tier": "",
   "first_seen": "2026-07-14",
   "last_seen": "2026-07-20",
-  "active": false
+  "active": true
  },
  "f8e6159334d70bc3": {
   "title": "Virtual Assistant I",
@@ -22852,9 +22852,9 @@
  "37f1526d45e424ed": {
   "title": "Remote Inbound Sales Representative- Remote in North Carolina",
   "company": "GrabJobs",
-  "location": "Charlotte, NC",
+  "location": "Anchorage, AK",
   "comp": "$100k",
-  "link": "https://jooble.org/jdp/3070304151374282484",
+  "link": "https://jooble.org/jdp/-2953886977649319715",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -22911,7 +22911,7 @@
   "tier": "",
   "first_seen": "2026-07-17",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "2e1edb8172fe01b9": {
   "title": "Urgently Hiring: Virtual Assistant - remote employment",
@@ -23016,7 +23016,7 @@
   "company": "Tekfortune Inc.",
   "location": "US",
   "comp": "$102432-$102432",
-  "link": "https://www.adzuna.com/land/ad/5772872864?se=OqUER9aD8RGbbMLcfp6qmw&utm_medium=api&utm_source=3e941a8f&v=958D6C6813A9C1BF02F411CC826C3C4018C97993",
+  "link": "https://www.adzuna.com/land/ad/5772872864?se=QEo5fEOE8RGFn_qa-CaiPg&utm_medium=api&utm_source=3e941a8f&v=958D6C6813A9C1BF02F411CC826C3C4018C97993",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -23265,7 +23265,7 @@
   "tier": "",
   "first_seen": "2026-07-20",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "227129d6b0f76267": {
   "title": "[Remote] Work From Home Virtual Assistant | Immediate Hiring",
@@ -23281,7 +23281,7 @@
   "tier": "",
   "first_seen": "2026-07-20",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "9b1e755316ed227d": {
   "title": "Virtual Assistant - US Shift (Remote)",
@@ -23347,5 +23347,37 @@
   "first_seen": "2026-07-20",
   "last_seen": "2026-07-20",
   "active": false
+ },
+ "4036205ca547a982": {
+  "title": "Onboarding Operations Specialist - APAC",
+  "company": "Remote.com",
+  "location": "Australia",
+  "comp": "$28200-$71400",
+  "link": "https://www.adzuna.com.au/details/5742825089?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Australia",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-20",
+  "last_seen": "2026-07-20",
+  "active": true
+ },
+ "70404dcbeebb6a83": {
+  "title": "Outbound Cold Caller / Sales Representative- Experienced / Remote",
+  "company": "Cast Capital Lending Corp",
+  "location": "Remote",
+  "comp": "$53417-$62080",
+  "link": "https://www.indeed.com/viewjob?jk=5a7d070a9dfb4a9c",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-20",
+  "last_seen": "2026-07-20",
+  "active": true
  }
 }

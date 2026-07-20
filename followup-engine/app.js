@@ -1867,6 +1867,7 @@ async function liveStart() {
   try { rec.start(); } catch (e) {}
   $("live_start").disabled = true; $("live_stop").disabled = false;
   $("live_pause").disabled = false; $("live_pause").textContent = "❚❚ Pause";
+  $("live_newcall").disabled = false;
   $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;
   renderTranscript();
   acquireWakeLock();
@@ -1875,6 +1876,7 @@ async function liveStart() {
 function liveStop() {
   Live.running = false; Live.paused = false;
   $("live_pause").disabled = true; $("live_pause").textContent = "❚❚ Pause";
+  $("live_newcall").disabled = true;
   if (Live.rec) { try { Live.rec.stop(); } catch (e) {} }
   stopProspectCapture();
   clearInterval(Live.timer); Live.timer = null;
@@ -2136,6 +2138,25 @@ $("mr_list").addEventListener("click", (e) => {
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
 $("tw_go").onclick = testWhisper;
+// Wipe the call state (transcript, whispers, meds, script position) and pick up
+// the currently selected lead, WITHOUT stopping the mic/headset connection.
+function resetForNewCall() {
+  Live.leadId = $("live_lead").value;
+  Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0;
+  seedMedsFromLead(Live.leadId);
+  $("live_cues").innerHTML = `<div class="empty small">Cues appear here as the call unfolds.</div>`;
+  Live.scriptIdx = -1; Live.scriptManual = false;
+  if (Live.scriptBlocks.length) renderScriptLive(-1);
+  renderTranscript();
+}
+// New call: start fresh between calls in one click, keeping the connection live.
+$("live_newcall").onclick = () => {
+  if (!Live.running) return;
+  resetForNewCall();
+  Live.paused = false; $("live_pause").textContent = "❚❚ Pause";
+  acquireWakeLock();
+  $("live_status").innerHTML = `<span class="live-dot">●</span> New call - listening fresh. Pick the lead above if it changed.`;
+};
 // Pause/Resume: halt capture and whispers between calls without tearing down
 // the mic/headset connection. Picking a new lead before Resume starts fresh.
 $("live_pause").onclick = () => {
@@ -2148,16 +2169,7 @@ $("live_pause").onclick = () => {
     $("live_status").innerHTML = "❚❚ Paused. Capture and whispers are off. If the next call is a new person, pick them above, then Resume for a fresh start.";
   } else {
     // If the selected lead changed while paused, treat Resume as a new call.
-    const sel = $("live_lead").value;
-    if (sel !== Live.leadId) {
-      Live.leadId = sel;
-      Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0;
-      seedMedsFromLead(sel);
-      $("live_cues").innerHTML = `<div class="empty small">Cues appear here as the call unfolds.</div>`;
-      Live.scriptIdx = -1; Live.scriptManual = false;
-      if (Live.scriptBlocks.length) renderScriptLive(-1);
-      renderTranscript();
-    }
+    if ($("live_lead").value !== Live.leadId) resetForNewCall();
     acquireWakeLock();
     btn.textContent = "❚❚ Pause";
     $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;

@@ -1866,7 +1866,6 @@ async function liveStart() {
   Live.rec = rec; Live.running = true;
   try { rec.start(); } catch (e) {}
   $("live_start").disabled = true; $("live_stop").disabled = false;
-  $("live_pause").disabled = false; $("live_pause").textContent = "❚❚ Pause";
   $("live_newcall").disabled = false;
   $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;
   renderTranscript();
@@ -1875,7 +1874,6 @@ async function liveStart() {
 }
 function liveStop() {
   Live.running = false; Live.paused = false;
-  $("live_pause").disabled = true; $("live_pause").textContent = "❚❚ Pause";
   $("live_newcall").disabled = true;
   if (Live.rec) { try { Live.rec.stop(); } catch (e) {} }
   stopProspectCapture();
@@ -2153,27 +2151,9 @@ function resetForNewCall() {
 $("live_newcall").onclick = () => {
   if (!Live.running) return;
   resetForNewCall();
-  Live.paused = false; $("live_pause").textContent = "❚❚ Pause";
+  Live.paused = false;
   acquireWakeLock();
   $("live_status").innerHTML = `<span class="live-dot">●</span> New call - listening fresh. Pick the lead above if it changed.`;
-};
-// Pause/Resume: halt capture and whispers between calls without tearing down
-// the mic/headset connection. Picking a new lead before Resume starts fresh.
-$("live_pause").onclick = () => {
-  if (!Live.running) return;
-  Live.paused = !Live.paused;
-  const btn = $("live_pause");
-  if (Live.paused) {
-    releaseWakeLock();
-    btn.textContent = "▶ Resume";
-    $("live_status").innerHTML = "❚❚ Paused. Capture and whispers are off. If the next call is a new person, pick them above, then Resume for a fresh start.";
-  } else {
-    // If the selected lead changed while paused, treat Resume as a new call.
-    if ($("live_lead").value !== Live.leadId) resetForNewCall();
-    acquireWakeLock();
-    btn.textContent = "❚❚ Pause";
-    $("live_status").innerHTML = `<span class="live-dot">●</span> Listening… cues appear as the prospect talks.`;
-  }
 };
 $("live_cuenow").onclick = () => maybeCue(true);
 $("live_clear").onclick = () => { $("live_cues").innerHTML = `<div class="empty small">Cues appear here as the call unfolds.</div>`; };

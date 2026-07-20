@@ -289,7 +289,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-20",
-  "active": false,
+  "active": true,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -3966,12 +3966,12 @@
   "company": "The People Pod",
   "location": "Manchester, Greater Manchester",
   "comp": "$100000-$100000",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=TKVUZHqD8RGF5LNal_k3gA&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5758336406?se=TomkStaD8RGbbMLcfp6qmw&utm_medium=api&utm_source=3e941a8f&v=0E0E92F02BCF4425C179E9B1CE806C445774FDA1",
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-19",
-  "active": false,
+  "last_seen": "2026-07-20",
+  "active": true,
   "country": "United Kingdom",
   "lead_type": "",
   "inbox": false,
@@ -14110,7 +14110,7 @@
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
-  "lead_type": "Inbound",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
@@ -14659,7 +14659,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "3c73f1d01e90c171": {
   "title": "Remote Sales Closer - High-Ticket Deals, Big Impact",
@@ -14675,7 +14675,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "357131c6f6dab4f8": {
   "title": "Remote High-Ticket Closer | Inbound Leads, Elite Training",
@@ -15138,8 +15138,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-19",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "b4b8a9230a365c95": {
   "title": "Remote High-Ticket Closer for ETA Deals",
@@ -15224,13 +15224,13 @@
  "12ae3f79cd5180bc": {
   "title": "Remote B2B Ad Sales Closer Independent Contractor",
   "company": "Terraboost Media",
-  "location": "Pittsburg, TX",
-  "comp": "",
-  "link": "https://jooble.org/jdp/-2163336188954513519",
+  "location": "Norwalk, CT",
+  "comp": "$1,500 per month",
+  "link": "https://jooble.org/jdp/-9126904231873307243",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
-  "lead_type": "Cold",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
@@ -15779,8 +15779,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-19",
-  "last_seen": "2026-07-19",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "7c2276d12832f325": {
   "title": "Remote High-Ticket Closer | Elite B2B Sales",
@@ -15811,8 +15811,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-19",
-  "last_seen": "2026-07-18",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "a323352f1ba1b643": {
   "title": "Elite Remote Sales Closer",
@@ -15827,8 +15827,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-19",
-  "last_seen": "2026-07-19",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "13952d269088f9d7": {
   "title": "Remote Customer Success Manager II - East",
@@ -18020,8 +18020,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-28",
-  "last_seen": "2026-07-19",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "b5821ad5a924e5da": {
   "title": "Bilingual Legal Virtual Assistant - Remote Admin & Research",
@@ -21068,7 +21068,7 @@
   "company": "Presidio",
   "location": "US",
   "comp": "$184020-$184020",
-  "link": "https://www.adzuna.com/land/ad/5795942329?se=WNK_JbGC8RGF5LNal_k3gA&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
+  "link": "https://www.adzuna.com/land/ad/5795942329?se=OqUER9aD8RGbbMLcfp6qmw&utm_medium=api&utm_source=3e941a8f&v=013D2DA6CE25F95D0AB10AB29BE7F4E1DC2E5D85",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -21076,8 +21076,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-11",
-  "last_seen": "2026-07-18",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "f569837528d0f0f4": {
   "title": "Virtual Coverage Assistant - Beginner at American Income Life Virginia Beach, VA",
@@ -21701,7 +21701,7 @@
   "tier": "",
   "first_seen": "2026-07-13",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "fce80ac8235b5b4e": {
   "title": "Administrative Assistant/Virtual Assistant",
@@ -21878,7 +21878,7 @@
   "tier": "",
   "first_seen": "2026-07-14",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "2b5c26d41344cf0d": {
   "title": "High Ticket Closer-Remote",
@@ -22102,7 +22102,7 @@
   "tier": "",
   "first_seen": "2026-07-14",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "f8e6159334d70bc3": {
   "title": "Virtual Assistant I",
@@ -22682,8 +22682,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-16",
-  "last_seen": "2026-07-19",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "e8000162d56fab6f": {
   "title": "Remote Inside Sales Representative | Sales Agent | Will train & Mentor | Work from Home",
@@ -22847,7 +22847,7 @@
   "tier": "",
   "first_seen": "2026-07-17",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "37f1526d45e424ed": {
   "title": "Remote Inbound Sales Representative- Remote in North Carolina",
@@ -23016,7 +23016,7 @@
   "company": "Tekfortune Inc.",
   "location": "US",
   "comp": "$102432-$102432",
-  "link": "https://www.adzuna.com/land/ad/5772872864?se=ro_nTXqD8RGFMa6bWHzthQ&utm_medium=api&utm_source=3e941a8f&v=958D6C6813A9C1BF02F411CC826C3C4018C97993",
+  "link": "https://www.adzuna.com/land/ad/5772872864?se=OqUER9aD8RGbbMLcfp6qmw&utm_medium=api&utm_source=3e941a8f&v=958D6C6813A9C1BF02F411CC826C3C4018C97993",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -23024,8 +23024,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-18",
-  "last_seen": "2026-07-19",
-  "active": false
+  "last_seen": "2026-07-20",
+  "active": true
  },
  "9ff8082b07e5be77": {
   "title": "Remote Virtual Assistant",

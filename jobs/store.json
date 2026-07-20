@@ -23201,7 +23201,7 @@
   "tier": "",
   "first_seen": "2026-07-19",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "7c5b6dba31c3c3da": {
   "title": "Manager, Complaint Analyst - Remote, USA",
@@ -23217,7 +23217,7 @@
   "tier": "",
   "first_seen": "2026-07-19",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "aa8b3eba5b5fcb1d": {
   "title": "Senior Customer Success Manager",
@@ -23233,7 +23233,7 @@
   "tier": "",
   "first_seen": "2026-07-19",
   "last_seen": "2026-07-20",
-  "active": true
+  "active": false
  },
  "6474885cd1618c45": {
   "title": "Virtual Assistant (remote-work)",
@@ -23299,5 +23299,21 @@
   "last_seen": "2026-07-20",
   "active": false,
   "delisted": "dead"
+ },
+ "1a08d67f213b755d": {
+  "title": "Bilingual Legal Virtual Assistant - California Personal Injury",
+  "company": "Staffing for Doctors",
+  "location": "Nicaragua",
+  "comp": "",
+  "link": "https://himalayas.app/companies/staffing-for-doctors/jobs/bilingual-legal-virtual-assistant-california-personal-injury",
+  "source": "Himalayas",
+  "category": "VA / Social / Chat",
+  "country": "Other",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-20",
+  "last_seen": "2026-07-20",
+  "active": true
  }
 }

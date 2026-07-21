@@ -15,7 +15,7 @@
      GSIUR 1998 (ACOP L56, 5th ed) · BS 6798:2014 · BS 6891:2015+A1:2019
      BS 5440-1:2023 · BS 5440-2:2023 · BS 7593:2019+A1:2024 · BS 7967:2015
      BS 5871-1/-2/-3/-4 · BS 6172:2010+A1:2017 · BS 669-1:2022
-     BS EN 50291-1:2018 / BS EN 50292:2023 · BS 7671 (A3:2024; A4 Apr 2026)
+     BS EN 50291-1:2018 / BS EN 50292:2023 · BS 7671 (+A4:2026 current; A2/A3 out 15 Oct 2026)
      IGEM/UP/1B Ed 4 (mandatory 1 Oct 2026) · IGEM/G/11 Ed 2 (amdt Jul 2025)
      IGEM/G/13 · IGEM/G/1 Ed 3 (2025) · Boiler Plus (2018, England)
      Approved Docs (England): L (2021+2023; Future Homes Standard in force
@@ -51,6 +51,7 @@ window.ACSHOWTO = (function () {
     { ref: "BS 7967:2015", scope: "Use of electronic portable combustion gas analysers (FGA) — CO, CO/CO₂ ratio, combustion performance in dwellings. Generic action levels (TB143): CO ≤350 ppm AND CO/CO₂ ratio <0.004; 0.004–0.008 investigate; >0.008 do not leave in service. Manufacturer limits prevail." },
     { ref: "IGEM/UP/1B Edition 4", scope: "Domestic tightness testing & direct purging (installations up to IV 0.035 m³; above that IGE/UP/1). Mandatory from 1 Oct 2026 (Ed 3 withdrawn 30 Sep 2026; both valid in the transition). Permissible pressure drop is set by Installation Volume (IV in m³), NOT meter size. New: with appliances connected, a pipework-only retest is a mandatory follow-on step — any perceptible movement on it is a fail." },
     { ref: "IGEM/G/11 Edition 2 (GIUSP, amdts July 2022/June 2024/July 2025)", scope: "Gas Industry Unsafe Situations Procedure — TWO unsafe categories only: Immediately Dangerous (ID) and At Risk (AR). Objective: make safe & advise not to use; turn off (with permission) + 'DANGER — DO NOT USE' label, except situations not made safer by turning off (e.g. building over a PE service pipe, mis-sited LPG vessel) which are referred on. Leave a Warning Notice (Appendix 6); report qualifying ID situations under RIDDOR. NOTE: 'Not to Current Standards' (NCS) is NOT a GIUSP unsafe category — recorded/advised only, never on a warning notice." },
+    { ref: "IGEM/G/5 Edition 3 (amdts April 2023 & April 2026)", scope: "Gas in multi-occupancy buildings — the standard for flats/apartments and other multi-occupancy premises (risers, protected shafts, meter siting, escape routes). The April 2026 amendment is covered by Gas Safe ISU 134. Relevant whenever you work on gas in blocks of flats." },
     { ref: "BS EN 50291-1:2018 / BS EN 50292:2023", scope: "CO alarms (50291-1:2018 performance) and their siting/selection (50292 — current is the 2023 edition, NOT 2019). England: Approved Doc J + Smoke & CO Alarm (Amendment) Regs 2022 (in force 1 Oct 2022) require a CO alarm on installing a new/replacement fixed combustion appliance burning solid fuel, GAS (excluding gas cookers) or oil. Wales/Scotland rules are broader. Site ~1–3 m from the appliance." },
     { ref: "Gas Safe TB143 / TB157", scope: "TB143 = CO/CO₂ combustion checks at commissioning/service. TB157 = combustion checks on natural gas containing up to 20% hydrogen (grid blending)." },
     { ref: "BS 5871-1/-2/-3/-4", scope: "Installation of gas fires/heaters: -1 radiant/convector, stoves & fire/back boilers; -2 inset live fuel effect (ILFE) ≤15 kW; -3 decorative fuel effect (DFE) ≤20 kW; -4 flueless fires/heaters ≤6 kW (all 2005, -4 is 2007)." },
@@ -65,7 +66,7 @@ window.ACSHOWTO = (function () {
     { ref: "Approved Doc G / G3 (2015 + 2016 & 2024 amdts)", scope: "Hot water safety; unvented hot water storage needs the separate G3 / HWSS competence (re-assessed every 5 years)." },
     { ref: "IGEM/G/13 (Sept 2022 + amdts Aug 2023)", scope: "Domestic supply capacity & operating pressure at the meter outlet — acceptable meter-outlet working pressure is not less than 18.5 mbar and not more than 23 mbar after 1 min stabilisation; outside that, follow the gas emergency 'Reporting of Low Pressure' process." },
     { ref: "IGEM/G/1 Edition 3 (Nov 2025)", scope: "Defines the boundaries between the gas network, the primary meter installation and the installation pipework (ISU 132). Relevant to MET1 / where responsibility sits." },
-    { ref: "BS 7671 (18th Edition: A2:2022, A3:2024; A4 due Apr 2026)", scope: "IET Wiring Regulations — basis for bonding/electrical safety checks. Main equipotential bonding 10 mm² min, within 600 mm of the meter outlet, before any branch. Amendment 4 (the 'brown/orange book') publishes April 2026." },
+    { ref: "BS 7671 (18th Edition +A4:2026)", scope: "IET Wiring Regulations — basis for bonding/electrical safety checks. Main equipotential bonding 10 mm² min, within 600 mm of the meter outlet, before any branch. Amendment 4 published 15 Apr 2026 (consolidates A3:2024); the previous A2:2022+A3:2024 is withdrawn 15 Oct 2026. Still 18th Edition — no 19th Edition announced." },
     { ref: "Liquid Gas UK Codes of Practice (formerly UKLPG)", scope: "LPG installation/use — e.g. CoP 1 'Design, installation & testing of LPG piping' (current July 2025), CoP 33 'Use of LPG cylinders'. LPG: propane ~37 mbar, butane ~28–30 mbar; LPG appliances must not be sited below ground (heavier than air)." },
     { ref: "Gas Safe Building Regs notification", scope: "England & Wales: notify a heat-producing appliance install within 30 days via the Competent Person Scheme; Gas Safe issues the Building Regs Compliance Certificate." },
   ];
@@ -461,7 +462,7 @@ window.ACSHOWTO = (function () {
         "Carry out the basic checks you're competent for: earth continuity, polarity (live/neutral not reversed), short circuit and resistance to earth.",
         "Confirm correct fusing and that exposed metalwork is earthed so a fault disconnects the supply.",
         "Main equipotential bonding: 10 mm² minimum, clamped to the consumer's hard metal pipework within 600 mm of the meter outlet, before any branch/tee/union.",
-        "BS 7671 (18th Edition, A2:2022 + A3:2024; Amendment 4 April 2026) is the basis.",
+        "BS 7671 (18th Edition +A4:2026, published 15 Apr 2026) is the basis; the older A2:2022+A3:2024 is withdrawn 15 Oct 2026.",
         "If a fault is outside your competence/scope, isolate where dangerous and refer to a qualified electrician.",
       ],
       safety: ["Reversed polarity and missing/poorly-placed bonding are common defects.", "Prove dead before working on electrical parts."],

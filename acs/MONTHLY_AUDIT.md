@@ -51,6 +51,14 @@ Docs: https://code.claude.com/docs/en/claude-code-on-the-web
 
 ## Audit log
 
+- **2026-07-21** — Full five-stream deep audit (IGEM, British Standards, building regs/heat
+  policy, gas law/Gas Safe bulletins, electrical/LPG). All existing app content verified
+  CORRECT and current — no figure/edition errors. Changes applied: BS 7671 reframed to
+  +A4:2026 current (old A2/A3 withdrawn 15 Oct 2026); Future Homes Standard gained the L3
+  on-site-solar requirement + Part L retitle; RIDDOR consultation closed 30 Jun 2026 (no
+  change). Added: BUS £9,000 oil/LPG uplift (live 21 Jul 2026), IGEM/G/5 Ed 3 April-2026
+  amendment (ISU 134), hydrogen-blending status, Warm Homes Plan, Scotland Heat in Buildings
+  Bill pause, Liquid Gas UK CoP 22:2025. IGEM/G/5 added to the how-to standards reference.
 - **2026-06-22** — Full four-stream audit completed. Brought tightness testing to
   IGEM/UP/1B Ed 4, GIUSP to IGEM/G/11 Ed 2 (July 2025), added the Future Homes
   Standard (in force 24 Mar 2027), CO-alarm law scope (ADJ 2022), BS 7593:2019+A1:2024,

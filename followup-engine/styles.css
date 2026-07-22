@@ -209,7 +209,8 @@ nav.segnav button.seg .count { opacity: .7; font-weight: 700; }
 .sc-tools summary::-webkit-details-marker { display: none; }
 .sc-tools summary::before { content: "▸ "; color: var(--gold); }
 .sc-tools[open] summary::before { content: "▾ "; }
-.live-cues { display: flex; flex-direction: column; gap: 9px; margin-top: 11px; min-height: 80px; }
+.live-cues { display: flex; flex-direction: column; gap: 9px; margin-top: 11px; min-height: 80px; border-radius: var(--radius-sm); transition: box-shadow .15s, background .15s; }
+.live-cues.held { box-shadow: inset 0 0 0 1px rgba(224, 189, 118, .35); background: rgba(224, 189, 118, .04); padding: 8px; }
 .cue { border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: var(--radius-sm); padding: 12px 14px; background: var(--panel-2); font-size: 16px; line-height: 1.4; box-shadow: var(--shadow-sm); animation: cuein .22s ease; }
 .cue .cue-type { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-right: 8px; font-weight: 600; }
 .cue.ask { border-left-color: var(--blue); }

@@ -1556,7 +1556,7 @@ $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.tar
 // Live call copilot - listens via the browser mic, whispers cues from /api/cue.
 // ---------------------------------------------------------------------------
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-const Live = { rec: null, running: false, paused: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false, dg: null, meds: [], medInfo: {} };
+const Live = { rec: null, running: false, paused: false, whispersHeld: false, transcript: "", interim: "", recentCues: [], lastCueLen: 0, timer: null, leadId: "", wakeLock: null, scriptBlocks: [], scriptIdx: -1, scriptManual: false, dg: null, meds: [], medInfo: {} };
 // Load any medications noted on a lead before, so they show and don't re-look-up.
 function seedMedsFromLead(leadId) {
   Live.meds = []; Live.medInfo = {};
@@ -1874,6 +1874,7 @@ async function liveStart() {
 }
 function liveStop() {
   Live.running = false; Live.paused = false;
+  setWhispersHeld(false);
   $("live_newcall").disabled = true;
   if (Live.rec) { try { Live.rec.stop(); } catch (e) {} }
   stopProspectCapture();
@@ -1953,6 +1954,7 @@ async function testWhisper() {
 }
 async function maybeCue(force) {
   if (Live.paused) return; // between calls: no cues
+  if (Live.whispersHeld && !force) return; // held so the rep can read; "Cue me now" still overrides
   if (!Live.running && !force) return;
   const t = Live.transcript.trim();
   if (!force && t.length - Live.lastCueLen < 140) return;
@@ -2152,9 +2154,19 @@ $("live_newcall").onclick = () => {
   if (!Live.running) return;
   resetForNewCall();
   Live.paused = false;
+  setWhispersHeld(false);
   acquireWakeLock();
   $("live_status").innerHTML = `<span class="live-dot">●</span> New call - listening fresh. Pick the lead above if it changed.`;
 };
+// Hold whispers: stop new cues popping in so the rep can read the current one.
+function setWhispersHeld(held) {
+  Live.whispersHeld = held;
+  const btn = $("live_hold");
+  btn.textContent = held ? "▶ Resume" : "⏸ Hold";
+  btn.classList.toggle("primary", held);
+  $("live_cues").classList.toggle("held", held);
+}
+$("live_hold").onclick = () => setWhispersHeld(!Live.whispersHeld);
 $("live_cuenow").onclick = () => maybeCue(true);
 $("live_clear").onclick = () => { $("live_cues").innerHTML = `<div class="empty small">Cues appear here as the call unfolds.</div>`; };
 $("pk_clear").onclick = () => {

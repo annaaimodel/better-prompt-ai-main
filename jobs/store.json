@@ -24002,7 +24002,7 @@
   "tier": "",
   "first_seen": "2026-07-22",
   "last_seen": "2026-07-22",
-  "active": true
+  "active": false
  },
  "36f8cf48d6ec745a": {
   "title": "MidMarket Customer Success Manager, North Central & Northwest",
@@ -24018,7 +24018,7 @@
   "tier": "",
   "first_seen": "2026-07-22",
   "last_seen": "2026-07-22",
-  "active": true
+  "active": false
  },
  "ea0489e880865f07": {
   "title": "Virtual Assistant (Lead Generation & Email Marketing)",
@@ -24030,6 +24030,22 @@
   "category": "VA / Social / Chat",
   "country": "United States",
   "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-22",
+  "last_seen": "2026-07-22",
+  "active": false
+ },
+ "353123ccd2f006c3": {
+  "title": "Vice President - Revenue Operations",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/granicus/jobs/vice-president-revenue-operations",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-22",

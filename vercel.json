@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/os", "destination": "/os.html" },
     { "source": "/directory", "destination": "/high_ticket_directory.html" },
     { "source": "/jobs", "destination": "/jobs/latest.html" },
     { "source": "/jobs/all", "destination": "/jobs/all.html" },

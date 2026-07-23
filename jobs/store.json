@@ -17667,8 +17667,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-27",
-  "last_seen": "2026-07-21",
-  "active": false,
+  "last_seen": "2026-07-23",
+  "active": true,
   "delisted": "dead"
  },
  "aac559728628ffd4": {
@@ -24290,6 +24290,6 @@
   "tier": "",
   "first_seen": "2026-07-23",
   "last_seen": "2026-07-23",
-  "active": true
+  "active": false
  }
 }

@@ -13,18 +13,21 @@
 <body>
   <div id="gate" class="gate">
     <div class="gate-card">
-      <svg class="brandmark" width="46" height="46" viewBox="0 0 32 32" aria-hidden="true">
+      <svg class="brandmark" width="52" height="52" viewBox="0 0 64 64" role="img" aria-label="Aurum">
         <defs>
-          <linearGradient id="aurumMarkGate" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#f3e0b0"/>
-            <stop offset="1" stop-color="#d9b46a"/>
+          <linearGradient id="aurgG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f6e29a"/>
+            <stop offset=".5" stop-color="#d9b24c"/>
+            <stop offset="1" stop-color="#b8862f"/>
           </linearGradient>
         </defs>
-        <rect x="1" y="1" width="30" height="30" rx="8" fill="url(#aurumMarkGate)"/>
-        <path d="M16 8 L23.5 24 M16 8 L8.5 24 M11.6 19.2 H20.4" stroke="#1a1407" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="3" y="3" width="58" height="58" rx="15" fill="#0a0a0b"/>
+        <rect x="3.75" y="3.75" width="56.5" height="56.5" rx="14.25" fill="none" stroke="url(#aurgG)" stroke-width="1.6"/>
+        <text x="31" y="43" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="31" fill="url(#aurgG)">Au</text>
+        <text x="49" y="20.5" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#cda23c">79</text>
       </svg>
-      <h1>Aurum Method <span class="dot">OS</span></h1>
-      <p class="small muted" style="margin:2px 0 0">the operating system for high-ticket sales</p>
+      <h1 class="wordmark gate-wm"><span class="wm">AURUM</span><span class="os">METHOD OS</span></h1>
+      <p class="small muted" style="margin:8px 0 0">the operating system for high-ticket sales</p>
       <input id="gate_code" type="password" placeholder="Access code" autocomplete="off" />
       <button class="btn primary" id="gate_go">Enter</button>
       <p class="small" id="gate_err" style="color:var(--red);min-height:18px;margin:8px 0 0"></p>
@@ -33,18 +36,21 @@
   <div class="app">
     <header class="top">
       <div class="brand">
-        <svg class="brandmark" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true">
+        <svg class="brandmark" width="34" height="34" viewBox="0 0 64 64" role="img" aria-label="Aurum">
           <defs>
-            <linearGradient id="aurumMark" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#f3e0b0"/>
-              <stop offset="1" stop-color="#d9b46a"/>
+            <linearGradient id="aurgH" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f6e29a"/>
+              <stop offset=".5" stop-color="#d9b24c"/>
+              <stop offset="1" stop-color="#b8862f"/>
             </linearGradient>
           </defs>
-          <rect x="1" y="1" width="30" height="30" rx="8" fill="url(#aurumMark)"/>
-          <path d="M16 8 L23.5 24 M16 8 L8.5 24 M11.6 19.2 H20.4" stroke="#1a1407" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <rect x="3" y="3" width="58" height="58" rx="15" fill="#0a0a0b"/>
+          <rect x="3.75" y="3.75" width="56.5" height="56.5" rx="14.25" fill="none" stroke="url(#aurgH)" stroke-width="1.6"/>
+          <text x="31" y="43" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="31" fill="url(#aurgH)">Au</text>
+          <text x="49" y="20.5" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#cda23c">79</text>
         </svg>
         <div class="brandtext">
-          <h1>Aurum Method <span class="dot">OS</span></h1>
+          <h1 class="wordmark"><span class="wm">AURUM</span><span class="os">METHOD OS</span></h1>
           <span class="tag">the operating system for high-ticket sales</span>
         </div>
       </div>
@@ -523,6 +529,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=38"></script>
+  <script src="/app.js?v=39"></script>
 </body>
 </html>

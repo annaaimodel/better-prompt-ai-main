@@ -69,7 +69,7 @@ label { display: block; font-size: 11px; color: var(--muted); margin: 0 0 5px; t
 }
 .gate.hidden { display: none !important; }
 .gate-card { width: 100%; max-width: 340px; text-align: center; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 24px; box-shadow: var(--shadow); }
-.gate-card .brandmark { border-radius: 11px; box-shadow: 0 4px 16px rgba(224, 189, 118, .28); margin-bottom: 6px; }
+.gate-card .brandmark { border-radius: 13px; box-shadow: 0 8px 22px -6px rgba(201, 156, 56, .4); margin-bottom: 2px; }
 .gate-card h1 { font-size: 24px; margin: 8px 0 0; font-weight: 700; letter-spacing: -.02em; }
 .gate-card input { margin: 18px 0 10px; text-align: center; letter-spacing: .1em; }
 .gate-card .btn { width: 100%; }
@@ -89,10 +89,13 @@ header.top {
   }
 }
 .brand { display: flex; align-items: center; gap: 12px; }
-.brandmark { display: block; flex: 0 0 auto; border-radius: 9px; box-shadow: 0 4px 14px rgba(224, 189, 118, .25); }
+.brandmark { display: block; flex: 0 0 auto; border-radius: 12px; box-shadow: 0 6px 18px -6px rgba(201, 156, 56, .35); }
 .brandtext { display: flex; flex-direction: column; gap: 2px; line-height: 1.15; }
-.brand h1 { font-size: 21px; margin: 0; font-weight: 700; letter-spacing: .01em; font-family: var(--serif); background: linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.brand .dot { -webkit-text-fill-color: initial; color: var(--gold-soft); }
+.wordmark { display: inline-flex; align-items: center; gap: 9px; margin: 0; }
+.wm { font-family: var(--serif); font-weight: 700; font-size: 19px; letter-spacing: .16em; padding-left: .16em; background: linear-gradient(180deg,#f6e29a,#d9b24c 55%,#b8862f); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.os { font-family: "Inter", -apple-system, sans-serif; font-size: 10px; font-weight: 800; letter-spacing: .14em; color: #0a0a0b; background: linear-gradient(175deg,#f6e29a,#b8862f); padding: 3px 7px; border-radius: 6px; }
+.gate-wm { justify-content: center; margin: 12px 0 0; }
+.gate-wm .wm { font-size: 22px; }
 .brand .tag { color: var(--muted); font-size: 12px; letter-spacing: .01em; }
 nav.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
 nav.tabs button {

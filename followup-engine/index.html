@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="/styles.css?v=39" />
+  <link rel="stylesheet" href="/styles.css?v=40" />
 </head>
 <body>
   <div id="gate" class="gate">
@@ -167,6 +167,22 @@
           <span><button class="btn sm" id="tr_copy">Copy</button> <button class="btn sm" id="tr_save">Save to lead</button></span>
         </div>
         <div id="live_transcript" class="live-transcript small muted">Not started.</div>
+      </div>
+      <div class="card">
+        <details>
+          <summary style="cursor:pointer;font-weight:600;font-size:16px">Transcribe a recording</summary>
+          <p class="small muted" style="margin:8px 0">Upload a call recording (MP3, WAV, M4A) and get the full transcript, with speakers separated, using your Deepgram key. Then send it to Test whisper or Call review, or paste it into a lead.</p>
+          <div class="row" style="align-items:flex-end">
+            <div class="field"><label>Audio file</label><input id="tr_file" type="file" accept="audio/*" /></div>
+            <div class="field" style="display:flex;align-items:flex-end"><button class="btn primary" id="tr_go" style="width:100%">Transcribe ▸</button></div>
+          </div>
+          <p class="small" id="tr_status" style="min-height:18px"></p>
+          <div class="field"><textarea id="tr_out" rows="8" placeholder="The transcript appears here once it's done."></textarea></div>
+          <div class="kbar">
+            <button class="btn sm" id="tr_copy">Copy</button>
+            <button class="btn sm" id="tr_totw">Send to Test whisper</button>
+          </div>
+        </details>
       </div>
       <div class="card">
         <details>
@@ -529,6 +545,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=39"></script>
+  <script src="/app.js?v=40"></script>
 </body>
 </html>

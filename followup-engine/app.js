@@ -2138,6 +2138,57 @@ $("mr_list").addEventListener("click", (e) => {
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
 $("tw_go").onclick = testWhisper;
+// Transcribe an uploaded recording via the user's Deepgram key (prerecorded API).
+function dgTranscript(json) {
+  try {
+    const alt = json.results.channels[0].alternatives[0];
+    const paras = alt.paragraphs && alt.paragraphs.paragraphs;
+    if (paras && paras.length) {
+      return paras.map((p) => {
+        const text = (p.sentences || []).map((s) => s.text).join(" ");
+        return (typeof p.speaker === "number" ? "Speaker " + p.speaker + ": " : "") + text;
+      }).join("\n\n");
+    }
+    return alt.transcript || "";
+  } catch (e) { return ""; }
+}
+async function transcribeRecording() {
+  const f = $("tr_file").files && $("tr_file").files[0];
+  const st = $("tr_status");
+  if (!f) { st.textContent = "Choose an audio file first."; return; }
+  const key = (db.settings.deepgram || "").trim();
+  if (!key) { st.textContent = "Add your Deepgram key in Settings first."; setView("settings"); return; }
+  const btn = $("tr_go"), old = btn.textContent; btn.disabled = true; btn.textContent = "Transcribing…";
+  st.textContent = "Uploading and transcribing… a long call can take up to a minute.";
+  try {
+    const url = "https://api.deepgram.com/v1/listen?model=nova-2&smart_format=true&punctuate=true&diarize=true&paragraphs=true";
+    const r = await fetch(url, { method: "POST", headers: { Authorization: "Token " + key, "Content-Type": f.type || "audio/mpeg" }, body: f });
+    if (!r.ok) {
+      const t = await r.text().catch(() => "");
+      st.textContent = "Deepgram error " + r.status + (r.status === 401 ? " - check your Deepgram key in Settings." : "") + (t ? " (" + t.slice(0, 140) + ")" : "");
+      return;
+    }
+    const j = await r.json();
+    const text = dgTranscript(j);
+    if (!text) { st.textContent = "No speech detected in that file."; return; }
+    $("tr_out").value = text;
+    st.textContent = "Done. " + text.length + " characters transcribed.";
+  } catch (e) {
+    st.textContent = "Failed - " + ((e && e.message) || "network error") + ". If it mentions CORS, tell me and I'll route it through the server.";
+  } finally {
+    btn.disabled = false; btn.textContent = old;
+  }
+}
+$("tr_go").onclick = transcribeRecording;
+$("tr_copy").onclick = () => { const t = $("tr_out").value; if (t) { navigator.clipboard && navigator.clipboard.writeText(t); toast("Copied"); } };
+$("tr_totw").onclick = () => {
+  const t = $("tr_out").value.trim();
+  if (!t) { toast("Nothing to send yet"); return; }
+  $("tw_text").value = t;
+  const d = $("tw_text").closest("details"); if (d) d.open = true;
+  $("tw_text").scrollIntoView({ behavior: "smooth", block: "center" });
+  toast("Sent to Test whisper");
+};
 // Wipe the call state (transcript, whispers, meds, script position) and pick up
 // the currently selected lead, WITHOUT stopping the mic/headset connection.
 function resetForNewCall() {

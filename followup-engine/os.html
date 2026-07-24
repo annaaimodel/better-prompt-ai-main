@@ -146,10 +146,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(10,10,11,.82)
 
 /* ── method ──────────────────────────── */
 .method{background:radial-gradient(900px 420px at 50% 0,rgba(201,156,56,.10),transparent 70%);border-top:1px solid var(--line2)}
-.moves{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:40px;counter-reset:m}
+.moves{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:40px}
 @media (max-width:920px){.moves{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}}
 .move{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:20px 16px;position:relative}
-.move::before{counter-increment:m;content:"0" counter(m);font-family:var(--serif);font-weight:700;font-size:13px;letter-spacing:.14em;background:linear-gradient(180deg,#f6e29a,#b8862f);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:10px}
+.move::before{content:"◆";font-size:11px;color:var(--gold);display:block;margin-bottom:10px}
 .move h4{font-family:var(--serif);font-weight:700;font-size:19px;margin:0 0 6px;color:#f6f1e6}
 .move p{margin:0;color:var(--mut);font-size:13px}
 .scripts{margin-top:34px;display:flex;gap:9px;flex-wrap:wrap;justify-content:center}
@@ -221,7 +221,7 @@ footer .fnav a:hover{color:var(--gold2)}
   <div class="navin">
     <a class="nbrand" href="/os"><img src="/favicon.svg" width="30" height="30" alt="Aurum"><span class="wm">AURUM</span><span class="os">METHOD OS</span></a>
     <div class="nlinks">
-      <a href="#live">Live copilot</a><a href="#brain">The brain</a><a href="#method">The method</a><a href="#pipeline">Pipeline</a><a href="#engines">AI engines</a><a href="#security">Security</a><a href="#faq">FAQ</a>
+      <a href="#live">Live copilot</a><a href="#brain">The brain</a><a href="#method">Your method</a><a href="#pipeline">Pipeline</a><a href="#engines">AI engines</a><a href="#security">Security</a><a href="#faq">FAQ</a>
     </div>
     <a class="btn primary ncta" href="/">Open the OS</a>
   </div>
@@ -249,7 +249,7 @@ footer .fnav a:hover{color:var(--gold2)}
   <div class="stripin">
     <div class="stat rv"><div class="n">Live</div><div class="l">AI whispers while the prospect is still talking</div></div>
     <div class="stat rv"><div class="n">1 brain</div><div class="l">Feed your playbook once — every engine uses it</div></div>
-    <div class="stat rv"><div class="n">5 moves</div><div class="l">Frame · Uncover · Deepen · Guide · Lock</div></div>
+    <div class="stat rv"><div class="n">Yours</div><div class="l">Your method, your scripts, your voice — nothing generic</div></div>
     <div class="stat rv"><div class="n">0 stored</div><div class="l">No AI engine stores a word of your calls</div></div>
   </div>
 </div>
@@ -284,17 +284,17 @@ footer .fnav a:hover{color:var(--gold2)}
         <span class="mode">Headset mode · both sides</span>
       </div>
       <div class="dscript" id="dscript">
-        <span class="sblock" data-b="0">01 · FRAME</span>
-        <span class="sblock" data-b="1">02 · UNCOVER</span>
-        <span class="sblock" data-b="2">03 · DEEPEN</span>
-        <span class="sblock" data-b="3">04 · GUIDE</span>
-        <span class="sblock" data-b="4">05 · LOCK</span>
+        <span class="sblock" data-b="0">01 · OPENING</span>
+        <span class="sblock" data-b="1">02 · DISCOVERY</span>
+        <span class="sblock" data-b="2">03 · PRESENT</span>
+        <span class="sblock" data-b="3">04 · OBJECTIONS</span>
+        <span class="sblock" data-b="4">05 · CLOSE</span>
       </div>
       <div class="dbody">
         <div class="dtrans" id="dtrans" aria-live="off"></div>
         <div class="dwhisp"><div class="wh"><i></i>Whispers</div><div id="dwh" style="display:flex;flex-direction:column;gap:10px"></div></div>
       </div>
-      <div class="dcap">A simulation of a real call. <b>Test whisper</b> lets you paste any transcript and see exactly what would fire — no call needed.</div>
+      <div class="dcap">A simulation of a real call, running an example script — the blocks are whatever <b>your</b> script says. <b>Test whisper</b> lets you paste any transcript and see exactly what would fire — no call needed.</div>
     </div>
 
     <div class="frow">
@@ -304,7 +304,7 @@ footer .fnav a:hover{color:var(--gold2)}
           <li><b>Whispers</b> — the next question to ask, plus your approved objection &amp; Q&amp;A answers in full, the moment a concern lands.</li>
           <li><b>Call script teleprompter</b> — auto-advances to the block you’re on, with manual back/next and load, build &amp; save.</li>
           <li><b>Objection handler</b> — tap the objection, the method-true lines drop straight into your whispers.</li>
-          <li><b>Medications panel</b> — auto-detects meds the prospect mentions, looks up uses, side-effects and risks, and remembers them on the lead.</li>
+          <li><b>On-demand lookups</b> — a prospect mentions a medication and the OS pulls its uses, side-effects and risks live, then files the answer into your Knowledge library for every future call. Works for anything you need mid-call.</li>
           <li><b>Live transcript &amp; Call review</b> — every call saved to the lead, with a method-true diagnosis: what worked, where it was lost, and exactly what to do next.</li>
           <li><b>⟳ New call / ■ Stop</b> — reset between dials without reconnecting a thing.</li>
         </ul>
@@ -351,20 +351,17 @@ footer .fnav a:hover{color:var(--gold2)}
 <!-- ── method ── -->
 <section class="method" id="method">
   <div class="wrap center">
-    <p class="eyebrow rv">The method</p>
-    <h2 class="rv">Built around the <span class="gold">Aurum Method</span> — five moves, one outcome</h2>
-    <p class="sub rv">An original five-move framework for high-ticket phone sales sits on top of the OS. Every whisper, every script, every review is judged against it — so the machine keeps you method-true even at minute forty-five.</p>
+    <p class="eyebrow rv">Your method</p>
+    <h2 class="rv">Built around <span class="gold">your method</span> — not ours</h2>
+    <p class="sub rv">The OS doesn’t ship with a methodology, scripts or an offer baked in. Every installation is built to match one person or one team — and every whisper, script and review is then judged against <em>your</em> way of selling, so the machine keeps you on-method even at minute forty-five.</p>
     <div class="moves">
-      <div class="move rv"><h4>Frame</h4><p>Set the agenda and the authority. The call runs on your rails from the first minute.</p></div>
-      <div class="move rv"><h4>Uncover</h4><p>Find what they actually want — and what it’s costing them not to have it.</p></div>
-      <div class="move rv"><h4>Deepen</h4><p>Make the gap real. Urgency built from their words, not your pressure.</p></div>
-      <div class="move rv"><h4>Guide</h4><p>Prescribe the path. Your offer lands as the obvious bridge, not a pitch.</p></div>
-      <div class="move rv"><h4>Lock</h4><p>Handle the moment of decision cleanly and lock the commitment in.</p></div>
+      <div class="move rv"><h4>Your methodology</h4><p>The framework and rules your calls run on. Any system, any school of selling.</p></div>
+      <div class="move rv"><h4>Your scripts</h4><p>Upload your own, or let the script engine build new ones from your playbook.</p></div>
+      <div class="move rv"><h4>Your offer</h4><p>Price, deliverables, guarantees. The AI never invents a fact you didn’t load.</p></div>
+      <div class="move rv"><h4>Your voice</h4><p>Formality, phrasing, sign-offs. It writes and whispers like you — not like AI.</p></div>
+      <div class="move rv"><h4>Your knowledge</h4><p>Products, objections, Q&amp;A — plus anything you pull in on demand along the way.</p></div>
     </div>
-    <div class="scripts rv">
-      <span class="schip">Aurum Method Script</span><span class="schip">CC1</span><span class="schip">Glyco / General Health</span><span class="schip">Dermacept</span><span class="schip">Purelung</span><span class="schip">+ Build your own</span>
-    </div>
-    <p class="rv" style="color:var(--mut);font-size:13.5px;margin-top:18px">A growing script library ships inside — and the script builder writes new ones from your playbook. Fully flexible: swap in any offer, any script, any knowledge base.</p>
+    <p class="rv" style="color:var(--mut);font-size:13.5px;margin-top:26px">Nothing is hard-coded. Swap the offer, change the method, rebuild the scripts — the whole OS re-tunes to whoever it’s built for.</p>
   </div>
 </section>
 
@@ -409,7 +406,7 @@ footer .fnav a:hover{color:var(--gold2)}
       <div class="eng rv"><span class="code">review</span><h4>Call review</h4><p>A method-true diagnosis of every call: what worked, what was lost, what’s next.</p></div>
       <div class="eng rv"><span class="code">objection</span><h4>Handler lines</h4><p>Method-true responses for any objection, in your voice, on tap.</p></div>
       <div class="eng rv"><span class="code">script</span><h4>Script builder</h4><p>Builds and adapts full call scripts from your playbook and offer.</p></div>
-      <div class="eng rv"><span class="code">med</span><h4>Drug lookup</h4><p>Uses, side-effects and risks for any medication a prospect mentions.</p></div>
+      <div class="eng rv"><span class="code">med</span><h4>On-demand lookup</h4><p>Pulls live info — like a mentioned medication’s uses, side-effects and risks — straight into your Knowledge library.</p></div>
       <div class="eng rv"><span class="code">draft</span><h4>Follow-up drafts</h4><p>Messages tailored to the lead, their objection, and your real proof.</p></div>
       <div class="eng rv"><span class="code">analyze</span><h4>Mask Read</h4><p>Reads the prospect’s dominant need and feeds it into every draft.</p></div>
       <div class="eng rv"><span class="code">coach</span><h4>Scenario coach</h4><p>Practise the hard conversations before they happen. Build game plans.</p></div>
@@ -443,7 +440,7 @@ footer .fnav a:hover{color:var(--gold2)}
     <p class="eyebrow rv">Who it’s for</p>
     <h2 class="rv">Built for the people who <span class="gold">live on the phone</span></h2>
     <div class="whos">
-      <div class="pcard rv"><h4>Closers</h4><p>Run the Aurum Method live, handle any objection without the freeze, and get a method-true review after every call.</p></div>
+      <div class="pcard rv"><h4>Closers</h4><p>Run your own method live, handle any objection without the freeze, and get a method-true review after every call.</p></div>
       <div class="pcard rv"><h4>Setters</h4><p>Speed-to-lead, parsed inbound messages, whispered qualifying questions, and a Today queue that never lets a lead slip.</p></div>
       <div class="pcard rv"><h4>Phone sales teams</h4><p>One playbook, one method, every rep. Lite mode keeps the team focused on calls while you keep control as admin.</p></div>
       <div class="pcard rv"><h4>Offer owners &amp; team leads</h4><p>Load your offer once and every rep sells it your way — swap offers, scripts and knowledge whenever the business moves.</p></div>
@@ -458,7 +455,7 @@ footer .fnav a:hover{color:var(--gold2)}
     <h2 class="rv">Questions, answered straight</h2>
     <div class="faq rv" style="text-align:left">
       <details><summary>What do I need to run it?</summary><div class="a">A browser. That’s it. The OS runs on Vercel and works on desktop, laptop and mobile. For Headset mode (hearing both sides of a call) you add your own Deepgram key and share the call tab; mic mode needs nothing extra.</div></details>
-      <details><summary>Is it tied to one offer or script?</summary><div class="a">No. It ships configured for a specific offer today, but the whole system is built to be re-fed: swap the playbook, load different knowledge cards, build new scripts with the script engine. Any high-ticket offer, any methodology.</div></details>
+      <details><summary>Is it tied to one offer, script or method?</summary><div class="a">No. Nothing comes pre-loaded: the playbook, methodology, scripts and knowledge cards are all built around the person or team using it — and can be swapped at any time. Any high-ticket offer, any methodology.</div></details>
       <details><summary>Where does my data live?</summary><div class="a">In your browser (localStorage) — private and fast. You can export/import JSON, restore automatic backups, and optionally turn on cross-device sync, which keeps a private cloud copy keyed to your access code. The AI engines store nothing.</div></details>
       <details><summary>Does the AI listen to my calls?</summary><div class="a">Only while you’re on the Live tab, only for you, and nothing is retained by the AI engines. Transcripts are saved to the lead in <em>your</em> browser, for your call reviews. You’re responsible for following the call-recording rules that apply where you sell.</div></details>
       <details><summary>How does team access work?</summary><div class="a">One access list, comma-separated. Each person gets their own code and their own private data. The admin code unlocks the full OS; everyone else runs Lite mode — a focused call-only view they can’t switch off.</div></details>
@@ -479,7 +476,7 @@ footer .fnav a:hover{color:var(--gold2)}
 
 <footer>
   <div class="fnav">
-    <a href="#live">Live copilot</a><a href="#method">The method</a><a href="#security">Security</a><a href="#faq">FAQ</a><a href="/" style="color:var(--gold2);font-weight:600">Open the OS &rarr;</a>
+    <a href="#live">Live copilot</a><a href="#method">Your method</a><a href="#security">Security</a><a href="#faq">FAQ</a><a href="/" style="color:var(--gold2);font-weight:600">Open the OS &rarr;</a>
   </div>
   <div>© <span id="yr"></span> AURUM · Aurum Method OS — the gold standard, live on your calls.</div>
 </footer>
@@ -508,7 +505,7 @@ const STEPS = [
   { t:'wcard', cls:'cue', tag:'Next question', txt:'Ask: “How long has it been like this — and what has it already cost you?”', d:1400 },
   { t:'block', b:1, d:1600 },
   { t:'line', who:'pro', txt:'A couple of years now. I’m on metformin as well, so it’s all a bit of a mess.', d:1800 },
-  { t:'wcard', cls:'med', tag:'💊 Med detected · saved to lead', txt:'<b>Metformin</b> — type 2 diabetes. Common GI side-effects; long-term use can lower B12. Ask about energy dips after meals.', d:1300 },
+  { t:'wcard', cls:'med', tag:'💊 Pulled on demand · saved to Knowledge', txt:'<b>Metformin</b> — type 2 diabetes. Common GI side-effects; long-term use can lower B12. Ask about energy dips after meals.', d:1300 },
   { t:'block', b:2, d:2000 },
   { t:'line', who:'pro', txt:'Look, it sounds great… but I need to think about it.', d:2000 },
   { t:'wcard', cls:'obj', tag:'Objection · approved answer', txt:'“Totally fair — and usually ‘think it over’ means one piece isn’t settled yet. Can I ask — is it the investment, or whether this will actually work for <em>you</em>?”', d:900 },

@@ -24883,5 +24883,37 @@
   "first_seen": "2026-07-25",
   "last_seen": "2026-07-25",
   "active": true
+ },
+ "c88845e11d5e7766": {
+  "title": "Sales Representative",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/paynada/jobs/sales-representative",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-25",
+  "last_seen": "2026-07-25",
+  "active": true
+ },
+ "21beb9cf73419de9": {
+  "title": "Client Success Manager (PH)",
+  "company": "name",
+  "location": "Philippines",
+  "comp": "",
+  "link": "https://himalayas.app/companies/rockstar/jobs/client-success-manager-ph-8211345227",
+  "source": "Himalayas",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Other",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-25",
+  "last_seen": "2026-07-25",
+  "active": true
  }
 }

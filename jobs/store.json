@@ -24898,7 +24898,7 @@
   "tier": "",
   "first_seen": "2026-07-25",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "21beb9cf73419de9": {
   "title": "Client Success Manager (PH)",
@@ -24914,6 +24914,6 @@
   "tier": "",
   "first_seen": "2026-07-25",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  }
 }

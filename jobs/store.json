@@ -67,17 +67,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "New York, NY",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-4010958214032910770",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-25",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -205,7 +205,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-25",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -238,7 +238,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-25",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -289,7 +289,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-25",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -485,7 +485,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-25",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -502,7 +502,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-25",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1359,7 +1359,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-25",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -1741,8 +1741,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "country": "United States",
   "lead_type": "Inbound",
   "inbox": false,
@@ -1809,8 +1809,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -1825,8 +1825,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -1841,8 +1841,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -1939,16 +1939,16 @@
  "8eb45cd42e073b09": {
   "title": "High Ticket Sales Closer",
   "company": "Rustman Agency",
-  "location": "United States",
-  "comp": "",
-  "link": "https://jooble.org/jdp/3449134189085557525",
-  "source": "Jooble",
+  "location": "Rockerville, Pennington County",
+  "comp": "$126770-$126770",
+  "link": "https://www.adzuna.com/details/5324761097?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-25",
   "active": true,
   "country": "United States",
-  "lead_type": "",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": ""
  },
@@ -1985,8 +1985,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2013,8 +2013,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2057,8 +2057,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "country": "United States",
   "lead_type": "Inbound",
   "inbox": false,
@@ -2299,8 +2299,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2427,8 +2427,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8931,7 +8931,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-25",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
@@ -11720,16 +11720,16 @@
  "f8b9ea50606be3f1": {
   "title": "Remote Inbound Sales Representative",
   "company": "Stratford Davis",
-  "location": "Manchester, Hillsborough County",
+  "location": "Grandview Heights, Franklin County",
   "comp": "$120000-$120000",
-  "link": "https://www.adzuna.com/details/5813466940?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.com/details/5813466932?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "inbox": false,
   "tier": ""
  },
@@ -12066,8 +12066,8 @@
   "country": "United States",
   "lead_type": "Inbound",
   "first_seen": "2026-06-15",
-  "last_seen": "2026-07-24",
-  "active": false,
+  "last_seen": "2026-07-25",
+  "active": true,
   "inbox": false,
   "tier": ""
  },
@@ -13282,8 +13282,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "6b656e7f656b21f1": {
   "title": "Remote Virtual Assistant",
@@ -13331,7 +13331,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "a370c7b9c35509ea": {
   "title": "Virtual Assistant",
@@ -13363,7 +13363,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "a3362391694edc47": {
   "title": "Virtual Assistant: $11 - $22/HR",
@@ -13402,7 +13402,7 @@
   "company": "Link Up Overseas",
   "location": "United States",
   "comp": "",
-  "link": "https://jooble.org/jdp/1256057176204686684",
+  "link": "https://jooble.org/jdp/-6085034706746975805",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -13459,7 +13459,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "46d5fbd58be3479d": {
   "title": "Virtual Assistant (Dental Office and Open Dental Experience Required)",
@@ -14360,9 +14360,9 @@
  "7f48de3feea25292": {
   "title": "Remote High-Ticket Closer - High-Earning Inbound Leads",
   "company": "The WFS Group",
-  "location": "New York, NY",
+  "location": "Denver, CO",
   "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/5271430340478559989",
+  "link": "https://jooble.org/jdp/-4397502965010514631",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -14562,8 +14562,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "7e58821d3595c4b2": {
   "title": "Remote High-Ticket Closer: Inbound Leads & High Earnings",
@@ -14930,8 +14930,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "a2886f1813486c5d": {
   "title": "Virtual Assistant - Remote",
@@ -16211,8 +16211,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-22",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "936e6b525f84a95f": {
   "title": "Customer Success Manager",
@@ -16387,8 +16387,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-22",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "f334f41ce21bef06": {
   "title": "Remote Enterprise Customer Success Manager",
@@ -16403,8 +16403,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-22",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "7a3e0ce8bb66e5ef": {
   "title": "Strategic Remote Enterprise SaaS Customer Success Manager",
@@ -16964,7 +16964,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "7de9e5de9eb9f7bd": {
   "title": "Remote Real Estate Virtual Assistant - Listings & Admin",
@@ -17321,9 +17321,9 @@
  "5150fe0fad2c37ba": {
   "title": "Senior High-Ticket Closer for Remote Growth Consulting",
   "company": "Curvion Blue",
-  "location": "Columbus, OH",
-  "comp": "",
-  "link": "https://jooble.org/jdp/5765720438823017450",
+  "location": "Albuquerque, NM",
+  "comp": "$90k - $360k",
+  "link": "https://jooble.org/jdp/6503052508334808238",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -18565,7 +18565,7 @@
   "tier": "",
   "first_seen": "2026-06-30",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "4efaa4f53f0def94": {
   "title": "Virtual Assistant (Dubsado Experience)",
@@ -18692,8 +18692,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-30",
-  "last_seen": "2026-07-23",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "5e163e26112900d8": {
   "title": "A-Team Sales Closers - Remote USA Only",
@@ -19308,7 +19308,7 @@
   "company": "Emerson",
   "location": "Austin, TX",
   "comp": "$135k - $153k",
-  "link": "https://jooble.org/jdp/2587117199896831106",
+  "link": "https://jooble.org/jdp/-1831627961816195103",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -19333,7 +19333,7 @@
   "tier": "",
   "first_seen": "2026-07-03",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "ddb6fbb44a3ed1e3": {
   "title": "REMOTE LAND SALES CLOSER",
@@ -19620,8 +19620,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-04",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "68b8f953cff31452": {
   "title": "Enterprise Account Executive - US",
@@ -20602,18 +20602,18 @@
  "c3856ec3ed97b74b": {
   "title": "Virtual Assistant",
   "company": "Jobs for Humanity",
-  "location": "United States",
-  "comp": "",
-  "link": "https://jooble.org/jdp/8667347944108809702",
+  "location": "Remote",
+  "comp": "$20.55 - $28.55 per hour",
+  "link": "https://jooble.org/jdp/-2250562040382224986",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-08",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "24047ffd2af7ed3e": {
   "title": "Remote Virtual Assistant: Admin Pro for Productivity",
@@ -21125,7 +21125,7 @@
   "tier": "",
   "first_seen": "2026-07-11",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "e23b6e26a47c576f": {
   "title": "Solution Engineer - Nexus Black",
@@ -21572,8 +21572,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-13",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "d46d9c154e7e234b": {
   "title": "Virtual Assistant",
@@ -21594,12 +21594,12 @@
  "933318d58235dc4b": {
   "title": "Virtual Assistant",
   "company": "Pavago",
-  "location": "United States",
+  "location": "Remote",
   "comp": "",
-  "link": "https://jooble.org/jdp/-519283752361371371",
+  "link": "https://jooble.org/jdp/5388462940595971368",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -21620,8 +21620,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-13",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "0e3807ba2ba6c908": {
   "title": "Virtual Assistant",
@@ -21652,8 +21652,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-13",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "c9b691888067bba7": {
   "title": "Virtual Assistant",
@@ -21668,8 +21668,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-13",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "a7f2bf316bba8a07": {
   "title": "Virtual Assistant",
@@ -21700,8 +21700,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-13",
-  "last_seen": "2026-07-23",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "fce80ac8235b5b4e": {
   "title": "Administrative Assistant/Virtual Assistant",
@@ -21716,8 +21716,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-13",
-  "last_seen": "2026-07-23",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "165966bd01734098": {
   "title": "Virtual Assistant (Operations, Billing & Client Support)",
@@ -21732,8 +21732,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-13",
-  "last_seen": "2026-07-23",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "843bdcd92626485e": {
   "title": "Executive Virtual Assistant",
@@ -21748,8 +21748,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-13",
-  "last_seen": "2026-07-23",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "7e932f3d9a800037": {
   "title": "Virtual Assistant - CRM & Administrative Support",
@@ -22037,8 +22037,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-14",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "921224c26cfef94e": {
   "title": "Xactimate Virtual Assistant",
@@ -22101,8 +22101,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-14",
-  "last_seen": "2026-07-23",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "f8e6159334d70bc3": {
   "title": "Virtual Assistant I",
@@ -22341,8 +22341,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-15",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "7826fb4f0c1790b5": {
   "title": "Tableau Admin with AWS - Remote (Mc Lean, VA, US)",
@@ -22682,8 +22682,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-16",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "e8000162d56fab6f": {
   "title": "Remote Inside Sales Representative | Sales Agent | Will train & Mentor | Work from Home",
@@ -22698,8 +22698,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-16",
-  "last_seen": "2026-07-23",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "9a5ffc14eeeac53d": {
   "title": "High-Ticket Closer (Remote)",
@@ -22846,8 +22846,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-17",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "37f1526d45e424ed": {
   "title": "Remote Inbound Sales Representative- Remote in North Carolina",
@@ -23168,8 +23168,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-19",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "003ebea5834450fb": {
   "title": "Customer Success Manager - Global Public Sector (Education)",
@@ -23248,8 +23248,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-20",
-  "last_seen": "2026-07-23",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "2bcb886303b977ed": {
   "title": "Virtual Assistant – Outreach & Lead Generation Any Posted on 2026-07-19 04:41:33 $565",
@@ -23489,8 +23489,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-21",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "38855835b40374d8": {
   "title": "Forward Deployed Engineer - Integrations & Customer Success (f/m/d)",
@@ -23585,8 +23585,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-22",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "825d44a0ff385e4d": {
   "title": "Customer Success Manager II – West",
@@ -23905,8 +23905,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-22",
-  "last_seen": "2026-07-24",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "a3b3908840341308": {
   "title": "Sales Development Representative",
@@ -23953,8 +23953,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-22",
-  "last_seen": "2026-07-23",
-  "active": false
+  "last_seen": "2026-07-25",
+  "active": true
  },
  "0f2682084348c2a4": {
   "title": "Personal Virtual Assistant - Lifestyle, Organization, and Planning Support",
@@ -24178,14 +24178,14 @@
   "tier": "",
   "first_seen": "2026-07-23",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "5d7219d85cfb42fe": {
   "title": "Sales Development Representative",
   "company": "BCI Worldwide",
   "location": "Orlando, Orange County",
   "comp": "$116805-$116805",
-  "link": "https://www.adzuna.com/land/ad/5811836020?se=rNTm6LuH8RGrg5YQe_eAEA&utm_medium=api&utm_source=3e941a8f&v=D62D150E02567ECE802852C45475B8F7DA6A9305",
+  "link": "https://www.adzuna.com/land/ad/5811836020?se=WqqnTDGI8RGrg5YQe_eAEA&utm_medium=api&utm_source=3e941a8f&v=D62D150E02567ECE802852C45475B8F7DA6A9305",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -24471,9 +24471,9 @@
  "c5243b4e3d3f9f80": {
   "title": "Sales Development Representative",
   "company": "Pomelo",
-  "location": "Lehi, Utah County",
-  "comp": "$118482-$118482",
-  "link": "https://www.adzuna.com/land/ad/5814126103?se=rNTm6LuH8RGrg5YQe_eAEA&utm_medium=api&utm_source=3e941a8f&v=D08586A372EAB989131A5FF68A8A8AEF02DEA251",
+  "location": "Orem, Utah County",
+  "comp": "$136269-$136269",
+  "link": "https://www.adzuna.com/land/ad/5813336910?se=WqqnTDGI8RGrg5YQe_eAEA&utm_medium=api&utm_source=3e941a8f&v=80D252CC4F00F53E0400E8698E14168840791541",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -24498,7 +24498,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "491c0f87edada60a": {
   "title": "Remote Virtual Assistant",
@@ -24514,7 +24514,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "3a8b06ee74d085d2": {
   "title": "Remote Virtual Assistant",
@@ -24530,7 +24530,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "54c398f10a8871cd": {
   "title": "Virtual Assistant - Remote",
@@ -24546,7 +24546,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "df07a5ab3f661353": {
   "title": "Virtual Assistant",
@@ -24562,7 +24562,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "2c6e1ff95cff9fdf": {
   "title": "Remote Virtual Assistant",
@@ -24578,7 +24578,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "e291d3369a54b9b7": {
   "title": "Virtual Assistant",
@@ -24594,7 +24594,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "44e9854bc432d81e": {
   "title": "Virtual Assistant",
@@ -24610,7 +24610,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "c043e374d968b75a": {
   "title": "Virtual Assistant - Momence Experience",
@@ -24626,7 +24626,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "e932aa24704f05aa": {
   "title": "Virtual Assistant I",
@@ -24642,7 +24642,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "45232d655e1e497b": {
   "title": "Virtual Assistant",
@@ -24658,7 +24658,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "80caf0c9f776b60c": {
   "title": "VIRTUAL ASSISTANT",
@@ -24674,7 +24674,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "fe09a70696835784": {
   "title": "Virtual Assistant",
@@ -24690,7 +24690,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "073a43220141f53b": {
   "title": "Virtual Assistant",
@@ -24706,7 +24706,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "5f2907842f352a09": {
   "title": "Administrative / Virtual Assistant",
@@ -24722,7 +24722,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "011ae95788b7a233": {
   "title": "Administrative / Virtual Assistant",
@@ -24738,7 +24738,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "110254f0081432e1": {
   "title": "Virtual Assistant II",
@@ -24802,7 +24802,7 @@
   "tier": "",
   "first_seen": "2026-07-25",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "b6ae1b564278c878": {
   "title": "Sales Development Representative",
@@ -24818,7 +24818,7 @@
   "tier": "",
   "first_seen": "2026-07-25",
   "last_seen": "2026-07-25",
-  "active": true
+  "active": false
  },
  "95571abf03dc316a": {
   "title": "Virtual Assistant (Work from home)",
@@ -24829,6 +24829,54 @@
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "country": "Canada",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-25",
+  "last_seen": "2026-07-25",
+  "active": true
+ },
+ "9f4a48cb1af28f56": {
+  "title": "PC/Print Retail Sales Representative",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/hp/jobs/pc-print-retail-sales-representative",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-25",
+  "last_seen": "2026-07-25",
+  "active": true
+ },
+ "0d2d3603ab39036e": {
+  "title": "Territory Sales Manager, NGS Clinical Solutions - Remote S. California",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/danaher/jobs/territory-sales-manager-ngs-clinical-solutions-remote-s-california-2530237026",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-25",
+  "last_seen": "2026-07-25",
+  "active": true
+ },
+ "e8cfc4d878a6100e": {
+  "title": "Remote Virtual Assistant",
+  "company": "LJ Wleding",
+  "location": "Newark, Alameda County",
+  "comp": "$39486-$39486",
+  "link": "https://www.adzuna.com/details/5815029599?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "VA / Social / Chat",
+  "country": "United States",
   "lead_type": "",
   "inbox": false,
   "tier": "",

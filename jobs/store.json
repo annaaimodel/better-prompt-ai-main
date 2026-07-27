@@ -67,17 +67,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Charlotte, NC",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-571547146953411006",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-27",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -205,7 +205,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-27",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -238,7 +238,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-27",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -289,7 +289,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-27",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -485,7 +485,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-27",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -502,7 +502,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-27",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1359,7 +1359,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-27",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -11513,7 +11513,7 @@
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-07-27",
-  "active": true,
+  "active": false,
   "inbox": false,
   "tier": ""
  },
@@ -13362,8 +13362,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-27",
+  "active": true
  },
  "a3362391694edc47": {
   "title": "Virtual Assistant: $11 - $22/HR",
@@ -13402,7 +13402,7 @@
   "company": "Link Up Overseas",
   "location": "United States",
   "comp": "",
-  "link": "https://jooble.org/jdp/-6085034706746975805",
+  "link": "https://jooble.org/jdp/1256057176204686684",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -14360,9 +14360,9 @@
  "7f48de3feea25292": {
   "title": "Remote High-Ticket Closer - High-Earning Inbound Leads",
   "company": "The WFS Group",
-  "location": "New York, NY",
+  "location": "Denver, CO",
   "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/5271430340478559989",
+  "link": "https://jooble.org/jdp/-4397502965010514631",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -15139,7 +15139,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-27",
-  "active": true
+  "active": false
  },
  "b4b8a9230a365c95": {
   "title": "Remote High-Ticket Closer for ETA Deals",
@@ -16275,8 +16275,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-22",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-27",
+  "active": true
  },
  "e9b7318a03d4b47c": {
   "title": "Remote Elite High-Ticket B2B Closer — $20K-$40K/Month",
@@ -16387,8 +16387,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-22",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-27",
+  "active": true
  },
  "f334f41ce21bef06": {
   "title": "Remote Enterprise Customer Success Manager",
@@ -16403,8 +16403,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-22",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-27",
+  "active": true
  },
  "7a3e0ce8bb66e5ef": {
   "title": "Strategic Remote Enterprise SaaS Customer Success Manager",
@@ -17396,7 +17396,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-27",
-  "active": true
+  "active": false
  },
  "d8cae334eca1140e": {
   "title": "Remote Customer Success Manager II - East",
@@ -18156,7 +18156,7 @@
   "company": "Simplex",
   "location": "Austin, Travis County",
   "comp": "$143980-$143980",
-  "link": "https://www.adzuna.com/land/ad/5816177689?se=DObfTk6J8RGTnfXCZobDwA&utm_medium=api&utm_source=3e941a8f&v=123D02E054E4227D48AD1C6C6D0459F65980384B",
+  "link": "https://www.adzuna.com/land/ad/5816177689?se=sOVNpMOJ8RGl5tLdhaWT1w&utm_medium=api&utm_source=3e941a8f&v=123D02E054E4227D48AD1C6C6D0459F65980384B",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -19308,7 +19308,7 @@
   "company": "Emerson",
   "location": "Austin, Lonoke County",
   "comp": "$132882-$132882",
-  "link": "https://www.adzuna.com/land/ad/5815857566?se=DObfTk6J8RGTnfXCZobDwA&utm_medium=api&utm_source=3e941a8f&v=AD45D23C7F8424B886B938A80DC35C8AA673375B",
+  "link": "https://www.adzuna.com/land/ad/5815857566?se=sOVNpMOJ8RGl5tLdhaWT1w&utm_medium=api&utm_source=3e941a8f&v=AD45D23C7F8424B886B938A80DC35C8AA673375B",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -19333,7 +19333,7 @@
   "tier": "",
   "first_seen": "2026-07-03",
   "last_seen": "2026-07-27",
-  "active": true
+  "active": false
  },
  "ddb6fbb44a3ed1e3": {
   "title": "REMOTE LAND SALES CLOSER",
@@ -19620,8 +19620,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-04",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-27",
+  "active": true
  },
  "68b8f953cff31452": {
   "title": "Enterprise Account Executive - US",
@@ -21116,7 +21116,7 @@
   "company": "remote zest jobs",
   "location": "Remote",
   "comp": "",
-  "link": "https://remotezest.up.railway.app/job/dm-setter-and-phone-setter",
+  "link": "https://remotezest.up.railway.app/job/dm-setter-and-phone-setter-1",
   "source": "JSearch",
   "category": "Closer",
   "country": "Worldwide / Anywhere",
@@ -21124,8 +21124,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-11",
-  "last_seen": "2026-07-25",
-  "active": false
+  "last_seen": "2026-07-27",
+  "active": true
  },
  "e23b6e26a47c576f": {
   "title": "Solution Engineer - Nexus Black",
@@ -22118,7 +22118,7 @@
   "tier": "",
   "first_seen": "2026-07-14",
   "last_seen": "2026-07-27",
-  "active": true
+  "active": false
  },
  "528bd05ac30f3969": {
   "title": "Remote Sales Closers & Appointment Setters",
@@ -22341,8 +22341,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-15",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-27",
+  "active": true
  },
  "7826fb4f0c1790b5": {
   "title": "Tableau Admin with AWS - Remote (Mc Lean, VA, US)",
@@ -22846,8 +22846,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-17",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-27",
+  "active": true
  },
  "37f1526d45e424ed": {
   "title": "Remote Inbound Sales Representative- Remote in North Carolina",
@@ -23016,7 +23016,7 @@
   "company": "Tekfortune Inc.",
   "location": "US",
   "comp": "$102432-$102432",
-  "link": "https://www.adzuna.com/land/ad/5772872864?se=DObfTk6J8RGTnfXCZobDwA&utm_medium=api&utm_source=3e941a8f&v=958D6C6813A9C1BF02F411CC826C3C4018C97993",
+  "link": "https://www.adzuna.com/land/ad/5772872864?se=sOVNpMOJ8RGl5tLdhaWT1w&utm_medium=api&utm_source=3e941a8f&v=958D6C6813A9C1BF02F411CC826C3C4018C97993",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -24169,7 +24169,7 @@
   "company": "Nurtured",
   "location": "New York City, New York",
   "comp": "$77847-$77847",
-  "link": "https://www.adzuna.com/land/ad/5811839379?se=rnhb9_qI8RGrg5YQe_eAEA&utm_medium=api&utm_source=3e941a8f&v=4FF4E0A04F5CD160ECE2ADFD5BF1CEDFC77E4285",
+  "link": "https://www.adzuna.com/land/ad/5811839379?se=DlDhosOJ8RGRmd94HTiRYQ&utm_medium=api&utm_source=3e941a8f&v=4FF4E0A04F5CD160ECE2ADFD5BF1CEDFC77E4285",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -24177,15 +24177,15 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-23",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-27",
+  "active": true
  },
  "5d7219d85cfb42fe": {
   "title": "Sales Development Representative",
   "company": "BCI Worldwide",
-  "location": "Orlando, Orange County",
-  "comp": "$116805-$116805",
-  "link": "https://www.adzuna.com/land/ad/5811836020?se=MEXTS06J8RG3tOkLR0Zx3w&utm_medium=api&utm_source=3e941a8f&v=D62D150E02567ECE802852C45475B8F7DA6A9305",
+  "location": "Sarasota, Manatee County",
+  "comp": "$119386-$119386",
+  "link": "https://www.adzuna.com/land/ad/5816165497?se=DlDhosOJ8RGRmd94HTiRYQ&utm_medium=api&utm_source=3e941a8f&v=738383E77D5411F3167B4BA2FA86F1706C5059B5",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -25219,5 +25219,21 @@
   "first_seen": "2026-07-27",
   "last_seen": "2026-07-27",
   "active": false
+ },
+ "7f20a76c97be2a8a": {
+  "title": "Remote B2B Cold Caller & High-Ticket Closer — AI & reputed company Estate Industry (USA Market)",
+  "company": "remote click jobs",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://remoteclickjobs-production.up.railway.app/job/remote-b2b-cold-caller-high-ticket-closer-ai-reputed-company-estate-industry-usa-market",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-27",
+  "last_seen": "2026-07-27",
+  "active": true
  }
 }

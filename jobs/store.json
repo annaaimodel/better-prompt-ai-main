@@ -25442,7 +25442,7 @@
   "tier": "",
   "first_seen": "2026-07-28",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "dd18a7cdffd5354b": {
   "title": "Sales Closer — Custom & Luxury Homes",
@@ -25486,6 +25486,38 @@
   "category": "Closer",
   "country": "Worldwide / Anywhere",
   "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-28",
+  "last_seen": "2026-07-28",
+  "active": true
+ },
+ "076829074d42a60e": {
+  "title": "Virtual Assistant for various tasks",
+  "company": "Smartland",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://himalayas.app/companies/smartland/jobs/virtual-assistant-for-various-tasks",
+  "source": "Himalayas",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-28",
+  "last_seen": "2026-07-28",
+  "active": true
+ },
+ "01c5de57b02ab371": {
+  "title": "Virtual Assistant (Operations & Accounting)",
+  "company": "Remote Office",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/remote-office/jobs/virtual-assistant-operations-accounting",
+  "source": "Himalayas",
+  "category": "VA / Social / Chat",
+  "country": "United States",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-28",

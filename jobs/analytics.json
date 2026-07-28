@@ -1,37 +1,37 @@
 {
- "generated_utc": "2026-07-27T10:14:08.976317+00:00",
+ "generated_utc": "2026-07-28T09:13:58.869587+00:00",
  "site": "aurum-hts",
  "configured": true,
  "ranges": {
   "Last 24 hours": {
    "window": "rolling",
-   "pageviews": 1,
+   "pageviews": 0,
    "error": null
   },
   "Today": {
-   "start": "2026-07-27",
-   "end": "2026-07-27",
+   "start": "2026-07-28",
+   "end": "2026-07-28",
    "pageviews": 0,
    "visitors": null,
    "error": null
   },
   "Last 7 days": {
-   "start": "2026-07-21",
-   "end": "2026-07-27",
+   "start": "2026-07-22",
+   "end": "2026-07-28",
    "pageviews": 24,
    "visitors": null,
    "error": null
   },
   "Last 30 days": {
-   "start": "2026-06-28",
-   "end": "2026-07-27",
-   "pageviews": 54,
+   "start": "2026-06-29",
+   "end": "2026-07-28",
+   "pageviews": 44,
    "visitors": null,
    "error": null
   },
   "All-time": {
    "start": "2026-06-16",
-   "end": "2026-07-27",
+   "end": "2026-07-28",
    "pageviews": 263,
    "visitors": null,
    "error": null
@@ -39,12 +39,12 @@
  },
  "raw": {
   "rolling_24h": {
-   "total": 1,
+   "total": 0,
    "total_events": 0,
-   "total_utc": 1,
+   "total_utc": 0,
    "stats": [
     {
-     "day": "2026-07-26",
+     "day": "2026-07-27",
      "hourly": [
       0,
       0,
@@ -66,17 +66,15 @@
       0,
       0,
       0,
-      1,
+      0,
       0,
       0,
       0
      ],
-     "daily": 1,
-     "weekly": 1,
-     "monthly": 1
+     "daily": 0
     },
     {
-     "day": "2026-07-27",
+     "day": "2026-07-28",
      "hourly": [
       0,
       0,
@@ -113,7 +111,7 @@
    "total_utc": 0,
    "stats": [
     {
-     "day": "2026-07-27",
+     "day": "2026-07-28",
      "hourly": [
       0,
       0,
@@ -147,40 +145,8 @@
   "total::Last 7 days": {
    "total": 24,
    "total_events": 0,
-   "total_utc": 24,
+   "total_utc": 23,
    "stats": [
-    {
-     "day": "2026-07-21",
-     "hourly": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-     ],
-     "daily": 0,
-     "weekly": 24,
-     "monthly": 24
-    },
     {
      "day": "2026-07-22",
      "hourly": [
@@ -209,7 +175,9 @@
       0,
       0
      ],
-     "daily": 1
+     "daily": 1,
+     "weekly": 24,
+     "monthly": 24
     },
     {
      "day": "2026-07-23",
@@ -360,24 +328,14 @@
       0
      ],
      "daily": 0
-    }
-   ]
-  },
-  "total::Last 30 days": {
-   "total": 54,
-   "total_events": 0,
-   "total_utc": 54,
-   "stats": [
+    },
     {
-     "day": "2026-06-28",
+     "day": "2026-07-28",
      "hourly": [
       0,
       0,
       0,
       0,
-      3,
-      0,
-      1,
       0,
       0,
       0,
@@ -389,17 +347,25 @@
       0,
       0,
       0,
-      2,
-      1,
-      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       0,
       0,
       0
      ],
-     "daily": 10,
-     "weekly": 17,
-     "monthly": 15
-    },
+     "daily": 0
+    }
+   ]
+  },
+  "total::Last 30 days": {
+   "total": 44,
+   "total_events": 0,
+   "total_utc": 44,
+   "stats": [
     {
      "day": "2026-06-29",
      "hourly": [
@@ -428,7 +394,9 @@
       0,
       0
      ],
-     "daily": 3
+     "daily": 3,
+     "weekly": 11,
+     "monthly": 5
     },
     {
      "day": "2026-06-30",
@@ -609,8 +577,7 @@
       0,
       0
      ],
-     "daily": 4,
-     "weekly": 8
+     "daily": 4
     },
     {
      "day": "2026-07-06",
@@ -640,7 +607,8 @@
       0,
       0
      ],
-     "daily": 0
+     "daily": 0,
+     "weekly": 5
     },
     {
      "day": "2026-07-07",
@@ -820,8 +788,7 @@
       0,
       0
      ],
-     "daily": 1,
-     "weekly": 4
+     "daily": 1
     },
     {
      "day": "2026-07-13",
@@ -851,7 +818,8 @@
       0,
       0
      ],
-     "daily": 0
+     "daily": 0,
+     "weekly": 3
     },
     {
      "day": "2026-07-14",
@@ -1031,8 +999,7 @@
       0,
       0
      ],
-     "daily": 0,
-     "weekly": 24
+     "daily": 0
     },
     {
      "day": "2026-07-20",
@@ -1062,7 +1029,8 @@
       0,
       0
      ],
-     "daily": 1
+     "daily": 1,
+     "weekly": 25
     },
     {
      "day": "2026-07-21",
@@ -1242,11 +1210,40 @@
       0,
       0
      ],
-     "daily": 1,
-     "weekly": 1
+     "daily": 1
     },
     {
      "day": "2026-07-27",
+     "hourly": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "daily": 0
+    },
+    {
+     "day": "2026-07-28",
      "hourly": [
       0,
       0,
@@ -2549,6 +2546,36 @@
       0
      ],
      "daily": 0
+    },
+    {
+     "day": "2026-07-28",
+     "hourly": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "daily": 0
     }
    ]
   },
@@ -2563,36 +2590,6 @@
      "title": "Aurum Method OS · The Sales Operating System for High-Ticket Closers",
      "max": 3,
      "stats": [
-      {
-       "day": "2026-06-28",
-       "hourly": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-       ],
-       "daily": 0
-      },
       {
        "day": "2026-06-29",
        "hourly": [
@@ -3222,8 +3219,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 17
+       "daily": 0
       },
       {
        "day": "2026-07-20",
@@ -3253,7 +3249,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 18
       },
       {
        "day": "2026-07-21",
@@ -3433,11 +3430,40 @@
         0,
         0
        ],
-       "daily": 1,
-       "weekly": 1
+       "daily": 1
       },
       {
        "day": "2026-07-27",
+       "hourly": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "daily": 0
+      },
+      {
+       "day": "2026-07-28",
        "hourly": [
         0,
         0,
@@ -3469,45 +3495,13 @@
      ]
     },
     {
-     "count": 17,
+     "count": 12,
      "path_id": 92392326,
      "path": "/jobs",
      "event": false,
      "title": "Fresh in the Vault · Aurum",
      "max": 1,
      "stats": [
-      {
-       "day": "2026-06-28",
-       "hourly": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        1,
-        0,
-        0,
-        0
-       ],
-       "daily": 5,
-       "weekly": 11,
-       "monthly": 9
-      },
       {
        "day": "2026-06-29",
        "hourly": [
@@ -3536,7 +3530,9 @@
         0,
         0
        ],
-       "daily": 3
+       "daily": 3,
+       "weekly": 7,
+       "monthly": 4
       },
       {
        "day": "2026-06-30",
@@ -3717,8 +3713,7 @@
         0,
         0
        ],
-       "daily": 1,
-       "weekly": 2
+       "daily": 1
       },
       {
        "day": "2026-07-06",
@@ -3748,7 +3743,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 2
       },
       {
        "day": "2026-07-07",
@@ -3928,8 +3924,7 @@
         0,
         0
        ],
-       "daily": 1,
-       "weekly": 2
+       "daily": 1
       },
       {
        "day": "2026-07-13",
@@ -3959,7 +3954,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 1
       },
       {
        "day": "2026-07-14",
@@ -4139,8 +4135,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 2
+       "daily": 0
       },
       {
        "day": "2026-07-20",
@@ -4170,7 +4165,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 2
       },
       {
        "day": "2026-07-21",
@@ -4381,19 +4377,9 @@
         0
        ],
        "daily": 0
-      }
-     ]
-    },
-    {
-     "count": 8,
-     "path_id": 92408304,
-     "path": "/hiring",
-     "event": false,
-     "title": "Post a Role · AURUM — Get Your High-Ticket Role Seen",
-     "max": 1,
-     "stats": [
+      },
       {
-       "day": "2026-06-28",
+       "day": "2026-07-28",
        "hourly": [
         0,
         0,
@@ -4415,15 +4401,23 @@
         0,
         0,
         0,
-        1,
+        0,
         0,
         0,
         0
        ],
-       "daily": 1,
-       "weekly": 2,
-       "monthly": 2
-      },
+       "daily": 0
+      }
+     ]
+    },
+    {
+     "count": 7,
+     "path_id": 92408304,
+     "path": "/hiring",
+     "event": false,
+     "title": "Post a Role · AURUM — Get Your High-Ticket Role Seen",
+     "max": 1,
+     "stats": [
       {
        "day": "2026-06-29",
        "hourly": [
@@ -4452,7 +4446,9 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 2,
+       "monthly": 1
       },
       {
        "day": "2026-06-30",
@@ -4633,8 +4629,7 @@
         0,
         0
        ],
-       "daily": 1,
-       "weekly": 3
+       "daily": 1
       },
       {
        "day": "2026-07-06",
@@ -4664,7 +4659,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 2
       },
       {
        "day": "2026-07-07",
@@ -4844,8 +4840,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 1
+       "daily": 0
       },
       {
        "day": "2026-07-13",
@@ -4875,7 +4870,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 1
       },
       {
        "day": "2026-07-14",
@@ -5055,8 +5051,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 2
+       "daily": 0
       },
       {
        "day": "2026-07-20",
@@ -5086,7 +5081,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 2
       },
       {
        "day": "2026-07-21",
@@ -5297,49 +5293,47 @@
         0
        ],
        "daily": 0
+      },
+      {
+       "day": "2026-07-28",
+       "hourly": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "daily": 0
       }
      ]
     },
     {
-     "count": 7,
+     "count": 5,
      "path_id": 92391693,
      "path": "/",
      "event": false,
      "title": "AURUM · High-Ticket Sales — The Gold Standard for Your Job Search",
      "max": 1,
      "stats": [
-      {
-       "day": "2026-06-28",
-       "hourly": [
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0
-       ],
-       "daily": 2,
-       "weekly": 2,
-       "monthly": 2
-      },
       {
        "day": "2026-06-29",
        "hourly": [
@@ -5368,7 +5362,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 2
       },
       {
        "day": "2026-06-30",
@@ -5549,8 +5544,7 @@
         0,
         0
        ],
-       "daily": 2,
-       "weekly": 2
+       "daily": 2
       },
       {
        "day": "2026-07-06",
@@ -5760,8 +5754,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 1
+       "daily": 0
       },
       {
        "day": "2026-07-13",
@@ -5791,7 +5784,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 1
       },
       {
        "day": "2026-07-14",
@@ -5971,8 +5965,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 2
+       "daily": 0
       },
       {
        "day": "2026-07-20",
@@ -6002,7 +5995,8 @@
         0,
         0
        ],
-       "daily": 1
+       "daily": 1,
+       "weekly": 2
       },
       {
        "day": "2026-07-21",
@@ -6213,25 +6207,14 @@
         0
        ],
        "daily": 0
-      }
-     ]
-    },
-    {
-     "count": 4,
-     "path_id": 92395074,
-     "path": "/jobs/all",
-     "event": false,
-     "title": "The Vault · Aurum",
-     "max": 1,
-     "stats": [
+      },
       {
-       "day": "2026-06-28",
+       "day": "2026-07-28",
        "hourly": [
         0,
         0,
         0,
         0,
-        1,
         0,
         0,
         0,
@@ -6245,17 +6228,26 @@
         0,
         0,
         0,
-        1,
+        0,
+        0,
         0,
         0,
         0,
         0,
         0
        ],
-       "daily": 2,
-       "weekly": 2,
-       "monthly": 2
-      },
+       "daily": 0
+      }
+     ]
+    },
+    {
+     "count": 2,
+     "path_id": 92395074,
+     "path": "/jobs/all",
+     "event": false,
+     "title": "The Vault · Aurum",
+     "max": 1,
+     "stats": [
       {
        "day": "2026-06-29",
        "hourly": [
@@ -6465,8 +6457,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 1
+       "daily": 0
       },
       {
        "day": "2026-07-06",
@@ -6496,7 +6487,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 1
       },
       {
        "day": "2026-07-07",
@@ -6886,8 +6878,7 @@
         0,
         0
        ],
-       "daily": 0,
-       "weekly": 1
+       "daily": 0
       },
       {
        "day": "2026-07-20",
@@ -6917,7 +6908,8 @@
         0,
         0
        ],
-       "daily": 0
+       "daily": 0,
+       "weekly": 1
       },
       {
        "day": "2026-07-21",
@@ -7128,11 +7120,41 @@
         0
        ],
        "daily": 0
+      },
+      {
+       "day": "2026-07-28",
+       "hourly": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "daily": 0
       }
      ]
     }
    ],
-   "total": 54,
+   "total": 44,
    "more": false
   }
  },
@@ -7144,22 +7166,22 @@
   },
   {
    "path": "/jobs",
-   "pageviews": 17,
+   "pageviews": 12,
    "visitors": null
   },
   {
    "path": "/hiring",
-   "pageviews": 8,
-   "visitors": null
-  },
-  {
-   "path": "/",
    "pageviews": 7,
    "visitors": null
   },
   {
+   "path": "/",
+   "pageviews": 5,
+   "visitors": null
+  },
+  {
    "path": "/jobs/all",
-   "pageviews": 4,
+   "pageviews": 2,
    "visitors": null
   }
  ]

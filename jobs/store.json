@@ -67,17 +67,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "New York, NY",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-4010958214032910770",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-28",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -205,7 +205,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-28",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -238,7 +238,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-28",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -289,7 +289,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-28",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -485,7 +485,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-28",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -502,7 +502,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-28",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1359,7 +1359,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-28",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -1741,8 +1741,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-27",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "country": "United States",
   "lead_type": "Inbound",
   "inbox": false,
@@ -1809,8 +1809,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-27",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -1825,8 +1825,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-27",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -1841,8 +1841,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-27",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -1939,16 +1939,16 @@
  "8eb45cd42e073b09": {
   "title": "High Ticket Sales Closer",
   "company": "Rustman Agency",
-  "location": "United States",
-  "comp": "",
-  "link": "https://jooble.org/jdp/3449134189085557525",
-  "source": "Jooble",
+  "location": "Rockerville, Pennington County",
+  "comp": "$126770-$126770",
+  "link": "https://www.adzuna.com/details/5324761097?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-28",
   "active": true,
   "country": "United States",
-  "lead_type": "",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": ""
  },
@@ -1985,8 +1985,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-27",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2013,8 +2013,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-27",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2057,8 +2057,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-27",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "country": "United States",
   "lead_type": "Inbound",
   "inbox": false,
@@ -2299,8 +2299,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-27",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2427,8 +2427,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-07-27",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -5450,7 +5450,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-28",
-  "active": true,
+  "active": false,
   "country": "Canada",
   "lead_type": "",
   "inbox": false,
@@ -12058,12 +12058,12 @@
  "6362aba0dc532189": {
   "title": "Remote High-Ticket Sales Closer | AI Business Consultant | $165K-$183K OTE",
   "company": "The Rainmaker Family",
-  "location": "Remote",
+  "location": "Del Mar, San Diego County",
   "comp": "$165000-$183000",
-  "link": "https://www.theladders.com/job/remote-high-ticket-sales-closer-ai-business-consultant-165k-183k-ote-the-rainmaker-family-virtual-travel_86785836",
-  "source": "JSearch",
+  "link": "https://www.adzuna.com/details/5716613790?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
   "category": "Closer",
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "Inbound",
   "first_seen": "2026-06-15",
   "last_seen": "2026-07-28",
@@ -13208,9 +13208,9 @@
  "280076389e3ba9b9": {
   "title": "Mortgage Loan Closer",
   "company": "ACHIEVE",
-  "location": "Tempe, AZ",
+  "location": "Phoenix, AZ",
   "comp": "$5,250 per month",
-  "link": "https://jooble.org/jdp/4635952291169826580",
+  "link": "https://jooble.org/jdp/-7614337081443411751",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -13218,8 +13218,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-22",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "6bb1df188520c450": {
   "title": "Customer Success Manager - Remote",
@@ -13362,8 +13362,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "a3362391694edc47": {
   "title": "Virtual Assistant: $11 - $22/HR",
@@ -14563,7 +14563,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "7e58821d3595c4b2": {
   "title": "Remote High-Ticket Closer: Inbound Leads & High Earnings",
@@ -15138,8 +15138,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "b4b8a9230a365c95": {
   "title": "Remote High-Ticket Closer for ETA Deals",
@@ -15234,8 +15234,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "9283e6c697e165eb": {
   "title": "High-Ticket Coaching Closer (Remote, Uncapped Commissions)",
@@ -16211,8 +16211,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-22",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "936e6b525f84a95f": {
   "title": "Customer Success Manager",
@@ -16387,8 +16387,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-22",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "f334f41ce21bef06": {
   "title": "Remote Enterprise Customer Success Manager",
@@ -16403,8 +16403,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-22",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "7a3e0ce8bb66e5ef": {
   "title": "Strategic Remote Enterprise SaaS Customer Success Manager",
@@ -17321,9 +17321,9 @@
  "5150fe0fad2c37ba": {
   "title": "Senior High-Ticket Closer for Remote Growth Consulting",
   "company": "Curvion Blue",
-  "location": "Albuquerque, NM",
-  "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/6503052508334808238",
+  "location": "Columbus, OH",
+  "comp": "",
+  "link": "https://jooble.org/jdp/5765720438823017450",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -18053,7 +18053,7 @@
   "tier": "",
   "first_seen": "2026-06-28",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "6d6e16ebdb88d71a": {
   "title": "SaaS High-ticket Closer",
@@ -18756,8 +18756,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-30",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "2561edc4699bcd01": {
   "title": "High-Ticket Timeshare Exit Closer — Remote/Hybrid",
@@ -19308,7 +19308,7 @@
   "company": "Emerson",
   "location": "Austin, TX",
   "comp": "$135k - $153k",
-  "link": "https://jooble.org/jdp/2587117199896831106",
+  "link": "https://jooble.org/jdp/-1831627961816195103",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -19333,7 +19333,7 @@
   "tier": "",
   "first_seen": "2026-07-03",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "ddb6fbb44a3ed1e3": {
   "title": "REMOTE LAND SALES CLOSER",
@@ -19605,7 +19605,7 @@
   "tier": "",
   "first_seen": "2026-07-04",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "5d1e7be8f520ba1d": {
   "title": "Enterprise Customer Success Manager, Remote",
@@ -19620,8 +19620,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-04",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "68b8f953cff31452": {
   "title": "Enterprise Account Executive - US",
@@ -20869,7 +20869,7 @@
   "tier": "",
   "first_seen": "2026-07-10",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "ee7eb8c1c1d0a94f": {
   "title": "Remote Sales Closer",
@@ -22619,7 +22619,7 @@
   "tier": "",
   "first_seen": "2026-07-16",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "be976b44d144709c": {
   "title": "Executive Virtual Assistant (Remote)",
@@ -22699,7 +22699,7 @@
   "tier": "",
   "first_seen": "2026-07-16",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "9a5ffc14eeeac53d": {
   "title": "High-Ticket Closer (Remote)",
@@ -22846,8 +22846,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-17",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "37f1526d45e424ed": {
   "title": "Remote Inbound Sales Representative- Remote in North Carolina",
@@ -23088,8 +23088,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-19",
-  "last_seen": "2026-07-21",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "4d12ed1ab5abc443": {
   "title": "Remote Sales Closer | Leads Provided | Entry Level Path to $10k+/mo",
@@ -23168,8 +23168,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-19",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "003ebea5834450fb": {
   "title": "Customer Success Manager - Global Public Sector (Education)",
@@ -23537,15 +23537,15 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-21",
-  "last_seen": "2026-07-21",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "21220a7732450ec0": {
   "title": "Remote Sales Closer | Financial Industry | $15k+/mo w/o Degree",
   "company": "remote click jobs",
   "location": "Remote",
   "comp": "",
-  "link": "https://remoteclickjobs-production.up.railway.app/job/remote-sales-closer-financial-industry-15kmo-wo-degree-1",
+  "link": "https://remoteclickjobs-production.up.railway.app/job/remote-sales-closer-financial-industry-15kmo-wo-degree-4",
   "source": "JSearch",
   "category": "Closer",
   "country": "Worldwide / Anywhere",
@@ -23553,8 +23553,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-21",
-  "last_seen": "2026-07-21",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "1e54775bbf1b99b7": {
   "title": "Remote High-Ticket Sales Closer — Warm, Triple-Qualified Leads | One-Call Close | Uncapped Comms!",
@@ -23905,8 +23905,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-22",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "a3b3908840341308": {
   "title": "Sales Development Representative",
@@ -24114,7 +24114,7 @@
   "tier": "",
   "first_seen": "2026-07-23",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "2def0e0576b7c155": {
   "title": "Senior Presales Engineer",
@@ -24169,7 +24169,7 @@
   "company": "Nurtured",
   "location": "New York City, New York",
   "comp": "$77847-$77847",
-  "link": "https://www.adzuna.com/land/ad/5811839379?se=DlDhosOJ8RGRmd94HTiRYQ&utm_medium=api&utm_source=3e941a8f&v=4FF4E0A04F5CD160ECE2ADFD5BF1CEDFC77E4285",
+  "link": "https://www.adzuna.com/land/ad/5811839379?se=lHnJ0oyK8RGaYKs-XQ3jYQ&utm_medium=api&utm_source=3e941a8f&v=4FF4E0A04F5CD160ECE2ADFD5BF1CEDFC77E4285",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -24177,15 +24177,15 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-23",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "5d7219d85cfb42fe": {
   "title": "Sales Development Representative",
   "company": "BCI Worldwide",
-  "location": "Sarasota, Manatee County",
-  "comp": "$119386-$119386",
-  "link": "https://www.adzuna.com/land/ad/5816165497?se=DlDhosOJ8RGRmd94HTiRYQ&utm_medium=api&utm_source=3e941a8f&v=738383E77D5411F3167B4BA2FA86F1706C5059B5",
+  "location": "Orlando, Orange County",
+  "comp": "$116805-$116805",
+  "link": "https://www.adzuna.com/land/ad/5811836020?se=lHnJ0oyK8RGaYKs-XQ3jYQ&utm_medium=api&utm_source=3e941a8f&v=D62D150E02567ECE802852C45475B8F7DA6A9305",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -24193,8 +24193,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-23",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "3b3ba30270fb05a8": {
   "title": "Remote High Ticket Closer",
@@ -24946,7 +24946,7 @@
   "tier": "",
   "first_seen": "2026-07-26",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "6b73c562f62bbffb": {
   "title": "Remote High Ticket Closer",
@@ -24994,7 +24994,7 @@
   "tier": "",
   "first_seen": "2026-07-26",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "2b5e502919ed31e6": {
   "title": "High-Ticket Sales Closer — Remote | Commission-Only | Health & Wellness",
@@ -25041,15 +25041,15 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-26",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "f8aa6aa8e2d8a256": {
   "title": "Remote Closer",
   "company": "remote click jobs",
   "location": "Remote",
   "comp": "",
-  "link": "https://remoteclickjobs-production.up.railway.app/job/remote-closer-23",
+  "link": "https://remoteclickjobs-production.up.railway.app/job/remote-closer-17",
   "source": "JSearch",
   "category": "Closer",
   "country": "Worldwide / Anywhere",
@@ -25057,8 +25057,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-26",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "2baabe5ccbd14a20": {
   "title": "Remote Closer Digital Products",
@@ -25073,8 +25073,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-26",
-  "last_seen": "2026-07-26",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "d1d6cd59464a52cf": {
   "title": "Remote Closer",
@@ -25106,7 +25106,7 @@
   "tier": "",
   "first_seen": "2026-07-26",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "f0262c67e712bda4": {
   "title": "Remote Closer",
@@ -25153,8 +25153,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-27",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "aa448e12154d652b": {
   "title": "Inside Sales Closer",
@@ -25169,8 +25169,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-27",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "50cb4eb6fafda408": {
   "title": "B2B Sales Closer",
@@ -25185,8 +25185,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-27",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "f76c0a4c1cc2f1b5": {
   "title": "Inbound Sales Closer",
@@ -25201,8 +25201,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-27",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "56858f62aa99f4cd": {
   "title": "Senior Solutions Architect",
@@ -25266,7 +25266,7 @@
   "tier": "",
   "first_seen": "2026-07-28",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "bcab95c6ff6f3e83": {
   "title": "Virtual Assistant - GHL Experience",
@@ -25298,7 +25298,7 @@
   "tier": "",
   "first_seen": "2026-07-28",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "822828b7201200d1": {
   "title": "High-Ticket Closer - Fitness, Remote, Commission-Based",
@@ -25314,7 +25314,7 @@
   "tier": "",
   "first_seen": "2026-07-28",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "58a6a547930ceb8b": {
   "title": "Remote High Ticket Closer (Selling FB advertising agency services to Deck Builders)",
@@ -25330,7 +25330,7 @@
   "tier": "",
   "first_seen": "2026-07-28",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "b07654c612b6cdc4": {
   "title": "Account Executive II - Retail Partnerships (US & Canada)",
@@ -25435,6 +25435,38 @@
   "comp": "",
   "link": "https://www.arbeitnow.co.uk/jobs/companies/bitwarden/enterprise-account-executive-emea-48872",
   "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-28",
+  "last_seen": "2026-07-28",
+  "active": false
+ },
+ "dd18a7cdffd5354b": {
+  "title": "Sales Closer — Custom & Luxury Homes",
+  "company": "Sales Match",
+  "location": "Remote",
+  "comp": "$200000-$250000",
+  "link": "https://www.indeed.com/viewjob?jk=6faba6446de0484f",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-28",
+  "last_seen": "2026-07-28",
+  "active": true
+ },
+ "8fd7d4efc6e4629e": {
+  "title": "fully remote Closers and Appointment setters, Online Sales team",
+  "company": "Set Close Scale",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://bebee.com/us/jobs/fully-remote-closers-and-appointment-setters-online-sales-team-set-close-scale--theirstack-695764727",
+  "source": "JSearch",
   "category": "Closer",
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",

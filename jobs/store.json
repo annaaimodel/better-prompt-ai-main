@@ -5450,7 +5450,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-28",
-  "active": false,
+  "active": true,
   "country": "Canada",
   "lead_type": "",
   "inbox": false,
@@ -11720,16 +11720,16 @@
  "f8b9ea50606be3f1": {
   "title": "Remote Inbound Sales Representative",
   "company": "Stratford Davis",
-  "location": "Tenderloin, San Francisco",
+  "location": "Reno, Washoe County",
   "comp": "$120000-$120000",
-  "link": "https://www.adzuna.com/details/5815893335?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.com/details/5817847062?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
-  "last_seen": "2026-07-26",
-  "active": false,
+  "last_seen": "2026-07-28",
+  "active": true,
   "inbox": false,
   "tier": ""
  },
@@ -14563,7 +14563,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-07-28",
-  "active": false
+  "active": true
  },
  "7e58821d3595c4b2": {
   "title": "Remote High-Ticket Closer: Inbound Leads & High Earnings",
@@ -17321,9 +17321,9 @@
  "5150fe0fad2c37ba": {
   "title": "Senior High-Ticket Closer for Remote Growth Consulting",
   "company": "Curvion Blue",
-  "location": "Columbus, OH",
-  "comp": "",
-  "link": "https://jooble.org/jdp/5765720438823017450",
+  "location": "Albuquerque, NM",
+  "comp": "$90k - $360k",
+  "link": "https://jooble.org/jdp/6503052508334808238",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -17396,7 +17396,7 @@
   "tier": "",
   "first_seen": "2026-06-26",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "d8cae334eca1140e": {
   "title": "Remote Customer Success Manager II - East",
@@ -19306,10 +19306,10 @@
  "687251a30d73d0a9": {
   "title": "Customer Success Manager - Remote",
   "company": "Emerson",
-  "location": "Austin, TX",
-  "comp": "$135k - $153k",
-  "link": "https://jooble.org/jdp/-1831627961816195103",
-  "source": "Jooble",
+  "location": "Austin, Lonoke County",
+  "comp": "$132882-$132882",
+  "link": "https://www.adzuna.com/land/ad/5815857566?se=mhLoE5OK8RG_euXDLECxxg&utm_medium=api&utm_source=3e941a8f&v=AD45D23C7F8424B886B938A80DC35C8AA673375B",
+  "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
   "lead_type": "",
@@ -19605,7 +19605,7 @@
   "tier": "",
   "first_seen": "2026-07-04",
   "last_seen": "2026-07-28",
-  "active": false
+  "active": true
  },
  "5d1e7be8f520ba1d": {
   "title": "Enterprise Customer Success Manager, Remote",
@@ -20869,7 +20869,7 @@
   "tier": "",
   "first_seen": "2026-07-10",
   "last_seen": "2026-07-28",
-  "active": false
+  "active": true
  },
  "ee7eb8c1c1d0a94f": {
   "title": "Remote Sales Closer",
@@ -22682,8 +22682,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-16",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "e8000162d56fab6f": {
   "title": "Remote Inside Sales Representative | Sales Agent | Will train & Mentor | Work from Home",
@@ -23089,7 +23089,7 @@
   "tier": "",
   "first_seen": "2026-07-19",
   "last_seen": "2026-07-28",
-  "active": true
+  "active": false
  },
  "4d12ed1ab5abc443": {
   "title": "Remote Sales Closer | Leads Provided | Entry Level Path to $10k+/mo",
@@ -23489,8 +23489,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-21",
-  "last_seen": "2026-07-27",
-  "active": false
+  "last_seen": "2026-07-28",
+  "active": true
  },
  "38855835b40374d8": {
   "title": "Forward Deployed Engineer - Integrations & Customer Success (f/m/d)",
@@ -24169,7 +24169,7 @@
   "company": "Nurtured",
   "location": "New York City, New York",
   "comp": "$77847-$77847",
-  "link": "https://www.adzuna.com/land/ad/5811839379?se=lHnJ0oyK8RGaYKs-XQ3jYQ&utm_medium=api&utm_source=3e941a8f&v=4FF4E0A04F5CD160ECE2ADFD5BF1CEDFC77E4285",
+  "link": "https://www.adzuna.com/land/ad/5811839379?se=3I3vEpOK8RGQBbeVGsUfiQ&utm_medium=api&utm_source=3e941a8f&v=4FF4E0A04F5CD160ECE2ADFD5BF1CEDFC77E4285",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -24185,7 +24185,7 @@
   "company": "BCI Worldwide",
   "location": "Orlando, Orange County",
   "comp": "$116805-$116805",
-  "link": "https://www.adzuna.com/land/ad/5811836020?se=lHnJ0oyK8RGaYKs-XQ3jYQ&utm_medium=api&utm_source=3e941a8f&v=D62D150E02567ECE802852C45475B8F7DA6A9305",
+  "link": "https://www.adzuna.com/land/ad/5811836020?se=3I3vEpOK8RGQBbeVGsUfiQ&utm_medium=api&utm_source=3e941a8f&v=D62D150E02567ECE802852C45475B8F7DA6A9305",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -25470,6 +25470,22 @@
   "category": "Closer",
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-28",
+  "last_seen": "2026-07-28",
+  "active": true
+ },
+ "3238026c905e5d56": {
+  "title": "Remote Closer (High Ticket)",
+  "company": "remote zest jobs",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://remotezest.up.railway.app/job/remote-closer-high-ticket-22",
+  "source": "JSearch",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Cold",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-28",

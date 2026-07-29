@@ -18821,7 +18821,7 @@
   "tier": "",
   "first_seen": "2026-07-01",
   "last_seen": "2026-07-29",
-  "active": true
+  "active": false
  },
  "1d8611121c2f8176": {
   "title": "Enterprise SDR",

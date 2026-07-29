@@ -25522,7 +25522,7 @@
   "tier": "",
   "first_seen": "2026-07-28",
   "last_seen": "2026-07-29",
-  "active": true
+  "active": false
  },
  "aaa91feb55815a27": {
   "title": "Sales Development Representative (SDR)",
@@ -25533,6 +25533,22 @@
   "source": "Jooble",
   "category": "Setter / SDR",
   "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-29",
+  "last_seen": "2026-07-29",
+  "active": true
+ },
+ "4915b48879fcd121": {
+  "title": "Solution Engineer",
+  "company": "Kestra Technologies",
+  "location": "Germany",
+  "comp": "",
+  "link": "https://himalayas.app/companies/kestra-technologies/jobs/solution-engineer",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "Europe",
   "lead_type": "",
   "inbox": false,
   "tier": "",

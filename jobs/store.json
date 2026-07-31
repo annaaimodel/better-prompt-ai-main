@@ -26114,7 +26114,7 @@
   "tier": "",
   "first_seen": "2026-07-31",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "4afcd7cffc38ca81": {
   "title": "Sales Closer Australian Market - Bali Real Estate & Property",
@@ -26125,6 +26125,22 @@
   "source": "Himalayas",
   "category": "Closer",
   "country": "Australia",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-31",
+  "last_seen": "2026-07-31",
+  "active": false
+ },
+ "675629838defb837": {
+  "title": "Commercial Account Executive - TOLA",
+  "company": "ZeroFox",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/zerofox/jobs/commercial-account-executive-tola",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
   "lead_type": "Inbound",
   "inbox": false,
   "tier": "",

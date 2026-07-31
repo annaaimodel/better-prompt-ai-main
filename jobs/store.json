@@ -67,17 +67,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Charlotte, NC",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-571547146953411006",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-31",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -205,7 +205,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-31",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -238,7 +238,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-31",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -289,7 +289,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-31",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -485,7 +485,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-31",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -502,7 +502,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-07-31",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1359,7 +1359,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-07-31",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -11513,7 +11513,7 @@
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-07-31",
-  "active": true,
+  "active": false,
   "inbox": false,
   "tier": ""
  },
@@ -11720,9 +11720,9 @@
  "f8b9ea50606be3f1": {
   "title": "Remote Inbound Sales Representative",
   "company": "Stratford Davis",
-  "location": "Des Moines, Polk County",
+  "location": "Burlington, Chittenden County",
   "comp": "$120000-$120000",
-  "link": "https://www.adzuna.com/details/5820699861?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.com/details/5820699770?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
@@ -13218,8 +13218,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-29",
-  "active": false
+  "last_seen": "2026-07-31",
+  "active": true
  },
  "6bb1df188520c450": {
   "title": "Customer Success Manager - Remote",
@@ -13362,8 +13362,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
-  "last_seen": "2026-07-30",
-  "active": false
+  "last_seen": "2026-07-31",
+  "active": true
  },
  "a3362391694edc47": {
   "title": "Virtual Assistant: $11 - $22/HR",
@@ -15747,8 +15747,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-19",
-  "last_seen": "2026-07-18",
-  "active": false
+  "last_seen": "2026-07-31",
+  "active": true
  },
  "13edc91b189cdbc6": {
   "title": "Remote High-Ticket Closer | One-Call Close, $20k-$30k OTE",
@@ -17044,7 +17044,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "0fab5238da00509f": {
   "title": "Virtual Sales Rep: Fully Remote, No Cold Calls, Great Training",
@@ -17219,8 +17219,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-25",
-  "last_seen": "2026-07-01",
-  "active": false
+  "last_seen": "2026-07-31",
+  "active": true
  },
  "2801ee94591bbf54": {
   "title": "Marketing Virtual Assistant",
@@ -17321,9 +17321,9 @@
  "5150fe0fad2c37ba": {
   "title": "Senior High-Ticket Closer for Remote Growth Consulting",
   "company": "Curvion Blue",
-  "location": "Tampa, FL",
-  "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/-9109875871061496896",
+  "location": "Nashville, TN",
+  "comp": "",
+  "link": "https://jooble.org/jdp/-12327118485193050",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -17523,8 +17523,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-26",
-  "last_seen": "2026-07-29",
-  "active": false
+  "last_seen": "2026-07-31",
+  "active": true
  },
  "daefbbda055e29ab": {
   "title": "Virtual Assistant II — Flexible Hours & Growth",
@@ -17555,8 +17555,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-26",
-  "last_seen": "2026-07-29",
-  "active": false
+  "last_seen": "2026-07-31",
+  "active": true
  },
  "74af105fecb22e7a": {
   "title": "Simple Virtual Assistants (Only US)",
@@ -18245,7 +18245,7 @@
   "tier": "",
   "first_seen": "2026-06-29",
   "last_seen": "2026-07-31",
-  "active": false
+  "active": true
  },
  "ede4dc1f57876328": {
   "title": "Remote Marketing Virtual Assistant - Flexible Hours Growth",
@@ -18908,7 +18908,7 @@
   "company": "MongoDB",
   "location": "South San Francisco, San Mateo County",
   "comp": "$147850-$147850",
-  "link": "https://www.adzuna.com/land/ad/5821646624?se=glkLI3uM8RGld9YEhovvxw&utm_medium=api&utm_source=3e941a8f&v=0FD261A2EC9A6B60397A266EDA2206BB474FBC40",
+  "link": "https://www.adzuna.com/land/ad/5821646624?se=esxsUuiM8RGGgO_n0rmdiQ&utm_medium=api&utm_source=3e941a8f&v=0FD261A2EC9A6B60397A266EDA2206BB474FBC40",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -19861,7 +19861,7 @@
   "tier": "",
   "first_seen": "2026-07-05",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "d82c86713990c5b8": {
   "title": "Customer Success Manager, Enterprise - Central or East Regions",
@@ -19914,9 +19914,9 @@
  "b542dd39c698f7d4": {
   "title": "Remote B2B Ad Sales Closer High Commission Potential",
   "company": "Terraboost Media",
-  "location": "Raleigh, NC",
+  "location": "Henderson, NV",
   "comp": "",
-  "link": "https://jooble.org/jdp/6027098160703697273",
+  "link": "https://jooble.org/jdp/-5139278916109655108",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -19924,8 +19924,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-06",
-  "last_seen": "2026-07-25",
-  "active": false
+  "last_seen": "2026-07-31",
+  "active": true
  },
  "ac5930ccb5ebc8e3": {
   "title": "Virtual Assistant Law - Remote",
@@ -21444,8 +21444,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-13",
-  "last_seen": "2026-07-29",
-  "active": false
+  "last_seen": "2026-07-31",
+  "active": true
  },
  "7366425f92863207": {
   "title": "Loan Processor Support VA",
@@ -22879,7 +22879,7 @@
   "tier": "",
   "first_seen": "2026-07-17",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "3826d8b3317cd472": {
   "title": "Remote Virtual Assistant",
@@ -22910,8 +22910,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-17",
-  "last_seen": "2026-07-29",
-  "active": false
+  "last_seen": "2026-07-31",
+  "active": true
  },
  "2e1edb8172fe01b9": {
   "title": "Urgently Hiring: Virtual Assistant - remote employment",
@@ -22966,12 +22966,12 @@
  "06d2440b31d8acc3": {
   "title": "Virtual Assistant",
   "company": "Burjline Builders",
-  "location": "New York, NY",
-  "comp": "$23.5 - $35.7 per hour",
-  "link": "https://jooble.org/jdp/8309072062149988571",
+  "location": "Remote",
+  "comp": "$19 - $29 per hour",
+  "link": "https://jooble.org/jdp/-4948007185426976551",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -23554,7 +23554,7 @@
   "tier": "",
   "first_seen": "2026-07-21",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "1e54775bbf1b99b7": {
   "title": "Remote High-Ticket Sales Closer — Warm, Triple-Qualified Leads | One-Call Close | Uncapped Comms!",
@@ -24178,7 +24178,7 @@
   "tier": "",
   "first_seen": "2026-07-23",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "5d7219d85cfb42fe": {
   "title": "Sales Development Representative",
@@ -24535,9 +24535,9 @@
  "54c398f10a8871cd": {
   "title": "Virtual Assistant - Remote",
   "company": "Anova Care",
-  "location": "San Antonio, TX",
+  "location": "Meridian, MS",
   "comp": "$69k - $125k",
-  "link": "https://jooble.org/jdp/2855802853505124783",
+  "link": "https://jooble.org/jdp/-6459900468926356721",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -24631,12 +24631,12 @@
  "e932aa24704f05aa": {
   "title": "Virtual Assistant I",
   "company": "BrandCoven",
-  "location": "Remote",
-  "comp": "$25 - $30 per hour",
-  "link": "https://jooble.org/jdp/-1202847931411683482",
+  "location": "Atlanta, GA",
+  "comp": "",
+  "link": "https://jooble.org/jdp/749032608111077721",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -24754,7 +24754,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "fcfba0ab41ede210": {
   "title": "Remote Executive Virtual Assistant",
@@ -25746,7 +25746,7 @@
   "tier": "",
   "first_seen": "2026-07-30",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "45c0c380eeece343": {
   "title": "Federal Customer Success Manager",
@@ -25762,7 +25762,7 @@
   "tier": "",
   "first_seen": "2026-07-30",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "fdfc1ac38c5a2e22": {
   "title": "Virtual Assistant",
@@ -26018,7 +26018,7 @@
   "tier": "",
   "first_seen": "2026-07-31",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "215ea7f010f8f369": {
   "title": "Inbound Sales Closer – Remote",
@@ -26034,7 +26034,7 @@
   "tier": "",
   "first_seen": "2026-07-31",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "cda94fe08db520e9": {
   "title": "Elite Inbound Sales Closer (U.S. Remote)",
@@ -26050,14 +26050,14 @@
   "tier": "",
   "first_seen": "2026-07-31",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "ec7879d5f76a7fe7": {
   "title": "Customer Success Manager",
   "company": "Outpost",
   "location": "Austin, Travis County",
   "comp": "$134491-$134491",
-  "link": "https://www.adzuna.com/land/ad/5821656559?se=glkLI3uM8RGld9YEhovvxw&utm_medium=api&utm_source=3e941a8f&v=78567106EDD2224D495915AAF01D1296353CCC3F",
+  "link": "https://www.adzuna.com/land/ad/5821656559?se=esxsUuiM8RGGgO_n0rmdiQ&utm_medium=api&utm_source=3e941a8f&v=78567106EDD2224D495915AAF01D1296353CCC3F",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -26082,7 +26082,7 @@
   "tier": "",
   "first_seen": "2026-07-31",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "29b02f63f5498c99": {
   "title": "Customer Success Manager Remote (m/w/d)",
@@ -26098,7 +26098,7 @@
   "tier": "",
   "first_seen": "2026-07-31",
   "last_seen": "2026-07-31",
-  "active": true
+  "active": false
  },
  "8fd33f24127bf5ae": {
   "title": "Senior Sales Development Representative - AI & Automation",
@@ -26147,5 +26147,53 @@
   "first_seen": "2026-07-31",
   "last_seen": "2026-07-31",
   "active": false
+ },
+ "a16e9d4feb3ab962": {
+  "title": "Urgently Hiring: ChatGPT Virtual Assistant Jobs (Part/Full Time)",
+  "company": "remote zest jobs",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://remotezest.up.railway.app/job/urgently-hiring-chatgpt-virtual-assistant-jobs-partfull-time-2",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-31",
+  "last_seen": "2026-07-31",
+  "active": true
+ },
+ "4d5169fe1d1a640f": {
+  "title": "Immediate Hiring: ChatGPT Virtual Assistant Jobs (Part/Full Time) at arenaflex",
+  "company": "remote zest jobs",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://remotezest.up.railway.app/job/immediate-hiring-chatgpt-virtual-assistant-jobs-partfull-time-at-arenaflex-1",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-31",
+  "last_seen": "2026-07-31",
+  "active": true
+ },
+ "42492973d8c26643": {
+  "title": "Express Virtual Assistant ( Work At Home )",
+  "company": "Ovextech",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://bebee.com/us/jobs/express-virtual-assistant-work-at-home-ovextech-dallas--ss-us-kathms",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-07-31",
+  "last_seen": "2026-07-31",
+  "active": true
  }
 }

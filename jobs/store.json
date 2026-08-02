@@ -26611,5 +26611,53 @@
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
   "active": false
+ },
+ "c6512b51bba89fcb": {
+  "title": "Enterprise Account Executive - DACH",
+  "company": "How We Work & What We Value - Ashby",
+  "location": "Germany",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/how-we-work-what-we-value-ashby/enterprise-account-executive-dach-germany-463371",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Europe",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-02",
+  "last_seen": "2026-08-02",
+  "active": true
+ },
+ "843d86cfc1cfa84d": {
+  "title": "Technical Customer Success Manager - AMER",
+  "company": "Camunda",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/camunda/remote-technical-customer-success-manager-amer-84132",
+  "source": "Arbeitnow",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-02",
+  "last_seen": "2026-08-02",
+  "active": true
+ },
+ "daba500cce006ddc": {
+  "title": "Enterprise Account Executive (DACH)",
+  "company": "Sanity",
+  "location": "Remote in Germany",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/sanity/remote-enterprise-account-executive-dach-141854",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Europe",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-02",
+  "last_seen": "2026-08-02",
+  "active": true
  }
 }

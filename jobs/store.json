@@ -26642,7 +26642,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "daba500cce006ddc": {
   "title": "Enterprise Account Executive (DACH)",
@@ -26674,7 +26674,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "8f1af07b664fe26d": {
   "title": "Sales Development Representative",
@@ -26786,7 +26786,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "aade9805191d90a3": {
   "title": "Account Executive Lead - North America - Mid-Market",
@@ -26802,7 +26802,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "e9d8775ae4f78715": {
   "title": "Account Executive - ElevenCreative - Germany",
@@ -26818,7 +26818,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "166b784e581e82b9": {
   "title": "Customer Success Lead - Western Europe",
@@ -26834,7 +26834,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "4dd186bbde520387": {
   "title": "Enterprise Demand Generation",
@@ -26850,7 +26850,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "c817c3e6923d2fd2": {
   "title": "Enterprise Solutions Engineer - Germany",
@@ -26866,7 +26866,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "054681450746c17e": {
   "title": "Strategic Account Executive - Germany",
@@ -26882,6 +26882,6 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  }
 }

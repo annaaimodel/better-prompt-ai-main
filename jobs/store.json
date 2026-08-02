@@ -26578,7 +26578,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "9183810574756b9a": {
   "title": "Sales Development Representative (German Speaker)",
@@ -26594,7 +26594,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "c2ee8d9fa56edbba": {
   "title": "Sales Development Representative (French Speaker)",
@@ -26610,6 +26610,6 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  }
 }

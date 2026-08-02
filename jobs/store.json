@@ -26242,7 +26242,7 @@
   "tier": "",
   "first_seen": "2026-07-31",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "c51efd1bee6a42fa": {
   "title": "Account Executive, Majors (Select) - UK&I",
@@ -26258,7 +26258,7 @@
   "tier": "",
   "first_seen": "2026-07-31",
   "last_seen": "2026-08-02",
-  "active": true
+  "active": false
  },
  "a448343368c9d9e5": {
   "title": "Remote High-Ticket Closer",
@@ -26563,5 +26563,53 @@
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
   "active": false
+ },
+ "f672393f5842c048": {
+  "title": "Principal Enterprise Account Executive",
+  "company": "Unmind",
+  "location": "London, HQ",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/unmind/principal-enterprise-account-executive-london-360765",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-02",
+  "last_seen": "2026-08-02",
+  "active": true
+ },
+ "9183810574756b9a": {
+  "title": "Sales Development Representative (German Speaker)",
+  "company": "LangChain",
+  "location": "London",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/langchain/sales-development-representative-german-speaker-london-238728",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-02",
+  "last_seen": "2026-08-02",
+  "active": true
+ },
+ "c2ee8d9fa56edbba": {
+  "title": "Sales Development Representative (French Speaker)",
+  "company": "LangChain",
+  "location": "London",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/langchain/sales-development-representative-french-speaker-london-348380",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-02",
+  "last_seen": "2026-08-02",
+  "active": true
  }
 }

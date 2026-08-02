@@ -26546,6 +26546,22 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
+  "active": false
+ },
+ "ee8f61f1bf22f7a7": {
+  "title": "Wildcard Application",
+  "company": "Lavendo",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/lavendo/jobs/wildcard-application-5041071793",
+  "source": "Himalayas",
+  "category": "Setter / SDR",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-02",
+  "last_seen": "2026-08-02",
   "active": true
  }
 }

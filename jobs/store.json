@@ -26899,5 +26899,37 @@
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-02",
   "active": false
+ },
+ "d847f1f16aaae8d7": {
+  "title": "Enterprise Account Executive - Southeast",
+  "company": "Obsidian Security",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/obsidian-security/jobs/enterprise-account-executive-southeast",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-02",
+  "last_seen": "2026-08-02",
+  "active": true
+ },
+ "7c14b0cb1b0e8dc4": {
+  "title": "Corporate Pricing Associate Director",
+  "company": "Guidehouse",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/guidehouse/jobs/corporate-pricing-associate-director",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-02",
+  "last_seen": "2026-08-02",
+  "active": true
  }
 }

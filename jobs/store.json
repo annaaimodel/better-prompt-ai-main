@@ -26914,7 +26914,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-03",
-  "active": true
+  "active": false
  },
  "7c14b0cb1b0e8dc4": {
   "title": "Corporate Pricing Associate Director",
@@ -26990,6 +26990,22 @@
   "category": "VA / Social / Chat",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-03",
+  "last_seen": "2026-08-03",
+  "active": true
+ },
+ "0be9c47039651da3": {
+  "title": "Sr. Account Executive",
+  "company": "Telli",
+  "location": "Berlin",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/telli/sr-account-executive-berlin-201890",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Europe",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-03",

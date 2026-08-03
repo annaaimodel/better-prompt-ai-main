@@ -27234,7 +27234,7 @@
   "tier": "",
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
-  "active": true
+  "active": false
  },
  "d0d1659590a78ca6": {
   "title": "Senior Content and Social Media Manager",
@@ -27292,6 +27292,22 @@
   "link": "https://himalayas.app/companies/skillsoft/jobs/growth-account-executive",
   "source": "Himalayas",
   "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-03",
+  "last_seen": "2026-08-03",
+  "active": false
+ },
+ "38b9f8e4b80facf9": {
+  "title": "Customer Success Manager",
+  "company": "CyberSheath",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/cybersheath/jobs/customer-success-manager-1911357800",
+  "source": "Himalayas",
+  "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
   "lead_type": "",
   "inbox": false,

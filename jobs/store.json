@@ -27090,7 +27090,7 @@
   "tier": "",
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
-  "active": true
+  "active": false
  },
  "1286997c4ad97a72": {
   "title": "Senior Program Manager - Customer Success Programs",
@@ -27100,6 +27100,22 @@
   "link": "https://himalayas.app/companies/samsara/jobs/senior-program-manager-customer-success-programs",
   "source": "Himalayas",
   "category": "Success (CSM / customer / client / onboarding)",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-03",
+  "last_seen": "2026-08-03",
+  "active": false
+ },
+ "23b8f87c978dc36a": {
+  "title": "Research Scientist",
+  "company": "Oura Health Ltd",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/oura-health-ltd/jobs/research-scientist",
+  "source": "Himalayas",
+  "category": "Closer",
   "country": "United States",
   "lead_type": "",
   "inbox": false,

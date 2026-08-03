@@ -27154,7 +27154,7 @@
   "tier": "",
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
-  "active": true
+  "active": false
  },
  "5b2ab46590271b38": {
   "title": "Data Integrity Virtual Assistant (Job ID: MICREG1)",
@@ -27203,5 +27203,21 @@
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
   "active": false
+ },
+ "f749897d12fb7bf5": {
+  "title": "Inside Sales Manager",
+  "company": "Agilent Technologies",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/agilent-technologies/jobs/inside-sales-manager",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-03",
+  "last_seen": "2026-08-03",
+  "active": true
  }
 }

@@ -27331,5 +27331,37 @@
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
   "active": true
+ },
+ "a10a037c6ff6f423": {
+  "title": "Enterprise Account Executive - DACH",
+  "company": "Ashby",
+  "location": "Germany",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/ashby/enterprise-account-executive-dach-germany-218367",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Europe",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-03",
+  "last_seen": "2026-08-03",
+  "active": true
+ },
+ "b07ade1bbdc8603f": {
+  "title": "Sales Engineer (DACH)",
+  "company": "Constructor",
+  "location": "Remote - Germany",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/constructor/sales-engineer-dach-munich-162549",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Europe",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-03",
+  "last_seen": "2026-08-03",
+  "active": true
  }
 }

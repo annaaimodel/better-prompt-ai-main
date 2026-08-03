@@ -27250,7 +27250,7 @@
   "tier": "",
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
-  "active": true
+  "active": false
  },
  "92fca087eaf37b9e": {
   "title": "Product Marketing Lead",
@@ -27266,7 +27266,7 @@
   "tier": "",
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
-  "active": true
+  "active": false
  },
  "c28adda92b5dc3e8": {
   "title": "Growth and Demand Gen Lead",
@@ -27282,6 +27282,6 @@
   "tier": "",
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
-  "active": true
+  "active": false
  }
 }

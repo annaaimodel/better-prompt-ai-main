@@ -27218,7 +27218,7 @@
   "tier": "",
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
-  "active": true
+  "active": false
  },
  "f4af9a2ec1d9a554": {
   "title": "Sales Manager, EMEA",
@@ -27283,5 +27283,21 @@
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
   "active": false
+ },
+ "098965ff1a45f2f3": {
+  "title": "Growth Account Executive",
+  "company": "Skillsoft",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/skillsoft/jobs/growth-account-executive",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-03",
+  "last_seen": "2026-08-03",
+  "active": true
  }
 }

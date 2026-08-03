@@ -27010,7 +27010,7 @@
   "tier": "",
   "first_seen": "2026-08-03",
   "last_seen": "2026-08-03",
-  "active": true
+  "active": false
  },
  "09bf256c723c816f": {
   "title": "Senior Account Manager, Enterprise",
@@ -27118,6 +27118,22 @@
   "category": "Closer",
   "country": "United States",
   "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-03",
+  "last_seen": "2026-08-03",
+  "active": true
+ },
+ "a88fa88fc803bb06": {
+  "title": "Sales Development Representative",
+  "company": "Aaron Sansoni Group International",
+  "location": "South Melbourne,",
+  "comp": "",
+  "link": "https://remoteOK.com/remote-jobs/remote-sales-development-representative-aaron-sansoni-group-international-1136010",
+  "source": "RemoteOK",
+  "category": "Setter — Phone Setting",
+  "country": "Australia",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-03",

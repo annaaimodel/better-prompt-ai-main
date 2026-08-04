@@ -27634,7 +27634,7 @@
   "tier": "",
   "first_seen": "2026-08-04",
   "last_seen": "2026-08-04",
-  "active": true
+  "active": false
  },
  "e71392b71ad8105e": {
   "title": "Account Executive",
@@ -27646,6 +27646,22 @@
   "category": "Closer",
   "country": "Europe",
   "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-04",
+  "last_seen": "2026-08-04",
+  "active": false
+ },
+ "f47da0c9788ac35c": {
+  "title": "Account Executive",
+  "company": "blackforestlabs",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/blackforestlabs/account-executive-86560",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-04",

@@ -27394,7 +27394,7 @@
   "tier": "",
   "first_seen": "2026-08-04",
   "last_seen": "2026-08-04",
-  "active": true
+  "active": false
  },
  "c49a625b65b8a9e5": {
   "title": "Senior Alliance Manager - Infrastructure",
@@ -27410,7 +27410,7 @@
   "tier": "",
   "first_seen": "2026-08-04",
   "last_seen": "2026-08-04",
-  "active": true
+  "active": false
  },
  "5e237371e44dccec": {
   "title": "Solution Architect",

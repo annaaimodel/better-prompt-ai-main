@@ -1,13 +1,13 @@
 # Site analytics — AURUM
 
-_Generated 2026-08-03 10:10 UTC from GoatCounter (`aurum-hts`)._
+_Generated 2026-08-04 09:17 UTC from GoatCounter (`aurum-hts`)._
 
 | Period | Pageviews |
 |--------|-----------|
 | **Last 24 hours** | 0 |
 | Today | 0 |
-| Last 7 days | 13 |
-| Last 30 days | 50 |
+| Last 7 days | 10 |
+| Last 30 days | 46 |
 | All-time | 276 |
 
 > **What's measured:** GoatCounter counts **pageviews** (privacy-first, cookie-less), so these are pageviews — it doesn't expose a separate unique-visitor figure via its API. *Last 24 hours* is a rolling window summed from the hourly data.
@@ -17,7 +17,7 @@ _Generated 2026-08-03 10:10 UTC from GoatCounter (`aurum-hts`)._
 | Page | Pageviews |
 |------|-----------|
 | `/os` | 29 |
-| `/` | 7 |
-| `/hiring` | 6 |
-| `/jobs` | 6 |
+| `/hiring` | 5 |
+| `/jobs` | 5 |
+| `/` | 5 |
 | `/jobs/all` | 2 |

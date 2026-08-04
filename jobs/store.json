@@ -27507,5 +27507,37 @@
   "first_seen": "2026-08-04",
   "last_seen": "2026-08-04",
   "active": false
+ },
+ "7f1fb9286185eb8d": {
+  "title": "Founding Head of Sales",
+  "company": "Ygo",
+  "location": "Remote EU",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/ygo/remote-founding-head-of-sales-380089",
+  "source": "Arbeitnow",
+  "category": "Setter / SDR",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-04",
+  "last_seen": "2026-08-04",
+  "active": true
+ },
+ "680d27971e64027e": {
+  "title": "AI Transformation Architect EMEA",
+  "company": "Unframe",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/unframe/ai-transformation-architect-emea-248105",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-04",
+  "last_seen": "2026-08-04",
+  "active": true
  }
 }

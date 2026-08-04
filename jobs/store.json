@@ -27490,7 +27490,7 @@
   "tier": "",
   "first_seen": "2026-08-04",
   "last_seen": "2026-08-04",
-  "active": true
+  "active": false
  },
  "f2a58812e23d1293": {
   "title": "Senior Recruiter",
@@ -27506,6 +27506,6 @@
   "tier": "",
   "first_seen": "2026-08-04",
   "last_seen": "2026-08-04",
-  "active": true
+  "active": false
  }
 }

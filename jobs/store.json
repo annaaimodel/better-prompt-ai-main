@@ -17667,8 +17667,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-27",
-  "last_seen": "2026-07-29",
-  "active": false,
+  "last_seen": "2026-08-05",
+  "active": true,
   "delisted": "dead"
  },
  "aac559728628ffd4": {
@@ -27869,6 +27869,22 @@
   "source": "JSearch",
   "category": "VA / Social / Chat",
   "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-05",
+  "last_seen": "2026-08-05",
+  "active": true
+ },
+ "f59baf719052ccb1": {
+  "title": "Enterprise Account Executive",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/port/jobs/enterprise-account-executive",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
   "lead_type": "",
   "inbox": false,
   "tier": "",

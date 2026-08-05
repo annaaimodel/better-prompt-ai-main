@@ -27842,7 +27842,7 @@
   "tier": "",
   "first_seen": "2026-08-05",
   "last_seen": "2026-08-05",
-  "active": true
+  "active": false
  },
  "f99e95fd40de90f5": {
   "title": "*Enterprise Account Executive - Healthcare",
@@ -27858,6 +27858,6 @@
   "tier": "",
   "first_seen": "2026-08-05",
   "last_seen": "2026-08-05",
-  "active": true
+  "active": false
  }
 }

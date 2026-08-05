@@ -23810,7 +23810,7 @@
   "tier": "",
   "first_seen": "2026-07-22",
   "last_seen": "2026-08-05",
-  "active": true
+  "active": false
  },
  "5ebda4e5028dfc30": {
   "title": "Director, Strategic Accounts",
@@ -27790,6 +27790,22 @@
   "category": "Closer",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-05",
+  "last_seen": "2026-08-05",
+  "active": true
+ },
+ "549019ffe8033fab": {
+  "title": "Senior Named Account Executive",
+  "company": "commercetools",
+  "location": "Anywhere in the World",
+  "comp": "",
+  "link": "https://weworkremotely.com/remote-jobs/commercetools-senior-named-account-executive",
+  "source": "WeWorkRemotely",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-05",

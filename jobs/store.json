@@ -27938,6 +27938,38 @@
   "tier": "",
   "first_seen": "2026-08-06",
   "last_seen": "2026-08-06",
+  "active": false
+ },
+ "f87d932963203f22": {
+  "title": "Enterprise Account Executive - East (New England)",
+  "company": "Obsidiansecurity",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/obsidiansecurity/enterprise-account-executive-east-new-england-306319",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-06",
+  "last_seen": "2026-08-06",
+  "active": true
+ },
+ "3bbfb4faccd0f9eb": {
+  "title": "Pre-Sales Deployed Engineer",
+  "company": "Clera",
+  "location": "remote",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/clera/remote-pre-sales-deployed-engineer-239500",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-06",
+  "last_seen": "2026-08-06",
   "active": true
  }
 }

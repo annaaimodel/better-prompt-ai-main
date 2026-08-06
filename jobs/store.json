@@ -27961,7 +27961,7 @@
   "company": "Clera",
   "location": "remote",
   "comp": "",
-  "link": "https://www.arbeitnow.com/jobs/companies/clera/remote-pre-sales-deployed-engineer-281425",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/clera/remote-pre-sales-deployed-engineer-218767",
   "source": "Arbeitnow",
   "category": "Closer",
   "country": "Worldwide / Anywhere",
@@ -27970,7 +27970,7 @@
   "tier": "",
   "first_seen": "2026-08-06",
   "last_seen": "2026-08-06",
-  "active": false
+  "active": true
  },
  "9373255db46fa672": {
   "title": "Corporate Account Executive - West",
@@ -28002,7 +28002,7 @@
   "tier": "",
   "first_seen": "2026-08-06",
   "last_seen": "2026-08-06",
-  "active": true
+  "active": false
  },
  "31ca981df92cff62": {
   "title": "Entry-Level Sales Development Representative",
@@ -28126,6 +28126,38 @@
   "category": "Closer",
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-06",
+  "last_seen": "2026-08-06",
+  "active": true
+ },
+ "7d0f033746a912e1": {
+  "title": "Senior Information Security Specialist",
+  "company": "Secfix",
+  "location": "Remote-Europe",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/secfix/senior-information-security-specialist-berlin-298456",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-06",
+  "last_seen": "2026-08-06",
+  "active": true
+ },
+ "2d62d71404b6a389": {
+  "title": "Director of Enablement (Revenue Operations)",
+  "company": "name",
+  "location": "Brazil",
+  "comp": "",
+  "link": "https://himalayas.app/companies/quartile/jobs/director-of-enablement-revenue-operations",
+  "source": "Himalayas",
+  "category": "Setter / SDR",
+  "country": "Latin America",
+  "lead_type": "Cold",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-06",

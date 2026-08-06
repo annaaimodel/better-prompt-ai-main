@@ -1,0 +1,933 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="A private workbook for loosening the grip of appearance-based self-worth.">
+<meta name="theme-color" content="#faf7f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15130f" media="(prefers-color-scheme: dark)">
+<title>Anchor</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23b3705a' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%236f8b72'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#faf7f3; --card:#fffdfa; --card2:#f4efe8;
+  --ink:#241f1b; --ink2:#4c443c; --mut:#867c72; --line:#e7ded2;
+  --clay:#b3705a; --clay-s:#9a5c48; --sage:#6f8b72; --sage-s:#5b7660;
+  --warn:#a8763a; --shadow:0 1px 2px rgba(60,42,28,.05),0 8px 24px -14px rgba(60,42,28,.22);
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#15130f; --card:#1d1a16; --card2:#232019;
+    --ink:#f0eae1; --ink2:#cfc6b9; --mut:#968c7e; --line:#312c25;
+    --clay:#d08e75; --clay-s:#e0a68e; --sage:#8fae92; --sage-s:#a6c2a9;
+    --warn:#d0a068; --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -18px rgba(0,0,0,.8);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.55;
+  font-family:ui-rounded,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3{line-height:1.25;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+input,textarea,select{font:inherit;color:inherit}
+.wrap{max-width:660px;margin:0 auto;padding:0 16px}
+
+/* ---------- header + nav ---------- */
+header{padding:22px 0 6px;text-align:center}
+.mark{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;font-size:12.5px;color:var(--mut)}
+.mark svg{display:block}
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:14px}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;max-width:660px;margin:0 auto;padding:0 10px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:none;border:0;padding:13px 12px 11px;font-size:14.5px;font-weight:600;
+  color:var(--mut);border-bottom:2px solid transparent;white-space:nowrap}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--clay)}
+
+/* ---------- shared ---------- */
+main{padding:20px 0 64px}
+.view{display:none;animation:fade .22s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px;box-shadow:var(--shadow);margin-bottom:14px}
+.card.flat{box-shadow:none;background:var(--card2)}
+.lede{color:var(--ink2);font-size:15px;margin:0 0 16px}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);margin:0 0 7px}
+h2.h{font-size:22px;font-weight:650;margin:0 0 6px;letter-spacing:-.01em}
+h3.sh{font-size:15.5px;font-weight:650;margin:0 0 4px}
+.mut{color:var(--mut);font-size:13.5px}
+.q{font-size:17px;font-weight:600;margin:0 0 3px;letter-spacing:-.005em}
+.hint{color:var(--mut);font-size:13.5px;margin:0 0 13px}
+label.fl{display:block;font-size:13.5px;font-weight:600;color:var(--ink2);margin:0 0 6px}
+.fl.sp{margin-top:18px}
+textarea,input[type=text]{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:11px;
+  padding:11px 13px;font-size:15.5px;outline:none;resize:vertical;transition:border-color .15s}
+textarea:focus,input[type=text]:focus{border-color:var(--clay)}
+textarea{min-height:86px;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:8px 13px;
+  font-size:14px;color:var(--ink2);transition:all .14s}
+.chip:hover{border-color:var(--clay)}
+.chip[aria-pressed=true]{background:var(--clay);border-color:var(--clay);color:#fff;font-weight:600}
+@media (prefers-color-scheme:dark){.chip[aria-pressed=true]{color:#1a1611}}
+.btn{border:1px solid transparent;border-radius:11px;padding:12px 20px;font-size:15px;font-weight:650;
+  background:var(--clay);color:#fff;transition:filter .14s}
+@media (prefers-color-scheme:dark){.btn{color:#1a1611}}
+.btn:hover{filter:brightness(1.06)}
+.btn:disabled{opacity:.4;cursor:not-allowed;filter:none}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--ink2);font-weight:600}
+.btn.ghost:hover{border-color:var(--clay);filter:none}
+.btn.sage{background:var(--sage)}
+.btn.sm{padding:8px 14px;font-size:14px;border-radius:9px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row.end{justify-content:flex-end}
+.sp{margin-top:16px}
+hr.sep{border:0;border-top:1px solid var(--line);margin:18px 0}
+
+/* slider */
+.slider{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:99px;
+  background:var(--line);outline:none;margin:12px 0 4px}
+.slider::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;
+  background:var(--clay);border:3px solid var(--card);box-shadow:var(--shadow);cursor:grab}
+.slider::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--clay);
+  border:3px solid var(--card);cursor:grab}
+.scale{display:flex;justify-content:space-between;font-size:12px;color:var(--mut)}
+.bignum{font-size:34px;font-weight:700;letter-spacing:-.02em;text-align:center;color:var(--clay);line-height:1}
+
+/* stepper */
+.dots{display:flex;gap:6px;justify-content:center;margin-bottom:18px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .2s}
+.dot.on{background:var(--clay);width:20px;border-radius:99px}
+.dot.done{background:var(--clay);opacity:.45}
+
+/* timer */
+.timerwrap{text-align:center;padding:6px 0 2px}
+.ring{position:relative;width:170px;height:170px;margin:0 auto 10px}
+.ring svg{transform:rotate(-90deg)}
+.ring .tin{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.breath{font-size:19px;font-weight:600;letter-spacing:-.01em}
+.tsec{font-size:13px;color:var(--mut);margin-top:2px;font-variant-numeric:tabular-nums}
+
+/* list items */
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:9px}
+.item .meta{font-size:12px;color:var(--mut);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.item p{margin:5px 0 0;font-size:15px}
+.pill{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:99px;
+  padding:2px 9px;font-size:11.5px;font-weight:600;color:var(--ink2)}
+.pill.sage{background:color-mix(in srgb,var(--sage) 16%,transparent);border-color:transparent;color:var(--sage-s)}
+.pill.clay{background:color-mix(in srgb,var(--clay) 14%,transparent);border-color:transparent;color:var(--clay-s)}
+.del{background:none;border:0;color:var(--mut);font-size:12.5px;padding:2px 4px;margin-left:auto}
+.del:hover{color:var(--clay)}
+.empty{text-align:center;color:var(--mut);font-size:14.5px;padding:26px 14px;border:1px dashed var(--line);border-radius:12px}
+
+/* worth bars */
+.dom{margin-bottom:13px}
+.dom .top{display:flex;justify-content:space-between;align-items:baseline;font-size:14.5px;gap:10px}
+.dom .top b{font-weight:600}
+.dom .val{font-size:12.5px;color:var(--mut);font-variant-numeric:tabular-nums}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--sage);transition:width .25s}
+.bar i.app{background:var(--clay)}
+
+/* stats */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px}
+.stat{background:var(--card2);border-radius:12px;padding:14px}
+.stat .n{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.stat .l{font-size:12.5px;color:var(--mut);margin-top:3px}
+.spark{width:100%;height:52px;display:block}
+
+footer{text-align:center;color:var(--mut);font-size:12.5px;padding:0 20px 34px;line-height:1.6}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);
+  padding:11px 20px;border-radius:99px;font-size:14.5px;font-weight:600;opacity:0;pointer-events:none;
+  transition:all .25s;z-index:50;box-shadow:var(--shadow)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="mark">
+    <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="13" fill="none" stroke="var(--clay)" stroke-width="2.6"/>
+      <circle cx="16" cy="16" r="4" fill="var(--sage)"/>
+    </svg>
+    Anchor
+  </div>
+</header>
+
+<nav><div class="tabs" role="tablist">
+  <button class="tab" role="tab" data-view="now" aria-selected="true">Right now</button>
+  <button class="tab" role="tab" data-view="reframe" aria-selected="false">Reframe</button>
+  <button class="tab" role="tab" data-view="exp" aria-selected="false">Experiments</button>
+  <button class="tab" role="tab" data-view="worth" aria-selected="false">Worth</button>
+  <button class="tab" role="tab" data-view="patterns" aria-selected="false">Patterns</button>
+  <button class="tab" role="tab" data-view="data" aria-selected="false">Data</button>
+</div></nav>
+
+<main class="wrap">
+
+  <!-- ============ RIGHT NOW ============ -->
+  <section class="view on" id="v-now">
+    <div class="card" id="nowCard"></div>
+    <div id="nowRecent"></div>
+  </section>
+
+  <!-- ============ REFRAME ============ -->
+  <section class="view" id="v-reframe">
+    <div class="card" id="reCard"></div>
+    <div id="reList"></div>
+  </section>
+
+  <!-- ============ EXPERIMENTS ============ -->
+  <section class="view" id="v-exp">
+    <div class="card" id="expCard"></div>
+    <div id="expList"></div>
+  </section>
+
+  <!-- ============ WORTH ============ -->
+  <section class="view" id="v-worth">
+    <div class="card" id="worthCard"></div>
+    <div class="card" id="evCard"></div>
+    <div class="card" id="bodyCard"></div>
+  </section>
+
+  <!-- ============ PATTERNS ============ -->
+  <section class="view" id="v-patterns">
+    <div id="patWrap"></div>
+  </section>
+
+  <!-- ============ DATA ============ -->
+  <section class="view" id="v-data">
+    <div class="card">
+      <p class="eyebrow">Private by design</p>
+      <h2 class="h">Your entries never leave this device</h2>
+      <p class="lede">Everything you write here is saved in this browser's local storage. There is no account,
+        no server, no analytics. Clearing your browser data — or using a different device — means starting over,
+        so export a backup now and then.</p>
+      <div class="row">
+        <button class="btn" id="btnExport">Export backup</button>
+        <button class="btn ghost" id="btnImport">Import backup</button>
+        <input type="file" id="fileIn" accept="application/json" hidden>
+      </div>
+      <hr class="sep">
+      <h3 class="sh">Start over</h3>
+      <p class="mut" style="margin:4px 0 12px">Deletes every entry permanently. Export first if you might want it.</p>
+      <button class="btn ghost" id="btnWipe">Erase everything</button>
+    </div>
+    <div class="card flat">
+      <h3 class="sh">One honest note</h3>
+      <p class="mut" style="margin-top:6px">This is a self-help workbook, not treatment. If what you're carrying
+        shows up as disordered eating, or you're having thoughts of hurting yourself, a GP or a therapist is the
+        right tool for that — this one isn't built for it, and you deserve the better one.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>Anchor · everything stays on this device</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+"use strict";
+/* ============================================================
+   Storage
+   ============================================================ */
+const KEY = "anchor.v1";
+const DEFAULT_DOMAINS = [
+  { name: "How my body looks", w: 70, appearance: true },
+  { name: "Kindness to people", w: 45 },
+  { name: "Work & craft", w: 45 },
+  { name: "Showing up / loyalty", w: 45 },
+  { name: "Humour", w: 40 },
+  { name: "Curiosity & learning", w: 40 },
+  { name: "Courage", w: 35 },
+  { name: "Honesty", w: 40 }
+];
+const BLANK = { v:1, moments:[], reframes:[], experiments:[], evidence:[], body:[],
+                domains:JSON.parse(JSON.stringify(DEFAULT_DOMAINS)), worthLog:[] };
+
+let db;
+function load(){
+  try {
+    const raw = localStorage.getItem(KEY);
+    db = raw ? Object.assign(JSON.parse(JSON.stringify(BLANK)), JSON.parse(raw)) : JSON.parse(JSON.stringify(BLANK));
+  } catch(e){ db = JSON.parse(JSON.stringify(BLANK)); }
+  if(!db.domains || !db.domains.length) db.domains = JSON.parse(JSON.stringify(DEFAULT_DOMAINS));
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(db)); }catch(e){ toast("Couldn't save — storage full?"); } }
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+
+/* ============================================================
+   Helpers
+   ============================================================ */
+const $  = (s,r=document) => r.querySelector(s);
+const $$ = (s,r=document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s==null?"":s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const todayKey = () => new Date().toISOString().slice(0,10);
+
+function when(ts){
+  const d = new Date(ts), now = new Date();
+  const days = Math.round((new Date(now.toDateString()) - new Date(d.toDateString())) / 864e5);
+  const time = d.toLocaleTimeString([], {hour:"numeric", minute:"2-digit"});
+  if(days === 0) return "Today, " + time;
+  if(days === 1) return "Yesterday, " + time;
+  if(days < 7)  return d.toLocaleDateString([], {weekday:"long"}) + ", " + time;
+  return d.toLocaleDateString([], {day:"numeric", month:"short"}) + ", " + time;
+}
+let toastT;
+function toast(msg){
+  const t = $("#toast"); t.textContent = msg; t.classList.add("on");
+  clearTimeout(toastT); toastT = setTimeout(()=>t.classList.remove("on"), 2100);
+}
+/** Multi- or single-select chip group. Returns HTML; wire with bindChips(). */
+function chipsHTML(name, options, selected){
+  return options.map(o =>
+    `<button class="chip" type="button" data-chipgroup="${name}" data-val="${esc(o)}" `+
+    `aria-pressed="${selected.includes(o)}">${esc(o)}</button>`).join("");
+}
+function bindChips(root, name, multi, onChange){
+  $$(`[data-chipgroup="${name}"]`, root).forEach(btn => btn.addEventListener("click", () => {
+    const on = btn.getAttribute("aria-pressed") === "true";
+    if(!multi) $$(`[data-chipgroup="${name}"]`, root).forEach(b => b.setAttribute("aria-pressed","false"));
+    btn.setAttribute("aria-pressed", multi ? String(!on) : "true");
+    onChange($$(`[data-chipgroup="${name}"]`, root)
+      .filter(b => b.getAttribute("aria-pressed") === "true")
+      .map(b => b.dataset.val));
+  }));
+}
+function sliderHTML(id, val, lo, hi){
+  return `<input type="range" class="slider" id="${id}" min="0" max="10" step="1" value="${val}">
+          <div class="scale"><span>${esc(lo)}</span><span>${esc(hi)}</span></div>`;
+}
+
+/* ============================================================
+   Navigation
+   ============================================================ */
+const VIEWS = { now:renderNow, reframe:renderReframe, exp:renderExp, worth:renderWorth,
+                patterns:renderPatterns, data:()=>{} };
+function go(view){
+  $$(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.view === view)));
+  $$(".view").forEach(v => v.classList.toggle("on", v.id === "v-" + view));
+  VIEWS[view]();
+  window.scrollTo({ top:0, behavior:"instant" in window ? "instant" : "auto" });
+}
+$$(".tab").forEach(t => t.addEventListener("click", () => go(t.dataset.view)));
+
+/* ============================================================
+   VIEW 1 — Right now
+   The in-the-moment flow for a validation urge, run as a 5-step
+   stepper over a single `draft` object.
+   ============================================================ */
+const TRIGGERS = ["A mirror","A photo of me","Clothes not fitting","Social media","Something someone said",
+  "Eating around people","Exercise / the gym","Being in a group","Dating or intimacy",
+  "Someone else's body","Getting dressed","No clear reason"];
+const NEEDS = ["To feel safe","To belong","To be seen","Comfort","Rest",
+  "Permission to take up space","To know I'm not too much","Connection","To be taken seriously","To be wanted"];
+const INSTEAD = ["Ride out the urge","Say it out loud to myself","Do the kindness script","Text someone honestly (not fishing)",
+  "Do one thing I'd do anyway","Just log it and carry on"];
+
+let draft = null, step = 0;
+function newDraft(){ draft = { trigger:[], wanted:"", hold:"", need:[], instead:[], before:6, after:null }; step = 0; }
+
+function renderNow(){
+  if(!draft) newDraft();
+  const c = $("#nowCard");
+  const dots = [0,1,2,3,4].map(i =>
+    `<span class="dot ${i===step?"on":(i<step?"done":"")}"></span>`).join("");
+  c.innerHTML = `<div class="dots">${dots}</div><div id="stepBody"></div>`;
+  ({0:s0,1:s1,2:s2,3:s3,4:s4}[step])();
+  renderRecent();
+}
+function navRow(backLabel, nextLabel, nextId, disabled){
+  return `<div class="row end sp">
+    ${backLabel ? `<button class="btn ghost" id="back">${esc(backLabel)}</button>` : ""}
+    <button class="btn" id="${nextId}" ${disabled?"disabled":""}>${esc(nextLabel)}</button></div>`;
+}
+function wireNav(){
+  const b = $("#back"); if(b) b.addEventListener("click", () => { step--; renderNow(); });
+}
+
+/* step 0 — what happened + how strong */
+function s0(){
+  $("#stepBody").innerHTML = `
+    <p class="eyebrow">Step 1 of 5</p>
+    <p class="q">What set this off?</p>
+    <p class="hint">Pick whatever is closest. Skipping is fine too.</p>
+    <div class="chips">${chipsHTML("trg", TRIGGERS, draft.trigger)}</div>
+    <hr class="sep">
+    <p class="q">How loud is it right now?</p>
+    <div class="bignum" id="beforeNum">${draft.before}</div>
+    ${sliderHTML("beforeSlider", draft.before, "barely there", "unbearable")}
+    ${navRow("", "Next", "next", false)}`;
+  bindChips($("#stepBody"), "trg", true, v => draft.trigger = v);
+  $("#beforeSlider").addEventListener("input", e => {
+    draft.before = +e.target.value; $("#beforeNum").textContent = draft.before;
+  });
+  $("#next").addEventListener("click", () => { step = 1; renderNow(); });
+}
+
+/* step 1 — the wanted sentence + how long it would hold */
+function s1(){
+  const holds = ["A few minutes","An hour or so","The rest of today","A few days","It wouldn't be enough"];
+  $("#stepBody").innerHTML = `
+    <p class="eyebrow">Step 2 of 5</p>
+    <p class="q">What do you want someone to say to you?</p>
+    <p class="hint">The exact words. Not the tidy version — the one you actually want to hear.</p>
+    <textarea id="wanted" placeholder="&ldquo;You look&hellip;&rdquo;  &ldquo;I still&hellip;&rdquo;  &ldquo;You're not&hellip;&rdquo;">${esc(draft.wanted)}</textarea>
+    <hr class="sep">
+    <p class="q">If they said it — how long would it hold?</p>
+    <p class="hint">This isn't a trick question. Just notice the honest answer.</p>
+    <div class="chips">${chipsHTML("hold", holds, draft.hold ? [draft.hold] : [])}</div>
+    <div id="holdNote"></div>
+    ${navRow("Back", "Next", "next", false)}`;
+  $("#wanted").addEventListener("input", e => draft.wanted = e.target.value);
+  bindChips($("#stepBody"), "hold", false, v => {
+    draft.hold = v[0] || "";
+    $("#holdNote").innerHTML = `<div class="card flat" style="margin:14px 0 0"><p class="mut" style="margin:0">
+      Worth sitting with: you're about to spend real effort on something that lasts
+      <b>${esc(draft.hold.toLowerCase())}</b>. Not because wanting it is weak — because that's how
+      borrowed worth works. It has to be re-borrowed, every single day.</p></div>`;
+  });
+  wireNav();
+  $("#next").addEventListener("click", () => { step = 2; renderNow(); });
+}
+
+/* step 2 — the need underneath */
+function s2(){
+  $("#stepBody").innerHTML = `
+    <p class="eyebrow">Step 3 of 5</p>
+    <p class="q">Underneath the compliment — what are you actually after?</p>
+    <p class="hint">Reassurance is the delivery method. This is the cargo. Pick up to two or three.</p>
+    <div class="chips">${chipsHTML("need", NEEDS, draft.need)}</div>
+    ${navRow("Back", "Next", "next", false)}`;
+  bindChips($("#stepBody"), "need", true, v => draft.need = v);
+  wireNav();
+  $("#next").addEventListener("click", () => { step = 3; renderNow(); });
+}
+
+/* step 3 — what to do instead, incl. the 90s timer and the kindness script */
+function s3(){
+  $("#stepBody").innerHTML = `
+    <p class="eyebrow">Step 4 of 5</p>
+    <p class="q">What will you do with it?</p>
+    <p class="hint">Not "resist forever". Just this one urge, this one time.</p>
+    <div class="chips">${chipsHTML("ins", INSTEAD, draft.instead)}</div>
+    <div id="tools"></div>
+    ${navRow("Back", "Next", "next", false)}`;
+  bindChips($("#stepBody"), "ins", true, v => { draft.instead = v; renderTools(v); });
+  renderTools(draft.instead);
+  wireNav();
+  $("#next").addEventListener("click", () => { step = 4; renderNow(); });
+}
+function renderTools(sel){
+  const t = $("#tools"); t.innerHTML = "";
+  if(sel.includes("Ride out the urge")) t.insertAdjacentHTML("beforeend", timerHTML());
+  if(sel.includes("Do the kindness script")) t.insertAdjacentHTML("beforeend", scriptHTML());
+  if(sel.includes("Ride out the urge")) wireTimer();
+}
+function timerHTML(){
+  return `<div class="card flat sp"><h3 class="sh">Ninety seconds</h3>
+    <p class="mut" style="margin:4px 0 10px">An urge is a wave, not a verdict. It peaks and it drops — usually
+      inside a minute and a half. You don't have to argue with it. Just outlast it.</p>
+    <div class="timerwrap">
+      <div class="ring">
+        <svg width="170" height="170" viewBox="0 0 170 170">
+          <circle cx="85" cy="85" r="72" fill="none" stroke="var(--line)" stroke-width="9"/>
+          <circle cx="85" cy="85" r="72" fill="none" stroke="var(--sage)" stroke-width="9"
+            stroke-linecap="round" id="ringArc" stroke-dasharray="452.4" stroke-dashoffset="0"/>
+        </svg>
+        <div class="tin"><div class="breath" id="breathTxt">Ready</div><div class="tsec" id="tsec">1:30</div></div>
+      </div>
+      <button class="btn sage sm" id="timerBtn">Start</button>
+    </div></div>`;
+}
+let timerH = null;
+function wireTimer(){
+  const TOTAL = 90, C = 452.4;
+  const PHASES = [["Breathe in", 4], ["Hold", 4], ["Breathe out", 6]];
+  let left = TOTAL;
+  const btn = $("#timerBtn"), arc = $("#ringArc"), txt = $("#breathTxt"), sec = $("#tsec");
+  const paint = () => {
+    arc.style.strokeDashoffset = String(C * (1 - left / TOTAL));
+    sec.textContent = Math.floor(left/60) + ":" + String(left % 60).padStart(2,"0");
+    const el = (TOTAL - left) % 14; let acc = 0, label = PHASES[0][0];
+    for(const [n,d] of PHASES){ if(el < acc + d){ label = n; break; } acc += d; }
+    txt.textContent = label;
+  };
+  btn.addEventListener("click", () => {
+    if(timerH){ clearInterval(timerH); timerH = null; btn.textContent = "Resume"; return; }
+    if(left <= 0){ left = TOTAL; paint(); }
+    btn.textContent = "Pause";
+    timerH = setInterval(() => {
+      left--; paint();
+      if(left <= 0){ clearInterval(timerH); timerH = null;
+        txt.textContent = "Still here"; sec.textContent = "the wave passed";
+        btn.textContent = "Again"; }
+    }, 1000);
+  });
+  paint();
+}
+function scriptHTML(){
+  return `<div class="card flat sp"><h3 class="sh">Say these three, slowly</h3>
+    <p class="mut" style="margin:4px 0 12px">Out loud if you can. A hand on your chest or your stomach helps —
+      it gives the words somewhere to land.</p>
+    <p style="margin:0 0 9px"><span class="pill clay">1</span> &nbsp;This hurts right now. That's real, and I'm not
+      going to talk myself out of it.</p>
+    <p style="margin:0 0 9px"><span class="pill clay">2</span> &nbsp;Every person who has ever wanted to be wanted
+      knows this feeling. I'm not defective for having it. I'm in company.</p>
+    <p style="margin:0"><span class="pill clay">3</span> &nbsp;I can be on my own side while this passes. Especially
+      while this passes.</p></div>`;
+}
+
+/* step 4 — after-rating + save */
+function s4(){
+  const after = draft.after == null ? draft.before : draft.after;
+  $("#stepBody").innerHTML = `
+    <p class="eyebrow">Step 5 of 5</p>
+    <p class="q">Where is it now?</p>
+    <p class="hint">You started at ${draft.before}. No right answer — a 9 is information, not failure.</p>
+    <div class="bignum" id="afterNum">${after}</div>
+    ${sliderHTML("afterSlider", after, "barely there", "unbearable")}
+    <div class="row end sp">
+      <button class="btn ghost" id="back">Back</button>
+      <button class="btn" id="saveMoment">Save &amp; close</button>
+    </div>`;
+  $("#afterSlider").addEventListener("input", e => {
+    draft.after = +e.target.value; $("#afterNum").textContent = draft.after;
+  });
+  wireNav();
+  $("#saveMoment").addEventListener("click", () => {
+    if(draft.after == null) draft.after = draft.before;
+    db.moments.unshift(Object.assign({ id:uid(), t:Date.now() }, draft));
+    save();
+    const drop = draft.before - draft.after;
+    newDraft(); renderNow();
+    toast(drop > 0 ? `Logged — down ${drop} point${drop>1?"s":""}` : "Logged. That counts too.");
+  });
+}
+
+function renderRecent(){
+  const box = $("#nowRecent"), list = db.moments.slice(0, 5);
+  if(!list.length){
+    box.innerHTML = `<div class="empty">Nothing logged yet. The next time you catch yourself
+      angling for someone to say something nice — come here first.</div>`;
+    return;
+  }
+  box.innerHTML = `<h3 class="sh" style="margin:22px 0 10px">Recent moments</h3>` + list.map(m => `
+    <div class="item">
+      <div class="meta">
+        <span>${esc(when(m.t))}</span>
+        ${m.trigger.length ? `<span class="pill">${esc(m.trigger[0])}</span>` : ""}
+        <span class="pill ${m.after < m.before ? "sage" : "clay"}">${m.before} &rarr; ${m.after}</span>
+        <button class="del" data-del-moment="${m.id}">Delete</button>
+      </div>
+      ${m.wanted ? `<p>&ldquo;${esc(m.wanted)}&rdquo;</p>` : ""}
+      ${m.need.length ? `<p class="mut" style="font-size:13.5px">Really wanted: ${esc(m.need.join(", ").toLowerCase())}</p>` : ""}
+    </div>`).join("");
+  $$("[data-del-moment]", box).forEach(b => b.addEventListener("click", () => {
+    db.moments = db.moments.filter(x => x.id !== b.dataset.delMoment); save(); renderNow();
+  }));
+}
+
+/* ============================================================
+   VIEW 2 — Reframe
+   A thought record aimed specifically at the rule under the thought.
+   ============================================================ */
+function renderReframe(){
+  $("#reCard").innerHTML = `
+    <p class="eyebrow">Thought record</p>
+    <h2 class="h">Go after the rule, not the mood</h2>
+    <p class="lede">"I look disgusting" isn't the problem sentence — it's the symptom. The problem sentence is the
+      rule sitting underneath it, the one that decides what you're allowed to have. Rules can be looked at.</p>
+    <label class="fl" for="reThought">The thought, word for word</label>
+    <textarea id="reThought" placeholder="What did your head actually say?"></textarea>
+    <label class="fl sp" for="reRule">Finish this: &ldquo;If I'm this size, then I'm not allowed to&hellip;&rdquo;</label>
+    <textarea id="reRule" placeholder="&hellip;be looked at. &hellip;ask for things. &hellip;be loved without earning it first."></textarea>
+    <label class="fl sp" for="reAgainst">Name one person this rule doesn't apply to</label>
+    <textarea id="reAgainst" placeholder="Someone you love who breaks this rule and is obviously still worth loving. What would you say if they used this rule on themselves?"></textarea>
+    <label class="fl sp" for="reTruer">The truer sentence — the one you'd say to them</label>
+    <textarea id="reTruer" placeholder="Not a pep talk. Just what's actually true, said kindly."></textarea>
+    <div class="row end sp"><button class="btn" id="reSave">Save</button></div>`;
+  $("#reSave").addEventListener("click", () => {
+    const r = { id:uid(), t:Date.now(), thought:$("#reThought").value.trim(), rule:$("#reRule").value.trim(),
+                against:$("#reAgainst").value.trim(), truer:$("#reTruer").value.trim() };
+    if(!r.thought && !r.rule){ toast("Write at least the thought or the rule"); return; }
+    db.reframes.unshift(r); save(); renderReframe(); toast("Saved");
+  });
+  const box = $("#reList");
+  if(!db.reframes.length){ box.innerHTML = ""; return; }
+  box.innerHTML = `<h3 class="sh" style="margin:22px 0 10px">Rules you've caught</h3>` + db.reframes.map(r => `
+    <div class="item">
+      <div class="meta"><span>${esc(when(r.t))}</span>
+        <button class="del" data-del-re="${r.id}">Delete</button></div>
+      ${r.thought ? `<p>&ldquo;${esc(r.thought)}&rdquo;</p>` : ""}
+      ${r.rule ? `<p class="mut" style="font-size:13.5px">Rule: not allowed to ${esc(r.rule)}</p>` : ""}
+      ${r.truer ? `<p style="color:var(--sage-s);font-size:14.5px">${esc(r.truer)}</p>` : ""}
+    </div>`).join("");
+  $$("[data-del-re]", box).forEach(b => b.addEventListener("click", () => {
+    db.reframes = db.reframes.filter(x => x.id !== b.dataset.delRe); save(); renderReframe();
+  }));
+}
+
+/* ============================================================
+   VIEW 3 — Experiments
+   Predict, then skip the reassurance, then record what actually
+   happened. The gap between the two is the whole point.
+   ============================================================ */
+const SKIPS = ["Ask &ldquo;do I look okay?&rdquo;","Check the mirror again","Change outfit again",
+  "Delete or untag the photo","Edit the photo","Joke about my weight first","Apologise for what I'm eating",
+  "Hide my body in the photo","Ask if they still find me attractive","Scan the room for who's thinner",
+  "Check for likes","Ask for the compliment sideways"];
+
+function renderExp(){
+  const open = db.experiments.filter(e => !e.done);
+  const done = db.experiments.filter(e => e.done);
+  const pe = predictionError();
+  $("#expCard").innerHTML = `
+    <p class="eyebrow">Behavioural experiment</p>
+    <h2 class="h">Find out what actually happens</h2>
+    <p class="lede">Reassurance-seeking never gets tested, so the fear never gets corrected. Here you make the
+      prediction <em>first</em>, then skip the reassurance once, then write down what really happened. Do it enough
+      times and the gap between the two does the work no amount of arguing with yourself will.</p>
+    ${pe ? `<div class="card flat" style="margin:0 0 16px"><p style="margin:0;font-size:15px">
+      Across <b>${pe.n}</b> experiment${pe.n>1?"s":""}, you predicted an average of <b>${pe.pred}/10</b> distress.
+      What actually happened averaged <b>${pe.act}/10</b>.
+      ${pe.act < pe.pred ? `Your forecast is running <b>${(pe.pred-pe.act).toFixed(1)} points</b> too dark.`
+                          : `Keep going — the sample's still small.`}</p></div>` : ""}
+    <label class="fl" for="expSit">The situation</label>
+    <input type="text" id="expSit" placeholder="Dinner on Friday. Photos at the party. Video call at 10.">
+    <label class="fl sp">What you'll skip</label>
+    <div class="chips" id="skipChips">${chipsHTML("skip", SKIPS.map(s=>s.replace(/&ldquo;|&rdquo;/g,'"')), [])}</div>
+    <label class="fl sp" for="expPred">What you predict will happen</label>
+    <textarea id="expPred" placeholder="Be specific and honest. &ldquo;They'll notice and think&hellip;&rdquo;"></textarea>
+    <label class="fl sp">How bad do you expect it to feel?</label>
+    <div class="bignum" id="pdNum">7</div>
+    ${sliderHTML("pdSlider", 7, "fine", "awful")}
+    <div class="row end sp"><button class="btn" id="expSave">Set the experiment</button></div>`;
+
+  let skip = [];
+  bindChips($("#expCard"), "skip", true, v => skip = v);
+  $("#pdSlider").addEventListener("input", e => $("#pdNum").textContent = e.target.value);
+  $("#expSave").addEventListener("click", () => {
+    const sit = $("#expSit").value.trim();
+    if(!sit && !skip.length){ toast("Add a situation or pick what you'll skip"); return; }
+    db.experiments.unshift({ id:uid(), t:Date.now(), sit, skip, pred:$("#expPred").value.trim(),
+      predD:+$("#pdSlider").value, done:false, outcome:"", actD:null, tDone:null });
+    save(); renderExp(); toast("Set. Go find out.");
+  });
+
+  let html = "";
+  if(open.length){
+    html += `<h3 class="sh" style="margin:22px 0 10px">Waiting on reality</h3>` + open.map(e => `
+      <div class="item">
+        <div class="meta"><span>${esc(when(e.t))}</span>
+          <button class="del" data-del-exp="${e.id}">Delete</button></div>
+        <p><b>${esc(e.sit || "(no situation)")}</b></p>
+        ${e.skip.length ? `<p class="mut" style="font-size:13.5px">Skipping: ${esc(e.skip.join(" · ").toLowerCase())}</p>` : ""}
+        ${e.pred ? `<p class="mut" style="font-size:13.5px">Predicted: ${esc(e.pred)} &nbsp;<span class="pill clay">${e.predD}/10</span></p>` : ""}
+        <div class="sp" id="close-${e.id}">
+          <label class="fl" for="out-${e.id}">What actually happened?</label>
+          <textarea id="out-${e.id}" placeholder="Just the facts. What did people do or say — not what you assumed they thought."></textarea>
+          <label class="fl sp">How bad was it really?</label>
+          <div class="bignum" id="an-${e.id}">3</div>
+          ${sliderHTML("as-"+e.id, 3, "fine", "awful")}
+          <div class="row end sp"><button class="btn sage sm" data-close-exp="${e.id}">Record the result</button></div>
+        </div>
+      </div>`).join("");
+  }
+  if(done.length){
+    html += `<h3 class="sh" style="margin:22px 0 10px">Results</h3>` + done.map(e => {
+      const gap = e.predD - e.actD;
+      return `<div class="item">
+        <div class="meta"><span>${esc(when(e.tDone || e.t))}</span>
+          <span class="pill ${gap>0?"sage":"clay"}">predicted ${e.predD} &rarr; was ${e.actD}</span>
+          <button class="del" data-del-exp="${e.id}">Delete</button></div>
+        <p><b>${esc(e.sit || "(no situation)")}</b></p>
+        ${e.outcome ? `<p>${esc(e.outcome)}</p>` : ""}
+        ${gap > 0 ? `<p class="mut" style="font-size:13.5px">Your head overshot by ${gap} point${gap>1?"s":""}.</p>` : ""}
+      </div>`;
+    }).join("");
+  }
+  $("#expList").innerHTML = html || `<div class="empty">No experiments yet. Pick one small thing you'd
+    normally do for reassurance, and try one round without it.</div>`;
+
+  open.forEach(e => {
+    const s = $("#as-" + e.id);
+    if(s) s.addEventListener("input", ev => $("#an-" + e.id).textContent = ev.target.value);
+  });
+  $$("[data-close-exp]", $("#expList")).forEach(b => b.addEventListener("click", () => {
+    const id = b.dataset.closeExp, e = db.experiments.find(x => x.id === id);
+    e.outcome = $("#out-" + id).value.trim();
+    e.actD = +$("#as-" + id).value; e.done = true; e.tDone = Date.now();
+    save(); renderExp();
+    toast(e.predD > e.actD ? "Noted — it was easier than your head said." : "Recorded.");
+  }));
+  $$("[data-del-exp]", $("#expList")).forEach(b => b.addEventListener("click", () => {
+    db.experiments = db.experiments.filter(x => x.id !== b.dataset.delExp); save(); renderExp();
+  }));
+}
+function predictionError(){
+  const d = db.experiments.filter(e => e.done && e.actD != null);
+  if(!d.length) return null;
+  const avg = k => d.reduce((s,e) => s + e[k], 0) / d.length;
+  return { n:d.length, pred:avg("predD").toFixed(1), act:avg("actD").toFixed(1) };
+}
+
+/* ============================================================
+   VIEW 4 — Worth
+   Where self-worth is currently parked, plus evidence for the
+   parts of it that have nothing to do with a mirror.
+   ============================================================ */
+function appearanceShare(){
+  const total = db.domains.reduce((s,d) => s + d.w, 0);
+  if(!total) return 0;
+  const app = db.domains.filter(d => d.appearance).reduce((s,d) => s + d.w, 0);
+  return Math.round(app / total * 100);
+}
+function renderWorth(){
+  const share = appearanceShare();
+  // Judge concentration against an even spread (100/N), so the reading stays
+  // honest however many columns you add.
+  const even = 100 / db.domains.length;
+  const ratio = even ? share / even : 0;
+  $("#worthCard").innerHTML = `
+    <p class="eyebrow">Where your worth is parked</p>
+    <h2 class="h">Spread the load</h2>
+    <p class="lede">The trouble with a single source of self-worth isn't that it's the wrong one — it's that
+      everything rides on it. Move each slider to how much your sense of being okay <em>currently</em> rests on it.
+      Honest, not aspirational.</p>
+    <div id="doms">${db.domains.map((d,i) => `
+      <div class="dom">
+        <div class="top"><b>${esc(d.name)}</b><span class="val" id="dv-${i}">${d.w}</span></div>
+        <input type="range" class="slider" data-dom="${i}" min="0" max="100" step="5" value="${d.w}"
+               style="margin:8px 0 0" aria-label="${esc(d.name)}">
+      </div>`).join("")}</div>
+    <hr class="sep">
+    <div class="dom">
+      <div class="top"><b>Riding on how you look</b><span class="val">${share}% of ${db.domains.length} columns</span></div>
+      <div class="bar"><i class="app" style="width:${Math.min(100, ratio/2.5*100)}%"></i></div>
+      <p class="mut" style="margin-top:6px;font-size:12.5px">An even spread would put each column near ${Math.round(even)}%.</p>
+    </div>
+    <p class="mut" style="margin-top:10px">${
+      ratio >= 2 ? "That's a lot of weight on one plank. It doesn't make you shallow — appearance is the one thing the world grades out loud. But it does mean a single bad mirror can take the whole day down with it. The fix isn't caring less about your body; it's building the other columns until they can hold you on a bad day."
+      : ratio >= 1.3 ? "Still the loudest voice, but no longer the only one. Keep feeding the others — the goal is a day where the mirror is a detail, not a verdict."
+      : "Well spread. On a bad body day you've got somewhere else to stand — which is exactly what this is for."}</p>
+    <div class="row sp"><button class="btn ghost sm" id="addDom">Add your own</button></div>`;
+
+  $$("[data-dom]", $("#worthCard")).forEach(s => {
+    s.addEventListener("input", e => $("#dv-" + s.dataset.dom).textContent = e.target.value);
+    s.addEventListener("change", e => {
+      db.domains[+s.dataset.dom].w = +e.target.value;
+      logWorth(); save(); renderWorth();
+    });
+  });
+  $("#addDom").addEventListener("click", () => {
+    const n = prompt("What else are you worth something for?");
+    if(n && n.trim()){ db.domains.push({ name:n.trim().slice(0,48), w:40 }); save(); renderWorth(); }
+  });
+  renderEvidence(); renderBody();
+}
+function logWorth(){
+  const share = appearanceShare(), last = db.worthLog[db.worthLog.length - 1];
+  if(last && last.share === share) return;
+  db.worthLog.push({ t:Date.now(), share });
+  if(db.worthLog.length > 200) db.worthLog.shift();
+}
+
+function renderEvidence(){
+  const opts = db.domains.filter(d => !d.appearance).map(d => d.name);
+  $("#evCard").innerHTML = `
+    <p class="eyebrow">Evidence log</p>
+    <h2 class="h">Proof for the other columns</h2>
+    <p class="lede">One line, whenever you notice it. Small counts — small is the point. You're building the
+      pile you can point at on a day when the mirror is loud.</p>
+    <label class="fl">Which column?</label>
+    <div class="chips">${chipsHTML("ev", opts, [])}</div>
+    <label class="fl sp" for="evTxt">What did you do?</label>
+    <input type="text" id="evTxt" placeholder="Stayed on the phone with her for an hour. Sent the hard email.">
+    <div class="row end sp"><button class="btn sage" id="evSave">Add</button></div>
+    <div id="evList" style="margin-top:16px"></div>`;
+  let dom = "";
+  bindChips($("#evCard"), "ev", false, v => dom = v[0] || "");
+  const add = () => {
+    const txt = $("#evTxt").value.trim();
+    if(!txt){ toast("Write the line first"); return; }
+    db.evidence.unshift({ id:uid(), t:Date.now(), dom:dom || "Something else", txt });
+    save(); renderEvidence(); toast("On the pile");
+  };
+  $("#evSave").addEventListener("click", add);
+  $("#evTxt").addEventListener("keydown", e => { if(e.key === "Enter") add(); });
+
+  const list = db.evidence.slice(0, 12);
+  $("#evList").innerHTML = list.length
+    ? list.map(e => `<div class="item" style="padding:11px 13px">
+        <div class="meta"><span class="pill sage">${esc(e.dom)}</span><span>${esc(when(e.t))}</span>
+          <button class="del" data-del-ev="${e.id}">Delete</button></div>
+        <p>${esc(e.txt)}</p></div>`).join("")
+      + (db.evidence.length > 12 ? `<p class="mut" style="text-align:center">+ ${db.evidence.length - 12} more</p>` : "")
+    : `<div class="empty">Empty for now. Next time you're kind, or brave, or you just do the thing — put it here.</div>`;
+  $$("[data-del-ev]", $("#evCard")).forEach(b => b.addEventListener("click", () => {
+    db.evidence = db.evidence.filter(x => x.id !== b.dataset.delEv); save(); renderEvidence();
+  }));
+}
+
+function renderBody(){
+  const k = todayKey(), today = db.body.find(b => b.d === k);
+  $("#bodyCard").innerHTML = `
+    <p class="eyebrow">Daily · what it does, not how it looks</p>
+    <h2 class="h">One thing your body did for you today</h2>
+    <p class="lede">Not "I appreciate my body". Something it actually did — carried the shopping, laughed,
+      slept, healed a cut, got you up the stairs, held someone. Function, not appearance.</p>
+    ${today
+      ? `<div class="card flat" style="margin:0"><p style="margin:0;font-size:15.5px">${esc(today.txt)}</p>
+         <p class="mut" style="margin:6px 0 0">Today's, done. <button class="del" id="bodyRedo"
+         style="margin:0;text-decoration:underline">rewrite</button></p></div>`
+      : `<input type="text" id="bodyTxt" placeholder="Today it&hellip;">
+         <div class="row end sp"><button class="btn sage" id="bodySave">Save</button></div>`}
+    ${db.body.length > 1 ? `<div style="margin-top:16px">${db.body.slice(-8).reverse().filter(b => b.d !== k)
+      .map(b => `<div class="item" style="padding:10px 13px"><div class="meta">${esc(
+        new Date(b.d + "T12:00").toLocaleDateString([], {weekday:"short", day:"numeric", month:"short"}))}</div>
+        <p style="font-size:14.5px">${esc(b.txt)}</p></div>`).join("")}</div>` : ""}`;
+  const s = $("#bodySave");
+  if(s){
+    const add = () => {
+      const txt = $("#bodyTxt").value.trim();
+      if(!txt){ toast("One line is enough"); return; }
+      db.body.push({ d:k, txt }); save(); renderBody(); toast("Noted");
+    };
+    s.addEventListener("click", add);
+    $("#bodyTxt").addEventListener("keydown", e => { if(e.key === "Enter") add(); });
+  }
+  const r = $("#bodyRedo");
+  if(r) r.addEventListener("click", () => { db.body = db.body.filter(b => b.d !== k); save(); renderBody(); });
+}
+
+/* ============================================================
+   VIEW 5 — Patterns
+   ============================================================ */
+function renderPatterns(){
+  const m = db.moments;
+  if(m.length < 2 && !db.experiments.length){
+    $("#patWrap").innerHTML = `<div class="card"><p class="eyebrow">Patterns</p>
+      <h2 class="h">Not enough yet</h2>
+      <p class="lede">Log a few moments and run an experiment or two. Once there's something to compare,
+        this page starts showing you your own shape — when it hits, what sets it off, and what actually helps.</p></div>`;
+    return;
+  }
+  const drops = m.filter(x => x.after != null);
+  const avgDrop = drops.length ? (drops.reduce((s,x) => s + (x.before - x.after), 0) / drops.length) : 0;
+  const rode = m.filter(x => (x.instead||[]).some(i => i === "Ride out the urge" || i === "Do the kindness script")).length;
+  const pe = predictionError();
+
+  const trigCount = {};
+  m.forEach(x => (x.trigger||[]).forEach(t => trigCount[t] = (trigCount[t]||0) + 1));
+  const topTrig = Object.entries(trigCount).sort((a,b) => b[1] - a[1]).slice(0, 5);
+  const needCount = {};
+  m.forEach(x => (x.need||[]).forEach(t => needCount[t] = (needCount[t]||0) + 1));
+  const topNeed = Object.entries(needCount).sort((a,b) => b[1] - a[1]).slice(0, 3);
+
+  const hours = new Array(24).fill(0);
+  m.forEach(x => hours[new Date(x.t).getHours()]++);
+  const peak = hours.indexOf(Math.max(...hours));
+  const hourLabel = h => (h % 12 === 0 ? 12 : h % 12) + (h < 12 ? "am" : "pm");
+
+  $("#patWrap").innerHTML = `
+    <div class="card">
+      <p class="eyebrow">Patterns</p>
+      <h2 class="h">Your shape, so far</h2>
+      <div class="grid2 sp">
+        <div class="stat"><div class="n">${m.length}</div><div class="l">moments logged</div></div>
+        <div class="stat"><div class="n">${avgDrop > 0 ? "-" : ""}${Math.abs(avgDrop).toFixed(1)}</div>
+          <div class="l">average drop, start to end</div></div>
+        <div class="stat"><div class="n">${rode}</div><div class="l">times you sat with it instead</div></div>
+        <div class="stat"><div class="n">${appearanceShare()}%</div><div class="l">of worth on appearance</div></div>
+      </div>
+    </div>
+
+    ${topTrig.length ? `<div class="card">
+      <h3 class="sh">What sets it off most</h3>
+      <p class="mut" style="margin:4px 0 14px">Knowing the top one is worth more than it sounds — it's the
+        one to plan for rather than be ambushed by.</p>
+      ${topTrig.map(([t,c]) => `<div class="dom">
+        <div class="top"><b>${esc(t)}</b><span class="val">${c}&times;</span></div>
+        <div class="bar"><i style="width:${c / topTrig[0][1] * 100}%"></i></div></div>`).join("")}
+      <p class="mut" style="margin-top:12px">Busiest hour: around <b>${esc(hourLabel(peak))}</b>.</p>
+    </div>` : ""}
+
+    ${topNeed.length ? `<div class="card">
+      <h3 class="sh">What you're actually reaching for</h3>
+      <p class="lede" style="margin-top:6px">Under the compliments, the same few things keep coming up:
+        <b>${esc(topNeed.map(n => n[0].toLowerCase()).join(", "))}</b>. Those are the real needs — and none of
+        them are things only a compliment can deliver. Worth asking what else could.</p>
+    </div>` : ""}
+
+    ${pe ? `<div class="card">
+      <h3 class="sh">Forecast vs reality</h3>
+      <p class="lede" style="margin-top:6px">Predicted <b>${pe.pred}/10</b>, actual <b>${pe.act}/10</b>,
+        across ${pe.n} experiment${pe.n>1?"s":""}.
+        ${+pe.act < +pe.pred ? "Your predictions are consistently harsher than what happens. That gap is the evidence — it's not encouragement, it's your own data."
+                             : "Still close. Keep running them."}</p>
+    </div>` : ""}
+
+    ${db.worthLog.length > 2 ? `<div class="card">
+      <h3 class="sh">Appearance's share over time</h3>
+      <p class="mut" style="margin:4px 0 10px">Lower is more spread out. Slow is normal.</p>
+      ${sparkline(db.worthLog.map(w => w.share))}
+    </div>` : ""}`;
+}
+function sparkline(vals){
+  const w = 300, h = 52, pad = 4, max = 100;
+  const step = vals.length > 1 ? (w - pad*2) / (vals.length - 1) : 0;
+  const pts = vals.map((v,i) => [pad + i*step, h - pad - (v/max) * (h - pad*2)]);
+  const d = pts.map((p,i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ");
+  const area = d + ` L${(pad + (vals.length-1)*step).toFixed(1)} ${h-pad} L${pad} ${h-pad} Z`;
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+    <path d="${area}" fill="var(--clay)" opacity=".12"/>
+    <path d="${d}" fill="none" stroke="var(--clay)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>`;
+}
+
+/* ============================================================
+   VIEW 6 — Data
+   ============================================================ */
+$("#btnExport").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(db, null, 2)], { type:"application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "anchor-backup-" + todayKey() + ".json";
+  a.click(); URL.revokeObjectURL(a.href);
+  toast("Backup downloaded");
+});
+$("#btnImport").addEventListener("click", () => $("#fileIn").click());
+$("#fileIn").addEventListener("change", e => {
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const inc = JSON.parse(r.result);
+      if(!inc || typeof inc !== "object" || !("moments" in inc)) throw new Error("shape");
+      if(!confirm("Replace everything currently in this browser with the backup?")) return;
+      db = Object.assign(JSON.parse(JSON.stringify(BLANK)), inc);
+      save(); go("now"); toast("Backup restored");
+    } catch(err){ toast("That file didn't look like an Anchor backup"); }
+  };
+  r.readAsText(f); e.target.value = "";
+});
+$("#btnWipe").addEventListener("click", () => {
+  if(!confirm("Erase every entry on this device? This can't be undone.")) return;
+  if(!confirm("Really sure? Export first if there's any doubt.")) return;
+  localStorage.removeItem(KEY); load(); newDraft(); go("now"); toast("Erased");
+});
+
+/* ============================================================
+   Boot
+   ============================================================ */
+load();
+if(!db.worthLog.length) logWorth();
+go("now");
+</script>
+</body></html>

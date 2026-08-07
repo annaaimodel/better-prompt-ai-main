@@ -25,11 +25,12 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-07",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
-  "tier": ""
+  "tier": "",
+  "delisted": "dead"
  },
  "2fdab011ec028369": {
   "title": "Inside Sales Dev Rep / Closer (SDR-Closer hybrid)",
@@ -67,17 +68,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Charlotte, NC",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-571547146953411006",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-07",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -205,7 +206,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-07",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -238,7 +239,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-07",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -289,7 +290,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-07",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -485,7 +486,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-07",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -502,7 +503,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-07",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1359,7 +1360,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-07",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -11720,9 +11721,9 @@
  "f8b9ea50606be3f1": {
   "title": "Remote Inbound Sales Representative",
   "company": "Stratford Davis",
-  "location": "Galena Park, Harris County",
+  "location": "Rubidoux, Riverside County",
   "comp": "$120000-$120000",
-  "link": "https://www.adzuna.com/details/5830095263?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.com/details/5830095245?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
@@ -14163,7 +14164,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "3c0c0659b3c12b94": {
   "title": "Sales Development Representative (SDR) — Remote | Pipeline Generation Role",
@@ -17044,7 +17045,7 @@
   "tier": "",
   "first_seen": "2026-06-24",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "0fab5238da00509f": {
   "title": "Virtual Sales Rep: Fully Remote, No Cold Calls, Great Training",
@@ -17555,8 +17556,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-26",
-  "last_seen": "2026-08-05",
-  "active": false
+  "last_seen": "2026-08-07",
+  "active": true
  },
  "74af105fecb22e7a": {
   "title": "Simple Virtual Assistants (Only US)",
@@ -18757,7 +18758,7 @@
   "tier": "",
   "first_seen": "2026-06-30",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "2561edc4699bcd01": {
   "title": "High-Ticket Timeshare Exit Closer — Remote/Hybrid",
@@ -19237,7 +19238,7 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "ae4c58ad4ddc7b15": {
   "title": "Remote Inbound Sales Pro Uncapped Commission",
@@ -21621,7 +21622,7 @@
   "tier": "",
   "first_seen": "2026-07-13",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "0e3807ba2ba6c908": {
   "title": "Virtual Assistant",
@@ -22309,8 +22310,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-15",
-  "last_seen": "2026-08-05",
-  "active": false
+  "last_seen": "2026-08-07",
+  "active": true
  },
  "dd91037442dac18c": {
   "title": "Sr. Manager, National Account Agency Operations (INSURANCE EXP. REQUIRED) (TEXAS",
@@ -23906,7 +23907,7 @@
   "tier": "",
   "first_seen": "2026-07-22",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "a3b3908840341308": {
   "title": "Sales Development Representative",
@@ -24167,10 +24168,10 @@
  "7947ff030ed815ec": {
   "title": "Sales Development Representative",
   "company": "Nurtured",
-  "location": "New York City, New York",
-  "comp": "$77847-$77847",
-  "link": "https://www.adzuna.com/land/ad/5811839379?se=InQIPfmR8RGs5OGOuqfOdQ&utm_medium=api&utm_source=3e941a8f&v=4FF4E0A04F5CD160ECE2ADFD5BF1CEDFC77E4285",
-  "source": "Adzuna",
+  "location": "New York, NY",
+  "comp": "$10,000 per month",
+  "link": "https://jooble.org/jdp/3233684304103187925",
+  "source": "Jooble",
   "category": "Setter / SDR",
   "country": "United States",
   "lead_type": "",
@@ -24535,9 +24536,9 @@
  "54c398f10a8871cd": {
   "title": "Virtual Assistant - Remote",
   "company": "Anova Care",
-  "location": "San Antonio, TX",
+  "location": "Meridian, MS",
   "comp": "$69k - $125k",
-  "link": "https://jooble.org/jdp/2855802853505124783",
+  "link": "https://jooble.org/jdp/-6459900468926356721",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -24631,12 +24632,12 @@
  "e932aa24704f05aa": {
   "title": "Virtual Assistant I",
   "company": "BrandCoven",
-  "location": "Remote",
-  "comp": "$25 - $30 per hour",
-  "link": "https://jooble.org/jdp/-1202847931411683482",
+  "location": "Atlanta, GA",
+  "comp": "",
+  "link": "https://jooble.org/jdp/749032608111077721",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -24754,7 +24755,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "fcfba0ab41ede210": {
   "title": "Remote Executive Virtual Assistant",
@@ -25154,7 +25155,7 @@
   "tier": "",
   "first_seen": "2026-07-27",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "aa448e12154d652b": {
   "title": "Inside Sales Closer",
@@ -26354,7 +26355,7 @@
   "tier": "",
   "first_seen": "2026-08-01",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "96dd2fd24a1a2b0e": {
   "title": "Data Entry Virtual Assistant (Remote)",
@@ -26423,9 +26424,9 @@
  "3564c8f7b9cd0abf": {
   "title": "Sales Development Representative",
   "company": "Globe Life",
-  "location": "Piscataway, Middlesex County",
-  "comp": "$108153-$108153",
-  "link": "https://www.adzuna.com/land/ad/5826894248?se=InQIPfmR8RGs5OGOuqfOdQ&utm_medium=api&utm_source=3e941a8f&v=7D0B7FA9D3E92CB0E31B17B3CAD3331B495A5089",
+  "location": "Clifton, Passaic County",
+  "comp": "$129608-$129608",
+  "link": "https://www.adzuna.com/land/ad/5826936544?se=Sp-EcWiS8RGht6FEOOV3rg&utm_medium=api&utm_source=3e941a8f&v=FB86831E7B3F74FFE2050423F163FB26EC705F6F",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -26439,9 +26440,9 @@
  "012722fe23c59ec3": {
   "title": "Remote Sales Closer",
   "company": "GrabJobs",
-  "location": "Philadelphia, PA",
+  "location": "Portland, OR",
   "comp": "$150k - $300k",
-  "link": "https://jooble.org/jdp/4409166710877961514",
+  "link": "https://jooble.org/jdp/-2341777971349445666",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -26961,8 +26962,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-03",
-  "last_seen": "2026-08-05",
-  "active": false
+  "last_seen": "2026-08-07",
+  "active": true
  },
  "90dbe903d5193c3f": {
   "title": "Immediate Hiring: Part Time Virtual Assistant Jobs (Remote)",
@@ -27609,7 +27610,7 @@
   "company": "Collaborate Solutions, Inc.",
   "location": "US",
   "comp": "$102318-$102318",
-  "link": "https://www.adzuna.com/land/ad/5826789509?se=REtsP_mR8RG--bmCiPVdcA&utm_medium=api&utm_source=3e941a8f&v=05CBF56382B34558329D58D078A24FC2166CF76F",
+  "link": "https://www.adzuna.com/land/ad/5826789509?se=oNIvdGiS8RGg9aNvkrRziQ&utm_medium=api&utm_source=3e941a8f&v=05CBF56382B34558329D58D078A24FC2166CF76F",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -27698,7 +27699,7 @@
   "tier": "",
   "first_seen": "2026-08-05",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "5269e4e28b7b0c37": {
   "title": "Senior Customer Success Manager (Remote - MD)",
@@ -27713,8 +27714,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-05",
-  "last_seen": "2026-08-05",
-  "active": false
+  "last_seen": "2026-08-07",
+  "active": true
  },
  "7f1a41cbff551dce": {
   "title": "Client Success Manager — Accounting, Tax & Advisory Operations (Remote)",
@@ -28009,7 +28010,7 @@
   "company": "Globe Life",
   "location": "Norland Park, DeKalb County",
   "comp": "$104869-$104869",
-  "link": "https://www.adzuna.com/land/ad/5828112048?se=InQIPfmR8RGs5OGOuqfOdQ&utm_medium=api&utm_source=3e941a8f&v=D3193035C6B4F970E71C6FD4117C9226D9835012",
+  "link": "https://www.adzuna.com/land/ad/5828112048?se=Sp-EcWiS8RGht6FEOOV3rg&utm_medium=api&utm_source=3e941a8f&v=D3193035C6B4F970E71C6FD4117C9226D9835012",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -28050,7 +28051,7 @@
   "tier": "",
   "first_seen": "2026-08-06",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "a8e5a2fff221e90e": {
   "title": "High Ticket Closer - Remote",
@@ -28210,7 +28211,7 @@
   "tier": "",
   "first_seen": "2026-08-07",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "a3df20ac43c94b39": {
   "title": "Remote SEO Sales Closer (Inbound Leads Only) | Commission Based + Residual Income",
@@ -28226,7 +28227,7 @@
   "tier": "",
   "first_seen": "2026-08-07",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "818789cc0ec9a782": {
   "title": "REMOTE B2B SALES CLOSER",
@@ -28242,7 +28243,7 @@
   "tier": "",
   "first_seen": "2026-08-07",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "e7c7a501a5906bfe": {
   "title": "Remote Closer (High Ticket)",
@@ -28258,7 +28259,7 @@
   "tier": "",
   "first_seen": "2026-08-07",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "46496433b4f2e3fa": {
   "title": "Strategic Solutions Director - Oracle",
@@ -28302,6 +28303,150 @@
   "category": "Closer",
   "country": "United States",
   "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
+ },
+ "db4f4d53fee83e19": {
+  "title": "Customer Success Manager, Education",
+  "company": "Zoom",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://careers.zoom.us/jobs/customer-success-manager-education-denver-colorado-united-states-remote-california-utah",
+  "source": "JSearch",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
+ },
+ "a49cf35cb28941d0": {
+  "title": "Customer Success Manager | Fully Remote US",
+  "company": "Hirevue",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.linkedin.com/jobs/view/customer-success-manager-fully-remote-us-at-hirevue-4446243200",
+  "source": "JSearch",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
+ },
+ "6951b9022588bb6c": {
+  "title": "Remote Sr. Customer Success Manager",
+  "company": "The Sales Loft",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.talent.com/view?id=630920964980869422",
+  "source": "JSearch",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
+ },
+ "9ccad2e08f6ab468": {
+  "title": "Onboarding Specialist",
+  "company": "Ocra",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://jobgether.com/offer/6a755160490731f1e188e2e0-onboarding-specialist",
+  "source": "JSearch",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
+ },
+ "207ecceb4c9c728d": {
+  "title": "Part-Time Virtual Assistant Job - Remote USA",
+  "company": "vacancy global pro",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://vacancyglobalpro.up.railway.app/job/part-time-virtual-assistant-job-remote-usa",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
+ },
+ "84690b6572338681": {
+  "title": "Virtual Assistant(entry Level) job",
+  "company": "job",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://bebee.com/us/jobs/virtual-assistantentry-level-job-job-fargo--ss-us-1gll1",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
+ },
+ "bb0138546b4d3be6": {
+  "title": "Part-Time Remote Virtual Assistant Needed at Imaginary Solutions",
+  "company": "FlexBoard",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://flexboard.9y.liveblog365.com/job/375998",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
+ },
+ "4aa87260386b631f": {
+  "title": "Virtual Assistant-document",
+  "company": "PeoplePerHour",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.peopleperhour.com/freelance-jobs/business/administration-assistance/virtual-assistant-document-4513553",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
+ },
+ "1b9a28c28b079e40": {
+  "title": "Remote Virtual Assistant – Customer Service & Administrative Support Specialist for arenaflex – $26/hr – Flexible Work‑From‑Home Opportunity",
+  "company": "remote click jobs",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://remoteclickjobs-production.up.railway.app/job/remote-virtual-assistant-customer-service-administrative-support-specialist-for-arenaflex-26hr-flexible-workfromhome-opportunity",
+  "source": "JSearch",
+  "category": "VA / Social / Chat",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-07",

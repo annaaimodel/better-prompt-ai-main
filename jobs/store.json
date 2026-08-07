@@ -28484,5 +28484,21 @@
   "first_seen": "2026-08-07",
   "last_seen": "2026-08-07",
   "active": true
+ },
+ "3ec5bcfe24cfdeda": {
+  "title": "Account Executive Enterprise UKI",
+  "company": "1Password",
+  "location": "United Kingdom",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/1password/account-executive-enterprise-uki-united-kingdom-495239",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-07",
+  "last_seen": "2026-08-07",
+  "active": true
  }
 }

@@ -1,0 +1,9 @@
+{
+  "name": "letting-go-pathway-of-surrender",
+  "private": true,
+  "type": "module",
+  "description": "The Pathway of Surrender — a guided inquiry and surrender practice with a private record of what you felt, what caused it and what you let go (after Dr David R. Hawkins' Letting Go and the Map of Consciousness).",
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest"
+  }
+}

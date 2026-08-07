@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "functions": {
+    "api/surrender.js": { "maxDuration": 60 }
+  },
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
+  ]
+}

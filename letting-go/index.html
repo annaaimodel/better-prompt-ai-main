@@ -116,7 +116,7 @@ textarea::placeholder,input::placeholder{color:#5d6472}
 .empty h3{color:var(--soft);margin-bottom:6px}
 
 .chartwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-svg.chart{display:block;min-width:520px;width:100%;height:270px}
+svg.chart{display:block;width:100%;min-width:620px;height:auto}
 
 details.ref{margin-top:8px}
 details.ref summary{cursor:pointer;color:var(--gold2);font-size:13.5px;font-weight:600;list-style:none}
@@ -748,12 +748,15 @@ function renderInsights(){
   const barList = (rows, showMove) => {
     if(!rows.length) return '<p class="mut small">Nothing recorded here yet.</p>';
     const max = rows[0].n;
+    // With nothing recurring yet, every bar would be full width and say
+    // nothing. Show the bars only once there is a difference to see.
+    const compare = max > 1;
     return rows.slice(0,10).map(r =>
       '<div class="bar"><div>'
       + '<div style="font-size:14.5px">'+esc(r.label)+'</div>'
       + (showMove ? '<div class="small mut">avg movement '+(r.move/r.n>=0?'+':'')+(r.move/r.n).toFixed(1)+' levels</div>' : '')
-      + '<div class="bartrack"><div class="barfill" style="width:'+Math.round(r.n/max*100)+'%"></div></div>'
-      + '</div><div class="barct">'+r.n+'×</div></div>'
+      + (compare ? '<div class="bartrack"><div class="barfill" style="width:'+Math.round(r.n/max*100)+'%"></div></div>' : '')
+      + '</div><div class="barct">'+(r.n>1 ? r.n+'×' : '<span class="small mut">once</span>')+'</div></div>'
     ).join('');
   };
 
@@ -793,8 +796,10 @@ function renderInsights(){
 }
 
 function chart(sessions){
-  const W = Math.max(520, sessions.length * 46 + 90), H = 270;
-  const padL = 78, padR = 18, padT = 16, padB = 30;
+  // Sized so the chart fills a desktop card exactly; grows once there are
+  // enough sessions to need the room, and the wrapper scrolls on a phone.
+  const W = Math.max(840, sessions.length * 46 + 90), H = 270;
+  const padL = 100, padR = 20, padT = 16, padB = 30; // padL fits "Acceptance 350"
   const n = MAP.length - 1;
   const x = i => padL + (sessions.length === 1 ? (W-padL-padR)/2 : i * (W-padL-padR) / (sessions.length-1));
   const y = v => padT + (1 - v/n) * (H-padT-padB);

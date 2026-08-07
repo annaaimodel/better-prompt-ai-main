@@ -1,0 +1,833 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Pathway of Surrender — a guided inquiry that takes you from the difficulty to the feeling, from &quot;I can't&quot; to &quot;I won't&quot;, down to the fear and the payoff underneath, and into letting go. Keeps a private record of what you felt, what caused it and what you surrendered.">
+<title>The Pathway of Surrender · Letting Go</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23c9a961' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23c9a961'/%3E%3C/svg%3E">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
+:root{
+  --bg:#0b0d11;--bg2:#0f1218;--card:#141821;--card2:#181d27;--line:#232936;--line2:#2e3646;
+  --txt:#eae7e0;--mut:#8b93a3;--soft:#c3c8d2;
+  --gold:#c9a961;--gold2:#e8d9a8;
+  --ok:#7fc9a0;--warn:#e0a35c;--bad:#d97a6c;
+  --serif:"Cormorant Garamond",Georgia,serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--gold2);text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.1}
+h2{font-size:clamp(21px,3.2vw,27px);margin-bottom:10px}
+h3{font-size:17px;margin-bottom:6px}
+p{margin:0 0 12px}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+.mut{color:var(--mut)}.soft{color:var(--soft)}
+.small{font-size:13px}.tiny{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--mut)}
+
+nav{position:sticky;top:0;z-index:40;background:rgba(11,13,17,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.navin{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:6px;padding:11px 18px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:19px;color:var(--gold2);margin-right:auto;white-space:nowrap}
+.tab{font-size:13.5px;font-weight:600;color:var(--mut);padding:7px 13px;border-radius:9px;cursor:pointer;border:1px solid transparent;background:none;font-family:inherit}
+.tab:hover{color:var(--txt)}
+.tab.on{color:#0b0d11;background:linear-gradient(175deg,var(--gold2),var(--gold));border-color:transparent}
+
+main{padding:30px 0 90px}
+.view{display:none}.view.on{display:block}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px;margin-bottom:16px}
+.card.tight{padding:16px}
+
+label.fl{display:block;font-size:13px;font-weight:600;color:var(--soft);margin:0 0 7px}
+textarea,input[type=text],select{width:100%;background:var(--bg2);border:1px solid var(--line2);border-radius:11px;color:var(--txt);padding:12px 14px;font:inherit;font-size:15px;resize:vertical}
+textarea:focus,input:focus,select:focus{outline:none;border-color:var(--gold)}
+textarea::placeholder,input::placeholder{color:#5d6472}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:11px;cursor:pointer;border:1px solid transparent;transition:filter .15s,border-color .15s}
+.btn.primary{color:#0b0d11;background:linear-gradient(175deg,var(--gold2),var(--gold))}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{color:var(--txt);background:transparent;border-color:var(--line2)}
+.btn.ghost:hover{border-color:var(--gold)}
+.btn.sm{font-size:13px;padding:8px 14px;border-radius:9px}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:none}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.spread{justify-content:space-between}
+
+/* ── map of consciousness picker ─────────── */
+.map{display:flex;flex-direction:column-reverse;gap:2px;margin:4px 0 6px}
+.lvl{display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:12px;padding:7px 12px;border-radius:9px;cursor:pointer;border:1px solid transparent;background:var(--bg2);text-align:left;font:inherit;color:var(--txt);width:100%}
+.lvl:hover{border-color:var(--line2)}
+.lvl .cal{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--mut);text-align:right}
+.lvl .nm{font-weight:600;font-size:14.5px}
+.lvl .em{color:var(--mut);font-size:12.5px;font-weight:400}
+.lvl .dot{width:11px;height:11px;border-radius:50%;flex:none}
+.lvl.sel{border-color:currentColor;background:var(--card2)}
+.lvl.sel .cal,.lvl.sel .nm{color:inherit}
+.thresh{display:flex;align-items:center;gap:10px;margin:7px 2px;color:var(--gold);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.thresh:before,.thresh:after{content:"";height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,97,.5),transparent);flex:1}
+
+.slider{width:100%;accent-color:var(--gold);margin:6px 0}
+
+/* ── conversation ────────────────────────── */
+.convo{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
+.turn{max-width:88%;padding:13px 17px;border-radius:15px;font-size:15.5px;white-space:pre-wrap}
+.turn.guide{background:var(--card2);border:1px solid var(--line);border-top-left-radius:5px;align-self:flex-start;font-family:var(--serif);font-size:18.5px;line-height:1.5;color:#f2efe7}
+.turn.user{background:rgba(201,169,97,.1);border:1px solid rgba(201,169,97,.25);border-bottom-right-radius:5px;align-self:flex-end}
+.thinking{align-self:flex-start;color:var(--mut);font-size:14px;font-style:italic;padding:6px 4px}
+.thinking span{animation:blink 1.4s infinite}
+.thinking span:nth-child(2){animation-delay:.2s}.thinking span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+
+.phasebar{display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap}
+.ph{flex:1;min-width:52px;height:3px;border-radius:2px;background:var(--line)}
+.ph.done{background:var(--gold)}
+.ph.now{background:var(--gold2);box-shadow:0 0 10px rgba(232,217,168,.5)}
+.phlabel{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:8px}
+
+.captured{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.chip{font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--bg2);border:1px solid var(--line2);color:var(--soft)}
+.chip b{color:var(--gold2);font-weight:600}
+
+.notice{background:rgba(224,163,92,.09);border:1px solid rgba(224,163,92,.3);color:#f0d3ad;border-radius:11px;padding:11px 15px;font-size:13.5px;margin-bottom:14px}
+
+/* ── history ─────────────────────────────── */
+.sess{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:11px;overflow:hidden}
+.sesshead{display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;padding:15px 18px;cursor:pointer}
+.move{display:flex;align-items:center;gap:6px;font-family:var(--serif);font-size:15px;white-space:nowrap}
+.arrow{color:var(--mut);font-size:12px}
+.sessbody{padding:0 18px 18px;border-top:1px solid var(--line);display:none}
+.sess.open .sessbody{display:block}
+.field{margin-top:13px}
+.field .tiny{margin-bottom:3px}
+.field p{margin:0;font-size:14.5px;color:var(--soft)}
+
+.stat{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 17px}
+.stat .n{font-family:var(--serif);font-size:27px;font-weight:600;color:var(--gold2);line-height:1.1}
+.stat .l{font-size:12.5px;color:var(--mut);margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-bottom:16px}
+
+.bar{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.bar:last-child{border-bottom:none}
+.bartrack{height:6px;background:var(--bg2);border-radius:3px;overflow:hidden;margin-top:5px}
+.barfill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px}
+.barct{font-family:var(--serif);font-size:17px;color:var(--gold2);white-space:nowrap}
+
+.empty{text-align:center;padding:48px 20px;color:var(--mut)}
+.empty h3{color:var(--soft);margin-bottom:6px}
+
+.chartwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+svg.chart{display:block;min-width:520px;width:100%;height:270px}
+
+details.ref{margin-top:8px}
+details.ref summary{cursor:pointer;color:var(--gold2);font-size:13.5px;font-weight:600;list-style:none}
+details.ref summary::-webkit-details-marker{display:none}
+details.ref summary:before{content:"▸ ";color:var(--gold)}
+details.ref[open] summary:before{content:"▾ "}
+table.reft{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px}
+table.reft th{text-align:left;color:var(--mut);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 9px;border-bottom:1px solid var(--line2)}
+table.reft td{padding:6px 9px;border-bottom:1px solid var(--line)}
+.tblwrap{overflow-x:auto}
+
+@media (max-width:560px){
+  .turn{max-width:96%}
+  .lvl{grid-template-columns:44px 1fr auto;gap:9px;padding:6px 9px}
+  .sesshead{grid-template-columns:1fr;gap:7px}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="navin">
+  <span class="brand">Letting Go</span>
+  <button class="tab on" data-view="session">Session</button>
+  <button class="tab" data-view="history">History</button>
+  <button class="tab" data-view="insights">Insights</button>
+</div></nav>
+
+<main><div class="wrap">
+
+<!-- ══════════ SESSION ══════════ -->
+<section class="view on" id="v-session">
+
+  <div id="stage-open">
+    <h1>What's difficult<br>right now?</h1>
+    <p class="soft" style="margin:14px 0 22px;max-width:56ch">Write it as it is — the situation, the person, the thought going round. We'll go underneath it in a moment.</p>
+    <div class="card">
+      <label class="fl" for="situation">The difficulty</label>
+      <textarea id="situation" rows="5" placeholder="He said it in front of everyone and I can't stop replaying it…"></textarea>
+      <div class="row" style="margin-top:14px">
+        <button class="btn primary" id="go-before">Continue</button>
+        <span class="small mut">Stays on this device</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="stage-before" style="display:none">
+    <h2>Where are you, before?</h2>
+    <p class="soft small" style="margin-bottom:18px">Pick the level that best matches how you feel about this right now. Don't deliberate — the first one you land on is usually right.</p>
+    <div class="card">
+      <div class="map" id="map-before"></div>
+      <div style="margin-top:18px">
+        <label class="fl">Intensity right now — <b id="int-before-v">5</b> / 10</label>
+        <input type="range" min="0" max="10" value="5" class="slider" id="int-before">
+      </div>
+      <details class="ref"><summary>What the levels mean</summary><div class="tblwrap"><table class="reft" id="reftable"></table></div></details>
+      <div class="row" style="margin-top:18px">
+        <button class="btn primary" id="go-inquiry">Begin the inquiry</button>
+        <button class="btn ghost" id="back-open">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="stage-inquiry" style="display:none">
+    <div class="phlabel" id="phase-name">The feeling</div>
+    <div class="phasebar" id="phasebar"></div>
+    <div id="offline-notice"></div>
+    <div class="convo" id="convo"></div>
+    <div class="card tight">
+      <textarea id="reply" rows="3" placeholder="Say what's true…"></textarea>
+      <div class="row spread" style="margin-top:11px">
+        <button class="btn primary" id="send">Reply</button>
+        <button class="btn ghost sm" id="go-after">Move to closing</button>
+      </div>
+    </div>
+    <div class="card tight" id="capturedcard" style="display:none">
+      <div class="tiny" style="margin-bottom:8px">Recording as we go</div>
+      <div class="captured" id="capturedchips"></div>
+    </div>
+  </div>
+
+  <div id="stage-after" style="display:none">
+    <h2>Where are you now?</h2>
+    <p class="soft small" style="margin-bottom:18px">Calibrate again. Even one level is real movement.</p>
+    <div class="card">
+      <div class="map" id="map-after"></div>
+      <div style="margin-top:18px">
+        <label class="fl">Intensity now — <b id="int-after-v">5</b> / 10</label>
+        <input type="range" min="0" max="10" value="5" class="slider" id="int-after">
+      </div>
+    </div>
+    <div class="card">
+      <label class="fl" for="surrendered">What did you let go of?</label>
+      <textarea id="surrendered" rows="2" placeholder="The need to be told I was right about it."></textarea>
+      <label class="fl" for="note" style="margin-top:16px">Anything else worth keeping</label>
+      <textarea id="note" rows="2" placeholder=""></textarea>
+      <div class="row" style="margin-top:16px">
+        <button class="btn primary" id="save">Save this session</button>
+        <button class="btn ghost" id="back-inquiry">Back to the inquiry</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="stage-done" style="display:none">
+    <div class="card" style="text-align:center;padding:40px 22px">
+      <h2 id="done-move">Saved</h2>
+      <p class="soft" id="done-line" style="max-width:44ch;margin:0 auto 22px"></p>
+      <div class="row" style="justify-content:center">
+        <button class="btn primary" id="new-session">Start another</button>
+        <button class="btn ghost" id="see-history">See the record</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════ HISTORY ══════════ -->
+<section class="view" id="v-history">
+  <h2>The record</h2>
+  <p class="soft small" style="margin-bottom:16px">Everything you've felt, what caused it, and what you've surrendered.</p>
+  <div class="card tight">
+    <input type="text" id="search" placeholder="Search feelings, triggers, payoffs, what you let go of…">
+    <div class="row" style="margin-top:12px">
+      <button class="btn ghost sm" id="export">Export backup</button>
+      <button class="btn ghost sm" id="import">Import backup</button>
+      <input type="file" id="importfile" accept="application/json" style="display:none">
+    </div>
+  </div>
+  <div id="sessions"></div>
+</section>
+
+<!-- ══════════ INSIGHTS ══════════ -->
+<section class="view" id="v-insights">
+  <h2>What the record shows</h2>
+  <p class="soft small" style="margin-bottom:16px">Patterns across every session you've saved.</p>
+  <div id="insights"></div>
+</section>
+
+</div></main>
+
+<script>
+/* ═══════════════ The Map of Consciousness ═══════════════
+   Levels as published by Dr David R. Hawkins. Index in this array is the
+   position on the scale and is what the charts plot — the calibrations are
+   logarithmic, so raw numbers would flatten everything below Courage. */
+const MAP = [
+  {key:'shame',        cal:20,  name:'Shame',        emotion:'Humiliation',   view:'Miserable',     process:'Elimination',      c:'#8f3b40'},
+  {key:'guilt',        cal:30,  name:'Guilt',        emotion:'Blame',         view:'Condemning',    process:'Destruction',      c:'#9c4740'},
+  {key:'apathy',       cal:50,  name:'Apathy',       emotion:'Despair',       view:'Hopeless',      process:'Abdication',       c:'#a5553f'},
+  {key:'grief',        cal:75,  name:'Grief',        emotion:'Regret',        view:'Tragic',        process:'Despondency',      c:'#ad6440'},
+  {key:'fear',         cal:100, name:'Fear',         emotion:'Anxiety',       view:'Frightening',   process:'Withdrawal',       c:'#b5743f'},
+  {key:'desire',       cal:125, name:'Desire',       emotion:'Craving',       view:'Disappointing', process:'Enslavement',      c:'#bd8440'},
+  {key:'anger',        cal:150, name:'Anger',        emotion:'Hate',          view:'Antagonistic',  process:'Aggression',       c:'#c5943f'},
+  {key:'pride',        cal:175, name:'Pride',        emotion:'Scorn',         view:'Demanding',     process:'Inflation',        c:'#cca440'},
+  {key:'courage',      cal:200, name:'Courage',      emotion:'Affirmation',   view:'Feasible',      process:'Empowerment',      c:'#e8d9a8'},
+  {key:'neutrality',   cal:250, name:'Neutrality',   emotion:'Trust',         view:'Satisfactory',  process:'Release',          c:'#b9c88c'},
+  {key:'willingness',  cal:310, name:'Willingness',  emotion:'Optimism',      view:'Hopeful',       process:'Intention',        c:'#96c68f'},
+  {key:'acceptance',   cal:350, name:'Acceptance',   emotion:'Forgiveness',   view:'Harmonious',    process:'Transcendence',    c:'#7fc9a0'},
+  {key:'reason',       cal:400, name:'Reason',       emotion:'Understanding', view:'Meaningful',    process:'Abstraction',      c:'#6cc3b4'},
+  {key:'love',         cal:500, name:'Love',         emotion:'Reverence',     view:'Benign',        process:'Revelation',       c:'#66b4cc'},
+  {key:'joy',          cal:540, name:'Joy',          emotion:'Serenity',      view:'Complete',      process:'Transfiguration',  c:'#7a9dd6'},
+  {key:'peace',        cal:600, name:'Peace',        emotion:'Bliss',         view:'Perfect',       process:'Illumination',     c:'#9a8fd8'},
+  {key:'enlightenment',cal:700, name:'Enlightenment',emotion:'Ineffable',     view:'Is',            process:'Pure Consciousness',c:'#c9b6e8'},
+];
+const IDX = Object.fromEntries(MAP.map((l,i)=>[l.key,i]));
+const lvl = k => MAP[IDX[k]] || null;
+
+const PHASES = [
+  {key:'situation',  label:'The difficulty'},
+  {key:'feeling',    label:'The feeling'},
+  {key:'resistance', label:'I can’t → I won’t'},
+  {key:'underneath', label:'Underneath'},
+  {key:'payoff',     label:'The payoff'},
+  {key:'surrender',  label:'Letting go'},
+  {key:'close',      label:'Closing'},
+];
+
+/* ═══════════════ storage ═══════════════ */
+const KEY = 'aurum.lettinggo.v1';
+let DB = load();
+
+function load(){
+  try{
+    const raw = JSON.parse(localStorage.getItem(KEY));
+    if(raw && Array.isArray(raw.sessions)) return raw;
+  }catch(e){}
+  return {version:1, sessions:[]};
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(DB)); }catch(e){ alert('Could not save — browser storage may be full or blocked.'); } }
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ═══════════════ live session state ═══════════════ */
+let S = blank();
+function blank(){
+  return {
+    id:uid(), startedAt:new Date().toISOString(),
+    situation:'', levelBefore:'fear', levelAfter:'', intensityBefore:5, intensityAfter:5,
+    captured:{trigger:'',feelings:[],resistance:'',fear:'',payoff:'',programme:'',surrendered:''},
+    transcript:[], phase:'situation', note:'', aiUsed:false,
+  };
+}
+
+/* ═══════════════ navigation ═══════════════ */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+function showView(v){
+  $$('.tab').forEach(t => t.classList.toggle('on', t.dataset.view===v));
+  $$('.view').forEach(x => x.classList.toggle('on', x.id==='v-'+v));
+  if(v==='history') renderHistory();
+  if(v==='insights') renderInsights();
+  window.scrollTo(0,0);
+}
+$$('.tab').forEach(t => t.onclick = () => showView(t.dataset.view));
+
+const STAGES = ['open','before','inquiry','after','done'];
+function stage(name){
+  STAGES.forEach(s => $('#stage-'+s).style.display = (s===name ? 'block' : 'none'));
+  window.scrollTo(0,0);
+}
+
+/* ═══════════════ map picker ═══════════════ */
+function renderMap(el, selected, onPick){
+  el.innerHTML = '';
+  MAP.forEach(L => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'lvl' + (L.key===selected ? ' sel' : '');
+    if(L.key===selected) b.style.color = L.c;
+    b.innerHTML = '<span class="cal">'+L.cal+'</span>'
+      + '<span><span class="nm">'+L.name+'</span> <span class="em">· '+L.emotion+'</span></span>'
+      + '<span class="dot" style="background:'+L.c+'"></span>';
+    b.onclick = () => { onPick(L.key); renderMap(el, L.key, onPick); };
+    el.appendChild(b);
+    if(L.key==='pride'){
+      const t = document.createElement('div');
+      t.className = 'thresh';
+      t.textContent = 'Courage 200 · the line';
+      el.appendChild(t);
+    }
+  });
+}
+
+$('#reftable').innerHTML =
+  '<tr><th>Cal.</th><th>Level</th><th>Emotion</th><th>View of life</th><th>Process</th></tr>'
+  + MAP.slice().reverse().map(L =>
+      '<tr><td style="color:'+L.c+';font-weight:600">'+L.cal+'</td><td><b>'+L.name+'</b></td><td class="mut">'+L.emotion+'</td><td class="mut">'+L.view+'</td><td class="mut">'+L.process+'</td></tr>'
+    ).join('');
+
+/* ═══════════════ stage: open ═══════════════ */
+$('#go-before').onclick = () => {
+  const v = $('#situation').value.trim();
+  if(v.length < 3){ $('#situation').focus(); return; }
+  S.situation = v;
+  renderMap($('#map-before'), S.levelBefore, k => S.levelBefore = k);
+  stage('before');
+};
+$('#back-open').onclick = () => stage('open');
+
+$('#int-before').oninput = e => { S.intensityBefore = +e.target.value; $('#int-before-v').textContent = e.target.value; };
+$('#int-after').oninput  = e => { S.intensityAfter  = +e.target.value; $('#int-after-v').textContent  = e.target.value; };
+
+/* ═══════════════ stage: inquiry ═══════════════ */
+$('#go-inquiry').onclick = () => {
+  stage('inquiry');
+  renderPhase();
+  if(!S.transcript.length) turn('');   // opening move
+};
+
+function renderPhase(){
+  const i = Math.max(0, PHASES.findIndex(p => p.key===S.phase));
+  $('#phase-name').textContent = PHASES[i].label;
+  $('#phasebar').innerHTML = PHASES.map((p,n) =>
+    '<div class="ph '+(n<i?'done':n===i?'now':'')+'"></div>').join('');
+}
+
+function renderConvo(){
+  const c = $('#convo');
+  c.innerHTML = S.transcript.map(m =>
+    '<div class="turn '+(m.role==='guide'?'guide':'user')+'">'+esc(m.text)+'</div>').join('');
+  c.scrollIntoView({block:'end', behavior:'smooth'});
+}
+
+function renderCaptured(){
+  const c = S.captured;
+  const bits = [];
+  if(c.feelings.length) bits.push(['Feeling', c.feelings.join(', ')]);
+  if(c.trigger)     bits.push(['Trigger', c.trigger]);
+  if(c.resistance)  bits.push(['Won’t', c.resistance]);
+  if(c.fear)        bits.push(['Underneath', c.fear]);
+  if(c.payoff)      bits.push(['Payoff', c.payoff]);
+  if(c.programme)   bits.push(['Programme', c.programme]);
+  if(c.surrendered) bits.push(['Let go', c.surrendered]);
+  $('#capturedcard').style.display = bits.length ? 'block' : 'none';
+  $('#capturedchips').innerHTML = bits.map(([k,v]) => '<span class="chip"><b>'+k+'</b> · '+esc(v)+'</span>').join('');
+}
+
+let busy = false;
+function setBusy(b){
+  busy = b;
+  $('#send').disabled = b;
+  $('#send').textContent = b ? 'Listening…' : 'Reply';
+}
+
+$('#send').onclick = () => {
+  if(busy) return;
+  const v = $('#reply').value.trim();
+  if(!v) return;
+  $('#reply').value = '';
+  turn(v);
+};
+$('#reply').addEventListener('keydown', e => {
+  if(e.key==='Enter' && (e.metaKey||e.ctrlKey)){ e.preventDefault(); $('#send').click(); }
+});
+
+async function turn(userText){
+  if(userText){
+    S.transcript.push({role:'user', text:userText});
+    renderConvo();
+  }
+  setBusy(true);
+  const t = document.createElement('div');
+  t.className = 'thinking';
+  t.innerHTML = '<span>·</span><span>·</span><span>·</span>';
+  $('#convo').appendChild(t);
+  $('#convo').scrollIntoView({block:'end', behavior:'smooth'});
+
+  let r = null;
+  try{
+    const res = await fetch('/api/surrender', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        message: userText,
+        situation: S.situation,
+        levelBefore: (lvl(S.levelBefore)||{}).name || '',
+        intensityBefore: S.intensityBefore,
+        phase: S.phase,
+        captured: S.captured,
+        transcript: S.transcript.slice(0,-1),
+      }),
+    });
+    const j = await res.json();
+    if(j && j.ok) r = j;
+  }catch(e){ /* falls through to the scripted flow */ }
+
+  t.remove();
+
+  if(r){
+    S.aiUsed = true;
+    S.phase = r.phase;
+    mergeCaptured(r.captured);
+    S.transcript.push({role:'guide', text:r.say});
+    if(r.inviteClose) offerClose();
+  }else{
+    showOffline();
+    const step = scripted();
+    S.phase = step.phase;
+    S.transcript.push({role:'guide', text:step.say});
+    if(step.close) offerClose();
+  }
+
+  renderConvo(); renderCaptured(); renderPhase();
+  setBusy(false);
+  $('#reply').focus();
+}
+
+function mergeCaptured(c){
+  if(!c) return;
+  ['trigger','resistance','fear','payoff','programme','surrendered'].forEach(k => {
+    if(c[k]) S.captured[k] = c[k];
+  });
+  (c.feelings||[]).forEach(f => { if(f && !S.captured.feelings.includes(f)) S.captured.feelings.push(f); });
+}
+
+let offlineShown = false;
+function showOffline(){
+  if(offlineShown) return;
+  offlineShown = true;
+  $('#offline-notice').innerHTML = '<div class="notice">The guide is unreachable, so this session is running on the built-in process. Every question still follows the same path — and nothing you write leaves this device.</div>';
+}
+
+function offerClose(){
+  const b = $('#go-after');
+  b.className = 'btn primary sm';
+  b.textContent = 'Calibrate where you are now';
+}
+
+/* Built-in scripted flow — the fallback when the AI guide can't be reached.
+   Same seven phases, fixed wording, works with no network at all. */
+const SCRIPT = {
+  situation: [
+    'Thank you for putting it into words. Now set the story aside for a moment — it will still be there.\n\nWhat are you actually feeling as you read back what you wrote? Not what you think about it. What you feel.',
+  ],
+  feeling: [
+    'Stay with that. Where does it sit in your body — chest, throat, stomach, jaw? Put your attention there and tell me what it’s like.',
+    'Good. Now finish this sentence honestly: "I can’t let go of this because…"',
+  ],
+  resistance: [
+    'Now say the same sentence again, but replace "I can’t" with "I won’t". Say it out loud if you can.\n\nWhat happens when you do?',
+    'That shift matters — it hands the choice back to you. Behind every "I won’t" there is something. What are you afraid would happen if you did let this go?',
+  ],
+  underneath: [
+    'Look underneath the feeling you named first. Anger is usually fear in armour; pride is usually the fear of being nothing.\n\nWhat is the fear here, plainly?',
+    'Name it as simply as you can. Not the explanation — the fear itself.',
+  ],
+  payoff: [
+    'Now the honest question. What do you get from holding on to this? Being right, being wronged, the sympathy, the safety of not risking, the identity of being the one this happened to — what is the juice?',
+    'And what would you have to give up if you let it go? What belief keeps this in place?',
+  ],
+  surrender: [
+    'Let the feeling be there completely. Don’t resist it, don’t express it, don’t judge it, don’t try to change it. Just let it be, and stay with the sensation in your body until it starts to run out.\n\nTake as long as you need. Tell me when you’ve stayed with it.',
+    'Now: could you let it go? Not should — could.',
+    'And would you? If not now — when?',
+  ],
+  close: [
+    'That’s the whole of it. Willingness is the mechanism; you don’t have to force anything.\n\nWhen you’re ready, calibrate where you are now.',
+  ],
+};
+let scriptStep = 0;
+function scripted(){
+  const order = PHASES.map(p => p.key);
+  const lines = SCRIPT[S.phase] || SCRIPT.close;
+  const say = lines[Math.min(scriptStep, lines.length-1)];
+  scriptStep++;
+  let phase = S.phase, close = false;
+  if(scriptStep >= lines.length){
+    scriptStep = 0;
+    const n = order.indexOf(S.phase);
+    if(n < order.length-1) phase = order[n+1];
+    if(phase === 'close') close = true;
+  }
+  return {say, phase, close};
+}
+
+/* ═══════════════ stage: after / save ═══════════════ */
+$('#go-after').onclick = () => {
+  S.levelAfter = S.levelAfter || S.levelBefore;
+  renderMap($('#map-after'), S.levelAfter, k => S.levelAfter = k);
+  $('#surrendered').value = S.captured.surrendered || '';
+  stage('after');
+};
+$('#back-inquiry').onclick = () => stage('inquiry');
+
+$('#save').onclick = () => {
+  S.captured.surrendered = $('#surrendered').value.trim() || S.captured.surrendered;
+  S.note = $('#note').value.trim();
+  S.levelAfter = S.levelAfter || S.levelBefore;
+  S.endedAt = new Date().toISOString();
+  DB.sessions.push(JSON.parse(JSON.stringify(S)));
+  save();
+
+  const d = IDX[S.levelAfter] - IDX[S.levelBefore];
+  $('#done-move').textContent = d > 0 ? 'You moved up ' + d + (d===1?' level':' levels')
+                              : d < 0 ? 'Recorded'
+                              : 'Recorded';
+  $('#done-line').textContent = d > 0
+    ? lvl(S.levelBefore).name + ' → ' + lvl(S.levelAfter).name + '. That’s in the record now, along with what caused it and what you let go of.'
+    : 'Not every session moves the needle, and that’s information too. It’s all in the record.';
+  stage('done');
+};
+
+$('#new-session').onclick = resetSession;
+$('#see-history').onclick = () => { resetSession(); showView('history'); };
+
+function resetSession(){
+  S = blank();
+  scriptStep = 0;
+  offlineShown = false;
+  $('#offline-notice').innerHTML = '';
+  $('#situation').value = ''; $('#reply').value = '';
+  $('#surrendered').value = ''; $('#note').value = '';
+  $('#int-before').value = 5; $('#int-before-v').textContent = '5';
+  $('#int-after').value = 5;  $('#int-after-v').textContent = '5';
+  $('#convo').innerHTML = ''; $('#capturedcard').style.display = 'none';
+  const b = $('#go-after'); b.className = 'btn ghost sm'; b.textContent = 'Move to closing';
+  stage('open');
+  showView('session');
+}
+
+/* ═══════════════ history ═══════════════ */
+const fmtDate = iso => new Date(iso).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+
+function moveHTML(s){
+  const a = lvl(s.levelBefore), b = lvl(s.levelAfter) || a;
+  if(!a) return '';
+  return '<span class="move"><span style="color:'+a.c+'">'+a.name+'</span>'
+       + '<span class="arrow">→</span>'
+       + '<span style="color:'+b.c+'">'+b.name+'</span></span>';
+}
+
+function renderHistory(){
+  const q = $('#search').value.trim().toLowerCase();
+  const list = DB.sessions.slice().reverse().filter(s => {
+    if(!q) return true;
+    const c = s.captured || {};
+    return [s.situation, s.note, c.trigger, c.resistance, c.fear, c.payoff, c.programme, c.surrendered,
+            (c.feelings||[]).join(' '), (lvl(s.levelBefore)||{}).name, (lvl(s.levelAfter)||{}).name]
+           .join(' ').toLowerCase().includes(q);
+  });
+
+  const el = $('#sessions');
+  if(!list.length){
+    el.innerHTML = DB.sessions.length
+      ? '<div class="empty"><h3>Nothing matches</h3><p>Try another word.</p></div>'
+      : '<div class="empty"><h3>No sessions yet</h3><p>Your first one will appear here.</p></div>';
+    return;
+  }
+
+  el.innerHTML = list.map(s => {
+    const c = s.captured || {};
+    const f = (k, label) => c[k] ? '<div class="field"><div class="tiny">'+label+'</div><p>'+esc(c[k])+'</p></div>' : '';
+    return '<div class="sess" data-id="'+s.id+'">'
+      + '<div class="sesshead">'
+        + '<span class="small mut" style="white-space:nowrap">'+fmtDate(s.startedAt)+'</span>'
+        + '<span class="small soft" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(c.trigger || s.situation)+'</span>'
+        + moveHTML(s)
+      + '</div>'
+      + '<div class="sessbody">'
+        + '<div class="field"><div class="tiny">The difficulty</div><p>'+esc(s.situation)+'</p></div>'
+        + ((c.feelings||[]).length ? '<div class="field"><div class="tiny">Felt</div><p>'+esc(c.feelings.join(', '))+'</p></div>' : '')
+        + f('trigger','What caused it')
+        + f('resistance','The "I won’t"')
+        + f('fear','The fear underneath')
+        + f('payoff','The payoff for holding on')
+        + f('programme','The programme underneath')
+        + f('surrendered','What I surrendered')
+        + (s.note ? '<div class="field"><div class="tiny">Note</div><p>'+esc(s.note)+'</p></div>' : '')
+        + '<div class="field"><div class="tiny">Intensity</div><p>'+s.intensityBefore+' → '+(s.intensityAfter!=null?s.intensityAfter:'—')+' / 10</p></div>'
+        + '<div class="row" style="margin-top:16px">'
+          + '<button class="btn ghost sm" data-act="transcript">Read the session</button>'
+          + '<button class="btn ghost sm" data-act="delete">Delete</button>'
+        + '</div>'
+        + '<div class="convo" style="margin-top:16px;display:none" data-transcript></div>'
+      + '</div></div>';
+  }).join('');
+
+  $$('#sessions .sesshead').forEach(h => h.onclick = () => h.parentElement.classList.toggle('open'));
+  $$('#sessions [data-act]').forEach(b => b.onclick = e => {
+    e.stopPropagation();
+    const card = b.closest('.sess'), id = card.dataset.id;
+    if(b.dataset.act === 'delete'){
+      if(!confirm('Delete this session permanently?')) return;
+      DB.sessions = DB.sessions.filter(x => x.id !== id);
+      save(); renderHistory();
+    }else{
+      const box = card.querySelector('[data-transcript]');
+      const s = DB.sessions.find(x => x.id === id);
+      if(box.style.display === 'none'){
+        box.innerHTML = (s.transcript||[]).map(m =>
+          '<div class="turn '+(m.role==='guide'?'guide':'user')+'">'+esc(m.text)+'</div>').join('')
+          || '<p class="mut small">No conversation recorded.</p>';
+        box.style.display = 'flex';
+        b.textContent = 'Hide the session';
+      }else{
+        box.style.display = 'none';
+        b.textContent = 'Read the session';
+      }
+    }
+  });
+}
+$('#search').oninput = renderHistory;
+
+/* ═══════════════ export / import ═══════════════ */
+$('#export').onclick = () => {
+  const blob = new Blob([JSON.stringify(DB,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'letting-go-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+$('#import').onclick = () => $('#importfile').click();
+$('#importfile').onchange = e => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      const d = JSON.parse(r.result);
+      if(!d || !Array.isArray(d.sessions)) throw 0;
+      const have = new Set(DB.sessions.map(s => s.id));
+      const add = d.sessions.filter(s => s && s.id && !have.has(s.id));
+      DB.sessions = DB.sessions.concat(add).sort((a,b) => a.startedAt < b.startedAt ? -1 : 1);
+      save(); renderHistory();
+      alert('Imported ' + add.length + ' session' + (add.length===1?'':'s') + '.');
+    }catch(err){ alert('That file isn’t a Letting Go backup.'); }
+  };
+  r.readAsText(file);
+  e.target.value = '';
+};
+
+/* ═══════════════ insights ═══════════════ */
+function renderInsights(){
+  const S_ = DB.sessions;
+  const el = $('#insights');
+  if(S_.length < 1){
+    el.innerHTML = '<div class="empty"><h3>Nothing to show yet</h3><p>Save a session or two and the patterns start to appear here.</p></div>';
+    return;
+  }
+
+  const moves = S_.map(s => (IDX[s.levelAfter] ?? IDX[s.levelBefore]) - IDX[s.levelBefore]);
+  const up = moves.filter(m => m > 0).length;
+  const avg = moves.reduce((a,b) => a+b, 0) / moves.length;
+  const above = S_.filter(s => (IDX[s.levelAfter] ?? IDX[s.levelBefore]) >= IDX.courage).length;
+  const surrenders = S_.filter(s => (s.captured||{}).surrendered).length;
+
+  const group = (fn) => {
+    const m = new Map();
+    S_.forEach(s => {
+      const vals = fn(s);
+      (Array.isArray(vals) ? vals : [vals]).forEach(v => {
+        v = (v||'').trim();
+        if(!v) return;
+        const k = v.toLowerCase();
+        const e = m.get(k) || {label:v, n:0, move:0};
+        e.n++; e.move += (IDX[s.levelAfter] ?? IDX[s.levelBefore]) - IDX[s.levelBefore];
+        m.set(k, e);
+      });
+    });
+    return Array.from(m.values()).sort((a,b) => b.n - a.n);
+  };
+
+  const triggers = group(s => (s.captured||{}).trigger);
+  const feelings = group(s => (s.captured||{}).feelings || []);
+  const payoffs  = group(s => (s.captured||{}).payoff);
+  const programmes = group(s => (s.captured||{}).programme);
+
+  const barList = (rows, showMove) => {
+    if(!rows.length) return '<p class="mut small">Nothing recorded here yet.</p>';
+    const max = rows[0].n;
+    return rows.slice(0,10).map(r =>
+      '<div class="bar"><div>'
+      + '<div style="font-size:14.5px">'+esc(r.label)+'</div>'
+      + (showMove ? '<div class="small mut">avg movement '+(r.move/r.n>=0?'+':'')+(r.move/r.n).toFixed(1)+' levels</div>' : '')
+      + '<div class="bartrack"><div class="barfill" style="width:'+Math.round(r.n/max*100)+'%"></div></div>'
+      + '</div><div class="barct">'+r.n+'×</div></div>'
+    ).join('');
+  };
+
+  const log = S_.slice().reverse().filter(s => (s.captured||{}).surrendered).slice(0,40);
+
+  el.innerHTML =
+    '<div class="grid">'
+    + '<div class="stat"><div class="n">'+S_.length+'</div><div class="l">session'+(S_.length===1?'':'s')+'</div></div>'
+    + '<div class="stat"><div class="n">'+up+'</div><div class="l">moved up the scale</div></div>'
+    + '<div class="stat"><div class="n">'+(avg>=0?'+':'')+avg.toFixed(1)+'</div><div class="l">avg levels gained</div></div>'
+    + '<div class="stat"><div class="n">'+above+'</div><div class="l">ended at Courage or above</div></div>'
+    + '<div class="stat"><div class="n">'+surrenders+'</div><div class="l">things surrendered</div></div>'
+    + '</div>'
+
+    + '<div class="card"><h3>Level over time</h3>'
+    + '<p class="small mut">Each session, before → after. The gold line is Courage 200 — Hawkins’ threshold between force and power.</p>'
+    + '<div class="chartwrap">' + chart(S_) + '</div></div>'
+
+    + '<div class="card"><h3>What keeps generating this</h3>'
+    + '<p class="small mut" style="margin-bottom:10px">Triggers by how often they come up, and how much each one tends to shift.</p>'
+    + barList(triggers, true) + '</div>'
+
+    + '<div class="card"><h3>The feelings that recur</h3>' + barList(feelings, false) + '</div>'
+
+    + '<div class="card"><h3>Payoffs and programmes</h3>'
+    + '<p class="small mut" style="margin-bottom:10px">What holding on gives you, and the beliefs keeping it in place. Repeats here are the ones worth working.</p>'
+    + '<div class="tiny" style="margin:14px 0 4px">Payoffs</div>' + barList(payoffs, false)
+    + '<div class="tiny" style="margin:20px 0 4px">Programmes</div>' + barList(programmes, false) + '</div>'
+
+    + '<div class="card"><h3>The surrender log</h3>'
+    + (log.length
+        ? log.map(s => '<div class="bar"><div><div style="font-size:14.5px">'+esc(s.captured.surrendered)+'</div>'
+            + '<div class="small mut">'+fmtDate(s.startedAt)+((s.captured.feelings||[]).length?' · '+esc(s.captured.feelings.join(', ')):'')+'</div></div>'
+            + '<div>'+moveHTML(s)+'</div></div>').join('')
+        : '<p class="mut small">Nothing logged yet.</p>')
+    + '</div>';
+}
+
+function chart(sessions){
+  const W = Math.max(520, sessions.length * 46 + 90), H = 270;
+  const padL = 78, padR = 18, padT = 16, padB = 30;
+  const n = MAP.length - 1;
+  const x = i => padL + (sessions.length === 1 ? (W-padL-padR)/2 : i * (W-padL-padR) / (sessions.length-1));
+  const y = v => padT + (1 - v/n) * (H-padT-padB);
+
+  let g = '';
+
+  // horizontal guides at the named anchor levels
+  [['shame',0],['fear',0],['courage',1],['acceptance',0],['love',0]].forEach(([k,strong]) => {
+    const L = lvl(k), yy = y(IDX[k]);
+    g += '<line x1="'+padL+'" y1="'+yy+'" x2="'+(W-padR)+'" y2="'+yy+'" stroke="'+(strong?'#c9a961':'#232936')+'" stroke-width="'+(strong?1.4:1)+'"'+(strong?'':' stroke-dasharray="2 4"')+'/>';
+    g += '<text x="'+(padL-9)+'" y="'+(yy+4)+'" text-anchor="end" fill="'+(strong?'#e8d9a8':'#8b93a3')+'" font-size="11" font-weight="'+(strong?'700':'400')+'">'+L.name+' '+L.cal+'</text>';
+  });
+
+  // the after-line
+  const pts = sessions.map((s,i) => [x(i), y(IDX[s.levelAfter] ?? IDX[s.levelBefore])]);
+  if(pts.length > 1){
+    g += '<polyline points="'+pts.map(p => p[0]+','+p[1]).join(' ')+'" fill="none" stroke="#c9a961" stroke-width="2" stroke-linejoin="round" opacity=".85"/>';
+  }
+
+  // before → after stems and markers
+  sessions.forEach((s,i) => {
+    const a = IDX[s.levelBefore], b = IDX[s.levelAfter] ?? a;
+    const xx = x(i);
+    g += '<line x1="'+xx+'" y1="'+y(a)+'" x2="'+xx+'" y2="'+y(b)+'" stroke="'+MAP[b].c+'" stroke-width="2" opacity=".45"/>';
+    g += '<circle cx="'+xx+'" cy="'+y(a)+'" r="3" fill="none" stroke="'+MAP[a].c+'" stroke-width="1.6"/>';
+    g += '<circle cx="'+xx+'" cy="'+y(b)+'" r="4.5" fill="'+MAP[b].c+'"><title>'+esc(fmtDate(s.startedAt)+': '+MAP[a].name+' → '+MAP[b].name)+'</title></circle>';
+  });
+
+  return '<svg class="chart" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Consciousness level per session over time">'+g+'</svg>';
+}
+
+/* ═══════════════ boot ═══════════════ */
+renderMap($('#map-before'), S.levelBefore, k => S.levelBefore = k);
+stage('open');
+</script>
+</body></html>

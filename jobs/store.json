@@ -25426,7 +25426,7 @@
   "tier": "",
   "first_seen": "2026-07-28",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  },
  "7471215bfe3eaca9": {
   "title": "Enterprise Account Executive EMEA",
@@ -28290,6 +28290,6 @@
   "tier": "",
   "first_seen": "2026-08-07",
   "last_seen": "2026-08-07",
-  "active": true
+  "active": false
  }
 }

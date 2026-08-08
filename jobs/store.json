@@ -28579,6 +28579,22 @@
   "tier": "",
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-08",
+  "active": false
+ },
+ "eb6eb67ae46566db": {
+  "title": "Virtual Assistant for Consulting Company in Washington, DC",
+  "company": "Realynk Assistants",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/realynk-assistants/jobs/virtual-assistant-for-consulting-company-in-washington-dc",
+  "source": "Himalayas",
+  "category": "VA / Social / Chat",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-08",
+  "last_seen": "2026-08-08",
   "active": true
  }
 }

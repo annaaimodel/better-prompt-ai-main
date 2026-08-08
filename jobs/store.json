@@ -25,7 +25,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-08",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -68,17 +68,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Charlotte, NC",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-571547146953411006",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-08",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -206,7 +206,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-08",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -239,7 +239,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-08",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -290,7 +290,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-08",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -486,7 +486,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-08",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -503,7 +503,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-08",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1360,7 +1360,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-08",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -11514,7 +11514,7 @@
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-08-08",
-  "active": true,
+  "active": false,
   "inbox": false,
   "tier": ""
  },
@@ -11721,16 +11721,16 @@
  "f8b9ea50606be3f1": {
   "title": "Remote Inbound Sales Representative",
   "company": "Stratford Davis",
-  "location": "Rubidoux, Riverside County",
+  "location": "Atlanta, Fulton County",
   "comp": "$120000-$120000",
-  "link": "https://www.adzuna.com/details/5830095245?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.com/details/5830095017?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
-  "last_seen": "2026-08-07",
-  "active": false,
+  "last_seen": "2026-08-08",
+  "active": true,
   "inbox": false,
   "tier": ""
  },
@@ -13988,7 +13988,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "03eba8bc7462ebed": {
   "title": "Account Executive- Online Division- Grand Canyon University",
@@ -14651,7 +14651,7 @@
   "company": "Super Heat Fitness",
   "location": "Anaheim, CA",
   "comp": "",
-  "link": "https://jooble.org/jdp/2696024128309364827",
+  "link": "https://jooble.org/jdp/4262630829967873028",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -15236,7 +15236,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "9283e6c697e165eb": {
   "title": "High-Ticket Coaching Closer (Remote, Uncapped Commissions)",
@@ -15748,8 +15748,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-19",
-  "last_seen": "2026-08-06",
-  "active": false
+  "last_seen": "2026-08-08",
+  "active": true
  },
  "13edc91b189cdbc6": {
   "title": "Remote High-Ticket Closer | One-Call Close, $20k-$30k OTE",
@@ -15764,8 +15764,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-19",
-  "last_seen": "2026-08-04",
-  "active": false
+  "last_seen": "2026-08-08",
+  "active": true
  },
  "f431777817c71f10": {
   "title": "Remote High-Ticket Closer — Uncapped Pay & Hot Leads",
@@ -17322,9 +17322,9 @@
  "5150fe0fad2c37ba": {
   "title": "Senior High-Ticket Closer for Remote Growth Consulting",
   "company": "Curvion Blue",
-  "location": "Little Rock, AR",
+  "location": "Boise, ID",
   "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/1574222273297870682",
+  "link": "https://jooble.org/jdp/4386122744690963266",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -18235,9 +18235,9 @@
  "44146e9d97b6e42a": {
   "title": "Sales Business Development Representative",
   "company": "BluZinc",
-  "location": "United States",
+  "location": "Los Angeles, CA",
   "comp": "$120k",
-  "link": "https://jooble.org/jdp/5578567337694189807",
+  "link": "https://jooble.org/jdp/-8993310210352571565",
   "source": "Jooble",
   "category": "Setter / SDR",
   "country": "United States",
@@ -18358,7 +18358,7 @@
   "tier": "",
   "first_seen": "2026-06-29",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "478f1cccf58f21b1": {
   "title": "Remote B2B Ad Sales Closer - Top Commissions",
@@ -19238,7 +19238,7 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "ae4c58ad4ddc7b15": {
   "title": "Remote Inbound Sales Pro Uncapped Commission",
@@ -24168,10 +24168,10 @@
  "7947ff030ed815ec": {
   "title": "Sales Development Representative",
   "company": "Nurtured",
-  "location": "New York, NY",
-  "comp": "$10,000 per month",
-  "link": "https://jooble.org/jdp/3233684304103187925",
-  "source": "Jooble",
+  "location": "New York City, New York",
+  "comp": "$77847-$77847",
+  "link": "https://www.adzuna.com/land/ad/5811839379?se=fM4MoDGT8RGlDuOngCclFw&utm_medium=api&utm_source=3e941a8f&v=4FF4E0A04F5CD160ECE2ADFD5BF1CEDFC77E4285",
+  "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
   "lead_type": "",
@@ -24536,9 +24536,9 @@
  "54c398f10a8871cd": {
   "title": "Virtual Assistant - Remote",
   "company": "Anova Care",
-  "location": "Jackson, MS",
+  "location": "San Antonio, TX",
   "comp": "$69k - $125k",
-  "link": "https://jooble.org/jdp/-6362067537267553036",
+  "link": "https://jooble.org/jdp/2855802853505124783",
   "source": "Jooble",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -24627,7 +24627,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "e932aa24704f05aa": {
   "title": "Virtual Assistant I",
@@ -24739,7 +24739,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "110254f0081432e1": {
   "title": "Virtual Assistant II",
@@ -25155,7 +25155,7 @@
   "tier": "",
   "first_seen": "2026-07-27",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "aa448e12154d652b": {
   "title": "Inside Sales Closer",
@@ -26002,8 +26002,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-31",
-  "last_seen": "2026-08-07",
-  "active": false
+  "last_seen": "2026-08-08",
+  "active": true
  },
  "0dd25938cad93022": {
   "title": "REMOTE LAND SALES CLOSER",
@@ -26424,9 +26424,9 @@
  "3564c8f7b9cd0abf": {
   "title": "Sales Development Representative",
   "company": "Globe Life",
-  "location": "Piscataway, Middlesex County",
-  "comp": "$108153-$108153",
-  "link": "https://www.adzuna.com/land/ad/5826894248?se=2DT1UbyS8RGlDuOngCclFw&utm_medium=api&utm_source=3e941a8f&v=7D0B7FA9D3E92CB0E31B17B3CAD3331B495A5089",
+  "location": "West New York, Hudson County",
+  "comp": "$108848-$108848",
+  "link": "https://www.adzuna.com/land/ad/5826975727?se=fM4MoDGT8RGlDuOngCclFw&utm_medium=api&utm_source=3e941a8f&v=D8BA5C11CEB8B82EDEF8EB89CAA083B0B51E2F36",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -26482,8 +26482,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-02",
-  "last_seen": "2026-08-02",
-  "active": false
+  "last_seen": "2026-08-08",
+  "active": true
  },
  "0e0874efcb8d244f": {
   "title": "Enrollment Advisor/High Ticket Closer (Remote)",
@@ -26698,7 +26698,7 @@
   "company": "Vendavo",
   "location": "Denver, CO",
   "comp": "$110k",
-  "link": "https://jooble.org/jdp/-6024884918462709507",
+  "link": "https://jooble.org/jdp/-7793165139961978202",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -27610,7 +27610,7 @@
   "company": "Collaborate Solutions, Inc.",
   "location": "US",
   "comp": "$102318-$102318",
-  "link": "https://www.adzuna.com/land/ad/5826789509?se=oNIvdGiS8RGg9aNvkrRziQ&utm_medium=api&utm_source=3e941a8f&v=05CBF56382B34558329D58D078A24FC2166CF76F",
+  "link": "https://www.adzuna.com/land/ad/5826789509?se=OH-XozGT8RGlDuOngCclFw&utm_medium=api&utm_source=3e941a8f&v=05CBF56382B34558329D58D078A24FC2166CF76F",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -27618,8 +27618,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-04",
-  "last_seen": "2026-08-07",
-  "active": false
+  "last_seen": "2026-08-08",
+  "active": true
  },
  "76520e2b2ef815f5": {
   "title": "Customer Success Manager (EMEA)",
@@ -28008,9 +28008,9 @@
  "31ca981df92cff62": {
   "title": "Entry-Level Sales Development Representative",
   "company": "Globe Life",
-  "location": "Norland Park, DeKalb County",
-  "comp": "$104869-$104869",
-  "link": "https://www.adzuna.com/land/ad/5828112048?se=2DT1UbyS8RGlDuOngCclFw&utm_medium=api&utm_source=3e941a8f&v=D3193035C6B4F970E71C6FD4117C9226D9835012",
+  "location": "Bloomfield, Essex County",
+  "comp": "$112951-$112951",
+  "link": "https://www.adzuna.com/land/ad/5826998654?se=fM4MoDGT8RGlDuOngCclFw&utm_medium=api&utm_source=3e941a8f&v=8E1FF280592FFA4894E39D6C1875480928ADB105",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -28026,7 +28026,7 @@
   "company": "ApexGroup",
   "location": "Missouri, US",
   "comp": "$45166-$45166",
-  "link": "https://www.adzuna.com/land/ad/5811149839?se=sDFMWLyS8RGOZItUbRfjpg&utm_medium=api&utm_source=3e941a8f&v=B128198EC03CB4D0866703EA9DA7E20F737CB506",
+  "link": "https://www.adzuna.com/land/ad/5811149839?se=sl9UqjGT8RGWPoJqQXFPnw&utm_medium=api&utm_source=3e941a8f&v=B128198EC03CB4D0866703EA9DA7E20F737CB506",
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -28547,7 +28547,7 @@
   "tier": "",
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "cdf423d45993d2a3": {
   "title": "Director of Customer Success",
@@ -28612,5 +28612,21 @@
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-08",
   "active": false
+ },
+ "8f74075fbbc997a6": {
+  "title": "Sales Closer",
+  "company": "Simour Design INC",
+  "location": "US",
+  "comp": "$48000-$70000",
+  "link": "https://www.adzuna.com/details/5832851368?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-08",
+  "last_seen": "2026-08-08",
+  "active": true
  }
 }

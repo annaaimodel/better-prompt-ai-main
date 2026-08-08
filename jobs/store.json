@@ -28563,6 +28563,22 @@
   "tier": "",
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-08",
+  "active": false
+ },
+ "8d07b5f5130fa97b": {
+  "title": "Director of Customer Success",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/instacart/jobs/director-of-customer-success",
+  "source": "Himalayas",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-08",
+  "last_seen": "2026-08-08",
   "active": true
  }
 }

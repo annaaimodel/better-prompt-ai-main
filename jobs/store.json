@@ -28596,5 +28596,21 @@
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-08",
   "active": false
+ },
+ "950dee8c25a68084": {
+  "title": "Customer Service & Virtual Assistant",
+  "company": "name",
+  "location": "Lebanon",
+  "comp": "",
+  "link": "https://himalayas.app/companies/whitecollars/jobs/customer-service-virtual-assistant",
+  "source": "Himalayas",
+  "category": "VA / Social / Chat",
+  "country": "Other",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-08",
+  "last_seen": "2026-08-08",
+  "active": true
  }
 }

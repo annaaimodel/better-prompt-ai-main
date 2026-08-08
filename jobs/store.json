@@ -23715,7 +23715,7 @@
   "tier": "",
   "first_seen": "2026-07-22",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "2729347ac297f5d4": {
   "title": "Account Executive 4",
@@ -23843,7 +23843,7 @@
   "tier": "",
   "first_seen": "2026-07-22",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  },
  "d031d2f8c7ce31c0": {
   "title": "Major Account Manager",
@@ -28595,6 +28595,6 @@
   "tier": "",
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-08",
-  "active": true
+  "active": false
  }
 }

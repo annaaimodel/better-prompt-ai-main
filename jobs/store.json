@@ -28659,7 +28659,7 @@
   "tier": "",
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-08",
-  "active": false
+  "active": true
  },
  "761f85999d2eb882": {
   "title": "Real Estate Virtual Assistant for RE Company in FL",
@@ -28675,7 +28675,7 @@
   "tier": "",
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-08",
-  "active": false
+  "active": true
  },
  "2b1d3fc2315a1232": {
   "title": "Account Executive (Technical/Engineered Sales + High Value Deals Req.)",
@@ -28691,6 +28691,6 @@
   "tier": "",
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-08",
-  "active": false
+  "active": true
  }
 }

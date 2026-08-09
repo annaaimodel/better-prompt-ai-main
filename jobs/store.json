@@ -28484,7 +28484,7 @@
   "tier": "",
   "first_seen": "2026-08-07",
   "last_seen": "2026-08-09",
-  "active": true
+  "active": false
  },
  "3ec5bcfe24cfdeda": {
   "title": "Account Executive Enterprise UKI",
@@ -28964,7 +28964,7 @@
   "tier": "",
   "first_seen": "2026-08-09",
   "last_seen": "2026-08-09",
-  "active": true
+  "active": false
  },
  "78a8767bdb37b261": {
   "title": "Customer Success Manager Leader",
@@ -28980,6 +28980,6 @@
   "tier": "",
   "first_seen": "2026-08-09",
   "last_seen": "2026-08-09",
-  "active": true
+  "active": false
  }
 }

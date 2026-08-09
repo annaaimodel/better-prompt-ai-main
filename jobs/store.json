@@ -28276,7 +28276,7 @@
   "tier": "",
   "first_seen": "2026-08-07",
   "last_seen": "2026-08-09",
-  "active": true
+  "active": false
  },
  "23c6791adab958a2": {
   "title": "Customer Success Manager",
@@ -28910,6 +28910,38 @@
   "link": "https://jooble.org/jdp/-8050310538764310272",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-09",
+  "last_seen": "2026-08-09",
+  "active": true
+ },
+ "72ff751024e6195a": {
+  "title": "Founding Enterprise Account Executive",
+  "company": "Clera",
+  "location": "remote",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/clera/remote-founding-enterprise-account-executive-162148",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-09",
+  "last_seen": "2026-08-09",
+  "active": true
+ },
+ "f3debee2a3fb163f": {
+  "title": "Growth Operations Enablement Manager",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/shift5/jobs/growth-operations-enablement-manager",
+  "source": "Himalayas",
+  "category": "Closer",
   "country": "United States",
   "lead_type": "",
   "inbox": false,

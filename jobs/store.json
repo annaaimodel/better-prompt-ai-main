@@ -28852,6 +28852,22 @@
   "tier": "",
   "first_seen": "2026-08-09",
   "last_seen": "2026-08-09",
+  "active": false
+ },
+ "5007945b32a659a9": {
+  "title": "Mentor, Claude Corps",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/codepath/jobs/mentor-claude-corps",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-09",
+  "last_seen": "2026-08-09",
   "active": true
  }
 }

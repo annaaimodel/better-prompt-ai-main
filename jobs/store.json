@@ -29044,7 +29044,7 @@
   "tier": "",
   "first_seen": "2026-08-10",
   "last_seen": "2026-08-10",
-  "active": true
+  "active": false
  },
  "fb5b4cab3da081b3": {
   "title": "Specialist Account Executive, ZT Branch - Majors, West + Central",
@@ -29060,6 +29060,6 @@
   "tier": "",
   "first_seen": "2026-08-10",
   "last_seen": "2026-08-10",
-  "active": true
+  "active": false
  }
 }

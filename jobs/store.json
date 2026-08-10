@@ -23876,7 +23876,7 @@
   "tier": "",
   "first_seen": "2026-07-22",
   "last_seen": "2026-08-10",
-  "active": true
+  "active": false
  },
  "463adc8de4bd69b2": {
   "title": "Director, Customer Success (Enterprise)",
@@ -28004,7 +28004,7 @@
   "tier": "",
   "first_seen": "2026-08-06",
   "last_seen": "2026-08-10",
-  "active": true
+  "active": false
  },
  "31ca981df92cff62": {
   "title": "Entry-Level Sales Development Representative",
@@ -29008,6 +29008,22 @@
   "category": "Closer",
   "country": "United States",
   "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-10",
+  "last_seen": "2026-08-10",
+  "active": true
+ },
+ "5b2c421e43cd7037": {
+  "title": "Account Director, Enterprise Sales - French Markets",
+  "company": "pendo",
+  "location": "London",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/pendo/account-director-enterprise-sales-french-markets-london-108053",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Cold",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-10",

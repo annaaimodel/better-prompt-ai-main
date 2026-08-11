@@ -377,7 +377,21 @@ function markAssetUsed(lead, assetId) {
 }
 // Persist locally without touching the sync clock or pushing (used when adopting
 // a pulled copy from the cloud, so we keep the remote timestamp).
-function persistLocal() { localStorage.setItem(KEY, JSON.stringify(db)); }
+function persistLocal() {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(db));
+  } catch (e) {
+    // Storage full: the auto-backups are the biggest, least-critical consumer,
+    // so drop them to make room and retry the primary save so no work is lost.
+    try { localStorage.removeItem(BKEY); } catch (e2) {}
+    try {
+      localStorage.setItem(KEY, JSON.stringify(db));
+      toast("Storage was full - cleared auto-backups to save. Export a JSON backup soon.");
+    } catch (e3) {
+      toast("Storage full - changes not saved. Export a JSON backup, then clear old data.");
+    }
+  }
+}
 function save() { db.updatedAt = Date.now(); persistLocal(); schedulePush(); }
 
 // ----- Cross-device sync -------------------------------------------------
@@ -463,7 +477,7 @@ function snapshotBackup(reason) {
   try {
     let arr = readBackups();
     arr.unshift({ at: new Date().toISOString(), reason: reason || "manual", data: JSON.stringify(db) });
-    arr = arr.slice(0, 12);
+    arr = arr.slice(0, 5);
     // If we hit the storage quota, drop the oldest snapshot and retry.
     while (arr.length) {
       try { localStorage.setItem(BKEY, JSON.stringify(arr)); break; } catch (e) { arr = arr.slice(0, arr.length - 1); }

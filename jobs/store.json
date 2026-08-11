@@ -29076,7 +29076,7 @@
   "tier": "",
   "first_seen": "2026-08-10",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "cda08034862930d1": {
   "title": "Regional Sales Executive –Northeast - Fine Art & Collectibles",
@@ -29157,5 +29157,37 @@
   "first_seen": "2026-08-11",
   "last_seen": "2026-08-11",
   "active": false
+ },
+ "349e1f67111847d0": {
+  "title": "Strategic Account Executive (DACH)",
+  "company": "Datadog",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/datadog/remote-strategic-account-executive-dach-498527",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-11",
+  "last_seen": "2026-08-11",
+  "active": true
+ },
+ "a6392236b351e64b": {
+  "title": "Commercial Account Executive, Acquisition | Melbourne | Remote",
+  "company": "Grafana Labs",
+  "location": "Australia",
+  "comp": "",
+  "link": "https://himalayas.app/companies/grafana-labs/jobs/commercial-account-executive-acquisition-melbourne-remote-4147409693",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "Australia",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-11",
+  "last_seen": "2026-08-11",
+  "active": true
  }
 }

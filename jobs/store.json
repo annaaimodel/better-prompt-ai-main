@@ -25,7 +25,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-11",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -68,17 +68,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Oklahoma City, OK",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-6204075942260364125",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-11",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -206,7 +206,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-11",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -239,7 +239,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-11",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -290,7 +290,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-11",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -486,7 +486,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-11",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -503,7 +503,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-11",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1361,7 +1361,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-11",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -2060,7 +2060,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-11",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "Inbound",
   "inbox": false,
@@ -2301,8 +2301,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-08-10",
-  "active": false,
+  "last_seen": "2026-08-11",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2429,8 +2429,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-08-10",
-  "active": false,
+  "last_seen": "2026-08-11",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -13989,7 +13989,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "03eba8bc7462ebed": {
   "title": "Account Executive- Online Division- Grand Canyon University",
@@ -14106,9 +14106,9 @@
  "34079eb7828f4cef": {
   "title": "High Ticket Sales Closer - Remote ($20K-$30K/month OTE)",
   "company": "Schnell Global",
-  "location": "United States",
+  "location": "New York, NY",
   "comp": "$5,000 per month",
-  "link": "https://jooble.org/jdp/6526691697446226923",
+  "link": "https://jooble.org/jdp/-5433201200600456455",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -14362,9 +14362,9 @@
  "7f48de3feea25292": {
   "title": "Remote High-Ticket Closer - High-Earning Inbound Leads",
   "company": "The WFS Group",
-  "location": "Phoenix, AZ",
-  "comp": "",
-  "link": "https://jooble.org/jdp/-3411282512165651933",
+  "location": "New York, NY",
+  "comp": "$90k - $360k",
+  "link": "https://jooble.org/jdp/5271430340478559989",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -14644,8 +14644,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-17",
-  "last_seen": "2026-08-10",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "11094b46cea2a0bd": {
   "title": "Remote High-Ticket Fitness Sales Closer",
@@ -15766,7 +15766,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "f431777817c71f10": {
   "title": "Remote High-Ticket Closer — Uncapped Pay & Hot Leads",
@@ -17323,9 +17323,9 @@
  "5150fe0fad2c37ba": {
   "title": "Senior High-Ticket Closer for Remote Growth Consulting",
   "company": "Curvion Blue",
-  "location": "Boise, ID",
+  "location": "Albuquerque, NM",
   "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/4386122744690963266",
+  "link": "https://jooble.org/jdp/6503052508334808238",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -18236,9 +18236,9 @@
  "44146e9d97b6e42a": {
   "title": "Sales Business Development Representative",
   "company": "BluZinc",
-  "location": "Rancho Santa Margarita, CA",
+  "location": "Los Angeles, CA",
   "comp": "$120k",
-  "link": "https://jooble.org/jdp/4186580017763898109",
+  "link": "https://jooble.org/jdp/-8993310210352571565",
   "source": "Jooble",
   "category": "Setter / SDR",
   "country": "United States",
@@ -18246,8 +18246,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-29",
-  "last_seen": "2026-08-09",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "ede4dc1f57876328": {
   "title": "Remote Marketing Virtual Assistant - Flexible Hours Growth",
@@ -18375,7 +18375,7 @@
   "tier": "",
   "first_seen": "2026-06-29",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "e66362553ae9ce23": {
   "title": "Senior Sales Closer for SAAS Company ( 10 - 20% Commision )",
@@ -19239,7 +19239,7 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "ae4c58ad4ddc7b15": {
   "title": "Remote Inbound Sales Pro Uncapped Commission",
@@ -19335,7 +19335,7 @@
   "tier": "",
   "first_seen": "2026-07-03",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "ddb6fbb44a3ed1e3": {
   "title": "REMOTE LAND SALES CLOSER",
@@ -22684,8 +22684,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-16",
-  "last_seen": "2026-08-10",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "e8000162d56fab6f": {
   "title": "Remote Inside Sales Representative | Sales Agent | Will train & Mentor | Work from Home",
@@ -23491,8 +23491,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-21",
-  "last_seen": "2026-08-10",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "38855835b40374d8": {
   "title": "Forward Deployed Engineer - Integrations & Customer Success (f/m/d)",
@@ -23907,8 +23907,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-22",
-  "last_seen": "2026-08-08",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "a3b3908840341308": {
   "title": "Sales Development Representative",
@@ -24488,11 +24488,11 @@
  },
  "f2e07d3d50b0a9e7": {
   "title": "Remote Virtual Assistant",
-  "company": "Affordable Land Scaping Services",
-  "location": "Tucker, GA",
-  "comp": "",
-  "link": "https://jooble.org/jdp/-9086611341850454820",
-  "source": "Jooble",
+  "company": "Affordable land scaping services",
+  "location": "Tucker, DeKalb County",
+  "comp": "$39641-$39641",
+  "link": "https://www.adzuna.com/details/5836645189?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
   "category": "VA / Social / Chat",
   "country": "United States",
   "lead_type": "",
@@ -24633,12 +24633,12 @@
  "e932aa24704f05aa": {
   "title": "Virtual Assistant I",
   "company": "BrandCoven",
-  "location": "Remote",
-  "comp": "$25 - $30 per hour",
-  "link": "https://jooble.org/jdp/-1202847931411683482",
+  "location": "Atlanta, GA",
+  "comp": "",
+  "link": "https://jooble.org/jdp/749032608111077721",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -24756,15 +24756,15 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "fcfba0ab41ede210": {
   "title": "Remote Executive Virtual Assistant",
-  "company": "Affordable Land Scaping Services",
-  "location": "Tucker, GA",
-  "comp": "",
-  "link": "https://jooble.org/jdp/3373080593145274145",
-  "source": "Jooble",
+  "company": "Affordable land scaping services",
+  "location": "Tucker, DeKalb County",
+  "comp": "$44482-$44482",
+  "link": "https://www.adzuna.com/details/5836645180?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
   "category": "VA / Social / Chat",
   "country": "United States",
   "lead_type": "",
@@ -25155,8 +25155,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-27",
-  "last_seen": "2026-08-08",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "aa448e12154d652b": {
   "title": "Inside Sales Closer",
@@ -26003,8 +26003,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-31",
-  "last_seen": "2026-08-09",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "0dd25938cad93022": {
   "title": "REMOTE LAND SALES CLOSER",
@@ -26441,9 +26441,9 @@
  "012722fe23c59ec3": {
   "title": "Remote Sales Closer",
   "company": "GrabJobs",
-  "location": "Long Beach, CA",
+  "location": "Saint Petersburg, FL",
   "comp": "$150k - $300k",
-  "link": "https://jooble.org/jdp/-5294226674089440480",
+  "link": "https://jooble.org/jdp/3805690135793484998",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -26451,8 +26451,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-02",
-  "last_seen": "2026-08-09",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "048a7739e2a100f0": {
   "title": "Virtual Assistant",
@@ -26707,8 +26707,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-02",
-  "last_seen": "2026-08-10",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "d110c63ac445c34d": {
   "title": "Closer Needed – Remote, Fast-Paced, High-Energy",
@@ -28025,9 +28025,9 @@
  "0ff5129cafb93249": {
   "title": "Work From Home Research Panel. Ideal for Admin Virtual Assistants",
   "company": "ApexGroup",
-  "location": "Missouri, US",
-  "comp": "$45166-$45166",
-  "link": "https://www.adzuna.com/land/ad/5811149839?se=noFTyReV8RG7ILaWj3cC-A&utm_medium=api&utm_source=3e941a8f&v=B128198EC03CB4D0866703EA9DA7E20F737CB506",
+  "location": "Massachusetts, US",
+  "comp": "$45367-$45367",
+  "link": "https://www.adzuna.com/land/ad/5811087707?se=_g3bKo2V8RGNEO0SxDr7vQ&utm_medium=api&utm_source=3e941a8f&v=5C06EFC8623343A1BDFEC5876285D9669D201DD4",
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -28627,8 +28627,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-08",
-  "last_seen": "2026-08-10",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "f61cdb54b4e6f79a": {
   "title": "VP of Sales, Managed Learning Services | Remote, US | Open to US-based candiddat",
@@ -28915,8 +28915,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-09",
-  "last_seen": "2026-08-10",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "72ff751024e6195a": {
   "title": "Founding Enterprise Account Executive",

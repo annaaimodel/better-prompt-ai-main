@@ -1561,7 +1561,7 @@ $("importBtn").onclick = () => $("importFile").click();
 $("importBtn2").onclick = () => $("importFile").click();
 $("importFile").onchange = (e) => { if (e.target.files[0]) doImport(e.target.files[0]); };
 $("backupNow") && ($("backupNow").onclick = () => { snapshotBackup("manual"); renderBackups(); toast("Backup taken"); });
-$("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this device? A backup is taken first, and Export is recommended.")) { snapshotBackup("before erase"); localStorage.removeItem(KEY); db = ensureShape(load()); rerender(); loadSettingsForm(); updateGate(); toast("Wiped (recoverable from Auto-backups)"); } };
+$("wipeBtn").onclick = () => { if (confirm("Erase ALL leads and settings on this device? A backup is taken first, and Export is recommended.")) { snapshotBackup("before erase"); localStorage.removeItem(KEY); db = ensureShape(load()); db.updatedAt = Date.now(); save(); if (syncOn()) syncPush(); rerender(); loadSettingsForm(); updateGate(); toast("Wiped (recoverable from Auto-backups)"); } };
 $("search").addEventListener("input", (e) => renderPipeline(e.target.value));
 $("segNav").addEventListener("click", (e) => { const b = e.target.closest("button[data-seg]"); if (b) { pipelineSegment = b.dataset.seg; renderPipeline($("search").value); } });
 $("assigneeFilter").addEventListener("change", (e) => { pipelineAssignee = e.target.value; renderPipeline($("search").value); });

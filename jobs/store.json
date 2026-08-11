@@ -22573,7 +22573,7 @@
   "tier": "",
   "first_seen": "2026-07-15",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "725d53fdeebcde1b": {
   "title": "Personal Training Sales Representative",
@@ -27892,7 +27892,7 @@
   "tier": "",
   "first_seen": "2026-08-05",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "95832569bceb5b2f": {
   "title": "Key Account Executive, Contract Furniture - Remote Draw (Southern Texas includin",
@@ -29108,7 +29108,7 @@
   "tier": "",
   "first_seen": "2026-08-11",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  },
  "97cec1cdfa3d4d85": {
   "title": "Product Support Engineer - EMEA",
@@ -29120,6 +29120,38 @@
   "category": "Closer",
   "country": "United Kingdom",
   "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-11",
+  "last_seen": "2026-08-11",
+  "active": true
+ },
+ "73ba4967709e4877": {
+  "title": "Channel Account Executive",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/aci-learning/jobs/channel-account-executive",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-11",
+  "last_seen": "2026-08-11",
+  "active": true
+ },
+ "9b2ba37eea7e1364": {
+  "title": "Strategic Enterprise Account Executive, Majors- Media, Telco & Entertainment",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/matillion/jobs/strategic-enterprise-account-executive-majors-media-telco-entertainment-9413614500",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Cold",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-11",

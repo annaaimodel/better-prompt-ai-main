@@ -26776,10 +26776,10 @@
  },
  "cf3c6a6c9ca72103": {
   "title": "Customer Success - DACH",
-  "company": "Elevenlabs",
+  "company": "ElevenLabs",
   "location": "Germany",
   "comp": "",
-  "link": "https://www.arbeitnow.com/jobs/companies/elevenlabs/customer-success-dach-germany-483408",
+  "link": "https://www.arbeitnow.com/jobs/companies/elevenlabs/customer-success-dach-germany-408924",
   "source": "Arbeitnow",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "Europe",
@@ -26787,8 +26787,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-02",
-  "last_seen": "2026-08-03",
-  "active": false
+  "last_seen": "2026-08-11",
+  "active": true
  },
  "aade9805191d90a3": {
   "title": "Account Executive Lead - North America - Mid-Market",
@@ -29252,6 +29252,6 @@
   "tier": "",
   "first_seen": "2026-08-11",
   "last_seen": "2026-08-11",
-  "active": true
+  "active": false
  }
 }

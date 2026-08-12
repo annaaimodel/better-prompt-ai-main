@@ -25,7 +25,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-12",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -68,17 +68,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Charlotte, NC",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-571547146953411006",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-12",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -206,7 +206,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-12",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -239,7 +239,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-12",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -290,7 +290,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-12",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -486,7 +486,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-12",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -503,7 +503,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-12",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1361,7 +1361,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-12",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -2301,8 +2301,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-08-11",
-  "active": false,
+  "last_seen": "2026-08-12",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2429,8 +2429,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-08-11",
-  "active": false,
+  "last_seen": "2026-08-12",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -11722,16 +11722,16 @@
  "f8b9ea50606be3f1": {
   "title": "Remote Inbound Sales Representative",
   "company": "Stratford Davis",
-  "location": "Atlanta, Fulton County",
+  "location": "North Las Vegas, Clark County",
   "comp": "$120000-$120000",
-  "link": "https://www.adzuna.com/details/5830095017?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.com/details/5837550864?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
-  "last_seen": "2026-08-08",
-  "active": false,
+  "last_seen": "2026-08-12",
+  "active": true,
   "inbox": false,
   "tier": ""
  },
@@ -13365,7 +13365,7 @@
   "tier": "",
   "first_seen": "2026-06-16",
   "last_seen": "2026-08-12",
-  "active": true
+  "active": false
  },
  "a3362391694edc47": {
   "title": "Virtual Assistant: $11 - $22/HR",
@@ -14112,7 +14112,7 @@
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
-  "lead_type": "Inbound",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-16",
@@ -15750,7 +15750,7 @@
   "tier": "",
   "first_seen": "2026-06-19",
   "last_seen": "2026-08-12",
-  "active": true
+  "active": false
  },
  "13edc91b189cdbc6": {
   "title": "Remote High-Ticket Closer | One-Call Close, $20k-$30k OTE",
@@ -17323,9 +17323,9 @@
  "5150fe0fad2c37ba": {
   "title": "Senior High-Ticket Closer for Remote Growth Consulting",
   "company": "Curvion Blue",
-  "location": "Boise, ID",
-  "comp": "$90k - $360k",
-  "link": "https://jooble.org/jdp/4386122744690963266",
+  "location": "San Jose, CA",
+  "comp": "",
+  "link": "https://jooble.org/jdp/7777778203993637833",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -17419,9 +17419,9 @@
  "1886d675e26af7e3": {
   "title": "Remote Customer Success Manager",
   "company": "GrabJobs",
-  "location": "Milwaukee, WI",
+  "location": "Seattle, WA",
   "comp": "$75k - $105k",
-  "link": "https://jooble.org/jdp/7815864590302652920",
+  "link": "https://jooble.org/jdp/-1322551909205010945",
   "source": "Jooble",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -19607,7 +19607,7 @@
   "tier": "",
   "first_seen": "2026-07-04",
   "last_seen": "2026-08-12",
-  "active": false
+  "active": true
  },
  "5d1e7be8f520ba1d": {
   "title": "Enterprise Customer Success Manager, Remote",
@@ -23515,7 +23515,7 @@
   "company": "Virtual Vocations Inc",
   "location": "United States",
   "comp": "",
-  "link": "https://jooble.org/jdp/920801837634740837",
+  "link": "https://jooble.org/jdp/4564180052819151767",
   "source": "Jooble",
   "category": "Setter / SDR",
   "country": "United States",
@@ -23523,8 +23523,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-21",
-  "last_seen": "2026-07-28",
-  "active": false
+  "last_seen": "2026-08-12",
+  "active": true
  },
  "3c36ce8ab82afe4d": {
   "title": "Remote Appointment Setter — Get Paid Weekly for Every Appointment That Shows",
@@ -24633,12 +24633,12 @@
  "e932aa24704f05aa": {
   "title": "Virtual Assistant I",
   "company": "BrandCoven",
-  "location": "Atlanta, GA",
-  "comp": "",
-  "link": "https://jooble.org/jdp/749032608111077721",
+  "location": "Remote",
+  "comp": "$25 - $30 per hour",
+  "link": "https://jooble.org/jdp/-1202847931411683482",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -24665,12 +24665,12 @@
  "80caf0c9f776b60c": {
   "title": "VIRTUAL ASSISTANT",
   "company": "Jonesbororealtycompany",
-  "location": "Remote",
+  "location": "Idaho County, ID",
   "comp": "",
-  "link": "https://jooble.org/jdp/-2082912953227209393",
+  "link": "https://jooble.org/jdp/-1979008411376810972",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -24755,8 +24755,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-24",
-  "last_seen": "2026-08-11",
-  "active": false
+  "last_seen": "2026-08-12",
+  "active": true
  },
  "fcfba0ab41ede210": {
   "title": "Remote Executive Virtual Assistant",
@@ -25156,7 +25156,7 @@
   "tier": "",
   "first_seen": "2026-07-27",
   "last_seen": "2026-08-12",
-  "active": true
+  "active": false
  },
  "aa448e12154d652b": {
   "title": "Inside Sales Closer",
@@ -25284,7 +25284,7 @@
   "tier": "",
   "first_seen": "2026-07-28",
   "last_seen": "2026-08-12",
-  "active": true
+  "active": false
  },
  "e5ea8a288d7ae843": {
   "title": "High-Ticket Closer ( /y)",
@@ -25529,9 +25529,9 @@
  "aaa91feb55815a27": {
   "title": "Sales Development Representative (SDR)",
   "company": "Chapter 2",
-  "location": "United States",
+  "location": "New York, NY",
   "comp": "$65k - $80k",
-  "link": "https://jooble.org/jdp/-2491156617374498120",
+  "link": "https://jooble.org/jdp/3996945992870474393",
   "source": "Jooble",
   "category": "Setter / SDR",
   "country": "United States",
@@ -25539,8 +25539,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-29",
-  "last_seen": "2026-07-29",
-  "active": false
+  "last_seen": "2026-08-12",
+  "active": true
  },
  "4915b48879fcd121": {
   "title": "Solution Engineer",
@@ -26427,7 +26427,7 @@
   "company": "Globe Life",
   "location": "Saginaw, Saginaw County",
   "comp": "$106843-$106843",
-  "link": "https://www.adzuna.com/land/ad/5823957089?se=Uo4d6OCV8RGiYpuj0Q3xbQ&utm_medium=api&utm_source=3e941a8f&v=741BB4A7C54082E6469C122F637605D7F7750179",
+  "link": "https://www.adzuna.com/land/ad/5823957089?se=RMQ1RlaW8RGBkclIi1idWA&utm_medium=api&utm_source=3e941a8f&v=741BB4A7C54082E6469C122F637605D7F7750179",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -26436,7 +26436,7 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-12",
-  "active": false
+  "active": true
  },
  "012722fe23c59ec3": {
   "title": "Remote Sales Closer",
@@ -27611,7 +27611,7 @@
   "company": "Collaborate Solutions, Inc.",
   "location": "US",
   "comp": "$102318-$102318",
-  "link": "https://www.adzuna.com/land/ad/5826789509?se=hOz698OU8RGndKUdF18weA&utm_medium=api&utm_source=3e941a8f&v=05CBF56382B34558329D58D078A24FC2166CF76F",
+  "link": "https://www.adzuna.com/land/ad/5826789509?se=ctZwSFaW8RGBkclIi1idWA&utm_medium=api&utm_source=3e941a8f&v=05CBF56382B34558329D58D078A24FC2166CF76F",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United States",
@@ -27619,8 +27619,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-04",
-  "last_seen": "2026-08-10",
-  "active": false
+  "last_seen": "2026-08-12",
+  "active": true
  },
  "76520e2b2ef815f5": {
   "title": "Customer Success Manager (EMEA)",
@@ -27683,8 +27683,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-05",
-  "last_seen": "2026-08-11",
-  "active": false
+  "last_seen": "2026-08-12",
+  "active": true
  },
  "9ea417dccbb28179": {
   "title": "Sales Development Representative, SDR (Remote)",
@@ -28009,9 +28009,9 @@
  "31ca981df92cff62": {
   "title": "Entry-Level Sales Development Representative",
   "company": "Globe Life",
-  "location": "Fort Wayne, Allen County",
-  "comp": "$104228-$104228",
-  "link": "https://www.adzuna.com/land/ad/5823951553?se=Uo4d6OCV8RGiYpuj0Q3xbQ&utm_medium=api&utm_source=3e941a8f&v=927A0058B25B0249DA9BAD6CCB653A9F682EED32",
+  "location": "North Terre Haute, Vigo County",
+  "comp": "$112880-$112880",
+  "link": "https://www.adzuna.com/land/ad/5823965869?se=RMQ1RlaW8RGBkclIi1idWA&utm_medium=api&utm_source=3e941a8f&v=9FC434784460A3908DF43B1C4942A21F9B0CF5C5",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -28020,14 +28020,14 @@
   "tier": "",
   "first_seen": "2026-08-06",
   "last_seen": "2026-08-12",
-  "active": false
+  "active": true
  },
  "0ff5129cafb93249": {
   "title": "Work From Home Research Panel. Ideal for Admin Virtual Assistants",
   "company": "ApexGroup",
   "location": "New Jersey, US",
   "comp": "$44150-$44150",
-  "link": "https://www.adzuna.com/land/ad/5811150500?se=tPEyWOGV8RGNEO0SxDr7vQ&utm_medium=api&utm_source=3e941a8f&v=0539737662A5D40AA38F50F0FC594477B37DEFC9",
+  "link": "https://www.adzuna.com/land/ad/5811150500?se=DidhTVaW8RGZjegz1di2Mg&utm_medium=api&utm_source=3e941a8f&v=0539737662A5D40AA38F50F0FC594477B37DEFC9",
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -28699,7 +28699,7 @@
   "company": "Globe Life",
   "location": "Lafayette, Tippecanoe County",
   "comp": "$116341-$116341",
-  "link": "https://www.adzuna.com/land/ad/5823951430?se=Uo4d6OCV8RGiYpuj0Q3xbQ&utm_medium=api&utm_source=3e941a8f&v=632946739DD3154080AC4121C67B2DAF7AA0F938",
+  "link": "https://www.adzuna.com/land/ad/5823951430?se=RMQ1RlaW8RGBkclIi1idWA&utm_medium=api&utm_source=3e941a8f&v=632946739DD3154080AC4121C67B2DAF7AA0F938",
   "source": "Adzuna",
   "category": "Setter / SDR",
   "country": "United States",
@@ -28708,7 +28708,7 @@
   "tier": "",
   "first_seen": "2026-08-09",
   "last_seen": "2026-08-12",
-  "active": false
+  "active": true
  },
  "a82f0a943eaada94": {
   "title": "High-Ticket Closer (Remote)",
@@ -29269,5 +29269,21 @@
   "first_seen": "2026-08-12",
   "last_seen": "2026-08-12",
   "active": false
+ },
+ "4c545fdb20d0fb85": {
+  "title": "Appointment Setter (Commission-Based, Remote)",
+  "company": "NX Century",
+  "location": "Canada",
+  "comp": "$208000-$1040000",
+  "link": "https://www.adzuna.ca/details/5838174777?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Setter / SDR",
+  "country": "Canada",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-12",
+  "last_seen": "2026-08-12",
+  "active": true
  }
 }

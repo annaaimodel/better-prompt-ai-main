@@ -29236,7 +29236,7 @@
   "tier": "",
   "first_seen": "2026-08-11",
   "last_seen": "2026-08-12",
-  "active": true
+  "active": false
  },
  "d6350a80e6389703": {
   "title": "Remote Sales Setter | AI Toolkit Expert | $57K-$117K OTE | Warm Leads",
@@ -29253,5 +29253,21 @@
   "first_seen": "2026-08-11",
   "last_seen": "2026-08-11",
   "active": false
+ },
+ "4c5e11884e5dae53": {
+  "title": "Account Executive, SMB",
+  "company": "Apolloio",
+  "location": "Hybrid, London",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/apolloio/account-executive-smb-hybrid-london-440507",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-12",
+  "last_seen": "2026-08-12",
+  "active": true
  }
 }

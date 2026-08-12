@@ -29300,7 +29300,7 @@
   "tier": "",
   "first_seen": "2026-08-12",
   "last_seen": "2026-08-12",
-  "active": true
+  "active": false
  },
  "44ae853e1b4de816": {
   "title": "Specialty Account Executive, Cardiovascular Medicine",
@@ -29316,7 +29316,7 @@
   "tier": "",
   "first_seen": "2026-08-12",
   "last_seen": "2026-08-12",
-  "active": true
+  "active": false
  },
  "a790aaccb494bc89": {
   "title": "Sales Specialist - Arrays - Mediterranean",
@@ -29324,6 +29324,22 @@
   "location": "Spain",
   "comp": "",
   "link": "https://himalayas.app/companies/illumina/jobs/sales-specialist-arrays-mediterranean",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "Europe",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-12",
+  "last_seen": "2026-08-12",
+  "active": false
+ },
+ "a23d9a7dbf3bf8e5": {
+  "title": "Strategic Account Executive (DACH)",
+  "company": "name",
+  "location": "Germany",
+  "comp": "",
+  "link": "https://himalayas.app/companies/datadog/jobs/strategic-account-executive-dach",
   "source": "Himalayas",
   "category": "Closer",
   "country": "Europe",

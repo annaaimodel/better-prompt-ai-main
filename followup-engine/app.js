@@ -974,7 +974,7 @@ function openMaskRead(id) {
         </div>`;
       out.querySelector("#mr_save").onclick = () => {
         l.mask = { ...a, at: new Date().toISOString() };
-        l._lastTranscript = transcript.slice(0, 20000);
+        l._lastTranscript = transcript.slice(0, 200000);
         l.touches = l.touches || [];
         l.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: "Mask read", summary: `Mask: ${MASK_LABEL[a.mask] || a.mask}` });
         save(); close(); rerender(); toast(`Saved - every draft now affirms ${MASK_LABEL[a.mask] || "their need"}`);
@@ -1702,7 +1702,7 @@ function populateScriptsKeepText() {
 }
 function renderTranscript() {
   const el = $("live_transcript");
-  el.textContent = (Live.transcript + Live.interim).slice(-4000) || "Listening…";
+  el.textContent = (Live.transcript + Live.interim).slice(-40000) || "Listening…";
   el.scrollTop = el.scrollHeight;
 }
 // The full transcript to copy/save/review: this session's, else the selected
@@ -1725,7 +1725,7 @@ $("tr_save").onclick = () => {
   const id = $("live_lead").value;
   const l = id ? db.leads.find((x) => x.id === id) : null;
   if (!l) { toast("Pick the lead this call was with (top of page)"); return; }
-  l._lastTranscript = t.slice(0, 20000);
+  l._lastTranscript = t.slice(0, 200000);
   const ok = saveToLead(l, "transcript", "Call transcript " + fmtDate(new Date().toISOString()), t);
   toast(ok ? `Transcript saved to ${l.name || "lead"}` : "Already saved");
 };
@@ -1901,7 +1901,7 @@ function liveStop() {
   if (full && Live.leadId) {
     const l = db.leads.find((x) => x.id === Live.leadId);
     if (l) {
-      l._lastTranscript = full.slice(0, 20000);
+      l._lastTranscript = full.slice(0, 200000);
       if (Live.meds.length) l.meds = Live.meds.map((m) => {
         const info = Live.medInfo[m.toLowerCase()] || {};
         return { name: m, generic: info.generic || "", class: info.class || "", uses: info.uses || "", sideEffects: info.sideEffects || [], risks: info.risks || [] };
@@ -2194,7 +2194,7 @@ async function transcribeRecording() {
   }
 }
 $("tr_go").onclick = transcribeRecording;
-$("tr_copy").onclick = () => { const t = $("tr_out").value; if (t) { navigator.clipboard && navigator.clipboard.writeText(t); toast("Copied"); } };
+$("trx_copy").onclick = () => { const t = $("tr_out").value; if (t) { navigator.clipboard && navigator.clipboard.writeText(t); toast("Copied"); } };
 $("tr_totw").onclick = () => {
   const t = $("tr_out").value.trim();
   if (!t) { toast("Nothing to send yet"); return; }

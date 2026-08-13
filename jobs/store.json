@@ -24468,7 +24468,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-08-13",
-  "active": true
+  "active": false
  },
  "c5243b4e3d3f9f80": {
   "title": "Sales Development Representative",
@@ -29429,5 +29429,21 @@
   "first_seen": "2026-08-13",
   "last_seen": "2026-08-13",
   "active": false
+ },
+ "ce6df90abaab2e37": {
+  "title": "Mortgage Account Executive - Remote",
+  "company": "Knock",
+  "location": "Anywhere in the World",
+  "comp": "",
+  "link": "https://weworkremotely.com/remote-jobs/knock-mortgage-account-executive-remote",
+  "source": "WeWorkRemotely",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-13",
+  "last_seen": "2026-08-13",
+  "active": true
  }
 }

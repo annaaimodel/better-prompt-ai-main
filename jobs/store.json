@@ -29397,5 +29397,37 @@
   "first_seen": "2026-08-13",
   "last_seen": "2026-08-13",
   "active": false
+ },
+ "cc7c74d8cdcbb2af": {
+  "title": "Senior Business Development Representative",
+  "company": "Ultralytics",
+  "location": "London",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/ultralytics/senior-business-development-representative-london-471351",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-13",
+  "last_seen": "2026-08-13",
+  "active": true
+ },
+ "95aaefc398228574": {
+  "title": "Senior Customer Success Manager",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/bluecore/jobs/senior-customer-success-manager",
+  "source": "Himalayas",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-13",
+  "last_seen": "2026-08-13",
+  "active": true
  }
 }

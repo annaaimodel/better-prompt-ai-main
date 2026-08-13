@@ -1361,7 +1361,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-13",
-  "active": false,
+  "active": true,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -17670,7 +17670,7 @@
   "tier": "",
   "first_seen": "2026-06-27",
   "last_seen": "2026-08-13",
-  "active": false,
+  "active": true,
   "delisted": "dead"
  },
  "aac559728628ffd4": {

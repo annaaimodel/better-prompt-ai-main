@@ -1,0 +1,75 @@
+{
+  "_comment": "Estate-agent market-share tracker. Edit this file only - no pipeline code changes needed to add agents, areas or quarters.",
+  "area": {
+    "label": "REPLACE ME - e.g. Harrogate",
+    "postcode_prefixes": [
+      "HG1",
+      "HG2",
+      "HG3"
+    ],
+    "towns": [
+      "HARROGATE"
+    ]
+  },
+  "quarters": [
+    "2026-Q1",
+    "2026-Q2",
+    "2026-Q3"
+  ],
+  "agents": [
+    {
+      "id": "example-agent-one",
+      "name": "EXAMPLE - Replace With A Real Agent",
+      "aliases": [
+        "Example Agent Ltd"
+      ],
+      "sources": []
+    },
+    {
+      "id": "example-agent-two",
+      "name": "EXAMPLE - Replace With Another Real Agent",
+      "aliases": [],
+      "sources": []
+    }
+  ],
+  "_sources_help": {
+    "what": "Each entry in an agent's 'sources' list is a page the snapshot collector reads to see what that agent currently has on the market.",
+    "shape": {
+      "type": "site",
+      "url": "https://www.example-agent.co.uk/properties-for-sale",
+      "paginate": "https://www.example-agent.co.uk/properties-for-sale?page={n}",
+      "max_pages": 10
+    },
+    "notes": [
+      "'paginate' is optional. Use {n} where the page number goes. Omit it to read a single page.",
+      "The collector reads schema.org JSON-LD, which most property sites publish deliberately for search engines. It falls back to regex extraction only if no JSON-LD is present.",
+      "robots.txt is always checked and always honoured. A disallowed URL is skipped and reported - this is not configurable by design.",
+      "Prefer the agent's own website over a portal: it is the same data, it is far more robust, and it does not breach a portal's terms of use."
+    ]
+  },
+  "collection": {
+    "delay_seconds": 5,
+    "timeout_seconds": 25,
+    "max_pages_per_source": 10,
+    "contact_email": "annajtelfer@gmail.com"
+  },
+  "land_registry": {
+    "enabled": true,
+    "comment": "Official HM Land Registry Price Paid Data - free, open (Open Government Licence) and already published for Q1/Q2 2026. This is the only source in this pipeline that can see the past. It has verified SOLD prices and dates but carries NO agent name, so it is joined to listings by address.",
+    "url_note": "Each year maps to a LIST of candidate URLs, tried in order until one works. HM Land Registry publishes this bucket over its S3 *website* endpoint, which is HTTP-only - that is the publisher's configuration, not a choice made here. If all candidates fail, check the current link at https://www.gov.uk/guidance/about-the-price-paid-data",
+    "year_urls": {
+      "2026": [
+        "http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-2026.csv",
+        "http://prod.publicdata.landregistry.gov.uk.s3-website.eu-west-1.amazonaws.com/pp-2026.csv"
+      ],
+      "2025": [
+        "http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-2025.csv",
+        "http://prod.publicdata.landregistry.gov.uk.s3-website.eu-west-1.amazonaws.com/pp-2025.csv"
+      ]
+    }
+  },
+  "metrics": {
+    "relist_gap_days": 14,
+    "relist_comment": "A property must be absent (or withdrawn/sold) for at least this many days before reappearing counts as a relist, rather than a listing that briefly dropped out of a scrape."
+  }
+}

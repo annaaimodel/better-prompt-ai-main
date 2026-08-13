@@ -1,0 +1,12 @@
+agent,address,postcode,listed_date,list_price,sold_date,sold_price,status
+Hopkins & Ward,12 Cold Bath Road,HG2 0NA,2026-01-08,485000,2026-03-20,468000,sold
+Hopkins & Ward,44 Otley Road,HG2 0DP,2026-01-22,325000,2026-04-11,318000,sold
+Hopkins & Ward,7 Duchy Avenue,HG2 0LY,2026-02-14,720000,,,available
+Hopkins & Ward,7 Duchy Avenue,HG2 0LY,2026-05-19,689000,,,available
+Hopkins & Ward,101 Kings Road,HG1 5HY,2026-04-03,410000,2026-06-27,399000,sold
+Hopkins & Ward,3 Robert Street,HG1 1HP,2026-05-12,268000,,,available
+Bramley Estates,88 Skipton Road,HG1 3HD,2026-01-15,299000,2026-03-02,295000,sold
+Bramley Estates,21 Franklin Road,HG1 5EE,2026-02-02,545000,,,available
+Bramley Estates,21 Franklin Road,HG1 5EE,2026-06-08,519000,,,available
+Bramley Estates,9 Valley Drive,HG2 0JJ,2026-04-18,875000,2026-06-30,860000,sold
+Bramley Estates,56 Leeds Road,HG2 8AY,2026-05-06,232000,,,available

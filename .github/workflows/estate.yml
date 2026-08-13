@@ -1,0 +1,60 @@
+name: Estate agent insights
+
+on:
+  schedule:
+    # Once daily. Listing snapshots only need daily granularity — the relist
+    # threshold is 14 days — and a daily cadence keeps request volume on agents'
+    # sites negligible. :37 rather than :00, which GitHub drops most often.
+    - cron: "37 6 * * *"
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Limit to one source: snapshot | ppd | csv (blank = all)"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+# Two runs must never race on the same push.
+concurrency:
+  group: estate
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25        # the Land Registry annual file is large
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Tests
+        run: python3 estate/test_pipeline.py
+
+      - name: Collect
+        env:
+          ONLY: ${{ inputs.only }}
+        run: python3 estate/pipeline.py
+
+      - name: Derive metrics + report
+        run: python3 estate/metrics.py
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add estate/store.json estate/quarters.json estate/report.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Estate insights refresh: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            for i in 1 2 3; do
+              if git push; then break; fi
+              echo "Push rejected; rebasing and retrying ($i)…"
+              git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+            done
+          fi

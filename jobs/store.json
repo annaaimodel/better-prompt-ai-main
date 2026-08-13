@@ -29445,5 +29445,21 @@
   "first_seen": "2026-08-13",
   "last_seen": "2026-08-13",
   "active": true
+ },
+ "bc4b7fd3ecab4936": {
+  "title": "Account Executive Enterprise DACH",
+  "company": "1Password",
+  "location": "Germany",
+  "comp": "",
+  "link": "https://www.arbeitnow.com/jobs/companies/1password/account-executive-enterprise-dach-germany-298371",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Europe",
+  "lead_type": "Inbound",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-13",
+  "last_seen": "2026-08-13",
+  "active": true
  }
 }

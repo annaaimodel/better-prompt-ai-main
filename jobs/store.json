@@ -22669,7 +22669,7 @@
   "tier": "",
   "first_seen": "2026-07-16",
   "last_seen": "2026-08-14",
-  "active": false
+  "active": true
  },
  "8dd33d7abc4e06c6": {
   "title": "Entry-Level Virtual Assistant (Remote)",
@@ -27764,7 +27764,7 @@
   "tier": "",
   "first_seen": "2026-08-05",
   "last_seen": "2026-08-14",
-  "active": false
+  "active": true
  },
  "ff879032f24e717d": {
   "title": "Commercial Associate",
@@ -29508,7 +29508,7 @@
   "tier": "",
   "first_seen": "2026-08-13",
   "last_seen": "2026-08-14",
-  "active": true
+  "active": false
  },
  "9ec7a2cc3ef93a43": {
   "title": "Corporate Account Executive - Benelux",

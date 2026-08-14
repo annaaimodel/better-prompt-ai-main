@@ -25,7 +25,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -68,17 +68,17 @@
  "50e742cc04453e31": {
   "title": "High Ticket Sales Closer - Remote",
   "company": "The WFS Group",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://jobs.ashbyhq.com/thewfsgroup/964a60f7-dcaf-4b6f-b3d3-63f3de9cb43b",
-  "source": "Ashby",
+  "location": "Charlotte, NC",
+  "comp": "$10k",
+  "link": "https://jooble.org/jdp/-571547146953411006",
+  "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-14",
   "active": true,
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
-  "inbox": true,
+  "inbox": false,
   "tier": ""
  },
  "7728d4489367d4e7": {
@@ -206,7 +206,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -239,7 +239,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -290,7 +290,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
@@ -486,7 +486,7 @@
   "category": "Closer",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": true,
@@ -503,7 +503,7 @@
   "category": "Setter / SDR",
   "first_seen": "2026-06-12",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "country": "Worldwide / Anywhere",
   "lead_type": "Inbound",
   "inbox": true,
@@ -1361,7 +1361,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "delisted": "dead",
   "country": "Canada",
   "lead_type": "",
@@ -1943,14 +1943,14 @@
   "company": "Rustman Agency",
   "location": "United States",
   "comp": "",
-  "link": "https://jooble.org/jdp/-5581686637108850413",
+  "link": "https://jooble.org/jdp/3449134189085557525",
   "source": "Jooble",
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-14",
   "active": true,
   "country": "United States",
-  "lead_type": "Inbound",
+  "lead_type": "",
   "inbox": false,
   "tier": ""
  },
@@ -2302,7 +2302,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2430,7 +2430,7 @@
   "category": "Closer",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -11515,7 +11515,7 @@
   "lead_type": "",
   "first_seen": "2026-06-14",
   "last_seen": "2026-08-14",
-  "active": true,
+  "active": false,
   "inbox": false,
   "tier": ""
  },
@@ -11722,16 +11722,16 @@
  "f8b9ea50606be3f1": {
   "title": "Remote Inbound Sales Representative",
   "company": "Stratford Davis",
-  "location": "Galena Park, Harris County",
+  "location": "Feasterville, Bucks County",
   "comp": "$120000-$120000",
-  "link": "https://www.adzuna.com/details/5837550683?utm_medium=api&utm_source=3e941a8f",
+  "link": "https://www.adzuna.com/details/5837550839?utm_medium=api&utm_source=3e941a8f",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
   "lead_type": "Inbound",
   "first_seen": "2026-06-14",
-  "last_seen": "2026-08-13",
-  "active": false,
+  "last_seen": "2026-08-14",
+  "active": true,
   "inbox": false,
   "tier": ""
  },
@@ -14108,7 +14108,7 @@
   "company": "Schnell Global",
   "location": "New York, NY",
   "comp": "$5,000 per month",
-  "link": "https://jooble.org/jdp/-5433201200600456455",
+  "link": "https://jooble.org/jdp/-4860636776128574299",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -18364,9 +18364,9 @@
  "478f1cccf58f21b1": {
   "title": "Remote B2B Ad Sales Closer - Top Commissions",
   "company": "Terraboost Media",
-  "location": "Hillsboro, OR",
+  "location": "Sacramento, CA",
   "comp": "",
-  "link": "https://jooble.org/jdp/-4468861119449830738",
+  "link": "https://jooble.org/jdp/-1005806820404809588",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -18374,8 +18374,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-29",
-  "last_seen": "2026-08-11",
-  "active": false
+  "last_seen": "2026-08-14",
+  "active": true
  },
  "e66362553ae9ce23": {
   "title": "Senior Sales Closer for SAAS Company ( 10 - 20% Commision )",
@@ -23171,7 +23171,7 @@
   "tier": "",
   "first_seen": "2026-07-19",
   "last_seen": "2026-08-14",
-  "active": true
+  "active": false
  },
  "003ebea5834450fb": {
   "title": "Customer Success Manager - Global Public Sector (Education)",
@@ -24633,12 +24633,12 @@
  "e932aa24704f05aa": {
   "title": "Virtual Assistant I",
   "company": "BrandCoven",
-  "location": "Atlanta, GA",
-  "comp": "",
-  "link": "https://jooble.org/jdp/749032608111077721",
+  "location": "Remote",
+  "comp": "$25 - $30 per hour",
+  "link": "https://jooble.org/jdp/-1202847931411683482",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "United States",
+  "country": "Worldwide / Anywhere",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -24665,12 +24665,12 @@
  "80caf0c9f776b60c": {
   "title": "VIRTUAL ASSISTANT",
   "company": "Jonesbororealtycompany",
-  "location": "Remote",
+  "location": "Idaho County, ID",
   "comp": "",
-  "link": "https://jooble.org/jdp/-2082912953227209393",
+  "link": "https://jooble.org/jdp/-1979008411376810972",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -24755,8 +24755,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-24",
-  "last_seen": "2026-08-12",
-  "active": false
+  "last_seen": "2026-08-14",
+  "active": true
  },
  "fcfba0ab41ede210": {
   "title": "Remote Executive Virtual Assistant",
@@ -26003,8 +26003,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-31",
-  "last_seen": "2026-08-13",
-  "active": false
+  "last_seen": "2026-08-14",
+  "active": true
  },
  "0dd25938cad93022": {
   "title": "REMOTE LAND SALES CLOSER",
@@ -26292,7 +26292,7 @@
   "tier": "",
   "first_seen": "2026-08-01",
   "last_seen": "2026-08-14",
-  "active": true
+  "active": false
  },
  "66860ce6dc2aaa99": {
   "title": "Customer Success Manager",
@@ -26436,14 +26436,14 @@
   "tier": "",
   "first_seen": "2026-08-02",
   "last_seen": "2026-08-14",
-  "active": true
+  "active": false
  },
  "012722fe23c59ec3": {
   "title": "Remote Sales Closer",
   "company": "GrabJobs",
-  "location": "Houston, TX",
+  "location": "Stockton, CA",
   "comp": "$150k - $300k",
-  "link": "https://jooble.org/jdp/-7393345974775724297",
+  "link": "https://jooble.org/jdp/-1207237611839635480",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -27572,7 +27572,7 @@
   "tier": "",
   "first_seen": "2026-08-04",
   "last_seen": "2026-08-14",
-  "active": true
+  "active": false
  },
  "b767296fb9a666a1": {
   "title": "Account Executive",
@@ -28628,7 +28628,7 @@
   "tier": "",
   "first_seen": "2026-08-08",
   "last_seen": "2026-08-14",
-  "active": true
+  "active": false
  },
  "f61cdb54b4e6f79a": {
   "title": "VP of Sales, Managed Learning Services | Remote, US | Open to US-based candiddat",
@@ -29284,7 +29284,7 @@
   "tier": "",
   "first_seen": "2026-08-12",
   "last_seen": "2026-08-14",
-  "active": true
+  "active": false
  },
  "00f34fb91b29688a": {
   "title": "Key Account Manager & Merchandiser (w/ a sense of humor)",
@@ -29615,6 +29615,22 @@
   "source": "Himalayas",
   "category": "Setter / SDR",
   "country": "United States",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-14",
+  "last_seen": "2026-08-14",
+  "active": true
+ },
+ "856dd977b18a4adb": {
+  "title": "Marketing Business Development Manager",
+  "company": "Just Digital People",
+  "location": "Melbourne, Melbourne Region",
+  "comp": "$100000-$140000",
+  "link": "https://www.adzuna.com.au/details/5841834277?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "Australia",
   "lead_type": "Cold",
   "inbox": false,
   "tier": "",

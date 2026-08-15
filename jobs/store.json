@@ -29940,7 +29940,7 @@
   "tier": "",
   "first_seen": "2026-08-15",
   "last_seen": "2026-08-15",
-  "active": true
+  "active": false
  },
  "5c6eed908df61095": {
   "title": "Enterprise Account Executive - UK",
@@ -29952,6 +29952,22 @@
   "category": "Closer",
   "country": "Worldwide / Anywhere",
   "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "124298b88f04ace8": {
+  "title": "Senior Account Executive",
+  "company": "Raptor Technologies",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/raptor-technologies/jobs/senior-account-executive",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-15",

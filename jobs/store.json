@@ -2301,8 +2301,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-08-14",
-  "active": false,
+  "last_seen": "2026-08-15",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -2429,8 +2429,8 @@
   "source": "Adzuna",
   "category": "Closer",
   "first_seen": "2026-06-13",
-  "last_seen": "2026-08-14",
-  "active": false,
+  "last_seen": "2026-08-15",
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8437,7 +8437,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8469,7 +8469,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -8477,11 +8477,11 @@
  },
  "9480cac41e15e784": {
   "title": "(Remote) - Virtual Assistant - 18.00 - 21.00/hour",
-  "company": "Nogigiddy",
-  "location": "Chicago, IL",
-  "comp": "$18 - $21 per hour",
-  "link": "https://jooble.org/jdp/5145012224844237708",
-  "source": "Jooble",
+  "company": "NoGigiddy",
+  "location": "West Lawn, Chicago",
+  "comp": "$37440-$43680",
+  "link": "https://www.adzuna.com/details/5655078548?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-15",
@@ -8501,7 +8501,7 @@
   "category": "VA / Social / Chat",
   "first_seen": "2026-06-13",
   "last_seen": "2026-08-15",
-  "active": false,
+  "active": true,
   "country": "United States",
   "lead_type": "",
   "inbox": false,
@@ -11508,7 +11508,7 @@
   "company": "Tony Robbins RPM",
   "location": "Gilbert, Maricopa County",
   "comp": "$41055-$41055",
-  "link": "https://www.adzuna.com/land/ad/5833750675?se=ULbTurGY8RGqM9tlrK2FfQ&utm_medium=api&utm_source=3e941a8f&v=B68DA3D5B925831253C68D9F93ABAEF1D777D288",
+  "link": "https://www.adzuna.com/land/ad/5833750675?se=-gErs7eY8RGxpbDbp9VhBQ&utm_medium=api&utm_source=3e941a8f&v=B68DA3D5B925831253C68D9F93ABAEF1D777D288",
   "source": "Adzuna",
   "category": "Closer",
   "country": "United States",
@@ -14668,7 +14668,7 @@
   "company": "Theinvestorsedge",
   "location": "Saint Louis, MO",
   "comp": "$36k",
-  "link": "https://jooble.org/jdp/-2964683408945150437",
+  "link": "https://jooble.org/jdp/-6433962643897924025",
   "source": "Jooble",
   "category": "Closer",
   "country": "United States",
@@ -14677,7 +14677,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-08-15",
-  "active": false
+  "active": true
  },
  "357131c6f6dab4f8": {
   "title": "Remote High-Ticket Closer | Inbound Leads, Elite Training",
@@ -15141,7 +15141,7 @@
   "tier": "",
   "first_seen": "2026-06-17",
   "last_seen": "2026-08-15",
-  "active": true
+  "active": false
  },
  "b4b8a9230a365c95": {
   "title": "Remote High-Ticket Closer for ETA Deals",
@@ -15749,8 +15749,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-19",
-  "last_seen": "2026-08-14",
-  "active": false
+  "last_seen": "2026-08-15",
+  "active": true
  },
  "13edc91b189cdbc6": {
   "title": "Remote High-Ticket Closer | One-Call Close, $20k-$30k OTE",
@@ -16310,7 +16310,7 @@
   "tier": "",
   "first_seen": "2026-06-22",
   "last_seen": "2026-08-15",
-  "active": true
+  "active": false
  },
  "f5db68d463940a56": {
   "title": "Remote Medicare Sales Closer - Inbound, High Earnings",
@@ -18327,7 +18327,7 @@
   "tier": "",
   "first_seen": "2026-06-29",
   "last_seen": "2026-08-15",
-  "active": false
+  "active": true
  },
  "5af6942f1c8a96e3": {
   "title": "Senior High-Ticket Closer - Growth Consulting (Remote)",
@@ -19207,7 +19207,7 @@
   "tier": "",
   "first_seen": "2026-07-02",
   "last_seen": "2026-08-15",
-  "active": false
+  "active": true
  },
  "33769bb8c0c4dcef": {
   "title": "Elite PR Sales Closer High-Ticket B2B (Remote)",
@@ -19735,7 +19735,7 @@
   "tier": "",
   "first_seen": "2026-07-05",
   "last_seen": "2026-08-15",
-  "active": false
+  "active": true
  },
  "28b64427015dcec7": {
   "title": "Remote Virtual Assistant – No Commute, Flexible Schedule",
@@ -19751,7 +19751,7 @@
   "tier": "",
   "first_seen": "2026-07-05",
   "last_seen": "2026-08-15",
-  "active": false
+  "active": true
  },
  "be42cda4ead53700": {
   "title": "Remote High Ticket Closer",
@@ -22215,8 +22215,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-15",
-  "last_seen": "2026-07-18",
-  "active": false
+  "last_seen": "2026-08-15",
+  "active": true
  },
  "f646df72c1807b5a": {
   "title": "Remote Senior B2B Closer — High-Ticket Deals",
@@ -23043,7 +23043,7 @@
   "tier": "",
   "first_seen": "2026-07-18",
   "last_seen": "2026-08-15",
-  "active": false
+  "active": true
  },
  "a127d772ea5fd813": {
   "title": "Remote High Ticket Closer & Appointment Setter - Unlock Your Earning Potential",
@@ -23080,18 +23080,18 @@
  "f8c43eff5d159456": {
   "title": "Remote Sales Closer – Join a Fast-Growing Team",
   "company": "The Investors Edge",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://www.indeed.com/viewjob?jk=cbaeb40c404129bf",
-  "source": "JSearch",
+  "location": "Salt Lake City, Salt Lake County",
+  "comp": "$86819-$86819",
+  "link": "https://www.adzuna.com/details/5488582996?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
   "category": "Closer",
-  "country": "Worldwide / Anywhere",
-  "lead_type": "Inbound",
+  "country": "United States",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-19",
-  "last_seen": "2026-08-02",
-  "active": false
+  "last_seen": "2026-08-15",
+  "active": true
  },
  "4d12ed1ab5abc443": {
   "title": "Remote Sales Closer | Leads Provided | Entry Level Path to $10k+/mo",
@@ -24488,11 +24488,11 @@
  },
  "f2e07d3d50b0a9e7": {
   "title": "Remote Virtual Assistant",
-  "company": "Affordable Land Scaping Services",
-  "location": "Tucker, GA",
-  "comp": "",
-  "link": "https://jooble.org/jdp/-9086611341850454820",
-  "source": "Jooble",
+  "company": "Affordable land scaping services",
+  "location": "Tucker, DeKalb County",
+  "comp": "$39641-$39641",
+  "link": "https://www.adzuna.com/details/5836645189?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
   "category": "VA / Social / Chat",
   "country": "United States",
   "lead_type": "",
@@ -24633,12 +24633,12 @@
  "e932aa24704f05aa": {
   "title": "Virtual Assistant I",
   "company": "BrandCoven",
-  "location": "Remote",
-  "comp": "$25 - $30 per hour",
-  "link": "https://jooble.org/jdp/-1202847931411683482",
+  "location": "Atlanta, GA",
+  "comp": "",
+  "link": "https://jooble.org/jdp/749032608111077721",
   "source": "Jooble",
   "category": "VA / Social / Chat",
-  "country": "Worldwide / Anywhere",
+  "country": "United States",
   "lead_type": "",
   "inbox": false,
   "tier": "",
@@ -24756,7 +24756,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-08-15",
-  "active": true
+  "active": false
  },
  "fcfba0ab41ede210": {
   "title": "Remote Executive Virtual Assistant",
@@ -24772,7 +24772,7 @@
   "tier": "",
   "first_seen": "2026-07-24",
   "last_seen": "2026-08-15",
-  "active": false
+  "active": true
  },
  "1ed211f4ee4e08f4": {
   "title": "Virtual Assistant - AI Operations",
@@ -25187,8 +25187,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-07-27",
-  "last_seen": "2026-08-09",
-  "active": false
+  "last_seen": "2026-08-15",
+  "active": true
  },
  "f76c0a4c1cc2f1b5": {
   "title": "Inbound Sales Closer",
@@ -26713,18 +26713,18 @@
  "d110c63ac445c34d": {
   "title": "Closer Needed – Remote, Fast-Paced, High-Energy",
   "company": "The Investors Edge",
-  "location": "Remote",
-  "comp": "",
-  "link": "https://www.indeed.com/viewjob?jk=95dd3d24e5b21d59",
-  "source": "JSearch",
+  "location": "Buffalo, Erie County",
+  "comp": "$104605-$104605",
+  "link": "https://www.adzuna.com/details/5487552739?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
   "category": "Closer",
-  "country": "Worldwide / Anywhere",
-  "lead_type": "Inbound",
+  "country": "United States",
+  "lead_type": "Cold",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-02",
-  "last_seen": "2026-08-02",
-  "active": false
+  "last_seen": "2026-08-15",
+  "active": true
  },
  "622a068c2cd03aaf": {
   "title": "Remote Senior Customer Success Manager, Strategic Accounts",
@@ -28027,7 +28027,7 @@
   "company": "ApexGroup",
   "location": "South Dakota, US",
   "comp": "$44047-$44047",
-  "link": "https://www.adzuna.com/land/ad/5811087940?se=jLJUaDyY8RGt-sphCM1Urw&utm_medium=api&utm_source=3e941a8f&v=D18647C1F99A50D677F681B3944302C71194DD07",
+  "link": "https://www.adzuna.com/land/ad/5811087940?se=rh3ftreY8RGJftUyzQ0_4w&utm_medium=api&utm_source=3e941a8f&v=D18647C1F99A50D677F681B3944302C71194DD07",
   "source": "Adzuna",
   "category": "VA / Social / Chat",
   "country": "United States",
@@ -28036,7 +28036,7 @@
   "tier": "",
   "first_seen": "2026-08-06",
   "last_seen": "2026-08-15",
-  "active": false
+  "active": true
  },
  "d24707c98b6b9b5a": {
   "title": "Remote High-Ticket Closer",
@@ -28627,8 +28627,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-08",
-  "last_seen": "2026-08-14",
-  "active": false
+  "last_seen": "2026-08-15",
+  "active": true
  },
  "f61cdb54b4e6f79a": {
   "title": "VP of Sales, Managed Learning Services | Remote, US | Open to US-based candiddat",
@@ -29659,7 +29659,7 @@
   "company": "Randstad Technologies",
   "location": "Manchester, Greater Manchester",
   "comp": "$104000-$121420",
-  "link": "https://www.adzuna.co.uk/jobs/land/ad/5842064287?se=ONuC0bGY8RGJftUyzQ0_4w&utm_medium=api&utm_source=3e941a8f&v=C418CD5C160D63403BCAC727D82BBFBF20672E95",
+  "link": "https://www.adzuna.co.uk/jobs/land/ad/5842064287?se=rONsureY8RGQfItNoKnK2A&utm_medium=api&utm_source=3e941a8f&v=C418CD5C160D63403BCAC727D82BBFBF20672E95",
   "source": "Adzuna",
   "category": "Success (CSM / customer / client / onboarding)",
   "country": "United Kingdom",
@@ -29765,5 +29765,165 @@
   "first_seen": "2026-08-15",
   "last_seen": "2026-08-15",
   "active": false
+ },
+ "71724c9a40415c60": {
+  "title": "Remote B2C Sales Closer",
+  "company": "The Investors Edge",
+  "location": "Detroit, Wayne County",
+  "comp": "$113688-$113688",
+  "link": "https://www.adzuna.com/details/5487202648?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "0734cebf01022549": {
+  "title": "Award-Winning Team Seeks Remote Sales Closer",
+  "company": "The Investors Edge",
+  "location": "Nashville, Davidson County",
+  "comp": "$113524-$113524",
+  "link": "https://www.adzuna.com/details/5487713260?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "dd5d200cbc827da8": {
+  "title": "Senior Remote Sales Closer – Evening & Weekend Shift",
+  "company": "The Investors Edge",
+  "location": "Jackson, Hinds County",
+  "comp": "$90060-$90060",
+  "link": "https://www.adzuna.com/details/5488466068?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "e0b6fab2856e07ae": {
+  "title": "Remote Sales Closer – High-Commission, High-Impact Role",
+  "company": "The Investors Edge",
+  "location": "Buffalo, Erie County",
+  "comp": "$112809-$112809",
+  "link": "https://www.adzuna.com/details/5527986119?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "213f979e5e37945b": {
+  "title": "Remote Sales Director (Closers Only)",
+  "company": "The Investors Edge",
+  "location": "Fort Worth, Tarrant County",
+  "comp": "$114223-$114223",
+  "link": "https://www.adzuna.com/details/5488173793?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "6ef1bf69e72cf6c3": {
+  "title": "SBA 7(a) Loan Closer - Fully Remote",
+  "company": "Robert Half",
+  "location": "Waldon, Contra Costa County",
+  "comp": "$111321-$111321",
+  "link": "https://www.adzuna.com/land/ad/5842394822?se=Sg-GtLeY8RGQfItNoKnK2A&utm_medium=api&utm_source=3e941a8f&v=718FB4ABEBAE6493F5AAD08C3D40320F44C3A186",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "75bec7f08f21b8e5": {
+  "title": "Remote Sales Setter / Closer — Digital Marketing & SEO",
+  "company": "Soto Growth Systems",
+  "location": "Orlando, Orange County",
+  "comp": "$130000-$182000",
+  "link": "https://www.adzuna.com/details/5818810402?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "a70b8c426f4854c6": {
+  "title": "Remote High-Performance Sales Closer",
+  "company": "The Investors Edge",
+  "location": "Dallas, Texas",
+  "comp": "$114937-$114937",
+  "link": "https://www.adzuna.com/details/5487749325?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "d9fe8160610ac981": {
+  "title": "Phone-Based Sales Closer – Work From Home (High-Ticket Only)",
+  "company": "The Investors Edge",
+  "location": "Tampa, Hillsborough County",
+  "comp": "$67332-$67332",
+  "link": "https://www.adzuna.com/details/5528692448?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
+ },
+ "218c37e132bfcf02": {
+  "title": "Remote Sales Professionals (Setters & Closers) – Work From Anywhere",
+  "company": "Soto Growth Systems",
+  "location": "Los Angeles, Los Angeles County",
+  "comp": "$119600-$182000",
+  "link": "https://www.adzuna.com/details/5832392348?utm_medium=api&utm_source=3e941a8f",
+  "source": "Adzuna",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-15",
+  "last_seen": "2026-08-15",
+  "active": true
  }
 }

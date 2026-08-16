@@ -30116,7 +30116,7 @@
   "tier": "",
   "first_seen": "2026-08-16",
   "last_seen": "2026-08-16",
-  "active": true
+  "active": false
  },
  "a2ab7556eb2605d5": {
   "title": "Account Executive - ShareGate",
@@ -30132,6 +30132,6 @@
   "tier": "",
   "first_seen": "2026-08-16",
   "last_seen": "2026-08-16",
-  "active": true
+  "active": false
  }
 }

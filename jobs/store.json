@@ -30244,6 +30244,22 @@
   "tier": "",
   "first_seen": "2026-08-16",
   "last_seen": "2026-08-16",
+  "active": false
+ },
+ "d66e352daa2f309a": {
+  "title": "Senior Manager, Customer Success",
+  "company": "Shopmonkey",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/shopmonkey/jobs/senior-manager-customer-success",
+  "source": "Himalayas",
+  "category": "Success (CSM / customer / client / onboarding)",
+  "country": "United States",
+  "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-16",
+  "last_seen": "2026-08-16",
   "active": true
  }
 }

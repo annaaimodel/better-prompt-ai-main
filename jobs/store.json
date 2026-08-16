@@ -30100,6 +30100,38 @@
   "tier": "",
   "first_seen": "2026-08-16",
   "last_seen": "2026-08-16",
+  "active": false
+ },
+ "e93362c362382336": {
+  "title": "Enterprise Account Executive, Mid-Atlantic",
+  "company": "Glean",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/glean/jobs/enterprise-account-executive-mid-atlantic-6173306125",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-16",
+  "last_seen": "2026-08-16",
+  "active": true
+ },
+ "a2ab7556eb2605d5": {
+  "title": "Account Executive - ShareGate",
+  "company": "Workleap",
+  "location": "Canada",
+  "comp": "",
+  "link": "https://himalayas.app/companies/workleap/jobs/account-executive-sharegate",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "Canada",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-16",
+  "last_seen": "2026-08-16",
   "active": true
  }
 }

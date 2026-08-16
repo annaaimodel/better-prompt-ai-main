@@ -30004,7 +30004,7 @@
   "tier": "",
   "first_seen": "2026-08-15",
   "last_seen": "2026-08-16",
-  "active": true
+  "active": false
  },
  "616037c38d806b47": {
   "title": "Live Lesson Moderator - Biology",
@@ -30020,7 +30020,7 @@
   "tier": "",
   "first_seen": "2026-08-15",
   "last_seen": "2026-08-16",
-  "active": true
+  "active": false
  },
  "129d83662b5b15c5": {
   "title": "Live Lesson Moderator - Chemistry",
@@ -30272,6 +30272,38 @@
   "category": "Closer",
   "country": "Canada",
   "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-16",
+  "last_seen": "2026-08-16",
+  "active": true
+ },
+ "55585e0aa8cafff1": {
+  "title": "Sales Director",
+  "company": "Scaleops",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/scaleops/sales-director-229874",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-16",
+  "last_seen": "2026-08-16",
+  "active": true
+ },
+ "a8071e60d02dd76f": {
+  "title": "Account Executive - UK",
+  "company": "Scaleops",
+  "location": "Remote",
+  "comp": "",
+  "link": "https://www.arbeitnow.co.uk/jobs/companies/scaleops/account-executive-uk-311126",
+  "source": "Arbeitnow",
+  "category": "Closer",
+  "country": "Worldwide / Anywhere",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-16",

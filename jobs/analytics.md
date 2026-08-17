@@ -1,6 +1,6 @@
 # Site analytics — AURUM
 
-_Generated 2026-08-16 07:07 UTC from GoatCounter (`aurum-hts`)._
+_Generated 2026-08-17 07:29 UTC from GoatCounter (`aurum-hts`)._
 
 | Period | Pageviews |
 |--------|-----------|

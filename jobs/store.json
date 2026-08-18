@@ -15372,7 +15372,7 @@
   "company": "Curvion Blue",
   "location": "United States",
   "comp": "",
-  "link": "https://himalayas.app/companies/curvion-blue/jobs/senior-wealth-strategy-consultant",
+  "link": "https://himalayas.app/companies/curvion-blue/jobs/senior-wealth-strategy-consultant-7052060665",
   "source": "Himalayas",
   "category": "Closer",
   "country": "United States",
@@ -15380,8 +15380,8 @@
   "inbox": false,
   "tier": "",
   "first_seen": "2026-06-18",
-  "last_seen": "2026-06-18",
-  "active": false
+  "last_seen": "2026-08-18",
+  "active": true
  },
  "f831043a07c114a2": {
   "title": "Customer Success Manager",
@@ -30640,6 +30640,22 @@
   "category": "Closer",
   "country": "Worldwide / Anywhere",
   "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-18",
+  "last_seen": "2026-08-18",
+  "active": true
+ },
+ "323608ba6fd52b83": {
+  "title": "Closer - Biz opp & education",
+  "company": "Curvion Blue",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/curvion-blue/jobs/closer-biz-opp-education-7666740915",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-18",

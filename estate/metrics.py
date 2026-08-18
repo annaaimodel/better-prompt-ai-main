@@ -115,16 +115,30 @@ def coverage(store: dict, quarters: list[str], events: list[dict],
     sold metrics need Land Registry data published through the quarter.
     """
     run_dates = set(store.get("run_dates", []))
-    backfilled = {e["date"] for e in events if e["date"] not in run_dates}
+    arch_dates = set(store.get("archive_dates", []))
+    backfilled = {e["date"] for e in events
+                  if e["date"] not in run_dates and e["date"] not in arch_dates}
     ppd_max = max((s["date"] for s in sales), default="")
 
     out = {}
     for q in quarters:
         qs, qe = quarter_bounds(q)
-        has_runs = any(qs <= d <= qe for d in run_dates)
-        has_backfill = any(qs <= d <= qe for d in backfilled)
+        in_q = lambda ds: sorted(d for d in ds if qs <= d <= qe)
+        runs, archs = in_q(run_dates), in_q(arch_dates)
+        # Strongest available basis wins. Our own snapshots beat stated backfill
+        # dates, which beat archive captures - the archive tells us what was listed
+        # on the days it happened to crawl, which is a sample, not a census.
+        if runs:
+            state = "measured"
+        elif in_q(backfilled):
+            state = "backfill"
+        elif archs:
+            state = "archive"
+        else:
+            state = "none"
         out[q] = {
-            "listing": "measured" if has_runs else ("backfill" if has_backfill else "none"),
+            "listing": state,
+            "archive_captures": len(archs),
             "sold": "measured" if ppd_max and ppd_max >= qe else (
                 "partial" if ppd_max and ppd_max >= qs else "none"),
             "ppd_max": ppd_max,
@@ -246,7 +260,16 @@ def render(data: dict) -> str:
             notes.append("No listing observations cover this quarter, so listed / "
                          "relisted / average list price cannot be reported. "
                          "Snapshots only see the market from the day they start; "
-                         "backfill these via <code>estate/backfill.csv</code>.")
+                         "backfill these via <code>estate/backfill.csv</code> or "
+                         "<code>ONLY=wayback</code>.")
+        if cov["listing"] == "archive":
+            notes.append(
+                f"Listing figures for this quarter are reconstructed from "
+                f"{cov['archive_captures']} Internet Archive capture(s), not from live "
+                "observation. <strong>Average list price is sound</strong> &mdash; a capture "
+                "reads the asking price directly. <strong>Listed and relisted counts are "
+                "lower bounds</strong>: anything listed and sold between two captures was "
+                "never archived and cannot be counted.")
         if cov["sold"] == "partial":
             notes.append(f"Land Registry data currently extends to {cov['ppd_max']}, "
                          "so this quarter is incomplete. Sales register with a lag "

@@ -161,6 +161,98 @@ class TestSpanHistory(unittest.TestCase):
         self.assertEqual([p["price"] for p in ph], [500000, 475000])
 
 
+class TestSitemap(unittest.TestCase):
+    NS = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+
+    def test_index_returns_children_not_pages(self):
+        xml = (f'<sitemapindex {self.NS}>'
+               '<sitemap><loc>https://a.co.uk/sm-property.xml</loc></sitemap>'
+               '<sitemap><loc>https://a.co.uk/sm-blog.xml</loc></sitemap>'
+               '</sitemapindex>')
+        children, pages = P.parse_sitemap(xml)
+        self.assertEqual(len(children), 2)
+        self.assertEqual(pages, [])
+
+    def test_urlset_returns_pages_not_children(self):
+        xml = (f'<urlset {self.NS}>'
+               '<url><loc>https://a.co.uk/property/12-cold-bath-road</loc>'
+               '<lastmod>2026-05-01</lastmod></url>'
+               '<url><loc>https://a.co.uk/about</loc></url></urlset>')
+        children, pages = P.parse_sitemap(xml)
+        self.assertEqual(children, [])
+        self.assertEqual(len(pages), 2)
+
+    def test_works_without_namespace(self):
+        xml = '<urlset><url><loc>https://a.co.uk/property/1</loc></url></urlset>'
+        _, pages = P.parse_sitemap(xml)
+        self.assertEqual(pages, ["https://a.co.uk/property/1"])
+
+    def test_malformed_xml_does_not_raise(self):
+        self.assertEqual(P.parse_sitemap("<urlset><oops"), ([], []))
+        self.assertEqual(P.parse_sitemap(""), ([], []))
+
+
+class TestCdx(unittest.TestCase):
+    def test_parses_and_sorts_captures(self):
+        body = json.dumps([["timestamp", "original"],
+                           ["20260415120000", "https://a.co.uk/for-sale"],
+                           ["20260112090000", "https://a.co.uk/for-sale"]])
+        out = P.parse_cdx(body)
+        self.assertEqual([t for t, _ in out], ["20260112090000", "20260415120000"])
+
+    def test_column_order_is_read_from_header(self):
+        body = json.dumps([["original", "timestamp"],
+                           ["https://a.co.uk/x", "20260415120000"]])
+        self.assertEqual(P.parse_cdx(body), [("20260415120000", "https://a.co.uk/x")])
+
+    def test_empty_and_malformed(self):
+        self.assertEqual(P.parse_cdx("[]"), [])
+        self.assertEqual(P.parse_cdx('[["timestamp","original"]]'), [])
+        self.assertEqual(P.parse_cdx("not json"), [])
+
+
+class TestObservedAbsence(unittest.TestCase):
+    """A relist requires absence we actually OBSERVED.
+
+    With sparse archive captures a long gap between sightings usually means nobody
+    looked, not that the property left the market. Counting those as relists would
+    invent churn that never happened.
+    """
+
+    def fresh(self):
+        return {"properties": {}, "sold": {}, "run_dates": []}
+
+    def obs(self, store, date, observed):
+        P.record_observation(store, pid="HG10AA|1", address="1 Test St",
+                             postcode="HG1 0AA", agent="a1", price=500000,
+                             status="available", url="", date=date,
+                             gap_days=14, observed_dates=observed)
+
+    def spans(self, store):
+        return store["properties"]["HG10AA|1"]["spans"]
+
+    def test_long_gap_without_intervening_look_is_not_a_relist(self):
+        s = self.fresh()
+        self.obs(s, "2026-01-15", [])
+        self.obs(s, "2026-04-15", ["2026-01-15"])   # no capture in between
+        self.assertEqual(len(self.spans(s)), 1,
+                         "unobserved gap must not manufacture a relist")
+
+    def test_long_gap_with_intervening_look_is_a_relist(self):
+        s = self.fresh()
+        self.obs(s, "2026-01-15", [])
+        # We looked on 2026-02-15 and did not see it, then it came back.
+        self.obs(s, "2026-04-15", ["2026-01-15", "2026-02-15"])
+        self.assertEqual(len(self.spans(s)), 2)
+
+    def test_csv_backfill_still_uses_gap_alone(self):
+        """CSV states listing dates outright, so no absence evidence is needed."""
+        s = self.fresh()
+        self.obs(s, "2026-01-15", None)
+        self.obs(s, "2026-04-15", None)
+        self.assertEqual(len(self.spans(s)), 2)
+
+
 class TestDerivation(unittest.TestCase):
     def test_preexisting_listing_not_counted_as_new(self):
         """Stock already on the market on day one is not a new instruction."""

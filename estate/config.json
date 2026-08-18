@@ -33,18 +33,39 @@
     }
   ],
   "_sources_help": {
-    "what": "Each entry in an agent's 'sources' list is a page the snapshot collector reads to see what that agent currently has on the market.",
-    "shape": {
+    "what": "Each entry in an agent's 'sources' list tells the collector where to read that agent's book. Three types, and an agent can have several.",
+
+    "type_site": {
+      "comment": "A listing results page. Use 'paginate' with {n} for multi-page results; omit it for a single page.",
       "type": "site",
       "url": "https://www.example-agent.co.uk/properties-for-sale",
       "paginate": "https://www.example-agent.co.uk/properties-for-sale?page={n}",
       "max_pages": 10
     },
+
+    "type_sitemap": {
+      "comment": "BEST for an agent's own site. Their sitemap.xml enumerates every property page, so there is no pagination convention to reverse-engineer and no missed pages. 'match' keeps only URLs containing that substring. Sitemap index files are followed automatically.",
+      "type": "sitemap",
+      "url": "https://www.example-agent.co.uk/sitemap.xml",
+      "match": "/property/",
+      "limit": 2000
+    },
+
+    "type_wayback": {
+      "comment": "The ONLY source that can reconstruct past listing data. Replays Internet Archive captures of a listing page through the same extractor, recovering what was on the market - and at what asking price - on the dates the Archive crawled. 'collapse' timestamp:6 = one capture per month, timestamp:8 = one per day.",
+      "type": "wayback",
+      "url": "https://www.example-agent.co.uk/properties-for-sale",
+      "from": "2026-01-01",
+      "to": "2026-06-30",
+      "collapse": "timestamp:6",
+      "max_snapshots": 40
+    },
+
     "notes": [
-      "'paginate' is optional. Use {n} where the page number goes. Omit it to read a single page.",
       "The collector reads schema.org JSON-LD, which most property sites publish deliberately for search engines. It falls back to regex extraction only if no JSON-LD is present.",
       "robots.txt is always checked and always honoured. A disallowed URL is skipped and reported - this is not configurable by design.",
-      "Prefer the agent's own website over a portal: it is the same data, it is far more robust, and it does not breach a portal's terms of use."
+      "Prefer the agent's own website over a portal: it is the same data, it is far more robust, it is far better archived, and it does not breach a portal's terms of use.",
+      "Wayback coverage is whatever the Archive happened to crawl. It gives a sound average list price from a single capture, but listed/relisted counts are lower bounds - anything listed and sold between two captures was never archived. The report labels these quarters 'archive' and says so."
     ]
   },
   "collection": {

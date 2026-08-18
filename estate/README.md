@@ -12,21 +12,38 @@ Per-agent, per-quarter market share for a chosen area:
 
 ## Read this first: what can and cannot be known
 
-**Scraping cannot see the past.** A snapshot collector records what is on the
-market *the day it runs*. Start it today and it builds real history from today —
-it cannot tell you what an agent listed in January. There is no way around this;
-the data simply was not recorded at the time.
+**Live scraping cannot see the past.** A snapshot records what is on the market
+*the day it runs*. Start it today and it builds real history from today — it cannot
+tell you what an agent listed in January.
 
-That splits the five metrics into two very different groups:
+There are two ways round that, and between them the historical picture is largely
+recoverable:
 
 | | Where it comes from | Historical quarters (Q1/Q2 2026) |
 |---|---|---|
 | Sold, Avg sold price | HM Land Registry Price Paid Data | **Available now.** Official, verified, free. |
-| Listed, Relisted, Avg list price | Snapshots of agents' listing pages | **Not recoverable by scraping.** Backfill via CSV, or accrues from first run onward. |
+| Avg list price | Internet Archive captures of the agent's own site | **Recoverable.** One capture reads the asking price directly. |
+| Listed, Relisted | Internet Archive captures | **Lower bounds.** Anything listed *and* sold between two captures was never archived. |
+| All listing metrics | Live snapshots | **Complete from first run onward.** |
 
-So for Q1/Q2 2026 you can have verified sold counts and average sold prices
-immediately, and the listing-side metrics only if you backfill them (see below).
-From the first snapshot run onward, every quarter is complete.
+The report labels archive-derived quarters `archive` rather than `measured`, and
+states on the page that the counts are lower bounds. It does not launder a sample
+into a census.
+
+### Why the agents' own sites, not the portals
+
+Their own sites are better on every axis that matters here:
+
+- **Sitemaps.** `sitemap.xml` enumerates every property page, so there is no
+  pagination convention to reverse-engineer and no page silently missed.
+- **Archive coverage.** Small sites are captured by the Internet Archive far more
+  usefully than deep portal search-result URLs, which are query-string-driven and
+  rarely archived in a replayable form.
+- **Terms.** Reading an agent's own public site does not breach a portal's terms of
+  use, and it is the agent's own shop window.
+- **Structure.** Agent sites publish schema.org JSON-LD for search engines — a
+  stable, intended machine-readable surface, unlike CSS selectors that break on
+  every redesign.
 
 **The report never prints a zero it cannot stand behind.** A quarter with no
 underlying coverage renders `no data`, not `0` — because `0` is a claim that the
@@ -42,7 +59,16 @@ agent listed nothing, and that claim would be false.
      `aliases` help the CSV importer match messy source data.
    - `quarters` — which quarters the report covers.
 
-2. **Add listing sources** to each agent's `sources` list:
+2. **Add sources** to each agent's `sources` list. Three types, and an agent can
+   have several:
+
+   ```json
+   { "type": "sitemap",
+     "url": "https://www.agent.co.uk/sitemap.xml",
+     "match": "/property/" }
+   ```
+   Best default for an agent's own site — enumerates every property page. Sitemap
+   index files are followed automatically.
 
    ```json
    { "type": "site",
@@ -50,27 +76,29 @@ agent listed nothing, and that claim would be false.
      "paginate": "https://www.agent.co.uk/properties-for-sale?page={n}",
      "max_pages": 10 }
    ```
+   For sites without a usable sitemap. Omit `paginate` for a single page.
 
-   Prefer **the agent's own website** over a portal. It is the same data, it is far
-   more robust, and it does not breach a portal's terms of use. Portal terms
-   (Rightmove, Zoopla, OnTheMarket) prohibit automated collection — pointing this
-   tool at them is a decision to take that on, and they block aggressively.
+   ```json
+   { "type": "wayback",
+     "url": "https://www.agent.co.uk/properties-for-sale",
+     "from": "2026-01-01", "to": "2026-06-30",
+     "collapse": "timestamp:6" }
+   ```
+   Reconstructs history. `collapse` of `timestamp:6` takes one capture per month,
+   `timestamp:8` one per day. Point it at the **listing results page**, which the
+   Archive captures far more often than individual property pages.
 
-   The collector reads **schema.org JSON-LD**, which property sites publish
-   deliberately for search engines. That is a stable, intended machine-readable
-   surface, unlike CSS selectors that break on every redesign. A regex fallback
-   handles pages without it.
-
-   `robots.txt` is always fetched and always honoured. Disallowed URLs are skipped
-   and reported. This is deliberately not configurable — it is what keeps the tool
-   defensible, and ignoring it gets you blocked anyway.
+   Portal terms (Rightmove, Zoopla, OnTheMarket) prohibit automated collection —
+   pointing this tool at them is a decision to take that on, and they block
+   aggressively. `robots.txt` is always fetched and always honoured; disallowed URLs
+   are skipped and reported. That is deliberately not configurable.
 
 ## Running
 
 ```bash
 python3 estate/pipeline.py          # collect: snapshot + land registry + csv
 python3 estate/metrics.py           # derive metrics -> quarters.json + report.html
-python3 estate/test_pipeline.py     # 27 tests, stdlib only
+python3 estate/test_pipeline.py     # 37 tests, stdlib only
 ```
 
 Restrict to one source with `ONLY`:
@@ -79,7 +107,12 @@ Restrict to one source with `ONLY`:
 ONLY=ppd      python3 estate/pipeline.py   # Land Registry only (no third-party requests)
 ONLY=snapshot python3 estate/pipeline.py
 ONLY=csv      python3 estate/pipeline.py
+ONLY=wayback  python3 estate/pipeline.py   # historical backfill from the Archive
 ```
+
+**Run `ONLY=wayback` once**, when you first set the agents up (and again only if you
+add an agent or widen the date range). The past does not change, so it is excluded
+from the default run rather than re-walking the Archive nightly.
 
 `.github/workflows/estate.yml` runs the whole thing daily and commits the results.
 
@@ -108,8 +141,13 @@ invented to exercise the tests. Replace it entirely with real data.
 - **Spans.** Each contiguous run of days a property is on the market with one agent
   is a span. Extending a span is the normal case; a new span opens when the property
   has been absent longer than `metrics.relist_gap_days` (default 14) or the agent
-  changes. Span 1 is a *listing*; spans 2+ are *relists*. The gap threshold stops a
-  property that merely dropped out of one scrape from counting as a relist.
+  changes. Span 1 is a *listing*; spans 2+ are *relists*.
+- **Absence must be observed, not inferred.** A relist requires a collection date
+  between the two sightings on which the property was looked for and *not found*.
+  With daily snapshots that is the same as a date gap, but archive captures can be
+  six weeks apart, and a property seen in January and again in April was most likely
+  listed throughout. Inferring a relist from the gap alone would invent churn that
+  never happened. CSV backfill states its dates outright and so uses the gap alone.
 - **Pre-existing stock is excluded.** A property already on the market the first
   time the collector ever ran is not a new instruction, and counting it would
   inflate that agent's first quarter.

@@ -2,16 +2,20 @@
 """
 Estate-agent market-share pipeline: COLLECTION.
 
-Three independent sources feed one observation store (estate/store.json):
+Four independent sources feed one observation store (estate/store.json):
 
-  1. snapshot  - reads each tracked agent's live listing pages and records what is
-                 on the market TODAY. Builds true first-party history from the day
-                 it starts running. Cannot see the past.
-  2. ppd       - HM Land Registry Price Paid Data. Free, official, Open Government
+  1. snapshot  - reads each tracked agent's live listing pages (directly, or via
+                 their own sitemap.xml) and records what is on the market TODAY.
+                 Builds true first-party history from the day it starts running.
+  2. wayback   - replays Internet Archive captures of those same pages through the
+                 same extractor, reconstructing what an agent had listed, and at
+                 what price, on the dates the Archive crawled. The only route to
+                 historical listing data.
+  3. ppd       - HM Land Registry Price Paid Data. Free, official, Open Government
                  Licence, and ALREADY PUBLISHED for Q1/Q2 2026. Verified sold price
                  and sold date, but no agent name - joined to listings by address.
-  3. csv       - manual/exported backfill (estate/backfill.csv) for anything you
-                 obtain elsewhere. Lets you fill in historical list prices.
+  4. csv       - manual/exported backfill (estate/backfill.csv) for anything you
+                 obtain elsewhere.
 
 Collection is deliberately dumb: it records raw observations and never computes a
 metric. All derivation lives in metrics.py, so improving the event logic re-reads
@@ -23,6 +27,7 @@ flaky source never breaks a run.
 from __future__ import annotations
 import csv, io, json, datetime, os, re, sys, time
 import urllib.request, urllib.parse, urllib.error, urllib.robotparser
+import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -37,8 +42,14 @@ TODAY = datetime.date.today().isoformat()
 ONLY = {p.strip() for p in os.environ.get("ONLY", "").split(",") if p.strip()}
 
 
+# Wayback is a one-off historical backfill, not a daily job: the past does not
+# change, and re-walking the Archive every night would be pure waste. It runs only
+# when asked for by name (ONLY=wayback).
+ON_DEMAND = {"wayback"}
+
+
 def want(stage: str) -> bool:
-    return not ONLY or stage in ONLY
+    return stage in ONLY if ONLY else stage not in ON_DEMAND
 
 
 # --- Normalisation -------------------------------------------------------
@@ -123,7 +134,8 @@ def load_store() -> dict:
             return json.loads(STORE_FILE.read_text())
         except (json.JSONDecodeError, OSError) as e:
             print(f"  ! store.json unreadable ({e}); starting fresh", file=sys.stderr)
-    return {"version": 1, "updated": "", "run_dates": [], "properties": {}, "sold": {}}
+    return {"version": 1, "updated": "", "run_dates": [], "archive_dates": [],
+            "properties": {}, "sold": {}}
 
 
 def save_store(store: dict) -> None:
@@ -133,12 +145,19 @@ def save_store(store: dict) -> None:
 
 def record_observation(store: dict, *, pid: str, address: str, postcode: str,
                        agent: str, price: int | None, status: str, url: str,
-                       date: str, gap_days: int) -> None:
+                       date: str, gap_days: int,
+                       observed_dates: list[str] | None = None) -> None:
     """Fold one sighting into the property's span history.
 
     A span is a contiguous run of days a property was on the market with one agent.
     Extending a span is the common case; a new span opens when the property has been
     absent long enough to count as genuinely off-market, or when the agent changes.
+
+    `observed_dates` is when we actually looked. Absence must be OBSERVED, not
+    inferred from a gap: with daily snapshots the two are equivalent, but archive
+    coverage can be six weeks apart, and a property seen in January and again in
+    April was most likely listed throughout rather than relisted. Pass None (CSV
+    backfill, where dates are stated outright) to fall back to the gap alone.
     """
     props = store.setdefault("properties", {})
     p = props.setdefault(pid, {"address": address, "postcode": postcode,
@@ -151,11 +170,15 @@ def record_observation(store: dict, *, pid: str, address: str, postcode: str,
 
     spans = p["spans"]
     cur = spans[-1] if spans else None
+    long_gap = cur is not None and days_between(cur["end"], date) > gap_days
+    if long_gap and observed_dates is not None:
+        # Did we look between the last sighting and now and NOT find it?
+        long_gap = any(cur["end"] < d < date for d in observed_dates)
     reopen = (
         cur is None
         or cur["agent"] != agent
         or cur["status"] in ("sold", "withdrawn")
-        or days_between(cur["end"], date) > gap_days
+        or long_gap
     )
     if reopen:
         spans.append({"start": date, "end": date, "agent": agent, "status": status,
@@ -353,6 +376,141 @@ def extract_listings(html_text: str) -> list[dict]:
     return regex_listings(html_text)
 
 
+# --- Sitemaps ------------------------------------------------------------
+# An agent's own site publishes /sitemap.xml listing every property page. That is
+# far better than guessing pagination: no missed pages, no ?page=N convention to
+# reverse-engineer, and it survives redesigns. Portals do not give you this.
+
+SM_NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
+
+
+def parse_sitemap(xml_text: str) -> tuple[list[str], list[str]]:
+    """-> (child sitemap URLs, page URLs). Handles both index and urlset files."""
+    try:
+        root = ET.fromstring(xml_text.strip())
+    except ET.ParseError:
+        return [], []
+    tag = root.tag.replace(SM_NS, "")
+    locs = [(e.findtext(f"{SM_NS}loc") or e.findtext("loc") or "").strip()
+            for e in root]
+    locs = [u for u in locs if u]
+    return (locs, []) if tag == "sitemapindex" else ([], locs)
+
+
+def sitemap_urls(fetcher: "Fetcher", root_url: str, match: str = "",
+                 limit: int = 2000, max_children: int = 20) -> list[str]:
+    """Walk a sitemap (following index files) and return matching page URLs."""
+    pending, pages, seen = [root_url], [], set()
+    while pending and len(pages) < limit and len(seen) < max_children:
+        url = pending.pop(0)
+        if url in seen:
+            continue
+        seen.add(url)
+        body = fetcher.get(url)
+        if not body:
+            continue
+        children, found = parse_sitemap(body)
+        pending.extend(children)
+        pages.extend(found)
+    if match:
+        pages = [u for u in pages if match in u]
+    # De-duplicate, preserving discovery order.
+    out, got = [], set()
+    for u in pages:
+        if u not in got:
+            got.add(u)
+            out.append(u)
+    return out[:limit]
+
+
+# --- Wayback Machine -----------------------------------------------------
+# The one route that CAN see the past. The Internet Archive's CDX API lists every
+# archived capture of a URL with a timestamp; replaying those captures through the
+# same JSON-LD extractor reconstructs what an agent had on the market on that date,
+# asking prices included.
+#
+# Honest limits: coverage is whatever the Archive happened to crawl. A well-known
+# agent may be captured weekly, a small independent never. Sparse coverage gives a
+# sound average list price (one capture is enough for a point-in-time reading) but
+# only approximate listed/relisted counts, so these quarters are reported as
+# "archive" rather than "measured" and the report says so.
+
+CDX_API = "https://web.archive.org/cdx/search/cdx"
+WB_REPLAY = "https://web.archive.org/web/{ts}id_/{url}"
+
+
+def parse_cdx(body: str) -> list[tuple[str, str]]:
+    """CDX JSON -> [(timestamp, original_url)]. First row is a header."""
+    try:
+        rows = json.loads(body)
+    except json.JSONDecodeError:
+        return []
+    if not rows or len(rows) < 2:
+        return []
+    head = [c.lower() for c in rows[0]]
+    try:
+        ti, oi = head.index("timestamp"), head.index("original")
+    except ValueError:
+        return []
+    out = []
+    for r in rows[1:]:
+        if len(r) > max(ti, oi) and len(r[ti]) >= 8:
+            out.append((r[ti], r[oi]))
+    return sorted(set(out))
+
+
+def cdx_snapshots(fetcher: "Fetcher", url: str, frm: str, to: str,
+                  collapse: str, limit: int) -> list[tuple[str, str]]:
+    q = urllib.parse.urlencode({
+        "url": url, "output": "json", "fl": "timestamp,original",
+        "filter": "statuscode:200", "collapse": collapse,
+        "from": (frm or "").replace("-", ""), "to": (to or "").replace("-", ""),
+        "limit": str(limit),
+    })
+    body = fetcher.get(f"{CDX_API}?{q}")
+    return parse_cdx(body) if body else []
+
+
+def run_wayback(cfg: dict, store: dict) -> int:
+    fetcher = Fetcher(cfg)
+    gap = int(cfg.get("metrics", {}).get("relist_gap_days", 14))
+    archive_dates = set(store.setdefault("archive_dates", []))
+    total = 0
+
+    for agent in cfg.get("agents", []):
+        for src in agent.get("sources", []):
+            if src.get("type") != "wayback":
+                continue
+            snaps = cdx_snapshots(fetcher, src["url"], src.get("from", ""),
+                                  src.get("to", ""),
+                                  src.get("collapse", "timestamp:6"),
+                                  int(src.get("max_snapshots", 40)))
+            if not snaps:
+                print(f"  - {agent['name']}: no archive captures for {src['url']}")
+                continue
+            print(f"  . {agent['name']}: {len(snaps)} captures of {src['url']}")
+            looked: list[str] = []           # capture dates processed, chronological
+            for ts, original in snaps:
+                date = f"{ts[0:4]}-{ts[4:6]}-{ts[6:8]}"
+                body = fetcher.get(WB_REPLAY.format(ts=ts, url=original))
+                if not body:
+                    continue
+                items = extract_listings(body)
+                for it in items:
+                    pid = prop_id(it["postcode"], paon_from_address(it["address"]))
+                    record_observation(
+                        store, pid=pid, address=it["address"], postcode=it["postcode"],
+                        agent=agent["id"], price=it["price"], status=it["status"],
+                        url=original, date=date, gap_days=gap, observed_dates=looked)
+                    total += 1
+                looked.append(date)
+                archive_dates.add(date)
+                print(f"    {date}: {len(items)} listings")
+
+    store["archive_dates"] = sorted(archive_dates)
+    return total
+
+
 # --- Source 1: snapshot --------------------------------------------------
 def run_snapshot(cfg: dict, store: dict) -> int:
     fetcher = Fetcher(cfg)
@@ -360,25 +518,39 @@ def run_snapshot(cfg: dict, store: dict) -> int:
     max_default = int(cfg.get("collection", {}).get("max_pages_per_source", 10))
     total = 0
 
+    prior_runs = list(store.get("run_dates", []))
+
     for agent in cfg.get("agents", []):
-        sources = agent.get("sources") or []
+        sources = [s for s in (agent.get("sources") or [])
+                   if s.get("type", "site") in ("site", "sitemap")]
         if not sources:
-            print(f"  - {agent['name']}: no sources configured, skipping")
+            print(f"  - {agent['name']}: no live sources configured, skipping")
             continue
         for src in sources:
-            urls = [src["url"]]
-            if src.get("paginate"):
+            if src.get("type") == "sitemap":
+                # Let the agent's own sitemap enumerate the property pages.
+                urls = sitemap_urls(fetcher, src["url"], src.get("match", ""),
+                                    int(src.get("limit", 2000)))
+                print(f"  . {agent['name']}: sitemap yielded {len(urls)} pages")
+            elif src.get("paginate"):
                 pages = int(src.get("max_pages", max_default))
                 urls = [src["paginate"].replace("{n}", str(n)) for n in range(1, pages + 1)]
+            else:
+                urls = [src["url"]]
+            # Running off the end of paginated results means stop. A sitemap is an
+            # explicit list, so an unparseable page there is just one dud page.
+            is_list = src.get("type") != "sitemap"
             empty_streak = 0
             for url in urls:
                 html_text = fetcher.get(url)
                 if not html_text:
-                    break
+                    if is_list:
+                        break
+                    continue
                 items = extract_listings(html_text)
                 if not items:
                     empty_streak += 1
-                    if empty_streak >= 2:
+                    if is_list and empty_streak >= 2:
                         break  # ran past the end of the agent's result pages
                     continue
                 empty_streak = 0
@@ -387,7 +559,8 @@ def run_snapshot(cfg: dict, store: dict) -> int:
                     record_observation(
                         store, pid=pid, address=it["address"], postcode=it["postcode"],
                         agent=agent["id"], price=it["price"], status=it["status"],
-                        url=it["url"] or url, date=TODAY, gap_days=gap)
+                        url=it["url"] or url, date=TODAY, gap_days=gap,
+                        observed_dates=prior_runs)
                     total += 1
             print(f"  + {agent['name']}: {total} sightings so far")
 
@@ -546,6 +719,10 @@ def main() -> int:
         print("SNAPSHOT (live agent listing pages)")
         n = run_snapshot(cfg, store)
         print(f"  = {n} sightings recorded")
+    if want("wayback"):
+        print("WAYBACK (archived captures - historical listing books)")
+        n = run_wayback(cfg, store)
+        print(f"  = {n} archived sightings recorded")
     if want("ppd"):
         print("LAND REGISTRY (historical sold prices)")
         n = run_ppd(cfg, store)

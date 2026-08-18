@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       only:
-        description: "Limit to one source: snapshot | ppd | csv (blank = all)"
+        description: "Limit to one source: snapshot | ppd | csv | wayback (blank = all except wayback)"
         type: string
         default: ""
 

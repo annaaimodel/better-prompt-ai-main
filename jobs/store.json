@@ -15381,7 +15381,7 @@
   "tier": "",
   "first_seen": "2026-06-18",
   "last_seen": "2026-08-18",
-  "active": true
+  "active": false
  },
  "f831043a07c114a2": {
   "title": "Customer Success Manager",
@@ -30656,6 +30656,22 @@
   "category": "Closer",
   "country": "United States",
   "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-18",
+  "last_seen": "2026-08-18",
+  "active": false
+ },
+ "5f07606a500c9096": {
+  "title": "Remote Inside Sales Associate (Insurance Tech Startup)",
+  "company": "Jerry",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/jerry/jobs/remote-inside-sales-associate-insurance-tech-startup",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-18",

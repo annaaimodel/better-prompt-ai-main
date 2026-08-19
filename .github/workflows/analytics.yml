@@ -4,8 +4,10 @@ name: Site analytics digest
 # (jobs/analytics.md + jobs/analytics.json) back to the repo, so the numbers
 # are readable in-repo without opening the dashboard. Manual runs allowed.
 on:
-  schedule:
-    - cron: "30 6 * * *"        # daily at 06:30 UTC
+  # SCHEDULE DISABLED 2026-06-26 — site taken offline. To bring it back, uncomment
+  # the schedule block below (see docs/REACTIVATE.md).
+  # schedule:
+  #   - cron: "30 6 * * *"      # daily at 06:30 UTC
   workflow_dispatch:
 
 permissions:

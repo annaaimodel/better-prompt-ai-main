@@ -1,14 +1,10 @@
 name: High-ticket opportunities
 
 on:
-  schedule:
-    # Hourly LIGHT refresh (inbox/Quick Add + free APIs). At the HEAVY_HOURS the
-    # code runs in HEAVY mode (also Adzuna/JSearch + link validation) — see
-    # HEAVY_HOURS in jobs/pipeline.py. Default 00:00 + 14:00 UTC (UK morning + US
-    # morning). Retune via the HEAVY_HOURS repo Variable without editing the cron.
-    # NB: GitHub schedules are best-effort and heavily drop the on-the-hour (:00)
-    # slot, which is the most congested. Running at :23 gets dropped far less.
-    - cron: "23 * * * *"
+  # SCHEDULE DISABLED 2026-06-26 — site taken offline. To bring it back, uncomment
+  # the schedule block below (see docs/REACTIVATE.md).
+  # schedule:
+  #   - cron: "23 * * * *"   # hourly; ran HEAVY at 00:00 + 14:00 UTC (HEAVY_HOURS)
   workflow_dispatch:           # manual / external-pinger trigger
     inputs:
       heavy:

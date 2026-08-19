@@ -30820,6 +30820,22 @@
   "tier": "",
   "first_seen": "2026-08-19",
   "last_seen": "2026-08-19",
+  "active": false
+ },
+ "39a221dd745be067": {
+  "title": "Sales Engineer",
+  "company": "name",
+  "location": "United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/1path-managed-services/jobs/sales-engineer-670929068",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United States",
+  "lead_type": "",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-19",
+  "last_seen": "2026-08-19",
   "active": true
  }
 }

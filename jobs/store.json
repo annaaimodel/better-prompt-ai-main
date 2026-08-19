@@ -30788,7 +30788,7 @@
   "tier": "",
   "first_seen": "2026-08-19",
   "last_seen": "2026-08-19",
-  "active": true
+  "active": false
  },
  "3b4ce2a9cf9808bd": {
   "title": "Founding Account Executive",
@@ -30800,6 +30800,22 @@
   "category": "Closer",
   "country": "United Kingdom",
   "lead_type": "Cold",
+  "inbox": false,
+  "tier": "",
+  "first_seen": "2026-08-19",
+  "last_seen": "2026-08-19",
+  "active": true
+ },
+ "604903c5d8bed52b": {
+  "title": "Talent Acquisition Specialist",
+  "company": "name",
+  "location": "Australia, Brazil, Canada, Ireland, New Zealand, United Kingdom, United States",
+  "comp": "",
+  "link": "https://himalayas.app/companies/curvion-blue/jobs/talent-acquisition-specialist",
+  "source": "Himalayas",
+  "category": "Closer",
+  "country": "United Kingdom",
+  "lead_type": "Inbound",
   "inbox": false,
   "tier": "",
   "first_seen": "2026-08-19",

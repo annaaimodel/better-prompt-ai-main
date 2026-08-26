@@ -614,20 +614,38 @@ listEl.addEventListener("input", e => {
 });
 
 /* ---------- export / import ---------- */
-document.getElementById("export").addEventListener("click", () => {
+/* Hosted, the page can't start a download itself — the host saves for us.
+   Opened as a local file there's no host, so the ordinary anchor works. */
+async function saveFile(filename, data) {
+  let downloads = null;
+  try { if (window.claude && window.claude.use) downloads = await window.claude.use("downloads"); }
+  catch (e) { /* not hosted */ }
+  if (downloads) {
+    try { await downloads.save({ filename, data }); return "saved"; }
+    catch (e) { return e && e.code === "declined" ? "declined" : "failed"; }
+  }
+  try {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([data], { type: "application/json" }));
+    a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    return "saved";
+  } catch (e) { return "failed"; }
+}
+
+document.getElementById("export").addEventListener("click", async () => {
   const rows = DATA.filter(r => saved[r.april]).map(r => ({
     april: r.april, name: val(r, "name"), company: r.company,
     status: SLABEL[saved[r.april].status], comment: saved[r.april].comment,
     edits: saved[r.april].edits || {},
     updated: saved[r.april].updated ? new Date(saved[r.april].updated).toISOString() : "" }));
   if (!rows.length) { toast("Nothing saved yet"); return; }
-  const blob = new Blob([JSON.stringify(rows, null, 2)], { type: "application/json" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "call-desk-notes-" + new Date().toISOString().slice(0, 10) + ".json";
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
-  toast(rows.length + " saved cases exported");
+  const name = "call-desk-notes-" + new Date().toISOString().slice(0, 10) + ".json";
+  const r = await saveFile(name, JSON.stringify(rows, null, 2));
+  toast(r === "saved"    ? rows.length + " saved cases exported"
+      : r === "declined" ? "Export cancelled"
+                         : "Couldn't save the file");
 });
 
 const file = document.getElementById("file");

@@ -560,7 +560,7 @@ listEl.addEventListener("click", e => {
   }
   const st = e.target.closest(".stamp");
   if (st) {
-    const ta = st.closest(".panel").querySelector("textarea");
+    const ta = st.closest(".panel").querySelector(".cmt textarea");   // never an address field
     const d = new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
     ta.value = (ta.value ? ta.value.replace(/\s*$/, "") + "\n" : "") + d + " — ";
     ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length);

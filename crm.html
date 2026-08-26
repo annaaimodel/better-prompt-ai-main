@@ -60,8 +60,8 @@ main{max-width:1500px;margin:0 auto;padding:14px 16px 80px}
   border-left:3px solid var(--c,var(--new));transition:background .1s}
 .row:hover{background:var(--hov)}
 .item.open .row{background:var(--panel)}
-.cols,.row{grid-template-columns:20px 78px minmax(140px,1.15fr) minmax(150px,1.3fr)
-                                 minmax(150px,1.45fr) 132px 30px 122px}
+.cols,.row{grid-template-columns:20px 122px 78px minmax(140px,1.1fr) minmax(150px,1.25fr)
+                                 minmax(150px,1.4fr) 132px 30px}
 .cols>.h-x{grid-column:1}
 
 .c-exp{color:var(--mut2);font-size:10px;transition:transform .15s;text-align:center}
@@ -188,8 +188,8 @@ mark{background:rgba(201,156,56,.32);color:inherit;border-radius:2px}
 <main>
  <p class="count" id="count"></p>
  <div class="cols">
-   <span class="h-x"></span><span>April</span><span>Contact</span><span>Estate agent</span>
-   <span>Property</span><span>Phone</span><span></span><span>Status</span>
+   <span class="h-x"></span><span>Status</span><span>April</span><span>Contact</span>
+   <span>Estate agent</span><span>Property</span><span>Phone</span><span></span>
  </div>
  <div class="list" id="list"></div>
  <div class="empty" id="empty" hidden>No cases match that search.</div>
@@ -275,6 +275,7 @@ function rowHTML(r) {
   return `<article class="item" data-id="${esc(r.april)}" style="--c:${SVAR[st]}">
    <div class="row">
     <span class="c-exp">▸</span>
+    <span class="c-st"><select class="st" style="--c:${SVAR[st]}" aria-label="Status">${opts}</select></span>
     <span class="c-april" title="${esc(r.april)}">${esc(r.april)}</span>
     <span class="c-who trunc">${r.name
         ? `<b class="trunc">${esc(r.name)}</b>${r.role ? `<span class="trunc">${esc(r.role)}</span>` : ""}`
@@ -283,7 +284,6 @@ function rowHTML(r) {
     <span class="c-addr trunc" title="${esc(r.address)}">${esc(r.address) || `<span class="dash">—</span>`}</span>
     <span class="c-tel">${tel}</span>
     <span class="c-em">${em}</span>
-    <span class="c-st"><select class="st" style="--c:${SVAR[st]}" aria-label="Status">${opts}</select></span>
    </div>
   </article>`;
 }

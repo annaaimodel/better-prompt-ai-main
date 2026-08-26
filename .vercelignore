@@ -2,3 +2,8 @@
 # It is a local-only tool — open the file directly in a browser. Keeping it out
 # of the deployment means it is never served from the public site.
 crm.html
+
+# The deployable copy of the call desk. Same contact data as crm.html, so it must
+# never be served from the public AURUM site either — it gets its own Vercel project
+# with login required.
+deploy/

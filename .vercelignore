@@ -1,0 +1,4 @@
+# crm.html holds real contact details for named individuals at estate agencies.
+# It is a local-only tool — open the file directly in a browser. Keeping it out
+# of the deployment means it is never served from the public site.
+crm.html

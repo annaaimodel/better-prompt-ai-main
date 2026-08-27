@@ -224,6 +224,7 @@ mark{background:rgba(201,156,56,.32);color:inherit;border-radius:2px}
   <div class="filters" id="filters"></div>
   <div class="bkp" id="backup" hidden>
     <span class="bdot"></span><span class="btxt"></span>
+    <button id="pickfile" hidden>Turn on auto-backup</button>
     <button id="export">Back up to a file</button>
     <button id="import">Restore from a file</button>
     <input type="file" id="file" accept="application/json" hidden>
@@ -282,12 +283,17 @@ const unbacked = () => Object.values(saved).filter(v => touched(v) && (v.updated
 function backupState() {
   const bar = document.getElementById("backup"); if (!bar) return;
   const total = Object.values(saved).filter(touched).length, n = unbacked();
-  bar.hidden = !total;
+  const when = lastBackup ? new Date(lastBackup).toLocaleString("en-GB",
+    { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
+  bar.hidden = !total && !fileHandle && !FS_OK;   // keep it reachable before the first note
   bar.classList.toggle("warn", n > 0);
-  bar.querySelector(".btxt").textContent = n
-    ? `${n} ${n === 1 ? "case" : "cases"} not backed up`
-    : "Backed up" + (lastBackup ? " · " + new Date(lastBackup).toLocaleString("en-GB",
-        { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" }) : "");
+  bar.querySelector(".btxt").textContent = fileHandle
+    ? (n ? `Saving to ${fileName}…` : `Auto-saving to ${fileName}` + (when ? " · " + when : ""))
+    : (n ? `${n} ${n === 1 ? "case" : "cases"} only in this browser`
+         : total ? "Backed up" + (when ? " · " + when : "")
+                 : "Notes will be kept in this browser only");
+  const pick = document.getElementById("pickfile");
+  if (pick) pick.hidden = !FS_OK || !!fileHandle;
 }
 
 function persist() {
@@ -295,6 +301,7 @@ function persist() {
     if (!v.comment && v.status === "new" && !Object.keys(v.edits || {}).length) delete saved[k];
   try { localStorage.setItem(KEY, JSON.stringify(saved)); }
   catch (e) { toast("Couldn't save — browser storage is blocked"); }
+  scheduleBackup();
   backupState();
 }
 
@@ -648,6 +655,90 @@ listEl.addEventListener("input", e => {
 });
 
 /* ---------- export / import ---------- */
+/* ---------- live backup file ----------
+   Browser storage can be cleared without warning — that is how notes get lost.
+   Chrome and Edge can write straight to a file you choose, so the notes end up
+   in a real file you own, outside the browser. The handle is remembered, so the
+   page keeps writing to the same file each time you open it. */
+const FS_OK = typeof window.showSaveFilePicker === "function";
+let fileHandle = null, fileName = "";
+
+function idb() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open("callDesk", 1);
+    r.onupgradeneeded = () => r.result.createObjectStore("kv");
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function idbPut(k, v) {
+  const db = await idb();
+  return new Promise((res, rej) => {
+    const tx = db.transaction("kv", "readwrite");
+    tx.objectStore("kv").put(v, k);
+    tx.oncomplete = res; tx.onerror = () => rej(tx.error);
+  });
+}
+async function idbGet(k) {
+  const db = await idb();
+  return new Promise((res, rej) => {
+    const tx = db.transaction("kv", "readonly");
+    const q = tx.objectStore("kv").get(k);
+    q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error);
+  });
+}
+
+const notesJSON = () => JSON.stringify(DATA
+  .filter(r => saved[r.april] && touched(saved[r.april]))
+  .map(r => ({ april: r.april, name: val(r, "name"), company: r.company,
+               status: SLABEL[saved[r.april].status], comment: saved[r.april].comment,
+               edits: saved[r.april].edits || {},
+               updated: saved[r.april].updated ? new Date(saved[r.april].updated).toISOString() : "" })),
+  null, 2);
+
+async function chooseBackupFile() {
+  try {
+    fileHandle = await window.showSaveFilePicker({
+      suggestedName: "call-desk-notes.json",
+      types: [{ description: "Call desk notes", accept: { "application/json": [".json"] } }]
+    });
+    fileName = fileHandle.name;
+    try { await idbPut("backupHandle", fileHandle); } catch (e) {}
+    if (await writeBackup(true)) toast("Auto-backup on — saving to " + fileName);
+  } catch (e) { if (e && e.name !== "AbortError") toast("Couldn't set up the backup file"); }
+  backupState();
+}
+
+async function writeBackup(force) {
+  if (!fileHandle) return false;
+  try {
+    let perm = await fileHandle.queryPermission({ mode: "readwrite" });
+    if (perm !== "granted" && force) perm = await fileHandle.requestPermission({ mode: "readwrite" });
+    if (perm !== "granted") { backupState(); return false; }
+    const w = await fileHandle.createWritable();
+    await w.write(notesJSON()); await w.close();
+    lastBackup = Date.now();
+    try { localStorage.setItem(BKEY, String(lastBackup)); } catch (e) {}
+    backupState();
+    return true;
+  } catch (e) { backupState(); return false; }
+}
+let writeTimer;
+function scheduleBackup() {
+  if (!fileHandle) return;
+  clearTimeout(writeTimer);
+  writeTimer = setTimeout(() => writeBackup(false), 1500);
+}
+
+/* reconnect the remembered file on load */
+(async () => {
+  if (!FS_OK) return;
+  try {
+    const h = await idbGet("backupHandle");
+    if (h) { fileHandle = h; fileName = h.name; backupState(); }
+  } catch (e) {}
+})();
+
 /* Hosted, the page can't start a download itself — the host saves for us.
    Opened as a local file there's no host, so the ordinary anchor works. */
 async function saveFile(filename, data) {
@@ -667,6 +758,8 @@ async function saveFile(filename, data) {
     return "saved";
   } catch (e) { return "failed"; }
 }
+
+document.getElementById("pickfile").addEventListener("click", chooseBackupFile);
 
 document.getElementById("export").addEventListener("click", async () => {
   const rows = DATA.filter(r => saved[r.april]).map(r => ({
@@ -715,7 +808,7 @@ file.addEventListener("change", () => {
 });
 
 window.addEventListener("beforeunload", e => {
-  if (unbacked() > 0) { e.preventDefault(); e.returnValue = ""; }
+  if (!fileHandle && unbacked() > 0) { e.preventDefault(); e.returnValue = ""; }
 });
 
 render();

@@ -124,6 +124,15 @@ select.st:focus{border-color:var(--gold)}
   border:1px solid var(--line2);background:var(--panel2);outline:none;font-size:13px;line-height:1.45}
 .cmt textarea:focus{border-color:var(--gold);background:#202027}
 .cmt textarea::placeholder{color:var(--mut2)}
+.cfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:7px}
+.cstate{font-size:11.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.cstate::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.cstate.ok{color:var(--confirmed)}
+.cstate.dirty{color:var(--callback)}
+.savenote{border-radius:8px;padding:6px 14px;cursor:pointer;font-size:12.5px;font-weight:700;
+  border:1px solid var(--gold);background:var(--gold);color:#0d0d0f}
+.savenote:disabled{background:none;color:var(--mut2);border-color:var(--line2);cursor:default}
+.savenote:not(:disabled):hover{filter:brightness(1.08)}
 .stamp{background:none;border:0;color:var(--mut2);cursor:pointer;font-size:11px;padding:0;
   text-transform:none;letter-spacing:0;font-weight:600}
 .stamp:hover{color:var(--gold2)}
@@ -480,10 +489,13 @@ function panelHTML(r) {
       ${acts.length ? `<div class="acts">${acts.join("")}</div>` : ""}
       <div class="cmt">
         <label for="c-${esc(r.april)}"><span>My comments</span>
-          <span><button class="stamp" type="button">+ date stamp</button>
-                <span class="saved">saved</span></span></label>
+          <button class="stamp" type="button">+ date stamp</button></label>
         <textarea id="c-${esc(r.april)}"
           placeholder="Call notes, who you spoke to, what to do next…">${esc(rec(r.april).comment)}</textarea>
+        <div class="cfoot">
+          <span class="cstate ok">Saved</span>
+          <button class="savenote" type="button" disabled>Save note</button>
+        </div>
       </div>
     </div>
   </div>`;
@@ -536,6 +548,7 @@ const matches = r =>
   (!query || (() => { const s = blob(r); return query.split(/\s+/).every(t => s.includes(t)); })());
 
 function render() {
+  if (typeof flushPending === "function") flushPending();
   const list = sorted(DATA).filter(matches);
   document.getElementById("list").innerHTML = list.map(rowHTML).join("");
   document.getElementById("empty").hidden = list.length > 0;
@@ -612,6 +625,10 @@ q.addEventListener("input", () => {
 clr.addEventListener("click", () => { q.value = ""; query = ""; clr.hidden = true; render(); q.focus(); });
 document.getElementById("sort").addEventListener("change", e => { sortBy = e.target.value; render(); });
 document.addEventListener("keydown", e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+    const item = document.activeElement.closest && document.activeElement.closest(".item");
+    if (item) { e.preventDefault(); commitNote(item); return; }
+  }
   if (e.key === "/" && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
     e.preventDefault(); q.focus(); q.select();
   }
@@ -641,6 +658,11 @@ function refreshActions(item, r) {
   box.innerHTML = acts.join("");
 }
 
+listEl.addEventListener("focusout", e => {
+  const ta = e.target.closest && e.target.closest(".cmt textarea");
+  if (ta) { const item = ta.closest(".item"); if (item) commitNote(item); }
+});
+
 listEl.addEventListener("click", e => {
   const cp = e.target.closest(".cp");
   if (cp) { copy(cp.dataset.copy, cp); return; }
@@ -655,6 +677,8 @@ listEl.addEventListener("click", e => {
     refreshActions(item, r);
     return;
   }
+  const sn = e.target.closest(".savenote");
+  if (sn) { commitNote(sn.closest(".item")); return; }
   const st = e.target.closest(".stamp");
   if (st) {
     const ta = st.closest(".panel").querySelector(".cmt textarea");   // never an address field
@@ -667,12 +691,14 @@ listEl.addEventListener("click", e => {
   if (e.target.closest("a, select, textarea, input, button")) return;  // let links & controls do their thing
   const row = e.target.closest(".row"); if (!row) return;
   const item = row.closest(".item");
+  flushPending();                       // before the DOM changes under us
   expand(item, !item.classList.contains("open"));
 });
 
 listEl.addEventListener("change", e => {
   const sel = e.target.closest("select.st"); if (!sel) return;
   const item = sel.closest(".item"), id = item.dataset.id;
+  flushPending();
   const r = mut(id); r.status = sel.value; r.updated = Date.now(); persist();
   item.style.setProperty("--c", SVAR[sel.value]);
   sel.style.setProperty("--c", SVAR[sel.value]);
@@ -680,6 +706,32 @@ listEl.addEventListener("change", e => {
   counts();
   if (filter !== "all" && filter !== sel.value) render();
 });
+
+/* Notes used to save themselves with only a flash to say so, which was easy to
+   miss. The state is now always on screen and there is a button that saves. */
+function noteState(item, dirty) {
+  const s = item.querySelector(".cstate"), btn = item.querySelector(".savenote");
+  if (s) { s.className = "cstate " + (dirty ? "dirty" : "ok"); s.textContent = dirty ? "Not saved" : "Saved"; }
+  if (btn) btn.disabled = !dirty;
+}
+function commitNote(item) {
+  const ta = item.querySelector(".cmt textarea"); if (!ta) return;
+  clearTimeout(ta._t);
+  const r = mut(item.dataset.id);
+  r.comment = ta.value; r.updated = Date.now();
+  persist();
+  noteState(item, false);
+  item.querySelector(".row").innerHTML = rowCells(byId(item.dataset.id));
+}
+
+/* Commit every note that differs from what is stored. Called before anything
+   that rebuilds the list, so a note can never be lost to a re-render. */
+function flushPending() {
+  document.querySelectorAll(".item .cmt textarea").forEach(ta => {
+    const item = ta.closest(".item");
+    if (item && ta.value !== (rec(item.dataset.id).comment || "")) commitNote(item);
+  });
+}
 
 listEl.addEventListener("input", e => {
   const fld = e.target.closest("[data-f]");
@@ -700,14 +752,11 @@ listEl.addEventListener("input", e => {
     }, 400);
     return;
   }
-  const ta = e.target.closest("textarea"); if (!ta) return;
-  const item = ta.closest(".item"), id = item.dataset.id;
+  const ta = e.target.closest(".cmt textarea"); if (!ta) return;
+  const item = ta.closest(".item");
+  noteState(item, true);                       // say so the moment it differs
   clearTimeout(ta._t);
-  ta._t = setTimeout(() => {
-    const r = mut(id); r.comment = ta.value; r.updated = Date.now(); persist();
-    flash(item.querySelector(".cmt .saved"));
-    item.querySelector(".row").innerHTML = rowCells(byId(id));   // refresh the ● / ✎ marker
-  }, 400);
+  ta._t = setTimeout(() => commitNote(item), 800);   // and still save it without being asked
 });
 
 /* ---------- paste rows straight out of a spreadsheet ----------
@@ -1024,7 +1073,12 @@ file.addEventListener("change", () => {
   fr.readAsText(f);
 });
 
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") flushPending();
+});
+window.addEventListener("pagehide", flushPending);
 window.addEventListener("beforeunload", e => {
+  flushPending();
   if (!fileHandle && unbacked() > 0) { e.preventDefault(); e.returnValue = ""; }
 });
 

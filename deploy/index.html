@@ -243,6 +243,7 @@ mark{background:rgba(201,156,56,.32);color:inherit;border-radius:2px}
   <div class="filters" id="filters"></div>
   <div class="bkp" id="backup" hidden>
     <span class="bdot"></span><span class="btxt"></span>
+    <button id="cloudsave" hidden>Save to Claude</button>
     <button id="pickfile" hidden>Turn on auto-backup</button>
     <button id="export">Back up to a file</button>
     <button id="paste">Paste from spreadsheet</button>
@@ -251,6 +252,8 @@ mark{background:rgba(201,156,56,.32);color:inherit;border-radius:2px}
   </div>
  </div>
 </header>
+
+<script type="application/json" id="cloud">{}</script>
 
 <div class="sheet" id="pastebox" hidden>
   <div class="sheetin">
@@ -293,9 +296,19 @@ const SVAR   = Object.fromEntries(STATUSES.map(s => [s[0], `var(${s[2]})`]));
 const KEY = "callDesk.v1";
 const BKEY = "callDesk.lastBackup";
 
-/* ---------- saved state ---------- */
+/* ---------- saved state ----------
+   Two stores, merged newest-wins per case: whatever this browser has, and
+   whatever was last saved into the published page itself. Either can be empty —
+   clearing site data empties the first, a fresh publish seeds the second. */
 let saved = {};
 try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+
+let cloud = {};
+try { cloud = JSON.parse(document.getElementById("cloud").textContent || "{}") || {}; } catch (e) {}
+for (const [id, c] of Object.entries(cloud)) {
+  const mine = saved[id];
+  if (!mine || (c.updated || 0) > (mine.updated || 0)) saved[id] = c;
+}
 const BLANK = Object.freeze({ status: "new", comment: "", updated: 0, edits: {} });
 const rec = id => saved[id] || BLANK;                                  // read-only
 const mut = id => {
@@ -321,7 +334,8 @@ function backupState() {
   const total = Object.values(saved).filter(touched).length, n = unbacked();
   const when = lastBackup ? new Date(lastBackup).toLocaleString("en-GB",
     { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" }) : "";
-  bar.hidden = !total && !fileHandle && !FS_OK;   // keep it reachable before the first note
+  const cloudable = !!artifactNS;
+  bar.hidden = !total && !fileHandle && !FS_OK && !cloudable;
   bar.classList.toggle("warn", n > 0);
   bar.querySelector(".btxt").textContent = fileHandle
     ? (n ? `Saving to ${fileName}…` : `Auto-saving to ${fileName}` + (when ? " · " + when : ""))
@@ -330,6 +344,11 @@ function backupState() {
                  : "Notes will be kept in this browser only");
   const pick = document.getElementById("pickfile");
   if (pick) pick.hidden = !FS_OK || !!fileHandle;
+  const cs = document.getElementById("cloudsave");
+  if (cs && !cs.hidden && !cloudBusy) {
+    cs.disabled = !n;
+    cs.textContent = n ? `Save ${n} to Claude` : "Saved to Claude";
+  }
 }
 
 function persist() {
@@ -775,6 +794,83 @@ pasteapply.addEventListener("click", () => {
 });
 
 /* ---------- export / import ---------- */
+/* ---------- saving into the published page ----------
+   The page carries its own source in #tpl, so it can rebuild a complete document
+   with new state rather than serialising whatever the DOM currently looks like. */
+let artifactNS = null, cloudBusy = false;
+const TPL_TOKEN = "__TPL" + "_SRC__";      // split so the source never contains the token
+const CLOUD_OPEN = '<script type="application/json" id="cloud">';
+const CLOSE = "</" + "script>";
+
+/* The template is carried as base64. Escaping it as text is not safe: any marker
+   for a closing script tag also occurs naturally in this script's own source, so
+   unescaping would corrupt the code. Base64 has no such collision. */
+function strToB64(s) {
+  const bytes = new TextEncoder().encode(s);
+  let bin = "", CH = 0x8000;
+  for (let i = 0; i < bytes.length; i += CH)
+    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CH));
+  return btoa(bin);
+}
+function b64ToStr(b64) {
+  const bin = atob(b64.trim());
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+/* Rebuild a complete document from the copy of our own source in #tpl, with the
+   given state spliced in — never from the live DOM, which holds rendered rows. */
+function buildDoc(state) {
+  const raw = document.getElementById("tpl");
+  if (!raw || !raw.textContent.trim()) return null;
+  let tpl;
+  try { tpl = b64ToStr(raw.textContent); } catch (e) { return null; }
+  if (tpl.indexOf(TPL_TOKEN) < 0) return null;
+  let doc = tpl.replace(TPL_TOKEN, () => strToB64(tpl));   // re-embed, so the next save also works
+  const i = doc.indexOf(CLOUD_OPEN);
+  if (i < 0) return null;
+  const j = doc.indexOf(CLOSE, i);
+  if (j < 0) return null;
+  doc = doc.slice(0, i + CLOUD_OPEN.length) + JSON.stringify(state) + doc.slice(j);
+  if (!/^<!DOCTYPE/i.test(doc.trim()) || doc.indexOf('id="tpl"') < 0) return null;
+  return doc;
+}
+
+async function saveToCloud() {
+  if (cloudBusy) return;
+  const btn = document.getElementById("cloudsave");
+  const doc = buildDoc(saved);
+  if (!artifactNS || !doc) { toast("Saving to Claude isn't available here"); return; }
+  cloudBusy = true;
+  if (btn) { btn.disabled = true; btn.textContent = "Saving…"; }
+  try {
+    await artifactNS.publish(doc);
+    lastBackup = Date.now();
+    try { localStorage.setItem(BKEY, String(lastBackup)); } catch (e) {}
+    toast("Saved to Claude — reloading");
+  } catch (e) {
+    toast(e && e.code === "conflict"
+      ? "This page was saved somewhere else — reload, then save again"
+      : "Couldn't save to Claude; your notes are still on this device");
+    if (btn) { btn.disabled = false; btn.textContent = "Save to Claude"; }
+    cloudBusy = false;
+    backupState();
+  }
+}
+
+(async () => {
+  // #tpl is the last element in the document, so wait for parsing to finish
+  if (document.readyState === "loading")
+    await new Promise(r => document.addEventListener("DOMContentLoaded", r, { once: true }));
+  try {
+    if (window.claude && window.claude.use) artifactNS = await window.claude.use("artifact");
+  } catch (e) {}
+  const btn = document.getElementById("cloudsave");
+  if (btn) btn.hidden = !(artifactNS && buildDoc({}));
+  backupState();
+})();
+
 /* ---------- live backup file ----------
    Browser storage can be cleared without warning — that is how notes get lost.
    Chrome and Edge can write straight to a file you choose, so the notes end up
@@ -880,6 +976,7 @@ async function saveFile(filename, data) {
 }
 
 document.getElementById("pickfile").addEventListener("click", chooseBackupFile);
+document.getElementById("cloudsave").addEventListener("click", saveToCloud);
 
 document.getElementById("export").addEventListener("click", async () => {
   const rows = DATA.filter(r => saved[r.april]).map(r => ({
@@ -934,4 +1031,5 @@ window.addEventListener("beforeunload", e => {
 render();
 backupState();
 </script>
+<script type="text/plain" id="tpl"></script>
 </body></html>

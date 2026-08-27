@@ -184,6 +184,25 @@ select.st:focus{border-color:var(--gold)}
 .bkp button:hover{border-color:var(--gold);color:var(--txt)}
 .bkp.warn button{border-color:rgba(217,154,43,.5);color:var(--gold2)}
 .bkp.warn button:hover{border-color:var(--gold);color:var(--txt)}
+.sheet{position:fixed;inset:0;z-index:50;background:rgba(8,8,10,.72);display:flex;
+  align-items:center;justify-content:center;padding:20px}
+.sheet[hidden]{display:none}
+.sheetin{background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:20px;
+  width:min(680px,100%);max-height:88vh;overflow:auto}
+.sheetin h2{margin:0 0 6px;font-size:16px;font-weight:700}
+.sheetin p{margin:0 0 12px;color:var(--mut);font-size:13px;max-width:62ch}
+.sheetin textarea{width:100%;min-height:190px;resize:vertical;padding:10px 11px;border-radius:9px;
+  border:1px solid var(--line2);background:var(--bg);color:var(--txt);outline:none;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5}
+.sheetin textarea:focus{border-color:var(--gold)}
+.preview{font-size:12.5px;margin:10px 0 0!important;white-space:pre-wrap}
+.preview.ok{color:var(--confirmed)}.preview.bad{color:var(--callback)}
+.sheetact{display:flex;gap:9px;justify-content:flex-end;margin-top:14px}
+.sheetact button{border-radius:8px;padding:8px 15px;cursor:pointer;font-size:13px;font-weight:650;
+  border:1px solid var(--gold);background:var(--gold);color:#0d0d0f}
+.sheetact button:disabled{opacity:.45;cursor:not-allowed}
+.sheetact button.ghost{background:none;color:var(--mut);border-color:var(--line2)}
+.sheetact button.ghost:hover{color:var(--txt);border-color:var(--mut2)}
 .empty{text-align:center;color:var(--mut2);padding:56px 20px}
 footer{border-top:1px solid var(--line);margin-top:26px;padding:16px;text-align:center;
   color:var(--mut2);font-size:11.5px}
@@ -226,11 +245,28 @@ mark{background:rgba(201,156,56,.32);color:inherit;border-radius:2px}
     <span class="bdot"></span><span class="btxt"></span>
     <button id="pickfile" hidden>Turn on auto-backup</button>
     <button id="export">Back up to a file</button>
+    <button id="paste">Paste from spreadsheet</button>
     <button id="import">Restore from a file</button>
     <input type="file" id="file" accept="application/json" hidden>
   </div>
  </div>
 </header>
+
+<div class="sheet" id="pastebox" hidden>
+  <div class="sheetin">
+    <h2>Paste notes from a spreadsheet</h2>
+    <p>Copy the rows straight out of Excel and paste them below. Include the April
+       number and your note — a status column is picked up too if you have one.
+       Order doesn't matter.</p>
+    <textarea id="pastetext" spellcheck="false"
+      placeholder="304083&#9;No answer, trying again this afternoon&#9;Call back"></textarea>
+    <p class="preview" id="pastepv"></p>
+    <div class="sheetact">
+      <button id="pastecancel" class="ghost">Cancel</button>
+      <button id="pasteapply" disabled>Add to my notes</button>
+    </div>
+  </div>
+</div>
 
 <main>
  <p class="count" id="count"></p>
@@ -560,6 +596,7 @@ document.addEventListener("keydown", e => {
   if (e.key === "/" && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
     e.preventDefault(); q.focus(); q.select();
   }
+  if (e.key === "Escape" && !pastebox.hidden) { closePaste(); return; }
   if (e.key === "Escape" && document.activeElement.tagName !== "TEXTAREA") {
     document.querySelectorAll(".item.open").forEach(i => expand(i, false));
   }
@@ -652,6 +689,89 @@ listEl.addEventListener("input", e => {
     flash(item.querySelector(".cmt .saved"));
     item.querySelector(".row").innerHTML = rowCells(byId(id));   // refresh the ● / ✎ marker
   }, 400);
+});
+
+/* ---------- paste rows straight out of a spreadsheet ----------
+   Columns move around between exports, so match on shape rather than position:
+   the April number is the 6-digit cell, a status is any cell naming one, and the
+   note is the longest remaining text. */
+const STATUS_BY_LABEL = {};
+STATUSES.forEach(([v, l]) => { STATUS_BY_LABEL[l.toLowerCase()] = v; });
+["call back", "callback", "cb"].forEach(k => STATUS_BY_LABEL[k] = "callback");
+["ooo", "out of office"].forEach(k => STATUS_BY_LABEL[k] = "ooo");
+["needs work", "needswork"].forEach(k => STATUS_BY_LABEL[k] = "needswork");
+
+const KNOWN = new Set(DATA.map(r => r.april));
+
+function parsePaste(text) {
+  const rows = [], unknown = [];
+  for (const line of text.split(/\r?\n/)) {
+    if (!line.trim()) continue;
+    const cells = (line.includes("\t") ? line.split("\t") : line.split(/\s*,\s*/))
+      .map(c => c.replace(/^"|"$/g, "").trim());
+    const april = cells.find(c => /^\d{6}$/.test(c));
+    if (!april) continue;
+    let status = "";
+    const rest = [];
+    for (const c of cells) {
+      if (c === april) continue;
+      const s = STATUS_BY_LABEL[c.toLowerCase()];
+      if (s && !status) { status = s; continue; }
+      if (c) rest.push(c);
+    }
+    const comment = rest.sort((a, b) => b.length - a.length)[0] || "";
+    if (!KNOWN.has(april)) { unknown.push(april); continue; }
+    if (comment || status) rows.push({ april, comment, status });
+  }
+  return { rows, unknown };
+}
+
+const pastebox = document.getElementById("pastebox");
+const pastetext = document.getElementById("pastetext");
+const pastepv = document.getElementById("pastepv");
+const pasteapply = document.getElementById("pasteapply");
+let parsed = { rows: [], unknown: [] };
+
+function openPaste() {
+  pastetext.value = ""; pastepv.textContent = ""; pastepv.className = "preview";
+  pasteapply.disabled = true; parsed = { rows: [], unknown: [] };
+  pastebox.hidden = false; pastetext.focus();
+}
+function closePaste() { pastebox.hidden = true; }
+
+document.getElementById("paste").addEventListener("click", openPaste);
+document.getElementById("pastecancel").addEventListener("click", closePaste);
+pastebox.addEventListener("click", e => { if (e.target === pastebox) closePaste(); });
+
+pastetext.addEventListener("input", () => {
+  parsed = parsePaste(pastetext.value);
+  const n = parsed.rows.length;
+  const adds = parsed.rows.filter(r => r.comment &&
+    !(rec(r.april).comment || "").includes(r.comment)).length;
+  pasteapply.disabled = !n;
+  if (!pastetext.value.trim()) { pastepv.textContent = ""; pastepv.className = "preview"; return; }
+  pastepv.className = "preview " + (n ? "ok" : "bad");
+  pastepv.textContent = n
+    ? `${n} ${n === 1 ? "row matches a case" : "rows match cases"} · ${adds} note${adds === 1 ? "" : "s"} to add`
+      + (parsed.unknown.length
+          ? `\nSkipping ${parsed.unknown.length} April number${parsed.unknown.length === 1 ? "" : "s"} not in this list: ${parsed.unknown.slice(0, 6).join(", ")}${parsed.unknown.length > 6 ? "…" : ""}`
+          : "")
+    : "No April numbers found. Each row needs the 6-digit April number alongside the note.";
+});
+
+pasteapply.addEventListener("click", () => {
+  let added = 0;
+  parsed.rows.forEach(({ april, comment, status }) => {
+    const r = mut(april);
+    if (comment && !(r.comment || "").includes(comment)) {
+      r.comment = r.comment ? r.comment.replace(/\s*$/, "") + "\n" + comment : comment;
+      added++;
+    }
+    if (status && r.status === "new") r.status = status;
+    r.updated = Date.now();
+  });
+  persist(); render(); closePaste();
+  toast(added ? `${added} note${added === 1 ? "" : "s"} added` : "Nothing new to add");
 });
 
 /* ---------- export / import ---------- */

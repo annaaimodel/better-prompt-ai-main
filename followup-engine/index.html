@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="/styles.css?v=44" />
+  <link rel="stylesheet" href="/styles.css?v=45" />
 </head>
 <body>
   <div id="gate" class="gate">
@@ -62,7 +62,6 @@
         <button data-view="coach">Coach</button>
         <button data-view="content">Content</button>
         <button data-view="products">Knowledge</button>
-        <button data-view="meds">Meds</button>
         <button data-view="playbook">Playbook</button>
         <button data-view="assets">Assets</button>
         <button data-view="settings">Settings</button>
@@ -156,10 +155,6 @@
         </div>
         <div class="kbar" style="margin-top:8px"><input id="pk_search" placeholder="Search your knowledge base to pull a card up manually..." /></div>
         <div id="pk_panel" class="script-live"><p class="small muted">Cards pop up here when you say their keyword. Manage them in the Knowledge tab.</p></div>
-      </div>
-      <div class="card">
-        <h2>Medications mentioned</h2>
-        <div id="live_meds"><span class="small muted">Medications the prospect mentions will be noted here, with their common side effects and risks, for your awareness. Not medical advice - the doctor owns all medication decisions.</span></div>
       </div>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center">
@@ -348,25 +343,6 @@
     </section>
 
     <!-- MEDS -->
-    <section id="view-meds" class="hidden">
-      <div class="card">
-        <h2>Med reference</h2>
-        <p class="small muted">Look up any medication to learn what it's for, its common side effects and its key risks. Great for studying between calls so you recognise them when they come up. For your awareness only - not medical advice, and the person's doctor is always the authority.</p>
-        <div class="kbar">
-          <input id="mr_input" placeholder="e.g. metformin, lisinopril, atorvastatin, Ozempic..." />
-          <button class="btn primary" id="mr_go">Look up ▸</button>
-        </div>
-        <div id="mr_out"></div>
-      </div>
-      <div class="card">
-        <div style="display:flex;justify-content:space-between;align-items:center">
-          <h2 style="margin:0">Saved references</h2>
-          <span class="small muted" id="mr_count"></span>
-        </div>
-        <p class="small muted">Every medication you look up is saved here to build your own reference library.</p>
-        <div id="mr_list"></div>
-      </div>
-    </section>
 
     <!-- PLAYBOOK -->
     <section id="view-playbook" class="hidden">
@@ -545,6 +521,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=44"></script>
+  <script src="/app.js?v=45"></script>
 </body>
 </html>

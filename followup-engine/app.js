@@ -1041,14 +1041,13 @@ async function runDraft() {
 // Wiring
 // ---------------------------------------------------------------------------
 function setView(name) {
-  ["today", "live", "pipeline", "add", "coach", "content", "products", "meds", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
+  ["today", "live", "pipeline", "add", "coach", "content", "products", "playbook", "assets", "settings"].forEach((v) => $("view-" + v).classList.toggle("hidden", v !== name));
   document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("active", b.dataset.view === name));
   if (name === "today") renderToday();
   if (name === "live") setupLive();
   if (name === "coach") setupCoach();
   if (name === "content") setupContent();
   if (name === "products") renderProducts();
-  if (name === "meds") renderMedRefs();
   if (name === "pipeline") renderPipeline($("search").value);
   if (name === "playbook") loadPlaybookForm();
   if (name === "assets") renderAssets();
@@ -1857,7 +1856,6 @@ async function liveStart() {
   if ($("live_headset").checked) { const ok = await startProspectCapture(); if (!ok) return; }
   Live.leadId = $("live_lead").value;
   Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0; Live.paused = false;
-  seedMedsFromLead(Live.leadId);
   Live.scriptBlocks = splitScript($("sc_text").value); Live.scriptIdx = -1; Live.scriptManual = false;
   $("live_cues").innerHTML = "";
   if (Live.scriptBlocks.length) { $("sc_editor").style.display = "none"; $("sc_live").style.display = "block"; $("sc_controls").style.display = "flex"; renderScriptLive(-1); }
@@ -1902,13 +1900,8 @@ function liveStop() {
     const l = db.leads.find((x) => x.id === Live.leadId);
     if (l) {
       l._lastTranscript = full.slice(0, 200000);
-      if (Live.meds.length) l.meds = Live.meds.map((m) => {
-        const info = Live.medInfo[m.toLowerCase()] || {};
-        return { name: m, generic: info.generic || "", class: info.class || "", uses: info.uses || "", sideEffects: info.sideEffects || [], risks: info.risks || [] };
-      });
       l.touches = l.touches || [];
-      const medsNote = Live.meds.length ? " Meds noted: " + Live.meds.join(", ") + "." : "";
-      l.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: "Live call", summary: "Live call - transcript saved (" + full.length + " chars)." + medsNote });
+      l.touches.push({ at: new Date().toISOString(), channel: "call", direction: "out", valueAngle: "insight", intent: "Live call", summary: "Live call - transcript saved (" + full.length + " chars)." });
       save();
       $("live_status").innerHTML = `Stopped. Transcript saved to ${esc(l.name || "lead")}. <a href="#" id="live_mask">Run Mask Read ▸</a>`;
       const ml = $("live_mask");
@@ -1992,7 +1985,6 @@ async function maybeCue(force) {
     });
     const j = await r.json();
     if (j.cues && j.cues.length) renderCues(j.cues);
-    if (Array.isArray(j.meds) && j.meds.length) addMeds(j.meds);
     if (!Live.scriptManual && Live.scriptBlocks.length && typeof j.scriptIndex === "number" && j.scriptIndex >= 0 && j.scriptIndex < Live.scriptBlocks.length) {
       Live.scriptIdx = j.scriptIndex; renderScriptLive(Live.scriptIdx);
     }
@@ -2143,12 +2135,6 @@ async function medLookup() {
   } catch (e) { $("mr_out").innerHTML = `<p class="small" style="margin-top:10px">⚠ Network error - try again.</p>`; }
   $("mr_go").disabled = false; $("mr_go").textContent = "Look up ▸";
 }
-$("mr_go").onclick = medLookup;
-$("mr_input").addEventListener("keydown", (e) => { if (e.key === "Enter") medLookup(); });
-$("mr_list").addEventListener("click", (e) => {
-  const b = e.target.closest("button[data-mrdel]"); if (!b) return;
-  db.medRefs = (db.medRefs || []).filter((x) => x.id !== b.dataset.mrdel); save(); renderMedRefs(); toast("Removed");
-});
 $("live_start").onclick = liveStart;
 $("live_stop").onclick = liveStop;
 $("tw_go").onclick = testWhisper;
@@ -2208,7 +2194,6 @@ $("tr_totw").onclick = () => {
 function resetForNewCall() {
   Live.leadId = $("live_lead").value;
   Live.transcript = ""; Live.interim = ""; Live.recentCues = []; Live.lastCueLen = 0;
-  seedMedsFromLead(Live.leadId);
   $("live_cues").innerHTML = `<div class="empty small">Cues appear here as the call unfolds.</div>`;
   Live.scriptIdx = -1; Live.scriptManual = false;
   if (Live.scriptBlocks.length) renderScriptLive(-1);

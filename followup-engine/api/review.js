@@ -49,7 +49,7 @@ export default async function handler(req, res) {
   if (!String(process.env.ACCESS_CODE || "").split(",").map((s) => s.trim()).filter(Boolean).includes(code)) { res.status(401).json({ error: "Invalid access code." }); return; }
   if (!process.env.ANTHROPIC_API_KEY) { res.status(503).json({ error: "Not configured: ANTHROPIC_API_KEY is not set in Vercel." }); return; }
 
-  const transcript = clip(body.transcript, 18000);
+  const transcript = clip(body.transcript, 120000);
   if (transcript.trim().length < 40) { res.status(400).json({ error: "Need a call transcript to review." }); return; }
 
   const p = body.playbook || {}, o = p.offer || {}, m = p.methodology || {}, mask = body.mask || {};
@@ -81,7 +81,7 @@ export default async function handler(req, res) {
   try {
     const msg = await client.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 2200,
+      max_tokens: 3000,
       system: SYSTEM,
       messages: [{ role: "user", content: userText }],
     });

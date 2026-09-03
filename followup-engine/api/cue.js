@@ -87,8 +87,10 @@ function buildContext(body) {
   if (o.transformation) out.push("PROMISE: " + clip(o.transformation, 300));
   if (o.price) out.push("PRICE: " + clip(o.price, 200));
   if (o.booking) out.push("BOOKING / NEXT STEP (follow exactly, keep [BRACKETS]): " + clip(o.booking, 400));
-  if (m.principles) out.push("METHOD: " + clip(m.principles, 1200));
-  if (m.never) out.push("METHOD DON'TS: " + clip(m.never, 400));
+  // The methodology is deliberately NOT fed to the live whisper: the model would
+  // otherwise generate objection answers from its tactics. Objection/Q&A answers
+  // must come only from the cards. Only the safety "don'ts" are kept as guardrails.
+  if (m.never) out.push("HARD DON'TS: " + clip(m.never, 400));
 
   const assets = Array.isArray(body.assets) ? body.assets.filter(Boolean).slice(0, 12) : [];
   if (assets.length) {

@@ -1048,6 +1048,7 @@ function setView(name) {
   if (name === "coach") setupCoach();
   if (name === "content") setupContent();
   if (name === "products") renderProducts();
+  if (name === "live") renderObjButtons();
   if (name === "pipeline") renderPipeline($("search").value);
   if (name === "playbook") loadPlaybookForm();
   if (name === "assets") renderAssets();
@@ -2357,35 +2358,48 @@ function openProductEdit(id) {
   };
 }
 
-// Quick objection handler - drops method-true lines into the whispers panel.
-async function handleObjection(label) {
-  if (!label) return;
-  if (!db.settings.access) { toast("Set your access code in Settings first"); setView("settings"); return; }
-  const lid = $("live_lead").value;
-  const l = lid ? db.leads.find((x) => x.id === lid) : null;
-  const box = $("live_cues"); if (box.querySelector(".empty")) box.innerHTML = "";
-  const loading = document.createElement("div");
-  loading.className = "cue objection"; loading.innerHTML = `<span class="cue-type">objection</span>Handling "${esc(label)}"…`;
-  box.prepend(loading);
-  try {
-    const r = await fetch("/api/objection", {
-      method: "POST", headers: { "Content-Type": "application/json", "x-access-code": db.settings.access },
-      body: JSON.stringify({
-        objection: label,
-        contact: l ? { name: l.name, offerInterest: l.offerInterest, notes: l.notes } : {},
-        mask: l ? l.mask : null,
-        playbook: db.playbook,
-        assets: (db.assets || []).map((a) => ({ title: a.title, result: a.result, bestFor: a.bestFor })),
-        transcript: (Live.transcript || "").slice(-2000),
-      }),
-    });
-    const j = await r.json();
-    loading.remove();
-    if (r.ok && j.lines && j.lines.length) renderCues(j.lines.map((t) => ({ type: "objection", text: t })));
-    else toast(j.error || "No suggestion");
-  } catch (e) { loading.remove(); toast("Network error"); }
+// Objection handler - fires the rep's own objection CARDS into the whispers.
+// Nothing is generated or method-sourced; it only ever shows a card's response.
+function objWords(s) { return (s || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter((w) => w.length > 2); }
+function objectionCardsList() { return (db.products || []).filter((p) => normKind(p.kind) === "objection"); }
+// The objection buttons ARE the rep's objection cards, so they match the offer.
+function renderObjButtons() {
+  const box = $("obj_buttons"); if (!box) return;
+  const objs = objectionCardsList();
+  box.innerHTML = objs.length
+    ? objs.slice(0, 30).map((c) => `<button class="btn sm" data-cardid="${esc(c.id)}">${esc(c.name || "Objection")}</button>`).join("")
+    : `<span class="small muted">No objection cards yet - add them in the Knowledge tab and they'll appear here.</span>`;
 }
-$("obj_buttons").addEventListener("click", (e) => { const b = e.target.closest("button[data-lbl]"); if (b) handleObjection(b.dataset.lbl); });
+// Best objection card for a typed line: match its words to the card name/response.
+function bestCardForObjection(label) {
+  const objs = objectionCardsList();
+  if (!objs.length) return null;
+  const lw = objWords(label); if (!lw.length) return null;
+  let best = null, bestScore = 0;
+  for (const c of objs) {
+    const nameW = new Set(objWords(c.name)), infoW = new Set(objWords(c.info));
+    let nameHit = 0, infoHit = 0;
+    for (const w of lw) { if (nameW.has(w)) nameHit++; if (infoW.has(w)) infoHit++; }
+    const score = (nameHit / lw.length) * 1.5 + (infoHit / lw.length) * 0.4;
+    if (score > bestScore) { bestScore = score; best = c; }
+  }
+  return bestScore >= 0.3 ? best : null;
+}
+function fireObjectionCard(card) {
+  if (!card) return;
+  const box = $("live_cues"); if (box && box.querySelector(".empty")) box.innerHTML = "";
+  renderCues([{ type: "objection", text: card.info || "" }]);
+}
+function handleObjection(label) {
+  if (!label) return;
+  const card = bestCardForObjection(label);
+  if (card) fireObjectionCard(card);
+  else toast("No objection card matches that. Add one in the Knowledge tab.");
+}
+$("obj_buttons").addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-cardid]"); if (!b) return;
+  fireObjectionCard((db.products || []).find((p) => p.id === b.dataset.cardid));
+});
 $("obj_go").onclick = () => { const t = $("obj_text").value.trim(); if (t) { handleObjection(t); $("obj_text").value = ""; } };
 $("obj_text").addEventListener("keydown", (e) => { if (e.key === "Enter") $("obj_go").click(); });
 

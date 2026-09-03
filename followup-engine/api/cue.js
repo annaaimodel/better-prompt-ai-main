@@ -57,6 +57,22 @@ function clip(v, n) { return (v == null ? "" : String(v)).slice(0, n); }
 const OUTREACH_RE = /voice ?mail|call(?:ing)? ?back|call them back|stop (?:calling|leaving|reaching|texting|emailing|messaging)|reach(?:ing|ed)? out|leave (?:a|them) (?:message|voicemail)|other prospects|different prospects|wait for (?:them|the prospect) to (?:call|respond|reply|reach)/i;
 function stripOutreachCues(cues) { return cues.filter((c) => c && c.text && !OUTREACH_RE.test(c.text)); }
 
+// Hard guard: an "objection" cue must be an approved line from one of the rep's
+// OBJECTION cards, never invented or pulled from the methodology/offer. Drop any
+// objection cue whose words do not substantially overlap a single objection card.
+function cueWords(s) { return (s || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter((w) => w.length > 2); }
+function fromObjectionCard(text, objCards) {
+  const tw = cueWords(text);
+  if (!tw.length) return true;
+  for (const c of objCards) {
+    const cw = new Set(cueWords(c && c.info));
+    if (!cw.size) continue;
+    let hit = 0; for (const w of tw) if (cw.has(w)) hit++;
+    if (hit / tw.length >= 0.55) return true;
+  }
+  return false;
+}
+
 function buildContext(body) {
   const c = body.contact || {}, p = body.playbook || {}, o = p.offer || {}, m = p.methodology || {}, mask = body.mask || {};
   const out = [];
@@ -121,9 +137,10 @@ export default async function handler(req, res) {
     const mt = raw.match(/\{[\s\S]*\}/);
     let parsed = {};
     try { parsed = JSON.parse(mt ? mt[0] : raw); } catch (e) { parsed = {}; }
-    const cues = Array.isArray(parsed.cues)
+    const objCards = (Array.isArray(body.cards) ? body.cards : []).filter((x) => x && x.kind === "objection");
+    const cues = (Array.isArray(parsed.cues)
       ? stripOutreachCues(parsed.cues.slice(0, 4).map((x) => ({ type: clip(x.type, 20).toLowerCase() || "ask", text: clip(x.text, 700) })).filter((x) => x.text)).slice(0, 3)
-      : [];
+      : []).filter((c) => c.type !== "objection" || fromObjectionCard(c.text, objCards));
     const scriptIndex = (typeof parsed.scriptIndex === "number" && parsed.scriptIndex >= 0) ? Math.floor(parsed.scriptIndex) : null;
     const meds = Array.isArray(parsed.meds) ? parsed.meds.slice(0, 20).map((x) => clip(x, 60).trim()).filter(Boolean) : [];
     res.status(200).json({ cues, scriptIndex, scriptNote: clip(parsed.scriptNote, 160), meds, usage: msg.usage });

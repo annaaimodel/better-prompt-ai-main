@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="/styles.css?v=46" />
+  <link rel="stylesheet" href="/styles.css?v=47" />
 </head>
 <body>
   <div id="gate" class="gate">
@@ -212,6 +212,14 @@
           <textarea id="pasteBox" rows="5" placeholder="e.g. New lead from Facebook: Jane Doe, jane@acme.co, +1 555 0199 - runs a 7-fig agency, wants help scaling past a plateau, booked a call Thursday…"></textarea>
         </div>
         <button class="btn primary" id="parseBtn">Parse with AI</button>
+      </div>
+
+      <div class="card">
+        <h2>Bulk import from a list</h2>
+        <p class="small muted">Paste an exported list of bookings or leads and Aurum adds them all to your pipeline at once. It pulls each name and phone number, skips blank rows, and skips anyone already in your pipeline.</p>
+        <div class="field"><textarea id="bulk_text" rows="6" placeholder="Paste your full booking or lead list here (names and numbers)..."></textarea></div>
+        <button class="btn primary" id="bulk_go">Import all ▸</button>
+        <p class="small" id="bulk_status" style="margin-top:8px"></p>
       </div>
 
       <div class="card">
@@ -512,6 +520,6 @@
   </div>
 
   <div id="toast"></div>
-  <script src="/app.js?v=46"></script>
+  <script src="/app.js?v=47"></script>
 </body>
 </html>

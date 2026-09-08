@@ -1192,6 +1192,63 @@ $("saveLeadBtn").onclick = () => {
   toast("Added - it's in Today now"); setView("today");
 };
 
+// Bulk import: parse a pasted booking/lead list into leads. Each record starts
+// on a header line ("Name - Call type - Sales"); we pull the name, the call
+// type, the phone (from a +number or a wa.me link), the closer and the status.
+function parseBulkLeads(text) {
+  const lines = String(text || "").split(/\r?\n/).map((s) => s.trim());
+  const headerRe = /^(.*?)\s-\s.+-\s*Sales\s*$/i;
+  const recs = [];
+  let cur = null;
+  for (const line of lines) {
+    const h = line.match(headerRe);
+    if (h) {
+      if (cur) recs.push(cur);
+      const type = (line.match(/-\s(.+?)\s-\s*Sales\s*$/i) || [])[1] || "";
+      cur = { name: (h[1] || "").trim(), type: type.trim(), block: [] };
+    } else if (cur) { cur.block.push(line); }
+  }
+  if (cur) recs.push(cur);
+  const out = [], seen = new Set();
+  for (const r of recs) {
+    const block = r.block.join("\n");
+    const phone = (block.match(/\+\d{6,15}/) || [""])[0];
+    const closer = ((block.match(/^(.*?)\s-\s*Closer/im) || [])[1] || "").trim();
+    const status = /cancel/i.test(block) ? "Canceled" : (/no[\s-]?show/i.test(block) ? "No-show" : (/complete/i.test(block) ? "Completed" : ""));
+    if (!r.name && !phone) continue;
+    const key = phone || r.name.toLowerCase();
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    out.push({ name: r.name || "Unknown", phone, type: r.type, closer, status });
+  }
+  return out;
+}
+$("bulk_go").onclick = () => {
+  const parsed = parseBulkLeads($("bulk_text").value);
+  if (!parsed.length) { $("bulk_status").textContent = "Couldn't find any leads in that. Check the format and try again."; return; }
+  const existing = new Set((db.leads || []).map((l) => (l.phone || "").replace(/\D/g, "")).filter(Boolean));
+  let added = 0, dup = 0;
+  parsed.forEach((p) => {
+    const digits = (p.phone || "").replace(/\D/g, "");
+    if (digits && existing.has(digits)) { dup++; return; }
+    if (digits) existing.add(digits);
+    db.leads.push({
+      id: uid(), name: p.name, company: "", email: "", phone: p.phone,
+      offerInterest: p.type || "", source: "Bulk import",
+      temperature: "warm", dealValue: "",
+      notes: [p.type, p.closer ? "Closer: " + p.closer : "", p.status ? "Status: " + p.status : ""].filter(Boolean).join(". "),
+      stage: "new", status: "active", segment: "lead",
+      assignedSetter: db.team.setters[0] || "", assignedCloser: "", assignedCSM: "",
+      createdAt: new Date().toISOString(), cadenceStep: 0,
+      nextActionAt: new Date().toISOString(), touches: [],
+    });
+    added++;
+  });
+  save(); rerender();
+  $("bulk_status").textContent = `Added ${added} lead${added === 1 ? "" : "s"}${dup ? ", skipped " + dup + " already in your pipeline" : ""}.`;
+  toast(`Added ${added} leads`);
+};
+
 // Settings
 function loadSettingsForm() {
   const s = db.settings;

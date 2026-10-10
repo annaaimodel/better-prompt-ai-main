@@ -118,9 +118,9 @@ Each week = **one small habit per pillar** + a reflection prompt.
 
 | Week | Body | Mind | Money | Place |
 |---|---|---|---|---|
-| 1 | 20-minute walk daily | 10 pages a day | Write down your "why" for a new income | Write your dream-day-abroad description |
-| 2 | Water + one veg-led meal a day | Phone out of the bedroom | Learn what high-ticket sales is (resources list) | Shortlist 3 countries |
-| 3 | Add 2 strength sessions (home/bodyweight) | 20 min of study daily | Start a free sales course | Research cost of living |
+| 1 | 20-minute walk daily | 10 pages a day + phone out of the bedroom | Write down your "why" for a new income | Write your dream-day-abroad description |
+| 2 | Water + one veg-led meal a day | 20 min of learning daily | Learn what high-ticket sales is (resources list) | Shortlist 3 countries |
+| 3 | Add 2 strength sessions (home/bodyweight) | Keep study going; start book #2 | Start a free sales course | Research cost of living |
 | 4 | Bedtime routine | Finish book #1 | First practice role-plays | Check visa options |
 | 5–8 | Build on each habit (more steps, meal prep, longer sessions) | A course or skill each week | Apply, interview, first calls | Budget, timeline, tell the family |
 | 9–13 | Keep it going, track energy | Journal weekly | Pipeline and income tracking | Declutter, plan the move, settle in |

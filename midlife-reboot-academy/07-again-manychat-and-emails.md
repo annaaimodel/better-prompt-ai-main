@@ -1,5 +1,5 @@
 # "Comment AGAIN" flow + Me Again emails
-*Replaces the Margot flow (file 03, now on hold). Same mechanics, new keyword and voice.*
+*Turns "Comment AGAIN" into email subscribers, and then into buyers.*
 
 ---
 

@@ -11,14 +11,15 @@
 | **Handle ideas** | `@annaagain`, `@meagainwithanna`, `@emptynestfullife` |
 | **Who it's for** | Women 40–55 whose kids have grown up, who feel a bit lost and are ready for "what's next" |
 | **Voice** | Fat, fun, honest, a bit self-roasting, never preachy. The friend who says what everyone's thinking |
-| **Promise** | "I'm rebuilding my body, my money and my life in 90 days, and you can do it with me." |
-| **Bio** | Empty nester, 40-something, starting over 💛 Day __/90 · Body · Mind · Money · Abroad · Free guide ⬇️ |
+| **Promise** | "I'm rebuilding my health, my fitness, my money and my career in 90 days, and you can do it with me." |
+| **Bio** | Empty nester, 40-something, starting over 💛 Day __/90 · Health · Fitness · Money · Career · Mind · Free guide ⬇️ |
 
-### The 4 pillars
-1. **Body:** movement, eating, sleep, energy
-2. **Mind:** reading, studying, focus, less doom-scrolling
-3. **Money:** the career change into high-ticket sales
-4. **Place:** the plan to live abroad, and doing it
+### The 5 pillars (your real plan, with full tracking in `08-my-90-day-plan-and-tracking.md`)
+1. 🥗 **Health:** high protein, reduced carbs, 2L water a day
+2. 💪 **Fitness:** one workout every day
+3. 💷 **Finances:** no credit card use; increase income
+4. 💼 **Career:** apply for and secure a new closing offer
+5. 📚 **Knowledge:** 10 pages a day + daily closing-skills practice
 
 ---
 
@@ -49,48 +50,44 @@ The same structure every day so it's quick to film and easy to follow:
 4. **One thing I learned** (useful to the viewer)
 5. **Tomorrow** ("Tomorrow I'm doing my first sales call. Wish me luck.")
 
-On screen at all times: **Day __/90** plus a 4-pillar tracker (✅/❌ for Body, Mind, Money, Place).
+On screen at all times: **Day __/90** plus a 5-pillar tracker (✅/❌ for 🥗 💪 💷 💼 📚).
 
 **Weekly extra (Sunday):** a 2–3 minute recap on YouTube (long form) with the week's scorecard, which you cut into Shorts.
 
-### Weekly scorecard (share what you're comfortable with)
-- Days I moved: __/7 · Average steps: __
-- Pages read: __ · Study hours: __
-- Sales calls: __ · Deals closed: __ · £ earned: __ (real numbers only)
-- Abroad plan: next step done ✅/❌
-- Energy (1–10): __ · Mood (1–10): __
+### Weekly scorecard
+The full daily tracker, weekly scorecard and Day 30/60/90 comparison checklist are in `08-my-90-day-plan-and-tracking.md`. Share what you're comfortable with, and keep the rest private for the Day 90 reveal.
 
 ---
 
 ## 4. The 90-day content map
 
-The plan is built around **habits and honest updates, not promised outcomes**. If the move abroad happens on day 75 or day 120, the diary just follows real life. That honesty is the brand.
+The plan is built around **habits and honest updates, not promised outcomes**. If the new offer lands on day 20 or day 80, the diary just follows real life. That honesty is the brand.
 
 ### Phase 1: Reset (Days 1–30)
 *Story: "I don't recognise my life anymore. Let's change that."*
 | Week | Theme | Story beats to capture |
 |---|---|---|
-| 1 | **The empty house** | Why now, the empty nest feeling, Day 1 honesty, setting the 4 pillar goals |
-| 2 | **Tiny habits** | First walks, first book, cleaning out the fridge, the first sales training |
+| 1 | **The empty house** | Why now, the empty nest feeling, Day 1 honesty, the 5 pillars, freezing the credit card |
+| 2 | **New habits** | Protein meals, water bottle, first workouts, first book, first applications |
 | 3 | **The wobble** | The first bad day / missed day and coming back. This always performs |
-| 4 | **First proof** | 30-day recap: energy, habits, the first sales calls, starting to research where to move abroad |
+| 4 | **First proof** | Day 30 checkpoint: photos, measurements, fitness re-test, money saved by not using the card |
 
 ### Phase 2: Build (Days 31–60)
 *Story: "It's actually working, and it's scary."*
 | Week | Theme | Story beats to capture |
 |---|---|---|
-| 5 | **Money mindset** | What high-ticket sales is, the first objections handled, imposter syndrome at 40-something |
-| 6 | **Stronger** | Movement milestone (first 5k walk, first class), meal prep reality |
-| 7 | **The first deal** | First close / commission, if it's happened. If not, the honest "not yet" |
-| 8 | **Choosing the place** | Shortlisting countries, costs, visas, telling the kids |
+| 5 | **Career push** | What high-ticket closing is, interviews, imposter syndrome at 40-something |
+| 6 | **Stronger** | Fitness milestone (first full push-up, a longer workout), meal prep reality |
+| 7 | **The offer** | Securing the new closing offer, if it's happened. If not, the honest "not yet" |
+| 8 | **Day 60** | Halfway checkpoint + the new mock call vs the Day 0 one |
 
 ### Phase 3: Leap (Days 61–90)
 *Story: "Becoming the woman I said I'd be."*
 | Week | Theme | Story beats to capture |
 |---|---|---|
-| 9 | **Letting go** | Selling stuff, decluttering the family home, emotional goodbyes |
-| 10 | **The move** | Packing, travel day, first days abroad (whenever it happens) |
-| 11 | **New routine** | Working remotely abroad, new walks, new food, the loneliness and the joy |
+| 9 | **First commissions** | Real income numbers, the no-credit-card effect on your finances |
+| 10 | **Levelling up** | Closing skills progress, books finished, what's actually working |
+| 11 | **New normal** | The habits now feel automatic. What life looks like now, the loneliness and the joy |
 | 12 | **Who I am now** | Side-by-side Day 1 vs now (real photos), the lessons |
 | 13 | **Day 90** | The big recap, real numbers, and "want to do this with me?" → the challenge launch |
 
@@ -100,7 +97,7 @@ The plan is built around **habits and honest updates, not promised outcomes**. I
 - "I'm fat, I'm forty-something, and I'm starting again. Day __."
 - "Things I stopped doing that changed everything."
 - "What I earned this week in my new career (real numbers)."
-- "Telling my kids I'm moving abroad."
+- "I froze my credit card for 90 days. Here's what happened."
 - "The day I nearly gave up."
 
 ---
@@ -112,20 +109,27 @@ The plan is built around **habits and honest updates, not promised outcomes**. I
 **Lead magnet CTA:** "Comment **AGAIN** and I'll send you the guide I'm following."
 
 ### Structure (one page per week)
-Each week = **one small habit per pillar** + a reflection prompt.
+Every week has the **same 5 daily non-negotiables** (your real plan), plus **one weekly focus** that adds a tip, a recipe or a challenge.
 
-| Week | Body | Mind | Money | Place |
-|---|---|---|---|---|
-| 1 | 20-minute walk daily | 10 pages a day + phone out of the bedroom | Write down your "why" for a new income | Write your dream-day-abroad description |
-| 2 | Water + one veg-led meal a day | 20 min of learning daily | Learn what high-ticket sales is (resources list) | Shortlist 3 countries |
-| 3 | Add 2 strength sessions (home/bodyweight) | Keep study going; start book #2 | Start a free sales course | Research cost of living |
-| 4 | Bedtime routine | Finish book #1 | First practice role-plays | Check visa options |
-| 5–8 | Build on each habit (more steps, meal prep, longer sessions) | A course or skill each week | Apply, interview, first calls | Budget, timeline, tell the family |
-| 9–13 | Keep it going, track energy | Journal weekly | Pipeline and income tracking | Declutter, plan the move, settle in |
+| Week | Weekly focus |
+|---|---|
+| 1 | Day 0 record + set up (water bottle, card in the freezer, first book) |
+| 2 | Easy high-protein swaps (breakfasts) |
+| 3 | Workouts for days you can't be bothered |
+| 4 | Day 30 checkpoint: re-test and compare |
+| 5 | Finding the income action in every day |
+| 6 | High-protein lunches + meal prep |
+| 7 | Applying, interviewing, landing the offer (or your own career goal) |
+| 8 | Day 60 checkpoint |
+| 9 | Spending without a credit card: what I learned |
+| 10 | Getting stronger: progressing workouts |
+| 11 | Learning faster: making your 10 pages stick |
+| 12 | Keeping it going after 90 days |
+| 13 | Day 90: the full now-vs-then |
 
 **Every page ends with:** "My check-in this week" (scorecard) + "Not medical or financial advice" footer.
 
-*(The money pillar is a natural fit with AURUM, your high-ticket sales jobs board, if it's live by then: "Here's where I found my role.")*
+*(The career pillar is a natural fit with AURUM, your high-ticket sales jobs board, if it's live by then: "Here's where I found my role.")*
 
 ---
 
@@ -151,7 +155,7 @@ Your real 90 days is your proof. Your followers' check-ins during the free guide
 > My kids have grown up and left home. The house is so quiet I can hear the fridge. I'm in my forties, I'm fat, I'm a lot of fun, and I've spent twenty years looking after everyone except me.
 >
 > **[The plan]**
-> So for the next 90 days I'm changing everything. My body: moving every day and eating like I actually like myself. My mind: reading again, learning again. My money: I've started a whole new career in high-ticket sales. And the big one: by the end of this, I want to be living abroad.
+> So for the next 90 days I'm changing everything. High protein, fewer carbs, two litres of water. A workout every single day. My credit card is literally in the freezer, and I'm going after more income and a new closing offer in high-ticket sales. And every day: 10 pages of a book and practising my closing skills.
 >
 > **[The honesty]**
 > I'll show you all of it. The good days, the bad days, the real numbers. No filters on the truth.
@@ -166,11 +170,11 @@ Your real 90 days is your proof. Your followers' check-ins during the free guide
 **Caption:** "Empty nest, full life. 90 days to get me back. Comment AGAIN for the free plan I'm following 💛 #emptynest #over40 #midlifereset #90daychallenge"
 
 ### Days 2–7, one line each
-- **Day 2:** "What I ate today, and what I'm changing first."
+- **Day 2:** "What I ate today: my high-protein day (and how hard 2L of water is)."
 - **Day 3:** "Why I chose high-ticket sales at 4_ (and what it actually is)."
-- **Day 4:** "The book I'm starting with, and why."
-- **Day 5:** "The countries on my list. Help me choose 👇"
-- **Day 6:** "The first wobble: I didn't want to walk today."
+- **Day 4:** "The book I'm starting with, and today's closing lesson."
+- **Day 5:** "5 days without my credit card. Here's what I nearly bought."
+- **Day 6:** "The first wobble: I didn't want to work out today."
 - **Day 7:** "Week 1 scorecard (real numbers)."
 
 ---

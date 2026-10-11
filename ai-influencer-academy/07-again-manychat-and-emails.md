@@ -35,12 +35,12 @@
 >
 > Can I ask what's brought you here? 👇
 >
-> **[ Empty nest ]** **[ Want a career change ]** **[ Health reset ]** **[ Dreaming of moving ]**
+> **[ Empty nest ]** **[ Career change ]** **[ Health & fitness ]** **[ Money ]**
 
-*Tag each answer (`why-emptynest`, `why-career`, `why-health`, `why-move`). This tells you what your audience cares about most, and shapes the paid challenge.*
+*Tag each answer (`why-emptynest`, `why-career`, `why-health`, `why-money`). This tells you what your audience cares about most, and shapes the paid challenge.*
 
 ### Step 5 — 24h nudge (only if they didn't open or click)
-> Hey! Did Week 1 arrive OK? Here's the direct link in case: **[link]** 💛 Your first job is just a 20-minute walk.
+> Hey! Did Week 1 arrive OK? Here's the direct link in case: **[link]** 💛 Day 1 starts with writing down your "before".
 
 ### Fallback (no email given)
 > No worries! You can grab it here 👉 **[sign-up page link]**
@@ -51,7 +51,7 @@
 
 ### Email 1 — Immediately: delivers Week 1
 **Subject:** Week 1 is here 💛
-**Preview:** Four small things. That's all.
+**Preview:** Five pillars. Ninety days. Let's go.
 
 > Hi {first_name | lovely},
 >
@@ -59,17 +59,18 @@
 >
 > Here's Week 1 of The Me Again Reset 👉 **[Download Week 1]**
 >
-> It's the exact plan I'm following. This week is gentle:
-> 🥗 a 20-minute walk every day
-> 📚 10 pages a day + your phone sleeps outside the bedroom
-> 💼 write down *why* you want a new income
-> ✈️ describe your dream ordinary day
+> It's the exact plan I'm following. Every day for 90 days:
+> 🥗 high protein, fewer carbs, 2L water
+> 💪 one workout (a walk counts!)
+> 💷 no credit card + one thing to increase my income
+> 💼 one step towards my new role
+> 📚 10 pages + practising my skills
 >
-> Before you start, fill in the **Day 0 snapshot** on page 2. You'll thank me on Day 90.
+> This week's focus is **writing down your "before"**: photos, a 5-minute fitness test, your numbers. You'll thank me on Day 90.
 >
 > A new week lands every Sunday. I'll be filming every day on [@handle] if you want to keep each other going.
 >
-> See you on the walk,
+> See you on Day 1,
 > Anna
 >
 > *P.S. Hit reply and tell me one thing you want to be different in 90 days. I read every reply.*
@@ -84,7 +85,7 @@
 >
 > That's why I'm doing this in public. Not because I've got it figured out, but because I don't, and I've got a feeling you might not either.
 >
-> So, how's the walking going? Even if you've only managed one day, that's one more than last week. The rule is just: **never miss twice.**
+> So, how are the workouts going? Even if you've only managed one, that's one more than last week. The rule is just: **never miss twice.**
 >
 > Anna
 
@@ -95,12 +96,12 @@
 > Hi {first_name | lovely},
 >
 > One week down! Here's my honest scorecard:
-> - Walks: [__/7]
-> - Pages read: [__]
-> - Phone out of bedroom: [__/7]
+> - 🥗 Protein + low carb days: [__/7] · 2L water: [__/7]
+> - 💪 Workouts: [__/7]
+> - 💷 Days without the credit card: [__/7] · Income actions: [__]
+> - 💼 Applications / interviews: [__ / __]
+> - 📚 Pages read: [__] · Closing practice: [__ mins]
 > - Energy: [__/10] (it was [__] on Day 0)
-> - Money: [one honest line about the week's progress]
-> - Place: [one line, e.g. "Shortlist down to 3, you voted for __"]
 >
 > **Week 2 is here** 👉 **[Download Week 2]**
 >

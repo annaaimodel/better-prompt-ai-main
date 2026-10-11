@@ -11,15 +11,16 @@
 | **Handle ideas** | `@annaagain`, `@meagainwithanna`, `@emptynestfullife` |
 | **Who it's for** | Women 40–55 whose kids have grown up, who feel a bit lost and are ready for "what's next" |
 | **Voice** | Fat, fun, honest, a bit self-roasting, never preachy. The friend who says what everyone's thinking |
-| **Promise** | "I'm rebuilding my health, my fitness, my money and my career in 90 days, and you can do it with me." |
-| **Bio** | Empty nester, 40-something, starting over 💛 Day __/90 · Health · Fitness · Money · Career · Mind · Free guide ⬇️ |
+| **Promise** | "I'm rebuilding my health, my fitness, my money and my career in 90 days, then taking my life on the road. You can do it with me." |
+| **Bio** | Empty nester, 40-something, starting over 💛 Day __/90 · Health · Fitness · Money · Career · Mind · Future digital nomad ✈️ · Free guide ⬇️ |
 
-### The 5 pillars (your real plan, with full tracking in `08-my-90-day-plan-and-tracking.md`)
+### The 6 pillars (your real plan, with full tracking in `08-my-90-day-plan-and-tracking.md`)
 1. 🥗 **Health:** high protein, reduced carbs, 2L water a day
 2. 💪 **Fitness:** one workout every day
 3. 💷 **Finances:** no credit card use; increase income
 4. 💼 **Career:** apply for and secure a new closing offer
 5. 📚 **Knowledge:** 10 pages a day + daily closing-skills practice
+6. ✈️ **Freedom:** building a true digital nomad life, working from anywhere I want to be. One freedom step a week + a Freedom Fund; first destination chosen near the end and booked as the **Day 90 treat**
 
 ---
 
@@ -50,7 +51,7 @@ The same structure every day so it's quick to film and easy to follow:
 4. **One thing I learned** (useful to the viewer)
 5. **Tomorrow** ("Tomorrow I'm doing my first sales call. Wish me luck.")
 
-On screen at all times: **Day __/90** plus a 5-pillar tracker (✅/❌ for 🥗 💪 💷 💼 📚).
+On screen at all times: **Day __/90** plus a pillar tracker (✅/❌ for 🥗 💪 💷 💼 📚, and ✈️ on freedom-step days).
 
 **Weekly extra (Sunday):** a 2–3 minute recap on YouTube (long form) with the week's scorecard, which you cut into Shorts.
 
@@ -67,7 +68,7 @@ The plan is built around **habits and honest updates, not promised outcomes**. I
 *Story: "I don't recognise my life anymore. Let's change that."*
 | Week | Theme | Story beats to capture |
 |---|---|---|
-| 1 | **The empty house** | Why now, the empty nest feeling, Day 1 honesty, the 5 pillars, freezing the credit card |
+| 1 | **The empty house** | Why now, the empty nest feeling, Day 1 honesty, the 6 pillars, freezing the credit card |
 | 2 | **New habits** | Protein meals, water bottle, first workouts, first book, first applications |
 | 3 | **The wobble** | The first bad day / missed day and coming back. This always performs |
 | 4 | **First proof** | Day 30 checkpoint: photos, measurements, fitness re-test, money saved by not using the card |
@@ -86,10 +87,10 @@ The plan is built around **habits and honest updates, not promised outcomes**. I
 | Week | Theme | Story beats to capture |
 |---|---|---|
 | 9 | **First commissions** | Real income numbers, the no-credit-card effect on your finances |
-| 10 | **Levelling up** | Closing skills progress, books finished, what's actually working |
-| 11 | **New normal** | The habits now feel automatic. What life looks like now, the loneliness and the joy |
-| 12 | **Who I am now** | Side-by-side Day 1 vs now (real photos), the lessons |
-| 13 | **Day 90** | The big recap, real numbers, and "want to do this with me?" → the challenge launch |
+| 10 | **Levelling up** | Closing skills progress, books finished, testing a "work from anywhere" day |
+| 11 | **Booked it!** | Choosing destination #1 (followers vote), booking it with the Freedom Fund, telling the kids |
+| 12 | **Who I am now** | Side-by-side Day 1 vs now (real photos), the lessons, packing a life into a suitcase |
+| 13 | **Day 90** | The big recap, real numbers, departure day ✈️, and "want to do this with me?" → the challenge launch |
 
 ### Easy hooks for any day
 - "Day __ of rebuilding my life at 4_ after my kids left home."
@@ -98,6 +99,7 @@ The plan is built around **habits and honest updates, not promised outcomes**. I
 - "Things I stopped doing that changed everything."
 - "What I earned this week in my new career (real numbers)."
 - "I froze my credit card for 90 days. Here's what happened."
+- "In 90 days I'm becoming a digital nomad at 4_. Where should I go first?"
 - "The day I nearly gave up."
 
 ---
@@ -121,9 +123,9 @@ Every week has the **same 5 daily non-negotiables** (your real plan), plus **one
 | 6 | High-protein lunches + meal prep |
 | 7 | Applying, interviewing, landing the offer (or your own career goal) |
 | 8 | Day 60 checkpoint |
-| 9 | Spending without a credit card: what I learned |
+| 9 | Spending without a credit card: what I learned + building the Freedom Fund |
 | 10 | Getting stronger: progressing workouts |
-| 11 | Learning faster: making your 10 pages stick |
+| 11 | Choosing and booking your treat (destination #1) |
 | 12 | Keeping it going after 90 days |
 | 13 | Day 90: the full now-vs-then |
 
@@ -156,6 +158,8 @@ Your real 90 days is your proof. Your followers' check-ins during the free guide
 >
 > **[The plan]**
 > So for the next 90 days I'm changing everything. High protein, fewer carbs, two litres of water. A workout every single day. My credit card is literally in the freezer, and I'm going after more income and a new closing offer in high-ticket sales. And every day: 10 pages of a book and practising my closing skills.
+>
+> And the dream? To live as a proper digital nomad, working from anywhere I want to be. If I do the work, on Day 90 I'm treating myself to my first destination. ✈️
 >
 > **[The honesty]**
 > I'll show you all of it. The good days, the bad days, the real numbers. No filters on the truth.

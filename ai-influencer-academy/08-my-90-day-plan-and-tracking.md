@@ -1,11 +1,11 @@
 # My 90-Day Plan: Now vs Then
-*The 5 pillars, the daily non-negotiables, and exactly what to record so Day 1 vs Day 90 is a real comparison.*
+*The 6 pillars, the daily non-negotiables, and exactly what to record so Day 1 vs Day 90 is a real comparison.*
 
 **Day 1:** Monday 12 October 2026 · **Day 30:** Tue 10 Nov · **Day 60:** Thu 10 Dec · **Day 90:** Sat 9 Jan 2027
 
 ---
 
-## The 5 pillars
+## The 6 pillars
 
 | | Pillar | Daily non-negotiables | 90-day goal |
 |---|---|---|---|
@@ -14,6 +14,9 @@
 | 💷 | **Finances** | **No credit card use** · one income-increasing action | Zero new card spending; income up |
 | 💼 | **Career** | Applications / outreach / calls until it's secured | **Secure a new closing offer** |
 | 📚 | **Knowledge** | **10 pages** + daily closing-skills practice | A better closer, with books finished |
+| ✈️ | **Freedom** | **One "freedom step" a week** + money into the Freedom Fund | **A digital nomad life: work from anywhere I want to be.** First destination planned near the end, and booked as my **Day 90 treat** 🎁 |
+
+> **The career + freedom link:** when you're choosing your closing offer, check it's **fully remote** and what **time zone** the calls are in. A US-hours offer means evening calls in Europe and afternoon calls in Asia. That will shape where you can go.
 
 > *Not medical or financial advice. I'm sharing what I'm doing. Check with your GP before big diet or exercise changes.*
 
@@ -60,11 +63,18 @@ Do it now and on Days 30, 60 and 90. The progress is undeniable on camera.
 - [ ] **Closing skills self-rating (1–10):** Opening & rapport ___ · Discovery ___ · Pitch ___ · Objection handling ___ · Closing ___ · Follow-up ___
 - [ ] 🎥 **Record a 5-minute mock call now** (role-play with a friend or AI). Record another on Day 90. Side by side, this is brilliant content *and* proof for interviews.
 
+### ✈️ Freedom
+- [ ] Passport expiry date: ___________ (many countries want 6+ months left on it)
+- [ ] Could I work from anywhere today? Laptop ✅/❌ · headset ✅/❌ · remote-friendly role ✅/❌
+- [ ] **Open a "Freedom Fund" savings pot** and set a weekly amount: £___ (this pays for the Day 90 trip, so no credit card needed 😉)
+- [ ] Dream destinations list (no decisions yet): ___________
+- [ ] 🎥 Film a "where I work now" shot (kitchen table?). On Day 90 you film the same shot somewhere new
+
 ---
 
 ## The daily tracker
 
-Film your diary, then tick these. On screen, show the 5 emoji with ✅/❌.
+Film your diary, then tick these. On screen, show the pillar emoji with ✅/❌ (✈️ appears on the day you do that week's freedom step).
 
 | Day | Date | 🥗 Protein every meal | 🥗 Carbs reduced | 🥗 2L water | 💪 Workout (type + mins) | 💷 No card used | 💷 Income action | 💼 Career action | 📚 10 pages | 📚 Closing practice (mins) | Energy 1–10 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -79,6 +89,7 @@ Film your diary, then tick these. On screen, show the 5 emoji with ✅/❌.
 *(A spreadsheet version for all 90 days is the easiest way to keep this going. Ask me and I'll build one with auto weekly totals.)*
 
 **Ideas for the "income action":** an extra shift or call block, selling something you no longer need, asking for a commission review, a side gig, following up an old lead.
+**Freedom step ideas (one a week):** check passport and travel insurance options, test working a full day from a café or library, research nomad-friendly cities (wifi, cost of living, time zone), sort a VPN, a travel-friendly bank card (debit, not credit!) and an eSIM, declutter what you won't need, plan how the kids can visit.
 **Ideas for the "closing practice":** a sales podcast on your workout, role-play an objection, re-listen to one of your own calls, write out 3 better answers to "I need to think about it".
 
 ---
@@ -95,6 +106,7 @@ Film your diary, then tick these. On screen, show the 5 emoji with ✅/❌.
 | Applications / interviews / offers | | | | |
 | Pages read | | | | |
 | Closing practice (total mins) | | | | |
+| Freedom step done ✅/❌ · Freedom Fund total £ | | | | |
 | Avg energy (1–10) | | | | |
 
 **The rule: never miss twice.** One missed workout is life. Two in a row is a new habit. And if you miss, film it. The comeback is the content.
@@ -106,7 +118,8 @@ Film your diary, then tick these. On screen, show the 5 emoji with ✅/❌.
 | Checkpoint | Re-record | Video idea |
 |---|---|---|
 | **Day 30** | Photos, measurements, fitness test, finances, energy | "30 days ago vs today: the honest results" |
-| **Day 60** | Same + a new mock call | "Halfway: what's changed and what hasn't" |
-| **Day 90** | Everything + mock call + the tight clothing item | **"90 days. Same woman. New life."** The big side-by-side reveal |
+| **Day 60** | Same + a new mock call | "Halfway: what's changed and what hasn't" + **"Help me choose my first destination"** (shortlist + vote) |
+| **Day 75** | Freedom Fund total | **Book the trip** 🎉 ("I just booked it. Paid in full, no credit card.") |
+| **Day 90** | Everything + mock call + the tight clothing item + "where I work" shot | **"90 days. Same woman. New life."** The big side-by-side reveal, then **packing for destination #1** ✈️ |
 
 **Film the comparisons the same way every time:** same spot, same angle, same light. That's what makes a now-vs-then video land.

@@ -10,7 +10,7 @@ If you're reading this, maybe your house has gone quiet too.
 
 For twenty-odd years my days were built around everyone else: school runs, packed lunches, lifts, worry. Then the kids grew up and left, and I looked around and thought: *who am I now?*
 
-So for 90 days I'm rebuilding five things, and filming every day so we can compare **now vs then**:
+So for 90 days I'm rebuilding six things, and filming every day so we can compare **now vs then**:
 
 | | Pillar | My daily non-negotiables |
 |---|---|---|
@@ -19,10 +19,11 @@ So for 90 days I'm rebuilding five things, and filming every day so we can compa
 | 💷 | **Finances** | **No credit card.** Plus one thing a day to increase my income |
 | 💼 | **Career** | Working towards a new role. For me, **securing a new closing offer** in high-ticket sales |
 | 📚 | **Knowledge** | **10 pages a day** + practising the skills for my work |
+| ✈️ | **Freedom** | **One "freedom step" a week** + money into a Freedom Fund. The goal: a digital nomad life. Day 90 = my first destination, as my treat 🎁 |
 
-**This guide is exactly what I'm doing.** Each week you'll get the same five daily habits, plus one **weekly focus** with tips to make them easier.
+**This guide is exactly what I'm doing.** Each week you'll get the same daily habits, plus one **weekly focus** with tips to make them easier.
 
-Your career and knowledge goals might look different from mine: a new job, a promotion, going back to study, starting a side hustle. That's perfect. Make them yours.
+Your career, knowledge and freedom goals might look different from mine: a new job, a promotion, going back to study, a side hustle, a big trip, a move to the coast. That's perfect. Make them yours.
 
 > ⚠️ *I'm sharing what I'm doing, not giving medical or financial advice. If you have health conditions, are on medication, or haven't exercised in a while, check with your GP before changing your diet or starting daily workouts.*
 
@@ -63,6 +64,12 @@ You can't see how far you've come if you don't know where you started. Do this *
 - Books finished in the last year: ______
 - My first book: ______________________
 - The skill I'm getting better at: ______________________. Rate yourself now ___/10
+
+### ✈️ Freedom
+- My Day 90 treat will be: ______________________ (dream big, decide later)
+- Passport expiry date: ___________
+- **Open a "Freedom Fund"** savings pot. My weekly amount: £______
+- Take a photo of where you work or spend your days now. You'll retake it on Day 90
 
 **One sentence: how I feel right now, honestly:**
 _____________________________________________
@@ -106,15 +113,17 @@ _____________________________________________
 | 💼 One career action | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 | 📚 10 pages | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
 | 📚 Skill practice | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| ✈️ Freedom step + Fund (once this week) | ☐ done | | | | | | |
 
 **Income action ideas:** sell something you don't use, pick up extra hours, follow up an old contact, ask about a pay review, start a small side gig.
+**This week's freedom step:** open the Freedom Fund and set up your weekly transfer.
 **Career action ideas:** one application, one message to someone in the role you want, update your CV/LinkedIn, practise an interview answer.
 
 ---
 
 ## Sunday check-in
-1. Days I hit all 5 pillars: ___ / 7
-2. Workouts done: ___ / 7 · Days without the card: ___ / 7
+1. Days I hit all my daily habits: ___ / 7
+2. Workouts done: ___ / 7 · Days without the card: ___ / 7 · Freedom Fund: £___
 3. Energy now (1–10): ___ (Day 0: ___)
 4. The hardest moment this week: ___________
 5. The moment I felt proud: ___________

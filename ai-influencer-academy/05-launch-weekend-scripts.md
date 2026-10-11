@@ -10,7 +10,7 @@
 | **Sat 10 Oct (evening)** | 🎬 **Intro reel**: "On Monday I start again" | — |
 | **Sun 11 Oct** | 🥗💪 **Health & Fitness prep** (morning) | 📚 **Knowledge prep** (evening) |
 | **Mon 12 Oct: DAY 1** | Day 1 diary (script in `04-me-again-90-day-plan.md`) | 💷💼 **Money & Career prep** (evening) |
-| **Tue 13 Oct: Day 2** | Day 2 diary | 💪 **Day 0 fitness test** reel (or Place prep if moving abroad is still on) |
+| **Tue 13 Oct: Day 2** | Day 2 diary | ✈️ **Freedom prep**: "In 90 days I become a digital nomad" |
 
 Post each one to TikTok, Instagram Reels and YouTube Shorts. Pin the intro reel on all three.
 
@@ -35,6 +35,7 @@ Post each one to TikTok, Instagram Reels and YouTube Shorts. Pin the intro reel 
 > One workout, every single day. *(trainers on the floor)*
 > My money: no credit card, more income, and a new closing offer. *(card into the freezer)*
 > And my head: reading again, and getting better at my job every day. *(book + headphones)*
+> And the dream: a digital nomad life, working from anywhere I want. Day 90 is my first destination. *(passport + suitcase)*
 >
 > **[To camera, softer]**
 > I'm going to film every single day. The good bits, the bad bits, the real numbers.
@@ -127,9 +128,27 @@ Post each one to TikTok, Instagram Reels and YouTube Shorts. Pin the intro reel 
 
 ---
 
-## ✈️ 5. Place prep: *optional*
+## ✈️ 5. Freedom prep: "In 90 days I become a digital nomad" (40–60s)
 
-Moving abroad isn't in your 5-pillar plan, so **skip this reel unless it's still a real goal**. If you skip it, use Tuesday's second slot for the **Day 0 fitness test** as its own reel ("My starting point. Day 90 me, this one's for you").
+**Setting:** your current "office" (kitchen table?), then passport, suitcase and a world map or globe.
+
+> **[Hook, at the kitchen table with your laptop]**
+> This is my office. In 90 days, I want my office to be anywhere in the world.
+>
+> **[To camera]**
+> The end goal of all this: a proper digital nomad life. Working remotely, living in different countries, wherever I want to be.
+>
+> **[Passport, suitcase]**
+> I haven't picked the first place yet. That's my treat. If I stick to all of it for 90 days, I book destination number one, and I go.
+>
+> **[Jar or savings app]**
+> And because the credit card's in the freezer 🧊, I've started a Freedom Fund. Every week, money goes in. That pays for the trip.
+>
+> **[To camera]**
+> So: where should a 4_-year-old empty nester with a laptop go first? Give me your best ideas 👇
+
+**On-screen text:** "Day 90 = my first destination as a digital nomad at [4_] ✈️ Where should I go?"
+**Why it works:** asking where to go gets loads of comments, and you can come back to this exact video on Day 60 when you shortlist.
 
 ---
 

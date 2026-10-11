@@ -65,6 +65,7 @@
 > 💷 no credit card + one thing to increase my income
 > 💼 one step towards my new role
 > 📚 10 pages + practising my skills
+> ✈️ and once a week, a step towards a digital nomad life (Day 90 = my first destination!)
 >
 > This week's focus is **writing down your "before"**: photos, a 5-minute fitness test, your numbers. You'll thank me on Day 90.
 >

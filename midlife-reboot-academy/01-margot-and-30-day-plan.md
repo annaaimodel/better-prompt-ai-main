@@ -1,4 +1,4 @@
-# AI Influencer Academy — Launch Pack #1
+# Midlife Reboot Academy — Margot (AI influencer, on hold)
 *Character bible for proof account #1 + your first 30 days of content*
 
 ---

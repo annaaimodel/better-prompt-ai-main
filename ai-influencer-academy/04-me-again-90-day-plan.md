@@ -22,20 +22,18 @@
 
 ---
 
-## 2. AI rules: polish, not pretend
+## 2. Real content, AI behind the scenes
 
-The rule: **AI makes it look better. It never makes it look different from what happened.**
+Everything on camera is **real you, real life**. No AI twin for now. (You can revisit that later. The door's open.)
 
-| ✅ AI can | ❌ AI never |
-|---|---|
-| Fix lighting, colour and sound | Change your body shape or face in progress shots |
-| Add captions, titles, the "Day X/90" tracker | Show a place you weren't, or a meal you didn't eat |
-| Make thumbnails and graphics | Create a screenshot of earnings or results |
-| Clean up your voice, cut ums and pauses | Put words in your mouth you don't mean |
-| Make an AI twin for talking clips **from your script**, labelled | Be used for progress photos |
-| Make B-roll (coffee, notebooks, sunsets) | Stand in for the proof moments |
+AI does the backstage work:
+- ✍️ Drafting scripts, hooks and captions (you put them in your own words)
+- ✂️ Editing: auto-captions, cutting pauses and ums, cleaning up sound (CapCut)
+- 🎨 Cover images and the "Day X/90" graphics
+- 📧 Writing the weekly guide and emails
+- 📊 Turning your scorecard numbers into weekly recaps
 
-**Disclose:** turn on the platform's AI label for AI-twin clips, and add a pinned line, "My AI twin helps with the talking. The life is all mine." It can even be a recurring joke.
+Keep editing to tidy-ups (light, colour, sound). No face or body reshaping filters, especially on anything that shows progress. The Day 90 comparison only works if Day 1 is honest.
 
 **Health:** share what *you* do, not what *they* should do. Pin a line: "Not medical advice. Check with your GP before changing diet or exercise." Measuring weight is optional. Energy, steps, sleep, how your clothes fit, and habits kept are often better stories anyway.
 
@@ -144,7 +142,7 @@ Your real 90 days is your proof. Your followers' check-ins during the free guide
 
 ## 7. Day 1 script (60–75 seconds)
 
-*Film it real: no AI twin for Day 1. Kitchen table or sofa, natural light, minimal makeup. Raw and honest.*
+*Kitchen table or sofa, natural light, minimal makeup. Raw and honest.*
 
 > **[Hook, straight to camera]**
 > This is Day 1 of 90, and honestly? I don't really know who I am anymore.
@@ -181,6 +179,5 @@ Your real 90 days is your proof. Your followers' check-ins during the free guide
 - [ ] Pick the name and handle; set up TikTok, IG and YouTube with the same handle
 - [ ] Take **real** "Day 1" photos and measurements for yourself (share them later only if you want to)
 - [ ] Write Week 1 of the free guide; set up email (Beehiiv/Kit) + ManyChat keyword **AGAIN**
-- [ ] Optional: build your AI twin from your real photos for diary days you don't want to film
 - [ ] Batch-film Days 1–3 so you're never starting from zero
-- [ ] Pin the "AI twin + not medical advice" line on every platform
+- [ ] Pin the "not medical advice" line on every platform

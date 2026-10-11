@@ -1,5 +1,5 @@
 # Launch Weekend: Intro Reel + 4 Prep Reels
-*Day 1 = Monday 12 October. Everything below is filmed on your phone, for real (the AI twin comes later).*
+*Day 1 = Monday 12 October. Everything below is filmed on your phone, for real.*
 
 ---
 
